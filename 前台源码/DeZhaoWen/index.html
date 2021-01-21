@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#ctn{
+				height: 852px;
+				width: 100%;
+			}
+			.header{
+				height: 10%;
+				background-color: #18416B;
+			}
+			.col-md-2{
+				border-right:1px solid red;
+				height: 100%;
+			}
+			.bod{
+				height: 100%;
+			}
+			ul{
+				margin-left: 20px;
+			}
+			iframe{
+				border: 0px;
+				width: 100%;
+				height: 100%;
+			}
+			.del{
+				position: absolute;
+				right: 0px;
+				top: 0px;
+			}
+			.kx{
+				font-size: 50px;
+				color: #FFFFFF;
+			}
+			.tobu{
+				color: #fff;
+				display: inline-block;
+				width: 150px;
+				height: 100%;
+				font-size: 17px;
+			}
+			.tobu:first-child{
+				padding-left: 2000px;
+				color: red;
+			}
+			.ddiv1{
+				border: 2px solid #EFEBE7;
+				width: 900px;
+				position: absolute;
+				height: 600px;
+				top: 200px;
+				left: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctn" class="">
+			<div class="header">
+				<span class="kx">卡修智慧系统</span>
+				<span style="margin-left: 200px;"></span>
+				<span class="tobu" v-for="item in tobu">{{item.pvgName}}</span>
+			</div>
+			<div class="bod">
+				<div class="col-md-2" style="background-color: #18304A; height: 100%;">
+					<tree :list="list" @huan="huan"></tree>
+				</div>
+				<div class="col-md-10" style="margin: 0px; padding: 0px;">
+					<ul class="nav nav-tabs" style="background-color:#294173; margin-left: 0px; padding-left: 0px;">
+						<li v-for="item,index in tabs" :class=" item.ac?'active':'' " @click="shuan(item)">
+							<a :href="'#'+item.id" data-toggle="tab">{{item.pvgName}}
+								<span v-if="index!=0" @click="dd(index)" class="del">&times;</span>
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div v-for="item in tabs" :id="item.id" :class="['tab-pane',item.ac?'active':'']">
+							<iframe :src="item.pvgPath"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ddiv1">
+				<iframe src="today.html"></iframe>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript">
+			
+			Vue.component("tree",{
+				props:["list"],
+				template: `
+					<ul class="nav nav-pills nav-stacked">
+						<li v-for="item in list" >
+							<a href="#" @click="huan(item)" style="color:violet">{{item.pvgName}}</a>
+							<tree :list="item.children" @huan="huan"></tree>
+						</li>
+					</ul>
+				`,
+				methods:{
+					huan(item){
+						this.$emit("huan",item);
+					}
+				}
+			});
+			
+			var vm=new Vue({
+				el:"#ctn",
+				data(){
+					 return{
+					 	list:[
+					 		{
+								pvgId:55,
+								pvgName:"首页",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"",
+								children:[],
+								pid:1
+							},
+							{
+								pvgId:2,
+								pvgName:"服务接待",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"",
+								children:[
+									{
+										pvgId:3,
+										pvgName:"维修接车",
+										pvgVerify:"",
+										pvgType:1,
+										pvgPath:"1.html",
+										pid:2
+									},
+									{
+										pvgId:4,
+										pvgName:"竣工检验",
+										pvgVerify:"",
+										pvgType:1,
+										pvgPath:"",
+										pid:2
+									},
+									{
+										pvgId:5,
+										pvgName:"保险对价",
+										pvgVerify:"",
+										pvgType:1,
+										pvgPath:"",
+										pid:2
+									}
+								],
+								pid:1
+							}
+					 	],
+						tabs:[{pvgName:"首页",ac:true,content:"一个丰富的首页",id:"ho1"}],
+						tobu:[
+							{
+								pvgId:1,
+								pvgName:"服务接待",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							},
+							{
+								pvgId:2,
+								pvgName:"备品管理",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							},
+							{
+								pvgId:3,
+								pvgName:"结算中心",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							},
+							{
+								pvgId:4,
+								pvgName:"客户档案",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							},
+							{
+								pvgId:5,
+								pvgName:"基础数据",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							},
+							{
+								pvgId:6,
+								pvgName:"财务管理",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							},
+							{
+								pvgId:7,
+								pvgName:"行政人事",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							},
+							{
+								pvgId:8,
+								pvgName:"系统管理",
+								pvgVerify:"",
+								pvgType:0,
+								pvgPath:"",
+								pid:0
+							}
+						]
+					 	
+					 
+					 }
+				},
+				methods:{
+					huan(item){
+						if(item.children && item.children.length>0){
+							return;
+						}
+						this.tabs.forEach(item=>{
+							item.ac=false;
+						})
+						this.$set(item,"ac",true);
+						var flag=this.tabs.some(sitem=>sitem.pvgName==item.pvgName);
+						if(!flag){
+							this.tabs.push(item);
+						}
+						
+					},
+					dd(index){
+						if(index==this.tabs.length-1)
+						{
+							this.tabs[index-1].ac=true;
+							console.log(this.tabs[index-1]);
+						}
+						this.tabs.splice(index,1);
+					},
+					shuan(item){
+						if(item.children && item.children.length>0){
+							return;
+						}
+						this.tabs.forEach(item=>{
+							item.ac=false;
+						})
+						this.$set(item,"ac",true);
+					}
+				},
+				created(){
+					
+				},
+				watch:{
+					
+				}
+			});
+		</script>
+	</body>
+</html>
