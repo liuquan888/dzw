@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="static/css/bootstrap.min.css" rel="stylesheet" />
+		<style>
+			body{
+				width: 100%;
+			}
+			#a1{
+				width:70px;
+				background-color: orange;
+				border:0px;
+			}
+			.aa2{
+				width:1535px;
+			}
+			.a5{
+				height:50px;
+				line-height: 50px;
+			}
+			.container-fluid{
+				width: 100%;
+				margin:0px;
+				padding: 0px;
+				padding-left:15px;
+			}
+			#b1{
+				background-color: #E3E3E3;
+			}
+			.row:nth-of-type(1){
+				 background-color: #f7ffff;
+			}
+			.row:nth-of-type(2){
+				height:680px;
+				background-color: #f7f7f7;
+			}
+			#h3{
+				margin-top:14px;
+				margin-bottom:10px;
+			}
+			#l1{
+				margin-top:10px;
+			}
+			.z1{
+				height: 50px;
+				line-height:50px;
+			}
+			.z2{
+				width:1515px;
+				height:600px;
+				background-color: #fff;
+				margin-left:10px;
+			}
+			.z3{
+				height: 31px;
+				line-height:31px;
+				margin-left:10px;
+			}
+			.c1{
+				width:20px;
+				height:15px;
+				margin-top:-2px;
+				margin-right: 4px;
+			}
+			.d1{
+				width:100px;
+				height:30px;
+				line-height:30px;
+				border: 1px solid #262626;
+				padding-left: 10px;
+				color:#fff;
+				background-color:darkturquoise;
+			}
+			#table1 tr td{
+				padding-left: 10px;
+				border: 1px solid #e3e3e3;
+				width:100px;
+				height:30px;
+				line-height:30px;
+			}
+			.modal-content{
+				width:1100px;
+				height:650px;
+			}
+			#myModal2{
+				margin-left: -500px;
+			}
+			#aa1{
+				width:1068px;
+				height:470px;
+				background-color: #e3e3e3;
+			}
+			#aa3{
+				height:50px;
+				line-height: 50px;
+				background-color: #fff;
+			}
+			#aa4{
+				width: 1068px;
+				height:450px;
+				border: 1px solid #fff;
+			}
+			.aa5{
+				height: 30px;
+				width: 150px;
+				border: 0px;
+				margin-left:10px;
+			}
+			.aa6{
+				height: 30px;
+				border: 0px;
+				width:402px;
+				margin-left:10px;
+			}
+			ul li{
+				list-style-type: none;
+			}
+			.ul1{
+				padding: 0px;
+				margin-left: 30px;
+				border-left: 1px dotted #444444;
+			}
+			#j1{
+				width:10px;
+				height:10px;
+				display: inline-block;
+				border-bottom:1px dotted #000;
+			}
+			#aa4 table tr td{
+				color:#337AB7;
+				padding-left:30px;
+				display: inline-block;
+				height:34px;
+			}
+			.aa8{
+				width:130px;
+				height:30px;
+				background-color: #fff;
+				display: inline-block;
+				margin-left:7px;
+				border: 0px;
+			}
+			.aa18{
+				width:150px;
+				height:30px;
+				background-color: #fff;
+				display: inline-block;
+				margin-left:7px;
+				border: 0px;
+			}
+			.aa9{
+				width:20px;
+				height:30px;
+				line-height: 30px;
+				display:inline-block;
+				background-color: #fff;
+				position: relative;
+				top:0px;
+				left:-3px;
+				text-align: center;
+			}
+			#img1{
+				width:15px;
+				height:10px;
+			}
+			.ming{
+				margin-left:-6px;
+				
+			}
+			#tab1{
+				display: flex;
+			}
+			#zhao{
+				width: 200px;
+				height: 500px;
+				border: 1px solid #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid" id="ctn">
+			<div class="row aa2">
+				<div class="col-md-7">
+					<h3 id="h3">组织机构定义</h3>
+				</div>
+				<div class="col-md-3 " id="l1">
+					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机">
+				</div>
+				<div class="col-md-2 a5">
+					<button type="submit" class="btn btn-default" id="a1">搜索</button>
+					<button type="submit" class="btn btn-default" id="b1">关闭</button>
+				</div>
+			</div>
+			<div class="row aa2">
+				<div class="z1">
+					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="images/1.png" class="c1">增加员工</a></div>
+					<div class="col-md-1"><img src="images/2.png" class="c1">修改</div>
+					<div class="col-md-1"><img src="images/3.png" class="c1">删除</div>
+					<div class="col-md-1"><img src="images/4.png" class="c1">查询</div>
+					<div class="col-md-1"><img src="images/5.png" class="c1">置空密码</div>
+					<div class="col-md-1"><img src="images/6.png" class="c1">导出</div>
+					<div class="col-md-1"><img src="images/7.png" class="c1">导入</div>
+					<div class="col-md-1"><img src="images/8.png" class="c1">员工角色</div>
+					<div class="col-md-1"><img src="images/9.png" class="c1">字段设置</div>
+				</div>
+				<div class="z2">
+					<div class="col-xs-2">
+						<div class="ddiv2">
+							<ul class="">
+								<li>
+									<a @click="xianshi()" href="#"><span>+</span>_株洲总店</a>
+									<ul class="ul1" v-if="this.xs">
+										<li><span id="j1"></span>人事部</li>
+										<li><span id="j1"></span>人事部</li>
+										<li><span id="j1"></span>人事部</li>
+										<li><span id="j1"></span>人事部</li>
+										<li><span id="j1"></span>人事部</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="ddiv2">
+								
+						</div>
+					</div>
+					<div class="col-xs-10 a">
+						<table id="table1">
+							<tr>
+								<td v-for="s in stafflist" v-if="s.bool==0" class="d1">{{s.fieldname}}</td>
+							</tr>
+							<tr>
+								<td>成高</td>
+								<td>11</td>
+								<td>管钱部</td>
+								<td>HGO121312</td>
+								<td>张毅丰</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="z3">
+					合计:4条记录
+				</div>
+			</div>
+			<div class="modal" id="myModal2" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">
+							<div class="row" id="aa3">
+								<div class="col-md-7"><h3>员工卡片</h3></div>
+								<div class="col-md-5">
+									<button class="btn btn-default" type="submit">Button</button>
+									<span>打印</span>
+									<span>实名认证</span>
+								</div>
+							</div>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div id="aa1">
+									<div><span @click="ying2()">基本资料</span><span @click="ying()">其他信息</span></div>
+									<div id="aa4">
+										<table id="tab1">
+											<tr>
+												<td>人员编号:<input type="text" class="aa5"></td>
+												<td>员工姓名:<input type="text" class="aa5"></td>
+												<td class="dd1">
+													性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td rowspan="4" id="zhao">
+													照片
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">所在门店:<input type="text" class="aa6"></td>
+												<td colspan="2">所在部门:<input type="text" class="aa6"></td>
+											</tr>
+											<tr>
+												<td>登录账号:<input type="text" class="aa5"></td>
+												<td>岗&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:<input type="text" class="aa5"></td>
+												<td>身体状况:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:<input type="text" class="aa5"></td>
+												<td>
+													籍&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贯:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td class="ming">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+											</tr>
+											<tr>
+												<td>婚姻状况:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td class="ming">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td class="ming">毕业学校:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+											</tr>
+											<tr>
+												<td>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td  class="ming">专业资格:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td>属&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性:
+													<select class="aa18">
+														<option></option>
+													</select>
+												</td>
+												<td  class="ming">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+											</tr>
+											<tr>
+												<td>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td  class="ming">身&nbsp;&nbsp;份&nbsp;&nbsp;证:<input type="text" class="aa5"></td>
+												<td colspan="2">户口地址:<input type="text" class="aa6"></td>
+											</tr>
+											<tr>
+												<td colspan="2">现住地址:<input type="text" class="aa6"></td>
+												<td>联系电话:<input type="text" class="aa5"></td>
+												<td>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>E&nbsp;M&nbsp;a&nbsp;i&nbsp;l&nbsp;:<input type="text" class="aa5"></td>
+												<td>开户银行:
+													<select class="aa8">
+														<option></option>
+													</select>
+													<span class="aa9"><img src="images/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></span>
+												</td>
+												<td class="ming">银行账号:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>紧急联系:<input type="text" class="aa5"></td>
+												<td>联系电话:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>入职日期:<input type="date" class="aa5"></td>
+												<td>试用到期:<input type="date" class="aa5"></td>
+												<td>出生日期:<input type="date" class="aa5"></td>
+												<td>合同开始:<input type="date" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>合同结束:<input type="date" class="aa5"></td>
+												<td>卡自编号:<input type="text" class="aa5"></td>
+												<td>卡内编号:<input type="text" class="aa5"></td>
+												<td>推&nbsp;&nbsp;荐&nbsp;&nbsp;人:<input type="text" class="aa5"></td>
+											</tr>
+											<tr>
+												<td>整单折扣:<input type="text" class="aa5"></td>
+												<td>工时折扣:<input type="text" class="aa5"></td>
+												<td>商品折扣:<input type="text" class="aa5"></td>
+												<td>减&nbsp;&nbsp;免&nbsp;&nbsp;权:<input type="text" class="aa5"></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a  class="btn btn-default" data-dismiss="modal">提交</a>
+							<a data-toggle="modal" data-dismiss="modal" class="btn btn-default">关闭</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="myModal1" data-backdrop>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<div class="modal-header">添加创业资讯</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div>11111</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a  class="btn btn-default" data-dismiss="modal">提交</a>
+							<a data-toggle="modal" data-dismiss="modal" class="btn btn-default">关闭</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="static/new_file.js></script>
+	<script src="js/api/menu.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/constant.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="static/js/vue.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var stafflist=[
+			{
+				id:"1",
+				bool:0,
+				field:"aaa",
+				fieldname:"机构",
+				width:"100"},
+			{
+				id:"2",
+				bool:0,
+				field:"aaa",
+				fieldname:"部门代码",
+				width:"100"
+			},
+			{
+				id:"3",
+				bool:0,
+				field:"aaa",
+				fieldname:"部门名称",
+				width:"100"
+			},
+			{
+				id:"4",
+				bool:0,
+				field:"aaa",
+				fieldname:"工号",
+				width:"100"
+			},
+			{
+				id:"5",
+				bool:0,
+				field:"aaa",
+				fieldname:"姓名",
+				width:"100"
+			},
+		];
+		new Vue({
+			el:"#ctn",
+			data(){
+				return{
+					stafflist:stafflist,
+					xs:true
+				}
+			},
+			methods:{
+				xianshi(){
+					if(this.xs){
+						this.xs=false;
+					}else{
+						this.xs=true;
+					}
+					
+				},
+				createTab(item){
+					if(item.children && item.children.length>0){
+						return;
+					}
+					this.tabs.forEach(item=>{item.active=false;});
+					this.$set(item,"active",true);
+					var bool = this.tabs.some(sitem=>sitem.ename==item.ename);
+					if(!bool){
+						
+						this.tabs.push(item);
+					}
+				},
+				removeTab(index){
+					if(index==this.tabs.length-1){
+						this.tabs[index-1].active=true;
+					}
+					this.tabs.splice(index,1);
+				},
+				ying(){
+					$("#tab1").css("display","none");
+					$("#tab2").css("display","flex");
+				},
+				ying2(){
+					$("#tab1").css("display","flex");
+					$("#tab2").css("display","none");
+				}
+			}
+		});
+		
+	</script>
+	</body>
+</html>
