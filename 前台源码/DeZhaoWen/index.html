@@ -10,7 +10,7 @@
 				padding: 0px;
 			}
 			#ctn{
-				height: 852px;
+				height: 655px;
 				width: 100%;
 			}
 			.header{
@@ -20,6 +20,15 @@
 			.col-md-2{
 				border-right:1px solid red;
 				height: 100%;
+			}
+			.span1{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				background-color: #D6D7CE;
+				font-size: 14px;
+				font-weight: bolder;
+				border: 1px solid #fff;
 			}
 			.bod{
 				height: 100%;
@@ -54,11 +63,16 @@
 			}
 			.ddiv1{
 				border: 2px solid #EFEBE7;
-				width: 900px;
+				width: 1000px;
 				position: absolute;
 				height: 600px;
-				top: 200px;
-				left: 500px;
+				top: 80px;
+				left: 300px;
+			}
+			.ddiv3{
+				position: absolute;
+				top: 0px;
+				right: 0px;
 			}
 		</style>
 	</head>
@@ -88,7 +102,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="ddiv1">
+			<div class="ddiv1" v-if="this.x">
+				<div class="ddiv3">
+					<span class="span1">🗕</span>
+					<span class="span1" style="font-size: 14px;">🗖</span>
+					<span class="span1" style="font-size: 14px;" @click="out">&times;</span>
+				</div>
 				<iframe src="today.html"></iframe>
 			</div>
 		</div>
@@ -230,9 +249,8 @@
 								pvgPath:"",
 								pid:0
 							}
-						]
-					 	
-					 
+						],
+						x:true
 					 }
 				},
 				methods:{
@@ -266,6 +284,9 @@
 							item.ac=false;
 						})
 						this.$set(item,"ac",true);
+					},
+					out(){
+						this.x=false;
 					}
 				},
 				created(){
