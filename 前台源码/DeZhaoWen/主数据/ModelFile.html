@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	</head>
+		<style type="text/css">
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			#ctn{
+				width: 99%;
+				height: 100%;
+				
+			}
+				
+			#find{
+				width: 100%;
+				margin-right: 20px;
+				
+			}
+			input[type="text"]{
+				height: 20px;
+				width: 150px;
+			}
+			#table{
+				width: 250px;
+			}
+			tr{
+				font-size: 12px;
+			}
+			#theme{
+				height: 88%;
+				background: #f7f7f7;
+			}
+			
+			
+		</style>
+	<body>
+		<div id="ctn">
+			<div class="row">
+				<div class="col-sm-2">
+					<h3>&nbsp;&nbsp;&nbsp;品牌车型</h3>
+				</div>
+				<div class="col-sm-9"></div>
+				<div class="col-sm-1">
+					<br>
+					<button class="btn btn-xs" >关闭</button>
+				</div>
+			</div>
+			<div id="theme">
+				<div id="find">
+					<hr />
+					<div class="row" style="margin-left: 20px;">
+						<div class="col-sm-6" >
+							<div>
+								<button type="button" class="btn btn-warning btn-xs">添加品牌</button>
+								<button type="button" class="btn btn-warning btn-xs">修改</button>
+								<button type="button" class="btn btn-warning btn-xs">删除</button>
+								<br /><br />
+								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母"/>
+								<span><button class="btn btn-warning btn-xs">搜索</button></span>
+							</div>
+						</div>
+						<div class="col-sm-5" >
+							<div>
+								<button type="button" class="btn btn-warning btn-xs">添加车型</button>
+								<button type="button" class="btn btn-warning btn-xs">修改</button>
+								<button type="button" class="btn btn-warning btn-xs">删除</button>
+								<button type="button" class="btn btn-warning btn-xs">照片</button>
+								<br /><br />
+								<input type="text" placeholder="匹配 车型编码/车型名称"/>
+								<span><button class="btn btn-warning btn-xs">搜索</button></span>
+							</div>
+						</div>
+					</div>
+					<br />
+				</div>
+				
+				
+				<div style="width: 300px;height: 80%; background: #ffffff;margin-left: 30px;">
+					<div id="table">
+						<table class="table table-bordered table-striped table-hover">
+							<tr style="background: #39cede;">
+								<td style="border: 1px solid #666; color: #FFFFFF;">编码</td>
+								<td style="border: 1px solid #666; color: #FFFFFF;">品牌名称</td>
+								<td style="border: 1px solid #666; color: #FFFFFF;">首字母</td>
+							</tr>
+							<tr class="pintr">
+								<td>11</td>
+								<td>中国重汽</td>
+								<td>A</td>
+							</tr>
+							<tr class="pintr">
+								<td>22</td>
+								<td>峡汽重卡</td>
+								<td>B</td>
+							</tr>
+							<tr class="pintr">
+								<td>33</td>
+								<td>中国一汽</td>
+								<td>C</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+				<div style="margin-left: 400px;margin-top: -510px; border: 1px solid #000000;">
+					dsa
+				</div>
+				
+			</div>
+			
+			
+			
+		</div>
+		
+<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/vue.js"></script>		
+<script>
+	$(".pintr").click(function(){
+		$(".pintr").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	})
+	
+	
+	
+</script>
+	</body>
+</html>
