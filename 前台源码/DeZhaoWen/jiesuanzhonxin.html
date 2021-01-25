@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style>
+			body{
+				margin: 0px;
+				padding: 0px;
+				background-color: #F7F7F7;
+			}
+			.div-shoyin{
+				position: absolute;
+				top:20px;
+				left: 350px;
+				border: 1px solid #337AB7;
+				width: 575px;
+				height: 520px;
+				background-color:#FFFFFF ;
+			}
+			.input1 input{
+				width: 100px;
+			}
+			.table1 td{
+				padding-right: 10px;
+			}
+			.div3{
+				background-color: #FFFFFF;
+				padding: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctn">
+			<div style="background-color: #FFFFFF; margin: 0px;">
+				<h2 style="margin: 0px;color:#337AB7;line-height: 48px; margin-left: 20px;">结算中心</h2>
+			</div>
+			<div style="margin-left: 20px;">
+				<form class="form-inline">
+					 <div class="form-group">
+					    <label>开单日期：</label>
+					    <input type="time" class="form-control">~
+					    <input type="time" class="form-control">
+					 </div>
+					 <div class="form-group">
+					    <label>销售单号：</label>
+					    <input type="text" class="form-control">
+					  </div>
+					  <div class="form-group">
+					    <label>结算状态：</label>
+					    <select class="form-control">
+					    	<option>已结算</option>
+					    	<option>未结算</option>
+					    </select>
+					  </div>
+					  <div class="form-group">
+					    <label>车牌号：</label>
+					    <input type="text" class="form-control">
+					  </div>
+					   <br /><br />
+					  <div class="form-group">
+					    <label>客户名称：</label>
+					    <input type="text" class="form-control">
+					  </div>
+					  <div class="form-group">
+					    <label>服务顾问：</label>
+					    <input type="text" class="form-control">
+					  </div>
+					  <div class="form-group">
+					    <label>业务类型：</label>
+					    <select class="form-control">
+					    	
+					    </select>
+					  </div>
+					  <div class="form-group">
+					    <label>单据类型：</label>
+					    <select class="form-control">
+					    	
+					    </select>
+					  </div>
+					  <div class="form-group">
+					    <label>备注：</label>
+					    <input type="text" class="form-control">
+					  </div>
+				</form>
+			</div>
+			<div style="margin-left: 20px;">
+				<img src="img/jiesuanzhonx01.PNG" />门店选择
+				<span @click="out"><img src="img/shoyin.PNG">收银</span>
+			</div>
+			<div style="margin-left: 20px;">
+				<table class="table table-bordered">
+					<tr>
+						<td>销售单号</td>
+						<td>单据类型</td>
+						<td>结算方式</td>
+						<td>单据状态</td>
+						<td>结算状态</td>
+						<td>结算时间</td>
+						<td>结算人</td>
+						<td>结算金额</td>
+						<td>业务类型</td>
+						<td>客户名称</td>
+						<td>车牌号</td>
+						<td>车型</td>
+						<td>车架号</td>
+						<td>联系电话</td>
+						<td>保险公司</td>
+						<td>赔款公司</td>
+						<td>对方车牌</td>
+						<td>服务顾问</td>
+						<td>完工时间</td>
+						<td>备注</td>
+					</tr>
+					<tr>
+						<td>s0000</td>
+						<td>ss</td>
+						<td>ew</td>
+						<td>已结算</td>
+						<td>搜索</td>
+						<td>2020-8-8</td>
+						<td>顺德</td>
+						<td>20558</td>
+						<td>娃娃</td>
+						<td>娃娃</td>
+						<td>s0002</td>
+						<td>s-861</td>
+						<td>s1510</td>
+						<td>13118415</td>
+						<td>无</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>2020-12-22</td>
+						<td>玩</td>
+					</tr>
+				</table>
+			</div>
+			
+			<!--收银模态框-->
+			<div class="div-shoyin" v-if="this.x">
+				<div style="background-color: #337AB7;color: #FFFFFF;">前台收银<span style="float: right;font-size: 15px;" @click="out">&times;&nbsp;</span></div>
+				<div>
+					<div class="div3">
+						<table class="table1">
+							<tr>
+								<td>客总费</td>
+								<td>税率（%）</td>
+								<td>加税金</td>
+								<td>抹尾数</td>
+								<td>积分抵扣（元）</td>
+							</tr>
+							<tr class="input1">
+								<form class="form-inline">
+									<td><input disabled class="form-control"></td>
+									<td><input class="form-control"></td>
+									<td><input class="form-control"></td>
+									<td><input disabled class="form-control"></td>
+									<td><input class="form-control"></td>
+								</form>
+							</tr>
+						</table>
+						<br />
+						<div style="margin-left: 150px;">
+							<span>应收金额:</span>
+							<span style="color: red;font-style: oblique;">6000000</span>
+							<span>积分最大抵扣：0.00</span>
+						</div>
+						<div>
+							<form class="form-inline" style="margin-left: 150px;">
+								结算状态：
+								<select class="form-control">
+									<option>正常结算</option>
+								</select>
+							</form>
+						</div>
+						<br />
+						<div style="margin-left: 100px;">
+							<button class="btn btn-primary" style="width: 80px;" @click="weixin">微信</button>
+							<button class="btn btn-info" style="width: 80px;margin-left: 120px;" @click="zhifu">支付宝</button>
+						</div>
+						<br />
+						<div style="margin-left: 150px;">
+							<img v-if="this.img1" id="img1" src="img/42958655ea45a696edf23fc3606a873.png" height="260px" />
+							<img v-if="this.img2" id="img2" src="img/90cf1be414bae73600c0d591c8c3c8e.jpg" height="260px" style="margin-left: 15px;"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						img1:true,
+						img2:false,
+						x:false
+					}
+				},
+				methods:{
+					zhifu(){
+						this.img2=true;
+						this.img1=false;
+					},
+					weixin(){
+						this.img2=false;
+						this.img1=true;
+					},
+					out(){
+						if(this.x){
+							this.x=false;
+						}else{
+							this.x=true;
+						}
+						
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
