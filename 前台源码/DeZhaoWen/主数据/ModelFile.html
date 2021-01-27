@@ -22,7 +22,7 @@
 				
 			}
 			input[type="text"]{
-				height: 20px;
+				height: 25px;
 				width: 150px;
 			}
 			#table{
@@ -35,7 +35,86 @@
 				height: 88%;
 				background: #f7f7f7;
 			}
+			.pintr{
+				background: #ffffff;
+			}
+			.pintr2{
+				background: #ffffff;
+			}
 			
+			.va{
+				display: inline-block;
+				color: #39cede;
+				width: 70px;
+			}
+			
+			.til{
+				display: inline-block;
+				padding-left: 10px;
+				height: 25px;
+				border-left: 4px solid sandybrown;
+			}
+			
+			.item{
+				width: 40px;
+				background: #666;
+			}
+			.item td{
+				border: 1px solid #666;
+			}
+			
+			.modal-body input[type="text"]{
+				width: 120px;
+				height: 30px;
+			}
+			
+			.must{
+				display: inline-block;
+				width: 5px;
+				color: red;
+			}
+			
+			.fileinput-button {
+				position: relative;
+				display: inline-block;
+				overflow: hidden;
+			}
+
+			.fileinput-button input{
+				position:absolute;
+				right: 0px;
+				top: 0px;
+				opacity: 0;
+				-ms-filter: 'alpha(opacity=0)';
+				font-size: 200px;
+			}
+			
+			
+			#div7{
+				width: 20px;
+				height: 340px;
+				margin-left:490px;
+				margin-top:-280px;
+				border: 1px solid #19b5cc;
+				background-color: #FFFFFF;
+			}
+
+			.span1{
+				display: inline-block;
+				margin-left: -7px;
+				margin-top:110px;
+				color: #19b5cc;
+			}
+			.span2{
+				margin-left: -17px;
+				display: inline-block;
+				position: relative;
+				top:90px;
+				color: #19b5cc;
+			}
+		
+		
+		
 			
 		</style>
 	<body>
@@ -56,8 +135,8 @@
 					<div class="row" style="margin-left: 20px;">
 						<div class="col-sm-6" >
 							<div>
-								<button type="button" class="btn btn-warning btn-xs">添加品牌</button>
-								<button type="button" class="btn btn-warning btn-xs">修改</button>
+								<button type="button" @click="addenbrand" class="btn btn-warning btn-xs">添加品牌</button>
+								<button type="button" @click="updateenbrand" class="btn btn-warning btn-xs">修改</button>
 								<button type="button" class="btn btn-warning btn-xs">删除</button>
 								<br /><br />
 								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母"/>
@@ -66,10 +145,10 @@
 						</div>
 						<div class="col-sm-5" >
 							<div>
-								<button type="button" class="btn btn-warning btn-xs">添加车型</button>
-								<button type="button" class="btn btn-warning btn-xs">修改</button>
+								<button type="button" @click="addcar" class="btn btn-warning btn-xs">添加车型</button>
+								<button type="button" @click="updatecar" class="btn btn-warning btn-xs">修改</button>
 								<button type="button" class="btn btn-warning btn-xs">删除</button>
-								<button type="button" class="btn btn-warning btn-xs">照片</button>
+								<button type="button" @click="carimage" class="btn btn-warning btn-xs">照片</button>
 								<br /><br />
 								<input type="text" placeholder="匹配 车型编码/车型名称"/>
 								<span><button class="btn btn-warning btn-xs">搜索</button></span>
@@ -80,25 +159,29 @@
 				</div>
 				
 				
-				<div style="width: 300px;height: 80%; background: #ffffff;margin-left: 30px;">
-					<div id="table">
+				<div style="width: 300px;height: 85%;margin-left: 30px; background: #ffffff;">
+					<div id="table" style="background: #ffffff;padding-bottom: 50px;">
 						<table class="table table-bordered table-striped table-hover">
 							<tr style="background: #39cede;">
+								<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 								<td style="border: 1px solid #666; color: #FFFFFF;">编码</td>
 								<td style="border: 1px solid #666; color: #FFFFFF;">品牌名称</td>
 								<td style="border: 1px solid #666; color: #FFFFFF;">首字母</td>
 							</tr>
 							<tr class="pintr">
+								<td class="item"></td>
 								<td>11</td>
 								<td>中国重汽</td>
 								<td>A</td>
 							</tr>
 							<tr class="pintr">
+								<td class="item"></td>
 								<td>22</td>
 								<td>峡汽重卡</td>
 								<td>B</td>
 							</tr>
 							<tr class="pintr">
+								<td class="item"></td>
 								<td>33</td>
 								<td>中国一汽</td>
 								<td>C</td>
@@ -107,9 +190,341 @@
 					</div>
 				</div>
 				
-				<div style="margin-left: 400px;margin-top: -510px; border: 1px solid #000000;">
-					dsa
+				<div style="margin-left: 400px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;height: 85%;">
+					<table class="table table-bordered table-striped table-hover">
+						<tr style="background: #39cede;">
+							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">车型ID</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">车型名称</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">发动机品牌</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">参考价格</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">车辆年款</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">功率</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">燃油编号</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">载重</td>
+							<td style="border: 1px solid #666; color: #FFFFFF;">索赔厂商</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>111</td>
+							<td>德龙s50</td>
+							<td>动机</td>
+							<td>100000</td>
+							<td>100</td>
+							<td>500</td>
+							<td>60</td>
+							<td>8000kg</td>
+							<td>一号索赔商</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>111</td>
+							<td>德龙x600</td>
+							<td>动机</td>
+							<td>100000</td>
+							<td>100</td>
+							<td>500</td>
+							<td>60</td>
+							<td>8000kg</td>
+							<td>二号索赔商</td>
+						</tr>
+						<tr class="pintr2">
+							<td class="item"></td>
+							<td>3</td>
+							<td>德龙g5605</td>
+							<td>动机</td>
+							<td>100000</td>
+							<td>100</td>
+							<td>500</td>
+							<td>60</td>
+							<td>8000kg</td>
+							<td>三号索赔商</td>
+						</tr>
+					</table>
 				</div>
+				
+				
+				<!-- 新增车型品牌模态框 -->
+				<div class="modal fade" id="addenbrandmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<span class="til">品牌定义</span>
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="text-align: center;">
+								<p>
+									<span class="must">*</span>
+									<span class="va">品牌编码</span>
+									<input type="text" name="" id="" value="" />
+								</p><br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">品牌名称</span>
+									<input type="text" name="" id="" value="" />
+								</p><br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">首字母</span>
+									<input type="text" name="" id="" value="" />
+								</p><br />
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary">保存</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				<!-- 修改车型品牌模态框 -->
+				<div class="modal fade" id="updateenbrandmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<span class="til">品牌定义</span>
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="text-align: center;">
+								<p>
+									<span class="must">*</span>
+									<span class="va">品牌编码</span>
+									<input type="text" name="" id="" value="11" />
+								</p><br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">品牌名称</span>
+									<input type="text" name="" id="" value="中国重汽" />
+								</p><br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">首字母</span>
+									<input type="text" name="" id="" value="A" />
+								</p><br />
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary">保存</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				<!-- 新增车型模态框 -->
+				<div class="modal fade" id="addcarmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<span class="til">车型定义</span>
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="width: 100%; background: #f7f7f7;padding-left: 15px;">
+								<br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">车型品牌</span>
+									<input disabled="disabled" style="width: 327px;" type="text" name="" id="" value="中国重汽" />
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">车型ID</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must">*</span>
+									<span class="va">车型名称</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">进口国产</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">参考价格</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">车辆年款</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">功率</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">燃油编号</span>
+									<input type="text" name="" id="" value="" />
+									<span class="must"></span>
+									<span class="va">载重</span>
+									<input type="text" name="" id="" value="" />
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">索赔厂商</span>
+									<select style="width: 150px;height: 30px;">
+										<option>1号索赔商</option>
+										<option>2号索赔商</option>
+										<option>3号索赔商</option>
+									</select>
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">发动机品牌</span>
+									<select style="width: 327px;height: 30px;">
+										<option>一号发动机</option>
+										<option>二号发动机</option>
+										<option>三号发动机</option>
+									</select>
+								</p>
+								
+								
+								 <div align="center" id="div9" style="">
+									<span class="btn btn-success fileinput-button" id="div7">
+										<span class="span1">照</span>
+										<span class="span2">片</span>
+										<input type="file">
+									</span>
+								</div>
+								
+								
+								<br />
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary">保存</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+				<!-- 修改车型模态框 -->
+				<div class="modal fade" id="updatecarmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<span class="til">车型定义</span>
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="width: 100%; background: #f7f7f7;padding-left: 15px;">
+								<br />
+								<p>
+									<span class="must">*</span>
+									<span class="va">车型品牌</span>
+									<input disabled="disabled" style="width: 327px;" type="text" name="" id="" value="中国重汽" />
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">车型ID</span>
+									<input type="text" name="" id="" value="111" />
+									<span class="must">*</span>
+									<span class="va">车型名称</span>
+									<input type="text" name="" id="" value="德龙s50" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">进口国产</span>
+									<input type="text" name="" id="" value="一号国产" />
+									<span class="must"></span>
+									<span class="va">参考价格</span>
+									<input type="text" name="" id="" value="100000" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">车辆年款</span>
+									<input type="text" name="" id="" value="100" />
+									<span class="must"></span>
+									<span class="va">功率</span>
+									<input type="text" name="" id="" value="500" />
+								</p>
+								<p>
+									<span class="must"></span>
+									<span class="va">燃油编号</span>
+									<input type="text" name="" id="" value="60" />
+									<span class="must"></span>
+									<span class="va">载重</span>
+									<input type="text" name="" id="" value="8000kg" />
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">索赔厂商</span>
+									<select style="width: 150px;height: 30px;">
+										<option>1号索赔商</option>
+										<option>2号索赔商</option>
+										<option>3号索赔商</option>
+									</select>
+								</p>
+								<p>
+									<span class="must">*</span>
+									<span class="va">发动机品牌</span>
+									<select style="width: 327px;height: 30px;">
+										<option>一号发动机</option>
+										<option>二号发动机</option>
+										<option>三号发动机</option>
+									</select>
+								</p>
+								
+								
+								
+								
+								<br />
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary">保存</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
+				
+				
+				
+				
+				<!-- 照片模态框 -->
+				<div class="modal fade" id="carimagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div class="row">
+								<div class="col-sm-9">
+									<span class="til">车型照片</span>
+								</div>
+								<div class="col-sm-1">
+									<button type="button" class="btn btn-success">保存</button>
+								</div>
+							</div>
+							
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div style="background:#f7f7f7 ; height: 300px;">
+								
+							</div>
+				      </div>
+				      <div class="modal-footer">
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				
 				
 			</div>
 			
@@ -118,15 +533,56 @@
 		</div>
 		
 <script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/bootstrap.min.js"></script>
 <script src="../js/vue.js"></script>		
 <script>
+	
+	
+	new Vue({
+		el:"#ctn",
+		data(){
+			return{
+				
+			}
+		},
+		methods:{
+			addenbrand(){
+				$("#addenbrandmodal").modal("show");
+			},
+			updateenbrand(){
+				$("#updateenbrandmodal").modal("show");
+			},
+			addcar(){
+				$("#addcarmodal").modal("show");
+			},
+			updatecar(){
+				$("#updatecarmodal").modal("show");
+			},
+			carimage(){
+				$("#carimagemodal").modal("show");
+			},
+			
+			
+		},
+		created(){
+			
+		}
+	});
 	$(".pintr").click(function(){
 		$(".pintr").css("background","#ffffff")
 		$(this).css("background","sandybrown")
+	});
+	$(".pintr2").click(function(){
+		$(".pintr2").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	});
+	
+	
+	$("#div7").mouseover(function(){
+		$(this).css("background","#e7e7e7")
+	}).mouseout(function(){
+		$(this).css("background","")
 	})
-	
-	
-	
 </script>
 	</body>
 </html>
