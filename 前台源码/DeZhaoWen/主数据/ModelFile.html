@@ -112,7 +112,9 @@
 				top:90px;
 				color: #19b5cc;
 			}
-		
+			a{
+				color: #000000;
+			}
 		
 		
 			
@@ -126,7 +128,7 @@
 				<div class="col-sm-9"></div>
 				<div class="col-sm-1">
 					<br>
-					<button class="btn btn-xs" >关闭</button>
+					<button class="btn btn-sm" >关闭</button>
 				</div>
 			</div>
 			<div id="theme">
@@ -135,9 +137,10 @@
 					<div class="row" style="margin-left: 20px;">
 						<div class="col-sm-6" >
 							<div>
-								<button type="button" @click="addenbrand" class="btn btn-warning btn-xs">添加品牌</button>
-								<button type="button" @click="updateenbrand" class="btn btn-warning btn-xs">修改</button>
-								<button type="button" class="btn btn-warning btn-xs">删除</button>
+								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addenbrand">增加品牌</a> 
+								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updateenbrand">修改</a> 
+								<img src="../img/3.png" width="3%"><a href="javascript:void(0)">删除</a> 
+								
 								<br /><br />
 								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母"/>
 								<span><button class="btn btn-warning btn-xs">搜索</button></span>

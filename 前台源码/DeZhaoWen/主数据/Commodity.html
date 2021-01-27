@@ -15,6 +15,10 @@
 				height: 100%;
 				
 			}
+			
+			a{
+				color: #000000;
+			}
 				
 			#find{
 				width: 100%;
@@ -85,6 +89,7 @@
 			}
 			
 			
+			
 		</style>
 	<body>
 		<div id="ctn">
@@ -95,12 +100,12 @@
 				<div class="col-sm-5"></div>
 				<div class="col-sm-4">
 					<br />
-					<input type="text" name="" placeholder="匹配编码/名称/名称/简码/型号/大类+号双条件查询" id="" value="" style="width: 350px;"/>
-					<button class="btn btn-warning btn-xs">搜索</button>
+					<input type="text" name="" placeholder="匹配编码/名称/名称/简码/型号/大类+号双条件查询" id="" value="" style="width: 350px;height: 30px;"/>
+					<button class="btn btn-warning btn-sm">搜索</button>
 				</div>
 				<div class="col-sm-1">
 					<br>
-					<button class="btn btn-xs" >关闭</button>
+					<button class="btn btn-sm" >关闭</button>
 				</div>
 			</div>
 			<div id="theme">
@@ -111,17 +116,18 @@
 				<div class="row">
 					<div class="col-sm-3">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<button class="btn btn-warning btn-xs" @click="addgoods">增加</button>
-						<button class="btn btn-warning btn-xs" @click="updategoods">修改</button>
-						<button class="btn btn-warning btn-xs">删除</button>
-						<button class="btn btn-warning btn-xs" @click="findgoods">查询</button>
+						
+						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoods">增加</a> 
+						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoods">修改</a> 
+						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> 
+						<img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoods">查询</a> 
 					</div>
 					<div class="col-sm-9">
-						<button class="btn btn-warning btn-xs">导出</button>
-						<button class="btn btn-warning btn-xs">照片</button>
-						<button class="btn btn-warning btn-xs">条码</button>
-						<button class="btn btn-warning btn-xs">分类设置</button>
-						<button class="btn btn-warning btn-xs" @click="addfield">字段设置</button>
+						<img src="../zenglianjun/img/捕获11.PNG" width="2%"><a href="javascript:void(0)">导出</a> 
+						<img src="img/111.PNG" width="2%"><a href="javascript:void(0)">照片</a> 
+						<img src="img/112.PNG" width="2%"><a href="javascript:void(0)">条码</a> 
+						<img src="../img/8.png" width="2%"><a href="javascript:void(0)">分类设置</a> 
+						<img src="../img/9.png" width="2%"><a href="javascript:void(0)" @click="addfield">字段设置</a> 
 						
 					</div>
 				</div>
