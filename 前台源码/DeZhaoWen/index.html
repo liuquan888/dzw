@@ -41,6 +41,18 @@
 				width: 100%;
 				height: 100%;
 			}
+			.leftguan{
+				width: 14px;
+				height: 60px;
+				border-radius:0px 5px 5px 0px;
+				position: absolute;
+				top: 500px;
+				left: 315px;
+				background-color: #18416B;
+				z-index: 1;
+				color: #FFFFFF;
+				padding-top: 20px;
+			}
 			.del{
 				position: absolute;
 				right: 0px;
@@ -68,6 +80,7 @@
 				height: 600px;
 				top: 80px;
 				left: 300px;
+				z-index: 2;
 			}
 			.ddiv3{
 				position: absolute;
@@ -84,11 +97,11 @@
 				<span class="tobu" v-for="item in tobu" @click="diantop(item)">{{item.pvgName}}</span>
 			</div>
 			<div class="bod">
-				<div class="col-md-2" style="background-color: #18304A; height: 950px;">
+				<div v-if="this.leftx" class="col-md-2" style="background-color: #18304A; height: 950px;">
 					<tree :list="list" @huan="huan"></tree>
 				</div>
-				<div class="col-md-10" style="margin: 0px; padding: 0px;">
-					<ul class="nav nav-tabs" style="background-color:#294173; margin-left: 0px; padding-left: 0px;">
+				<div id="tt" class="col-md-10" style="margin: 0px; padding: 0px;">
+					<ul class="nav nav-tabs" style="background-color:#294173; margin-left: 0px; width: 100%; padding-left: 0px;">
 						<li v-for="item,index in tabs" :class=" item.ac?'active':'' " @click="shuan(item)">
 							<a :href="'#'+item.id" data-toggle="tab">{{item.pvgName}}
 								<span v-if="index!=0" @click="dd(index)" class="del">&times;</span>
@@ -109,6 +122,9 @@
 					<span class="span1" style="font-size: 14px;" @click="out">&times;</span>
 				</div>
 				<iframe src="today.html"></iframe>
+			</div>
+			<div class="leftguan" @click="leftout">
+				◀
 			</div>
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
@@ -331,7 +347,7 @@
 								pid:3
 							}
 					 	],
-						tabs:[{pvgName:"首页",ac:true,content:"一个丰富的首页",id:"ho1"}],
+						tabs:[{pvgName:"首页",ac:true,content:"一个丰富的首页",id:"ho1",pvgPath:"jiesuanindex.html"}],
 						tobu:[
 							{
 								pvgId:1,
@@ -398,11 +414,16 @@
 								pid:0
 							}
 						],
-						x:true
+						x:true,
+						leftx:true
 					 }
 				},
 				methods:{
 					huan(item){
+						this.leftx=false;
+						$(".leftguan").css("left","0px");
+						$(".leftguan").html("▶");
+						$("#tt").css("width","100%");
 						if(item.children && item.children.length>0){
 							return;
 						}
@@ -446,6 +467,19 @@
 					},
 					run(){
 						this.l=this.list;
+					},
+					leftout(){
+						if(this.leftx){
+							this.leftx=false;
+							$(".leftguan").css("left","0px");
+							$(".leftguan").html("▶");
+							$("#tt").css("width","100%");
+						}else{
+							this.leftx=true;
+							$(".leftguan").css("left","315px");
+							$(".leftguan").html("◀");
+							$("#tt").css("width","");
+						}
 					}
 				},
 				created(){
