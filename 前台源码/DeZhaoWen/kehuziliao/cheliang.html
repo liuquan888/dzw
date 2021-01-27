@@ -14,13 +14,16 @@
 				background-color: #F7FFFF;
 				height: 52px;
 				width: 100%;
+				display: flex;
 			}
-			#tou p{
+			#tou>div{
+
+			}
+			#tou>div:nth-child(1){
 				padding-top: 8px;
 				font-size: 26px;
-				float: left;
 				padding-left: 15px;
-				padding-right: 800px;
+
 			}
 			#tou input{
 				margin-top: 6px;
@@ -46,7 +49,7 @@
 			}
 			#body div{
 				height: 40px;
-				width: 100%;
+				
 			}
 			#body div p{
 				margin-top: 6px;
@@ -139,15 +142,18 @@
 	<body>
 		<div id="lx">
 		<div id="tou">
-			<p>车资料</p>
-			<input type="text" placeholder="匹配驾驶员姓名/简码/手机/车牌号"/>
+			<div style="flex-grow: 1;">车资料</div>
+			<div style=""><input type="text" placeholder="匹配驾驶员姓名/简码/手机/车牌号"/>
 			<button id="sou">搜索</button>
-			<button>关闭</button>
+			<button>关闭</button></div>
 		</div>
 		<div id="body">
-			<div style="background-color: #F7F7F7;">
-				<label style="margin-top: 8px;">车牌号</label><input type="text" style="margin-top: 8px;"/>
-				<label style="margin-top: 8px;">车架号</label><input type="text" style="margin-top: 8px;"/>
+			<div style="display: flex;">
+				<div style="flex-grow: 1;background-color: #F7F7F7;"></div>
+				<div style="background-color: #F7F7F7;">
+					<label style="margin-top: 8px;">车牌号</label><input type="text" style="margin-top: 8px;"/>
+					<label style="margin-top: 8px;">车架号</label><input type="text" style="margin-top: 8px;"/>
+				</div>
 			</div>
 			<div id="xuan" >
 				<button @click="s">增加</button>

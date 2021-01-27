@@ -41,6 +41,18 @@
 				width: 100%;
 				height: 100%;
 			}
+			.leftguan{
+				width: 14px;
+				height: 60px;
+				border-radius:0px 5px 5px 0px;
+				position: absolute;
+				top: 500px;
+				left: 252px;
+				background-color: #18416B;
+				z-index: 1;
+				color: #FFFFFF;
+				padding-top: 20px;
+			}
 			.del{
 				position: absolute;
 				right: 0px;
@@ -68,6 +80,7 @@
 				height: 600px;
 				top: 80px;
 				left: 300px;
+				z-index: 2;
 			}
 			.ddiv3{
 				position: absolute;
@@ -84,11 +97,11 @@
 				<span class="tobu" v-for="item in tobu" @click="diantop(item)">{{item.pvgName}}</span>
 			</div>
 			<div class="bod">
-				<div class="col-md-2" style="background-color: #18304A; height: 100%;">
+				<div v-if="this.leftx" class="col-md-2" style="background-color: #18304A; height: 950px;">
 					<tree :list="list" @huan="huan"></tree>
 				</div>
-				<div class="col-md-10" style="margin: 0px; padding: 0px;">
-					<ul class="nav nav-tabs" style="background-color:#294173; margin-left: 0px; padding-left: 0px;">
+				<div id="tt" class="col-md-10" style="margin: 0px; padding: 0px;">
+					<ul class="nav nav-tabs" style="background-color:#294173; margin-left: 0px; width: 100%; padding-left: 0px;">
 						<li v-for="item,index in tabs" :class=" item.ac?'active':'' " @click="shuan(item)">
 							<a :href="'#'+item.id" data-toggle="tab">{{item.pvgName}}
 								<span v-if="index!=0" @click="dd(index)" class="del">&times;</span>
@@ -110,8 +123,10 @@
 				</div>
 				<iframe src="today.html"></iframe>
 			</div>
+			<div class="leftguan" @click="leftout">
+				◀
+			</div>
 		</div>
-		
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
@@ -196,9 +211,143 @@
 								pvgPath:"kehuziliao/cheliang.html",
 								children:[],
 								pid:3
+							},{
+								pvgId:56,
+								pvgName:"组织机构",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"employees/organization.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:57,
+								pvgName:"通讯名录",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"employees/phone.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:57,
+								pvgName:"离职登记",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"employees/lizhi.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:57,
+								pvgName:"岗位定义",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"employees/gang.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:58,
+								pvgName:"维修接车",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"zenglianjun/html/weixjiec.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:59,
+								pvgName:"竣工检验",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"zenglianjun/html/chezhiliao.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:60,
+								pvgName:"技工星级",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"jigongguanli/jigongxingji.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:61,
+								pvgName:"班组技工",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"jigongguanli/banzujigong.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:62,
+								pvgName:"外勤车辆",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"jigongguanli/waiqincheliang.html",
+								children:[],
+								pid:3
+							}
+							,{
+								pvgId:63,
+								pvgName:"技工提成比例",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"jigongguanli/jigongtichengbili.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"发动机品牌",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/EngineBrand.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:65,
+								pvgName:"车型档案",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/ModelFile.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"维修项目",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/MaintenanceItems.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"商品资料",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/Commodity.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"供货单位",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/Supplier.html",
+								children:[],
+								pid:3
 							}
 					 	],
-						tabs:[{pvgName:"首页",ac:true,content:"一个丰富的首页",id:"ho1"}],
+						tabs:[{pvgName:"首页",ac:true,content:"一个丰富的首页",id:"ho1",pvgPath:"jiesuanindex.html"}],
 						tobu:[
 							{
 								pvgId:1,
@@ -265,11 +414,16 @@
 								pid:0
 							}
 						],
-						x:true
+						x:true,
+						leftx:true
 					 }
 				},
 				methods:{
 					huan(item){
+						this.leftx=false;
+						$(".leftguan").css("left","0px");
+						$(".leftguan").html("▶");
+						$("#tt").css("width","100%");
 						if(item.children && item.children.length>0){
 							return;
 						}
@@ -313,6 +467,19 @@
 					},
 					run(){
 						this.l=this.list;
+					},
+					leftout(){
+						if(this.leftx){
+							this.leftx=false;
+							$(".leftguan").css("left","0px");
+							$(".leftguan").html("▶");
+							$("#tt").css("width","100%");
+						}else{
+							this.leftx=true;
+							$(".leftguan").css("left","252px");
+							$(".leftguan").html("◀");
+							$("#tt").css("width","");
+						}
 					}
 				},
 				created(){
