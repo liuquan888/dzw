@@ -97,7 +97,7 @@
 					</ul>
 					<div class="tab-content">
 						<div v-for="item in tabs" :id="item.id" :class="['tab-pane',item.ac?'active':'']">
-							<iframe :src="item.pvgPath"></iframe>
+							<iframe :src="item.pvgPath" style="height: 615px;"></iframe>
 						</div>
 					</div>
 				</div>
@@ -138,51 +138,33 @@
 				el:"#ctn",
 				data(){
 					 return{
-					 	ll:[],
 					 	l:[],
 					 	list:[
-					 		{
-								pvgId:55,
-								pvgName:"首页",
-								pvgVerify:"",
-								pvgType:1,
-								pvgPath:"",
-								children:[],
-								pid:1
-							},
 							{
-								pvgId:2,
-								pvgName:"服务接待",
+								pvgId:55,
+								pvgName:"结算中心",
 								pvgVerify:"",
 								pvgType:1,
-								pvgPath:"",
-								children:[
-									{
-										pvgId:3,
-										pvgName:"维修接车",
-										pvgVerify:"",
-										pvgType:1,
-										pvgPath:"1.html",
-										pid:2
-									},
-									{
-										pvgId:4,
-										pvgName:"竣工检验",
-										pvgType:1,
-										pvgPath:"",
-										pid:2
-									},
-									{
-										pvgId:5,
-										pvgName:"保险对价",
-										pvgVerify:"",
-										pvgType:1,
-										pvgPath:"",
-										pid:2
-									}
-								],
-								pid:1
-							}
+								pvgPath:"jiesuanzhonxin.html",
+								children:[],
+								pid:3
+							},{
+								pvgId:55,
+								pvgName:"会员充值",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"huiyuancz.html",
+								children:[],
+								pid:3
+							},{
+								pvgId:55,
+								pvgName:"结算首页",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"jiesuanindex.html",
+								children:[],
+								pid:3
+							},
 					 	],
 						tabs:[{pvgName:"首页",ac:true,content:"一个丰富的首页",id:"ho1"}],
 						tobu:[
