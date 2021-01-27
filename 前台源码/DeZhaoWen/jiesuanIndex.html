@@ -44,9 +44,9 @@
 		</style>
 	</head>
 	<body>
-		<div>
+		<div id="ctn">
 			<p >
-				<div class="diyihan">
+				<div class="diyihan" @click="dian(1)">
 					<div style="display: inline-block;">
 						<img src="img/jsshan01.PNG" width="80px"/>
 					</div>
@@ -55,7 +55,7 @@
 						<p>今日前台</p>
 					</div>
 				</div>
-				<div class="diyihan">
+				<div class="diyihan"  @click="dian(2)">
 					<div style="display: inline-block;">
 						<img src="img/jsshan02.PNG" width="70px"/>
 					</div>
@@ -64,7 +64,7 @@
 						<p>今日库房</p>
 					</div>
 				</div>
-				<div class="diyihan">
+				<div class="diyihan" @click="dian(3)">
 					<div style="display: inline-block;">
 						<img src="img/jsshan03.PNG" width="74px"/>
 					</div>
@@ -87,22 +87,77 @@
 					<img src="img/jiesuan1.PNG" width="705px"/>
 				</div>
 				<div class="div-2-2" style="vertical-align: top;border: 1px;">
-					<ul class="ul01">
-						<li>接车台次：0</li>
-						<li>结算台次：0</li>
-						<li>在线修车：15</li>
-						<li>首保台次：0</li>
-						<li>返修台次：0</li>
-					</ul>
-					<ul class="ul01">
-						<li>站内维修台次：0</li>
-						<li>站外维修台次：0</li>
-						<li>自费维修产值：￥15.00元</li>
-						<li>保险理赔产值：￥0.00元</li>
-						<li>索赔申报金额.：￥0.00元</li>
-					</ul>
+					<div v-if="this.i==1">
+						<ul class="ul01">
+							<li>接车台次：0</li>
+							<li>结算台次：0</li>
+							<li>在线修车：15</li>
+							<li>首保台次：0</li>
+							<li>返修台次：0</li>
+						</ul>
+						<ul class="ul01">
+							<li>站内维修台次：0</li>
+							<li>站外维修台次：0</li>
+							<li>自费维修产值：￥15.00元</li>
+							<li>保险理赔产值：￥0.00元</li>
+							<li>索赔申报金额.：￥0.00元</li>
+						</ul>
+					</div>
+					
+					<div v-if="this.i==2">
+						<ul class="ul01">
+							<li>进货：0</li>
+							<li>出货：0</li>
+							<li>库存共计：15</li>
+							<li>首保台次：0</li>
+							<li>返修台次：0</li>
+						</ul>
+						<ul class="ul01">
+							<li>站内维修台次：0</li>
+							<li>站外维修台次：0</li>
+							<li>自费维修产值：￥15.00元</li>
+							<li>保险理赔产值：￥0.00元</li>
+							<li>索赔申报金额.：￥0.00元</li>
+						</ul>
+					</div>
+					
+					<div v-if="this.i==3">
+						<ul class="ul01">
+							<li>收入金额：0</li>
+							<li>支出金额：0</li>
+							<li>盈利：15</li>
+							<li>首保台次：0</li>
+							<li>返修台次：0</li>
+						</ul>
+						<ul class="ul01">
+							<li>站内维修台次：0</li>
+							<li>站外维修台次：0</li>
+							<li>自费维修产值：￥15.00元</li>
+							<li>保险理赔产值：￥0.00元</li>
+							<li>索赔申报金额.：￥0.00元</li>
+						</ul>
+					</div>
+					
 				</div>
 			</p>
 		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script>
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						i:1
+					}
+				},
+				methods:{
+					dian(s){
+						this.i=s;
+					}
+				}
+			});
+		</script>
 	</body>
 </html>
