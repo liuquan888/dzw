@@ -40,7 +40,7 @@
 				</form>
 			</div>
 			<div>
-				<div class="ddiv"><span @click="tables(1)">维修项目</span><span @click="tables(2)">领料情况</span><span>附加项目</span><span @click="tables(3)">结算信息</span></div>
+				<div class="ddiv"><span @click="tables(1)">维修项目</span><span @click="tables(2)">领料情况</span><span @click="tables(4)>附加项目</span><span @click="tables(3)">结算信息</span></div>
 				<table v-if="this.tab==1" class="table table-striped">
 					<tr>
 						<td>选择</td>
@@ -69,8 +69,8 @@
 						<td>1</td>
 						<td>wu</td>
 						<td>1-001</td>
-						<td>黄磊</td>
-						<td>黄涛</td>
+						<td>黄磊1</td>
+						<td>黄涛1</td>
 					</tr>
 				</table>
 				
@@ -102,8 +102,8 @@
 						<td>1</td>
 						<td>wu</td>
 						<td>1-001</td>
-						<td>黄磊</td>
-						<td>黄涛</td>
+						<td>黄磊2</td>
+						<td>黄涛2</td>
 					</tr>
 				</table>
 				
@@ -136,8 +136,41 @@
 						<td>1</td>
 						<td>wu</td>
 						<td>1-001</td>
-						<td>黄磊</td>
-						<td>黄涛</td>
+						<td>黄磊3</td>
+						<td>黄涛3</td>
+					</tr>
+				</table>
+				
+				<table v-if="this.tab==4" class="table table-striped">
+					<tr>
+						<td>选择</td>
+						<td>项目编码</td>
+						<td>项目名称</td>
+						<td>数量</td>
+						<td>价类</td>
+						<td>单价</td>
+						<td>金额</td>
+						<td>技师结算价</td>
+						<td>故障描述</td>
+						<td>故障原因</td>
+						<td>维修机组</td>
+						<td>作业人员</td>
+						<td>服务顾问</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox"></td>
+						<td>s0226</td>
+						<td>wu</td>
+						<td>22</td>
+						<td>ss</td>
+						<td>260</td>
+						<td>62632</td>
+						<td>100</td>
+						<td>1</td>
+						<td>wu</td>
+						<td>1-001</td>
+						<td>黄磊4</td>
+						<td>黄涛4</td>
 					</tr>
 				</table>
 			</div>
