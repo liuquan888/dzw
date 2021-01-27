@@ -69,7 +69,9 @@
 			li{
 				list-style: none;
 			}
-			
+			a{
+				color: #000000;
+			}
 			
 			
 			
@@ -83,12 +85,12 @@
 				<div class="col-sm-6"></div>
 				<div class="col-sm-3">
 					<br />
-					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" />
-					<button class="btn btn-warning btn-xs">搜索</button>
+					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" style="height: 30px;"/>
+					<button class="btn btn-warning btn-sm">搜索</button>
 				</div>
 				<div class="col-sm-1">
 					<br>
-					<button class="btn btn-xs" >关闭</button>
+					<button class="btn btn-sm" >关闭</button>
 				</div>
 			</div>
 			<div id="theme">
@@ -99,16 +101,16 @@
 				<div class="row">
 					<div class="col-sm-8">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<button class="btn btn-warning btn-xs" @click="addson">增加分类</button>
-						<button class="btn btn-warning btn-xs" @click="updatesame">修改分类</button>
-						<button class="btn btn-warning btn-xs">删除</button>
+						<img src="../img/1.png" width="2%"><a href="javascript:void(0)" @click="addson">添加分类</a> 
+						<img src="../img/2.png" width="2%"><a href="javascript:void(0)" @click="updatesame">修改分类</a> 
+						<img src="../img/3.png" width="2%"><a href="javascript:void(0)">删除</a> 
 					</div>
 					<div class="col-sm-3">
-						<button class="btn btn-warning btn-xs" @click="addservice">增加</button>
-						<button class="btn btn-warning btn-xs" @click="updateservice">修改</button>
-						<button class="btn btn-warning btn-xs">删除</button>
-						<button class="btn btn-warning btn-xs" @click="pricechange">调价</button>
-						<button class="btn btn-warning btn-xs">导出</button>
+						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addservice">增加</a> 
+						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updateservice">修改</a> 
+						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> &nbsp;
+						<img src="../zenglianjun/img/tempsnip.png" width="4%"><a href="javascript:void(0)" @click="pricechange">调价</a> 
+						<img src="img/QQ图片20210121164913.png" width="5%"><a href="javascript:void(0)">导出</a> 
 					</div>
 				</div>
 				<br />

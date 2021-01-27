@@ -84,7 +84,7 @@
 				<span class="tobu" v-for="item in tobu" @click="diantop(item)">{{item.pvgName}}</span>
 			</div>
 			<div class="bod">
-				<div class="col-md-2" style="background-color: #18304A; height: 100%;">
+				<div class="col-md-2" style="background-color: #18304A; height: 950px;">
 					<tree :list="list" @huan="huan"></tree>
 				</div>
 				<div class="col-md-10" style="margin: 0px; padding: 0px;">
@@ -111,7 +111,6 @@
 				<iframe src="today.html"></iframe>
 			</div>
 		</div>
-		
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
@@ -283,6 +282,51 @@
 								pvgVerify:"",
 								pvgType:1,
 								pvgPath:"jigongguanli/jigongtichengbili.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"发动机品牌",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/EngineBrand.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:65,
+								pvgName:"车型档案",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/ModelFile.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"维修项目",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/MaintenanceItems.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"商品资料",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/Commodity.html",
+								children:[],
+								pid:3
+							},
+							{
+								pvgId:64,
+								pvgName:"供货单位",
+								pvgVerify:"",
+								pvgType:1,
+								pvgPath:"主数据/Supplier.html",
 								children:[],
 								pid:3
 							}
