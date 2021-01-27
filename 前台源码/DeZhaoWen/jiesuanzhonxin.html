@@ -29,6 +29,32 @@
 				background-color: #FFFFFF;
 				padding: 15px;
 			}
+			.divdayin{
+				width: 400px;
+				height: 220px;
+				border: 1px solid;
+				position: absolute;
+				top: 150px;
+				left: 80px;
+				background-color: #FFFFFF;
+				padding: 25px;
+			}
+			.divdayin-02{
+				width: 400px;
+				height: 280px;
+				border: 1px solid;
+				position: absolute;
+				top: 150px;
+				left: 80px;
+				background-color: #FFFFFF;
+				padding: 25px;
+			}
+			.btnn button{
+				margin-right: 30px;
+			}
+			.btnn{
+				margin-left: 50px;
+			}
 		</style>
 	</head>
 	<body>
@@ -86,7 +112,7 @@
 				</form>
 			</div>
 			<div style="margin-left: 20px;">
-				<img src="img/jiesuanzhonx01.PNG" />门店选择
+				<span @click="daxxx"><img src="img/jiesuanzhonx01.PNG" />门店选择</span>
 				<span @click="out"><img src="img/shoyin.PNG">收银</span>
 			</div>
 			<div style="margin-left: 20px;">
@@ -185,10 +211,74 @@
 							<img v-if="this.img1" id="img1" src="img/42958655ea45a696edf23fc3606a873.png" height="260px" />
 							<img v-if="this.img2" id="img2" src="img/90cf1be414bae73600c0d591c8c3c8e.jpg" height="260px" style="margin-left: 15px;"/>
 						</div>
+						<div>
+							<button class="btn-success" @click="guanbi(true)">打印</button>
+						</div>
+						<div v-if="this.xx" class="divdayin">
+							<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">打印报表<span @click="guanbi(false)" style="float: right;color: #000000;">&times;</span></div>
+							<div>
+								<form class="form-inline">
+									<br />
+									<div>
+										<select class="form-control" style="width: 150px;margin-left: 90px;">
+											<option>小票</option>
+											<option>大票</option>
+											<option>收据</option>
+										</select>
+									</div>
+									<br /><br />
+									<div class="btnn">
+										<a class="btn btn-success" onclick="tiao()" style="margin-right: 30px;">打印</a>
+										<button class="btn btn-success">预览</button>
+										<button class="btn btn-success">设计</button>
+									</div>
+								</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			
+			<!--门店选择-->
+			<div>
+				<div v-if="this.xxx" class="divdayin-02">
+							<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">门店选择<span @click="guanxxx(false)" style="float: right;color: #000000;">&times;</span></div>
+							<div>
+								<table class="table table-striped">
+									<tr>
+										<td>选择</td>
+										<td>编号</td>
+										<td>门店名称</td>
+										<td>所在城市</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox"></td>
+										<td>s001</td>
+										<td>sanuifd</td>
+										<td>天津</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox"></td>
+										<td>s001</td>
+										<td>sanuifd</td>
+										<td>天津</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox"></td>
+										<td>s001</td>
+										<td>sanuifd</td>
+										<td>天津</td>
+									</tr>
+									<tr>
+										<td><input type="checkbox"></td>
+										<td>s001</td>
+										<td>sanuifd</td>
+										<td>天津</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+			</div>
 			
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
@@ -201,7 +291,9 @@
 					return{
 						img1:true,
 						img2:false,
-						x:false
+						x:false,
+						xx:false,
+						xxx:false
 					}
 				},
 				methods:{
@@ -220,9 +312,26 @@
 							this.x=true;
 						}
 						
+					},
+					guanbi(i){
+						this.xx=i;
+					},
+					dayin(){
+						//location.href="维修结算单.html";
+						//window.print();
+					},
+					daxxx(){
+						this.xxx=true;
+					},
+					guanxxx(){
+						this.xxx=false;
 					}
 				}
-			})
+			});
+			function tiao(){
+				location.href="维修结算单.html";
+				return true;
+			}
 		</script>
 	</body>
 </html>

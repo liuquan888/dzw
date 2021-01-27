@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../js/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/chezhiliao.css"/>
+	</head>
+	<body>
+			<div id="el">
+				<div class="row">
+						<div class="col-md-1" style="position: relative; left: 20px;">	
+							 <h4>车资料</h4>
+						</div>
+					  <div class="col-md-6">
+						  <button type="button" class="btn btn-success " style="margin-top:2px; position: relative; left: 700px;">选择</button>
+					 </div>
+					  <div class="col-md-3" style="margin-top:2px;"><input type="text" class="form-control" id="exampleInputEmail1" placeholder="匹配驾驶员姓名/简码/手机/车牌号" style="border: 1px solid #101010;"></div>
+					 <div class="col-md-2" style="margin-top:2px; position: relative; left: -10px;">
+							<button type="button" class="btn btn-warning">搜索</button>
+							<button type="button" class="btn btn-btn">关闭</button>
+					</div>
+				</div>
+				<div class="row2">
+						<div class="col-md-4" style="position: relative; left: 20px;">	
+								<span style="color: #39CEDE;">
+										车牌号:<input type="text" size="5">
+								</span> 
+								<span style="color: #39CEDE;">
+										车架号:<input type="text" size="15">
+								</span> 
+						</div>
+				</div>
+				<div class="row3">
+						<div class="col-md-12">	
+								<span class="zhengj">
+									<img src="../img/捕获7.PNG" >增加
+								</span> 
+								<span>
+									<img src="../img/捕获8.PNG">修改
+								</span> 
+								<span>
+									<img src="../img/捕获9.PNG" style="margin-left: 50px;">查询
+								</span>
+								<span>
+									<img src="../img/捕获10.PNG" style="margin-left: 50px;">保养
+								</span>
+								<span>
+									<img src="../img/捕获11.PNG" >导出
+								</span>
+								<span>
+									<img src="../img/捕获12.PNG" >字段设置
+								</span>
+						</div>
+				</div>
+						<div class="col-md-12" style="margin-top: 10px;">	
+								<div class="table-responsive" style="height:400px; overflow-y:auto">
+									<table width="2000px" class="table-bordered" style="table-layout: fixed;">
+										<tr class="dyg" style="color: white;">
+											<td></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+										<tr>
+											<td class="dygtd"></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+										<tr>
+											<td class="dygtd"></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+										<tr>
+											<td class="dygtd"></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+										<tr>
+											<td class="dygtd"></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+										<tr>
+											<td class="dygtd"></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+										<tr>
+											<td class="dygtd"></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+										<tr>
+											<td class="dygtd"></td>
+											<td>车牌号码</td>
+											<td>车辆品牌</td>
+											<td>车辆型号</td>
+											<td>驾驶员</td>
+											<td>驾驶员电话</td>
+											<td>出生日期</td>
+											<td>车俩归属</td>
+											<td>驾驶员地址</td>
+											<td>驾证到期</td>
+											<td>车架号</td>
+											<td>发动机号</td>
+											<td>发动机品牌号</td>
+											<td>车辆年款</td>
+											<td>里程</td>
+											<td>载重</td>
+											<td>车系</td>
+											<td>购买日期</td>
+											<td>上牌日期</td>
+											<td>车检到期</td>
+											<td>交强险保险公司</td>
+											<td>交强险到期</td>
+											<td>商业险保险公司</td>
+											<td>在我投保车</td>
+											<td>二维日期</td>
+											<td>燃油类别</td>
+											<td>下次保养里程</td>
+											<td>下次保养日期</td>
+											<td>会员码</td>
+										</tr>
+									</table>
+								</div>
+				</div>
+				<div class="row4">
+						<div class="col-md-12">	
+								<div class="kyxx">
+								</div> 
+								<div class="wz">
+									客户信息
+								</div>
+						</div>
+								<div class="col-md-12" style="margin-top: -24px;">	
+										<div class="table-responsive" style="height:200px; overflow-y:auto">
+											<table width="2100px" class="table-bordered" style="table-layout: fixed;">
+												<tr class="dyg" style="color: white;">
+													<td></td>
+													<td>客户编号</td>
+													<td>客户名称</td>
+													<td>详细地址</td>
+													<td>联系人</td>
+													<td>手机</td>
+													<td>客户生日</td>
+													<td>客户类别</td>
+													<td>会员卡号</td>
+													<td>入会日期</td>
+													<td>会员到期</td>
+													<td>备注</td>
+													<td>建档日期</td>
+													<td>服务顾问</td>
+													<td>业务员电话</td>
+													<td>账期（天）</td>
+													<td>挂账额度</td>
+													<td>累计积分</td>
+													<td>定金金额</td>
+													<td>客户省</td>
+													<td>客户市</td>
+													<td>客户区</td>
+													<td>纳税人识别号</td>
+													<td>注册电话</td>
+													<td>开户银行</td>
+													<td>银行账号</td>
+													<td>注册地址<td/>
+													<td>其他一</td>
+													<td>其它二</td>
+													<td>其它三</td>
+													<td>其它四</td>
+												</tr>
+												<tr>
+													<td class="dygtd"></td>
+													<td>客户编号</td>
+													<td>客户名称</td>
+													<td>详细地址</td>
+													<td>联系人</td>
+													<td>手机</td>
+													<td>客户生日</td>
+													<td>客户类别</td>
+													<td>会员卡号</td>
+													<td>入会日期</td>
+													<td>会员到期</td>
+													<td>备注</td>
+													<td>建档日期</td>
+													<td>服务顾问</td>
+													<td>业务员电话</td>
+													<td>账期（天）</td>
+													<td>挂账额度</td>
+													<td>累计积分</td>
+													<td>定金金额</td>
+													<td>客户省</td>
+													<td>客户市</td>
+													<td>客户区</td>
+													<td>纳税人识别号</td>
+													<td>注册电话</td>
+													<td>开户银行</td>
+													<td>银行账号</td>
+													<td>注册地址<td/>
+													<td>其他一</td>
+													<td>其它二</td>
+													<td>其它三</td>
+													<td>其它四</td>
+												</tr>
+												<tr>
+													<td class="dygtd"></td>
+													<td>客户编号</td>
+													<td>客户名称</td>
+													<td>详细地址</td>
+													<td>联系人</td>
+													<td>手机</td>
+													<td>客户生日</td>
+													<td>客户类别</td>
+													<td>会员卡号</td>
+													<td>入会日期</td>
+													<td>会员到期</td>
+													<td>备注</td>
+													<td>建档日期</td>
+													<td>服务顾问</td>
+													<td>业务员电话</td>
+													<td>账期（天）</td>
+													<td>挂账额度</td>
+													<td>累计积分</td>
+													<td>定金金额</td>
+													<td>客户省</td>
+													<td>客户市</td>
+													<td>客户区</td>
+													<td>纳税人识别号</td>
+													<td>注册电话</td>
+													<td>开户银行</td>
+													<td>银行账号</td>
+													<td>注册地址<td/>
+													<td>其他一</td>
+													<td>其它二</td>
+													<td>其它三</td>
+													<td>其它四</td>
+												</tr>
+											</table>
+								</div>
+						</div>	
+				</div>
+			</div>
+	</body>
+</html>

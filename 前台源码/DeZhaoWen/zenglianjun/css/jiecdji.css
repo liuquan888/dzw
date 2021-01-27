@@ -1,0 +1,113 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color:#E7E7E7;
+}
+.row{
+	width: 1550px;
+	background-color: #f7ffff;
+}
+.row2{
+	margin-top: 5px;
+	height: 30px;
+}
+#exampleInputEmail1{
+	width: 210px;
+}
+.jiec{
+	 font-weight: bold;
+	 font-size: 20px;
+}
+.quxiao{
+	width: 54px;
+	height: 54px;
+	background: #8C8C8C;
+}
+.row3{
+	border-top:2px solid #66AFE9;
+	background-color: #FFFFFF;
+	width: 1500px;
+	height: 220px;
+	margin-left: 20px;
+}
+.ls{
+	color: #66AFE9;
+}
+.gzh{
+	color:#000000;
+	border-bottom:2px solid aqua;
+}
+.czk{
+	color: red;
+	margin-top: 100px;
+}
+.row4{
+	width: 1300px;
+	height: 40px;
+	margin-left: 20px;
+}
+ul li{
+	 margin-top: -10px;
+	 list-style: none;
+	 float: left;
+	 width: 120px;
+	 height: 30px;
+	 text-align: center;
+	 line-height: 30px;
+ }
+ 
+.row5{
+	background-color: #FFFFFF;
+	width: 1500px;
+	height: 400px;
+	margin-left: 20px;
+	margin-top: -16px;
+	}
+.form-control{
+	border: none;
+	box-shadow: none;
+}
+.form-control:focus{
+	border: none;
+	box-shadow: none;
+}
+.row3{
+	padding-bottom: 18px;
+	box-sizing: content-box;
+}
+p._xian{
+	border-bottom:1px solid #000000; 
+}
+#exampleInputEmail1{
+	width: 295px;
+}
+input.form-control{
+	width: 295px;
+	padding-right: 0px;
+	margin-right: 0px;
+}
+.row4 div ul li:first-of-type{
+	border-top:4px solid aqua;
+}
+.shju{
+	margin-left: 10px;
+	position: relative;
+	bottom: -10px;
+}
+.dyg{
+	background-color: aqua;
+}
+.tobu{
+	background-color: #39cede;
+}
+.dygtd{
+	background: #ADADAD;
+}
+.table-bordered tr td {
+    line-height: 61px !important;
+    margin: 0px 20px !important;
+    width: 100px;
+    text-align: center;
+}

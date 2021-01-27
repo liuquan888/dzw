@@ -1,0 +1,95 @@
+body{
+	background-color: #f7f7f7;
+}
+.row{
+	width: 1535px;
+	background-color: #f7ffff;
+}
+.jieca{
+	width: 60px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	color: red;
+    border:2px solid red;
+	border-radius:10px;
+}
+.col-md-9 span{
+	margin-left: 10px;
+}
+.abc{
+	margin-left: 740px;
+}
+.row3{
+	background-color: white;
+	width: 1505px;
+	height: 700px;
+	margin-top: 40px;
+	margin-left: 15px;
+	color: #5fd0dc;
+}
+.sbx{
+	border-top: 2px solid aqua;
+	width: 1450px;
+	margin-left: 20px4
+}
+.a{
+	color: red;
+}
+.caid ul li{
+	 margin-top: -10px;
+	 list-style: none;
+	 float: left;
+	 width: 100px;
+	 height: 30px;
+	 text-align: center;
+	 line-height: 30px;
+ }
+ .caid ul li:first-of-type{
+	 	border-top:4px solid aqua;
+ }
+ .caid{
+	 margin-left: -40px;
+	 margin-top: -5px;
+	 color: #999999;
+ }
+ .caid2{
+	  margin-left: -38px;
+	  border: 1px solid #eff7ff;
+	  background-color: #eff7ff;
+	  height: 40px;
+	  position: relative;
+	  left: 20px;
+	  width: 1506px;
+	  line-height: 40px;
+	  margin-right: 0px !important;
+ }
+ .caid2 ul li{
+	 color: #000000;
+	 list-style: none;
+	 float: left;
+	  width: 100px;
+	 height: 30px;
+ }
+ .table-bordered tr td {
+     line-height: 61px !important;
+     margin: 0px 20px !important;
+     width: 100px;
+     text-align: center;
+ }
+ .dyg{
+ 	background-color: #39cede;
+ }
+ .dygtd{
+ 	background: #ADADAD;
+ }
+ .caid3{
+	 margin-left: -19px;
+ }
+ .caid3 ul li{
+	color: #000000;
+	list-style: none;
+	float: left;
+	 width: 100px;
+	height: 30px;
+ }
