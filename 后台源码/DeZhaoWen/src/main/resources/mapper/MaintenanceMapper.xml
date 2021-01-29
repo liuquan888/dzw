@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.MaintenanceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Maintenance">
+        <result column="m_id" property="mId" />
+        <result column="m_name" property="mName" />
+        <result column="m_note" property="mNote" />
+        <result column="m_type" property="mType" />
+        <result column="m_normalprice" property="mNormalprice" />
+        <result column="m_memberprice" property="mMemberprice" />
+        <result column="m_vipprice" property="mVipprice" />
+        <result column="m_detaprice" property="mDetaprice" />
+        <result column="m_claimprice" property="mClaimprice" />
+        <result column="m_safetyprice" property="mSafetyprice" />
+        <result column="in_id" property="inId" />
+        <result column="b_id" property="bId" />
+        <result column="e_id" property="eId" />
+        <result column="ser_id" property="serId" />
+        <result column="reserved1" property="reserved1" />
+        <result column="reserved2" property="reserved2" />
+        <result column="reserved3" property="reserved3" />
+        <result column="reserved4" property="reserved4" />
+        <result column="reserved5" property="reserved5" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        m_id, m_name, m_note, m_type, m_normalprice, m_memberprice, m_vipprice, m_detaprice, m_claimprice, m_safetyprice, in_id, b_id, e_id, ser_id, reserved1, reserved2, reserved3, reserved4, reserved5
+    </sql>
+
+</mapper>

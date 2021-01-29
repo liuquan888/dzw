@@ -1,0 +1,16 @@
+package com.accp.mapper;
+
+import com.accp.domain.StaffData;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+/**
+ * <p>
+ * 员工资料表 Mapper 接口
+ * </p>
+ *
+ * @author quanl
+ * @since 2021-01-29
+ */
+public interface StaffDataMapper extends BaseMapper<StaffData> {
+
+}
