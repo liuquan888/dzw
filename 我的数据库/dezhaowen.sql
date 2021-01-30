@@ -479,7 +479,7 @@ CREATE TABLE `education` (
 DROP TABLE IF EXISTS `engine`;
 
 CREATE TABLE `engine` (
-  `e_id` int(11) NOT NULL COMMENT '发动机品牌编号',
+  `e_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '发动机品牌编号',
   `e_coder` varchar(20) DEFAULT NULL COMMENT '发动机品牌编码',
   `e_name` varchar(20) DEFAULT NULL COMMENT '发动机品牌名称',
   PRIMARY KEY (`e_id`)
