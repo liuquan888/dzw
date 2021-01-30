@@ -12,5 +12,4 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-01-29
  */
 public interface IAcademicDegreeService extends IService<AcademicDegree> {
-
 }
