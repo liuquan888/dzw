@@ -33,8 +33,10 @@ public class RepairBillController {
     @ResponseBody
     public List<RepairBill> find(Date date1,Date date2,String no,Integer jsType,String chepaiNo,String name,Integer ywType,String remark){
         QueryWrapper qw=new QueryWrapper<RepairBill>();
-        
 
+        if (date1!=null&&date2!=null){
+            qw.between("completionTime",date1,date2);
+        }
 
         if(no!=null){
             qw.lt("no",no);
@@ -59,6 +61,6 @@ public class RepairBillController {
         return list;
     }
 
-
+    
 }
 
