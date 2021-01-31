@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.DzwUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.DzwUser">
+        <id column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="user_login" property="userLogin" />
+        <result column="user_pwd" property="userPwd" />
+        <result column="user_realname" property="userRealname" />
+        <result column="user_sex" property="userSex" />
+        <result column="user_phone" property="userPhone" />
+        <result column="user_eamil" property="userEamil" />
+        <result column="user_address" property="userAddress" />
+        <result column="status" property="status" />
+        <result column="create_date" property="createDate" />
+        <result column="update_date" property="updateDate" />
+        <result column="reserved1" property="reserved1" />
+        <result column="reserved2" property="reserved2" />
+        <result column="reserved3" property="reserved3" />
+        <result column="reserved4" property="reserved4" />
+        <result column="reserved5" property="reserved5" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, user_name, user_login, user_pwd, user_realname, user_sex, user_phone, user_eamil, user_address, status, create_date, update_date, reserved1, reserved2, reserved3, reserved4, reserved5
+    </sql>
+
+</mapper>
