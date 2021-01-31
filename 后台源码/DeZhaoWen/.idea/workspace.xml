@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd2d37a4-5280-41e9-a9bc-411798eebd47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IAcademicDegreeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IAcademicDegreeService.java" afterDir="false" />
-    </list>
+    <list default="true" id="bd2d37a4-5280-41e9-a9bc-411798eebd47" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,6 +103,7 @@
       <workItem from="1611914550356" duration="2795000" />
       <workItem from="1611970945982" duration="1288000" />
       <workItem from="1611973427904" duration="774000" />
+      <workItem from="1611974308645" duration="197000" />
     </task>
     <servers />
   </component>

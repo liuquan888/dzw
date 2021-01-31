@@ -404,17 +404,19 @@ DROP TABLE IF EXISTS `dzw_privilege`;
 CREATE TABLE `dzw_privilege` (
   `pvgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一编号',
   `pvg_name` varchar(50) NOT NULL COMMENT '权限名称',
-  `pvg_verify` varchar(50) NOT NULL COMMENT '权限验证',
+  `pvg_verify` varchar(50) DEFAULT NULL COMMENT '权限验证',
   `pvg_type` int(11) NOT NULL COMMENT '类别，0是父级菜单，1是子级菜单，2是功能',
-  `pvg_path` varchar(50) NOT NULL COMMENT '路径（是菜单才拥有）',
+  `pvg_path` varchar(50) DEFAULT NULL COMMENT '路径（是菜单才拥有）',
   `pid` int(11) NOT NULL COMMENT '父级编号',
   `reserved1` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`pvgid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 /*Data for the table `dzw_privilege` */
+
+insert  into `dzw_privilege`(`pvgid`,`pvg_name`,`pvg_verify`,`pvg_type`,`pvg_path`,`pid`,`reserved1`,`reserved2`,`reserved3`) values (1,'维修接待',NULL,1,NULL,0,NULL,NULL,NULL),(2,'结算中心',NULL,1,NULL,0,NULL,NULL,NULL),(3,'客户档案',NULL,1,NULL,0,NULL,NULL,NULL),(4,'基础数据',NULL,1,NULL,0,NULL,NULL,NULL),(5,'行政人事',NULL,1,'',0,NULL,NULL,NULL),(6,'系统设置',NULL,1,NULL,0,NULL,NULL,NULL),(7,'维修接车',NULL,1,NULL,1,NULL,NULL,NULL),(8,'竣工校验',NULL,1,NULL,1,NULL,NULL,NULL),(9,'保险对价',NULL,1,NULL,1,NULL,NULL,NULL),(10,'前台结算',NULL,1,NULL,2,NULL,NULL,NULL),(11,'客服档案',NULL,1,NULL,3,NULL,NULL,NULL);
 
 /*Table structure for table `dzw_role` */
 
