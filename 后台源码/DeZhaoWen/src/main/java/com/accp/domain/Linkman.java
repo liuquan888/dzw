@@ -20,8 +20,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Linkman对象", description="联系人
-")
+@ApiModel(value="Linkman对象", description="联系人")
 public class Linkman extends Model<Linkman> {
 
     private static final long serialVersionUID=1L;
