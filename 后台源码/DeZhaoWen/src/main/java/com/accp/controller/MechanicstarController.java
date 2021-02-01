@@ -32,15 +32,22 @@ public class MechanicstarController {
 
     @RequestMapping("/delete/{code}")
     public boolean delete(@PathVariable("code") String code){
-        boolean bl=service.removeById(code);
-        System.out.println(bl);
-        return false;
+        return service.removeById(code);
     }
 
     @RequestMapping("/findById/{code}")
     public Mechanicstar findById(@PathVariable("code") String code){
-        System.out.println(code);
         return service.getById(code);
+    }
+
+    @RequestMapping("/insert")
+    public boolean insert(Mechanicstar mechanicstar){
+        return service.save(mechanicstar);
+    }
+
+    @RequestMapping("/update")
+    public boolean update(Mechanicstar mechanicstar){
+        return service.updateById(mechanicstar);
     }
 
 }
