@@ -1107,10 +1107,10 @@ DROP TABLE IF EXISTS `repair_bill`;
 
 CREATE TABLE `repair_bill` (
   `no` varchar(50) NOT NULL COMMENT '销售单号',
-  `documents_type` int(11) DEFAULT NULL COMMENT '单据类型表外键id',
+  `documents_type` int(11) NOT NULL COMMENT '单据类型表外键id',
   `balance_type` int(11) DEFAULT NULL COMMENT '结算方式表外键id',
   `documents_state` int(11) DEFAULT NULL COMMENT '单据状态表外键id',
-  `balance_state` int(11) DEFAULT NULL COMMENT '结算状态表外键id',
+  `balance_state` int(11) NOT NULL COMMENT '结算状态表外键id',
   `jiesuan_time` datetime DEFAULT NULL COMMENT '结算时间',
   `jiesuan_ren` varchar(50) DEFAULT NULL COMMENT '结算人',
   `amount` double DEFAULT NULL COMMENT '结算金额',
