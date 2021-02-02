@@ -54,37 +54,36 @@ public class RepairBillController {
     //查询适用于条件查询
     @RequestMapping("/find")
     @ResponseBody
-    public List<RepairBill> find(Date date1, Date date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, Integer counsellor, Integer documentsState){
+    public List<RepairBill> find(String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
         QueryWrapper qw=new QueryWrapper<RepairBill>();
-        System.out.println(date1);
-        System.out.println(date2);
         if (date1!=null&&date2!=null){
             qw.between("completionTime",date1,date2);
         }
 
         if(no!=null){
-            qw.lt("no",no);
+            qw.like("no",no);
         }
         if(jsType!=null){
-            qw.lt("balanceState",jsType);
+            qw.eq("balanceState",jsType);
         }
         if(chepaiNo!=null){
-            qw.lt("chepaiNo",chepaiNo);
+            qw.like("chepaiNo",chepaiNo);
         }
-        if (counsellor!=null){
-            qw.lt("counsellor",counsellor);
+        System.out.println(jiesuanRen);
+        if (jiesuanRen!=null){
+            qw.like("jiesuan_ren",jiesuanRen);
         }
         if(name!=null){
-            qw.lt("keihuName",name);
+            qw.like("keihu_name",name);
         }
         if(ywType!=null){
-            qw.lt("yewulx",ywType);
+            qw.eq("yewulx",ywType);
         }
         if(documentsState!=null){
-            qw.lt("documentsState",documentsState);
+            qw.eq("documentsState",documentsState);
         }
         if(remark!=null){
-            qw.lt("remark",remark);
+            qw.like("remark",remark);
         }
 
         List<RepairBill> list = service.list(qw);
