@@ -82,16 +82,16 @@
 					  </div>
 					  <div class="form-group">
 					    <label>车牌号：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" v-model="bill.chepaiNo" class="form-control">
 					  </div>
 					   <br /><br />
 					  <div class="form-group">
 					    <label>客户名称：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" v-model="bill.name" class="form-control">
 					  </div>
 					  <div class="form-group">
-					    <label>服务顾问：</label>
-					    <input type="text" class="form-control">
+					    <label>结算人：</label>
+					    <input type="text" v-model="bill.jiesuanRen" class="form-control">
 					  </div>
 					  <div class="form-group">
 					    <label>业务类型：</label>
@@ -107,19 +107,20 @@
 					  </div>
 					  <div class="form-group">
 					    <label>备注：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" v-model="bill.remark" class="form-control">
 					  </div>
 				</form>
 			</div>
 			<div style="margin-left: 20px;">
 				<span @click="daxxx"><button class="btn btn-primary">门店选择</button></span>
 				<span @click="out"><button class="btn btn-success">收银</button></span>
-				<button class="btn btn-danger">重置</button>
+				<button class="btn btn-danger" @click="reset">重置</button>
 				<button class="btn btn-info" @click="find">查询</button>
 			</div>
 			<div style="margin-left: 20px;">
 				<table class="table table-bordered">
 					<tr>
+						<td>选择</td>
 						<td>销售单号</td>
 						<td>单据类型</td>
 						<td>结算方式</td>
@@ -142,6 +143,7 @@
 						<td>备注</td>
 					</tr>
 					<tr v-for="item in list">
+						<td></td>
 						<td>{{item.no}}</td>
 						<td>{{item.dtype}}</td>
 						<td>{{item.btype}}</td>
@@ -331,6 +333,9 @@
 					},
 					guanxxx(){
 						this.xxx=false;
+					},
+					reset(){
+						this.bill={};
 					},
 					find(){
 						let that=this;
