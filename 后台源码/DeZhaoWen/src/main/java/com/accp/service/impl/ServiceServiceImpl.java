@@ -4,7 +4,6 @@ import com.accp.domain.Service;
 import com.accp.mapper.ServiceMapper;
 import com.accp.service.IServiceService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author quanl
  * @since 2021-01-29
  */
-@Service
+@org.springframework.stereotype.Service
 public class ServiceServiceImpl extends ServiceImpl<ServiceMapper, Service> implements IServiceService {
 
 }
