@@ -71,24 +71,24 @@
 				<form class="form-inline frm">
 					<div class="form-group">
 						<label class="lbl">等级编码</label>
-						<input class="form-control" id="ipt1"/>
+						<input class="form-control" id="ipt1" v-model="mechanicstar.code"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">星级</label>
-						<input class="form-control" id="ipt2"/>
+						<input class="form-control" id="ipt2" v-model="mechanicstar.star"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">等级</label>
-						<input class="form-control" id="ipt3"/>
+						<input class="form-control" id="ipt3" v-model="mechanicstar.grade"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">提成权重</label>
-						<input class="form-control" id="ipt4"/>
+						<input class="form-control" id="ipt4" v-model="mechanicstar.commissionweight"/>
 					</div>
 					<div class="form-group" id="div1">
-						<button class="btn btn-default">增加</button>
-						<button class="btn btn-default">删除</button>
-						<button class="btn btn-default">保存</button>
+						<button class="btn btn-default" @click="insert">增加</button>
+						<button class="btn btn-default" @click="remove">删除</button>
+						<button class="btn btn-default" @click="update">保存</button>
 					</div>
 				</form>
 				
@@ -101,11 +101,11 @@
 						<td>等级</td>
 						<td>提成权重</td>
 					</tr>
-					<tr>
-						<td>11</td>
-						<td>2星</td>
-						<td>2</td>
-						<td>0.4</td>
+					<tr v-for="item in list" @click="findById(item.code)">
+						<td>{{item.code}}</td>
+						<td>{{item.star}}</td>
+						<td>{{item.grade}}</td>
+						<td>{{item.commissionweight}}</td>
 					</tr>
 				</table>
 			</div>
@@ -121,19 +121,71 @@
 				el:"#ctn",
 				data(){
 					return{
-						list:{}
+						list:{},
+						code:"",
+						mechanicstar:{}
 					}
 				},
 				methods:{
 					find(){
+						let that=this;
 						$.ajax({
 							url:"http://127.0.0.1:8080/mechanicstar/find",
 							type:"post",
 							success:function(result){
-								console.log(result);
+								that.list=result;
 							}
 						});
 					},
+					findById(id){
+						this.code=id;
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/findById/"+that.code,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								that.mechanicstar=result;
+							}
+						});
+					},
+					remove(){
+						let that=this;
+						alert(this.code);
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/delete/"+that.code,
+							type:"post",
+							success:function(result){
+								if(result==true){
+									alert("删除成功");
+								}
+							}
+						});
+					},
+					insert(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/insert",
+							data:that.mechanicstar,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								
+							}
+						});
+					},
+					update(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/update",
+							data:that.mechanicstar,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								
+							}
+						});
+					}
 				},
 				created(){
 					this.find();
