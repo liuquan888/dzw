@@ -66,12 +66,12 @@
 				<form class="form-inline">
 					 <div class="form-group">
 					    <label>开单日期：</label>
-					    <input type="time" class="form-control">~
-					    <input type="time" class="form-control">
+					    <input type="date" v-model="bill.date1" class="form-control">~
+					    <input type="date" v-model="bill.date2" class="form-control">
 					 </div>
 					 <div class="form-group">
 					    <label>销售单号：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" class="form-control" v-model="bill.no">
 					  </div>
 					  <div class="form-group">
 					    <label>结算状态：</label>
@@ -82,16 +82,16 @@
 					  </div>
 					  <div class="form-group">
 					    <label>车牌号：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" v-model="bill.chepaiNo" class="form-control">
 					  </div>
 					   <br /><br />
 					  <div class="form-group">
 					    <label>客户名称：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" v-model="bill.name" class="form-control">
 					  </div>
 					  <div class="form-group">
-					    <label>服务顾问：</label>
-					    <input type="text" class="form-control">
+					    <label>结算人：</label>
+					    <input type="text" v-model="bill.jiesuanRen" class="form-control">
 					  </div>
 					  <div class="form-group">
 					    <label>业务类型：</label>
@@ -107,17 +107,20 @@
 					  </div>
 					  <div class="form-group">
 					    <label>备注：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" v-model="bill.remark" class="form-control">
 					  </div>
 				</form>
 			</div>
 			<div style="margin-left: 20px;">
-				<span @click="daxxx"><img src="img/jiesuanzhonx01.PNG" />门店选择</span>
-				<span @click="out"><img src="img/shoyin.PNG">收银</span>
+				<span @click="daxxx"><button class="btn btn-primary">门店选择</button></span>
+				<span @click="out"><button class="btn btn-success">收银</button></span>
+				<button class="btn btn-danger" @click="reset">重置</button>
+				<button class="btn btn-info" @click="find">查询</button>
 			</div>
 			<div style="margin-left: 20px;">
 				<table class="table table-bordered">
 					<tr>
+						<td>选择</td>
 						<td>销售单号</td>
 						<td>单据类型</td>
 						<td>结算方式</td>
@@ -139,27 +142,28 @@
 						<td>完工时间</td>
 						<td>备注</td>
 					</tr>
-					<tr>
-						<td>s0000</td>
-						<td>ss</td>
-						<td>ew</td>
-						<td>已结算</td>
-						<td>搜索</td>
-						<td>2020-8-8</td>
-						<td>顺德</td>
-						<td>20558</td>
-						<td>娃娃</td>
-						<td>娃娃</td>
-						<td>s0002</td>
-						<td>s-861</td>
-						<td>s1510</td>
-						<td>13118415</td>
-						<td>无</td>
+					<tr v-for="item in list">
 						<td></td>
+						<td>{{item.no}}</td>
+						<td>{{item.dtype}}</td>
+						<td>{{item.btype}}</td>
+						<td>{{item.dstate}}</td>
+						<td>{{item.bstate}}</td>
+						<td>{{item.jiesuanTime}}</td>
+						<td>{{item.jiesuanRen}}</td>
+						<td>{{item.amount}}</td>
+						<td>{{item.yewulx}}s</td>
+						<td>{{item.keihuName}}</td>
 						<td></td>
-						<td></td>
-						<td>2020-12-22</td>
-						<td>玩</td>
+						<td>{{item.chexin}}</td>
+						<td>{{item.chejiaoNo}}</td>
+						<td>{{item.phone}}</td>
+						<td>{{item.bxCompany}}</td>
+						<td>{{item.pkCompany}}</td>
+						<td>{{item.duifanchepai}}</td>
+						<td>{{item.counsellor}}</td>
+						<td>{{item.completionTime}}</td>
+						<td>{{item.remark}}</td>
 					</tr>
 				</table>
 			</div>
@@ -293,7 +297,11 @@
 						img2:false,
 						x:false,
 						xx:false,
-						xxx:false
+						xxx:false,
+						list:[],
+						bill:{
+							
+						}
 					}
 				},
 				methods:{
@@ -325,7 +333,29 @@
 					},
 					guanxxx(){
 						this.xxx=false;
+					},
+					reset(){
+						this.bill={};
+					},
+					find(){
+						let that=this;
+						var json=JSON.stringify(this.bill);
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find",
+							type:"post",
+							data:that.bill,
+							success:function(result){
+								console.log(result);
+								that.list=result;
+							}
+						});
 					}
+				},
+				created(){
+					this.find();
+				},
+				watch:{
+					
 				}
 			});
 			function tiao(){

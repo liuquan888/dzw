@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.ImageMerchandiseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.ImageMerchandise">
+        <id column="i_id" property="iId" />
+        <result column="i_imgsrc" property="iImgsrc" />
+        <result column="me_id" property="meId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        i_id, i_imgsrc, me_id
+    </sql>
+
+</mapper>

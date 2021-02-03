@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.MerchandiseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Merchandise">
+        <id column="me_id" property="meId" />
+        <result column="me_check" property="meCheck" />
+        <result column="me_name" property="meName" />
+        <result column="me_brand" property="meBrand" />
+        <result column="me_adaptable" property="meAdaptable" />
+        <result column="me_unit" property="meUnit" />
+        <result column="me_income" property="meIncome" />
+        <result column="me_mill" property="meMill" />
+        <result column="me_grade" property="meGrade" />
+        <result column="me_place" property="mePlace" />
+        <result column="me_coding" property="meCoding" />
+        <result column="me_code" property="meCode" />
+        <result column="me_back" property="meBack" />
+        <result column="me_bulk" property="meBulk" />
+        <result column="me_gross" property="meGross" />
+        <result column="me_suttle" property="meSuttle" />
+        <result column="me_cost" property="meCost" />
+        <result column="me_switch" property="meSwitch" />
+        <result column="me_normalprice" property="meNormalprice" />
+        <result column="me_memberprice" property="meMemberprice" />
+        <result column="me_vipprice" property="meVipprice" />
+        <result column="me_detaprice" property="meDetaprice" />
+        <result column="me_claimprice" property="meClaimprice" />
+        <result column="me_show" property="meShow" />
+        <result column="me_safetyprice" property="meSafetyprice" />
+        <result column="menu_id" property="menuId" />
+        <result column="p_id" property="pId" />
+        <result column="reserved1" property="reserved1" />
+        <result column="reserved2" property="reserved2" />
+        <result column="reserved3" property="reserved3" />
+        <result column="reserved4" property="reserved4" />
+        <result column="reserved5" property="reserved5" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        me_id, me_check, me_name, me_brand, me_adaptable, me_unit, me_income, me_mill, me_grade, me_place, me_coding, me_code, me_back, me_bulk, me_gross, me_suttle, me_cost, me_switch, me_normalprice, me_memberprice, me_vipprice, me_detaprice, me_claimprice, me_show, me_safetyprice, menu_id, p_id, reserved1, reserved2, reserved3, reserved4, reserved5
+    </sql>
+
+</mapper>

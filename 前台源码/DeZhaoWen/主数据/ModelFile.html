@@ -112,7 +112,9 @@
 				top:90px;
 				color: #19b5cc;
 			}
-		
+			a{
+				color: #000000;
+			}
 		
 		
 			
@@ -126,32 +128,33 @@
 				<div class="col-sm-9"></div>
 				<div class="col-sm-1">
 					<br>
-					<button class="btn btn-xs" >关闭</button>
+					<button class="btn btn-sm" >关闭</button>
 				</div>
 			</div>
 			<div id="theme">
 				<div id="find">
 					<hr />
 					<div class="row" style="margin-left: 20px;">
-						<div class="col-sm-6" >
+						<div class="col-sm-5" >
 							<div>
-								<button type="button" @click="addenbrand" class="btn btn-warning btn-xs">添加品牌</button>
-								<button type="button" @click="updateenbrand" class="btn btn-warning btn-xs">修改</button>
-								<button type="button" class="btn btn-warning btn-xs">删除</button>
+								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addenbrand">增加品牌</a> 
+								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updateenbrand">修改</a> 
+								<img src="../img/3.png" width="3%"><a href="javascript:void(0)">删除</a> 
+								
 								<br /><br />
-								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母"/>
-								<span><button class="btn btn-warning btn-xs">搜索</button></span>
+								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母" style="height: 30px;"/>
+								<span><button class="btn btn-warning btn-sm">搜索</button></span>
 							</div>
 						</div>
 						<div class="col-sm-5" >
 							<div>
-								<button type="button" @click="addcar" class="btn btn-warning btn-xs">添加车型</button>
-								<button type="button" @click="updatecar" class="btn btn-warning btn-xs">修改</button>
-								<button type="button" class="btn btn-warning btn-xs">删除</button>
-								<button type="button" @click="carimage" class="btn btn-warning btn-xs">照片</button>
+								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcar">增加车型</a> 
+								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecar">修改</a> 
+								<img src="../img/3.png" width="3%"><a href="javascript:void(0)">删除</a> 
+								<img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimage">照片</a> 
 								<br /><br />
-								<input type="text" placeholder="匹配 车型编码/车型名称"/>
-								<span><button class="btn btn-warning btn-xs">搜索</button></span>
+								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"/>
+								<span><button class="btn btn-warning btn-sm">搜索</button></span>
 							</div>
 						</div>
 					</div>
@@ -159,7 +162,7 @@
 				</div>
 				
 				
-				<div style="width: 300px;height: 85%;margin-left: 30px; background: #ffffff;">
+				<div style="width: 300px;height: 75%;margin-left: 30px; background: #ffffff;">
 					<div id="table" style="background: #ffffff;padding-bottom: 50px;">
 						<table class="table table-bordered table-striped table-hover">
 							<tr style="background: #39cede;">
@@ -189,8 +192,8 @@
 						</table>
 					</div>
 				</div>
-				
-				<div style="margin-left: 400px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;height: 85%;">
+				<br /><br />
+				<div style="margin-left: 400px;margin-top: -460px; border: 0px solid #000000;background: #ffffff;height: 80%;">
 					<table class="table table-bordered table-striped table-hover">
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
