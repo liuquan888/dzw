@@ -1,9 +1,15 @@
 package com.accp.controller;
 
 
+import com.accp.domain.Fieldvehicles;
+import com.accp.service.impl.FieldvehiclesServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,6 +22,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/fieldvehicles")
 public class FieldvehiclesController {
+
+    @Autowired
+    FieldvehiclesServiceImpl service;
+
+    @RequestMapping("/find")
+    public List<Fieldvehicles> find(){
+        return service.list();
+    }
+
+    @RequestMapping("/findById/{id}")
+    public Fieldvehicles findById(@PathVariable("id") Integer id){
+        return service.getById(id);
+    }
+
+    @RequestMapping("/delete/{id}")
+    public boolean delete(@PathVariable("id") Integer id){
+        return service.removeById(id);
+    }
+
+    @RequestMapping("/update")
+    public boolean update(Fieldvehicles fieldvehicles){
+        return service.updateById(fieldvehicles);
+    }
+
+    @RequestMapping("/insert")
+    public boolean insert(Fieldvehicles fieldvehicles){
+        return service.save(fieldvehicles);
+    }
 
 }
 

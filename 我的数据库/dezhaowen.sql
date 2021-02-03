@@ -412,11 +412,11 @@ CREATE TABLE `dzw_privilege` (
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`pvgid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 /*Data for the table `dzw_privilege` */
 
-insert  into `dzw_privilege`(`pvgid`,`pvg_name`,`pvg_verify`,`pvg_type`,`pvg_path`,`pid`,`reserved1`,`reserved2`,`reserved3`) values (1,'维修接待',NULL,1,NULL,0,NULL,NULL,NULL),(2,'结算中心',NULL,1,NULL,0,NULL,NULL,NULL),(3,'客户档案',NULL,1,NULL,0,NULL,NULL,NULL),(4,'基础数据',NULL,1,NULL,0,NULL,NULL,NULL),(5,'行政人事',NULL,1,'',0,NULL,NULL,NULL),(6,'系统设置',NULL,1,NULL,0,NULL,NULL,NULL),(7,'维修接车',NULL,1,NULL,1,NULL,NULL,NULL),(8,'竣工校验',NULL,1,NULL,1,NULL,NULL,NULL),(9,'保险对价',NULL,1,NULL,1,NULL,NULL,NULL),(10,'前台结算',NULL,1,NULL,2,NULL,NULL,NULL),(11,'客服档案',NULL,1,NULL,3,NULL,NULL,NULL);
+insert  into `dzw_privilege`(`pvgid`,`pvg_name`,`pvg_verify`,`pvg_type`,`pvg_path`,`pid`,`reserved1`,`reserved2`,`reserved3`) values (1,'服务接待',NULL,1,NULL,0,NULL,NULL,NULL),(2,'结算中心',NULL,1,NULL,0,NULL,NULL,NULL),(3,'客户档案',NULL,1,NULL,0,NULL,NULL,NULL),(4,'基础数据',NULL,1,NULL,0,NULL,NULL,NULL),(5,'行政人事',NULL,1,'',0,NULL,NULL,NULL),(6,'系统设置',NULL,1,NULL,0,NULL,NULL,NULL),(7,'服务接待',NULL,1,NULL,1,NULL,NULL,NULL),(8,'前台结算',NULL,1,NULL,2,NULL,NULL,NULL),(9,'客服档案',NULL,1,NULL,3,NULL,NULL,NULL),(10,'主数据',NULL,1,NULL,4,NULL,NULL,NULL),(11,'员工资料',NULL,1,NULL,5,NULL,NULL,NULL),(12,'技工管理',NULL,1,NULL,5,NULL,NULL,NULL),(13,'权限控制',NULL,1,NULL,6,NULL,NULL,NULL),(14,'维修接车',NULL,1,NULL,7,NULL,NULL,NULL),(15,'竣工校验',NULL,1,NULL,7,NULL,NULL,NULL),(16,'保险对价',NULL,1,NULL,7,NULL,NULL,NULL),(17,'结算中心',NULL,1,NULL,8,NULL,NULL,NULL),(18,'会员充值',NULL,1,NULL,8,NULL,NULL,NULL),(19,'客户资料',NULL,1,NULL,9,NULL,NULL,NULL),(20,'车辆资料',NULL,1,NULL,9,NULL,NULL,NULL),(21,'发动机品牌',NULL,1,NULL,10,NULL,NULL,NULL),(22,'车型档案',NULL,1,NULL,10,NULL,NULL,NULL),(23,'维修项目',NULL,1,NULL,10,NULL,NULL,NULL),(24,'商品资料',NULL,1,NULL,10,NULL,NULL,NULL),(25,'供货单位',NULL,1,NULL,10,NULL,NULL,NULL),(26,'组织机构',NULL,1,NULL,11,NULL,NULL,NULL),(27,'岗位定义',NULL,1,NULL,11,NULL,NULL,NULL),(28,'离职登记',NULL,1,NULL,11,NULL,NULL,NULL),(29,'通讯名录',NULL,1,NULL,11,NULL,NULL,NULL),(30,'技工星级',NULL,1,NULL,12,NULL,NULL,NULL),(31,'班组技工',NULL,1,NULL,12,NULL,NULL,NULL),(32,'外勤车辆',NULL,1,NULL,12,NULL,NULL,NULL),(33,'技工提成比例',NULL,1,NULL,12,NULL,NULL,NULL),(34,'员工权限控制',NULL,1,NULL,13,NULL,NULL,NULL),(35,'角色权限控制',NULL,1,NULL,13,NULL,NULL,NULL);
 
 /*Table structure for table `dzw_role` */
 
@@ -1033,6 +1033,8 @@ CREATE TABLE `post_list` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='岗位表';
 
 /*Data for the table `post_list` */
+
+insert  into `post_list`(`gid`,`gname`) values (11,'总经理'),(12,'副经理'),(13,'人事经理'),(14,'财务经理'),(15,'小秘'),(16,'市场部经理'),(17,'销售部经理'),(18,'产品部经理'),(19,'技术部经理');
 
 /*Table structure for table `privilege_role` */
 
