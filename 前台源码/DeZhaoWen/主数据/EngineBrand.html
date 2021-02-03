@@ -83,18 +83,11 @@
 						<td style="border: 1px solid #666; color: #FFFFFF;">发动机品牌编码</td>
 						<td style="border: 1px solid #666; color: #FFFFFF;">发动机品牌名称</td>
 					</tr>
-					<tr class="pintr">
-						<td>11</td>
-						<td>11号发动机品牌</td>
+					<tr class="pintr" v-for="item in list" >
+						<td>{{item.ecoder}}</td>
+						<td>{{item.ename}}</td>
 					</tr>
-					<tr class="pintr">
-						<td>22</td>
-						<td>22发动机品牌</td>
-					</tr>
-					<tr class="pintr">
-						<td>33</td>
-						<td>33发动机品牌</td>
-					</tr>
+					
 				</table>
 			</div>
 			
@@ -104,12 +97,38 @@
 <script src="../js/vue.js"></script>		
 <script>
 		
-	$(".pintr").click(function(){
-		$(".pintr").css("background","#ffffff")
-		$(this).css("background","sandybrown")
+	
+	var BaseUrl="http://127.0.0.1:8080/";
+	
+	new Vue({
+		el:"#ctn",
+		data(){
+			return{
+				list:[],
+			}
+		},
+		methods:{
+			find(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"engine/findall",
+					success:function(result){
+						that.list=result;
+					}
+				})
+			},
+		},
+		created() {
+			this.find();
+		}
+		
 	})
 	
 	
+	$('.pintr').on('click', function() {
+		$(".pintr").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	});
 	
 </script>
 	</body>
