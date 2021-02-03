@@ -60,11 +60,11 @@
 				<form class="form-inline">
 				  <div class="form-group">
 				    <label style="color: #39CEDE;">岗位编码</label>
-				    <input type="text" class="form-control" v-model="bian">
+				    <input type="text" class="form-control">
 				  </div>
 				  <div class="form-group">
 				    <label style="color: #39CEDE;">岗位名称</label>
-				    <input type="text" class="form-control" v-model="name">
+				    <input type="text" class="form-control">
 				  </div>
 				</form>
 				<div class="show1">
@@ -74,75 +74,10 @@
 					  	<td>岗位编码</td>
 					  	<td>岗位名称</td>
 					  </tr>
-					  <tr>
+					  <tr v-for="p in postlist">
 					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>001</td>
-					  	<td>总经理</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>002</td>
-					  	<td>副总经理</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>003</td>
-					  	<td>销售总监</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>004</td>
-					  	<td>客流登记员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>005</td>
-					  	<td>销售顾问</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>006</td>
-					  	<td>服务经理</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>007</td>
-					  	<td>服务顾问</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>008</td>
-					  	<td>服务总监</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>009</td>
-					  	<td>信息员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>010</td>
-					  	<td>库管员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>011</td>
-					  	<td>移车员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>012</td>
-					  	<td>上牌员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>013</td>
-					  	<td>人事专员</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>014</td>
-					  	<td>人事经理</td>
+					  	<td>{{p.gid}}</td>
+					  	<td>{{p.gname}}</td>
 					  </tr>
 					</table>
 				</div>
@@ -167,9 +102,29 @@
 		</div>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="../js/vue-2.6.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
 		<script type="text/javascript">
-			
+			new Vue({
+				el:"#ctn",
+				data(){
+					return {
+						postlist:{}
+					};
+				},methods:{
+					query(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/postList/find",
+							type:"post",
+							success:function(result){
+								that.postlist=result;
+							}
+						});
+					}
+				},created(){
+					this.query();
+				}
+			});
 		</script>
 	</body>
 </html>

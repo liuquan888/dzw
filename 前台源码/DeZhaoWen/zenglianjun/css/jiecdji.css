@@ -6,7 +6,7 @@ body{
 	background-color:#E7E7E7;
 }
 .row{
-	width: 1550px;
+	width: 1535px;
 	background-color: #f7ffff;
 }
 .row2{
@@ -110,4 +110,35 @@ input.form-control{
     margin: 0px 20px !important;
     width: 100px;
     text-align: center;
+}
+
+.row6{
+	display: none;
+	background-color: #FFFFFF;
+	width: 1500px;
+	height: 400px;
+	margin-left: 20px;
+	margin-top: -16px;
+	position: absolute;
+	top: 362px;
+}
+.row7{
+	display: none;
+	background-color: #FFFFFF;
+	width: 1500px;
+	height: 400px;
+	margin-left: 20px;
+	margin-top: -16px;
+	position: absolute;
+	top: 362px;
+}
+.row8{
+	display: none;
+	background-color: #FFFFFF;
+	width: 1500px;
+	height: 400px;
+	margin-left: 20px;
+	margin-top: -16px;
+	position: absolute;
+	top: 362px;
 }

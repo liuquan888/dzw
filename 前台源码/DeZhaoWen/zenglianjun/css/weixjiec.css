@@ -18,13 +18,13 @@ body{
 	margin-left: 10px;
 }
 .abc{
-	margin-left: 740px;
+	margin-left: 700px;
+	margin-top: -10px;
 }
 .row3{
 	background-color: white;
 	width: 1505px;
-	height: 700px;
-	margin-top: 40px;
+	height: 200px;
 	margin-left: 15px;
 	color: #5fd0dc;
 }
