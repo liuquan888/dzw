@@ -130,18 +130,18 @@
 						<td>卡上余额</td>
 						<td>备注</td>
 					</tr>
-					<tr>
-						<td>s0000</td>
-						<td>ss</td>
-						<td>ew</td>
-						<td>已结算</td>
-						<td>搜索</td>
-						<td>2020-8-8</td>
-						<td>顺德</td>
-						<td>20558</td>
-						<td>娃娃</td>
-						<td>娃娃</td>
-						<td>s0002</td>
+					<tr v-for="item in list">
+						<td>{{item.customernum}}</td>
+						<td>{{item.phone}}</td>
+						<td>{{item.customernumber}}</td>
+						<td>{{item.jointime}}</td>
+						<td>{{item.outtime}}</td>
+						<td>{{item.integral}}</td>
+						<td>{{item.payment}}</td>
+						<td>{{item.desportbank}}</td>
+						<td>{{item.bankaccount}}</td>
+						<td>{{item.vipprice}}</td>
+						<td>{{item.remark}}</td>
 					</tr>
 				</table>
 			</div>
@@ -177,7 +177,8 @@
 				data(){
 					return{
 						cs:{'background':'#EFEFEF','color':'#000'},
-						x:false
+						x:false,
+						list:[]
 					}
 				},
 				methods:{
@@ -194,7 +195,24 @@
 					},
 					open(){
 						this.x=true;
+					},
+					find(){
+						let that=this;
+						var json=JSON.stringify(this.bill);
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/find",
+							type:"post",
+							success:function(result){
+								that.list=result;
+							}
+						});
 					}
+				},
+				created(){
+					this.find();
+				},
+				watch:{
+					
 				}
 			})
 		</script>
