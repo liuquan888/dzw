@@ -61,22 +61,20 @@
 				<hr />
 				<div>
 					<div style="margin-left: 80%;">
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)">修改</a> 
-						<img src="img/113.png" width="6%"><a href="javascript:void(0)">保存</a> 
-						<img src="../img/6.png" width="6%"><a href="javascript:void(0)">导出</a> 
+						<span @click="add"><img src="../img/1.png" width="6%"><a href="javascript:void(0)">增加</a></span>
+						<span><img src="../img/2.png" width="6%"><a href="javascript:void(0)">修改</a> </span>
+						<span><img src="img/113.png" width="6%"><a href="javascript:void(0)">保存</a> </span>
+						<span><img src="../img/6.png" width="6%"><a href="javascript:void(0)">导出</a> </span>
 					</div>
 					<br />
 					<span style="margin-left: 50px;">
-						分类代码&nbsp;&nbsp;<input type="text" />
+						分类代码&nbsp;&nbsp;<input type="text" v-model="engine.ecoder" />
 						&nbsp;&nbsp;&nbsp;
-						分类名称&nbsp;&nbsp;<input type="text" />
+						分类名称&nbsp;&nbsp;<input type="text" v-model="engine.ename"/>
 					</span>
 				</div>
 				<br />
 			</div>
-			
-			
 			<div id="table">
 				<table class="table table-bordered table-striped table-hover">
 					<tr style="background: #39cede;">
@@ -90,8 +88,6 @@
 					
 				</table>
 			</div>
-			
-			
 		</div>
 <script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/vue.js"></script>		
@@ -105,6 +101,7 @@
 		data(){
 			return{
 				list:[],
+				engine:{},
 			}
 		},
 		methods:{
@@ -114,6 +111,17 @@
 					url:BaseUrl+"engine/findall",
 					success:function(result){
 						that.list=result;
+					}
+				})
+			},
+			add(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"engine/add",
+					data:that.engine,
+					type:"POST",
+					success:function(result){
+						alert(result)
 					}
 				})
 			},
