@@ -91,33 +91,34 @@
 					 </div>
 					 <div class="form-group">
 					    <label>会员卡号：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" class="form-control" v-model="bill.customernumber">
 					  </div>
 					  <div class="form-group">
 					    <label>手机号：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" class="form-control" v-model="bill.phone">
 					  </div>
 					   <br /><br />
 					  <div class="form-group">
 					    <label>客户名称：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" class="form-control" v-model="bill.customername">
 					  </div>
 					  <div class="form-group">
 					    <label>银行账号：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" class="form-control" v-model="bill.bankaccount">
 					  </div>
 					  <div class="form-group">
 					    <label>备注：</label>
-					    <input type="text" class="form-control">
+					    <input type="text" class="form-control" v-model="bill.remark">
 					  </div>
 				</form>
 			</div>
 			<div style="margin-left: 20px;">
-				<span @click="open"><img src="img/shoyin.PNG">充值</span>
+				<span @click="open"><img src="img/shoyin.PNG">充值</span><button class="btn btn-primary" @click="find">查询</button><button class="btn btn-danger" @click="reset">重置</button>
 			</div>
 			<div style="margin-left: 20px;">
 				<table class="table table-bordered">
 					<tr>
+						<td>选择</td>
 						<td>客户名称</td>
 						<td>手机号</td>
 						<td>会员卡号</td>
@@ -131,6 +132,7 @@
 						<td>备注</td>
 					</tr>
 					<tr v-for="item in list">
+						<td><input type="radio" name="rr"></td>
 						<td>{{item.customernum}}</td>
 						<td>{{item.phone}}</td>
 						<td>{{item.customernumber}}</td>
@@ -178,7 +180,8 @@
 					return{
 						cs:{'background':'#EFEFEF','color':'#000'},
 						x:false,
-						list:[]
+						list:[],
+						bill:{}
 					}
 				},
 				methods:{
@@ -198,14 +201,18 @@
 					},
 					find(){
 						let that=this;
-						var json=JSON.stringify(this.bill);
+						console.log(this.bill);
 						$.ajax({
 							url:"http://127.0.0.1:8080/customer/find",
 							type:"post",
+							data:that.bill,
 							success:function(result){
 								that.list=result;
 							}
 						});
+					},
+					reset(){
+						this.bill={};
 					}
 				},
 				created(){
