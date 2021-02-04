@@ -42,6 +42,11 @@ public class PostListController {
         return plservice.getById(id);
     }
 
+    @RequestMapping("/delete/{id}")
+    public boolean delete(@PathVariable("id") Integer id){
+        return plservice.removeById(id);
+    }
+
     @RequestMapping("/update")
     public boolean update(PostList post){
         return plservice.updateById(post);
