@@ -155,6 +155,7 @@
 				<span>合计：1条记录</span>
 			</div>
 		</div>
+		</div>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="../js/vue.js" ></script>
@@ -163,7 +164,8 @@
 				el:".container-fluid",
 				data(){
 					return{
-						xs:true
+						xs:true,
+						list:{}
 					}
 				},
 				methods:{
@@ -174,9 +176,20 @@
 							this.xs=true;
 						}
 					},
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/find",
+							type:"post",
+							success:function(result){
+								console.log(result);
+								that.list=result;
+							}
+						});
+					},
 				},
 				created(){
-					
+					this.find();
 				}
 			});
 		</script>
