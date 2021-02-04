@@ -76,23 +76,23 @@
 				<form class="form-inline frm">
 					<div class="form-group">
 						<label class="lbl">车牌号</label>
-						<input class="form-control" id="ipt1"/>
+						<input class="form-control" id="ipt1" v-model="fieldvehicles.licenseplate"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">品牌</label>
-						<input class="form-control" id="ipt2"/>
+						<input class="form-control" id="ipt2" v-model="fieldvehicles.brand"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">车型</label>
-						<input class="form-control" id="ipt3"/>
+						<input class="form-control" id="ipt3" v-model="fieldvehicles.model"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">当前里程</label>
-						<input class="form-control" id="ipt4"/>
+						<input class="form-control" id="ipt4" v-model="fieldvehicles.currentmileage"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">班组</label>
-						<input class="form-control" id="ipt4"/>
+						<input class="form-control" id="ipt4" v-model="fieldvehicles.teamid"/>
 						<a href="#myModal" data-toggle="modal">
 							<select class="form-control">
 							
@@ -100,9 +100,9 @@
 						</a>
 					</div>
 					<div class="form-group" id="div1">
-						<button class="btn btn-default">增加</button>
-						<button class="btn btn-default">删除</button>
-						<button class="btn btn-default">保存</button>
+						<button class="btn btn-default" @click="insert">增加</button>
+						<button class="btn btn-default" @click="remove">删除</button>
+						<button class="btn btn-default" @click="update">保存</button>
 					</div>
 				</form>
 				
@@ -116,12 +116,12 @@
 						<td>当前里程</td>
 						<td>归属班组</td>
 					</tr>
-					<tr>
-						<td>2333</td>
-						<td>abc</td>
-						<td>11122</td>
-						<td>111</td>
-						<td>华山队</td>
+					<tr v-for="item in list" @click="findById(item.id)">
+						<td>{{item.licenseplate}}</td>
+						<td>{{item.brand}}</td>
+						<td>{{item.model}}</td>
+						<td>{{item.currentmileage}}</td>
+						<td>{{item.teamid}}</td>
 					</tr>
 				</table>
 			</div>
@@ -165,7 +165,9 @@
 				data(){
 					return{
 						xs:true,
-						list:{}
+						list:{},
+						id:"",
+						fieldvehicles:{}
 					}
 				},
 				methods:{
@@ -187,6 +189,51 @@
 							}
 						});
 					},
+					findById(id){
+						this.id=id;
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/findById/"+id,
+							type:"post",
+							success:function(result){
+								that.fieldvehicles=result;
+								console.log(result);
+							}
+						});
+					},
+					remove(id){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/delete/"+that.id,
+							type:"post",
+							success:function(result){
+								that.find();
+							}
+						});
+					},
+					insert(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/insert",
+							data:that.fieldvehicles,
+							type:"post",
+							success:function(result){
+								that.find();
+							}
+						});
+					},
+					update(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/update",
+							data:that.fieldvehicles,
+							type:"post",
+							success:function(result){
+								that.find();
+							}
+						});
+					},
+					
 				},
 				created(){
 					this.find();
