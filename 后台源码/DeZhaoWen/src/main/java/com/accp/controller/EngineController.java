@@ -4,6 +4,7 @@ package com.accp.controller;
 import com.accp.domain.Engine;
 import com.accp.mapper.EngineMapper;
 import com.accp.service.impl.EngineServiceImpl;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +37,14 @@ public class EngineController {
 
     //添加发动机品牌
     @PostMapping("/add")
-    public boolean add(Engine engine){
-        return engineService.save(engine);
+    public String add(Engine engine){
+        boolean result = engineService.save(engine);
+        if (result){
+            return "新增成功";
+        }else {
+            return "新增失败";
+        }
+
     }
 
 }

@@ -24,6 +24,7 @@
 				background: #f7f7f7;
 			}
 			input[type="text"]{
+				color: #000000;	
 				height: 20px;
 				width: 150px;
 			}
@@ -42,6 +43,7 @@
 			img{
 				vertical-align: middle;
 			}
+			
 			
 		</style>
 	<body>
@@ -68,9 +70,9 @@
 					</div>
 					<br />
 					<span style="margin-left: 50px;">
-						分类代码&nbsp;&nbsp;<input type="text" v-model="engine.ecoder" />
+						分类代码&nbsp;&nbsp;<input type="text" v-model="engine.eCoder" />
 						&nbsp;&nbsp;&nbsp;
-						分类名称&nbsp;&nbsp;<input type="text" v-model="engine.ename"/>
+						分类名称&nbsp;&nbsp;<input type="text" v-model="engine.eName"/>
 					</span>
 				</div>
 				<br />
@@ -119,9 +121,13 @@
 				$.ajax({
 					url:BaseUrl+"engine/add",
 					data:that.engine,
-					type:"POST",
+					dataType:"json",
+					type:"post",
 					success:function(result){
-						alert(result)
+						console.log(result)
+					},error:function(error){
+						alert(error.responseText)
+						that.find();
 					}
 				})
 			},
