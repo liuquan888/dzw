@@ -1,6 +1,8 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author quanl
- * @since 2021-01-29
+ * @since 2021-02-04
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -25,6 +27,7 @@ public class Engine extends Model<Engine> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "发动机品牌编号")
+    @TableId(value = "e_id", type = IdType.AUTO)
     private Integer eId;
 
     @ApiModelProperty(value = "发动机品牌编码")

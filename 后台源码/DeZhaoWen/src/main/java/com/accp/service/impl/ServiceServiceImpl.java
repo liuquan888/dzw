@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
  * </p>
  *
  * @author quanl
- * @since 2021-01-29
+ * @since 2021-02-04
  */
 @org.springframework.stereotype.Service
 public class ServiceServiceImpl extends ServiceImpl<ServiceMapper, Service> implements IServiceService {

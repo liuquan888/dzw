@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author quanl
- * @since 2021-01-29
+ * @since 2021-02-04
  */
 @Service
 public class MotorServiceImpl extends ServiceImpl<MotorMapper, Motor> implements IMotorService {

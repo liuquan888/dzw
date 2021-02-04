@@ -1,6 +1,9 @@
 package com.accp.controller;
 
 
+import com.accp.domain.DzwUser;
+import com.accp.service.impl.DzwUserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author quanl
- * @since 2021-01-29
+ * @since 2021-02-04
  */
 @RestController
 @RequestMapping("/dzwUser")
 public class DzwUserController {
+    @Autowired
+    DzwUserServiceImpl user;
 
+    @RequestMapping("/find")
+    public String find(){
+        System.out.println("111");
+        return "";
+    }
 }
 
