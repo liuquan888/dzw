@@ -132,8 +132,8 @@
 						<td>备注</td>
 					</tr>
 					<tr v-for="item in list">
-						<td><input type="radio" name="rr"></td>
-						<td>{{item.customernum}}</td>
+						<td><input type="radio" name="rr" @click="choose(item)"></td>
+						<td>{{item.customername}}</td>
 						<td>{{item.phone}}</td>
 						<td>{{item.customernumber}}</td>
 						<td>{{item.jointime}}</td>
@@ -151,19 +151,20 @@
 				<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">
 					充值
 				</div>
+				<div style="float: right;">充值到{{name}}</div>
 				<br />
 				<br />
 				<div class="divcz-02">
 					<form class="form-inline">
-						<div class="c1" @click="dian($event)">100元</div><div class="c1" @click="dian($event)">200元</div><div class="c1" @click="dian($event)">300元</div><br /><br />
-						<div class="c1" @click="dian($event)">500元</div><div class="c1" @click="dian($event)">1000元</div>
-						<input placeholder="其他余额" @click="dian2" class="form-control" style="width: 90px;"/>
+						<div class="c1" @click="dian($event,100)">100元</div><div class="c1" @click="dian($event,200)">200元</div><div class="c1" @click="dian($event,300)">300元</div><br /><br />
+						<div class="c1" @click="dian($event,500)">500元</div><div class="c1" @click="dian($event,1000)">1000元</div>
+						<input placeholder="其他余额" onblur="f()" @click="dian2" v-model="cc" class="form-control" style="width: 90px;"/>
 					</form>
 				</div>
 				<br />
 				<br />
 				<div class="divcz-03">
-					<button class="btn btn-primary">确定</button><button class="btn btn-primary" @click="out">取消</button>
+					<button class="btn btn-primary" @click="sure">确定</button><button class="btn btn-primary" @click="out">取消</button>
 				</div>
 			</div>
 			
@@ -174,34 +175,46 @@
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
 		<script>
-			new Vue({
+			var myVue=new Vue({
 				el:"#ctn",
 				data(){
 					return{
 						cs:{'background':'#EFEFEF','color':'#000'},
 						x:false,
 						list:[],
-						bill:{}
+						bill:{},
+						pay:{
+							id:"",
+							money:""
+						},
+						name:"",
+						cc:""
 					}
 				},
 				methods:{
-					dian(e){
+					dian(e,m){
 						$(".divcz-02 form div").css(this.cs);
 						$(e.target).css({"color":"#fff","background":"#3277B2"});
 						$(".divcz-02 form input").val("");
+						this.pay.money=m;
 					},
 					dian2(){
+						this.pay.money=0;
 						$(".divcz-02 form div").css(this.cs);
 					},
 					out(){
 						this.x=false;
 					},
 					open(){
-						this.x=true;
+						if(this.name!=""){
+							this.x=true;
+						}else{
+							alert("未选择充值对象");
+						}
+						
 					},
 					find(){
 						let that=this;
-						console.log(this.bill);
 						$.ajax({
 							url:"http://127.0.0.1:8080/customer/find",
 							type:"post",
@@ -213,6 +226,26 @@
 					},
 					reset(){
 						this.bill={};
+					},
+					choose(item){
+						this.pay.id=item.customernum;
+						this.name=item.customername;
+					},
+					sure(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/pay",
+							type:"post",
+							data:that.pay,
+							success:function(result){
+								if(result==0000){
+									alert("充值成功");
+								}else{
+									alert("系统错误！！！请联系管理员");
+								}
+								
+							}
+						});
 					}
 				},
 				created(){
@@ -221,7 +254,11 @@
 				watch:{
 					
 				}
-			})
+			});
+			
+			function f(){
+				myVue.pay.money=myVue.cc;
+			}
 		</script>
 	</body>
 </html>
