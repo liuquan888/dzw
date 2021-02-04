@@ -54,7 +54,7 @@
 					<div class="col-md-8"></div>
 					<div class="col-md-1" @click="add()"><img src="../img/26d502752909327e0126dd1795f6cba.png"/>增加</div>
 					<div class="col-md-1"><img src="../img/cec08826e6c65a5c150f9ea106feb36.png"/><span data-target="#myModal" data-toggle="modal">删除</span></div>
-					<div class="col-md-1"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>保存</div>
+					<div class="col-md-1" @click="update()"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>保存</div>
 					<div class="col-md-1"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>导出</div>
 				</div>
 				<form class="form-inline">
@@ -94,7 +94,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
-			        <button type="button" class="btn btn-danger">是(Y)</button>
+			        <button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal" @click="remove()">是(Y)</button>
 			      </div>
 			    </div>
 			  </div>
@@ -109,7 +109,8 @@
 				data(){
 					return {
 						postlist:{},
-						post:{}
+						post:{},
+						id:1
 					};
 				},methods:{
 					query(){
@@ -123,7 +124,6 @@
 						});
 					},
 					add(){
-						alert("aa");
 						var that=this;
 						$.ajax({
 							url:"http://127.0.0.1:8080/postList/add",
@@ -132,6 +132,7 @@
 							success:function(result){
 								if(result){
 									alert("添加成功!");
+									that.query();
 								}else{
 									alert("添加失败!");
 								}
@@ -139,7 +140,7 @@
 						});
 					},
 					findById(id){
-						alert(id);
+						this.id=id;
 						var that=this;
 						$.ajax({
 							url:"http://127.0.0.1:8080/postList/findById/"+id,
@@ -147,6 +148,16 @@
 							success:function(result){
 								console.log(result);
 								that.post=result;
+							}
+						});
+					},
+					remove(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/postList/delete/"+that.id,
+							type:"post",
+							success:function(result){
+								that.query();
 							}
 						});
 					},
@@ -159,6 +170,7 @@
 							success:function(result){
 								if(result){
 									alert("修改成功!");
+									that.query();
 								}else{
 									alert("修改失败!");
 								}
