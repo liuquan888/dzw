@@ -52,19 +52,19 @@
 			<div class="row1">
 				<div style="color: #686868;font-size: 18px;">
 					<div class="col-md-8"></div>
-					<div class="col-md-1"><img src="../img/26d502752909327e0126dd1795f6cba.png"/>增加</div>
+					<div class="col-md-1" @click="add()"><img src="../img/26d502752909327e0126dd1795f6cba.png"/>增加</div>
 					<div class="col-md-1"><img src="../img/cec08826e6c65a5c150f9ea106feb36.png"/><span data-target="#myModal" data-toggle="modal">删除</span></div>
-					<div class="col-md-1"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>保存</div>
+					<div class="col-md-1" @click="update()"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>保存</div>
 					<div class="col-md-1"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>导出</div>
 				</div>
 				<form class="form-inline">
 				  <div class="form-group">
 				    <label style="color: #39CEDE;">岗位编码</label>
-				    <input type="text" class="form-control">
+				    <input type="text" class="form-control" v-model="post.gid">
 				  </div>
 				  <div class="form-group">
 				    <label style="color: #39CEDE;">岗位名称</label>
-				    <input type="text" class="form-control">
+				    <input type="text" class="form-control" v-model="post.gname">
 				  </div>
 				</form>
 				<div class="show1">
@@ -75,7 +75,7 @@
 					  	<td>岗位名称</td>
 					  </tr>
 					  <tr v-for="p in postlist">
-					  	<td style="background-color: #D6D6CE;"></td>
+					  	<td style="background-color: #D6D6CE;"><input type="radio" name="hname" @click="findById(p.gid)"></td>
 					  	<td>{{p.gid}}</td>
 					  	<td>{{p.gname}}</td>
 					  </tr>
@@ -94,7 +94,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">否(N)</button>
-			        <button type="button" class="btn btn-danger">是(Y)</button>
+			        <button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal" @click="remove()">是(Y)</button>
 			      </div>
 			    </div>
 			  </div>
@@ -108,7 +108,9 @@
 				el:"#ctn",
 				data(){
 					return {
-						postlist:{}
+						postlist:{},
+						post:{},
+						id:1
 					};
 				},methods:{
 					query(){
@@ -118,6 +120,60 @@
 							type:"post",
 							success:function(result){
 								that.postlist=result;
+							}
+						});
+					},
+					add(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/postList/add",
+							data:that.post,
+							type:"post",
+							success:function(result){
+								if(result){
+									alert("添加成功!");
+									that.query();
+								}else{
+									alert("添加失败!");
+								}
+							}
+						});
+					},
+					findById(id){
+						this.id=id;
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/postList/findById/"+id,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								that.post=result;
+							}
+						});
+					},
+					remove(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/postList/delete/"+that.id,
+							type:"post",
+							success:function(result){
+								that.query();
+							}
+						});
+					},
+					update(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/postList/update",
+							data:that.post,
+							type:"post",
+							success:function(result){
+								if(result){
+									alert("修改成功!");
+									that.query();
+								}else{
+									alert("修改失败!");
+								}
 							}
 						});
 					}
