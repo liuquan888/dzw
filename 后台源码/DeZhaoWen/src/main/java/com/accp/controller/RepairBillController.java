@@ -88,17 +88,25 @@ public class RepairBillController {
 
         List<RepairBill> list = service.list(qw);
         for (RepairBill rb:list){
-            Billstype billstype=btService.getById(rb.getDocumentsType());
-            rb.setDType(billstype.getType());
+            if(rb.getDocumentsType()!=null){
+                Billstype billstype=btService.getById(rb.getDocumentsType());
+                rb.setDType(billstype.getType());
+            }
 
-            ClearingForm cf= cfService.getById(rb.getBalanceType());
-            rb.setBType(cf.getType());
+            if(rb.getBalanceType()!=null){
+                ClearingForm cf= cfService.getById(rb.getBalanceType());
+                rb.setBType(cf.getType());
+            }
 
-            SettlementStatus ss= ssService.getById(rb.getDocumentsState());
-            rb.setBState(ss.getType());
+            if(rb.getDocumentsState()!=null){
+                SettlementStatus ss= ssService.getById(rb.getDocumentsState());
+                rb.setBState(ss.getType());
+            }
 
-            DocumentStatus ds=dsService.getById(rb.getBalanceState());
-            rb.setDState(ds.getType());
+            if(rb.getBalanceState()!=null){
+                DocumentStatus ds=dsService.getById(rb.getBalanceState());
+                rb.setDState(ds.getType());
+            }
 
 //            System.out.println(rb.getChepaiNo());
 //            Platenumber p= pService.getById(rb.getChepaiNo());
