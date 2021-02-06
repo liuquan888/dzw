@@ -16,6 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/carheet")
 public class CarheetController {
+    @Autowired
+    CarheetServiceImpl service;
+    public List<Carheet> findAll(){
+        return service.list();
+    }
+    public List<Carheet> findLike(Carheet car){
 
+    }
 }
 
