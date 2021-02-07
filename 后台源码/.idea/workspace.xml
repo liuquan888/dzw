@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4347efba-bc95-45fd-a0d8-28bd79ab22fa" name="Default Changelist" comment="" />
+    <list default="true" id="4347efba-bc95-45fd-a0d8-28bd79ab22fa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/DeZhaoWen.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/CarbrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/CarbrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/CarheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/CarheetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/CustomertypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/CustomertypeController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +29,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -33,8 +42,12 @@
       <option name="presentableId" value="Default" />
       <updated>1611213862760</updated>
       <workItem from="1611213867403" duration="84000" />
+      <workItem from="1612613471668" duration="59000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="152" key="FileChooserDialogImpl" timestamp="1611213938714">

@@ -1,6 +1,10 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+<<<<<<< HEAD
+=======
+import com.baomidou.mybatisplus.annotation.TableId;
+>>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -26,6 +30,7 @@ public class Engine extends Model<Engine> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId(type= IdType.AUTO)
     @ApiModelProperty(value = "发动机品牌编号")
     @TableId(value = "e_id", type = IdType.AUTO)
     private Integer eId;

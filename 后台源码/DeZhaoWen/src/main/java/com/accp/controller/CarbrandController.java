@@ -16,6 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/carbrand")
 public class CarbrandController {
-
+    @Autowired
+    CarbrandServiceImpl service;
+    @RequestMapping("/findAll")
+    public List<Carbrand> findAll(Carbrand cb){
+        QueryWrapper<Carbrand> query=new QueryWrapper<>();
+        () -> query
+        query.lambda().like(Carbrand::getCarcoding,val:cb.get)
+        List<Carbrand> list=service.
+    }
 }
 

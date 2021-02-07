@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="bd2d37a4-5280-41e9-a9bc-411798eebd47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/AcademicDegreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/AcademicDegreeController.java" afterDir="false" />
@@ -387,26 +370,26 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WeixlisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WeixlisServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WorkcarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WorkcarServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/accp/DezhaowenApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/accp/DezhaowenApplicationTests.java" afterDir="false" />
+=======
+    <list default="true" id="f0ba0715-4213-44cf-b496-e8e7878c3728" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarbrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarbrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarheetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomertypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomertypeController.java" afterDir="false" />
+>>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1nMxq9xBtEAdPPOWfZF0qtHZKeH" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1nujVLO08ZK9RY2ImLDcSSvP2gV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -420,10 +403,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ideaprojects/java37-springboot-chapter-1" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
+<<<<<<< HEAD
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -477,16 +461,19 @@
         <item itemvalue="Application.MyGenerator" />
       </list>
     </recent_temporary>
+=======
+>>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bd2d37a4-5280-41e9-a9bc-411798eebd47" name="Default Changelist" comment="" />
-      <created>1611213948133</created>
+      <changelist id="f0ba0715-4213-44cf-b496-e8e7878c3728" name="Default Changelist" comment="" />
+      <created>1612246892461</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1611213948133</updated>
       <workItem from="1611214010479" duration="86000" />
       <workItem from="1611914550356" duration="2795000" />
@@ -495,25 +482,23 @@
       <workItem from="1611974308645" duration="197000" />
       <workItem from="1612403152432" duration="1189000" />
       <workItem from="1612405101099" duration="974000" />
+=======
+      <updated>1612246892461</updated>
+      <workItem from="1612246897893" duration="118000" />
+      <workItem from="1612333707135" duration="386000" />
+      <workItem from="1612334124389" duration="2745000" />
+      <workItem from="1612487824821" duration="608000" />
+      <workItem from="1612581519219" duration="669000" />
+      <workItem from="1612609855939" duration="3610000" />
+>>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="249" y="0" key="#Project_Structure" timestamp="1611915189678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -555,8 +540,27 @@
     </state>
     <state width="1493" height="234" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1612406086518" />
     <state x="270" y="56" key="SettingsEditor" timestamp="1611214087832">
+=======
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612333718481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="270" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1611214087832" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1612333718481" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1612613468886">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1612613468886" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1612613315690">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1612613315690" />
+    <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1612613154391">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1612613154391" />
+    <state x="425" y="189" key="run.anything.popup" timestamp="1612613296939">
+>>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1612613296939" />
   </component>
 </project>
