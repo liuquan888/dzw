@@ -5,11 +5,20 @@ import com.accp.domain.*;
 import com.accp.service.impl.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
+=======
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+>>>>>>> 78055d7c056634a4b8144312cabbe81c06f8a1af
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
+=======
+import java.util.Date;
+>>>>>>> 78055d7c056634a4b8144312cabbe81c06f8a1af
 import java.util.List;
 
 /**
@@ -18,7 +27,7 @@ import java.util.List;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-01-29
  */
 @RestController
 @RequestMapping("/repairBill")
@@ -113,5 +122,13 @@ public class RepairBillController {
         return list;
     }
 
+<<<<<<< HEAD
+=======
+    @RequestMapping("/givemoney")
+    public int givemoney(int id,int mooney){
+
+        return 1;
+    }
+>>>>>>> 78055d7c056634a4b8144312cabbe81c06f8a1af
 }
 

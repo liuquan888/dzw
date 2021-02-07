@@ -185,7 +185,7 @@
 								<form class="form-inline">
 									<td><input disabled class="form-control" v-model="data.amount"></td>
 									<td><input class="form-control"></td>
-									<td><input class="form-control"></td>
+									<td><input disabled class="form-control"></td>
 									<td><input disabled class="form-control"></td>
 									<td><input class="form-control"></td>
 								</form>
@@ -195,7 +195,7 @@
 						<div style="margin-left: 150px;">
 							<span>应收金额:</span>
 							<span style="color: red;font-style: oblique;">6000000</span>
-							<span>积分最大抵扣：<input v-model="data."></span>
+
 						</div>
 						<div>
 							<form class="form-inline" style="margin-left: 150px;">
@@ -303,7 +303,9 @@
 							
 						},
 						data:{
-							
+							shuilu:1.13,
+							jiashuijin:0,
+							moweisu:0
 						}
 					}
 				},
@@ -355,6 +357,9 @@
 					},
 					givemoney(item){
 						this.data=item;
+						this.data.jiashuijin=this.data.amount*this.data.shuilu/100;
+						this.data.moweisu=this.data.amount.substring(this.data.amount.length -1);
+						console.log(this.data);
 					}
 				},
 				created(){

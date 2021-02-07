@@ -23,8 +23,11 @@ import java.util.List;
 @RequestMapping("/postList")
 public class PostListController {
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 78055d7c056634a4b8144312cabbe81c06f8a1af
     @Autowired
     PostListServiceImpl plservice;
 
