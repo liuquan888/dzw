@@ -11,7 +11,7 @@
 				height: 100%;
 			}
 			#ctn{
-				width: 99%;
+				width: 99%;w
 				height: 100%;
 			}
 			span{
@@ -87,7 +87,6 @@
 						<td>{{item.ecoder}}</td>
 						<td>{{item.ename}}</td>
 					</tr>
-					
 				</table>
 			</div>
 		</div>
@@ -131,18 +130,37 @@
 					}
 				})
 			},
+			remove(item){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"engine/remove/"+item.eid,
+					type:"get",
+					success:function(result){
+						console.log(result)
+					},error:function(error){
+						alert(error.responseText)
+						that.find();
+					}
+				})
+			},
+			
 		},
 		created() {
 			this.find();
+		},
+		watch:{
+			
 		}
 		
 	})
 	
-	
-	$('.pintr').on('click', function() {
+	$(document).on('click','.pintr',function(){
 		$(".pintr").css("background","#ffffff")
 		$(this).css("background","sandybrown")
-	});
+	})
+	
+	
+	
 	
 </script>
 	</body>
