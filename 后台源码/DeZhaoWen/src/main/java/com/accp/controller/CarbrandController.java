@@ -1,9 +1,14 @@
 package com.accp.controller;
 
 
+import com.accp.domain.Carbrand;
+import com.accp.service.impl.CarbrandServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -20,10 +25,7 @@ public class CarbrandController {
     CarbrandServiceImpl service;
     @RequestMapping("/findAll")
     public List<Carbrand> findAll(Carbrand cb){
-        QueryWrapper<Carbrand> query=new QueryWrapper<>();
-        () -> query
-        query.lambda().like(Carbrand::getCarcoding,val:cb.get)
-        List<Carbrand> list=service.
+            return null;
     }
 }
 

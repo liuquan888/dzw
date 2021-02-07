@@ -1,8 +1,5 @@
 package com.accp.controller;
 
-
-<<<<<<< HEAD
-=======
 import com.accp.domain.Engine;
 import com.accp.mapper.EngineMapper;
 import com.accp.service.impl.EngineServiceImpl;
@@ -10,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -27,8 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/engine")
 public class EngineController {
 
-<<<<<<< HEAD
-=======
     @Autowired
     EngineServiceImpl engineService;
 
@@ -50,6 +46,6 @@ public class EngineController {
 
     }
 
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
+
 }
 

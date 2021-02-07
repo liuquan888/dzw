@@ -1,390 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="bd2d37a4-5280-41e9-a9bc-411798eebd47" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/BrandControllerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/AcademicDegreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/AcademicDegreeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/BillstypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/BillstypeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/BrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/BusinessclassController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/BusinessclassController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CaraffiliationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CaraffiliationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarbrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarbrandController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarheetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CicompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CicompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ClearingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ClearingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ClearingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ClearingFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ConstructionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ConstructionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CounselorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CounselorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomertypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomertypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DeparmentSurfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/DeparmentSurfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DocumentStatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/DocumentStatusController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DomesticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/DomesticController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwPrivilegeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwPrivilegeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwRoleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/EducationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/EducationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/EngineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/EngineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/FactoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/FactoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/FieldvehiclesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/FieldvehiclesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/GetMaterialController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/GetMaterialController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/GraduateSchoolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/GraduateSchoolController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/HistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ImageMerchandiseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ImageMerchandiseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ImgSuppilerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ImgSuppilerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/IncomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/IncomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/LinkmanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/LinkmanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenanceItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenanceItemsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenancesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenancesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaritalStatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaritalStatusController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MechaniccommissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MechaniccommissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MechanicstarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MechanicstarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MenuMerchandiseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MenuMerchandiseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MerchandiseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MerchandiseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MlicompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MlicompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MotorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MotorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/NationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/NationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/NativPlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/NativPlaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/OiltypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/OiltypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/OrganizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/OrganizationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/OrganizationSurfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/OrganizationSurfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/PatternController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/PatternController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/PlatenumberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/PlatenumberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/PostListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/PostListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/PrivilegeRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/PrivilegeRoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ProfessionalQualificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ProfessionalQualificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/QuitReasonSurfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/QuitReasonSurfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/RatingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/RelevanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/RelevanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/RepairBillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/RepairBillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/RoleUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/RoleUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/ServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/ServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/SettlementStatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/SettlementStatusController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/StaffDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/StaffDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/StoreClassificarionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/StoreClassificarionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/SuppilerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/SuppilerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/SuppilermenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/SuppilermenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/TeamtechnicianController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/TeamtechnicianController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/UpkeepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/UpkeepController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/UserCompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/UserCompanyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/VehicleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/WeixlisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/WeixlisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/WorkcarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/WorkcarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/AcademicDegree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/AcademicDegree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Billstype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Billstype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Brand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Businessclass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Businessclass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Caraffiliation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Caraffiliation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Carbrand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Carbrand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Carheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Carheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Cicompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Cicompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Clearing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Clearing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/ClearingForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/ClearingForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Construction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Construction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Counselor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Counselor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Customertype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Customertype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/DeparmentSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/DeparmentSurface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/DocumentStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/DocumentStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Domestic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Domestic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/DzwPrivilege.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/DzwPrivilege.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/DzwRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/DzwRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/DzwUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/DzwUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Education.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Education.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Fieldvehicles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Fieldvehicles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/GetMaterial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/GetMaterial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/GraduateSchool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/GraduateSchool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/ImageMerchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/ImageMerchandise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/ImgSuppiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/ImgSuppiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Income.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Linkman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Linkman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Maintenance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Maintenance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/MaintenanceItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/MaintenanceItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Maintenances.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Maintenances.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/MaritalStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/MaritalStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Mechaniccommission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Mechaniccommission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Mechanicstar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Mechanicstar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/MenuMerchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/MenuMerchandise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Merchandise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Merchandise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Mlicompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Mlicompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Motor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Motor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Nation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Nation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/NativPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/NativPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Oiltype.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Oiltype.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Organization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Organization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/OrganizationSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/OrganizationSurface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Pattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Pattern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Platenumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Platenumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/PostList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/PostList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/PrivilegeRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/PrivilegeRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/ProfessionalQualification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/ProfessionalQualification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/QuitReasonSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/QuitReasonSurface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Relevance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Relevance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/RepairBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/RepairBill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/RoleUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/RoleUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/SettlementStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/SettlementStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/StaffData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/StaffData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/StoreClassificarion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/StoreClassificarion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Suppiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Suppiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Suppilermenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Suppilermenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Teamtechnician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Teamtechnician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Upkeep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Upkeep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/UserCompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/UserCompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Weixlis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Weixlis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Workcar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Workcar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/AcademicDegreeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/AcademicDegreeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BankMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BankMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BillstypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BillstypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BrandMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BrandMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BusinessclassMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/BusinessclassMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CaraffiliationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CaraffiliationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CarbrandMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CarbrandMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CarheetMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CarheetMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CicompanyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CicompanyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ClearingFormMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ClearingFormMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ClearingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ClearingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ConstructionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ConstructionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CounselorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CounselorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CustomerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CustomertypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/CustomertypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DeparmentSurfaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DeparmentSurfaceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DocumentStatusMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DocumentStatusMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DomesticMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DomesticMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DzwPrivilegeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DzwPrivilegeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DzwRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DzwRoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DzwUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DzwUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/EducationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/EducationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/EngineMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/EngineMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/FactoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/FactoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/FieldvehiclesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/FieldvehiclesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/GetMaterialMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/GetMaterialMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/GraduateSchoolMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/GraduateSchoolMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/HistoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/HistoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ImageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ImageMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ImageMerchandiseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ImageMerchandiseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ImgSuppilerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ImgSuppilerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/IncomeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/IncomeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/LinkmanMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/LinkmanMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaintenanceItemsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaintenanceItemsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaintenanceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaintenanceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaintenancesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaintenancesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaritalStatusMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MaritalStatusMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MechaniccommissionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MechaniccommissionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MechanicstarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MechanicstarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MenuMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MenuMerchandiseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MenuMerchandiseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MerchandiseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MerchandiseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MlicompanyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MlicompanyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MotorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MotorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/NationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/NationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/NativPlaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/NativPlaceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/OiltypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/OiltypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/OrganizationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/OrganizationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/OrganizationSurfaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/OrganizationSurfaceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PatternMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PatternMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PlatenumberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PlatenumberMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PostListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PostListMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PrivilegeRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/PrivilegeRoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ProfessionalQualificationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ProfessionalQualificationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/QuitReasonSurfaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/QuitReasonSurfaceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RatingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RatingMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RelevanceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RelevanceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RepairBillMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RepairBillMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RoleUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/RoleUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ServiceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/ServiceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/SettlementStatusMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/SettlementStatusMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/StaffDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/StaffDataMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/StoreClassificarionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/StoreClassificarionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/SuppilerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/SuppilerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/SuppilermenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/SuppilermenuMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/TeamtechnicianMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/TeamtechnicianMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/UpkeepMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/UpkeepMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/UserCompanyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/UserCompanyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/VehicleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/VehicleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/WeixlisMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/WeixlisMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/WorkcarMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/mapper/WorkcarMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IAcademicDegreeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IAcademicDegreeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IBankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IBankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IBillstypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IBillstypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IBrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IBrandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IBusinessclassService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IBusinessclassService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICaraffiliationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICaraffiliationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICarbrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICarbrandService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICarheetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICarheetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICicompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICicompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IClearingFormService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IClearingFormService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IClearingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IClearingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IConstructionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IConstructionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICounselorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICounselorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ICustomertypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ICustomertypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IDeparmentSurfaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IDeparmentSurfaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IDocumentStatusService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IDocumentStatusService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IDomesticService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IDomesticService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IDzwPrivilegeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IDzwPrivilegeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IDzwRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IDzwRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IDzwUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IDzwUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IEducationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IEducationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IEngineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IEngineService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IFactoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IFactoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IFieldvehiclesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IFieldvehiclesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IGetMaterialService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IGetMaterialService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IGraduateSchoolService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IGraduateSchoolService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IHistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IHistoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IImageMerchandiseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IImageMerchandiseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IImgSuppilerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IImgSuppilerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IIncomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IIncomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ILinkmanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ILinkmanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaintenanceItemsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaintenanceItemsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaintenanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaintenanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaintenancesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaintenancesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaritalStatusService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMaritalStatusService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMechaniccommissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMechaniccommissionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMechanicstarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMechanicstarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMenuMerchandiseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMenuMerchandiseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMerchandiseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMerchandiseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMlicompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMlicompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMotorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IMotorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/INationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/INationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/INativPlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/INativPlaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IOiltypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IOiltypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IOrganizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IOrganizationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IOrganizationSurfaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IOrganizationSurfaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IPatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IPatternService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IPlatenumberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IPlatenumberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IPostListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IPostListService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IPrivilegeRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IPrivilegeRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IProfessionalQualificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IProfessionalQualificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IQuitReasonSurfaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IQuitReasonSurfaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IRatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IRatingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IRelevanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IRelevanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IRepairBillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IRepairBillService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IRoleUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IRoleUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IServiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IServiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ISettlementStatusService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ISettlementStatusService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IStaffDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IStaffDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IStoreClassificarionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IStoreClassificarionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ISuppilerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ISuppilerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ISuppilermenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ISuppilermenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/ITeamtechnicianService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/ITeamtechnicianService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IUpkeepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IUpkeepService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IUserCompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IUserCompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IVehicleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IVehicleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IWeixlisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IWeixlisService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IWorkcarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/IWorkcarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/AcademicDegreeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/AcademicDegreeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BankServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BillstypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BillstypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BrandServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BusinessclassServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/BusinessclassServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CaraffiliationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CaraffiliationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CarbrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CarbrandServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CarheetServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CarheetServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CicompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CicompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ClearingFormServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ClearingFormServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ClearingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ClearingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ConstructionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ConstructionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CounselorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CounselorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CustomertypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/CustomertypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DeparmentSurfaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DeparmentSurfaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DocumentStatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DocumentStatusServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DomesticServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DomesticServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DzwPrivilegeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DzwPrivilegeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DzwRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DzwRoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DzwUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DzwUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/EducationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/EducationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/EngineServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/EngineServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/FactoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/FactoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/FieldvehiclesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/FieldvehiclesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/GetMaterialServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/GetMaterialServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/GraduateSchoolServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/GraduateSchoolServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/HistoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/HistoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ImageMerchandiseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ImageMerchandiseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ImageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ImgSuppilerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ImgSuppilerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/IncomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/IncomeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/LinkmanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/LinkmanServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaintenanceItemsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaintenanceItemsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaintenanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaintenanceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaintenancesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaintenancesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaritalStatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MaritalStatusServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MechaniccommissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MechaniccommissionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MechanicstarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MechanicstarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MenuMerchandiseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MenuMerchandiseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MerchandiseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MerchandiseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MlicompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MlicompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MotorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MotorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/NationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/NationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/NativPlaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/NativPlaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/OiltypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/OiltypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/OrganizationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/OrganizationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/OrganizationSurfaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/OrganizationSurfaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PatternServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PatternServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PlatenumberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PlatenumberServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PostListServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PostListServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PrivilegeRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/PrivilegeRoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ProfessionalQualificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ProfessionalQualificationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/QuitReasonSurfaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/QuitReasonSurfaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RatingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RatingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RelevanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RelevanceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RepairBillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RepairBillServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RoleUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/RoleUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ServiceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/ServiceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/SettlementStatusServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/SettlementStatusServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/StaffDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/StaffDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/StoreClassificarionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/StoreClassificarionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/SuppilerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/SuppilerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/SuppilermenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/SuppilermenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/TeamtechnicianServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/TeamtechnicianServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/UpkeepServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/UpkeepServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/UserCompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/UserCompanyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/VehicleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/VehicleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WeixlisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WeixlisServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WorkcarServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/WorkcarServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/accp/DezhaowenApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/accp/DezhaowenApplicationTests.java" afterDir="false" />
-=======
-    <list default="true" id="f0ba0715-4213-44cf-b496-e8e7878c3728" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/BrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarbrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarbrandController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarheetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CarheetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomertypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/CustomertypeController.java" afterDir="false" />
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -407,7 +66,6 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-<<<<<<< HEAD
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -416,6 +74,7 @@
       <recent name="com.accp" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.accp.controller" />
       <recent name="com.accp" />
     </key>
   </component>
@@ -461,8 +120,6 @@
         <item itemvalue="Application.MyGenerator" />
       </list>
     </recent_temporary>
-=======
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -473,8 +130,7 @@
       <created>1612246892461</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
-      <updated>1611213948133</updated>
+      <updated>1612246892461</updated>
       <workItem from="1611214010479" duration="86000" />
       <workItem from="1611914550356" duration="2795000" />
       <workItem from="1611970945982" duration="1288000" />
@@ -482,65 +138,34 @@
       <workItem from="1611974308645" duration="197000" />
       <workItem from="1612403152432" duration="1189000" />
       <workItem from="1612405101099" duration="974000" />
-=======
-      <updated>1612246892461</updated>
       <workItem from="1612246897893" duration="118000" />
       <workItem from="1612333707135" duration="386000" />
       <workItem from="1612334124389" duration="2745000" />
       <workItem from="1612487824821" duration="608000" />
       <workItem from="1612581519219" duration="669000" />
       <workItem from="1612609855939" duration="3610000" />
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-<<<<<<< HEAD
     <state x="249" y="0" key="#Project_Structure" timestamp="1611915189678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1611915189678" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1611973765451">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1611973765451" />
-    <state width="1493" height="234" key="GridCell.Tab.0.bottom" timestamp="1612406086517">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612406086517" />
-    <state width="1493" height="234" key="GridCell.Tab.0.center" timestamp="1612406086517">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612406086517" />
-    <state width="1493" height="234" key="GridCell.Tab.0.left" timestamp="1612406086516">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612406086516" />
-    <state width="1493" height="234" key="GridCell.Tab.0.right" timestamp="1612406086517">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612406086517" />
-    <state width="1493" height="234" key="GridCell.Tab.1.bottom" timestamp="1612406086518">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612406086518" />
-    <state width="1493" height="234" key="GridCell.Tab.1.center" timestamp="1612406086518">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1612406086518" />
-    <state width="1493" height="234" key="GridCell.Tab.1.left" timestamp="1612406086517">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1612406086517" />
-    <state width="1493" height="234" key="GridCell.Tab.1.right" timestamp="1612406086518">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="234" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1612406086518" />
-    <state x="270" y="56" key="SettingsEditor" timestamp="1611214087832">
-=======
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612333718481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -549,6 +174,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1612613468886" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1612664889075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612664889075" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1612664889075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1612664889075" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1612664889074">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1612664889074" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1612664889075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1612664889075" />
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom" timestamp="1612664889075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1612664889075" />
+    <state width="1493" height="210" key="GridCell.Tab.1.center" timestamp="1612664889075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1612664889075" />
+    <state width="1493" height="210" key="GridCell.Tab.1.left" timestamp="1612664889075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1612664889075" />
+    <state width="1493" height="210" key="GridCell.Tab.1.right" timestamp="1612664889075">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1612664889075" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1612613315690">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -558,7 +215,6 @@
     </state>
     <state x="563" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1612613154391" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1612613296939">
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1612613296939" />

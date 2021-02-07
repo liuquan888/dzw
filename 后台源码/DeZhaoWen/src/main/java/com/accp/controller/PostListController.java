@@ -1,9 +1,15 @@
 package com.accp.controller;
 
 
+import com.accp.domain.PostList;
+import com.accp.service.impl.PostListServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,8 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/postList")
 public class PostListController {
 
-<<<<<<< HEAD
-=======
+
+
     @Autowired
     PostListServiceImpl plservice;
 
@@ -46,6 +52,6 @@ public class PostListController {
     public boolean update(PostList post){
         return plservice.updateById(post);
     }
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
+
 }
 

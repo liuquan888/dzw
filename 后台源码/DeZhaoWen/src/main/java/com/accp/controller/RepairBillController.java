@@ -1,9 +1,16 @@
 package com.accp.controller;
 
 
+import com.accp.domain.*;
+import com.accp.service.impl.*;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,8 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/repairBill")
 public class RepairBillController {
 
-<<<<<<< HEAD
-=======
     //维修单据Service
     @Autowired
     RepairBillServiceImpl service;
@@ -108,7 +113,5 @@ public class RepairBillController {
         return list;
     }
 
-
->>>>>>> 1602f9564542f755e444c629a7c1495a983617a3
 }
 

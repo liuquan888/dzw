@@ -23,8 +23,8 @@ public class DzwUserController {
     DzwUserServiceImpl user;
 
     @RequestMapping("/find")
-    public String find(){
-        System.out.println("111");
+    public String find(DzwUser user){
+        System.out.println(user.getUserSex());
         return "";
     }
 }
