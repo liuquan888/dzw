@@ -24,8 +24,20 @@ public class CarbrandController {
     @Autowired
     CarbrandServiceImpl service;
     @RequestMapping("/findAll")
-    public List<Carbrand> findAll(Carbrand cb){
-            return null;
+    public List<Carbrand> findAll(@PathVariable Carbrand cb){
+        QueryWrapper<Carbrand> query=new QueryWrapper<>();
+        if(cb.getBrandname()!=null){
+            query.lambda().like(Carbrand::getBrandname,cb.getBrandname());
+        }
+        if(cb.getCarcoding()!=null){
+            query.lambda().like(Carbrand::getCarcoding,cb.getCarcoding());
+        }
+        if (cb.getInitial()!=null){
+            query.lambda().like(Carbrand::getInitial,cb.getInitial());
+        }
+        List<Carbrand> list=service.list(query);
+        return list;
     }
+
 }
 

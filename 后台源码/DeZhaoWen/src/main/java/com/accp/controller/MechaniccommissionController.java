@@ -36,5 +36,20 @@ public class MechaniccommissionController {
         return service.getById(typeid);
     }
 
+    @RequestMapping("/insert")
+    public boolean insert(Mechaniccommission mechaniccommission){
+        return service.save(mechaniccommission);
+    }
+
+    @RequestMapping("/update")
+    public boolean update(Mechaniccommission mechaniccommission){
+        return service.updateById(mechaniccommission);
+    }
+
+    @RequestMapping("/delete")
+    public boolean delete(@PathVariable("typeid") Integer typeid){
+        return service.removeById(typeid);
+    }
+
 }
 
