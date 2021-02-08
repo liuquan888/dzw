@@ -394,9 +394,64 @@
 							this.xs=true;
 						}
 					},
+find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/find",
+							type:"post",
+							success:function(result){
+								console.log(result);
+								that.list=result;
+							}
+						});
+					},
+					findById(id){
+						this.id=id;
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/findById/"+id,
+							type:"post",
+							success:function(result){
+								that.fieldvehicles=result;
+								console.log(result);
+							}
+						});
+					},
+					remove(id){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/delete/"+that.id,
+							type:"post",
+							success:function(result){
+								that.find();
+							}
+						});
+					},
+					insert(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/insert",
+							data:that.fieldvehicles,
+							type:"post",
+							success:function(result){
+								that.find();
+							}
+						});
+					},
+					update(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/fieldvehicles/update",
+							data:that.fieldvehicles,
+							type:"post",
+							success:function(result){
+								that.find();
+							}
+						});
+					},
 				},
 				created(){
-					
+					this.find();
 				}
 			});
 		</script>
