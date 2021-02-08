@@ -57,6 +57,7 @@ public class EngineController {
     //查询单个
     @GetMapping("/findbyid/{eid}")
     public Engine findbyid(@PathVariable Integer eid){
+        System.out.print("ss");
         return engineService.getById(eid);
     }
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import java.util.List;
@@ -73,7 +74,6 @@ public class RepairBillController {
         if(chepaiNo!=null){
             qw.like("chepaiNo",chepaiNo);
         }
-        System.out.println(jiesuanRen);
         if (jiesuanRen!=null){
             qw.like("jiesuan_ren",jiesuanRen);
         }
@@ -122,8 +122,12 @@ public class RepairBillController {
 
 
     @RequestMapping("/givemoney")
-    public int givemoney(int id,int mooney){
-
+    public int givemoney(String no,Double sum){
+        RepairBill bill=new RepairBill();
+        bill.setNo(no);
+        bill.setDocumentsState(1);
+        bill.setAmount(sum);
+        service.updateById(bill);
         return 1;
     }
 
