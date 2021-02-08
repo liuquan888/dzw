@@ -24,7 +24,7 @@ public class DzwUserController {
 
     @RequestMapping("/find")
     public String find(DzwUser user){
-        System.out.println(user.getUserSex());
+        System.out.println(user.getUserName());
         return "";
     }
 }
