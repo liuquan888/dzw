@@ -33,7 +33,6 @@ public class CustomerController {
         if(customernumber!=null){
             qw.like("customernumber",customernumber);
         }
-        System.out.println(customernumber);
         if(phone!=null){
             qw.like("phone",phone);
         }
