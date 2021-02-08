@@ -52,12 +52,12 @@
 				<div id="a">
 				    <form class="form-inline">
 				    	<label class="text" for="exampleInputEmail2">用户名</label>
-				   		<input type="text" class="form-control" v-model="user.username" id="adminname" placeholder="用户名">
+				   		<input type="text" class="form-control" v-model="user.userLogin" id="adminname" placeholder="用户名">
 				    </form>
 				    <br />
 				    <form class="form-inline">
 				    	<label class="text" for="exampleInputEmail2">密码</label>
-				   		<input type="password" class="form-control" v-model="user.userpwd" id="adminpassword" placeholder="密码">
+				   		<input type="password" class="form-control" v-model="user.userPwd" id="adminpassword" placeholder="密码">
 				    </form>
 				    <br />
 				    <br />
@@ -86,10 +86,16 @@
 				let that = this;
 				$.ajax({
 					url:baseUrl+"dzwUser/find",
-					date:that.user,
+					data:that.user,
 					type:"post",
+					dataType:"json",
 					success:function(result){
-						
+						alert(result)
+						if(result=="登录成功"){
+							alert("登录成功！");
+						}else{
+							alert("登录失败！");
+						}
 					},error:function(){
 						alert("用户名或者密码不正确，请重新登录。");
 					}
