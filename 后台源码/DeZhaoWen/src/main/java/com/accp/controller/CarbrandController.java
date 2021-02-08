@@ -3,7 +3,9 @@ package com.accp.controller;
 
 import com.accp.domain.Carbrand;
 import com.accp.service.impl.CarbrandServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
