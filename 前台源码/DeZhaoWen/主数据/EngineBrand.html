@@ -64,7 +64,7 @@
 				<div>
 					<div style="margin-left: 80%;">
 						<span @click="add"><img src="../img/1.png" width="6%"><a href="javascript:void(0)">增加</a></span>
-						<span><img src="../img/2.png" width="6%"><a href="javascript:void(0)">修改</a> </span>
+						<span><img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> </span>
 						<span><img src="img/113.png" width="6%"><a href="javascript:void(0)">保存</a> </span>
 						<span><img src="../img/6.png" width="6%"><a href="javascript:void(0)">导出</a> </span>
 					</div>
@@ -83,7 +83,7 @@
 						<td style="border: 1px solid #666; color: #FFFFFF;">发动机品牌编码</td>
 						<td style="border: 1px solid #666; color: #FFFFFF;">发动机品牌名称</td>
 					</tr>
-					<tr class="pintr" v-for="item in list" >
+					<tr class="pintr" v-for="item in list" @click="findbyengin(item)">
 						<td>{{item.ecoder}}</td>
 						<td>{{item.ename}}</td>
 					</tr>
@@ -103,18 +103,24 @@
 			return{
 				list:[],
 				engine:{},
+				application1:{},
 			}
 		},
 		methods:{
+			
+			//显示所有
 			find(){
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"engine/findall",
 					success:function(result){
 						that.list=result;
+						console.log(that.list)
 					}
 				})
 			},
+			
+			//添加
 			add(){
 				let that=this;
 				$.ajax({
@@ -125,11 +131,15 @@
 					success:function(result){
 						console.log(result)
 					},error:function(error){
-						alert(error.responseText)
+						if(error.responseText=="新增成功"){
+							alert(error.responseText)
+						}
 						that.find();
 					}
 				})
 			},
+			
+			//删除
 			remove(item){
 				let that=this;
 				$.ajax({
@@ -143,6 +153,27 @@
 					}
 				})
 			},
+			
+			//查询出选择
+			findbyengin(item){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"engine/findbyid/"+item.eid,
+					type:"get",
+					success:function(result){
+						console.log(result);
+					}
+				})
+			},
+				
+				
+				
+				
+				
+				
+				
+				
+			
 			
 		},
 		created() {
