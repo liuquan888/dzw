@@ -63,16 +63,21 @@
 				<hr />
 				<div>
 					<div style="margin-left: 80%;">
-						<span @click="add"><img src="../img/1.png" width="6%"><a href="javascript:void(0)">增加</a></span>
-						<span><img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> </span>
-						<span><img src="img/113.png" width="6%"><a href="javascript:void(0)">保存</a> </span>
+						<span @click="toadd"><img src="../img/1.png" width="6%"><a href="javascript:void(0)">增加</a></span>
+						<span><img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="remove">删除</a> </span>
+						<span><img src="img/113.png" width="6%"><a href="javascript:void(0)" @click="carry">保存</a> </span>
 						<span><img src="../img/6.png" width="6%"><a href="javascript:void(0)">导出</a> </span>
 					</div>
 					<br />
-					<span style="margin-left: 50px;">
+					<span style="margin-left: 50px;" v-if="addtext">
 						分类代码&nbsp;&nbsp;<input type="text" v-model="engine.eCoder" />
 						&nbsp;&nbsp;&nbsp;
 						分类名称&nbsp;&nbsp;<input type="text" v-model="engine.eName"/>
+					</span>
+					<span style="margin-left: 50px;" v-if="updatetext">
+						分类代码&nbsp;&nbsp;<input type="text" v-model="application1.eCoder" />
+						&nbsp;&nbsp;&nbsp;
+						分类名称&nbsp;&nbsp;<input type="text" v-model="application1.eName"/>
 					</span>
 				</div>
 				<br />
@@ -103,7 +108,13 @@
 			return{
 				list:[],
 				engine:{},
-				application1:{},
+				application1:{
+					eId:"",
+					eCoder:"",
+					eName:"",
+				},
+				addtext:true,
+				updatetext:false,
 			}
 		},
 		methods:{
@@ -120,6 +131,12 @@
 				})
 			},
 			
+			toadd(){
+				this.engine={};
+				this.updatetext=false;
+				this.addtext=true;
+			},
+			
 			//添加
 			add(){
 				let that=this;
@@ -134,19 +151,21 @@
 						if(error.responseText=="新增成功"){
 							alert(error.responseText)
 						}
+						that.engine={};
 						that.find();
 					}
 				})
 			},
 			
 			//删除
-			remove(item){
+			remove(){
 				let that=this;
 				$.ajax({
-					url:BaseUrl+"engine/remove/"+item.eid,
+					url:BaseUrl+"engine/remove/"+that.application1.eId,
 					type:"get",
 					success:function(result){
-						console.log(result)
+						that.application1={},
+						that.find()
 					},error:function(error){
 						alert(error.responseText)
 						that.find();
@@ -162,10 +181,43 @@
 					type:"get",
 					success:function(result){
 						console.log(result);
+						that.application1.eId=result.eid;
+						that.application1.eCoder=result.ecoder;
+						that.application1.eName=result.ename;
+						that.addtext=false;
+						that.updatetext=true;
+					}
+				})
+			},
+			
+			//修改
+			update(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"engine/update",
+					data:that.application1,
+					dataType:"json",
+					type:"post",
+					success:function(result){
+						console.log(result)
+					},error:function(error){
+						if(error.responseText=="修改成功"){
+							alert(error.responseText)
+						}
+						that.find();
 					}
 				})
 			},
 				
+			//执行新增修改
+			carry(){
+				if(this.addtext){
+					this.add();
+				};
+				if(this.updatetext){
+					this.update();
+				}
+			},
 				
 				
 				

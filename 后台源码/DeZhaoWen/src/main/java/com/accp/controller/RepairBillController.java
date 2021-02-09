@@ -91,9 +91,11 @@ public class RepairBillController {
         }
 
         List<RepairBill> list = service.list(qw);
+
         for (RepairBill rb:list){
             if(rb.getDocumentsType()!=null){
                 Billstype billstype=btService.getById(rb.getDocumentsType());
+                System.out.println(billstype.getType());
                 rb.setDType(billstype.getType());
             }
 
@@ -111,11 +113,6 @@ public class RepairBillController {
                 DocumentStatus ds=dsService.getById(rb.getBalanceState());
                 rb.setDState(ds.getType());
             }
-
-//            System.out.println(rb.getChepaiNo());
-//            Platenumber p= pService.getById(rb.getChepaiNo());
-//            System.out.println(p.getPlatename());
-//            rb.setCp(p.getPlatename());
         }
         return list;
     }

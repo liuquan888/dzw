@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -31,14 +32,30 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "单据类型表外键id")
     private Integer documentsType;
 
+    @TableField(exist=false)
+    @ApiModelProperty(value = "单据类型")
+    private String dType;
+
     @ApiModelProperty(value = "结算方式表外键id")
     private Integer balanceType;
+
+    @TableField(exist=false)
+    @ApiModelProperty(value = "结算方式")
+    private String bType;
 
     @ApiModelProperty(value = "单据状态表外键id")
     private Integer documentsState;
 
+    @TableField(exist=false)
+    @ApiModelProperty(value = "单据状态")
+    private String dState;
+
     @ApiModelProperty(value = "结算状态表外键id")
     private Integer balanceState;
+
+    @TableField(exist=false)
+    @ApiModelProperty(value = "结算状态")
+    private String bState;
 
     @ApiModelProperty(value = "结算时间")
     private LocalDateTime jiesuanTime;
