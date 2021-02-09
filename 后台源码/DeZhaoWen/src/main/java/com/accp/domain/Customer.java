@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -14,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-01-29
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,6 +26,7 @@ public class Customer extends Model<Customer> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId(value = "customernum")
     @ApiModelProperty(value = "客户编码")
     private String customernum;
 
