@@ -31,7 +31,7 @@ import java.util.*;
  */
 @RestController
 @RequestMapping("/dzwUser")
-public class DzwUserController extends HttpServlet{
+public class DzwUserController{
     @Autowired
     DzwUserServiceImpl duser;
 
@@ -41,10 +41,9 @@ public class DzwUserController extends HttpServlet{
         query.lambda().eq(DzwUser::getUserPwd,user.getUserPwd()).eq(DzwUser::getUserLogin,user.getUserLogin());
         List<DzwUser> li=duser.list(query);
         if(li.size()>0){
-            System.out.println(1);
-            return "登录成功";
+            return "aa";
         }else{
-            return "登陆失败";
+            return "bb";
         }
 
     }
