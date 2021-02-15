@@ -63,7 +63,7 @@ public class RepairBillController {
     //结算中心-查询（条件模糊查询）
     @RequestMapping("/find")
     @ResponseBody
-    public List<RepairBill> find(String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
+    public List<RepairBill> find(Integer documentsType,Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
         QueryWrapper qw=new QueryWrapper<RepairBill>();
         if (date1!=null&&date2!=null){
             qw.between("completionTime",date1,date2);
@@ -71,6 +71,9 @@ public class RepairBillController {
 
         if(no!=null){
             qw.like("no",no);
+        }
+        if(documentsType!=null){
+            qw.eq("documents_type",documentsType);
         }
         if(jsType!=null){
             qw.eq("balanceState",jsType);
@@ -88,10 +91,14 @@ public class RepairBillController {
             qw.eq("yewulx",ywType);
         }
         if(documentsState!=null){
-            qw.eq("documentsState",documentsState);
+            qw.eq("documents_state",documentsState);
         }
         if(remark!=null){
             qw.like("remark",remark);
+        }
+
+        if(balanceState!=null){
+            qw.eq("balance_state",balanceState);
         }
 
         List<RepairBill> list = service.list(qw);
@@ -99,7 +106,6 @@ public class RepairBillController {
         for (RepairBill rb:list){
             if(rb.getDocumentsType()!=null){
                 Billstype billstype=btService.getById(rb.getDocumentsType());
-                System.out.println(billstype.getType());
                 rb.setDType(billstype.getType());
             }
 
@@ -142,5 +148,9 @@ public class RepairBillController {
         return 1;
     }
 
+    @RequestMapping("/find2")
+    public  List<Billstype> find2(){
+        return btService.list();
+    }
 }
 
