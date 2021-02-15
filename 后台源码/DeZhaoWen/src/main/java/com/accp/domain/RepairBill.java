@@ -238,15 +238,5 @@ public class RepairBill extends Model<RepairBill> {
         return this.no;
     }
 
-    public void setDType(String type) {
-    }
 
-    public void setBType(String type) {
-    }
-
-    public void setBState(String type) {
-    }
-
-    public void setDState(String type) {
-    }
 }
