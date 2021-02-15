@@ -36,16 +36,18 @@ public class DzwUserController{
     DzwUserServiceImpl duser;
 
     @RequestMapping("/find")
-    public String find(DzwUser user){
+    public DzwUser find(DzwUser user,HttpSession session){
         QueryWrapper<DzwUser> query=new QueryWrapper<>();
         query.lambda().eq(DzwUser::getUserPwd,user.getUserPwd()).eq(DzwUser::getUserLogin,user.getUserLogin());
         List<DzwUser> li=duser.list(query);
         if(li.size()>0){
-            return "aa";
-        }else{
-            return "bb";
+            for(DzwUser us:li){
+                if(us!=null){
+                    session.setAttribute("user",li);
+                }
+            }
         }
-
+        return li.get(0);
     }
 }
 

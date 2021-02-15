@@ -73,6 +73,7 @@
 <script type="text/javascript" src="js/vue.js" ></script>
 <script>
 	var baseUrl = "http://127.0.0.1:8080/";
+	var user = sessionStorage.getItem("user");
 	new Vue({
 		el:"#center",
 		data(){
@@ -80,7 +81,6 @@
 				user:{},
 			}
 		},
-		
 		methods:{
 			login(){
 				let that = this;
@@ -88,13 +88,14 @@
 					url:baseUrl+"dzwUser/find",
 					data:that.user,
 					type:"post",
-
+					dataType:"json",
 					success:function(result){
-						if(result=="aa"){
-							alert("登录成功！");
+						if(result!=null){
+							sessionStorage.setItem("user",JSON.stringify(result));
 						}else{
-							alert("登录失败！");
+							alert("用户名或者密码不正确，请重新登录。");
 						}
+						console.log(result);
 					},error:function(){
 						alert("用户名或者密码不正确，请重新登录。");
 					}
