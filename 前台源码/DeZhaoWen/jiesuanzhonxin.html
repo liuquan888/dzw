@@ -103,9 +103,9 @@
 					  </div>
 					  <div class="form-group">
 					    <label>结算状态：</label>
-					    <select class="form-control">
-					    	<option>已结算</option>
-					    	<option>未结算</option>
+					    <select class="form-control" v-model="bill.documentsState">
+					    	<option value="1">已结算</option>
+					    	<option value="2">未结算</option>
 					    </select>
 					  </div>
 					  <div class="form-group">
@@ -122,15 +122,12 @@
 					    <input type="text" v-model="bill.jiesuanRen" class="form-control">
 					  </div>
 					  <div class="form-group">
-					    <label>业务类型：</label>
-					    <select class="form-control">
-					    	
-					    </select>
-					  </div>
-					  <div class="form-group">
 					    <label>单据类型：</label>
-					    <select class="form-control">
-					    	
+					    <select class="form-control" v-model="bill.documentsType">
+					    	<option v-for="item in danjuType" :value="item.id">
+					    		{{item.type}}
+					    	</option>
+					    	<option></option>
 					    </select>
 					  </div>
 					  <div class="form-group">
@@ -169,8 +166,9 @@
 						<td>服务顾问</td>
 						<td>完工时间</td>
 						<td>备注</td>
+						<td>操作</td>
 					</tr>
-					<tr v-for="item in list" @click="sel(item)">
+					<tr v-for="item in list">
 						<td><input @click="givemoney(item)" v-if="item.documentsState==2" type="checkbox"></td>
 						<td>{{item.no}}</td>
 						<td>{{item.dtype}}</td>
@@ -192,6 +190,7 @@
 						<td>{{item.coun}}</td>
 						<td>{{item.completionTime}}</td>
 						<td>{{item.remark}}</td>
+						<td @click="sel(item)"><button class="btn btn-primary">查看单据</button></td>
 					</tr>
 				</table>
 			</div>
@@ -211,9 +210,9 @@
 							</tr>
 							<tr class="input1">
 								<form class="form-inline">
-									<td><input disabled class="form-control" v-model="data.amount"></td>
-									<td><input class="form-control"></td>
-									<td><input disabled class="form-control"></td>
+									<td><input disabled class="form-control" v-model="data.yugujine"></td>
+									<td><input class="form-control" v-model="data.shuilu"></td>
+									<td><input disabled class="form-control" v-model="data.jiashuijin"></td>
 									<td><input disabled class="form-control"></td>
 									<td><input class="form-control"></td>
 								</form>
@@ -221,9 +220,8 @@
 						</table>
 						<br />
 						<div style="margin-left: 150px;">
-							<span>应收金额:</span>
-							<span style="color: red;font-style: oblique;">6000000</span>
-
+							<span>共计金额:{{data.sum}}</span>
+							<span style="color: red;font-style: oblique;">{{data.amount}}</span>
 						</div>
 						<div>
 							<form class="form-inline" style="margin-left: 150px;">
@@ -467,6 +465,7 @@
 					</table>
 				</div>
 			</div>
+	
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
@@ -486,15 +485,20 @@
 							
 						},
 						data:{
-							shuilu:1.13,
-							jiashuijin:0,
-							moweisu:0
+							shuilu:"1.13",
+							jiashuijin:"0",
+							moweisu:"0",
+							yugujine:"",
+							sum:""
 						},
 						f:false,
 						ff:{
 							
 						},
-						tab:1
+						tab:1,
+						danjuType:{
+							
+						}
 					}
 				},
 				methods:{
@@ -541,15 +545,24 @@
 							type:"post",
 							data:that.bill,
 							success:function(result){
-								console.log(result);
 								that.list=result;
 							}
 						});
 					},
+					find2(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find2",
+							type:"post",
+							success:function(result){
+								that.danjuType=result;
+							}
+						});
+					},
 					givemoney(item){
-						this.data=item;
-						this.data.jiashuijin=this.data.amount*this.data.shuilu/100;
-						this.data.moweisu=this.data.amount.substring(this.data.amount.length -1);
+						this.data.yugujine=item.yugujine;
+						this.data.jiashuijin=this.data.yugujine*this.data.shuilu/100;
+						this.data.sum=this.data.yugujine+this.data.jiashuijin-this.data.moweisu;
 						console.log(this.data);
 					},
 					sel(item){
@@ -563,6 +576,7 @@
 				},
 				created(){
 					this.find();
+					this.find2();
 				},
 				watch:{
 					
