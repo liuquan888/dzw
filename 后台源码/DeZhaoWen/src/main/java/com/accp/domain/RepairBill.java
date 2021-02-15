@@ -75,6 +75,10 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "车牌号")
     private Integer chepaiNo;
 
+    @TableField(exist=false)
+    @ApiModelProperty(value = "车牌")
+    private String chepai;
+
     @ApiModelProperty(value = "车型")
     private String chexin;
 
@@ -95,6 +99,10 @@ public class RepairBill extends Model<RepairBill> {
 
     @ApiModelProperty(value = "服务顾问，外键顾问表id")
     private Integer counsellor;
+
+    @TableField(exist=false)
+    @ApiModelProperty(value = "服务顾问")
+    private String coun;
 
     @ApiModelProperty(value = "完工时间")
     private LocalDateTime completionTime;
