@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -78,6 +79,11 @@ public class Car extends Model<Car> {
     @ApiModelProperty(value = "预留字段")
     private String reserved5;
 
+    @TableField(exist = false)
+    private Engine engine;
+
+    @TableField(exist = false)
+    private Suppiler suppiler;
 
     public static final String C_ID = "c_id";
 

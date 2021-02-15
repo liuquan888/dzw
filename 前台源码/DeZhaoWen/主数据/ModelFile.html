@@ -117,7 +117,13 @@
 			}
 		
 		
+			.pintr:nth-of-type(2){
+				background: sandybrown;
+			}
 			
+			.pintr2:nth-of-type(2){
+				background: sandybrown;
+			}
 		</style>
 	<body>
 		<div id="ctn">
@@ -137,9 +143,9 @@
 					<div class="row" style="margin-left: 20px;">
 						<div class="col-sm-5" >
 							<div>
-								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addenbrand">增加品牌</a> 
-								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updateenbrand">修改</a> 
-								<img src="../img/3.png" width="3%"><a href="javascript:void(0)">删除</a> 
+								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addbrandmo">增加品牌</a> 
+								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatebrandmo">修改</a> 
+								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="removebrand">删除</a> 
 								
 								<br /><br />
 								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母" style="height: 30px;"/>
@@ -148,10 +154,10 @@
 						</div>
 						<div class="col-sm-5" >
 							<div>
-								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcar">增加车型</a> 
-								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecar">修改</a> 
+								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a> 
+								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a> 
 								<img src="../img/3.png" width="3%"><a href="javascript:void(0)">删除</a> 
-								<img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimage">照片</a> 
+								<img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimagemo">照片</a> 
 								<br /><br />
 								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"/>
 								<span><button class="btn btn-warning btn-sm">搜索</button></span>
@@ -164,37 +170,25 @@
 				
 				<div style="width: 300px;height: 75%;margin-left: 30px; background: #ffffff;">
 					<div id="table" style="background: #ffffff;padding-bottom: 50px;">
-						<table class="table table-bordered table-striped table-hover">
+						<table class="table table-bordered" id="pintable1">
 							<tr style="background: #39cede;">
 								<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 								<td style="border: 1px solid #666; color: #FFFFFF;">编码</td>
 								<td style="border: 1px solid #666; color: #FFFFFF;">品牌名称</td>
 								<td style="border: 1px solid #666; color: #FFFFFF;">首字母</td>
 							</tr>
-							<tr class="pintr">
+							<tr class="pintr" v-for="item,index in list" @click="pinclick(item)">
 								<td class="item"></td>
-								<td>11</td>
-								<td>中国重汽</td>
-								<td>A</td>
-							</tr>
-							<tr class="pintr">
-								<td class="item"></td>
-								<td>22</td>
-								<td>峡汽重卡</td>
-								<td>B</td>
-							</tr>
-							<tr class="pintr">
-								<td class="item"></td>
-								<td>33</td>
-								<td>中国一汽</td>
-								<td>C</td>
+								<td>{{item.bid}}</td>
+								<td>{{item.bname}}</td>
+								<td>{{item.binital}}</td>
 							</tr>
 						</table>
 					</div>
 				</div>
 				<br /><br />
 				<div style="margin-left: 400px;margin-top: -460px; border: 0px solid #000000;background: #ffffff;height: 80%;">
-					<table class="table table-bordered table-striped table-hover">
+					<table class="table table-bordered table-striped" id="cartable">
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">车型ID</td>
@@ -207,42 +201,19 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">载重</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">索赔厂商</td>
 						</tr>
-						<tr class="pintr2">
+						<tr class="pintr2" v-for="item in carlist">
 							<td class="item"></td>
-							<td>111</td>
-							<td>德龙s50</td>
-							<td>动机</td>
-							<td>100000</td>
-							<td>100</td>
-							<td>500</td>
-							<td>60</td>
-							<td>8000kg</td>
-							<td>一号索赔商</td>
+							<td>{{item.ccoder}}</td>
+							<td>{{item.reserved1}}</td>
+							<td>{{item.engine.ename}}</td>
+							<td>{{item.crefeprice}}</td>
+							<td>{{item.cvehicle}}</td>
+							<td>{{item.cpower}}</td>
+							<td>{{item.cfuel}}</td>
+							<td>{{item.cload}}kg</td>
+							<td>{{item.suppiler.pname}}</td>
 						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>111</td>
-							<td>德龙x600</td>
-							<td>动机</td>
-							<td>100000</td>
-							<td>100</td>
-							<td>500</td>
-							<td>60</td>
-							<td>8000kg</td>
-							<td>二号索赔商</td>
-						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>3</td>
-							<td>德龙g5605</td>
-							<td>动机</td>
-							<td>100000</td>
-							<td>100</td>
-							<td>500</td>
-							<td>60</td>
-							<td>8000kg</td>
-							<td>三号索赔商</td>
-						</tr>
+						
 					</table>
 				</div>
 				
@@ -262,22 +233,22 @@
 								<p>
 									<span class="must">*</span>
 									<span class="va">品牌编码</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="brand.bId" />
 								</p><br />
 								<p>
 									<span class="must">*</span>
 									<span class="va">品牌名称</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="brand.bName"/>
 								</p><br />
 								<p>
 									<span class="must">*</span>
 									<span class="va">首字母</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="brand.bInital"/>
 								</p><br />
 							</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary">保存</button>
+				        <button type="button" class="btn btn-primary" @click="addbrand">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -540,52 +511,132 @@
 <script src="../js/vue.js"></script>		
 <script>
 	
+	var BaseUrl="http://127.0.0.1:8080/";
 	
 	new Vue({
 		el:"#ctn",
 		data(){
 			return{
-				
+				list:[],
+				carlist:[],
+				brand:{},
+				brandapplocation:{},
 			}
 		},
 		methods:{
-			addenbrand(){
+			//查出所有品牌
+			findallpin(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/findall",
+					success:function(result){
+						that.list=result;
+					}
+				})
+			},
+			
+			//查询出品牌下所有的车型
+			findbyidcar(bid){
+				let that=this;
+				if(bid==null){
+					bid=1
+				}
+				$.ajax({
+					url:BaseUrl+"brand/findbyidcar/"+bid,
+					type:"get",
+					success:function(result){
+						that.carlist=result;
+					}
+				})
+			},
+			
+			//点击品牌刷新车型
+			pinclick(item){
+				this.findbyidcar(item.bid);
+				this.brandapplocation=item;
+			},
+			
+			//添加品牌模态框
+			addbrandmo(){
 				$("#addenbrandmodal").modal("show");
 			},
-			updateenbrand(){
+			//添加品牌
+			addbrand(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/addbrand",
+					type:"post",
+					data:that.brand,
+					dataType:"json",
+					success:function(result){
+						
+					},
+					error:function(error){
+						if(error.responseText=="编号不能重复"){
+							alert(error.responseText)
+						}
+						$("#addenbrandmodal").modal("hide");
+						that.brand={};
+						that.findallpin();
+					}
+				})
+			},
+			
+			//删除品牌
+			removebrand(){
+				var hint=confirm("确认删除此品牌吗？删除此品牌会将该品牌下所有车系删除！")
+				if(hint){
+					let that=this;
+					$.ajax({
+						url:BaseUrl+"brand/removebrand/"+that.brandapplocation.bid,
+						success:function(result){
+							alert(result)
+						}
+					})
+				}
+			},
+			
+			updatebrandmo(){
 				$("#updateenbrandmodal").modal("show");
 			},
-			addcar(){
+			addcarmo(){
 				$("#addcarmodal").modal("show");
 			},
-			updatecar(){
+			updatecarmo(){
 				$("#updatecarmodal").modal("show");
 			},
-			carimage(){
+			carimagemo(){
 				$("#carimagemodal").modal("show");
 			},
 			
 			
 		},
 		created(){
-			
+			this.findallpin();
+			this.findbyidcar(1);
 		}
 	});
-	$(".pintr").click(function(){
+	
+	
+// 	var a=function(){
+// 		var cartable2=document.getElementById("cartable").rows[1];
+// 		cartable2.style.cssText = "background:sandybrown";
+// 	}
+	
+	$(document).on('click','.pintr',function(){
 		$(".pintr").css("background","#ffffff")
 		$(this).css("background","sandybrown")
-	});
-	$(".pintr2").click(function(){
+		$(".pintr2").css("background","#ffffff")
+		$(".pintr2").eq(0).css("background","sandybrown");
+		
+	})
+	$(document).on('click','.pintr2',function(){
 		$(".pintr2").css("background","#ffffff")
 		$(this).css("background","sandybrown")
-	});
-	
-	
-	$("#div7").mouseover(function(){
-		$(this).css("background","#e7e7e7")
-	}).mouseout(function(){
-		$(this).css("background","")
 	})
+	
+	
+	
 </script>
 	</body>
 </html>
