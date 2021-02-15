@@ -56,7 +56,11 @@ public class RepairBillController {
     @Autowired
     PlatenumberServiceImpl pService;
 
-    //查询适用于条件查询
+    //服务顾问Service
+    @Autowired
+    CounselorServiceImpl counService;
+
+    //结算中心-查询（条件模糊查询）
     @RequestMapping("/find")
     @ResponseBody
     public List<RepairBill> find(String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
@@ -112,6 +116,16 @@ public class RepairBillController {
             if(rb.getBalanceState()!=null){
                 DocumentStatus ds=dsService.getById(rb.getBalanceState());
                 rb.setDState(ds.getType());
+            }
+
+            if(rb.getChepaiNo()!=null){
+                Platenumber p=pService.getById(rb.getChepaiNo());
+                rb.setChepai(p.getPlatename());
+            }
+
+            if(rb.getCounsellor()!=null){
+                Counselor c= counService.getById(rb.getCounsellor());
+                rb.setCoun(c.getCounselorname());
             }
         }
         return list;
