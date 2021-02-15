@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -24,6 +25,7 @@ public class Platenumber extends Model<Platenumber> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId(value = "plateid")
     @ApiModelProperty(value = "车牌id")
     private Integer plateid;
 
