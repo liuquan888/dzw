@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -26,6 +27,7 @@ public class RepairBill extends Model<RepairBill> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId(value = "no")
     @ApiModelProperty(value = "销售单号")
     private String no;
 
