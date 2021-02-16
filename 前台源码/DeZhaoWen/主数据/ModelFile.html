@@ -148,15 +148,15 @@
 								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="removebrand">删除</a> 
 								
 								<br /><br />
-								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母" style="height: 30px;"/>
-								<span><button class="btn btn-warning btn-sm">搜索</button></span>
+								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母" style="height: 30px;" v-model="branddimtext"/>
+								<span><button class="btn btn-warning btn-sm" id="branddimbutton" @click="branddim" >搜索</button></span>
 							</div>
 						</div>
 						<div class="col-sm-5" >
 							<div>
 								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a> 
 								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a> 
-								<img src="../img/3.png" width="3%"><a href="javascript:void(0)">删除</a> 
+								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="jud">删除</a> 
 								<img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimagemo">照片</a> 
 								<br /><br />
 								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"/>
@@ -270,22 +270,22 @@
 								<p>
 									<span class="must">*</span>
 									<span class="va">品牌编码</span>
-									<input type="text" name="" id="" value="11" />
+									<input type="text" name="" id="" v-model="brand.bId"  readonly="readonly"/>
 								</p><br />
 								<p>
 									<span class="must">*</span>
 									<span class="va">品牌名称</span>
-									<input type="text" name="" id="" value="中国重汽" />
+									<input type="text" name="" id="" v-model="brand.bName" />
 								</p><br />
 								<p>
 									<span class="must">*</span>
 									<span class="va">首字母</span>
-									<input type="text" name="" id="" value="A" />
+									<input type="text" name="" id="" v-model="brand.bInital" />
 								</p><br />
 							</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary">保存</button>
+				        <button type="button" class="btn btn-primary" @click="updatebrand">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -517,10 +517,16 @@
 		el:"#ctn",
 		data(){
 			return{
+				//品牌数据
 				list:[],
+				//车型数据
 				carlist:[],
+				//品牌对象
 				brand:{},
+				//品牌初始化数据
 				brandapplocation:{},
+				//品牌模糊查询条件
+				branddimtext:null,
 			}
 		},
 		methods:{
@@ -531,6 +537,7 @@
 					url:BaseUrl+"brand/findall",
 					success:function(result){
 						that.list=result;
+						that.jud();
 					}
 				})
 			},
@@ -556,8 +563,18 @@
 				this.brandapplocation=item;
 			},
 			
+			//初始化未选择任何品牌,赋默认下标第一位的为选中
+			jud(){
+				if(this.brandapplocation.bid==null){
+					this.brandapplocation=this.list[0];
+				}
+			},
+			
+			
+			
 			//添加品牌模态框
 			addbrandmo(){
+				this.brand={},
 				$("#addenbrandmodal").modal("show");
 			},
 			//添加品牌
@@ -590,15 +607,60 @@
 					$.ajax({
 						url:BaseUrl+"brand/removebrand/"+that.brandapplocation.bid,
 						success:function(result){
-							alert(result)
+							window.location.reload();
 						}
 					})
 				}
 			},
 			
+			//打开修改模态框
 			updatebrandmo(){
+				//解除双向绑定
+				let formdata= JSON.parse(JSON.stringify(this.brandapplocation))
+				this.brand={};
+				this.brand.bId=formdata.bid;
+				this.brand.bName=formdata.bname;
+				this.brand.bInital=formdata.binital;
 				$("#updateenbrandmodal").modal("show");
 			},
+			
+			//执行修改
+			updatebrand(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/updatebrand",
+					data:that.brand,
+					type:"post",
+					dataType:"json",
+					success:function(result){
+						console.log(result)
+						$("#updateenbrandmodal").modal("hide");
+						that.brandapplocation.bname=that.brand.bName;
+						that.brandapplocation.binital=that.brand.bInital;
+						that.findallpin();
+					},error:function(errpr){
+						console.log(errpr)
+					}
+				})
+			},
+			
+			//进行品牌模糊查询
+			branddim(){
+				if(this.branddimtext==null){
+					this.branddimtext='56d56f6e56d65e85ads8562ar52da96q57';
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/branddim/"+that.branddimtext,
+					success:function(result){
+						that.list=result;
+						that.branddimtext=null;
+					},error:function(error){
+						console.log(error)
+					}
+				})
+			},	
+			
 			addcarmo(){
 				$("#addcarmodal").modal("show");
 			},
@@ -614,6 +676,7 @@
 		created(){
 			this.findallpin();
 			this.findbyidcar(1);
+			
 		}
 	});
 	
@@ -635,6 +698,11 @@
 		$(this).css("background","sandybrown")
 	})
 	
+	$(document).on('click','#branddimbutton',function(){
+		$(".pintr").css("background","#ffffff")
+		$(".pintr").eq(0).css("background","sandybrown");
+		
+	})
 	
 	
 </script>
