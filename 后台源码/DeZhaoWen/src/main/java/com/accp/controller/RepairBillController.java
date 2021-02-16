@@ -60,13 +60,24 @@ public class RepairBillController {
     @Autowired
     CounselorServiceImpl counService;
 
+    @Autowired
+    MaintenanceItemsServiceImpl miService;
+
+    @Autowired
+    GetMaterialServiceImpl gmService;
     //结算中心-查询（条件模糊查询）
+
+    @Autowired
+    ClearingServiceImpl cleService;
+
     @RequestMapping("/find")
     @ResponseBody
     public List<RepairBill> find(Integer documentsType,Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
         QueryWrapper qw=new QueryWrapper<RepairBill>();
+        System.out.println(date1);
+        System.out.println(date2);
         if (date1!=null&&date2!=null){
-            qw.between("completionTime",date1,date2);
+            qw.between("completion_time",date1,date2);
         }
 
         if(no!=null){
@@ -151,6 +162,21 @@ public class RepairBillController {
     @RequestMapping("/find2")
     public  List<Billstype> find2(){
         return btService.list();
+    }
+
+    @RequestMapping("/find3")
+    public  List<MaintenanceItems> find3(){
+        return miService.list();
+    }
+
+    @RequestMapping("/find4")
+    public  List<GetMaterial> find4(){
+        return gmService.list();
+    }
+
+    @RequestMapping("/find5")
+    public  List<Clearing> find5(){
+        return cleService.list();
     }
 }
 
