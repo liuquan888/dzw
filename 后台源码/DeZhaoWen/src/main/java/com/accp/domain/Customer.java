@@ -1,9 +1,10 @@
 package com.accp.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -16,7 +17,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author quanl
- * @since 2021-01-29
+ * @since 2021-02-04
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,7 +27,6 @@ public class Customer extends Model<Customer> {
 
     private static final long serialVersionUID=1L;
 
-    @TableId(value = "customernum")
     @ApiModelProperty(value = "客户编码")
     private String customernum;
 
@@ -48,14 +48,34 @@ public class Customer extends Model<Customer> {
     @ApiModelProperty(value = "客户类别id")
     private Integer customertypeid;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "客户类别")
+    private String leibie;
+
     @ApiModelProperty(value = "会员卡号")
     private String customernumber;
 
     @ApiModelProperty(value = "入会日期")
     private String jointime;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "入会1")
+    private String rh1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "入会2")
+    private String rh2;
+
     @ApiModelProperty(value = "会员到期")
     private String outtime;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "到期1")
+    private String dq1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "到期2")
+    private String dq2;
 
     @ApiModelProperty(value = "备注")
     private String remark;
@@ -66,6 +86,10 @@ public class Customer extends Model<Customer> {
     @ApiModelProperty(value = "服务顾问id")
     private Integer counselorid;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "服务顾问")
+    private String fw;
+
     @ApiModelProperty(value = "账期")
     private Integer paytime;
 
@@ -75,8 +99,24 @@ public class Customer extends Model<Customer> {
     @ApiModelProperty(value = "累计积分")
     private Integer integral;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "积分1")
+    private Integer jf1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "积分2")
+    private Integer jf2;
+
     @ApiModelProperty(value = "定金金额")
     private Float earnest;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "金额1")
+    private Float je1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "金额2")
+    private Float je2;
 
     @ApiModelProperty(value = "纳税人识别号")
     private String paytest;
@@ -110,6 +150,22 @@ public class Customer extends Model<Customer> {
 
     @ApiModelProperty(value = "会员卡余额")
     private Float vipprice;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "余额1")
+    private Float ye1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "余额2")
+    private Float ye2;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "车辆资料")
+    private List<Carheet> list;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "单个车辆资料")
+    private Carheet car;
 
     @ApiModelProperty(value = "预留字段")
     private String reserved1;

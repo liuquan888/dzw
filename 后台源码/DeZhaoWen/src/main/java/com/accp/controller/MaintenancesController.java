@@ -1,9 +1,15 @@
 package com.accp.controller;
 
 
+import com.accp.domain.Maintenances;
+import com.accp.service.impl.MaintenancesServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,6 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/maintenances")
 public class MaintenancesController {
+    @Autowired
+    MaintenancesServiceImpl service;
+    @RequestMapping("/find")
+    public List<Maintenances> find(String chepai){
+        QueryWrapper<Maintenances> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("chepai",chepai);
+        List<Maintenances> list=service.list(queryWrapper);
+        return list;
+    }
+
 
 }
 

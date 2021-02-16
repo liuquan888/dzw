@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -33,6 +34,10 @@ public class Carheet extends Model<Carheet> {
     @ApiModelProperty(value = "车辆品牌id")
     private String carbrandid;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "车辆品牌")
+    private String pp;
+
     @ApiModelProperty(value = "驾驶员")
     private String driver;
 
@@ -44,6 +49,10 @@ public class Carheet extends Model<Carheet> {
 
     @ApiModelProperty(value = "车辆归属id")
     private Integer caraffiliationid;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "车辆归属")
+    private String gs;
 
     @ApiModelProperty(value = "驾驶员地址")
     private String driveraddress;
@@ -60,6 +69,10 @@ public class Carheet extends Model<Carheet> {
     @ApiModelProperty(value = "发动机id")
     private Integer engineid;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "发动机")
+    private String fdj;
+
     @ApiModelProperty(value = "车辆年款")
     private String carnyear;
 
@@ -75,8 +88,24 @@ public class Carheet extends Model<Carheet> {
     @ApiModelProperty(value = "购买日期")
     private String buytime;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "购买1")
+    private String gm1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "购买2")
+    private String gm2;
+
     @ApiModelProperty(value = "上牌日期")
     private String uptime;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "上牌1")
+    private String sp1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "上牌2")
+    private String sp2;
 
     @ApiModelProperty(value = "车险到期")
     private String carouttime;
@@ -87,11 +116,27 @@ public class Carheet extends Model<Carheet> {
     @ApiModelProperty(value = "交强险到期")
     private String mliouttime;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "交强1")
+    private String jq1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "交强2")
+    private String jq2;
+
     @ApiModelProperty(value = "商业险保险公司id")
     private Integer cicompanyid;
 
     @ApiModelProperty(value = "商业险到期")
     private String ciouttime;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "商业1")
+    private String sy1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "商业2")
+    private String sy2;
 
     @ApiModelProperty(value = "在我投保车")
     private String mytoucar;
@@ -113,6 +158,10 @@ public class Carheet extends Model<Carheet> {
 
     @ApiModelProperty(value = "客户编码")
     private String customernum;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "客户")
+    private Customer kh;
 
     @ApiModelProperty(value = "预留字段")
     private String reserved1;
@@ -206,3 +255,4 @@ public class Carheet extends Model<Carheet> {
     }
 
 }
+
