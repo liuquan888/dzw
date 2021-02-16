@@ -166,9 +166,16 @@ public class CustomerController {
     public Customer findById(@PathVariable String id){
         return Service.getById(id);
     }
+
+
+
+     //马威书写（以下）
     @RequestMapping("/find")
-    public List<Customer> find(String customernumber,String phone,String customername,String bankaccount,String remark){
+    public List<Customer> find(String data1,String  data2,String customernumber,String phone,String customername,String bankaccount,String remark){
         QueryWrapper qw=new QueryWrapper<Customer>();
+        if(data1!=null && data2!=null){
+            qw.between("jointime",data1,data2);
+        }
         if(customernumber!=null){
             qw.like("customernumber",customernumber);
         }
