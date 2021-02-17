@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 	</head>
 	<body>
-		<div>
+		<div id="ctn">
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td>维修单号</td>
@@ -15,14 +15,45 @@
 					<td>配件名称</td>
 					<td>出库数量</td>
 				</tr>
-				<tr>
-					<td>s001</td>
-					<td>2020-12-03</td>
-					<td>13</td>
-					<td>后盖</td>
-					<td>1</td>
+				<tr v-for="item in list">
+					<td>{{item.id}}</td>
+					<td>{{item.lingliaodate}}</td>
+					<td>{{item.wuliao}}</td>
+					<td>{{item.wuliaoname}}</td>
+					<td>{{item.shuliao}}</td>
 				</tr>
 			</table>
 		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						list:{}
+					}
+				},
+				methods:{
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find4",
+							type:"post",
+							success:function(result){
+								that.list=result;
+							}
+						});
+					}
+				},
+				created(){
+					this.find();
+				}
+			});
+		</script>
+		</script>
+		</script>
+		</script>
 	</body>
 </html>

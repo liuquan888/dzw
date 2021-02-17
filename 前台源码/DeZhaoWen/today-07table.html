@@ -6,25 +6,54 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 	</head>
 	<body>
-		<div>
+		<div id="ctn">
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td>车牌号</td>
 					<td>上牌日期</td>
 					<td>二维日期</td>
-					<td>车主</td>
 					<td>驾驶员</td>
 					<td>驾驶员电话</td>
 				</tr>
-				<tr>
-					<td>京0000</td>
-					<td>2015-01-8</td>
-					<td>2015-06-03</td>
-					<td>黄土</td>
-					<td>黄土</td>
-					<td>16423569874</td>
+				<tr v-for="item in list">
+					<td>{{item.platename}}</td>
+					<td>{{item.uptime}}</td>
+					<td>{{item.twotime}}</td>
+					<td>{{item.driver}}</td>
+					<td>{{item.driverphone}}</td>
 				</tr>
 			</table>
 		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						list:{}
+					}
+				},
+				methods:{
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/findCar",
+							type:"post",
+							success:function(result){
+								that.list=result;
+							}
+						});
+					}
+				},
+				created(){
+					this.find();
+				}
+			});
+		</script>
+		</script>
+		</script>
+		</script>
 	</body>
 </html>
