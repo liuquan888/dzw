@@ -464,6 +464,8 @@ CREATE TABLE `dzw_user` (
 
 /*Data for the table `dzw_user` */
 
+insert  into `dzw_user`(`user_id`,`user_name`,`user_login`,`user_pwd`,`user_realname`,`user_sex`,`user_phone`,`user_eamil`,`user_address`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'德召文','admin','0','王泽旭','11','12311112222','123@qq.com','湖南省','0000','2021-02-04','2021-02-04',NULL,NULL,NULL,NULL,NULL);
+
 /*Table structure for table `education` */
 
 DROP TABLE IF EXISTS `education`;
