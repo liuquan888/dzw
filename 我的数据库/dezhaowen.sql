@@ -1387,10 +1387,10 @@ CREATE TABLE `teamtechnician` (
   `reserved4` varchar(50) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT '预留字段',
   `reserved5` varchar(50) COLLATE utf8_general_mysql500_ci DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`id`),
-  KEY `teamid` (`teamid`),
   KEY `bankid` (`bankid`),
   KEY `code` (`code`),
-  CONSTRAINT `teamtechnician_ibfk_1` FOREIGN KEY (`teamid`) REFERENCES `menu_merchandise` (`menu_id`),
+  KEY `teamtechnician_ibfk_1` (`teamid`),
+  CONSTRAINT `teamtechnician_ibfk_1` FOREIGN KEY (`teamid`) REFERENCES `menu` (`id`),
   CONSTRAINT `teamtechnician_ibfk_2` FOREIGN KEY (`bankid`) REFERENCES `bank` (`bankid`),
   CONSTRAINT `teamtechnician_ibfk_3` FOREIGN KEY (`code`) REFERENCES `mechanicstar` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
