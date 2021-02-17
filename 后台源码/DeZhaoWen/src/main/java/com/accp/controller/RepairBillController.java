@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -69,6 +70,9 @@ public class RepairBillController {
 
     @Autowired
     ClearingServiceImpl cleService;
+
+    @Autowired
+    CarheetServiceImpl CarService;
 
     @RequestMapping("/find")
     @ResponseBody
@@ -177,6 +181,22 @@ public class RepairBillController {
     @RequestMapping("/find5")
     public  List<Clearing> find5(){
         return cleService.list();
+    }
+
+    @RequestMapping("/findDay")
+    public  List<GetMaterial> findday(){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+
+        QueryWrapper qw=new QueryWrapper<GetMaterial>();
+
+        qw.eq("lingliaodate",df.format(new Date()));
+
+        return gmService.list(qw);
+    }
+
+    @RequestMapping("findCar")
+    public  List<Carheet> findcar(){
+        return CarService.list();
     }
 }
 
