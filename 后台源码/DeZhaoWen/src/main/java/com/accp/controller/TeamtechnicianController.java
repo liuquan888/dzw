@@ -1,9 +1,15 @@
 package com.accp.controller;
 
 
+import com.accp.domain.Teamtechnician;
+import com.accp.service.impl.TeamtechnicianServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,6 +22,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/teamtechnician")
 public class TeamtechnicianController {
+    @Autowired
+    TeamtechnicianServiceImpl service;
+
+    @RequestMapping("/findAll")
+    public List<Teamtechnician> findAll(){
+        return service.list();
+    }
+
+    @RequestMapping("/findById")
+    public Teamtechnician findById(@PathVariable("id") Integer id){
+        return service.getById(id);
+    }
 
 }
 

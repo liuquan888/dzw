@@ -166,24 +166,24 @@
 								<td>维修工种</td>
 								<td>维修品牌</td>
 							</tr>
-							<tr>
+							<tr v-for="item in teamtechnician">
+								<td>{{item.teamid}}</td>
 								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{item.technicianid}}</td>
+								<td>{{item.technicianidname}}</td>
+								<td>{{item.sex}}</td>
+								<td>{{item.phone}}</td>
+								<td>{{item.address}}</td>
+								<td>{{item.birthday}}</td>
+								<td>{{item.headman}}</td>
+								<td>{{item.loginname}}</td>
+								<td>{{item.idnumber}}</td>
+								<td>{{item.residenceaddress}}</td>
+								<td>{{item.bankid}}</td>
+								<td>{{item.bankaccount}}</td>
+								<td>{{item.code}}</td>
+								<td>{{item.type}}</td>
+								<td>{{item.maintenancetype}}</td>
 							</tr>
 						</table>
 					</div>
@@ -383,7 +383,8 @@
 				el:".container-fluid",
 				data(){
 					return{
-						xs:true
+						xs:true,
+						teamtechnician:{}
 					}
 				},
 				methods:{
@@ -394,64 +395,19 @@
 							this.xs=true;
 						}
 					},
-find(){
+					findAll(){
 						let that=this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/fieldvehicles/find",
+							url:"http://127.0.0.1:8080/teamtechnician/findAll",
 							type:"post",
 							success:function(result){
-								console.log(result);
-								that.list=result;
+								that.teamtechnician=result;
 							}
 						});
-					},
-					findById(id){
-						this.id=id;
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/fieldvehicles/findById/"+id,
-							type:"post",
-							success:function(result){
-								that.fieldvehicles=result;
-								console.log(result);
-							}
-						});
-					},
-					remove(id){
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/fieldvehicles/delete/"+that.id,
-							type:"post",
-							success:function(result){
-								that.find();
-							}
-						});
-					},
-					insert(){
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/fieldvehicles/insert",
-							data:that.fieldvehicles,
-							type:"post",
-							success:function(result){
-								that.find();
-							}
-						});
-					},
-					update(){
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/fieldvehicles/update",
-							data:that.fieldvehicles,
-							type:"post",
-							success:function(result){
-								that.find();
-							}
-						});
-					},
+					}
 				},
 				created(){
-					this.find();
+					this.findAll();
 				}
 			});
 		</script>

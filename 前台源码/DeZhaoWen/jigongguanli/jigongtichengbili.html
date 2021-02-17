@@ -71,32 +71,32 @@
 				<form class="form-inline frm">
 					<div class="form-group">
 						<label class="lbl">分类编码</label>
-						<input class="form-control" id="ipt1"/>
+						<input class="form-control" id="ipt1" v-model="mechaniccommission.typeid"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">分类名称</label>
-						<input class="form-control" id="ipt2"/>
+						<input class="form-control" id="ipt2" v-model="mechaniccommission.typename"/>
 					</div><br /><br />
 					<div class="form-group">
 						<label class="lbl">站内白天</label>
-						<input class="form-control" id="ipt1"/>
+						<input class="form-control" id="ipt1" v-model="mechaniccommission.dayinthestation"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">站内晚上</label>
-						<input class="form-control" id="ipt2"/>
+						<input class="form-control" id="ipt2" v-model="mechaniccommission.nightinthestation"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">站外白天</label>
-						<input class="form-control" id="ipt3"/>
+						<input class="form-control" id="ipt3" v-model="mechaniccommission.dayoutthestation"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">站外晚上</label>
-						<input class="form-control" id="ipt4"/>
+						<input class="form-control" id="ipt4" v-model="mechaniccommission.nightoutthestation"/>
 					</div>
 					<div class="form-group" id="div1">
-						<button class="btn btn-default">增加</button>
-						<button class="btn btn-default">删除</button>
-						<button class="btn btn-default">保存</button>
+						<button class="btn btn-default" @click="insert">增加</button>
+						<button class="btn btn-default" @click="remove">删除</button>
+						<button class="btn btn-default" @click="update">保存</button>
 					</div>
 				</form>
 				
@@ -111,13 +111,13 @@
 						<td>站外白天</td>
 						<td>站外晚上</td>
 					</tr>
-					<tr>
-						<td>10</td>
-						<td>工时费</td>
-						<td>0.5</td>
-						<td>0.6</td>
-						<td>0.6</td>
-						<td>0.7</td>
+					<tr v-for="item in list" @click="findById(item.typeid)">
+						<td>{{item.typeid}}</td>
+						<td>{{item.typename}}</td>
+						<td>{{item.dayinthestation}}</td>
+						<td>{{item.nightinthestation}}</td>
+						<td>{{item.dayoutthestation}}</td>
+						<td>{{item.nightoutthestation}}</td>
 					</tr>
 				</table>
 			</div>
@@ -134,15 +134,15 @@
 				data(){
 					return{
 						list:{},
-						code:"",
-						mechanicstar:{}
+						typeid:"",
+						mechaniccommission:{}
 					}
 				},
 				methods:{
 					find(){
 						let that=this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/mechanicstar/find",
+							url:"http://127.0.0.1:8080/mechaniccommission/find",
 							type:"post",
 							success:function(result){
 								that.list=result;
@@ -150,35 +150,33 @@
 						});
 					},
 					findById(id){
-						this.code=id;
+						this.typeid=id;
 						let that=this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/mechanicstar/findById/"+that.code,
+							url:"http://127.0.0.1:8080/mechaniccommission/findById/"+that.typeid,
 							type:"post",
 							success:function(result){
 								console.log(result);
-								that.mechanicstar=result;
+								that.mechaniccommission=result;
 							}
 						});
 					},
 					remove(){
 						let that=this;
-						alert(this.code);
+						alert(this.typeid);
 						$.ajax({
-							url:"http://127.0.0.1:8080/mechanicstar/delete/"+that.code,
+							url:"http://127.0.0.1:8080/mechaniccommission/delete/"+that.typeid,
 							type:"post",
 							success:function(result){
-								if(result==true){
-									alert("删除成功");
-								}
+								alert("删除成功");
 							}
 						});
 					},
 					insert(){
 						let that=this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/mechanicstar/insert",
-							data:that.mechanicstar,
+							url:"http://127.0.0.1:8080/mechaniccommission/insert",
+							data:that.mechaniccommission,
 							type:"post",
 							success:function(result){
 								console.log(result);
@@ -189,8 +187,8 @@
 					update(){
 						let that=this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/mechanicstar/update",
-							data:that.mechanicstar,
+							url:"http://127.0.0.1:8080/mechaniccommission/update",
+							data:that.mechaniccommission,
 							type:"post",
 							success:function(result){
 								console.log(result);

@@ -46,7 +46,7 @@ public class MechaniccommissionController {
         return service.updateById(mechaniccommission);
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping("/delete/{typeid}")
     public boolean delete(@PathVariable("typeid") Integer typeid){
         return service.removeById(typeid);
     }
