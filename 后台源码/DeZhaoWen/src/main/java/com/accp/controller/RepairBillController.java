@@ -194,7 +194,7 @@ public class RepairBillController {
         return gmService.list(qw);
     }
 
-    @RequestMapping("findCar")
+    @RequestMapping("/findCar")
     public  List<Carheet> findcar(){
         return CarService.list();
     }
