@@ -156,11 +156,11 @@
 							<div>
 								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a> 
 								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a> 
-								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="jud">删除</a> 
+								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="carremove">删除</a> 
 								<img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimagemo">照片</a> 
 								<br /><br />
-								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"/>
-								<span><button class="btn btn-warning btn-sm">搜索</button></span>
+								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"  v-model="cardimtext"/>
+								<span><button class="btn btn-warning btn-sm" id="cardimbutton" @click="cardim">搜索</button></span>
 							</div>
 						</div>
 					</div>
@@ -201,7 +201,7 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">载重</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">索赔厂商</td>
 						</tr>
-						<tr class="pintr2" v-for="item in carlist">
+						<tr class="pintr2" v-for="item in carlist" @click="carclick(item)">
 							<td class="item"></td>
 							<td>{{item.ccoder}}</td>
 							<td>{{item.reserved1}}</td>
@@ -365,7 +365,7 @@
 									<span class="btn btn-success fileinput-button" id="div7">
 										<span class="span1">照</span>
 										<span class="span2">片</span>
-										<input type="file">
+										<input type="file"  multiple name="file">
 									</span>
 								</div>
 								
@@ -379,6 +379,7 @@
 				    </div>
 				  </div>
 				</div>
+				
 				
 				
 				
@@ -523,10 +524,16 @@
 				carlist:[],
 				//品牌对象
 				brand:{},
+				//车型对象
+				car:{},
 				//品牌初始化数据
 				brandapplocation:{},
+				//车型初始化数据
+				carapplocation:{},
 				//品牌模糊查询条件
 				branddimtext:null,
+				//车型模糊查询条件
+				cardimtext:null,
 			}
 		},
 		methods:{
@@ -553,6 +560,7 @@
 					type:"get",
 					success:function(result){
 						that.carlist=result;
+						that.carjud();
 					}
 				})
 			},
@@ -563,11 +571,21 @@
 				this.brandapplocation=item;
 			},
 			
+			//点击品牌刷新车型
+			carclick(item){
+				this.carapplocation=item;
+			},
+			
 			//初始化未选择任何品牌,赋默认下标第一位的为选中
 			jud(){
 				if(this.brandapplocation.bid==null){
 					this.brandapplocation=this.list[0];
 				}
+			},
+			
+			//初始化未选择任何车型,赋默认下标第一位的为选中
+			carjud(){
+				this.carapplocation=this.carlist[0];
 			},
 			
 			
@@ -661,10 +679,51 @@
 				})
 			},	
 			
+			//车型进行模糊查询
+			cardim(){
+				if(this.cardimtext==null){
+					this.cardimtext='975e65r45a4454a4d52s8a452d57';
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/cardim/"+that.cardimtext+"/"+that.brandapplocation.bid,
+					success:function(result){
+						that.carlist=result;
+						that.cardimtext=null;
+					},error:function(error){
+						console.log(error)
+					}
+				})
+			},
+			
+			//删除车型
+			carremove(){
+				var hint=confirm("确认删除此车型吗？删除后不可恢复！")
+				if(hint){
+					let that=this;
+					$.ajax({
+						url:BaseUrl+"brand/removecar/"+that.carapplocation.cid,
+						success:function(result){
+							if(result=='000000'){
+								window.location.reload();
+							}
+						}
+					})
+				}
+			},
+			
+			
 			addcarmo(){
 				$("#addcarmodal").modal("show");
 			},
 			updatecarmo(){
+				//解除双向绑定
+				//let formdata= JSON.parse(JSON.stringify(this.carapplocation))
+				console.log(this.carapplocation)
+// 				this.brand={};
+// 				this.brand.bId=formdata.bid;
+// 				this.brand.bName=formdata.bname;
+// 				this.brand.bInital=formdata.binital;
 				$("#updatecarmodal").modal("show");
 			},
 			carimagemo(){
@@ -701,6 +760,12 @@
 	$(document).on('click','#branddimbutton',function(){
 		$(".pintr").css("background","#ffffff")
 		$(".pintr").eq(0).css("background","sandybrown");
+		
+	})
+	
+	$(document).on('click','#cardimbutton',function(){
+		$(".pintr2").css("background","#ffffff")
+		$(".pintr2").eq(0).css("background","sandybrown");
 		
 	})
 	

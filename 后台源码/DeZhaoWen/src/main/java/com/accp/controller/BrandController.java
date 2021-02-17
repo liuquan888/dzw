@@ -65,7 +65,7 @@ public class BrandController {
         }catch (Exception ex){
             return "编号不能重复";
         }
-        return "添加品牌成功";
+        return "000000";
     }
 
     //删除品牌
@@ -132,6 +132,54 @@ public class BrandController {
             System.out.print("出错了！");
         }
         return brandService.list();
+    }
+
+
+    @GetMapping("/cardim/{cardimtext}/{bid}")
+    public List<Car> cardim(@PathVariable String cardimtext,@PathVariable Integer bid){
+        try {
+            if(cardimtext.equals("975e65r45a4454a4d52s8a452d57")){
+                return carList(bid);
+            }
+            QueryWrapper<Car> carqw=new QueryWrapper();
+            carqw.eq("b_id",bid);
+            carqw.and(wrapper -> wrapper
+                    .eq("c_coder", cardimtext)
+                    .or()
+                    .like("reserved1",cardimtext)
+            );
+            List<Car> list=carService.list(carqw);
+            for (Car car:list) {
+                car.setEngine(engineService.getById(car.getEId()));
+                QueryWrapper suppqw=new QueryWrapper<Suppiler>();
+                suppqw.eq("p_id",car.getPId());
+                Suppiler suppiler= (Suppiler) suppilerService.list(suppqw).get(0);
+                car.setSuppiler(suppiler);
+            }
+            return list;
+        }catch (Exception ex){
+            System.out.print("查了个寂寞");
+        }
+        return carList(bid);
+    }
+
+    @GetMapping("/removecar/{cid}")
+    public String removecar(@PathVariable Integer cid){
+        try {
+            if (carService.removeById(cid)){
+                return "000000";
+            }
+            return "-1";
+        }catch (Exception ex){
+            return "500";
+        }
+    }
+
+    @PostMapping("/updatecar")
+    public String updatecar(Car car){
+        System.out.print(car.getReserved1());
+        System.out.print(car.getEngine().getEName());
+        return "";
     }
 
 }
