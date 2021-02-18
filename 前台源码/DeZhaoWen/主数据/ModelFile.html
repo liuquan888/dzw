@@ -307,56 +307,56 @@
 								<p>
 									<span class="must">*</span>
 									<span class="va">车型品牌</span>
-									<input disabled="disabled" style="width: 327px;" type="text" name="" id="" value="中国重汽" />
+									<input disabled="disabled" style="width: 327px;" type="text" name="" id="" :value="brandapplocation.bname" />
 								</p>
 								<p>
 									<span class="must">*</span>
 									<span class="va">车型ID</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="car.cCoder"/>
 									<span class="must">*</span>
 									<span class="va">车型名称</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="car.reserved1" />
 								</p>
 								<p>
-									<span class="must"></span>
+									
+									<span class="must">*</span>
 									<span class="va">进口国产</span>
-									<input type="text" name="" id="" value="" />
+									<select style="width: 120px;height: 30px;" v-model="car.dId">
+										<option v-for="item in made" :value="item.did">{{item.dname}}</option>
+									</select>
+									
 									<span class="must"></span>
 									<span class="va">参考价格</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="car.cRefeprice"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">车辆年款</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="car.cVehicle"/>
 									<span class="must"></span>
 									<span class="va">功率</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="car.cPower"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">燃油编号</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="car.cFuel"/>
 									<span class="must"></span>
 									<span class="va">载重</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="car.cLoad"/>
 								</p>
 								<p>
 									<span class="must">*</span>
 									<span class="va">索赔厂商</span>
-									<select style="width: 150px;height: 30px;">
-										<option>1号索赔商</option>
-										<option>2号索赔商</option>
-										<option>3号索赔商</option>
+									<select style="width: 150px;height: 30px;" v-model="car.pId">
+										<option v-for="item in claim" :value="item.pid">{{item.pname}}</option>
 									</select>
 								</p>
 								<p>
 									<span class="must">*</span>
 									<span class="va">发动机品牌</span>
-									<select style="width: 327px;height: 30px;">
-										<option>一号发动机</option>
-										<option>二号发动机</option>
-										<option>三号发动机</option>
+									<select style="width: 327px;height: 30px;" v-model="car.eId">
+										<option v-for="item in engine" :value="item.eid">{{item.ename}}</option>
 									</select>
 								</p>
 								
@@ -374,7 +374,7 @@
 							</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary">保存</button>
+				        <button type="button" class="btn btn-primary" @click="addcar">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -534,6 +534,12 @@
 				branddimtext:null,
 				//车型模糊查询条件
 				cardimtext:null,
+				//进口国产
+				made:[],
+				//索赔商
+				claim:[],
+				//发动机品牌
+				engine:[],
 			}
 		},
 		methods:{
@@ -713,8 +719,76 @@
 			},
 			
 			
+			//查询所有进口国产
+			findmade(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/findmade",
+					success:function(result){
+						that.made=result;
+					}
+				})
+			},
+			
+			//查询所有索赔商
+			findclaim(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/findclaim",
+					success:function(result){
+						that.claim=result;
+					}
+				})
+			},
+			
+			//查询所有发动机品牌
+			findengine(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/findengine",
+					success:function(result){
+						that.engine=result;
+					}
+				})
+			},
+			
+			
 			addcarmo(){
+				this.car={};
+				if(this.car.dId==null&this.made[0].did!=null){
+					this.car.dId=this.made[0].did;
+				};
+				if(this.car.pId==null&this.claim[0].pid!=null){
+					this.car.pId=this.claim[0].pid;
+				};
+				if(this.car.eId==null&this.engine[0].eid!=null){
+					this.car.eId=this.engine[0].eid;
+				};
+				this.car.bId=this.brandapplocation.bid;
 				$("#addcarmodal").modal("show");
+			},
+
+			addcar(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"brand/addcar",
+					type:"post",
+					data:that.car,
+					dataType:"json",
+					success:function(result){
+						
+					},
+					error:function(error){
+						console.log(error)
+						if(error.responseText=="车型ID不能重复"){
+							alert(error.responseText)
+						}
+						$("#addcarmodal").modal("hide");
+						that.findbyidcar(that.brandapplocation.bid);
+						that.car={};
+						//that.findbyidcar();
+					}
+				})
 			},
 			updatecarmo(){
 				//解除双向绑定
@@ -735,7 +809,9 @@
 		created(){
 			this.findallpin();
 			this.findbyidcar(1);
-			
+			this.findmade();
+			this.findclaim();
+			this.findengine();
 		}
 	});
 	

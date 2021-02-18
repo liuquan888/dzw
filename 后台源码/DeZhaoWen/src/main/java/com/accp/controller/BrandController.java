@@ -1,9 +1,7 @@
 package com.accp.controller;
 
 
-import com.accp.domain.Brand;
-import com.accp.domain.Car;
-import com.accp.domain.Suppiler;
+import com.accp.domain.*;
 import com.accp.service.impl.*;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -34,6 +32,9 @@ public class BrandController {
     EngineServiceImpl engineService;
     @Autowired
     SuppilerServiceImpl suppilerService;
+    @Autowired
+    DomesticServiceImpl domesticService;
+
 
     //查询所有查询
     @GetMapping("/findall")
@@ -182,5 +183,51 @@ public class BrandController {
         return "";
     }
 
+    @GetMapping("/findmade")
+    public List<Domestic> findmade(){
+        try {
+            return domesticService.list();
+        }catch (Exception ex){
+            System.out.print("查询进口国产出错了！");
+        }
+        return null;
+    }
+
+    @GetMapping("/findclaim")
+    public List<Suppiler> findclaim(){
+        try {
+            return suppilerService.list();
+        }catch (Exception ex){
+            System.out.print("查询索赔商出错了！");
+        }
+        return null;
+    }
+
+    @GetMapping("/findengine")
+    public List<Engine> findengine(){
+        try {
+            return engineService.list();
+        }catch (Exception ex){
+            System.out.print("查询发动机品牌出错了！");
+        }
+        return null;
+    }
+
+    @PostMapping("/addcar")
+    public String addcar(Car car){
+        try {
+            QueryWrapper carqw=new QueryWrapper<Car>();
+            carqw.eq("c_coder",car.getCCoder());
+            if(carService.list(carqw).size()>0){
+                return "车型ID不能重复";
+            }
+            if (carService.save(car)){
+                return "000000";
+            }
+        }catch (Exception ex){
+            return "500";
+        }
+        return "-1";
+    }
 }
 
