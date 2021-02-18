@@ -282,29 +282,11 @@
 										<td>门店名称</td>
 										<td>所在城市</td>
 									</tr>
-									<tr>
+									<tr v-for="item in list6">
 										<td><input type="checkbox"></td>
-										<td>s001</td>
-										<td>sanuifd</td>
-										<td>天津</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>s001</td>
-										<td>sanuifd</td>
-										<td>天津</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>s001</td>
-										<td>sanuifd</td>
-										<td>天津</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>s001</td>
-										<td>sanuifd</td>
-										<td>天津</td>
+										<td>{{item.factory}}</td>
+										<td>{{item.factoryname}}</td>
+										<td>北京</td>
 									</tr>
 								</table>
 							</div>
@@ -467,7 +449,8 @@
 						},
 						list3:{},
 						list4:{},
-						list5:{}
+						list5:{},
+						list6:{}
 					}
 				},
 				methods:{
@@ -562,6 +545,16 @@
 							}
 						});
 					},
+					find6(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/findF",
+							type:"post",
+							success:function(result){
+								that.list6=result;
+							}
+						});
+					},
 					givemoney(item){
 						this.data.yugujine=item.yugujine;
 						this.data.jiashuijin=this.data.yugujine*this.data.shuilu/100;
@@ -598,6 +591,7 @@
 					this.find3();
 					this.find4();
 					this.find5();
+					this.find6();
 				},
 				watch:{
 					

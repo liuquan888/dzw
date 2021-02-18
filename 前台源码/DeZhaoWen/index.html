@@ -14,7 +14,7 @@
 				width: 100%;
 			}
 			.header{
-				height: 10%;
+				height:10%;
 				background-color: #18416B;
 			}
 			.col-md-2{
@@ -94,7 +94,7 @@
 			<div class="header">
 				<span class="kx">卡修智慧系统</span>
 				<span style="margin-left: 200px;"></span>
-				<span class="tobu" v-for="item in tobu" @click="diantop(item)">{{item.pvgName}}</span>
+				<span class="tobu" v-for="item in tobu" @click="diantop(item)" @click="find2(item.pid)">{{item.pvgName}}</span>
 			</div>
 			<div class="bod">
 				<div v-if="this.leftx" class="col-md-2" style="background-color: #18304A; height: 950px;">
@@ -415,7 +415,8 @@
 							}
 						],
 						x:true,
-						leftx:true
+						leftx:true,
+						user:{}
 					 }
 				},
 				methods:{
@@ -480,10 +481,43 @@
 							$(".leftguan").html("◀");
 							$("#tt").css("width","");
 						}
+					},
+					find(){
+						this.user=JSON.parse(sessionStorage.getItem("user"));
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/getMenu",
+							type:"post",
+							data:{
+								userId:that.user.userId,
+								type:1
+							},
+							success:function(result){
+								this.tobu=result;
+							}
+						});
+					},
+					find2(pid){
+						this.user=JSON.parse(sessionStorage.getItem("user"));
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/getMenu",
+							type:"post",
+							data:{
+								userId:that.user.userId,
+								type:2,
+								pid:pid
+							},
+							success:function(result){
+								this.list=result;
+							}
+						});
 					}
 				},
 				created(){
 					this.run();
+					this.find();
+					this.find2(1);
 				},
 				watch:{
 					

@@ -92,6 +92,7 @@
 					success:function(result){
 						if(result!=null){
 							sessionStorage.setItem("user",JSON.stringify(result));
+							window.location.href="index.html";
 						}else{
 							alert("用户名或者密码不正确，请重新登录。");
 						}
