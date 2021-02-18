@@ -1,8 +1,14 @@
 package com.accp.controller;
 
 
+import com.accp.domain.DzwPrivilege;
 import com.accp.domain.DzwUser;
+import com.accp.domain.PrivilegeRole;
+import com.accp.domain.RoleUser;
+import com.accp.service.impl.DzwPrivilegeServiceImpl;
 import com.accp.service.impl.DzwUserServiceImpl;
+import com.accp.service.impl.PrivilegeRoleServiceImpl;
+import com.accp.service.impl.RoleUserServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -35,6 +41,15 @@ public class DzwUserController{
     @Autowired
     DzwUserServiceImpl duser;
 
+    @Autowired
+    RoleUserServiceImpl ruser;
+
+    @Autowired
+    PrivilegeRoleServiceImpl prser;
+
+    @Autowired
+    DzwPrivilegeServiceImpl dpser;
+
     @RequestMapping("/find")
     public DzwUser find(DzwUser user,HttpSession session){
         QueryWrapper<DzwUser> query=new QueryWrapper<>();
@@ -48,6 +63,60 @@ public class DzwUserController{
             }
         }
         return li.get(0);
+    }
+
+    //根据用户ID获取菜单，
+    //字段type表示权限对象的类别必须与type相等，为空则返回全部
+    //pid自己的父级id与type作用类似
+    @RequestMapping("/getMenu")
+    public List<DzwPrivilege> getMenu(Integer userId,Integer type,Integer pid){
+        if(userId==null){
+            return null;
+        }
+
+        //获取角色id
+        QueryWrapper qw=new QueryWrapper<RoleUser>();
+        qw.eq("uid",userId);
+        List<RoleUser> ru=ruser.list(qw);
+        Integer rid=-1;
+        for (RoleUser r:ru) {
+            rid=r.getRid();
+        }
+        if(rid==-1){
+            return null;
+        }
+
+        //根据角色id获取权限id
+        QueryWrapper qw2=new QueryWrapper<PrivilegeRole>();
+        qw2.eq("rid",rid);
+        List<PrivilegeRole> list=prser.list(qw);
+
+        //待会要返回的权限对象集合
+        List<DzwPrivilege> list2=new ArrayList<DzwPrivilege>();
+
+        //根据权限id获取权限对象
+        for (PrivilegeRole pr:list){
+            DzwPrivilege dzwP=dpser.getById(pr.getPid());
+
+            //判断类别
+            if(type==null){
+                list2.add(dzwP);
+            }else if(dzwP.getPvgType()==type){
+
+                //判断父级id
+                if(pid==null){
+                    list2.add(dzwP);
+                }else{
+                    if(dzwP.getPid()==pid){
+                        list2.add(dzwP);
+                    }
+                }
+
+            }
+
+        }
+
+        return list2;
     }
 }
 
