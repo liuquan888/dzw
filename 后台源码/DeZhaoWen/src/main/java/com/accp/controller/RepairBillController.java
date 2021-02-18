@@ -74,6 +74,9 @@ public class RepairBillController {
     @Autowired
     CarheetServiceImpl CarService;
 
+    @Autowired
+    FactoryServiceImpl fser;
+
     @RequestMapping("/find")
     @ResponseBody
     public List<RepairBill> find(Integer documentsType,Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
@@ -198,5 +201,8 @@ public class RepairBillController {
     public  List<Carheet> findcar(){
         return CarService.list();
     }
+
+    @RequestMapping("/findF")
+    public List<Factory> findF(){ return fser.list(); }
 }
 
