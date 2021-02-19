@@ -120,36 +120,12 @@
 					<div id="table" style="background: #ffffff;">
 						<div id="d1">
 						    <div id="d1_body">
-						        <ul>
+						        <ul v-for="(item,index) in servicemenu">
 						            <li>
-						                <img onclick="doAction2(1);" src="image/小房子.PNG" style="vertical-align: middle;" width="12%">
-										<span onclick="doAction(1);"><span><a href="javascript:void(0)">车型</a></span></span>
+										<img src="image/小房子.PNG" style="vertical-align: middle;" width="12%">
+						                <span @click="doAction(index);"><span><a href="javascript:void(0)">发动机</a></span></span>
 						            </li>
-						            <ul style="display:none;" id="u1">
-						                <li>
-											<a href="#">
-												<img src="image/小房子2.PNG" style="vertical-align: middle;" width="15%">
-												<span>中国重汽</span>
-											</a>
-										</li>
-						                 <li>
-						                	<a href="#">
-						                		<img src="image/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						                		<span>陕汽重卡</span>
-						                	</a>
-						                </li>
-										 <li>
-											<a href="#">
-												<img onclick2="doAction(1);" src="image/小房子2.PNG" style="vertical-align: middle;" width="15%">
-												<span>中国红旗</span>
-											</a>
-										</li>
-						            </ul>
-						            <li>
-										<img onclick="doAction2(2);" src="image/小房子.PNG" style="vertical-align: middle;" width="12%">
-						                <span onclick="doAction(2);"><span><a href="javascript:void(0)">发动机</a></span></span>
-						            </li>
-						            <ul style="display:none;" id="u2">
+						            <ul style="display:none;"  :id="'u'+index">
 						                <li>
 						               	<a href="#">
 						               		<img src="image/小房子2.PNG" style="vertical-align: middle;" width="15%">
@@ -579,36 +555,41 @@
 // 	    }
 // 	}
 	
-	 function doAction(index){
-	    var obj = document.getElementById('u' + index);
-	    if(obj.style.display == 'none'){
-	            obj.style.display = 'block';
-	    }
-	}
 	
-	function doAction2(index){
-	    var obj = document.getElementById('u' + index);
-			if(obj.style.display == 'none'){
- 	            obj.style.display = 'block';
-			}else{
-				obj.style.display = 'none';
-			}
-	}
-			
-	function test(){
-	    var obj = document.getElementById('d1');
-	    alert(obj.innerHTML);
-	}
 	
+	
+	
+	
+	var BaseUrl="http://127.0.0.1:8080/";
 	
 	new Vue({
 		el:"#ctn",
 		data(){
 			return{
-				
+				servicemenu:[],
 			}
 		},
 		methods:{
+			findmenu(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/findmenu",
+					success:function(result){
+						that.servicemenu=result;
+					}
+				})
+			},
+			
+			doAction(index){
+			    var obj = document.getElementById('u' + index);
+					if(obj.style.display == 'none'){
+			            obj.style.display = 'block';
+					}else{
+						obj.style.display = 'none';
+					}
+			},
+					
+			
 			addservice(){
 				$("#addservicemodal").modal("show");
 			},
@@ -627,7 +608,7 @@
 			
 		},
 		created(){
-			
+			this.findmenu();
 		}
 	});
 	$(".pintr").click(function(){

@@ -176,13 +176,6 @@ public class BrandController {
         }
     }
 
-    @PostMapping("/updatecar")
-    public String updatecar(Car car){
-        System.out.print(car.getReserved1());
-        System.out.print(car.getEngine().getEName());
-        return "";
-    }
-
     @GetMapping("/findmade")
     public List<Domestic> findmade(){
         try {
@@ -228,6 +221,21 @@ public class BrandController {
             return "500";
         }
         return "-1";
+    }
+
+    @PostMapping("/updatecar")
+    public String updatecar(Car car){
+        try {
+            QueryWrapper carqw=new QueryWrapper<Car>();
+            carqw.eq("c_coder",car.getCCoder());
+            carqw.ne("c_id",car.getCId());
+            if(carService.list(carqw).size()>0){
+                return "000001";
+            }
+            return carService.updateById(car)?"000000":"-1";
+        }catch (Exception ex){
+            return "500";
+        }
     }
 }
 
