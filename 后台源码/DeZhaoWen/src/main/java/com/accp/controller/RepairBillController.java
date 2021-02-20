@@ -7,12 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.text.SimpleDateFormat;
@@ -79,10 +74,15 @@ public class RepairBillController {
 
     @RequestMapping("/find")
     @ResponseBody
-    public List<RepairBill> find(Integer documentsType,Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
+    public List<RepairBill> find(Integer[] ids, Integer documentsType, Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
+        if(ids!=null){
+            for (Integer i:ids
+            ) {
+                System.out.println(i);
+            }
+        }
+        System.out.println(name);
         QueryWrapper qw=new QueryWrapper<RepairBill>();
-        System.out.println(date1);
-        System.out.println(date2);
         if (date1!=null&&date2!=null){
             qw.between("completion_time",date1,date2);
         }
@@ -204,5 +204,14 @@ public class RepairBillController {
 
     @RequestMapping("/findF")
     public List<Factory> findF(){ return fser.list(); }
+
+
+    @RequestMapping("/findxx")
+    @ResponseBody
+    public List<RepairBill> findxx(@RequestBody Integer[] ids){
+        QueryWrapper qw=new QueryWrapper<RepairBill>();
+        qw.in("reserved1",ids);
+        return service.list(qw);
+    }
 }
 
