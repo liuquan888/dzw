@@ -273,24 +273,24 @@
 			<!--门店选择-->
 			<div>
 				<div v-if="this.xxx" class="divdayin-02">
-							<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">门店选择<span @click="guanxxx(false)" style="float: right;color: #000000;">&times;</span></div>
-							<div>
-								<table class="table table-striped">
-									<tr>
-										<td>选择</td>
-										<td>编号</td>
-										<td>门店名称</td>
-										<td>所在城市</td>
-									</tr>
-									<tr v-for="item in list6">
-										<td><input type="checkbox"></td>
-										<td>{{item.factory}}</td>
-										<td>{{item.factoryname}}</td>
-										<td>北京</td>
-									</tr>
-								</table>
-							</div>
-						</div>
+					<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">门店选择<span @click="guanxxx(false)" style="float: right;color: #000000;">&times;</span></div>
+					<div>
+						<table class="table table-striped">
+							<tr>
+								<td>选择</td>
+								<td>编号</td>
+								<td>门店名称</td>
+								<td>所在城市</td>
+							</tr>
+							<tr v-for="item in list6">
+								<td><input type="checkbox" v-model="ids" :value="item.factory"></td>
+								<td>{{item.factory}}</td>
+								<td>{{item.factoryname}}</td>
+								<td>北京</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 			
 				
@@ -450,7 +450,8 @@
 						list3:{},
 						list4:{},
 						list5:{},
-						list6:{}
+						list6:{},
+						ids:[1,2,3,4,5,6,7,8,9,10]
 					}
 				},
 				methods:{
@@ -594,7 +595,21 @@
 					this.find6();
 				},
 				watch:{
-					
+					ids(){
+						let that=this;
+						this.bill['ids']=this.ids;
+						console.log(this.bill);
+						var json=JSON.stringify(this.ids);
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/findxx",
+							type:"post",
+							data:json,
+							contentType: 'application/json;charset=UTF-8',
+							success:function(result){
+								that.list=result;
+							}
+						});
+					}
 				}
 			});
 			function tiao(){
