@@ -73,7 +73,9 @@
 				color: #000000;
 			}
 			
-			
+			.pintr2:nth-of-type(2){
+				background: sandybrown;
+			}
 			
 		</style>
 	<body>
@@ -120,30 +122,19 @@
 					<div id="table" style="background: #ffffff;">
 						<div id="d1">
 						    <div id="d1_body">
-						        <ul v-for="(item,index) in servicemenu">
+						        <ul style="margin-left: -20px;" v-for="(item,index) in servicemenu">
 						            <li>
 										<img src="image/小房子.PNG" style="vertical-align: middle;" width="12%">
-						                <span @click="doAction(index);"><span><a href="javascript:void(0)">发动机</a></span></span>
+						                <span @click="doAction(index,item);"><a href="javascript:void(0)"><span class="servicename">{{item.serName}}</span></a></span>
 						            </li>
-						            <ul style="display:none;"  :id="'u'+index">
-						                <li>
-						               	<a href="#">
-						               		<img src="image/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						               		<span>一号发动机</span>
+						            <ul style="display:none;margin-left: -20px;font-size: 13px;"  :id="'u'+index">
+						                <li v-for="item2 in item.services">
+						               	<a href="#" @click="findmainlist(item2,0)">
+						               		<img src="image/小房子2.PNG" style="vertical-align: middle;" width="12%">
+						               		<span class="servicename servicenames">{{item2.serId}} <span style="font-size: 15px;">—</span> {{item2.serName}}</span>
 						               	</a>
 						               </li>
-						                <li>
-						               	<a href="#">
-						               		<img src="image/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						               		<span>二号发动机</span>
-						               	</a>
-						               </li>
-						                <li>
-						               	<a href="#">
-						               		<img src="image/小房子2.PNG" style="vertical-align: middle;" width="15%">
-						               		<span>三号发动机</span>
-						               	</a>
-						               </li>
+						               
 						            </ul>
 						        </ul>
 						    </div>
@@ -152,7 +143,7 @@
 				</div>
 				
 				<div style="margin-left: 250px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;height: 85%;">
-					<table class="table table-bordered table-striped table-hover">
+					<table class="table table-bordered">
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">项目类别</td>
@@ -168,50 +159,20 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">保险价</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">备注</td>
 						</tr>
-						<tr class="pintr2">
+						<tr class="pintr2" v-for="item in mainlist">
 							<td class="item"></td>
-							<td>中国重汽</td>
-							<td>1003</td>
-							<td>更换后钢板销或衬套</td>
-							<td>车型</td>
-							<td>工时费</td>
-							<td>6666666</td>
-							<td>156222</td>
-							<td>136566</td>
-							<td>156656</td>
-							<td>187888</td>
-							<td>198556</td>
-							<td>没有备注</td>
-						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>中国重汽</td>
-							<td>1053</td>
-							<td>更换前置轮胎</td>
-							<td>车型</td>
-							<td>工时费</td>
-							<td>522</td>
-							<td>253</td>
-							<td>524</td>
-							<td>244</td>
-							<td>534</td>
-							<td>242</td>
-							<td>好好修</td>
-						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>中国重汽</td>
-							<td>1123</td>
-							<td>检查后桥轴间间隙</td>
-							<td>车型</td>
-							<td>工时费</td>
-							<td>342</td>
-							<td>342</td>
-							<td>435</td>
-							<td>344</td>
-							<td>243</td>
-							<td>546</td>
-							<td>没有备注</td>
+							<td>{{item.service.serName}}</td>
+							<td>{{item.mid}}</td>
+							<td>{{item.mname}}</td>
+							<td>{{item.service.service.serName}}</td>
+							<td>{{item.income.inName}}</td>
+							<td>{{item.mnormalprice}}</td>
+							<td>{{item.mmemberprice}}</td>
+							<td>{{item.mvipprice}}</td>
+							<td>{{item.mdetaprice}}</td>
+							<td>{{item.mclaimprice}}</td>
+							<td>{{item.msafetyprice}}</td>
+							<td>{{item.mnote}}</td>
 						</tr>
 					</table>
 				</div>
@@ -567,9 +528,11 @@
 		data(){
 			return{
 				servicemenu:[],
+				mainlist:[],
 			}
 		},
 		methods:{
+			//维修项目菜单
 			findmenu(){
 				let that=this;
 				$.ajax({
@@ -580,15 +543,33 @@
 				})
 			},
 			
-			doAction(index){
+			//维修项目菜单效果
+			doAction(index,service){
 			    var obj = document.getElementById('u' + index);
 					if(obj.style.display == 'none'){
 			            obj.style.display = 'block';
+						this.findmainlist(item=[{serId:0}],service.serId);
 					}else{
 						obj.style.display = 'none';
 					}
 			},
-					
+			
+			findmainlist(item,fserId){
+				
+				//fserId 父级菜单维修项目id用于在点击父级菜单时显示下方子集的所有维修进程
+				
+				let that=this;
+				if(item.serId==null){
+					item.serId=0;
+				}
+				console.log(fserId)
+				$.ajax({
+					url:BaseUrl+"maintenance/findmain/"+item.serId+"/"+fserId,
+					success:function(result){
+						that.mainlist=result;
+					}
+				})
+			},
 			
 			addservice(){
 				$("#addservicemodal").modal("show");
@@ -609,16 +590,17 @@
 		},
 		created(){
 			this.findmenu();
+			this.findmainlist(item=[{serId:0}],0);
 		}
 	});
 	$(".pintr").click(function(){
 		$(".pintr").css("background","#ffffff")
 		$(this).css("background","sandybrown")
 	});
-	$(".pintr2").click(function(){
+	$(document).on('click','.pintr2',function(){
 		$(".pintr2").css("background","#ffffff")
 		$(this).css("background","sandybrown")
-	});
+	})
 	
 	
 	$(".file1").mouseover(function(){
@@ -632,6 +614,19 @@
 		$("#d1_body span").css("background","")
 		$(this).css("background","#666")
 		$(this).css("color","#ffffff")
+	})
+	
+	$(document).on('click','.servicename',function(){
+		$(".servicename").css("background","#ffffff")
+		$(".servicename").css("color","#000000")
+		$(".pintr2").css("background","")
+		$(".pintr2").eq(0).css("background","sandybrown")
+		$(this).css("background","#666")
+		$(this).css("color","#ffffff")
+	})
+	
+	$(document).on('click','.servicenames',function(){
+		
 	})
 	
 </script>

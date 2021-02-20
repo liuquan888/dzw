@@ -54,6 +54,8 @@ public class Service extends Model<Service> {
     @TableField(exist = false)
     private List<Service> services;
 
+    @TableField(exist = false)
+    private Service service;
 
     public static final String SER_ID = "ser_id";
 

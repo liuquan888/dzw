@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -80,6 +81,12 @@ public class Maintenance extends Model<Maintenance> {
 
     @ApiModelProperty(value = "预留字段")
     private String reserved5;
+
+    @TableField(exist = false)
+    private Service service;
+
+    @TableField(exist = false)
+    private Income income;
 
 
     public static final String M_ID = "m_id";
