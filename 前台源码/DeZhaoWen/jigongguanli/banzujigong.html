@@ -104,6 +104,9 @@
 				width: 80px;
 				margin-left: 350px;
 			}
+			.nav {
+				margin-left: 20px;
+			}
 		</style>
 	</head>
 	<body>
@@ -134,16 +137,7 @@
 				</div>
 				<div style="width: 1535px; height: 570px;">
 					<div class="col-xs-2">
-						<ul class="">
-							<li>
-								<a @click="xianshi()" href="#"><span>+</span>10-自建</a>
-								<ul class="ul1" v-if="this.xs">
-									<li><span id="j1"></span>1000-机修1组</li>
-									<li><span id="j1"></span>1001-机修2组</li>
-									<li><span id="j1"></span>1004-机电1组</li>
-								</ul>
-							</li>
-						</ul>
+						<tree :menu="menu" @create-tab="createTab"></tree>
 					</div>
 					<div class="col-xs-10" style="width: 1277px;height: 570px;overflow-x: scroll;">
 						<table id="table1" style="width: 2400px;max-width: 2500px;">
@@ -379,12 +373,44 @@
 		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="../js/vue.js" ></script>
 		<script type="text/javascript">
+			Vue.component("tree", {
+				props: ["menu"],
+				template: `
+					<ul class="nav nav-pills nav-stacked">
+						<li v-for="item in menu">
+							<a href="#" @click="createTab(item)">{{item.name}}</a>
+							<tree @create-tab="createTab" :menu="item.childrens" v-if="item.bool==false"></tree>
+						</li>
+					</ul>
+				`,
+				methods: {
+					createTab(item) {
+						this.$emit("create-tab", item)
+					}
+				}
+			})
+//			var menu=[{
+//				id:1,
+//				name:"北京",
+//				ename:"sys",
+//				childrens:[{
+//					id:2,
+//					name:"北京航空航天大学",
+//					ename:"role",
+//					childrens:[{
+//						id:3,
+//						name:"创业实训一班",
+//						ename:"user"
+//					}]
+//				}]
+//			}];
 			new Vue({
 				el:".container-fluid",
 				data(){
 					return{
 						xs:true,
-						teamtechnician:{}
+						teamtechnician:{},
+						menu:[{id:0,name:"河北省",ename:"hebei",bool:true,childrens:[{id:2,name:"北京",ename:"北京",bool:true}]}]
 					}
 				},
 				methods:{
@@ -404,10 +430,22 @@
 								that.teamtechnician=result;
 							}
 						});
+					},
+					createTab(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/menu/findAll",
+							type:"post",
+							success:function(result){
+								
+							}
+						});
+						return;
 					}
 				},
 				created(){
 					this.findAll();
+					this.createTab();
 				}
 			});
 		</script>
