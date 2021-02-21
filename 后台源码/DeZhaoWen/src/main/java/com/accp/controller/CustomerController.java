@@ -42,6 +42,17 @@ public class CustomerController {
 
     @Autowired
     CounselorServiceImpl counservice;
+    //根据客户Id查询
+    @RequestMapping("/selectClientInformationByClientId")
+    public Customer selectClientInformationByClientId(String clientId){
+        Customer list=Service.getById(clientId);
+        return list;
+    }
+    @RequestMapping("/selectClientInfo")
+    public List<Customer> selectClientInfo(){
+        List<Customer> list=Service.list();
+        return list;
+    }
     @RequestMapping("/findAll")
     public List<Customer> findAll(Customer cu) {
         QueryWrapper<Customer> queryWrapper = new QueryWrapper<>();
@@ -90,38 +101,95 @@ public class CustomerController {
         if(cu.getJf1()!=null&&cu.getJf2()!=null){
             queryWrapper.between("integral",cu.getJf1(),cu.getJf2());
         }
-        if (cu.getCar().getDriver()!=null){
-            
-        }
-        if (cu.getCar().getPlatename()!=null){
-
-        }
-        if (cu.getCar().getEnginenum()!=null){
-
-        }
-        if (cu.getCar().getDriverphone()!=null){
-
-        }
-        if (cu.getCar().getJq1()!=null&&cu.getCar().getJq2()!=null){
-
-        }
-        if (cu.getCar().getSy1()!=null&&cu.getCar().getSy2()!=null){
-
-        }
-        if (cu.getCar().getSp1()!=null&&cu.getCar().getSp2()!=null){
-
-        }
-        if (cu.getCar().getGm1()!=null&&cu.getCar().getGm2()!=null){
-
-        }
-        if (cu.getCar().getCarbrandid()!=null){
-
-        }
-        if (cu.getCar().getFramnum()!=null){
-
-        }
-        if (cu.getCar().getEngineid()!=null){
-
+        if (cu.getCar()!=null){
+            if (cu.getCar().getDriver()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.like("driver",cu.getCar().getDriver());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getPlatename()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.like("platename",cu.getCar().getPlatename());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getEnginenum()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.like("enginenum",cu.getCar().getEnginenum());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getDriverphone()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.like("driverphone",cu.getCar().getDriverphone());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getJq1()!=null&&cu.getCar().getJq2()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.between("mliouttime",cu.getCar().getJq1(),cu.getCar().getJq2());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getSy1()!=null&&cu.getCar().getSy2()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.between("ciouttime",cu.getCar().getSy1(),cu.getCar().getSy2());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getSp1()!=null&&cu.getCar().getSp2()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.between("uptime",cu.getCar().getSp1(),cu.getCar().getSp2());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getGm1()!=null&&cu.getCar().getGm2()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.between("buytime",cu.getCar().getGm1(),cu.getCar().getGm2());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getCarbrandid()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.eq("carbrandid",cu.getCar().getCarbrandid());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getFramnum()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.like("framnum",cu.getCar().getCarbrandid());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
+            if (cu.getCar().getEngineid()!=null){
+                QueryWrapper<Carheet> queryWrapper1=new QueryWrapper<>();
+                queryWrapper1.like("engineid",cu.getCar().getEngineid());
+                List<Carheet> car=carservice.list(queryWrapper1);
+                for (Carheet ca:car){
+                    queryWrapper.eq("customernum",ca.getCustomernum());
+                }
+            }
         }
         List<Customer> list=Service.list(queryWrapper);
         for (Customer cus:list){
@@ -157,6 +225,10 @@ public class CustomerController {
             carservice.save(cus.getCar());
         }
         return bool;
+    }
+    @RequestMapping("/finds")
+    public List<Customer> finds(){
+        return Service.list();
     }
     @RequestMapping("/update")
     public boolean update(Customer cus){
@@ -194,7 +266,6 @@ public class CustomerController {
         List<Customer> list=Service.list(qw);
         return list;
     }
-
     @RequestMapping("/pay")
     public Integer pay(String id,Integer money){
         Customer c=Service.getById(id);

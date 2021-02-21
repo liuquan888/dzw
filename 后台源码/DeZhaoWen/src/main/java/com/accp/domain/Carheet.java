@@ -163,7 +163,7 @@ public class Carheet extends Model<Carheet> {
     @ApiModelProperty(value = "客户")
     private Customer kh;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "保险公司")
     private String reserved1;
 
     @ApiModelProperty(value = "预留字段")

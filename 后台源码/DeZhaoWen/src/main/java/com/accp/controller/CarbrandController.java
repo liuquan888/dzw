@@ -25,6 +25,13 @@ import java.util.List;
 public class CarbrandController {
     @Autowired
     CarbrandServiceImpl service;
+    @RequestMapping("/selectCarBrandByCondition")
+    public List<Carbrand> selectCarBrandByCondition(String condition){
+        QueryWrapper<Carbrand> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("carcoding",condition);
+        List<Carbrand> list=service.list(queryWrapper);
+        return list;
+    }
     @RequestMapping("/findAll")
     public List<Carbrand> findAll(@PathVariable Carbrand cb){
         QueryWrapper<Carbrand> query=new QueryWrapper<>();
