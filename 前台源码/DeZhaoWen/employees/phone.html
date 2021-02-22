@@ -175,7 +175,7 @@
 			<div class="row1">
 				<div style="color: #686868;font-size:18px;">
 					<div class="col-md-8" @click="show"><img src="../img/9dcd1eef368f83dd8cb13a42b965190.png"/><span id="yes">门店选择</span></div>
-					<div class="col-md-1"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>保存</div>
+					<div class="col-md-1" @click="update()"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>保存</div>
 					<div class="col-md-1" @click="show"><img src="../img/f6464aac40b2db7a48c2a7d0b6d9fdb.png"/><span id="yes1">查询</span></div>
 					<div class="col-md-1"><img src="../img/a4efaa29e1e53466ce4e2bfbab02c0a.png"/>导出</div>
 				</div>
@@ -192,170 +192,16 @@
 					  	<td>手机</td>
 					  	<td>邮箱</td>
 					  </tr>
-					  <tr>
+					  <tr v-for="list in taffsdata" class="koko">
 					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td>总厂</td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  	<td>1</td>
-					  	<td>2</td>
-					  	<td>3</td>
-					  	<td>@qq.com</td>
+					  	<td style="width: 100px;"><input type="text" v-model="list.reserved2" style="border:0px;"></td>
+					  	<td><input type="text" style="border:0px;width: 100px;" v-model="list.bid"></td>
+					  	<td><input type="text" style="border:0px;width: 100px;" v-model="list.yid"></td>
+					  	<td><input type="text" style="border:0px;" v-model="list.yname"></td>
+					  	<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
+					  	<td><input type="text" style="border:0px;width: 100px;" v-model="list.yphone"></td>
+					  	<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
+					  	<td><input type="text" style="border:0px;" v-model="list.reserved1"></td>
 					  </tr>
 					</table>
 				</div>
@@ -388,68 +234,12 @@
 					  	<td>门店名称</td>
 					  	<td>所在城市</td>
 					  </tr>
-					  <tr>
+					  <tr v-for="o in organ">
 					  	<td style="background-color: #D6D6CE;"></td>
 					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
-					  </tr>
-					  <tr>
-					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
-					  	<td>总经办</td>
-					  	<td>001</td>
-					  	<td>张三</td>
+					  	<td>{{o.zid}}</td>
+					  	<td>{{o.zname}}</td>
+					  	<td>{{o.mcityid}}</td>
 					  </tr>
 					</table>
 			</div>
@@ -457,21 +247,21 @@
 		<div id="yuan">
 			<div class="mens">
 			  <div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
-			  <div class="col-md-1"><button class="btn btn-success">确定</button></div>
+			  <div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no2">确定</button></div>
 			  <div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
 			  <div class="wo1">
 				<form class="form-inline">
 					  <div class="form-group">
 					    <label for="exampleInputName1">员工编号</label>
-					    <input type="text" class="form-control" id="exampleInputName1">
+					    <input type="text" class="form-control" id="exampleInputName1" v-model="taff.yid">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputName2">员工姓名</label>
-					    <input type="text" class="form-control" id="exampleInputName2">
+					    <input type="text" class="form-control" id="exampleInputName2" v-model="taff.yname">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputName3">员工性别</label>
-					    <input type="text" class="form-control" id="exampleInputName3">
+					    <input type="text" class="form-control" id="exampleInputName3" v-model="taff.ysex">
 					  </div>
 					  <div class="form-group" style="margin-left: 39px;">
 					    <label for="exampleInputName4">岗位</label>
@@ -681,7 +471,7 @@
 		</div>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="../js/vue-2.6.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
 		<script type="text/javascript">
 			function my(id){
 				return document.getElementById(id);
@@ -702,10 +492,63 @@
 				el:"#ctn",
 				data(){
 					return {
-						bool:false
+						bool:false,
+						taffsdata:{},
+						taff:{},
+						organ:{}
 					}
 				},
 				methods:{
+					update(){
+						var that=this;
+						var json=JSON.stringify(that.taffsdata);
+						$.ajax({
+							url:"http://127.0.0.1:8080/staffData/update",
+							data:json,
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								if(result){
+									alert("修改成功!");
+									that.find();
+								}else{
+									alert("修改失败!");
+								}
+							}
+						});
+					},
+					findByAll(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/organizationSurface/find",
+							type:"post",
+							success:function(result){
+								that.organ=result;
+							}
+						});
+					},
+					find(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/staffData/find",
+							type:"post",
+							success:function(result){
+								that.taffsdata=result;
+							}
+						});
+					},
+					findId(){
+						var that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/staffData/findId",
+							data:that.taff,
+							type:"post",
+							success:function(result){
+								that.taffsdata=result;
+								$("#yuan").css("display","none");
+							}
+						});
+					},
 					quan(){
 						this.bool=true;
 					},
@@ -728,7 +571,8 @@
 					}
 				},
 				created(){
-					
+					this.find();
+					this.findByAll();
 				}
 			});
 		</script>
