@@ -20,25 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd2d37a4-5280-41e9-a9bc-411798eebd47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwPrivilegeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/DzwUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/controller/MaintenanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/controller/MenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/DzwPrivilege.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/domain/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/accp/domain/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/DzwPrivilegeMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/mapper/MenuMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IDzwPrivilegeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/IMenuService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/DzwPrivilegeServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/accp/service/impl/MenuServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DzwPrivilegeMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MenuMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/accp/MyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/accp/MyGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/MenuMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +71,7 @@
       <recent name="com.accp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MyGenerator">
+  <component name="RunManager" selected="Spring Boot.DezhaowenApplication">
     <configuration name="MyGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.accp.MyGenerator" />
       <module name="DeZhaoWen" />
@@ -164,6 +147,7 @@
       <workItem from="1613953507176" duration="21000" />
       <workItem from="1613953543103" duration="1829000" />
       <workItem from="1613955478571" duration="1731000" />
+      <workItem from="1613957883726" duration="1012000" />
     </task>
     <servers />
   </component>
