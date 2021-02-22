@@ -405,18 +405,20 @@ CREATE TABLE `dzw_privilege` (
   `pvgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一编号',
   `pvg_name` varchar(50) NOT NULL COMMENT '权限名称',
   `pvg_verify` varchar(50) DEFAULT NULL COMMENT '权限验证',
-  `pvg_type` int(11) NOT NULL COMMENT '类别，0是父级菜单，1是子级菜单，2是功能',
+  `pvg_type` int(11) NOT NULL COMMENT '类别，1是父级菜单，2是子级菜单，3是功能',
   `pvg_path` varchar(50) DEFAULT NULL COMMENT '路径（是菜单才拥有）',
   `pid` int(11) NOT NULL COMMENT '父级编号',
-  `reserved1` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved1` int(11) DEFAULT NULL COMMENT '预留字段',
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
-  PRIMARY KEY (`pvgid`)
+  PRIMARY KEY (`pvgid`),
+  KEY `reserved1` (`reserved1`),
+  CONSTRAINT `dzw_privilege_ibfk_1` FOREIGN KEY (`reserved1`) REFERENCES `factory` (`factory`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 /*Data for the table `dzw_privilege` */
 
-insert  into `dzw_privilege`(`pvgid`,`pvg_name`,`pvg_verify`,`pvg_type`,`pvg_path`,`pid`,`reserved1`,`reserved2`,`reserved3`) values (1,'服务接待',NULL,1,NULL,0,NULL,NULL,NULL),(2,'结算中心',NULL,1,NULL,0,NULL,NULL,NULL),(3,'客户档案',NULL,1,NULL,0,NULL,NULL,NULL),(4,'基础数据',NULL,1,NULL,0,NULL,NULL,NULL),(5,'行政人事',NULL,1,'',0,NULL,NULL,NULL),(6,'系统设置',NULL,1,NULL,0,NULL,NULL,NULL),(7,'服务接待',NULL,1,NULL,1,NULL,NULL,NULL),(8,'前台结算',NULL,1,NULL,2,NULL,NULL,NULL),(9,'客服档案',NULL,1,NULL,3,NULL,NULL,NULL),(10,'主数据',NULL,1,NULL,4,NULL,NULL,NULL),(11,'员工资料',NULL,1,NULL,5,NULL,NULL,NULL),(12,'技工管理',NULL,1,NULL,5,NULL,NULL,NULL),(13,'权限控制',NULL,1,NULL,6,NULL,NULL,NULL),(14,'维修接车',NULL,1,NULL,7,NULL,NULL,NULL),(15,'竣工校验',NULL,1,NULL,7,NULL,NULL,NULL),(16,'保险对价',NULL,1,NULL,7,NULL,NULL,NULL),(17,'结算中心',NULL,1,NULL,8,NULL,NULL,NULL),(18,'会员充值',NULL,1,NULL,8,NULL,NULL,NULL),(19,'客户资料',NULL,1,NULL,9,NULL,NULL,NULL),(20,'车辆资料',NULL,1,NULL,9,NULL,NULL,NULL),(21,'发动机品牌',NULL,1,NULL,10,NULL,NULL,NULL),(22,'车型档案',NULL,1,NULL,10,NULL,NULL,NULL),(23,'维修项目',NULL,1,NULL,10,NULL,NULL,NULL),(24,'商品资料',NULL,1,NULL,10,NULL,NULL,NULL),(25,'供货单位',NULL,1,NULL,10,NULL,NULL,NULL),(26,'组织机构',NULL,1,NULL,11,NULL,NULL,NULL),(27,'岗位定义',NULL,1,NULL,11,NULL,NULL,NULL),(28,'离职登记',NULL,1,NULL,11,NULL,NULL,NULL),(29,'通讯名录',NULL,1,NULL,11,NULL,NULL,NULL),(30,'技工星级',NULL,1,NULL,12,NULL,NULL,NULL),(31,'班组技工',NULL,1,NULL,12,NULL,NULL,NULL),(32,'外勤车辆',NULL,1,NULL,12,NULL,NULL,NULL),(33,'技工提成比例',NULL,1,NULL,12,NULL,NULL,NULL),(34,'员工权限控制',NULL,1,NULL,13,NULL,NULL,NULL),(35,'角色权限控制',NULL,1,NULL,13,NULL,NULL,NULL);
+insert  into `dzw_privilege`(`pvgid`,`pvg_name`,`pvg_verify`,`pvg_type`,`pvg_path`,`pid`,`reserved1`,`reserved2`,`reserved3`) values (1,'服务接待',NULL,1,NULL,0,NULL,NULL,NULL),(2,'结算中心',NULL,1,NULL,0,NULL,NULL,NULL),(3,'客户档案',NULL,1,NULL,0,NULL,NULL,NULL),(4,'基础数据',NULL,1,NULL,0,NULL,NULL,NULL),(5,'行政人事',NULL,1,'',0,NULL,NULL,NULL),(6,'系统设置',NULL,1,NULL,0,NULL,NULL,NULL),(7,'服务接待',NULL,2,NULL,1,NULL,NULL,NULL),(8,'前台结算',NULL,2,NULL,2,NULL,NULL,NULL),(9,'客服档案',NULL,2,NULL,3,NULL,NULL,NULL),(10,'主数据',NULL,2,NULL,4,NULL,NULL,NULL),(11,'员工资料',NULL,2,NULL,5,NULL,NULL,NULL),(12,'技工管理',NULL,2,NULL,5,NULL,NULL,NULL),(13,'权限控制',NULL,2,NULL,6,NULL,NULL,NULL),(14,'维修接车',NULL,2,NULL,7,NULL,NULL,NULL),(15,'竣工校验',NULL,2,NULL,7,NULL,NULL,NULL),(16,'保险对价',NULL,2,NULL,7,NULL,NULL,NULL),(17,'结算中心',NULL,2,NULL,8,NULL,NULL,NULL),(18,'会员充值',NULL,2,NULL,8,NULL,NULL,NULL),(19,'客户资料',NULL,2,NULL,9,NULL,NULL,NULL),(20,'车辆资料',NULL,2,NULL,9,NULL,NULL,NULL),(21,'发动机品牌',NULL,2,NULL,10,NULL,NULL,NULL),(22,'车型档案',NULL,2,NULL,10,NULL,NULL,NULL),(23,'维修项目',NULL,2,NULL,10,NULL,NULL,NULL),(24,'商品资料',NULL,2,NULL,10,NULL,NULL,NULL),(25,'供货单位',NULL,2,NULL,10,NULL,NULL,NULL),(26,'组织机构',NULL,2,NULL,11,NULL,NULL,NULL),(27,'岗位定义',NULL,2,NULL,11,NULL,NULL,NULL),(28,'离职登记',NULL,2,NULL,11,NULL,NULL,NULL),(29,'通讯名录',NULL,2,NULL,11,NULL,NULL,NULL),(30,'技工星级',NULL,2,NULL,12,NULL,NULL,NULL),(31,'班组技工',NULL,2,NULL,12,NULL,NULL,NULL),(32,'外勤车辆',NULL,2,NULL,12,NULL,NULL,NULL),(33,'技工提成比例',NULL,2,NULL,12,NULL,NULL,NULL),(34,'员工权限控制',NULL,2,NULL,13,NULL,NULL,NULL),(35,'角色权限控制',NULL,2,NULL,13,NULL,NULL,NULL);
 
 /*Table structure for table `dzw_role` */
 
@@ -818,6 +820,9 @@ CREATE TABLE `menu` (
   `menuname` varchar(50) DEFAULT NULL COMMENT '菜单名称',
   `parentid` int(11) DEFAULT NULL COMMENT '父级编号',
   `teamid` varchar(50) NOT NULL COMMENT '班组编号',
+  `reserved1` int(11) DEFAULT NULL COMMENT '预留字段',
+  `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='树形菜单';
 
