@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.RepairBillMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.RepairBill">
+        <id column="no" property="no" />
+        <result column="documents_type" property="documentsType" />
+        <result column="balance_type" property="balanceType" />
+        <result column="documents_state" property="documentsState" />
+        <result column="balance_state" property="balanceState" />
+        <result column="jiesuan_time" property="jiesuanTime" />
+        <result column="jiesuan_ren" property="jiesuanRen" />
+        <result column="amount" property="amount" />
+        <result column="yewulx" property="yewulx" />
+        <result column="keihu_name" property="keihuName" />
+        <result column="chepai_no" property="chepaiNo" />
+        <result column="chexin" property="chexin" />
+        <result column="chejiao_no" property="chejiaoNo" />
+        <result column="phone" property="phone" />
+        <result column="bx_company" property="bxCompany" />
+        <result column="pk_company" property="pkCompany" />
+        <result column="duifanchepai" property="duifanchepai" />
+        <result column="counsellor" property="counsellor" />
+        <result column="completion_time" property="completionTime" />
+        <result column="remark" property="remark" />
+        <result column="motor_id" property="motorId" />
+        <result column="customer_id" property="customerId" />
+        <result column="jiashiyuan" property="jiashiyuan" />
+        <result column="jclichen" property="jclichen" />
+        <result column="jcyoulian" property="jcyoulian" />
+        <result column="shancilichen" property="shancilichen" />
+        <result column="jctime" property="jctime" />
+        <result column="shigonbanci" property="shigonbanci" />
+        <result column="jiecher" property="jiecher" />
+        <result column="yujitime" property="yujitime" />
+        <result column="sctime" property="sctime" />
+        <result column="yugujine" property="yugujine" />
+        <result column="chenshu" property="chenshu" />
+        <result column="reserved1" property="reserved1" />
+        <result column="reserved2" property="reserved2" />
+        <result column="reserved3" property="reserved3" />
+        <result column="reserved4" property="reserved4" />
+        <result column="reserved5" property="reserved5" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        no, documents_type, balance_type, documents_state, balance_state, jiesuan_time, jiesuan_ren, amount, yewulx, keihu_name, chepai_no, chexin, chejiao_no, phone, bx_company, pk_company, duifanchepai, counsellor, completion_time, remark, motor_id, customer_id, jiashiyuan, jclichen, jcyoulian, shancilichen, jctime, shigonbanci, jiecher, yujitime, sctime, yugujine, chenshu, reserved1, reserved2, reserved3, reserved4, reserved5
+    </sql>
+
+</mapper>
