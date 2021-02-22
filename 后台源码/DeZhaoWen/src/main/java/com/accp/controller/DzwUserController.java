@@ -11,11 +11,20 @@ import com.accp.service.impl.PrivilegeRoleServiceImpl;
 import com.accp.service.impl.RoleUserServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.net.ssl.HandshakeCompletedEvent;
+import javax.servlet.*;
 import javax.servlet.http.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.security.Principal;
 import java.util.*;
 
 /**
@@ -60,7 +69,7 @@ public class DzwUserController{
     //字段type表示权限对象的类别必须与type相等，为空则返回全部
     //pid自己的父级id与type作用类似
     @RequestMapping("/getMenu")
-    public List<DzwPrivilege> getMenu(Integer userId, Integer type, Integer pid){
+    public List<DzwPrivilege> getMenu(Integer userId,Integer type,Integer pid){
         if(userId==null){
             return null;
         }
@@ -80,7 +89,7 @@ public class DzwUserController{
         //根据角色id获取权限id
         QueryWrapper qw2=new QueryWrapper<PrivilegeRole>();
         qw2.eq("rid",rid);
-        List<PrivilegeRole> list=prser.list(qw);
+        List<PrivilegeRole> list=prser.list(qw2);
 
         //待会要返回的权限对象集合
         List<DzwPrivilege> list2=new ArrayList<DzwPrivilege>();
@@ -106,7 +115,24 @@ public class DzwUserController{
             }
 
         }
-
+        if(pid!=null){
+            List<Integer> ids=new ArrayList<Integer>();
+            for (DzwPrivilege d:list2){
+                ids.add(d.getPvgid());
+            }
+            QueryWrapper q=new QueryWrapper<DzwPrivilege>();
+            q.in("pid",ids);
+            List<DzwPrivilege> list3=dpser.list(q);
+            for (DzwPrivilege dd:list2) {
+                List<DzwPrivilege> list4=new ArrayList<DzwPrivilege>();
+                for (DzwPrivilege ddd:list3){
+                    if(dd.getPvgid()==ddd.getPid()){
+                        list4.add(ddd);
+                    }
+                }
+                dd.setChildren(list4);
+            }
+        }
         return list2;
     }
 }
