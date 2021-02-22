@@ -1,9 +1,19 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+<<<<<<< HEAD
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+=======
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
+import java.io.Serializable;
+import java.util.List;
+
+>>>>>>> 03e053522c170080777f7fc4a2cdb2f967b67348
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -16,7 +26,11 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author quanl
+<<<<<<< HEAD
  * @since 2021-02-22
+=======
+ * @since 2021-02-04
+>>>>>>> 03e053522c170080777f7fc4a2cdb2f967b67348
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,13 +44,23 @@ public class DzwPrivilege extends Model<DzwPrivilege> {
     @TableId(value = "pvgid", type = IdType.AUTO)
     private Integer pvgid;
 
+<<<<<<< HEAD
+=======
+    @TableField(exist=false)
+    private List<DzwPrivilege> children;
+
+>>>>>>> 03e053522c170080777f7fc4a2cdb2f967b67348
     @ApiModelProperty(value = "权限名称")
     private String pvgName;
 
     @ApiModelProperty(value = "权限验证")
     private String pvgVerify;
 
+<<<<<<< HEAD
     @ApiModelProperty(value = "类别，1是父级菜单，2是子级菜单，3是功能")
+=======
+    @ApiModelProperty(value = "类别，0是父级菜单，1是子级菜单，2是功能")
+>>>>>>> 03e053522c170080777f7fc4a2cdb2f967b67348
     private Integer pvgType;
 
     @ApiModelProperty(value = "路径（是菜单才拥有）")
@@ -46,7 +70,11 @@ public class DzwPrivilege extends Model<DzwPrivilege> {
     private Integer pid;
 
     @ApiModelProperty(value = "预留字段")
+<<<<<<< HEAD
     private Integer reserved1;
+=======
+    private String reserved1;
+>>>>>>> 03e053522c170080777f7fc4a2cdb2f967b67348
 
     @ApiModelProperty(value = "预留字段")
     private String reserved2;
