@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4347efba-bc95-45fd-a0d8-28bd79ab22fa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../前台源码/DeZhaoWen/adminLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/../前台源码/DeZhaoWen/adminLogin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/MyGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeZhaoWen/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/DzwUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/controller/DzwUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/controller/DzwUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/controller/DzwUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/controller/EngineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/controller/EngineController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/controller/RepairBillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/controller/RepairBillController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/Counselor.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/Counselor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/Platenumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/Platenumber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/RepairBill.class" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/target/classes/com/accp/domain/RepairBill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/domain/Maintenance.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/src/main/java/com/accp/domain/Maintenance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/src/test/java/com/accp/MyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/DeZhaoWen/src/test/java/com/accp/MyGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeZhaoWen/target/classes/mapper/DzwPrivilegeMapper.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +61,25 @@
       <workItem from="1611213867403" duration="84000" />
       <workItem from="1612613471668" duration="59000" />
       <workItem from="1613375708462" duration="1500000" />
+      <workItem from="1613952959704" duration="560000" />
+      <workItem from="1613953670207" duration="703000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="152" key="FileChooserDialogImpl" timestamp="1611213938714">

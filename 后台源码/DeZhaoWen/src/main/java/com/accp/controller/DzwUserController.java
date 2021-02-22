@@ -11,20 +11,11 @@ import com.accp.service.impl.PrivilegeRoleServiceImpl;
 import com.accp.service.impl.RoleUserServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.net.ssl.HandshakeCompletedEvent;
-import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.security.Principal;
 import java.util.*;
 
 /**
@@ -69,7 +60,7 @@ public class DzwUserController{
     //字段type表示权限对象的类别必须与type相等，为空则返回全部
     //pid自己的父级id与type作用类似
     @RequestMapping("/getMenu")
-    public List<DzwPrivilege> getMenu(Integer userId,Integer type,Integer pid){
+    public List<DzwPrivilege> getMenu(Integer userId, Integer type, Integer pid){
         if(userId==null){
             return null;
         }
