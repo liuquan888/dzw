@@ -94,7 +94,7 @@
 			<div class="header">
 				<span class="kx">卡修智慧系统</span>
 				<span style="margin-left: 200px;"></span>
-				<span class="tobu" v-for="item in tobu" @click="diantop(item)" @click="find2(item.pvgId)">{{item.pvgName}}</span>
+				<span class="tobu" v-for="item in tobu"  @click="find2(item.pvgid)">{{item.pvgName}}</span>
 			</div>
 			<div class="bod">
 				<div v-if="this.leftx" class="col-md-2" style="background-color: #18304A; height: 950px;">
@@ -493,12 +493,13 @@
 								type:1
 							},
 							success:function(result){
-								this.tobu=result;
+								that.tobu=result;
 							}
 						});
 					},
-					find2(pid){
+					find2(pide){
 						this.user=JSON.parse(sessionStorage.getItem("user"));
+						console.log(pide);
 						let that=this;
 						$.ajax({
 							url:"http://127.0.0.1:8080/dzwUser/getMenu",
@@ -506,10 +507,11 @@
 							data:{
 								userId:that.user.userId,
 								type:2,
-								pid:pid
+								pid:pide
 							},
 							success:function(result){
-								this.list=result;
+								console.log(result);
+								that.list=result;
 							}
 						});
 					}
