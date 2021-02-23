@@ -80,6 +80,7 @@ public class Carheet extends Model<Carheet> {
     private String mileage;
 
     @ApiModelProperty(value = "载重")
+    @TableField(value = "`load`")
     private String load;
 
     @ApiModelProperty(value = "车系")
@@ -163,7 +164,7 @@ public class Carheet extends Model<Carheet> {
     @ApiModelProperty(value = "客户")
     private Customer kh;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "保险公司")
     private String reserved1;
 
     @ApiModelProperty(value = "预留字段")

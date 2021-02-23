@@ -1,9 +1,16 @@
 package com.accp.controller;
 
 
+import com.accp.domain.Menu;
+import com.accp.service.impl.MenuServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -16,6 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/menu")
 public class MenuController {
+    @Autowired
+    MenuServiceImpl service;
 
+    @RequestMapping("/findByParentId")
+    public List<Menu> findByParentId(){
+        return service.findByParentId();
+    }
 }
 

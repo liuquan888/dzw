@@ -24,20 +24,29 @@ import java.util.List;
 public class CarController {
     @Autowired
     VehicleServiceImpl service;
+    @RequestMapping("find")
+    public List<Vehicle> find(String condition,Integer carbrandid){
+        QueryWrapper<Vehicle> queryWrapper=new QueryWrapper<>();
+        if (carbrandid!=null){
+            queryWrapper.eq("vehicleid",carbrandid);
+        }
+        if (condition!=null){
+            queryWrapper.like("vehiclename",condition);
+        }
+        return service.list(queryWrapper);
+    }
     @RequestMapping("/findById")
-    public List<Vehicle> findById(Vehicle v){
+    public List<Vehicle> findById(String v){
         QueryWrapper<Vehicle> query=new QueryWrapper<>();
-        if(v.getCarcoding()!=null){
-            query.eq("carcoding",v.getCarcoding());
+        if (v!=null){
+            query.eq("carcoding",v);
         }
-        if(v.getVehicleid()!=null){
-            query.lambda().like(Vehicle::getVehicleid,v.getVehicleid());
-        }
-        if(v.getVehiclename()!=null){
-            query.lambda().like(Vehicle::getVehiclename,v.getVehiclename());
-        }
-        List<Vehicle> list=service.list();
+        List<Vehicle> list=service.list(query);
         return list;
+    }
+    @RequestMapping("/findAll")
+    public List<Vehicle> findAll(){
+        return service.list();
     }
 }
 

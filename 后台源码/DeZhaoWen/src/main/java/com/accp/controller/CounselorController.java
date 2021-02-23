@@ -3,6 +3,7 @@ package com.accp.controller;
 
 import com.accp.domain.Counselor;
 import com.accp.service.impl.CounselorServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -30,6 +31,23 @@ public class CounselorController {
     @RequestMapping("/findById/{counselorid}")
     public Counselor findById(Integer id){
         return service.getById(id);
+    }
+    @RequestMapping("/find")
+    public List<Counselor> find(String departmentname){
+        QueryWrapper<Counselor> queryWrapper=new QueryWrapper<>();
+        if (departmentname!=null){
+            queryWrapper.like("counselorname",departmentname);
+        }
+        return service.list(queryWrapper);
+
+    }
+    @RequestMapping("/finds")
+    public List<Counselor> findBys(String bramch){
+        QueryWrapper<Counselor> queryWrapper=new QueryWrapper<>();
+        if (bramch!=null){
+            queryWrapper.eq("bramch",bramch);
+        }
+        return service.list(queryWrapper);
     }
 }
 

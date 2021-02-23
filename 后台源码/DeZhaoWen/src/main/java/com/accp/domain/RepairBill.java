@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -30,6 +32,8 @@ public class RepairBill extends Model<RepairBill> {
     @TableId(value = "no")
     @ApiModelProperty(value = "销售单号")
     private String no;
+
+
 
     @ApiModelProperty(value = "单据类型表外键id")
     private Integer documentsType;

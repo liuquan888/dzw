@@ -5,6 +5,7 @@ import com.accp.domain.Upkeep;
 import com.accp.service.impl.UpkeepServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -31,17 +32,39 @@ public class UpkeepController {
         List<Upkeep> list=service.list(queryWrapper);
         return list;
     }
-    @RequestMapping("/insert")
-    public boolean insert(Upkeep up){
-        return service.save(up);
+    @RequestMapping("/insertBaoYang")
+    public String insertBaoYang(@RequestBody Upkeep main) {
+        boolean i=service.save(main);
+        if(i) {
+            return "1";
+        }else {
+            return "0";
+        }
     }
-    @RequestMapping("/update")
-    public boolean update(Upkeep up){
-        return service.updateById(up);
+    @RequestMapping("/updateBaoYang")
+    public String updateBaoYang(@RequestBody Upkeep main) {
+        boolean i=service.updateById(main);
+        if(i) {
+            return "1";
+        }else {
+            return "0";
+        }
     }
-    @RequestMapping("/delete/{id}")
-    public boolean delete(Integer id){
-        return service.removeById(id);
+    @RequestMapping("/deleteBaoYang")
+    public String deleteBaoYang(int id) {
+        boolean i=service.removeById(id);
+        if(i) {
+            return "1";
+        }else {
+            return "0";
+        }
+    }
+    @RequestMapping("/selectMaintainregistInfoByCarNumber")
+    public List<Upkeep> selectMaintainregistInfoByCarNumber(String carNumber){
+        QueryWrapper<Upkeep> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("carnum",carNumber);
+        List<Upkeep> list=service.list(queryWrapper);
+        return list;
     }
 }
 

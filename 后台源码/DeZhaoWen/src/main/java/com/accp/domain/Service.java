@@ -1,17 +1,21 @@
 package com.accp.domain;
 
+<<<<<<< HEAD
 import com.baomidou.mybatisplus.annotation.IdType;
+=======
+
+>>>>>>> 051c6c9a8f7446d4a9d41eeb0ca2cac2c6e45663
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.io.Serializable;
-import java.util.List;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>

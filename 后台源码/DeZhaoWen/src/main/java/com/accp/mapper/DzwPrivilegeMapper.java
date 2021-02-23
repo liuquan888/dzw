@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-22
  */
 public interface DzwPrivilegeMapper extends BaseMapper<DzwPrivilege> {
 

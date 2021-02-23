@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import java.io.Serializable;
@@ -22,6 +23,9 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ApiModel(value="Weixlis对象", description="维修历史")
 public class Weixlis extends Model<Weixlis> {
+
+    @TableField(exist = false)
+    private Businessclass businessclass;
 
     private static final long serialVersionUID=1L;
 

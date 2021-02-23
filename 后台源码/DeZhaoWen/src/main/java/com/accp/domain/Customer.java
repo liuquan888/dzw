@@ -167,19 +167,19 @@ public class Customer extends Model<Customer> {
     @ApiModelProperty(value = "单个车辆资料")
     private Carheet car;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "省")
     private String reserved1;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "市")
     private String reserved2;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "区")
     private String reserved3;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "顾问电话")
     private String reserved4;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "顾问名称")
     private String reserved5;
 
 

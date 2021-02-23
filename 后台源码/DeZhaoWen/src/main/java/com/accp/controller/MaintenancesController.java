@@ -31,7 +31,13 @@ public class MaintenancesController {
         List<Maintenances> list=service.list(queryWrapper);
         return list;
     }
-
+    @RequestMapping("/selectRepairByCarNumber")
+    public List<Maintenances> selectRepairByCarNumber(String number){
+        QueryWrapper<Maintenances> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("chepai",number);
+        List<Maintenances> list=service.list(queryWrapper);
+        return list;
+    }
 
 }
 
