@@ -1,8 +1,12 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -15,7 +19,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author quanl
- * @since 2021-02-22
+ * @since 2021-02-04
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -25,20 +29,39 @@ public class RepairBill extends Model<RepairBill> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId(value = "no")
     @ApiModelProperty(value = "销售单号")
     private String no;
+
+
 
     @ApiModelProperty(value = "单据类型表外键id")
     private Integer documentsType;
 
+    @TableField(exist=false)
+    @ApiModelProperty(value = "单据类型")
+    private String dType;
+
     @ApiModelProperty(value = "结算方式表外键id")
     private Integer balanceType;
+
+    @TableField(exist=false)
+    @ApiModelProperty(value = "结算方式")
+    private String bType;
 
     @ApiModelProperty(value = "单据状态表外键id")
     private Integer documentsState;
 
+    @TableField(exist=false)
+    @ApiModelProperty(value = "单据状态")
+    private String dState;
+
     @ApiModelProperty(value = "结算状态表外键id")
     private Integer balanceState;
+
+    @TableField(exist=false)
+    @ApiModelProperty(value = "结算状态")
+    private String bState;
 
     @ApiModelProperty(value = "结算时间")
     private LocalDateTime jiesuanTime;
@@ -57,6 +80,10 @@ public class RepairBill extends Model<RepairBill> {
 
     @ApiModelProperty(value = "车牌号")
     private Integer chepaiNo;
+
+    @TableField(exist=false)
+    @ApiModelProperty(value = "车牌")
+    private String chepai;
 
     @ApiModelProperty(value = "车型")
     private String chexin;
@@ -78,6 +105,10 @@ public class RepairBill extends Model<RepairBill> {
 
     @ApiModelProperty(value = "服务顾问，外键顾问表id")
     private Integer counsellor;
+
+    @TableField(exist=false)
+    @ApiModelProperty(value = "服务顾问")
+    private String coun;
 
     @ApiModelProperty(value = "完工时间")
     private LocalDateTime completionTime;
@@ -125,7 +156,7 @@ public class RepairBill extends Model<RepairBill> {
     private String chenshu;
 
     @ApiModelProperty(value = "预留字段")
-    private Integer reserved1;
+    private String reserved1;
 
     @ApiModelProperty(value = "预留字段")
     private String reserved2;
@@ -221,21 +252,5 @@ public class RepairBill extends Model<RepairBill> {
         return this.no;
     }
 
-    public void setDType(String type) {
-    }
 
-    public void setBType(String type) {
-    }
-
-    public void setBState(String type) {
-    }
-
-    public void setCoun(String counselorname) {
-    }
-
-    public void setChepai(String platename) {
-    }
-
-    public void setDState(String type) {
-    }
 }
