@@ -14,9 +14,9 @@
 				  <div class="col-md-6">
 					 <h4>接车登记</h4>
 				 </div>
-				  <div class="col-md-3" style="margin-top:2px;"><input type="email" class="form-control" id="exampleInputEmail1" placeholder="匹配车牌号/车架号/手机/客户" style="border: 1px solid #101010;"></div>
+				  <div class="col-md-3" style="margin-top:2px;"><input type="email" class="form-control" id="exampleInputEmail1" v-model="workdimtext" placeholder="匹配车牌号/车架号/手机/客户" style="border: 1px solid #101010;"></div>
 				 <div class="col-md-2" style="margin-top:2px; position: relative; left: -80px;">
-						<button type="button" class="btn btn-warning">搜索</button>
+						<button type="button" class="btn btn-warning" @click="find5">搜索</button>
 						<button type="button" class="btn btn-btn">关闭</button>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 					 <div class="col-md-9">
 					</div>
 					<div class="col-md-1" >
-						<a href = "javascript:void(0)"onclick = "document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">
+						<a href = "javascript:void(0)"onclick = "document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'"  class="wxjc">
 							<span>
 								<img src="../img/tempsnip.png">维修接车
 							</span>
@@ -38,22 +38,22 @@
 					<div class="col-md-3">
 							<p style="font-size: 20px;color: aqua;">公众号会员码</p>
 							<p class="_xian">
-								<input type="email" class="form-control" id="exampleInputEmail1">
+								<input type="email" class="form-control" id="exampleInputEmail1" v-model="list5.membernum">
 							</p>
 							<p class="ls" style="color: aqua;">车主信息
-								&nbsp;&nbsp;&nbsp;&nbsp;<span>--</span>
+								&nbsp;&nbsp;&nbsp;&nbsp;<span>{{list5.reserved1}}</span>
 							</p>
 							<p>车主：
-								<span>--</span>
+								<span>{{list5.driver}}</span>
 							</p>
 							<p>地址：
-								<span>--</span>
+								<span>{{list5.driveraddress}}</span>
 							</p>
 							<p>驾驶员：
-								<span>--</span>
+								<span>{{list5.driver}}</span>
 							</p>
 							<p>手机：
-								<span>--</span>
+								<span>{{list5.driverphone}}</span>
 							</p>
 					</div>
 					<div class="col-md-3">
@@ -63,27 +63,28 @@
 								</span>
 							</p>
 							<p class="_xian">
-							<input type="email" class="form-control" id="exampleInputEmail1">
+							<input type="email" class="form-control" id="exampleInputEmail12" v-model="list5.platename">
 							</p>
-							<p class="ls" style="color: aqua;">车辆信息
-								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: aqua;">购买日期:--</span>
+							<p class="ls" style="color: aqua;">
+								<span>车辆信息</span>
+								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: aqua;">购买日期:{{list5.buytime}}</span>
 							</p>
 							<p>品牌：
-								<span>--</span>
+								<span>{{list5.carbrandid}}</span>
 								<span>车型:
-									<span>--</span>
+									<span>{{list5.carseries}}</span>
 								</span>
 							</p>
 							<p>发动机品牌：
-								<span>--</span>
+								<span>{{list5.engineid}}</span>
 								<span>发动机:
-									<span>--</span>
+									<span>{{list5.enginenum}}</span>
 								</span>
 							</p>
 							<p>保险日期：
-								<span>--</span>
+								<span>{{list5.mliouttime}}</span>
 								<span>保养日期:
-									<span>--</span>
+									<span>{{list5.nextupkeeptime}}</span>
 								</span>
 							</p>
 					</div>
@@ -104,239 +105,44 @@
 				<div class="row5">
 					<div class="col-md-12" style="margin-top: 10px;">	
 									<div class="table-responsive" style="height:390px; overflow-y:auto">
-										<table width="2100px" class="table-bordered" style="table-layout: fixed;">
-											<tr class="dyg" style="color: white;">
+										<table width="2100px" class="table-bordered" style="table-layout: fixed;" >
+											<tr class="dyg" style="color: white;" >
 												<td></td>
-												<td>客户编号</td>
+												<td>单据状态</td>
+												<td>业务类型</td>
 												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
+												<td>车牌号</td>
 												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
 												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
-												<td>备注</td>
-												<td>建档日期</td>
+												<td>维修单号</td>
+												<td>单号类型</td>
+												<td>开单时间</td>
+												<td>预计完工</td>
+												<td>完工时间</td>
+												<td>结算时间</td>
+												<td>预估金额</td>
 												<td>服务顾问</td>
-												<td>业务员电话</td>
-												<td>账期（天）</td>
-												<td>挂账额度</td>
-												<td>累计积分</td>
-												<td>定金金额</td>
-												<td>客户省</td>
-												<td>客户市</td>
-												<td>客户区</td>
-												<td>纳税人识别号</td>
-												<td>注册电话</td>
-												<td>开户银行</td>
-												<td>银行账号</td>
-												<td>注册地址</td>
-												<td>其他一</td>
-												<td>其它二</td>
-												<td>其它三</td>
-												<td>其它四</td>
+												<td>接车人</td>
 											</tr>
-											<tr>
+											<tr v-for="item in list" @dblclick="findbycp(item.platenumber.platename)">
 												<td class="dygtd"></td>
-												<td>客户编号</td>
-												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
-												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
-												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
-												<td>备注</td>
-												<td>建档日期</td>
-												<td>服务顾问</td>
-												<td>业务员电话</td>
-												<td>账期（天）</td>
-												<td>挂账额度</td>
-												<td>累计积分</td>
-												<td>定金金额</td>
-												<td>客户省</td>
-												<td>客户市</td>
-												<td>客户区</td>
-												<td>纳税人识别号</td>
-												<td>注册电话</td>
-												<td>开户银行</td>
-												<td>银行账号</td>
-												<td>注册地址</td>
-												<td>其他一</td>
-												<td>其它二</td>
-												<td>其它三</td>
-												<td>其它四</td>
-											</tr>
-											<tr>
-												<td class="dygtd"></td>
-												<td>客户编号</td>
-												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
-												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
-												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
-												<td>备注</td>
-												<td>建档日期</td>
-												<td>服务顾问</td>
-												<td>业务员电话</td>
-												<td>账期（天）</td>
-												<td>挂账额度</td>
-												<td>累计积分</td>
-												<td>定金金额</td>
-												<td>客户省</td>
-												<td>客户市</td>
-												<td>客户区</td>
-												<td>纳税人识别号</td>
-												<td>注册电话</td>
-												<td>开户银行</td>
-												<td>银行账号</td>
-												<td>注册地址</td>
-												<td>其他一</td>
-												<td>其它二</td>
-												<td>其它三</td>
-												<td>其它四</td>
-											</tr>
-												<tr>
-												<td class="dygtd"></td>
-												<td>客户编号</td>
-												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
-												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
-												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
-												<td>备注</td>
-												<td>建档日期</td>
-												<td>服务顾问</td>
-												<td>业务员电话</td>
-												<td>账期（天）</td>
-												<td>挂账额度</td>
-												<td>累计积分</td>
-												<td>定金金额</td>
-												<td>客户省</td>
-												<td>客户市</td>
-												<td>客户区</td>
-												<td>纳税人识别号</td>
-												<td>注册电话</td>
-												<td>开户银行</td>
-												<td>银行账号</td>
-												<td>注册地址</td>
-												<td>其他一</td>
-												<td>其它二</td>
-												<td>其它三</td>
-												<td>其它四</td>
-											</tr>
-											<tr>
-												<td class="dygtd"></td>
-												<td>客户编号</td>
-												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
-												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
-												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
-												<td>备注</td>
-												<td>建档日期</td>
-												<td>服务顾问</td>
-												<td>业务员电话</td>
-												<td>账期（天）</td>
-												<td>挂账额度</td>
-												<td>累计积分</td>
-												<td>定金金额</td>
-												<td>客户省</td>
-												<td>客户市</td>
-												<td>客户区</td>
-												<td>纳税人识别号</td>
-												<td>注册电话</td>
-												<td>开户银行</td>
-												<td>银行账号</td>
-												<td>注册地址</td>
-												<td>其他一</td>
-												<td>其它二</td>
-												<td>其它三</td>
-												<td>其它四</td>
-											</tr>
-											<tr>
-												<td class="dygtd"></td>
-												<td>客户编号</td>
-												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
-												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
-												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
-												<td>备注</td>
-												<td>建档日期</td>
-												<td>服务顾问</td>
-												<td>业务员电话</td>
-												<td>账期（天）</td>
-												<td>挂账额度</td>
-												<td>累计积分</td>
-												<td>定金金额</td>
-												<td>客户省</td>
-												<td>客户市</td>
-												<td>客户区</td>
-												<td>纳税人识别号</td>
-												<td>注册电话</td>
-												<td>开户银行</td>
-												<td>银行账号</td>
-												<td>注册地址</td>
-												<td>其他一</td>
-												<td>其它二</td>
-												<td>其它三</td>
-												<td>其它四</td>
-											</tr>
-											<tr>
-												<td class="dygtd"></td>
-												<td>客户编号</td>
-												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
-												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
-												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
-												<td>备注</td>
-												<td>建档日期</td>
-												<td>服务顾问</td>
-												<td>业务员电话</td>
-												<td>账期（天）</td>
-												<td>挂账额度</td>
-												<td>累计积分</td>
-												<td>定金金额</td>
-												<td>客户省</td>
-												<td>客户市</td>
-												<td>客户区</td>
-												<td>纳税人识别号</td>
-												<td>注册电话</td>
-												<td>开户银行</td>
-												<td>银行账号</td>
-												<td>注册地址</td>
-												<td>其他一</td>
-												<td>其它二</td>
-												<td>其它三</td>
-												<td>其它四</td>
-											</tr>
-										</table>
+												<td>{{item.danjuzt}}</td>
+												<td>{{item.ywlx}}</td>
+												<td>{{item.reserved1}}</td>
+												<td>{{item.platenumber.platename}}</td>
+												<td>{{item.phone}}</td>
+												<td>{{item.huiykh}}</td>
+												<td>{{item.wxdh}}</td>
+												<td>{{item.djlx}}</td>
+												<td>{{item.kddate}}</td>
+												<td>{{item.yujwg}}</td>
+												<td>{{item.wgdate}}</td>
+												<td>{{item.jsdate}}</td>
+												<td>{{item.ygjine}}</td>
+												<td>{{item.fwugw}}</td>
+												<td>{{item.jiecr}}</td>
+											</tr>												
+									</table>
 							</div>
 					</div>	
 				</div>
@@ -344,7 +150,7 @@
 				<div class="row6">
 					<div class="col-md-12" style="margin-top: 10px;">	
 									<div class="table-responsive" style="height:390px; overflow-y:auto">
-										<table width="2100px" class="table-bordered" style="table-layout: fixed;">
+										<table width="2100px" class="table-bordered" style="table-layout: fixed;" >
 											<tr class="dyg" style="color: white;">
 												<td></td>
 												<td>维修单号</td>
@@ -358,18 +164,18 @@
 												<td>结算时间</td>
 												<td>消费金额</td>
 											</tr>
-											<tr>
+											<tr v-for="item in list2">
 												<td class="dygtd"></td>
-												<td>客户编号</td>
-												<td>客户名称</td>
-												<td>详细地址</td>
-												<td>联系人</td>
-												<td>手机</td>
-												<td>客户生日</td>
-												<td>客户类别</td>
-												<td>会员卡号</td>
-												<td>入会日期</td>
-												<td>会员到期</td>
+												<td>{{item.wxdh}}</td>
+												<td>{{item.jcsj}}</td>
+												<td>{{item.businessclass.businessleb}}</td>
+												<td>{{item.wgsj}}</td>
+												<td>{{item.khname}}</td>
+												<td>{{item.cph}}</td>
+												<td>{{item.shoji}}</td>
+												<td>{{item.hykh}}</td>
+												<td>{{item.jsdate}}</td>
+												<td>{{item.xfje}}</td>
 											</tr>
 										</table>
 							</div>
@@ -379,7 +185,7 @@
 				<div class="row7">
 					<div class="col-md-12" style="margin-top: 10px;">	
 									<div class="table-responsive" style="height:390px; overflow-y:auto">
-										<table width="2100px" class="table-bordered" style="table-layout: fixed;">
+										<table width="2100px" class="table-bordered" style="table-layout: fixed;" >
 											<tr class="dyg" style="color: white;">
 												<td></td>
 												<td>维修单号</td>
@@ -398,23 +204,23 @@
 												<td>工单号</td>
 												<td>工位</td>
 											</tr>
-											<tr>
+											<tr v-for="item in list3">
 												<td class="dygtd"></td>
-													<td>维修单号</td>
-												<td>接车时间</td>
-												<td>业务类型</td>
-												<td>完工时间</td>
-												<td>结算时间</td>
-												<td>项目编码</td>
-												<td>项目名称</td>
-												<td>价类</td>
-												<td>结算工时</td>
-												<td>工时金额</td>
-												<td>作业人员</td>
-												<td>故障描述</td>
-												<td>故障确认</td>
-												<td>工单号</td>
-												<td>工位</td>
+												<td>{{item.wxdh}}</td>
+												<td>{{item.jcsj}}</td>
+												<td>{{item.reserved1}}</td>
+												<td>{{item.wgsj}}</td>
+												<td>{{item.jsdate}}</td>
+												<td>{{item.xmbh}}</td>
+												<td>{{item.xmname}}</td>
+												<td>{{item.jialei}}</td>
+												<td>{{item.jiesgs}}</td>
+												<td>{{item.gshije}}</td>
+												<td>{{item.zuoyery}}</td>
+												<td>{{item.gzms}}</td>
+												<td>{{item.gzqr}}</td>
+												<td>{{item.gdh}}</td>
+												<td>{{item.gwei}}</td>
 											</tr>
 										</table>
 							</div>
@@ -445,23 +251,25 @@
 												<td>服务顾问</td>
 												<td>对应项目</td>
 											</tr>
-											<tr>
+											<tr v-for="item in list4">
 												<td class="dygtd"></td>
-													<td>维修单号</td>
-												<td>接车时间</td>
-												<td>业务类型</td>
-												<td>完工时间</td>
-												<td>结算时间</td>
-												<td>项目编码</td>
-												<td>项目名称</td>
-												<td>价类</td>
-												<td>结算工时</td>
-												<td>工时金额</td>
-												<td>作业人员</td>
-												<td>故障描述</td>
-												<td>故障确认</td>
-												<td>工单号</td>
-												<td>工位</td>
+												<td>{{item.reserved1}}</td>
+												<td>{{item.reserved2}}</td>
+												<td>{{item.reserved3}}</td>
+												<td>{{item.reserved4}}</td>
+												<td>{{item.reserved5}}</td>
+												<td>{{item.lb}}</td>
+												<td>{{item.lingliaodate}}</td>
+												<td>{{item.lingliaor}}</td>
+												<td>{{item.wuliao}}</td>
+												<td>{{item.wuliaoname}}</td>
+												<td>{{item.dwei}}</td>
+												<td>{{item.jialei}}</td>
+												<td>{{item.shuliao}}</td>
+												<td>{{item.danjian}}</td>
+												<td>{{item.jine}}</td>
+												<td>{{item.fuwugw}}</td>
+												<td>{{item.duiy}}</td>
 											</tr>
 										</table>
 							</div>
@@ -966,6 +774,8 @@
 		</div>
 		
 		<!--维修接车 -->
+		<div class="abcdf">
+			
 		<div id="light2" class="white_content"><br><a href = "javascript:void(0)" onclick = "document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'" class="djgb">点这里关闭本窗口<br>　　　　　　</a><br>　　　　　
 				<div class="row"style="width: 1480px;">
 					<div class="col-md-1" style="position: relative; left: 20px;">
@@ -976,7 +786,7 @@
 					</div>
 					<div class="col-md-3" style="margin-top:2px;"></div>
 					<div class="col-md-2" style="margin-top:2px; position: relative; left: -10px;">
-						<button type="button" class="btn btn-success">搜索</button>
+						<button type="button" class="btn btn-success">保存</button>
 						<button type="button" class="btn btn-btn">关闭</button>
 					</div>
 				</div>
@@ -1341,8 +1151,8 @@
 				</div>
 				
 				
+			</div>
 		</div>
-		
 
         <div id="fade" class="black_overlay">
 			
@@ -1775,12 +1585,87 @@
 			<script src="../js/bootstrap.min.js"></script>
 			<script src="../js/vue.js"></script>
 		<script type="text/javascript">
+			var BaseUrl="http://127.0.0.1:8080/";
 			new Vue({
 				el: "#ctn",
 				data() {
-					return {}
+					return {
+						list:[],
+						list2:[],
+						list3:[],
+						list4:[],
+						list5:{},
+						workdimtext:null,
+					}
 				},
 				methods: {
+						//显示作业中车辆
+						find(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"workcar/findworks",
+								success:function(result){
+									that.list=result;
+									console.log(that.list)
+								}
+							})
+						},
+						//显示维修历史
+						find2(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"weixlis/findweix",
+								success:function(result){
+									that.list2=result;
+									console.log(that.list2)
+								}
+							})
+						},
+						//显示维修项目
+						find3(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"maintenanceItems/findten",
+								success:function(result){
+									that.list3=result;
+									console.log(that.list3)
+								}
+							})
+						},
+						//显示领料情况
+						find4(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"getMaterial/findgetm",
+								success:function(result){
+									that.list4=result;
+									console.log(that.list4)
+								}
+							})
+						},
+						find5(){
+							let that=this;
+							if(that.workdimtext==null){
+								that.workdimtext="56d56f6e56d65e85ads8562ar52da96q57";
+							}
+							console.log(that.workdimtext);
+							$.ajax({
+								url:BaseUrl+"workcar/findworkdim/"+that.workdimtext,
+								success:function(result){
+									that.list=result;								
+									that.workdimtext=null;
+								}
+							})
+						},
+						findbycp(chepai){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"workcar/findworkdims/"+chepai,
+								success:function(result){
+										that.list5=result;
+								}
+							})
+						},
 						tjxw() {
 							$("#ywlb").modal("show");
 						},
@@ -1800,7 +1685,13 @@
 							$("#dgzj").modal("show");
 						}
 				},
-				created() {}
+				created() {
+					this.find();
+					this.find2();
+					this.find3();
+					this.find4();
+					
+				}
 			});
 			
 			$(".wxls").click(function(){
@@ -1932,6 +1823,33 @@
 				$(this).css("color", "aqua");
 				$(".caid3").css("display","block");
 				$("#xxxx").css("display","block");	
+			})
+			
+			$(function(){ 
+				$("tr").click(function(){ 
+					$("tr").css("background-color",""); 
+					$(this).css("background-color","yellow"); 
+					$(".dyg").css("background-color",""); 
+					}); 
+			});
+			$(".wxjc").click(function(){
+				if(document.getElementById("exampleInputEmail12").value==""){
+					alert("车牌号不能为空");
+					$(".abcdf").css("display","none");
+					$("#fade").css("display","none");
+					return false;
+				}else if(document.getElementById("exampleInputEmail12").value!=""){
+					var a=confirm("改成处于接车状态，是否继续接车");
+					if(!a){
+						$(".abcdf").css("display","none");
+						$("#fade").css("display","none");
+						return false;	
+					}else{
+					$(".abcdf").css("display","block");
+					$("#fade").css("display","block");	
+					return true;
+					}
+				}
 			})
 		</script>
 	</body>
