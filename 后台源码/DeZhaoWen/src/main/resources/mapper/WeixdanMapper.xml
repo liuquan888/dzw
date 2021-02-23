@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.mapper.WeixdanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.accp.domain.Weixdan">
+        <id column="weixdanh" property="weixdanh" />
+        <result column="chepaih" property="chepaih" />
+        <result column="chejiahao" property="chejiahao" />
+        <result column="cheliangxh" property="cheliangxh" />
+        <result column="clpp" property="clpp" />
+        <result column="fdjh" property="fdjh" />
+        <result column="fdjpp" property="fdjpp" />
+        <result column="fuwugw" property="fuwugw" />
+        <result column="czname" property="czname" />
+        <result column="jsy" property="jsy" />
+        <result column="lxphone" property="lxphone" />
+        <result column="jclc" property="jclc" />
+        <result column="jcyl" property="jcyl" />
+        <result column="sclc" property="sclc" />
+        <result column="jcsj" property="jcsj" />
+        <result column="ywlb" property="ywlb" />
+        <result column="sgbc" property="sgbc" />
+        <result column="jcr" property="jcr" />
+        <result column="yjwg" property="yjwg" />
+        <result column="jiesfs" property="jiesfs" />
+        <result column="pkgs" property="pkgs" />
+        <result column="wgsj" property="wgsj" />
+        <result column="scjc" property="scjc" />
+        <result column="ygje" property="ygje" />
+        <result column="jdbz" property="jdbz" />
+        <result column="cxms" property="cxms" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        weixdanh, chepaih, chejiahao, cheliangxh, clpp, fdjh, fdjpp, fuwugw, czname, jsy, lxphone, jclc, jcyl, sclc, jcsj, ywlb, sgbc, jcr, yjwg, jiesfs, pkgs, wgsj, scjc, ygje, jdbz, cxms
+    </sql>
+
+</mapper>

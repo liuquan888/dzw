@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 权限表 前端控制器
+ *  前端控制器
  * </p>
  *
  * @author quanl
  * @since 2021-02-22
  */
 @RestController
-@RequestMapping("/dzwPrivilege")
-public class DzwPrivilegeController {
+@RequestMapping("/weixdan")
+public class WeixdanController {
 
 }
 
