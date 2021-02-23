@@ -378,8 +378,8 @@
 				template: `
 					<ul class="nav nav-pills nav-stacked">
 						<li v-for="item in menu">
-							<a href="#" @click="createTab(item)">{{item.name}}</a>
-							<tree @create-tab="createTab" :menu="item.childrens" v-if="item.bool==false"></tree>
+							<a href="#" @click="createTab(item)">{{item.menuname}}</a>
+							<tree @create-tab="createTab" :menu="item.childrens" v-if="item.reserved2==false"></tree>
 						</li>
 					</ul>
 				`,
@@ -408,19 +408,11 @@
 				el:".container-fluid",
 				data(){
 					return{
-						xs:true,
 						teamtechnician:{},
-						menu:[{id:0,name:"河北省",ename:"hebei",bool:true,childrens:[{id:2,name:"北京",ename:"北京",bool:true}]}]
+						menu:{}
 					}
 				},
 				methods:{
-					xianshi(){
-						if(this.xs){
-							this.xs=false;
-						}else{
-							this.xs=true;
-						}
-					},
 					findAll(){
 						let that=this;
 						$.ajax({
@@ -431,21 +423,32 @@
 							}
 						});
 					},
-					createTab(){
+					createTab(item){
+						if(item.childrens && item.childrens.length > 0) {
+							if(item.reserved2) {
+								item.reserved2 = false;
+							} else {
+								item.reserved2 = true;
+							}
+							return;
+						}else{
+							console.log("11111");
+						}
+					},
+					findByParentId(){
 						let that=this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/menu/findAll",
+							url:"http://127.0.0.1:8080/menu/findByParentId",
 							type:"post",
 							success:function(result){
-								
+								that.menu=result;
 							}
 						});
-						return;
 					}
 				},
 				created(){
 					this.findAll();
-					this.createTab();
+					this.findByParentId();
 				}
 			});
 		</script>
