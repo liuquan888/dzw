@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -50,6 +51,9 @@ public class Menu extends Model<Menu> {
     @ApiModelProperty(value = "预留字段")
     private String reserved3;
 
+    @TableField(exist = false)
+    private List<Menu> childrens;
+
 
     public static final String ID = "id";
 
@@ -68,8 +72,5 @@ public class Menu extends Model<Menu> {
     @Override
     protected Serializable pkVal() {
         return this.id;
-    }
-
-    public void setChildrens(List<Menu> list2) {
     }
 }

@@ -13,9 +13,19 @@
         <result column="reserved3" property="reserved3" />
     </resultMap>
 
+    <resultMap id="BaseResultMaps" type="com.accp.domain.Menu" extends="BaseResultMap">
+        <collection property="childrens" column="id" ofType="com.accp.domain.Menu" select="findByParentId">
+
+        </collection>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, menuname, parentid, teamid, reserved1, reserved2, reserved3
     </sql>
+
+    <select id="findByParentId" resultMap="BaseResultMaps">
+        select * from menu where parentid=#{id}
+    </select>
 
 </mapper>
