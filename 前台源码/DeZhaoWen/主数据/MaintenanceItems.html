@@ -102,16 +102,18 @@
 				
 				<div class="row">
 					<div class="col-sm-8">
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<img src="../img/1.png" width="2%"><a href="javascript:void(0)" @click="addson">添加分类</a> 
-						<img src="../img/2.png" width="2%"><a href="javascript:void(0)" @click="updatesame">修改分类</a> 
-						<img src="../img/3.png" width="2%"><a href="javascript:void(0)">删除</a> 
+						<div v-if="bott1">
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="../img/1.png" width="2%"><a href="javascript:void(0)" @click="addservicemo">添加分类</a> 
+							<img src="../img/2.png" width="2%"><a href="javascript:void(0)" @click="updateservicemo">修改分类</a> 
+							<img src="../img/3.png" width="2%"><a href="javascript:void(0)">删除</a> 
+						</div>
 					</div>
 					<div class="col-sm-3">
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addservice">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updateservice">修改</a> 
+						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addmainmo">增加</a> 
+						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updatemainmo">修改</a> 
 						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> &nbsp;
-						<img src="../zenglianjun/img/tempsnip.png" width="4%"><a href="javascript:void(0)" @click="pricechange">调价</a> 
+						<img src="../zenglianjun/img/tempsnip.png" width="4%"><a href="javascript:void(0)" @click="pricechangemo">调价</a> 
 						<img src="img/QQ图片20210121164913.png" width="5%"><a href="javascript:void(0)">导出</a> 
 					</div>
 				</div>
@@ -129,7 +131,7 @@
 						            </li>
 						            <ul style="display:none;margin-left: -20px;font-size: 13px;"  :id="'u'+index">
 						                <li v-for="item2 in item.services">
-						               	<a href="#" @click="findmainlist(item2,0)">
+						               	<a href="#" @click="findmainlist([item2.serId],item2)">
 						               		<img src="image/小房子2.PNG" style="vertical-align: middle;" width="12%">
 						               		<span class="servicename servicenames">{{item2.serId}} <span style="font-size: 15px;">—</span> {{item2.serName}}</span>
 						               	</a>
@@ -187,7 +189,7 @@
 			<div id="modal">
 				
 				<!-- 新增服务项目 -->
-				<div class="modal fade" id="addservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal fade" id="addmainmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -198,7 +200,7 @@
 									<span class="til">服务项目定义</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
+									<button type="button" class="btn btn-success" @click="addmain">保存</button>
 								</div>
 							</div>
 							
@@ -211,52 +213,56 @@
 								<p>
 									<span class="must">*</span>
 									<span class="va">项目编码</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="main.mId" />
 									<span class="must">*</span>
 									<span class="va">项目名称</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="main.mName"/>
 								</p>
 								<p>
 									<span class="must">*</span>
 									<span class="va">收入种类</span>
-									<select style="width: 150px;height: 25px;">
-										<option>工时费</option>
+									<select style="width: 150px;height: 25px;" v-model="main.inId">
+										<option v-for="item in gonglist" :value="item.inId">
+											{{item.inName}}
+										</option>
 									</select>
 									<span class="must">*</span>
 									<span class="va">项目类别</span>
-									<select style="width: 150px;height: 25px;">
-										<option>中国重汽</option>
+									<select style="width: 150px;height: 25px;" v-model="main.serId">
+										<option v-for="item in type" :value="item.serId" >
+											{{item.serName}}
+										</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">备注</span>
-									<input type="text" name="" id="" value="" style="width: 388px;"/>
+									<input type="text" name="" id="" value="" style="width: 388px;" v-model="main.mNote" />
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="main.mNormalprice" />
 										
 										<span class="va">会员价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="main.mMemberprice" />
 										
 										<span class="va">VIP价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="main.mVipprice" />
 									</div>
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">协议价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="main.mDetaprice" />
 										
 										<span class="va">索赔价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="main.mClaimprice" />
 										
 										<span class="va">保险价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="main.mSafetyprice" />
 									</div>
 								</p>
 								<br />
@@ -271,7 +277,7 @@
 				
 				
 				<!-- 修改服务项目 -->
-				<div class="modal fade" id="updateservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal fade" id="updatemainmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -282,7 +288,7 @@
 									<span class="til">服务项目定义</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
+									<button type="button" class="btn btn-success" @click="updatemain">保存</button>
 								</div>
 							</div>
 							
@@ -290,57 +296,61 @@
 						</h4>
 				      </div>
 				      <div class="modal-body">
-				        	<div style="background:#f7f7f7 ;">
+							<div style="background:#f7f7f7 ;">
 								<br />
 								<p>
 									<span class="must">*</span>
 									<span class="va">项目编码</span>
-									<input type="text" name="" id="" value="1003" />
+									<input type="text" name="" id="" value="" v-model="main.mId" />
 									<span class="must">*</span>
 									<span class="va">项目名称</span>
-									<input type="text" name="" id="" value="车型" />
+									<input type="text" name="" id="" value="" v-model="main.mName"/>
 								</p>
 								<p>
 									<span class="must">*</span>
 									<span class="va">收入种类</span>
-									<select style="width: 150px;height: 25px;">
-										<option>工时费</option>
+									<select style="width: 150px;height: 25px;" v-model="main.inId">
+										<option v-for="item in gonglist" :value="item.inId">
+											{{item.inName}}
+										</option>
 									</select>
 									<span class="must">*</span>
 									<span class="va">项目类别</span>
-									<select style="width: 150px;height: 25px;">
-										<option>中国重汽</option>
+									<select style="width: 150px;height: 25px;" v-model="main.serId">
+										<option v-for="item in type" :value="item.serId" >
+											{{item.serName}}
+										</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">备注</span>
-									<input type="text" name="" id="" value="没有备注" style="width: 388px;"/>
+									<input type="text" name="" id="" value="" style="width: 388px;" v-model="main.mNote" />
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="66666" />
+										<input type="text" name="" id="" value="" v-model="main.mNormalprice" />
 										
 										<span class="va">会员价</span>
-										<input type="text" name="" id="" value="55555" />
+										<input type="text" name="" id="" value="" v-model="main.mMemberprice" />
 										
 										<span class="va">VIP价</span>
-										<input type="text" name="" id="" value="44444" />
+										<input type="text" name="" id="" value="" v-model="main.mVipprice" />
 									</div>
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">协议价</span>
-										<input type="text" name="" id="" value="33333" />
+										<input type="text" name="" id="" value="" v-model="main.mDetaprice" />
 										
 										<span class="va">索赔价</span>
-										<input type="text" name="" id="" value="22222" />
+										<input type="text" name="" id="" value="" v-model="main.mClaimprice" />
 										
 										<span class="va">保险价</span>
-										<input type="text" name="" id="" value="11111" />
+										<input type="text" name="" id="" value="" v-model="main.mSafetyprice" />
 									</div>
 								</p>
 								<br />
@@ -354,8 +364,8 @@
 				
 				
 				
-				<!-- 添加子类 -->
-				<div class="modal fade" id="addsonmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<!-- 添加分类 -->
+				<div class="modal fade" id="addservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -366,7 +376,7 @@
 									<span class="til">添加分类</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
+									<button type="button" class="btn btn-success" @click="addservice">保存</button>
 								</div>
 							</div>
 							
@@ -379,14 +389,12 @@
 								<p>
 									<span class="must"></span>
 									<span class="va">类别编码</span>
-									<select style="width: 150px;height: 25px;">
-										<option>中国重汽</option>
-									</select>
+									<input type="text" name="" id="" value="" v-model="servicemax" />
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">类别名称</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="service.serName" />
 								</p>
 								<br />
 							</div>
@@ -400,7 +408,7 @@
 				
 				
 				<!-- 修改子类 -->
-				<div class="modal fade" id="updatesamemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal fade" id="updateservicemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">
 				    <div class="modal-content">
 				      <div class="modal-header">
@@ -411,7 +419,7 @@
 									<span class="til">修改分类</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
+									<button type="button" class="btn btn-success" @click="updatemain">保存</button>
 								</div>
 							</div>
 							
@@ -424,12 +432,12 @@
 								<p>
 									<span class="must"></span>
 									<span class="va">类别编码</span>
-									<input type="text" name="" id="" value="113" />
+									<input type="text" name="" id="" v-model="service.serId" readonly="readonly"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">类别名称</span>
-									<input type="text" name="" id="" value="中国重汽" />
+									<input type="text" name="" id="" v-model="service.serName" />
 								</p>
 								<br />
 							</div>
@@ -529,6 +537,20 @@
 			return{
 				servicemenu:[],
 				mainlist:[],
+				//操作维修菜单按钮,默认隐藏
+				bott1:false,
+				//维修项目菜单初始化
+				serviceinit:{},
+				service:{},
+				main:{},
+				servicemax:null,
+				temp1:true,
+				//收费种类
+				gonglist:[],
+				//项目类别
+				type:[],
+				//临时刷新数据
+				params:[],
 			}
 		},
 		methods:{
@@ -538,61 +560,220 @@
 				$.ajax({
 					url:BaseUrl+"maintenance/findmenu",
 					success:function(result){
-						that.servicemenu=result;
+						that.servicemenu=result
+						that.type=that.servicemenu[0].services;
+						if(that.main.serId==null&&that.type!=null){
+							that.main.serId=that.type[0].serId
+						}
+						if(that.main.inId==null&&that.gonglist!=null){
+							that.main.inId=that.gonglist[0].inId
+						}
 					}
 				})
 			},
 			
 			//维修项目菜单效果
-			doAction(index,service){
+			doAction(index,item){
 			    var obj = document.getElementById('u' + index);
 					if(obj.style.display == 'none'){
 			            obj.style.display = 'block';
-						this.findmainlist(item=[{serId:0}],service.serId);
+						if(!this.bott1){	
+							this.bott1=true;
+						}
+						var params = item.services.map(item=>item.serId);
+						this.findmainlist(params,item);
+						this.type=item.services;
+						console.log(this.type)
 					}else{
 						obj.style.display = 'none';
 					}
+					this.serviceinit=item;
 			},
 			
-			findmainlist(item,fserId){
-				
-				//fserId 父级菜单维修项目id用于在点击父级菜单时显示下方子集的所有维修进程
-				
+			findmainlist(params,item){
+				this.serviceinit=item;
+				this.params=params;
 				let that=this;
-				if(item.serId==null){
-					item.serId=0;
-				}
-				console.log(fserId)
+				var json = JSON.stringify(params);
 				$.ajax({
-					url:BaseUrl+"maintenance/findmain/"+item.serId+"/"+fserId,
+					url:BaseUrl+"maintenance/findmain",
+					data:json,
+					type:"post",
+					contentType:"application/json;cahrset=utf-8",
 					success:function(result){
 						that.mainlist=result;
 					}
 				})
 			},
 			
-			addservice(){
+			addmainmo(){
+				$("#addmainmodal").modal("show");
+				
+			},
+			
+			//新增维修进程
+			addmain(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/addmain",
+					type:"post",
+					data:that.main,
+					success:function(result){
+						if(result=="000001"){
+							alert("编号不允许重复！")
+						}
+						that.findmenu();
+						that.findmainlist(that.params,[]);
+						that.main={},
+						$("#addmainmodal").modal("hide");
+					}
+				})
+			},
+			
+			
+			
+			
+			updatemainmo(){
+				this.main=this.serviceinit;
+				$("#updatemainmodal").modal("show");
+			},
+			
+			
+			
+			
+			
+			
+			
+			addservicemo(){
+				if(this.serviceinit.serName=="车型"||this.serviceinit.serName=="发动机"){
+					alert("只能定义车型，发动机外的分类！")
+					return
+				}
+				this.findtemp1(this.serviceinit.serId);
+				if(this.temp1==true){
+					alert("只能定义车型，发动机外的分类！")
+					return
+				}
 				$("#addservicemodal").modal("show");
 			},
-			updateservice(){
+			
+			//添加维修项目菜单分类
+			addservice(){
+				this.service.serId=this.servicemax;
+				this.service.serParent=this.serviceinit.serId;
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/addservice",
+					type:"post",
+					data:that.service,
+					success:function(result){
+						if(result=="000001"){
+							alert("编号不允许重复！")
+						}
+						that.findmenu();
+						that.findmax();
+						$("#addservicemodal").modal("hide");
+					}
+					
+				})
+			},
+			
+			updateservicemo(){
+				//解除双向绑定
+				let formdata= JSON.parse(JSON.stringify(this.serviceinit))
+				if(this.serviceinit.serName=="车型"||this.serviceinit.serName==="发动机"){
+					alert("只能定义车型，发动机外的分类！")
+					return
+				}
+				this.service=formdata;
 				$("#updateservicemodal").modal("show");
 			},
-			addson(){
-				$("#addsonmodal").modal("show");
+			
+			updatemain(){
+				this.service.services=[];
+				this.service.service={};
+				let that=this;
+				console.log(that.service)
+				$.ajax({
+					url:BaseUrl+"maintenance/updateservice",
+					data:that.service,
+					type:"post",
+					success:function(result){
+						$("#updateservicemodal").modal("hide");
+						that.findmenu();
+						that.findmainlist(that.params,[]);
+					}
+				})
 			},
-			updatesame(){
-				$("#updatesamemodal").modal("show");
+			
+			findmax(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/findmax",
+					success:function(result){
+						that.servicemax=result+1;
+					}
+				})
 			},
-			pricechange(){
+			
+			findtemp1(serId){
+				console.log(serId)
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/findtemp1/"+serId,
+					success:function(result){
+						that.temp1=result;
+						console.log(that.temp1)
+					}
+				})
+			},
+			
+			//收费标准
+			findgong(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/findgong",
+					success:function(result){
+						that.gonglist=result;
+					}
+				})
+			},
+			
+			//项目类别
+			findtype(serId){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/findtype/"+serId,
+					success:function(result){
+						that.type=result;
+					}
+				})
+			},
+			
+			
+			pricechangemo(){
 				$("#pricechangemodal").modal("show");
 			}
 			
 		},
 		created(){
 			this.findmenu();
-			this.findmainlist(item=[{serId:0}],0);
+			this.findmainlist([],[]);
+			this.findmax();
+			this.findgong();
 		}
 	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	$(".pintr").click(function(){
 		$(".pintr").css("background","#ffffff")
 		$(this).css("background","sandybrown")
