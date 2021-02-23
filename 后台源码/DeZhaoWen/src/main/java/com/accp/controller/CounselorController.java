@@ -41,5 +41,13 @@ public class CounselorController {
         return service.list(queryWrapper);
 
     }
+    @RequestMapping("/finds")
+    public List<Counselor> findBys(String bramch){
+        QueryWrapper<Counselor> queryWrapper=new QueryWrapper<>();
+        if (bramch!=null){
+            queryWrapper.eq("bramch",bramch);
+        }
+        return service.list(queryWrapper);
+    }
 }
 

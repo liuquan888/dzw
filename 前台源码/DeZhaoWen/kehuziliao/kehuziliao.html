@@ -681,12 +681,6 @@
 
 	<body>
 		<div class="container-fluid">
-
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-01-04
-            	描述：页面主体
-            -->
 			<div id="header">
 				<h2>客户档案</h2>
 				<div id="selectdiv">
@@ -788,29 +782,29 @@
 							<td style="width: 40px;">
 								<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 							</td>
-							<td>{{item.number}}</td>
-							<td>{{item.name}}</td>
-							<td>{{item.address}}</td>
+							<td>{{item.customernum}}</td>
+							<td>{{item.customername}}</td>
+							<td>{{item.customeraddress}}</td>
 							<td>{{item.linkman}}</td>
 							<td>{{item.phone}}</td>
-							<td>{{item.borndate}}</td>
-							<td>{{item.clienttype}}</td>
+							<td>{{item.birthday}}</td>
+							<td>{{item.leibie}}</td>
 							 
 							<td>{{item.remark}}</td>
-							<td>{{item.date}}</td>
-							<td>{{item.staffname}}</td>
-							<td>{{item.counselorname}}</td>
-							<td>{{item.paymentdays}}</td>
-							<td>{{item.paymentsize}}</td>
+							<td>{{item.filing}}</td>
+							<td>{{item.reserved5}}</td>
+							<td>{{item.reserved4}}</td>
+							<td>{{item.paytime}}</td>
+							<td>{{item.payment}}</td>
 							 
 						 
-							<td>{{item.sheng}}</td>
-							<td>{{item.shi}}</td>
-							<td>{{item.qv}}</td>
-							<td>{{item.taxpayernumber}}</td>
+							<td>{{item.reserved1}}</td>
+							<td>{{item.reserved2}}</td>
+							<td>{{item.reserved3}}</td>
+							<td>{{item.paytest}}</td>
 							<td>{{item.registerphone}}</td>
-							<td>{{item.bank}}</td>
-							<td>{{item.banknumber}}</td>
+							<td>{{item.desportbank}}</td>
+							<td>{{item.bankaccount}}</td>
 							<td>{{item.registeraddress}}</td>
 						</tr>
 					</tbody>
@@ -836,32 +830,32 @@
 							<td style="width: 40px;">
 								<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 							</td>
-							<td>{{item.carnumber}}</td>
-							<td>{{item.carbrandname}}</td>
-							<td>{{item.cartypename}}</td>
-							<td>{{item.carer}}</td>
-							<td>{{item.carerphone}}</td>
+							<td>{{item.platename}}</td>
+							<td>{{item.pp}}</td>
+							<td>{{item.carseries}}</td>
+							<td>{{item.driver}}</td>
+							<td>{{item.driverphone}}</td>
 							<td>{{item.borndate}}</td>
 							<td>{{item.affiliation}}</td>
 							<td>{{item.drivinglicence}}</td>
-							<td>{{item.carnumber1}}</td>
-							<td>{{item.enginenumber}}</td>
-							<td>{{item.enginebrandname}}</td>
+							<td>{{item.drivingouttime}}</td>
+							<td>{{item.enginenum}}</td>
+							<td>{{item.fdj}}</td>
 							<td>{{item.yearprice}}</td>
 							<td>{{item.mileage}}</td>
 							<td>{{item.deadweight}}</td>
 							<td>{{item.buydate}}</td>
 							<td>{{item.dutydate}}</td>
 							<td>{{item.carcheckdate}}</td>
-							<td>{{item.jqinsurance}}</td>
-							<td>{{item.jqinsurancedate}}</td>
-							<td>{{item.syinsurance}}</td>
-							<td>{{item.syinsurancedate}}</td>
+							<td>{{item.mlicompanyid}}</td>
+							<td>{{item.mliouttime}}</td>
+							<td>{{item.cicompanyid}}</td>
+							<td>{{item.carouttime}}</td>
 							<td v-if="item.insuredcar=='1'">投保车</td>
 							<td v-else>非投保车</td>
-							<td>{{item.fueloiltype}}</td>
-							<td>{{item.maintain}}</td>
-							<td>{{item.maintaindate}}</td>
+							<td>{{item.oiltypeid}}</td>
+							<td>{{item.nextmileage}}</td>
+							<td>{{item.nextupkeeptime}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -872,11 +866,10 @@
 							<td>单据类型</td>
 							<td>销售单号</td>
 							<td>车牌号</td>
-							<td>维修业务</td>
 							<td>进厂时间</td>
 							<td>完工时间</td>
 							<td>结算时间</td>
-							<td>消费时间</td>
+							<td>结算金额</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -884,14 +877,13 @@
 							<td style="width: 40px;">
 								<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 							</td>
-							<td>{{item.paymenttype}}</td>
-							<td>{{item.number}}</td>
-							<td>{{item.carnumber}}</td>
-							<td>{{item.otherone}}</td>
-							<td>{{item.ordertime}}</td>
-							<td>{{item.overtime}}</td>
-							<td>{{item.stockdater}}</td>
-							<td>{{item.starttime}}</td>
+							<td>{{item.danju}}</td>
+							<td>{{item.xiaos}}</td>
+							<td>{{item.chepai}}</td>
+							<td>{{item.jincdate}}</td>
+							<td>{{item.wangongdate}}</td>
+							<td>{{item.jiesdate}}</td>
+							<td>{{item.jiesmone}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -918,12 +910,6 @@
 
 			<div><span>共<span>{{clientinfo.length}}</span>条记录</span><span>第<span>1</span>页</span><span>共<span>1</span>页</span>
 			</div>
-
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-19
-            	描述：客户查询
-            -->
 			<div id="ww" class="mo1 modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
@@ -947,13 +933,13 @@
 																	<span>客户编号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="Client.number" style="width: 170px;" type="text">
+																	<input class="form-control" v-model="Client.customernum" style="width: 170px;" type="text">
 																</td>
 																<td>
 																	<span>客户名称：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="Client.name" style="width: 170px;" type="text">
+																	<input class="form-control" v-model="Client.customername" style="width: 170px;" type="text">
 																</td>
 																<td>
 																	<span>客户类别：</span>
@@ -961,7 +947,7 @@
 																<td>
 																	<select class="form-control" style="width: 135px;">
 																		<option></option>
-																		<option :ctid="item.id" v-for="item in clientType">{{item.clienttype}}</option>
+																		<option :ctid="item.customerid" v-for="item in clientType">{{item.customertypeid}}</option>
 																	</select>
 																</td>
 															</tr>
@@ -982,7 +968,7 @@
 																	<span>客户地址：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="Client.address" style="width: 170px;" type="text">
+																	<input class="form-control" v-model="Client.customeraddress" style="width: 170px;" type="text">
 																</td>
 															</tr>
 															<tr>
@@ -995,7 +981,7 @@
 
 																<td><span>客户生日：</span></td>
 																<td>
-																	<input class="form-control" v-model="Client.borndate" style="width: 140px;" type="date">
+																	<input class="form-control" v-model="Client.birthday" style="width: 140px;" type="date">
 																</td>
 
 															</tr>
@@ -1006,7 +992,7 @@
 																</td>
 																<td>
 																	<div class="input-group">
-																		<input class="form-control" readonly="readonly" style="width: 125px;" type="text" v-model="Client.staffno+Client.staffname" class="form-control">
+																		<input class="form-control" readonly="readonly" style="width: 125px;" type="text" v-model="Client.counselorid+Client.reserved5" class="form-control">
 																		<span style="width: 125px;" class="input-group-btn">
         																<button  @click="openselectemployee()" data-toggle="modal" data-target="#myModal1" class="btn btn-default" type="button">
         																<span class="glyphicon glyphicon-triangle-bottom">		
@@ -1019,7 +1005,7 @@
 																	<span>顾问电话：</span>
 																</td>
 																<td>
-																	<input class="form-control" readonly="readonly" v-model="Client.counselorname" style="width: 130px;" type="text" />
+																	<input class="form-control" readonly="readonly" v-model="Client.reserved4" style="width: 130px;" type="text" />
 																</td>
 
 															</tr>
@@ -1060,7 +1046,7 @@
 																	<span>车牌号码：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carnumber" type="text" />
+																	<input class="form-control" v-model="CarInfo.platename" type="text" />
 																</td>
 																<td>
 																	<span>车辆品牌：</span>
@@ -1090,13 +1076,13 @@
 																	<span>车架号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carnumber1" type="text" />
+																	<input class="form-control" v-model="CarInfo.framnum" type="text" />
 																</td>
 																<td>
 																	<span>发动机号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.enginenumber" type="text" />
+																	<input class="form-control" v-model="CarInfo.enginenum" type="text" />
 																</td>
 																<td>
 																	<span>保险公司：</span>
@@ -1119,20 +1105,20 @@
 																<td>
 																	<select class="form-control" name="engineBrand" style="width: 130px;margin-left: 5px;">
 																		<option></option>
-																		<option :engineid="item.id" v-for="item in engineBrand">{{item.enginebrandname}}</option>
+																		<option :engineid="item.eId" v-for="item in engineBrand">{{item.eName}}</option>
 																	</select>
 																</td>
 																<td>
 																	<span>驾驶员：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carer" style="width: 90px;" type="text" />
+																	<input class="form-control" v-model="CarInfo.driver" style="width: 90px;" type="text" />
 																</td>
 																<td>
 																	<span>驾驶员电话：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carerphone" style="width: 100px;" type="text" />
+																	<input class="form-control" v-model="CarInfo.driverphone" style="width: 100px;" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1140,7 +1126,7 @@
 																	<span>驾驶员生日：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.borndate" style="width: 140px;" type="date" />
+																	<input class="form-control" v-model="CarInfo.birthday" style="width: 140px;" type="date" />
 																</td>
 															</tr>
 														</table>
@@ -1161,11 +1147,6 @@
 				</div>
 			</div>
 
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-19
-            	描述：增加客户和车资料
-          -->
 			<div id="rr" class="mo1 modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
@@ -1189,13 +1170,13 @@
 																	<span>客户编号：</span>
 																</td>
 																<td>
-																	<input class="form-control" readonly="readonly" v-model="Client.number" type="text" />
+																	<input class="form-control" readonly="readonly" v-model="Client.customernum" type="text" />
 																</td>
 																<td>
 																	<span>客户名称：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="Client.name" type="text" />
+																	<input class="form-control" v-model="Client.customername" type="text" />
 																</td>
 																<td>
 																	<span>联系人：</span>
@@ -1215,13 +1196,13 @@
 																	<span>客户生日：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="Client.borndate" type="date" />
+																	<input class="form-control" v-model="Client.birthday" type="date" />
 																</td>
 																<td>
 																	<span>挂账额度：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="Client.paymentsize" type="text" />
+																	<input class="form-control" v-model="Client.payment" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1229,7 +1210,7 @@
 																	<span id="word">客户地址：</span>
 																</td>
 																<td colspan="6">
-																	<input class="form-control" v-model="Client.address" style="width: 600px;" type="text" />
+																	<input class="form-control" v-model="Client.customeraddress" style="width: 600px;" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1237,7 +1218,7 @@
 																	<span>账期(天)：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="Client.paymentdays" style="width: 70px;" type="number" />
+																	<input class="form-control" v-model="Client.paytime" style="width: 70px;" type="number" />
 																</td>
 																<td>
 																	<span>专属顾问：</span>
@@ -1257,7 +1238,7 @@
 																	<span>顾问电话：</span>
 																</td>
 																<td>
-																	<input class="form-control" readonly="readonly" v-model="Client.counselorname" style="width: 130px;" type="text" />
+																	<input class="form-control" readonly="readonly" v-model="Client.reserved4" style="width: 130px;" type="text" />
 																</td>
 															</tr>
 
@@ -1306,7 +1287,7 @@
 																	<span>车牌号码：</span>
 																</td>
 																<td>
-																	<input class="form-control" style="width: 125px;" type="text" v-model="CarInfo.carnumber" class="form-control">
+																	<input class="form-control" style="width: 125px;" type="text" v-model="CarInfo.platename" class="form-control">
 																</td>
 																<td>
 																	<span>车辆品牌：</span>
@@ -1334,19 +1315,19 @@
 																	<span>驾驶员：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carer" type="text" />
+																	<input class="form-control" v-model="CarInfo.driver" type="text" />
 																</td>
 																<td>
 																	<span>驾驶员电话：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carerphone" type="text" />
+																	<input class="form-control" v-model="CarInfo.driverphone" type="text" />
 																</td>
 																<td>
 																	<span>出生日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.borndate" type="date" />
+																	<input class="form-control" v-model="CarInfo.birthday" type="date" />
 																</td>
 
 															</tr>
@@ -1364,14 +1345,14 @@
 																	<span>驾证到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.drivinglicence" type="date" />
+																	<input class="form-control" v-model="CarInfo.drivingouttime" type="date" />
 																</td>
 
 																<td>
 																	<span>车架号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carnumber1" type="text" />
+																	<input class="form-control" v-model="CarInfo.framnum" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1379,13 +1360,13 @@
 																	<span>发动机号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.enginenumber" type="text" />
+																	<input class="form-control" v-model="CarInfo.enginenum" type="text" />
 																</td>
 																<td>
 																	<span>车辆年款：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.yearprice" type="text" />
+																	<input class="form-control" v-model="CarInfo.carnyear" type="text" />
 																</td>
 																<td>
 																	<span>里程：</span>
@@ -1400,20 +1381,20 @@
 																</td>
 																<td>
 																	<select class="form-control" name="engine" style="width: 230px;margin-left: 20px;">
-																		<option :engineid="item.id" v-for="item in engineBrand">{{item.enginebrandname}}</option>
+																		<option :engineid="item.eId" v-for="item in engineBrand">{{item.eName}}</option>
 																	</select>
 																</td>
 																<td>
 																	<span>载重：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.deadweight" type="text" />
+																	<input class="form-control" v-model="CarInfo.load" type="text" />
 																</td>
 																<td>
 																	<span>购买日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.buydate" type="date" />
+																	<input class="form-control" v-model="CarInfo.buytime" type="date" />
 																</td>
 															</tr>
 															<tr>
@@ -1421,19 +1402,19 @@
 																	<span>上牌日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.dutydate" type="date" />
+																	<input class="form-control" v-model="CarInfo.uptime" type="date" />
 																</td>
 																<td>
 																	<span>车检日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carcheckdate" type="date" />
+																	<input class="form-control" v-model="CarInfo.carouttime" type="date" />
 																</td>
 																<td>
 																	<span>燃油类别：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.fueloiltype" type="text" />
+																	<input class="form-control" v-model="CarInfo.oiltypeid" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1452,7 +1433,7 @@
 																	<span>交强险到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.jqinsurancedate" type="date" />
+																	<input class="form-control" v-model="CarInfo.mliouttime" type="date" />
 																</td>
 																<td>
 																	<span>在我投保车：</span>
@@ -1477,7 +1458,7 @@
 																	<span>商业险到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.syinsurancedate" type="date" />
+																	<input class="form-control" v-model="CarInfo.ciouttime" type="date" />
 																</td>
 															</tr>
 
@@ -1502,11 +1483,6 @@
 		 
 
 
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-19
-            	描述：客户分类
-            -->
 			<div id="aa" class="mo1 modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
@@ -1528,15 +1504,15 @@
 					<div>
 						<ul style="border: 0px solid red;float: right; margin-right: 60px;margin-top: 20px;">
 							<li>
-								<span id="img" class="glyphicon glyphicon-plus"></span>
+								
 								<span @click="insertclienttype()" id="font">增加</span>
 							</li>
 							<li>
-								<span id="img" class="glyphicon glyphicon-remove"></span>
+								
 								<span @click="deleteclienttype()" id="font">删除</span>
 							</li>
 							<li>
-								<span id="img" class="glyphicon glyphicon-save-file"></span>
+								
 								<span @click="saveclienttype()" id="font">保存</span>
 							</li>
 						</ul>
@@ -1544,7 +1520,7 @@
 					<div style="clear: both;padding-top: 10px;">
 						<p>
 							<span style="padding-left: 30px;">分类代码：</span>
-							<input readonly="readonly" v-model="clienttypeinfo.id" type="text" />
+							<input readonly="readonly" v-model="clienttypeinfo.customerid" type="text" />
 							<span style="padding-left: 20px;">客户类别：</span>
 							<input name="clienttype" type="text" />
 							<span style="padding-left: 20px;">价格类型：</span>
@@ -1577,10 +1553,7 @@
 									<td></td>
 									<td>分类编码</td>
 									<td>客户类别</td>
-									<td>价格类型</td>
-									<td>有效期(年)</td>
-									<td>会费</td>
-									<td>会员</td>
+									
 								</tr>
 							</thead>
 							<tbody>
@@ -1588,12 +1561,9 @@
 									<td style="width: 40px;">
 										<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 									</td>
-									<td>{{item.id}}</td>
-									<td>{{item.clienttype}}</td>
-									<td>{{item.type}}</td>
-									<td>{{item.validity}}</td>
-									<td>{{item.cost}}</td>
-									<td>{{item.otherone}}</td>
+									<td>{{item.customerid}}</td>
+									<td>{{item.customertypeid}}</td>
+									
 								</tr>
 							</tbody>
 						</table>
@@ -1616,11 +1586,7 @@
 				</div>
 			</div>
 
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-19
-            	描述：客户资料编辑
-          -->
+			
 			<div id="qq" class="mo1 modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
@@ -1641,9 +1607,9 @@
 														<table style="border-collapse:separate;border-spacing:5px;">
 															<tr>
 																<td><span>客户编号：</span></td>
-																<td><input class="form-control" readonly="readonly" v-model="addcustomerinfo.number" style="width: 170px;" type="text" /></td>
+																<td><input class="form-control" readonly="readonly" v-model="addcustomerinfo.customernum" style="width: 170px;" type="text" /></td>
 																<td><span>客户名称：</span></td>
-																<td><input class="form-control" v-model="addcustomerinfo.name" style="width: 120px;" type="text" /></td>
+																<td><input class="form-control" v-model="addcustomerinfo.customername" style="width: 120px;" type="text" /></td>
 																<td>
 																	<span>手机：</span>
 																</td>
@@ -1656,23 +1622,23 @@
 																	<span>客户地址：</span>
 																</td>
 																<td colspan="6">
-																	<input class="form-control" v-model="addcustomerinfo.address" style="width: 710px;" type="text" />
+																	<input class="form-control" v-model="addcustomerinfo.customeraddress" style="width: 710px;" type="text" />
 																</td>
 
 															</tr>
 															<tr>
 																<td><span>客户生日：</span></td>
-																<td><input class="form-control" v-model="addcustomerinfo.borndate" type="date" /></td>
+																<td><input class="form-control" v-model="addcustomerinfo.birthday" type="date" /></td>
 
 																<td><span>账期(天)：</span></td>
 																<td>
-																	<input class="form-control" v-model="addcustomerinfo.paymentdays" style="width: 70px;" type="number" />
+																	<input class="form-control" v-model="addcustomerinfo.paytime" style="width: 70px;" type="number" />
 																</td>
 																<td>
 																	<span>挂账额度：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="addcustomerinfo.paymentsize" style="width: 120px;" type="text" />
+																	<input class="form-control" v-model="addcustomerinfo.payment" style="width: 120px;" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1681,7 +1647,7 @@
 																</td>
 																<td>
 																	<div class="input-group">
-																		<input readonly="readonly" style="width: 125px;" type="text" v-model="addcustomerinfo.staffno+addcustomerinfo.staffname" class="form-control">
+																		<input readonly="readonly" style="width: 125px;" type="text" v-model="addcustomerinfo.counselorid+addcustomerinfo.reserved5" class="form-control">
 																		<span style="width: 125px;" class="input-group-btn">
         																<button  @click="openselectemployee()" data-toggle="modal" data-target="#myModal1" class="btn btn-default" type="button">
         																<span class="glyphicon glyphicon-triangle-bottom">		
@@ -1694,7 +1660,7 @@
 																	<span>顾问电话：</span>
 																</td>
 																<td>
-																	<input class="form-control" readonly="readonly" v-model="addcustomerinfo.counselorname" style="width: 130px;" type="text" />
+																	<input class="form-control" readonly="readonly" v-model="addcustomerinfo.reserved4" style="width: 130px;" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1742,7 +1708,7 @@
 																	<span>纳税人识别号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="addcustomerinfo.taxpayernumber" style="width: 180px;" type="text" />
+																	<input class="form-control" v-model="addcustomerinfo.paytest" style="width: 180px;" type="text" />
 																</td>
 																<td>
 																	<span>注册电话：</span>
@@ -1754,7 +1720,7 @@
 																	<span>开户银行：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="addcustomerinfo.bank" style="width: 170px;" type="text" />
+																	<input class="form-control" v-model="addcustomerinfo.desportbank" style="width: 170px;" type="text" />
 																</td>
 															</tr>
 
@@ -1763,7 +1729,7 @@
 																	<span>银行账号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="addcustomerinfo.banknumber" style="width: 180px;" type="text" />
+																	<input class="form-control" v-model="addcustomerinfo.bankaccount" style="width: 180px;" type="text" />
 																</td>
 																<td>
 																	<span>注册地址：</span>
@@ -1790,11 +1756,7 @@
 				</div>
 			</div>
 
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-19
-            	描述：车辆资料编辑
-          -->
+			
 			<div id="ee" class="mo1 modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
@@ -1816,7 +1778,7 @@
 															<tr>
 
 																<td><span>车牌号码：</span></td>
-																<td><input class="form-control" name="carnumber" style="width: 135px;" v-model="CarInfo.carnumber" type="text" /></td>
+																<td><input class="form-control" name="carnumber" style="width: 135px;" v-model="CarInfo.platename" type="text" /></td>
 																<td><span>车辆品牌：</span></td>
 																<td>
 																	<div class="input-group">
@@ -1841,19 +1803,19 @@
 																	<span>驾驶员：</span>
 																</td>
 																<td>
-																	<input class="form-control" style="width: 115px;" v-model="CarInfo.carer" type="text" />
+																	<input class="form-control" style="width: 115px;" v-model="CarInfo.driver" type="text" />
 																</td>
 																<td>
 																	<span>驾驶员电话：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carerphone" type="text" />
+																	<input class="form-control" v-model="CarInfo.driverphone" type="text" />
 																</td>
 																<td>
 																	<span>出生日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.borndate" type="date" />
+																	<input class="form-control" v-model="CarInfo.birthday" type="date" />
 																</td>
 
 															</tr>
@@ -1871,14 +1833,14 @@
 																	<span>驾证到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.drivinglicence" type="date" />
+																	<input class="form-control" v-model="CarInfo.drivingouttime" type="date" />
 																</td>
 
 																<td>
 																	<span>车架号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carnumber1" type="text" />
+																	<input class="form-control" v-model="CarInfo.framnum" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1886,13 +1848,13 @@
 																	<span>发动机号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.enginenumber" type="text" />
+																	<input class="form-control" v-model="CarInfo.enginenum" type="text" />
 																</td>
 																<td>
 																	<span>车辆年款：</span>
 																</td>
 																<td>
-																	<input class="form-control" style="width: 100px;" v-model="CarInfo.yearprice" type="text" />
+																	<input class="form-control" style="width: 100px;" v-model="CarInfo.carnyear" type="text" />
 																</td>
 																<td>
 																	<span>里程：</span>
@@ -1907,20 +1869,20 @@
 																</td>
 																<td>
 																	<select class="form-control" name="engine" style="width: 150px;">
-																		<option :engineid="item.id" v-for="item in engineBrand">{{item.enginebrandname}}</option>
+																		<option :engineid="item.eId" v-for="item in engineBrand">{{item.eName}}</option>
 																	</select>
 																</td>
 																<td>
 																	<span>载重：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.deadweight" type="text" />
+																	<input class="form-control" v-model="CarInfo.load" type="text" />
 																</td>
 																<td>
 																	<span>购买日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.buydate" type="date" />
+																	<input class="form-control" v-model="CarInfo.buytime" type="date" />
 																</td>
 															</tr>
 
@@ -1929,19 +1891,19 @@
 																	<span>上牌日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.dutydate" type="date" />
+																	<input class="form-control" v-model="CarInfo.uptime" type="date" />
 																</td>
 																<td>
 																	<span>车检日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.carcheckdate" type="date" />
+																	<input class="form-control" v-model="CarInfo.carouttime" type="date" />
 																</td>
 																<td>
 																	<span>燃油类别：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.fueloiltype" type="text" />
+																	<input class="form-control" v-model="CarInfo.oiltypeid" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -1967,7 +1929,7 @@
 																	<span>交强险到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.jqinsurancedate" type="date" />
+																	<input class="form-control" v-model="CarInfo.mliouttime" type="date" />
 																</td>
 															</tr>
 															<tr>
@@ -1986,7 +1948,7 @@
 																	<span>商业险到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.syinsurancedate" type="date" />
+																	<input class="form-control" v-model="CarInfo.ciouttime" type="date" />
 																</td>
 																<td>
 																	<span>在我投保车：</span>
@@ -2000,13 +1962,13 @@
 																	<span>下次保养里程：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.maintain" type="text" />
+																	<input class="form-control" v-model="CarInfo.nextmileage" type="text" />
 																</td>
 																<td>
 																	<span>下次保养日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.maintaindate" type="date" />
+																	<input class="form-control" v-model="CarInfo.nextupkeeptime" type="date" />
 																</td>
 																<td>
 																	<span>客户名称：</span>
@@ -2041,11 +2003,7 @@
 				</div>
 			</div>
 
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-19
-            	描述：品牌车型
-            -->
+			
 			<div id="myModal3" class="mo1 modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
@@ -2083,9 +2041,9 @@
 																	<td style="width: 40px;">
 																		<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 																	</td>
-																	<td>{{item.id}}</td>
-																	<td>{{item.carbrandname}}</td>
-																	<td>{{item.firstletter}}</td>
+																	<td>{{item.carcoding}}</td>
+																	<td>{{item.brandname}}</td>
+																	<td>{{item.initial}}</td>
 																</tr>
 															</tbody>
 														</table>
@@ -2106,10 +2064,10 @@
 																	<td style="width: 40px;">
 																		<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 																	</td>
-																	<td>{{item.id}}</td>
-																	<td>{{item.cartypename}}</td>
-																	<td>{{item.price}}</td>
-																	<td>{{item.importordomestic}}</td>
+																	<td>{{item.vehicleid}}</td>
+																	<td>{{item.vehiclename}}</td>
+																	<td>{{item.referenceprice}}</td>
+																	<td>{{item.caryear}}</td>
 																</tr>
 															</tbody>
 														</table>
@@ -2129,11 +2087,6 @@
 				</div>
 			</div>
 
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-01-04
-            	描述：选择客户
-            -->
 			<div id="selectcustomer">
 				<div id="selectcustomerheader">
 					<h2>选择客户</h2>
@@ -2180,43 +2133,35 @@
 								<td style="width: 40px;">
 									<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 								</td>
-								<td>{{item.number}}</td>
-								<td>{{item.name}}</td>
-								<td>{{item.address}}</td>
-								<td>{{item.linkman}}</td>
-								<td>{{item.phone}}</td>
-								<td>{{item.borndate}}</td>
-								<td>{{item.clienttype}}</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>{{item.remark}}</td>
-								<td>{{item.date}}</td>
-								<td>{{item.staffname}}</td>
-								<td>{{item.counselorname}}</td>
-								<td>{{item.paymentdays}}</td>
-								<td>{{item.paymentsize}}</td>
-								<td>{{item.integral}}</td>
-								<td></td>
-								<td>{{item.sheng}}</td>
-								<td>{{item.shi}}</td>
-								<td>{{item.qv}}</td>
-								<td>{{item.taxpayernumber}}</td>
-								<td>{{item.registerphone}}</td>
-								<td>{{item.bank}}</td>
-								<td>{{item.banknumber}}</td>
-								<td>{{item.registeraddress}}</td>
+							<td>{{item.customernum}}</td>
+							<td>{{item.customername}}</td>
+							<td>{{item.customeraddress}}</td>
+							<td>{{item.linkman}}</td>
+							<td>{{item.phone}}</td>
+							<td>{{item.birthday}}</td>
+							<td>{{item.leibie}}</td>
+
+							<td>{{item.remark}}</td>
+							<td>{{item.filing}}</td>
+							<td>{{item.fw}}</td>
+							<td>{{item.reserved4}}</td>
+							<td>{{item.paytime}}</td>
+							<td>{{item.payment}}</td>
+							<td>{{item.integral}}</td>
+
+							<td>{{item.reserved1}}</td>
+							<td>{{item.reserved2}}</td>
+							<td>{{item.reserved3}}</td>
+							<td>{{item.paytest}}</td>
+							<td>{{item.registerphone}}</td>
+							<td>{{item.bank}}</td>
+							<td>{{item.banknumber}}</td>
+							<td>{{item.registeraddress}}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
-
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-19
-            	描述：选择客户
-            -->
 			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -2240,9 +2185,9 @@
 										<td style="width: 40px;">
 											<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 										</td>
-										<td>{{item.number}}</td>
-										<td>{{item.name}}</td>
-										<td>{{item.address}}</td>
+										<td>{{item.customernum}}</td>
+										<td>{{item.customername}}</td>
+										<td>{{item.customeraddress}}</td>
 										<td>{{item.linkman}}</td>
 
 									</tr>
@@ -2256,12 +2201,6 @@
 					</div>
 				</div>
 			</div>
-
-			<!--
-            	作者：1424432629@qq.com
-            	时间：2020-02-18
-            	描述：选择员工
-            -->
 			<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -2276,7 +2215,7 @@
 								</select>
 								<select @change="updatecondition($event)" style="width: 565px;border-radius: 5px;margin-bottom: 10px;">
 									<option did="">所有</option>
-									<option v-bind:did="item.id" v-for="item in department">{{item.departmentname}}</option>
+									<option v-bind:did="item.id" v-for="item in department">{{item.bramch}}</option>
 								</select>
 								<div style="overflow: scroll;">
 									<table class="table table-bordered">
@@ -2295,9 +2234,9 @@
 												<td style="width: 40px;">
 													<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 												</td>
-												<td>{{item.departmentname}}</td>
-												<td>{{item.staffno}}</td>
-												<td>{{item.name}}</td>
+												<td>{{item.bramch}}</td>
+												<td>{{item.jobnum}}</td>
+												<td>{{item.counselorname}}</td>
 											</tr>
 										</tbody>
 									</table>
@@ -2592,26 +2531,33 @@
 							updateClientInfoByNumber(vm.addcustomerinfo);
 						}
 						vm.addcustomerinfo = {
-							"number": "",
-							"name": "",
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
 							"linkman": "",
 							"phone": "",
-							"address": "",
-							"borndate": "",
-							"paymentdays": "",
-							"paymentsize": "",
-							"staffno": "",
-							"counselorname": "",
-							"sheng": "",
-							"shi": "",
-							"qv": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
 							"remark": "",
-							"taxpayernumber": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
 							"registerphone": "",
-							"bank": "",
-							"banknumber": "",
+							"desportbank": "",
+							"bankaccount": "",
 							"registeraddress": "",
-							"staffname": ""
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						};
 						vm.prov = '';
 						vm.city = '';
@@ -3099,110 +3045,129 @@
 							"number": ""
 						},
 						Client: {
-							"number": "",
-							"name": "",
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
 							"linkman": "",
 							"phone": "",
-							"address": "",
-							"borndate": "",
-							"paymentdays": "",
-							"paymentsize": "",
-							"staffno": "",
-							"counselorname": "",
-							"sheng": "",
-							"shi": "",
-							"qv": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
 							"remark": "",
-							"taxpayernumber": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
 							"registerphone": "",
-							"bank": "",
-							"banknumber": "",
+							"desportbank": "",
+							"bankaccount": "",
 							"registeraddress": "",
-							"staffname": ""
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						},
 						CarInfo: {
-							"carnumber": "",
+							"platename": "",
 							"carbrandid": "",
-							"carid": "",
-							"carer": "",
-							"carerphone": "",
-							"borndate": "",
-							"affiliation": "",
-							"drivinglicence": "",
-							"carnumber1": "",
-							"enginenumber": "",
-							"yearprice": "",
-							"mileage": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
 							"engineid": "",
-							"deadweight": "",
-							"buydate": "",
-							"dutydate": "",
-							"carcheckdate": "",
-							"fueloiltype": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
 							"carseries": "",
-							"jqinsurance": "",
-							"jqinsurancedate": "",
-							"syinsurance": "",
-							"syinsurancedate": "",
-							"maintain": "",
-							"maintaindate": ""
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 						},
 						clienttypeinfo: {
-							"id": "",
-							"clienttype": "",
-							"validity": "",
-							"cost": "",
-							"type": "",
-							"otherone": ""
+							"customerid": "",
+							"customertypeid": "",
+							
 						},
 						addcustomerinfo: {
-							"number": "",
-							"name": "",
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
 							"linkman": "",
 							"phone": "",
-							"address": "",
-							"borndate": "",
-							"paymentdays": "",
-							"paymentsize": "",
-							"staffno": "",
-							"counselorname": "",
-							"sheng": "",
-							"shi": "",
-							"qv": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
 							"remark": "",
-							"taxpayernumber": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
 							"registerphone": "",
-							"bank": "",
-							"banknumber": "",
+							"desportbank": "",
+							"bankaccount": "",
 							"registeraddress": "",
-							"staffname": ""
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						},
 						addcarinfo: {
-							"carnumber": "",
+							"platename": "",
 							"carbrandid": "",
-							"carid": "",
-							"carer": "",
-							"carerphone": "",
-							"borndate": "",
-							"affiliation": "",
-							"drivinglicence": "",
-							"carnumber1": "",
-							"enginenumber": "",
-							"yearprice": "",
-							"mileage": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
 							"engineid": "",
-							"deadweight": "",
-							"buydate": "",
-							"dutydate": "",
-							"carcheckdate": "",
-							"fueloiltype": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
 							"carseries": "",
-							"jqinsurance": "",
-							"jqinsurancedate": "",
-							"syinsurance": "",
-							"syinsurancedate": "",
-							"maintain": "",
-							"maintaindate": ""
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 						},
 						carInfo: ["车牌号码", "车辆品牌", "车辆型号", "驾驶员", "驾驶员电话", "出生日期", "车辆归属", "驾证到期", "车架号", "发动机号", "发动机品牌", "车辆年款", "里程", "载重", "购买日期", "上牌日期", "车检到期", "交强险保险公司", "交强险到期", "商业险保险公司", "商业险到期", "在我投保车", "燃油类别", "下次保养里程", "下次保养日期"],
 						pastbuy: ["单据类型", "销售单号", "车牌号", "维修业务", "进厂时间", "完工时间", "结算时间", "消费时间"],
@@ -3260,53 +3225,64 @@
 					//根据条件查询客户资料
 					queryClientInfoByCondition: function() {
 						this.Client = {
-								"number": "",
-								"name": "",
-								"linkman": "",
-								"phone": "",
-								"address": "",
-								"borndate": "",
-								"paymentdays": "",
-								"paymentsize": "",
-								"staffno": "",
-								"counselorname": "",
-								"sheng": "",
-								"shi": "",
-								"qv": "",
-								"remark": "",
-								"taxpayernumber": "",
-								"registerphone": "",
-								"bank": "",
-								"banknumber": "",
-								"registeraddress": "",
-								"staffname": ""
+								"customernum": "",
+							"customername": "",
+							"customeraddress": "",
+							"linkman": "",
+							"phone": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
+							"remark": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
+							"registerphone": "",
+							"desportbank": "",
+							"bankaccount": "",
+							"registeraddress": "",
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 							},
 							this.CarInfo = {
-								"carnumber": "",
-								"carbrandid": "",
-								"carid": "",
-								"carer": "",
-								"carerphone": "",
-								"borndate": "",
-								"affiliation": "",
-								"drivinglicence": "",
-								"carnumber1": "",
-								"enginenumber": "",
-								"yearprice": "",
-								"mileage": "",
-								"engineid": "",
-								"deadweight": "",
-								"buydate": "",
-								"dutydate": "",
-								"carcheckdate": "",
-								"fueloiltype": "",
-								"carseries": "",
-								"jqinsurance": "",
-								"jqinsurancedate": "",
-								"syinsurance": "",
-								"syinsurancedate": "",
-								"maintain": "",
-								"maintaindate": ""
+								"platename": "",
+							"carbrandid": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
+							"engineid": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
+							"carseries": "",
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 							}
 						queryClientInfoByCondition();
 
@@ -3441,31 +3417,35 @@
 						$("[name=insuredcar]").removeProp("checked");
 						$("[name=carnumber]").removeAttr("readonly");
 						vm.CarInfo = {
-							"carnumber": "",
+							"platename": "",
 							"carbrandid": "",
-							"carid": "",
-							"carer": "",
-							"carerphone": "",
-							"borndate": "",
-							"affiliation": "",
-							"drivinglicence": "",
-							"carnumber1": "",
-							"enginenumber": "",
-							"yearprice": "",
-							"mileage": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
 							"engineid": "",
-							"deadweight": "",
-							"buydate": "",
-							"dutydate": "",
-							"carcheckdate": "",
-							"fueloiltype": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
 							"carseries": "",
-							"jqinsurance": "",
-							"jqinsurancedate": "",
-							"syinsurance": "",
-							"syinsurancedate": "",
-							"maintain": "",
-							"maintaindate": ""
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 						}
 						this.Client.staffno = "";
 						this.Client.staffname = "";
@@ -3519,26 +3499,33 @@
 					opencustomerdata: function() {
 						selectMaxNumber();
 						this.addcustomerinfo = {
-							"number": "",
-							"name": "",
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
 							"linkman": "",
 							"phone": "",
-							"address": "",
-							"borndate": "",
-							"paymentdays": "",
-							"paymentsize": "",
-							"staffno": "",
-							"counselorname": "",
-							"sheng": "",
-							"shi": "",
-							"qv": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
 							"remark": "",
-							"taxpayernumber": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
 							"registerphone": "",
-							"bank": "",
-							"banknumber": "",
+							"desportbank": "",
+							"bankaccount": "",
 							"registeraddress": "",
-							"staffname": ""
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						};
 						vm.prov = "";
 						vm.city = "";
@@ -3552,26 +3539,33 @@
 					//关闭客户资料编辑事件
 					closecustomerdata: function() {
 						this.addcustomerinfo = {
-							"number": "",
-							"name": "",
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
 							"linkman": "",
 							"phone": "",
-							"address": "",
-							"borndate": "",
-							"paymentdays": "",
-							"paymentsize": "",
-							"staffno": "",
-							"counselorname": "",
-							"sheng": "",
-							"shi": "",
-							"qv": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
 							"remark": "",
-							"taxpayernumber": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
 							"registerphone": "",
-							"bank": "",
-							"banknumber": "",
+							"desportbank": "",
+							"bankaccount": "",
 							"registeraddress": "",
-							"staffname": ""
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						};
 						vm.prov = "";
 						vm.city = "";
@@ -3719,53 +3713,64 @@
 					openaddcustomerandcar: function() {
 						$("[name=insuredcara]").removeProp("checked");
 						this.Client = {
-								"number": "",
-								"name": "",
-								"linkman": "",
-								"phone": "",
-								"address": "",
-								"borndate": "",
-								"paymentdays": "",
-								"paymentsize": "",
-								"staffno": "",
-								"counselorname": "",
-								"sheng": "",
-								"shi": "",
-								"qv": "",
-								"remark": "",
-								"taxpayernumber": "",
-								"registerphone": "",
-								"bank": "",
-								"banknumber": "",
-								"registeraddress": "",
-								"staffname": ""
+								"customernum": "",
+							"customername": "",
+							"customeraddress": "",
+							"linkman": "",
+							"phone": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
+							"remark": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
+							"registerphone": "",
+							"desportbank": "",
+							"bankaccount": "",
+							"registeraddress": "",
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 							},
 							this.CarInfo = {
-								"carnumber": "",
-								"carbrandid": "",
-								"carid": "",
-								"carer": "",
-								"carerphone": "",
-								"borndate": "",
-								"affiliation": "",
-								"drivinglicence": "",
-								"carnumber1": "",
-								"enginenumber": "",
-								"yearprice": "",
-								"mileage": "",
-								"engineid": "",
-								"deadweight": "",
-								"buydate": "",
-								"dutydate": "",
-								"carcheckdate": "",
-								"fueloiltype": "",
-								"carseries": "",
-								"jqinsurance": "",
-								"jqinsurancedate": "",
-								"syinsurance": "",
-								"syinsurancedate": "",
-								"maintain": "",
-								"maintaindate": ""
+							"platename": "",
+							"carbrandid": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
+							"engineid": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
+							"carseries": "",
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 							}
 						$("[name=carBrand]").val("");
 						$("[name=carType]").val("");
@@ -3820,75 +3825,93 @@
 					//打开客户查询窗体
 					openstaffquery: function() {
 						this.addcustomerinfo = {
-							"number": "",
-							"name": "",
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
 							"linkman": "",
 							"phone": "",
-							"address": "",
-							"borndate": "",
-							"paymentdays": "",
-							"paymentsize": "",
-							"staffno": "",
-							"counselorname": "",
-							"sheng": "",
-							"shi": "",
-							"qv": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
 							"remark": "",
-							"taxpayernumber": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
 							"registerphone": "",
-							"bank": "",
-							"banknumber": "",
+							"desportbank": "",
+							"bankaccount": "",
 							"registeraddress": "",
-							"staffname": ""
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						};
 						vm.Client = {
-							"number": "",
-							"name": "",
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
 							"linkman": "",
 							"phone": "",
-							"address": "",
-							"borndate": "",
-							"paymentdays": "",
-							"paymentsize": "",
-							"staffno": "",
-							"counselorname": "",
-							"sheng": "",
-							"shi": "",
-							"qv": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
 							"remark": "",
-							"taxpayernumber": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
 							"registerphone": "",
-							"bank": "",
-							"banknumber": "",
+							"desportbank": "",
+							"bankaccount": "",
 							"registeraddress": "",
-							"staffname": ""
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						};
 						vm.CarInfo = {
-							"carnumber": "",
+							"platename": "",
 							"carbrandid": "",
-							"carid": "",
-							"carer": "",
-							"carerphone": "",
-							"borndate": "",
-							"affiliation": "",
-							"drivinglicence": "",
-							"carnumber1": "",
-							"enginenumber": "",
-							"yearprice": "",
-							"mileage": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
 							"engineid": "",
-							"deadweight": "",
-							"buydate": "",
-							"dutydate": "",
-							"carcheckdate": "",
-							"fueloiltype": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
 							"carseries": "",
-							"jqinsurance": "",
-							"jqinsurancedate": "",
-							"syinsurance": "",
-							"syinsurancedate": "",
-							"maintain": "",
-							"maintaindate": ""
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 						};
 						vm.prov = "";
 						vm.city = "";

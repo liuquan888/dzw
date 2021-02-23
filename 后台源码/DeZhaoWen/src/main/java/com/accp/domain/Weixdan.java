@@ -23,6 +23,16 @@ import lombok.experimental.Accessors;
 @ApiModel(value="Weixdan对象", description="")
 public class Weixdan extends Model<Weixdan> {
 
+    private  MaintenanceItems mainte;
+
+    private  Pattern pat;
+
+    private  Jcyl jc;
+
+    private Businessclass busin;
+
+    private  Sgbc sg;
+
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "维修单号")

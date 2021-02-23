@@ -43,9 +43,15 @@ public class CarheetController {
     @RequestMapping("/queryCarInformationByCondition")
     public List<Carheet> queryCarInformationByCondition(String condition){
         QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
-        queryWrapper.like("platename",condition);
+        queryWrapper.like("driver",condition);
         List<Carheet> lastlist=service.list(queryWrapper);
         return lastlist;
+    }
+    @RequestMapping("updateByplatename")
+    public boolean updateByplatename(Carheet car){
+        QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("platename",car.getPlatename());
+        return service.update(queryWrapper);
     }
     //根据条件查询
     @RequestMapping("/selectCarInformationByCondition")
@@ -264,6 +270,22 @@ public class CarheetController {
         }
         List<Carheet> list=service.list(queryWrapper);
         return list.get(0);
+    }
+    @RequestMapping("findBybramch")
+    public List<Carheet> finBybramch(String customernum){
+        QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
+        if (customernum!=null){
+            queryWrapper.eq("customernum",customernum);
+        }
+        return service.list(queryWrapper);
+    }
+    @RequestMapping("/deleteByplatename")
+    public boolean deleteByplatename(String platename){
+        QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
+        if (platename!=null){
+            queryWrapper.eq("platename",platename);
+        }
+        return service.remove(queryWrapper);
     }
     @RequestMapping("/find")
     public List<Carheet> find(Carheet car){
