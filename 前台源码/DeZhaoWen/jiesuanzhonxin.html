@@ -259,7 +259,7 @@
 									</div>
 									<br /><br />
 									<div class="btnn">
-										<a class="btn btn-success" onclick="tiao()" style="margin-right: 30px;">打印</a>
+										<a class="btn btn-success" @click="dayin()" style="margin-right: 30px;">打印</a>
 										<button class="btn btn-success">预览</button>
 										<button class="btn btn-success">设计</button>
 									</div>
@@ -479,8 +479,13 @@
 						this.xx=i;
 					},
 					dayin(){
-						//location.href="维修结算单.html";
-						//window.print();
+						var str = "";
+						for(aa in this.data){
+							str+= aa + "=" + this.data[aa]+"&";
+							
+						}
+						console.log(str);
+						location.href="xiaopiao.html?"+str;
 					},
 					tables(i){
 						this.tab=i;
@@ -561,6 +566,9 @@
 						this.data.jiashuijin=this.data.yugujine*this.data.shuilu/100;
 						this.data.sum=this.data.yugujine+this.data.jiashuijin-this.data.moweisu;
 						this.data.no=item.no;
+						for(aa in item){
+							this.data[aa] = item[aa];
+						}
 						console.log(this.data);
 					},
 					sel(item){
@@ -612,10 +620,6 @@
 					}
 				}
 			});
-			function tiao(){
-				location.href="维修结算单.html";
-				return true;
-			}
 		</script>
 	</body>
 </html>
