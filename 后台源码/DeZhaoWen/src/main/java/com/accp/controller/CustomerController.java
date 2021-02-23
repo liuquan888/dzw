@@ -1,10 +1,7 @@
 package com.accp.controller;
 
 
-import com.accp.domain.Carheet;
-import com.accp.domain.Counselor;
-import com.accp.domain.Customer;
-import com.accp.domain.Customertype;
+import com.accp.domain.*;
 import com.accp.service.impl.CarheetServiceImpl;
 import com.accp.service.impl.CounselorServiceImpl;
 import com.accp.service.impl.CustomerServiceImpl;
@@ -48,10 +45,27 @@ public class CustomerController {
         Customer list=Service.getById(clientId);
         return list;
     }
+    @RequestMapping("/findss")
+    public Customer findss(String customernum){
+        QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
+        if (customernum!=null){
+            queryWrapper.eq("customernum",customernum);
+        }
+        return Service.list(queryWrapper).get(0);
+    }
     @RequestMapping("/selectClientInfo")
     public List<Customer> selectClientInfo(){
         List<Customer> list=Service.list();
         return list;
+    }
+    @RequestMapping("/insertCustomerAndCarheet")
+    public boolean insertCustomerAndCarheet(Coll coll){
+        boolean bo=Service.save(coll.getClient());
+        if (bo){
+            return carservice.save(coll.getCarInfo());
+        }else {
+            return false;
+        }
     }
     @RequestMapping("/findAll")
     public List<Customer> findAll(Customer cu) {

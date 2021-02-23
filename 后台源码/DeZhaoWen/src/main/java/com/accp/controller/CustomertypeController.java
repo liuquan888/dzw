@@ -35,8 +35,8 @@ public class CustomertypeController {
     public boolean update(Customertype cus){
         return service.updateById(cus);
     }
-    @RequestMapping("/delete/{code}")
-    public boolean delete(int id){
+    @RequestMapping("/delete")
+    public boolean delete(Integer id){
         return service.removeById(id);
     }
 }

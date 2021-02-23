@@ -44,5 +44,9 @@ public class CarController {
         List<Vehicle> list=service.list(query);
         return list;
     }
+    @RequestMapping("/findAll")
+    public List<Vehicle> findAll(){
+        return service.list();
+    }
 }
 
