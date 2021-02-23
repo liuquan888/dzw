@@ -14,17 +14,17 @@
 			<p>欢迎光临</p>
 			<p>北京季开高卡车有限公司</p>
 			<p>消费结算单</p>
-			<p>业务员：{{}}收银员：</p>
-			<p>会员卡：车牌号：</p>
+			<p>业务员：{{}}</p>
+			<p>会员卡：车牌号：{{data.chepai}}</p>
 			<p>客户：{{data.keihuName}}</p>
 			<p>时间：{{data.jiesuanTime}}</p>
 			<p>单号：{{data.no}}</p>
 			<br />
 			<br />
-			<p>修理车顶（现场定价） ：耶鲁</p>
-			<p> 1 3 3</p>
-			<p>正常结算：收银：</p>
-			<p>{{data.btype}}：{{data.sum}}</p>
+			<p>修理车顶（现场定价） ：{{data.jiecher}}</p>
+			<p>正常结算</p>
+			<p>收银员：{{data.jiesuanRen}}</p>
+			<p>{{data.btype}}：{{data.sum}}元</p>
 		</div>
 	</body>
 	<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
@@ -41,7 +41,7 @@
 			methods:{
 				cc(){
 					var sURL = window.location.search;
-//					console.log(sURL);
+					console.log(sURL);
 //					this.data = sURL.split('=')[1];
 //					console.log(JSON.parse(this.data));
 
@@ -49,12 +49,14 @@
 				},
 				getQueryString(name) {
 					var data = name.slice(1);
+					console.log(data);
 					data = data.split("&");
+					console.log(data);
 					var dataObj = {};
 					data.forEach(item=>{
 						var dataObj1 = item.split("=");
 						for(var i = 0;i<dataObj1.length;i++){
-							dataObj[dataObj1[i]] = dataObj1[i+1];
+							dataObj[dataObj1[i]] = decodeURIComponent(dataObj1[i+1]);
 							break;
 						}
 					})
