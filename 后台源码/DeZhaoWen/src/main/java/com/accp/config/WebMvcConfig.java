@@ -12,6 +12,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected void addCorsMappings(CorsRegistry registry) {
+
         registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowCredentials(true);
     }
 }
