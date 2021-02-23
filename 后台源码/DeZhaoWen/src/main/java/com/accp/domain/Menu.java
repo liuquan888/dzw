@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-22
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -42,7 +42,16 @@ public class Menu extends Model<Menu> {
     @ApiModelProperty(value = "班组编号")
     private String teamid;
 
-    @TableField(exist=false)
+    @ApiModelProperty(value = "预留字段")
+    private Integer reserved1;
+
+    @ApiModelProperty(value = "预留字段")
+    private String reserved2;
+
+    @ApiModelProperty(value = "预留字段")
+    private String reserved3;
+
+    @TableField(exist = false)
     private List<Menu> childrens;
 
 
@@ -54,9 +63,14 @@ public class Menu extends Model<Menu> {
 
     public static final String TEAMID = "teamid";
 
+    public static final String RESERVED1 = "reserved1";
+
+    public static final String RESERVED2 = "reserved2";
+
+    public static final String RESERVED3 = "reserved3";
+
     @Override
     protected Serializable pkVal() {
         return this.id;
     }
-
 }

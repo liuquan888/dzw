@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-22
  */
 @Service
 public class DzwPrivilegeServiceImpl extends ServiceImpl<DzwPrivilegeMapper, DzwPrivilege> implements IDzwPrivilegeService {

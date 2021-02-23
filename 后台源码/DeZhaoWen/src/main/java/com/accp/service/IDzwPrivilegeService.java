@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-22
  */
 public interface IDzwPrivilegeService extends IService<DzwPrivilege> {
 
