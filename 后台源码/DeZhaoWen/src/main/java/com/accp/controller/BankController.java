@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * <p>
  * 银行表 前端控制器
@@ -27,6 +29,11 @@ public class BankController {
     @RequestMapping("/findByBankId/{bankid}")
     public Bank findByBankId(@PathVariable("bankid") Integer bankid){
         return service.getById(bankid);
+    }
+
+    @RequestMapping("/findBank")
+    public List<Bank> findBank(){
+        return service.list();
     }
 
 }
