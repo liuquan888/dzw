@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import java.util.List;
@@ -27,8 +28,12 @@ public class Customer extends Model<Customer> {
 
     private static final long serialVersionUID=1L;
 
+<<<<<<< HEAD
 
 
+=======
+    @TableId("customernum")
+>>>>>>> aa2a199ffc58851a6ceadb8a8e1c5423f7cf5958
     @ApiModelProperty(value = "客户编码")
     private String customernum;
 

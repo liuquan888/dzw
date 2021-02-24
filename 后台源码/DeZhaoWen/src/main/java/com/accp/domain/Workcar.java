@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import java.io.Serializable;
@@ -22,6 +23,9 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ApiModel(value="Workcar对象", description="工作中的车辆")
 public class Workcar extends Model<Workcar> {
+
+    @TableField(exist = false)
+    private Platenumber platenumber;
 
     private static final long serialVersionUID=1L;
 

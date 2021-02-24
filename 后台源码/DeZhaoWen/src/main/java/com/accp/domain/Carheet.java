@@ -84,6 +84,7 @@ public class Carheet extends Model<Carheet> {
     private String mileage;
 
     @ApiModelProperty(value = "载重")
+    @TableField(value = "`load`")
     private String load;
 
     @ApiModelProperty(value = "车系")

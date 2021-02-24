@@ -37,6 +37,7 @@ public class MechanicstarController {
 
     @RequestMapping("/findById/{code}")
     public Mechanicstar findById(@PathVariable("code") String code){
+        System.out.println(code);
         return service.getById(code);
     }
 
@@ -49,6 +50,7 @@ public class MechanicstarController {
     public boolean update(Mechanicstar mechanicstar){
         return service.updateById(mechanicstar);
     }
+
 
 }
 

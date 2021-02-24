@@ -441,7 +441,11 @@ public class CustomerController {
         Customer c=Service.getById(id);
         Customer customer=new Customer();
         customer.setCustomernum(id);
-        customer.setVipprice(c.getVipprice()+money);
+        if(c.getVipprice()!=null){
+            customer.setVipprice(c.getVipprice()+money);
+        }else{
+            customer.setVipprice(Float.valueOf(money));
+        }
         boolean b = Service.updateById(customer);
         if(b)
             return 0000;

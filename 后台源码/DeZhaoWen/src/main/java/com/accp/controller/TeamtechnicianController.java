@@ -3,6 +3,7 @@ package com.accp.controller;
 
 import com.accp.domain.Teamtechnician;
 import com.accp.service.impl.TeamtechnicianServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,15 +26,12 @@ public class TeamtechnicianController {
     @Autowired
     TeamtechnicianServiceImpl service;
 
-    @RequestMapping("/findAll")
-    public List<Teamtechnician> findAll(){
-        return service.list();
+    @RequestMapping("/findByTeamId/{teamid}")
+    public List<Teamtechnician> findByTeamId(@PathVariable("teamid") Integer teamid){
+        return service.findByTeamId(teamid);
     }
 
-    @RequestMapping("/findById")
-    public Teamtechnician findById(@PathVariable("id") Integer id){
-        return service.getById(id);
-    }
+    
 
 }
 
