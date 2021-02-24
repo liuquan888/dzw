@@ -46,117 +46,121 @@ public class CustomerController {
         QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
         QueryWrapper<Carheet>queryWrapper1=new QueryWrapper<>();
         if (coll!=null){
-            if (coll.getClient().getCustomernum()!=null){
-                queryWrapper.eq("customernum",coll.getClient().getCustomernum());
+            if (coll.getClient()!=null){
+                if (coll.getClient().getCustomernum()!=null){
+                    queryWrapper.eq("customernum",coll.getClient().getCustomernum());
+                }
+                if (coll.getClient().getCustomername()!=null){
+                    queryWrapper.like("customername",coll.getClient().getCustomername());
+                }
+                if (coll.getClient().getCustomertypeid()!=null){
+                    queryWrapper.eq("customertypeid",coll.getClient().getCustomertypeid());
+                }
+                if (coll.getClient().getLinkman()!=null){
+                    queryWrapper.like("linkman",coll.getClient().getLinkman());
+                }
+                if (coll.getClient().getPhone()!=null){
+                    queryWrapper.like("phone",coll.getClient().getPhone());
+                }
+                if (coll.getClient().getCustomeraddress()!=null){
+                    queryWrapper.like("customeraddress",coll.getClient().getCustomeraddress());
+                }
+                if (coll.getClient().getRemark()!=null){
+                    queryWrapper.like("remark",coll.getClient().getRemark());
+                }
+                if (coll.getClient().getBirthday()!=null){
+                    queryWrapper.eq("birthady",coll.getClient().getBirthday());
+                }
+                if (coll.getClient().getCounselorid()!=null){
+                    queryWrapper.eq("counselorid",coll.getClient().getCounselorid());
+                }
+                if (coll.getClient().getReserved4()!=null){
+                    queryWrapper.eq("reserved4",coll.getClient().getReserved4());
+                }
+                if (coll.getClient().getReserved1()!=null&&coll.getClient().getReserved2()!= null&&coll.getClient().getReserved3()!=null){
+                    queryWrapper.eq("reserved1",coll.getClient().getReserved1());
+                }
             }
-            if (coll.getClient().getCustomername()!=null){
-                queryWrapper.like("customername",coll.getClient().getCustomername());
-            }
-            if (coll.getClient().getCustomertypeid()!=null){
-                queryWrapper.eq("customertypeid",coll.getClient().getCustomertypeid());
-            }
-            if (coll.getClient().getLinkman()!=null){
-                queryWrapper.like("linkman",coll.getClient().getLinkman());
-            }
-            if (coll.getClient().getPhone()!=null){
-                queryWrapper.like("phone",coll.getClient().getPhone());
-            }
-            if (coll.getClient().getCustomeraddress()!=null){
-                queryWrapper.like("customeraddress",coll.getClient().getCustomeraddress());
-            }
-            if (coll.getClient().getRemark()!=null){
-                queryWrapper.like("remark",coll.getClient().getRemark());
-            }
-            if (coll.getClient().getBirthday()!=null){
-                queryWrapper.eq("birthady",coll.getClient().getBirthday());
-            }
-            if (coll.getClient().getCounselorid()!=null){
-                queryWrapper.eq("counselorid",coll.getClient().getCounselorid());
-            }
-            if (coll.getClient().getReserved4()!=null){
-                queryWrapper.eq("reserved4",coll.getClient().getReserved4());
-            }
-            if (coll.getClient().getReserved1()!=null&&coll.getClient().getReserved2()!= null&&coll.getClient().getReserved3()!=null){
-                queryWrapper.eq("reserved1",coll.getClient().getReserved1());
-            }
-            if (coll.getCarInfo().getPlatename()!=null){
+            if (coll.getCarInfo()!=null){
+                if (coll.getCarInfo().getPlatename()!=null){
 
-                queryWrapper1.eq("platename",coll.getCarInfo().getPlatename());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0){
-                    for (Carheet car:list){
-                        queryWrapper.eq("customernum",car.getCustomernum());
+                    queryWrapper1.eq("platename",coll.getCarInfo().getPlatename());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0){
+                        for (Carheet car:list){
+                            queryWrapper.eq("customernum",car.getCustomernum());
+                        }
+                    }
+                }
+                if (coll.getCarInfo().getCarbrandid()!=null){
+                    queryWrapper1.eq("carbrandid",coll.getCarInfo().getCarbrandid());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0) {
+                        for (Carheet car : list) {
+                            queryWrapper.eq("customernum",car.getCustomernum());
+                        }
+                    }
+                }
+                if (coll.getCarInfo().getReserved5()!=null){
+                    queryWrapper1.eq("reserved5",coll.getCarInfo().getReserved5());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0){
+                        for (Carheet car:list){
+                            queryWrapper.eq("customernum",car.getCustomernum());
+                        }
+                    }
+                }
+                if (coll.getCarInfo().getFramnum()!=null){
+                    queryWrapper1.eq("framnum",coll.getCarInfo().getFramnum());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0){
+                        for (Carheet car:list){
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                    }
+                }
+                if (coll.getCarInfo().getEnginenum()!=null){
+                    queryWrapper1.eq("enginenum",coll.getCarInfo().getEnginenum());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0){
+                        for (Carheet car:list){
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                    }
+                }
+                if (coll.getCarInfo().getEngineid()!=null){
+                    queryWrapper1.eq("engineid",coll.getCarInfo().getEngineid());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0){
+                        for (Carheet car:list){
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                    }
+                }
+                if (coll.getCarInfo().getDriver()!=null){
+                    queryWrapper1.eq("driver",coll.getCarInfo().getDriver());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0){
+                        for (Carheet car:list){
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                    }
+                }
+                if (coll.getCarInfo().getDriverphone()!=null){
+                    queryWrapper1.eq("driverphone",coll.getCarInfo().getDriverphone());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0) {
+                        for (Carheet car : list) {
+                            queryWrapper.eq("customernum", car.getCustomernum());
+                        }
+                    }
+                }
+                if (coll.getCarInfo().getBirthday()!=null){
+                    queryWrapper1.eq("birthday",coll.getCarInfo().getBirthday());
+                    List<Carheet> list=carservice.list(queryWrapper1);
+                    if (list.size()>0){
+                        for (Carheet car:list){
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
                     }
                 }
             }
-            if (coll.getCarInfo().getCarbrandid()!=null){
-                queryWrapper1.eq("carbrandid",coll.getCarInfo().getCarbrandid());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0) {
-                    for (Carheet car : list) {
-                        queryWrapper.eq("customernum",car.getCustomernum());
-                    }
-                }
-            }
-            if (coll.getCarInfo().getReserved5()!=null){
-                queryWrapper1.eq("reserved5",coll.getCarInfo().getReserved5());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0){
-                    for (Carheet car:list){
-                        queryWrapper.eq("customernum",car.getCustomernum());
-                    }
-                }
-            }
-            if (coll.getCarInfo().getFramnum()!=null){
-                queryWrapper1.eq("framnum",coll.getCarInfo().getFramnum());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0){
-                    for (Carheet car:list){
-                        queryWrapper.eq("customernum",car.getCustomernum());                    }
-                }
-            }
-            if (coll.getCarInfo().getEnginenum()!=null){
-                queryWrapper1.eq("enginenum",coll.getCarInfo().getEnginenum());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0){
-                    for (Carheet car:list){
-                        queryWrapper.eq("customernum",car.getCustomernum());                    }
-                    }
-                }
-            }
-            if (coll.getCarInfo().getEngineid()!=null){
-                queryWrapper1.eq("engineid",coll.getCarInfo().getEngineid());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0){
-                    for (Carheet car:list){
-                        queryWrapper.eq("customernum",car.getCustomernum());                    }
-                }
-            }
-            if (coll.getCarInfo().getDriver()!=null){
-                queryWrapper1.eq("driver",coll.getCarInfo().getDriver());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0){
-                    for (Carheet car:list){
-                        queryWrapper.eq("customernum",car.getCustomernum());                    }
-                }
-            }
-            if (coll.getCarInfo().getDriverphone()!=null){
-                queryWrapper1.eq("driverphone",coll.getCarInfo().getDriverphone());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0) {
-                    for (Carheet car : list) {
-                        queryWrapper.eq("customernum", car.getCustomernum());
-                    }
-                }
-            }
-            if (coll.getCarInfo().getBirthday()!=null){
-                queryWrapper1.eq("birthday",coll.getCarInfo().getBirthday());
-                List<Carheet> list=carservice.list(queryWrapper1);
-                if (list.size()>0){
-                    for (Carheet car:list){
-                        queryWrapper.eq("customernum",car.getCustomernum());                    }
-                }
-            }
+        }
         List<Customer> list=Service.list(queryWrapper);
         if (list.size()>0){
             for (Customer cus:list){
@@ -167,7 +171,7 @@ public class CustomerController {
             }
         }
         return list;
-        }
+    }
 
 
     @RequestMapping("/selectClientInformationByClientId")
@@ -411,7 +415,7 @@ public class CustomerController {
 
 
 
-     //马威书写（以下）
+    //马威书写（以下）
     @RequestMapping("/find")
     public List<Customer> find(String data1,String  data2,String customernumber,String phone,String customername,String bankaccount,String remark){
         QueryWrapper qw=new QueryWrapper<Customer>();

@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface OrganizationSurfaceMapper extends BaseMapper<OrganizationSurface> {
 
-    List<OrganizationSurface> find (Integer id);
+    List<OrganizationSurface> find (Integer zid);
 
 }
