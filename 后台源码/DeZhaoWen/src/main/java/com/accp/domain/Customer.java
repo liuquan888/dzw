@@ -27,6 +27,8 @@ public class Customer extends Model<Customer> {
 
     private static final long serialVersionUID=1L;
 
+
+
     @ApiModelProperty(value = "客户编码")
     private String customernum;
 
@@ -72,6 +74,10 @@ public class Customer extends Model<Customer> {
     @TableField(exist = false)
     @ApiModelProperty(value = "到期1")
     private String dq1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
     @TableField(exist = false)
     @ApiModelProperty(value = "到期2")

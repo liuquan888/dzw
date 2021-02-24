@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -25,6 +26,10 @@ import lombok.experimental.Accessors;
 public class Oiltype extends Model<Oiltype> {
 
     private static final long serialVersionUID=1L;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
     @ApiModelProperty(value = "燃油类别id")
     @TableId(value = "oiltypeid", type = IdType.AUTO)
