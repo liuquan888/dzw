@@ -40,9 +40,143 @@ public class CustomerController {
     @Autowired
     CounselorServiceImpl counservice;
     //根据客户Id查询
+
+    @RequestMapping("/findX")
+    public List<Customer> findX(Coll coll){
+        QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
+        QueryWrapper<Carheet>queryWrapper1=new QueryWrapper<>();
+        if (coll!=null){
+            if (coll.getClient().getCustomernum()!=null){
+                queryWrapper.eq("customernum",coll.getClient().getCustomernum());
+            }
+            if (coll.getClient().getCustomername()!=null){
+                queryWrapper.like("customername",coll.getClient().getCustomername());
+            }
+            if (coll.getClient().getCustomertypeid()!=null){
+                queryWrapper.eq("customertypeid",coll.getClient().getCustomertypeid());
+            }
+            if (coll.getClient().getLinkman()!=null){
+                queryWrapper.like("linkman",coll.getClient().getLinkman());
+            }
+            if (coll.getClient().getPhone()!=null){
+                queryWrapper.like("phone",coll.getClient().getPhone());
+            }
+            if (coll.getClient().getCustomeraddress()!=null){
+                queryWrapper.like("customeraddress",coll.getClient().getCustomeraddress());
+            }
+            if (coll.getClient().getRemark()!=null){
+                queryWrapper.like("remark",coll.getClient().getRemark());
+            }
+            if (coll.getClient().getBirthday()!=null){
+                queryWrapper.eq("birthady",coll.getClient().getBirthday());
+            }
+            if (coll.getClient().getCounselorid()!=null){
+                queryWrapper.eq("counselorid",coll.getClient().getCounselorid());
+            }
+            if (coll.getClient().getReserved4()!=null){
+                queryWrapper.eq("reserved4",coll.getClient().getReserved4());
+            }
+            if (coll.getClient().getReserved1()!=null&&coll.getClient().getReserved2()!= null&&coll.getClient().getReserved3()!=null){
+                queryWrapper.eq("reserved1",coll.getClient().getReserved1());
+            }
+            if (coll.getCarInfo().getPlatename()!=null){
+
+                queryWrapper1.eq("platename",coll.getCarInfo().getPlatename());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0){
+                    for (Carheet car:list){
+                        queryWrapper.eq("customernum",car.getCustomernum());
+                    }
+                }
+            }
+            if (coll.getCarInfo().getCarbrandid()!=null){
+                queryWrapper1.eq("carbrandid",coll.getCarInfo().getCarbrandid());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0) {
+                    for (Carheet car : list) {
+                        queryWrapper.eq("customernum",car.getCustomernum());
+                    }
+                }
+            }
+            if (coll.getCarInfo().getReserved5()!=null){
+                queryWrapper1.eq("reserved5",coll.getCarInfo().getReserved5());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0){
+                    for (Carheet car:list){
+                        queryWrapper.eq("customernum",car.getCustomernum());
+                    }
+                }
+            }
+            if (coll.getCarInfo().getFramnum()!=null){
+                queryWrapper1.eq("framnum",coll.getCarInfo().getFramnum());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0){
+                    for (Carheet car:list){
+                        queryWrapper.eq("customernum",car.getCustomernum());                    }
+                }
+            }
+            if (coll.getCarInfo().getEnginenum()!=null){
+                queryWrapper1.eq("enginenum",coll.getCarInfo().getEnginenum());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0){
+                    for (Carheet car:list){
+                        queryWrapper.eq("customernum",car.getCustomernum());                    }
+                    }
+                }
+            }
+            if (coll.getCarInfo().getEngineid()!=null){
+                queryWrapper1.eq("engineid",coll.getCarInfo().getEngineid());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0){
+                    for (Carheet car:list){
+                        queryWrapper.eq("customernum",car.getCustomernum());                    }
+                }
+            }
+            if (coll.getCarInfo().getDriver()!=null){
+                queryWrapper1.eq("driver",coll.getCarInfo().getDriver());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0){
+                    for (Carheet car:list){
+                        queryWrapper.eq("customernum",car.getCustomernum());                    }
+                }
+            }
+            if (coll.getCarInfo().getDriverphone()!=null){
+                queryWrapper1.eq("driverphone",coll.getCarInfo().getDriverphone());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0) {
+                    for (Carheet car : list) {
+                        queryWrapper.eq("customernum", car.getCustomernum());
+                    }
+                }
+            }
+            if (coll.getCarInfo().getBirthday()!=null){
+                queryWrapper1.eq("birthday",coll.getCarInfo().getBirthday());
+                List<Carheet> list=carservice.list(queryWrapper1);
+                if (list.size()>0){
+                    for (Carheet car:list){
+                        queryWrapper.eq("customernum",car.getCustomernum());                    }
+                }
+            }
+        List<Customer> list=Service.list(queryWrapper);
+        if (list.size()>0){
+            for (Customer cus:list){
+                Customertype type=typeservice.getById(cus.getCustomertypeid());
+                cus.setLeibie(type.getCustomertypeid());
+                Counselor con=counservice.getById(cus.getCounselorid());
+                cus.setFw(con.getCounselorname());
+            }
+        }
+        return list;
+        }
+
+
     @RequestMapping("/selectClientInformationByClientId")
-    public Customer selectClientInformationByClientId(String clientId){
-        Customer list=Service.getById(clientId);
+    public Customer selectClientInformationByClientId(String customernum){
+        QueryWrapper<Customer> queryWrappernew =new QueryWrapper<>();
+        if (customernum!=null){
+            queryWrappernew.eq("customernum",customernum);
+        }
+        Customer list=Service.list(queryWrappernew).get(0);
         return list;
     }
     @RequestMapping("/findss")
@@ -52,6 +186,15 @@ public class CustomerController {
             queryWrapper.eq("customernum",customernum);
         }
         return Service.list(queryWrapper).get(0);
+    }
+    //根据条件查询客户信息(小)
+    @RequestMapping("findTJ")
+    public List<Customer> findTJ(String Tiaojian){
+        QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
+        if (Tiaojian!=null){
+            queryWrapper.eq("customername",Tiaojian).or().eq("phone",Tiaojian).or().eq("customernumber",Tiaojian);
+        }
+        return Service.list(queryWrapper);
     }
     @RequestMapping("/selectClientInfo")
     public List<Customer> selectClientInfo(){
@@ -232,6 +375,13 @@ public class CustomerController {
             return false;
         }
     }
+    @RequestMapping("/findMax")
+    public Customer findMax(){
+        QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
+        queryWrapper.orderByDesc("customernum");
+
+        return Service.list(queryWrapper).get(0);
+    }
     @RequestMapping("/insert")
     public boolean insert(Customer cus){
         boolean bool=Service.save(cus);
@@ -246,7 +396,13 @@ public class CustomerController {
     }
     @RequestMapping("/update")
     public boolean update(Customer cus){
-        return Service.updateById(cus);
+        QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
+        if (cus!=null){
+            if (cus.getCustomernum()!=null){
+                queryWrapper.eq("customernum",cus.getCustomernum());
+            }
+        }
+        return Service.update(queryWrapper);
     }
     @RequestMapping("/findById/{id}")
     public Customer findById(@PathVariable String id){

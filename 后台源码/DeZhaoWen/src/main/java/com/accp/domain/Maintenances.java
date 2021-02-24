@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -30,6 +31,10 @@ public class Maintenances extends Model<Maintenances> {
     @ApiModelProperty(value = "维修id")
     @TableId(value = "maintainid", type = IdType.AUTO)
     private Integer maintainid;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
     @ApiModelProperty(value = "单据类型")
     private String danju;

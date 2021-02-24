@@ -25,6 +25,10 @@ public class Carheet extends Model<Carheet> {
 
     private static final long serialVersionUID=1L;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
+
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;
 
@@ -176,9 +180,12 @@ public class Carheet extends Model<Carheet> {
     @ApiModelProperty(value = "预留字段")
     private String reserved4;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "车型ID")
     private String reserved5;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "车型")
+    private String chexing;
 
     public static final String CARNUM = "carnum";
 
