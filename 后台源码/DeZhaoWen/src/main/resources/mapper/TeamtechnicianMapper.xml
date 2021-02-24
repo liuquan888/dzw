@@ -26,11 +26,38 @@
         <result column="reserved3" property="reserved3" />
         <result column="reserved4" property="reserved4" />
         <result column="reserved5" property="reserved5" />
+        <association property="teamname" column="teamid"
+                     javaType="com.accp.domain.Menu">
+            <id column="id" property="id" />
+            <result column="menuname" property="menuname" />
+            <result column="parentid" property="parentid" />
+            <result column="teamid" property="teamid" />
+            <result column="reserved1" property="reserved1" />
+            <result column="reserved2" property="reserved2" />
+            <result column="reserved3" property="reserved3" />
+        </association>
+        <association property="bank" column="bankid"
+                     javaType="com.accp.domain.Bank">
+            <id column="bankid" property="bankid" />
+            <result column="bankname" property="bankname" />
+        </association>
+        <association property="mechanicstar" column="code"
+                     javaType="com.accp.domain.Mechanicstar">
+            <id column="code" property="code" />
+            <result column="star" property="star" />
+            <result column="grade" property="grade" />
+            <result column="Commissionweight" property="Commissionweight" />
+        </association>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, teamid, technicianid, technicianidname, sex, phone, address, birthday, headman, loginname, idnumber, residenceaddress, bankid, bankaccount, code, type, maintenancetype, reserved1, reserved2, reserved3, reserved4, reserved5
     </sql>
+    
+    <select id="findByTeamId" resultMap="BaseResultMap">
+        SELECT `teamtechnician`.*,`menu`.`menuname`,`bank`.`bankname`,`mechanicstar`.star FROM menu,`teamtechnician`,`bank`,`mechanicstar` WHERE `menu`.`teamid`=`teamtechnician`.`teamid`
+        AND `bank`.`bankid`=`teamtechnician`.`bankid` AND `mechanicstar`.code=`teamtechnician`.`code` AND `teamtechnician`.`teamid`=#{teamid}
+    </select>
 
 </mapper>
