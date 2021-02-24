@@ -4,7 +4,10 @@ import com.accp.domain.OrganizationSurface;
 import com.accp.mapper.OrganizationSurfaceMapper;
 import com.accp.service.IOrganizationSurfaceService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +19,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrganizationSurfaceServiceImpl extends ServiceImpl<OrganizationSurfaceMapper, OrganizationSurface> implements IOrganizationSurfaceService {
+
+    @Autowired
+    OrganizationSurfaceMapper mapper;
+
+    public List<OrganizationSurface> find(){
+        return mapper.find(0);
+    }
 
 }

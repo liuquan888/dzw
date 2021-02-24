@@ -6,6 +6,7 @@ import com.accp.domain.StaffData;
 import com.accp.service.impl.StaffDataServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -41,7 +42,21 @@ public class StaffDataController {
         return true;
     }
 
+    @RequestMapping("/findByIds/{id}")
+    public List<StaffData> findByIds(@PathVariable("id") Integer id){
+        QueryWrapper<StaffData> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("reserved5",id);
+        return sdService.list(queryWrapper);
+    }
 
+    @RequestMapping("/findById")
+    public List<StaffData> findById(@RequestBody List<Integer> s){
+        QueryWrapper<StaffData> queryWrapper=new QueryWrapper<>();
+        for(Integer i:s){
+            queryWrapper.or().eq("reserved3",i);
+        }
+        return sdService.list(queryWrapper);
+    }
 
     @RequestMapping("/findId")
     public List<StaffData> findId(StaffData s){

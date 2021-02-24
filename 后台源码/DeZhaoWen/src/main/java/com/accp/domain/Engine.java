@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -26,6 +27,10 @@ import lombok.experimental.Accessors;
 public class Engine extends Model<Engine> {
 
     private static final long serialVersionUID=1L;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
     @TableId(type= IdType.AUTO)
     @ApiModelProperty(value = "发动机品牌编号")

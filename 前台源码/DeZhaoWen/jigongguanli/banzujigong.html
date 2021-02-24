@@ -125,13 +125,12 @@
 			</div>
 			<div class="row" id="dv1">
 				<div class="z1">
-					<div class="col-md-1"><a href="#myModal1" data-toggle="modal"><img src="../img/1.png" class="c1">增加员工</a></div>
+					<div class="col-md-1"><a  id="a1" href="#myModal1" @click="toInsertStaff"><img src="../img/1.png" class="c1">增加员工</a></div>
 					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="../img/1.png" class="c1">增加班组</a></div>
 					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="../img/1.png" class="c1">修改班组</a></div>
 					<div class="col-md-1"><img src="../img/1.png" class="c1">删除班组</div>
 					<div class="col-md-1"><a href="#myModal1" data-toggle="modal"><img src="../img/2.png" class="c1">修改</a></div>
 					<div class="col-md-1"><img src="../img/3.png" class="c1">删除</div>
-					<div class="col-md-1"><a href="#" ><img src="../img/4.png" class="c1">查询</a></div>
 					<div class="col-md-1"><img src="../img/5.png" class="c1">置空密码</div>
 					<div class="col-md-1"><img src="../img/6.png" class="c1">导出</div>
 				</div>
@@ -162,7 +161,7 @@
 							</tr>
 							<tr v-for="item in teamtechnician">
 								<td>{{item.teamid}}</td>
-								<td></td>
+								<td>{{item.teamname.menuname}}</td>
 								<td>{{item.technicianid}}</td>
 								<td>{{item.technicianidname}}</td>
 								<td>{{item.sex}}</td>
@@ -173,9 +172,9 @@
 								<td>{{item.loginname}}</td>
 								<td>{{item.idnumber}}</td>
 								<td>{{item.residenceaddress}}</td>
-								<td>{{item.bankid}}</td>
+								<td>{{item.bank.bankname}}</td>
 								<td>{{item.bankaccount}}</td>
-								<td>{{item.code}}</td>
+								<td>{{item.mechanicstar.star}}</td>
 								<td>{{item.type}}</td>
 								<td>{{item.maintenancetype}}</td>
 							</tr>
@@ -409,22 +408,15 @@
 				data(){
 					return{
 						teamtechnician:{},
-						menu:{}
+						menu:{},
+						xx:0,
+						menuid:{}
 					}
 				},
 				methods:{
-					findAll(){
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/teamtechnician/findAll",
-							type:"post",
-							success:function(result){
-								that.teamtechnician=result;
-							}
-						});
-					},
 					createTab(item){
 						if(item.childrens && item.childrens.length > 0) {
+							this.xx=0;
 							if(item.reserved2) {
 								item.reserved2 = false;
 							} else {
@@ -432,7 +424,17 @@
 							}
 							return;
 						}else{
-							console.log("11111");
+							this.xx=item.teamid;
+							let that=this;
+							$.ajax({
+								url:"http://127.0.0.1:8080/teamtechnician/findByTeamId/"+item.teamid,
+								async:true,
+								type:"post",
+								success:function(result){
+									console.log(result);
+									that.teamtechnician=result;
+								}
+							});
 						}
 					},
 					findByParentId(){
@@ -444,10 +446,16 @@
 								that.menu=result;
 							}
 						});
+					},
+					toInsertStaff(){
+						if(this.xx==0){
+							alert("您未选中学校");
+						}else{
+							$("#myModal1").modal("show");
+						}
 					}
 				},
 				created(){
-					this.findAll();
 					this.findByParentId();
 				}
 			});
