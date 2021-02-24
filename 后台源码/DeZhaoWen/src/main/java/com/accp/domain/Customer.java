@@ -28,12 +28,7 @@ public class Customer extends Model<Customer> {
 
     private static final long serialVersionUID=1L;
 
-<<<<<<< HEAD
-
-
-=======
     @TableId("customernum")
->>>>>>> aa2a199ffc58851a6ceadb8a8e1c5423f7cf5958
     @ApiModelProperty(value = "客户编码")
     private String customernum;
 
