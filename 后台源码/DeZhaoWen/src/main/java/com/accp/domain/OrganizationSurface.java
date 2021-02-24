@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import java.util.List;
 
 /**
  * <p>
@@ -23,6 +24,9 @@ import lombok.experimental.Accessors;
 public class OrganizationSurface extends Model<OrganizationSurface> {
 
     private static final long serialVersionUID=1L;
+
+    @ApiModelProperty(value = "子级")
+    private List<OrganizationSurface> children;
 
     @ApiModelProperty(value = "机构id")
     private Integer zid;
