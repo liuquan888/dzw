@@ -36,4 +36,13 @@
         zid, zname, msname, mshou, mdianid, mzuishu, mtiao, mcityid, mkai, maddress, mshui, mphone, mlname, mhang, mzhang, mgouid, mru, mting, zids, zyid, reserved1, reserved2, reserved3, reserved4, reserved5
     </sql>
 
+    <resultMap type="com.accp.domain.OrganizationSurface" id="BaseResultMapss" extends="BaseResultMap">
+        <collection property="children" column="zid" ofType="com.accp.domain.OrganizationSurface" select="find">
+
+        </collection>
+    </resultMap>
+    <select id="find" resultMap="BaseResultMapss" >
+		select * from organization_surface where zids=#{zid}
+  </select>
+
 </mapper>

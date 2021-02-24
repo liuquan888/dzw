@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -25,9 +27,10 @@ public class OrganizationSurface extends Model<OrganizationSurface> {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "子级")
+    @TableField(exist = false)
     private List<OrganizationSurface> children;
 
+    @TableId
     @ApiModelProperty(value = "机构id")
     private Integer zid;
 
