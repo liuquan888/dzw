@@ -16,7 +16,7 @@ import java.util.List;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-04O
  */
 @RestController
 @RequestMapping("/organizationSurface")
@@ -28,5 +28,10 @@ public class OrganizationSurfaceController {
     @RequestMapping("/find")
     public List<OrganizationSurface> findByAll(){
         return o.list();
+    }
+
+    @RequestMapping("/findId")
+    public List<OrganizationSurface> findId(){
+        return o.find();
     }
 }

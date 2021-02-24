@@ -2,6 +2,7 @@ package com.accp.mapper;
 
 import com.accp.domain.OrganizationSurface;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2021-02-04
  */
 public interface OrganizationSurfaceMapper extends BaseMapper<OrganizationSurface> {
+
+    List<OrganizationSurface> find (Integer id);
 
 }
