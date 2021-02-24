@@ -21,11 +21,8 @@ import lombok.experimental.Accessors;
  * @since 2021-02-04
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @ApiModel(value="Customer对象", description="客户表")
 public class Customer extends Model<Customer> {
-
     private static final long serialVersionUID=1L;
 
     @TableId("customernum")
@@ -255,9 +252,5 @@ public class Customer extends Model<Customer> {
 
     public static final String RESERVED5 = "reserved5";
 
-    @Override
-    protected Serializable pkVal() {
-        return this.customernum;
-    }
 
 }
