@@ -15,4 +15,6 @@ import java.util.List;
  */
 public interface MenuMapper extends BaseMapper<Menu> {
     List<Menu> findByParentId(Integer id);
+
+    List<Menu> findNoByParentId(Integer parentid);
 }

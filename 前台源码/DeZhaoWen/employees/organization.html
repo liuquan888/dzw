@@ -74,7 +74,6 @@
 			#table1 tr td{
 				padding-left: 10px;
 				border: 1px solid #e3e3e3;
-				width:100px;
 				height:30px;
 				line-height:30px;
 			}
@@ -254,7 +253,7 @@
 				line-height: 34px;
 				border: 1px solid #E8E8E8;
 				text-align: center;
-				width:113px;
+				width:108px;
 			}
 			#mm2 table tr td:nth-of-type(1){
 				background-color:#f7f7f7;
@@ -345,10 +344,22 @@
 					<div class="col-xs-10 a" style="width:1279px;overflow-x:scroll;height:615px;">
 						<table id="table1" style="width: 1900px;">
 							<tr>
-								<td v-for="s in stafflist" v-if="s.bool==0" class="d1">{{s.fieldname}}</td>
+								<td v-for="f in field" class="d1" v-if="f.display==1">{{f.name}}</td>
 							</tr>
 							<tr v-for="item in staff">
-								<td></td>
+								<td>{{item.yid}}</td>
+								<td>{{item.yname}}</td>
+								<td>{{item.ysex}}</td>
+								<td>{{item.gid}}</td>
+								<td>{{item.yhealth}}</td>
+								<td>{{item.yheigth}}</td>
+								<td>{{item.ynativplaceid}}</td>
+								<td>{{item.ynationid}}</td>
+								<td>{{item.yheigth}}</td>
+								<td>{{item.yeducationid}}</td>
+								<td>{{item.yschoolid}}</td>
+								<td>{{item.yspecialtyid}}</td>
+								<td>{{item.yspecialtynid}}</td>
 							</tr>
 						</table>
 					</div>
@@ -658,7 +669,7 @@
 									<img src="../img/2.png" class="c1">全部选择
 									<img src="../img/2.png" class="c1">全部取消
 								</div>
-								<div id="mm2">
+								<div id="mm2" style="height:340px;overflow-x:scroll;">
 									<table>
 										<tr>
 											<td style="background-color: darkturquoise;">显示</td>
@@ -667,26 +678,12 @@
 											<td>序号</td>
 											<td>显示宽度</td>
 										</tr>
-										<tr>
+										<tr v-for="f in field">
 											<td><input type="checkbox"></td>
-											<td>AA1</td>
-											<td>机构</td>
-											<td>1</td>
-											<td>150</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>1</td>
-											<td>清华大学</td>
-											<td>1</td>
-											<td>清华大学</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox"></td>
-											<td>1</td>
-											<td>清华大学</td>
-											<td>1</td>
-											<td>清华大学</td>
+											<td>{{f.zname}}</td>
+											<td>{{f.name}}</td>
+											<td>{{f.id}}</td>
+											<td>{{f.width}}</td>
 										</tr>
 									</table>
 								</div>
@@ -1246,62 +1243,35 @@
 				}
 			}
 		})
-		var stafflist=[
-			{
-				id:"1",
-				bool:0,
-				field:"aaa",
-				fieldname:"机构",
-				width:"100"},
-			{
-				id:"2",
-				bool:0,
-				field:"aaa",
-				fieldname:"部门代码",
-				width:"100"
-			},
-			{
-				id:"3",
-				bool:0,
-				field:"aaa",
-				fieldname:"部门名称",
-				width:"100"
-			},
-			{
-				id:"4",
-				bool:0,
-				field:"aaa",
-				fieldname:"工号",
-				width:"100"
-			},
-			{
-				id:"5",
-				bool:0,
-				field:"aaa",
-				fieldname:"姓名",
-				width:"100"
-			},
-		];
 		$("#kkk1").css("display","none");
 		new Vue({
 			el:"#ctn",
 			data(){
 				return{
-					stafflist:stafflist,
 					xs:true,
 					menu:[],
 					tabs:[],
-					staff:{}
+					staff:{},
+					field:{}
 				}
 			},
 			methods:{
+				findField(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/field/find",
+						type:"post",
+						success:function(result){
+							that.field=result;
+						}
+					});
+				},
 				findId(){
 					var that=this;
 					$.ajax({
 						url:"http://127.0.0.1:8080/organizationSurface/findId",
 						type:"post",
 						success:function(result){
-							console.log(result);
 							that.menu=result;
 						}
 					});
@@ -1327,7 +1297,6 @@
 							url:"http://127.0.0.1:8080/staffData/findByIds/"+item.zid,
 							type:"post",
 							success:function(result){
-								console.log(result);
 								that.staff=result;
 							}
 						});
@@ -1347,10 +1316,10 @@
 					$("#aa4").css("display","flex");
 					$("#kkk1").css("display","none");
 				}
-			}
-			,
+			},
 			created(){
 				this.findId();
+				this.findField();
 			}
 		});
 	</script>

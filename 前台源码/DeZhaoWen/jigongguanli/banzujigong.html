@@ -195,128 +195,121 @@
 								<div class="form-group">
 									<div class="dv">
 										<label>技工编号</label>
-										<input class="form-control"/>
+										<input class="form-control" v-model="teamtechnicians.technicianid"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>技工姓名</label>
-										<input class="form-control"/>
+										<input class="form-control" v-model="teamtechnicians.technicianidname"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>性别</label>
-										<select class="form-control">
-											<option>男</option>
-											<option>女</option>
+										<select class="form-control" v-model="teamtechnicians.sex">
+											<option value="男">男</option>
+											<option value="女">女</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label class="checkbox-inline">
-											<input type="checkbox" />组长
+											<input type="checkbox" @click="check" :checked="checked" value="是"/>组长
 										</label>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>所在班组</label>
-										<input class="form-control"/>
-										<select class="form-control">
-											<option value="">机修1组</option>
-											<option value="">机修2组</option>
-											<option value="">机电1组</option>
+										<input class="form-control" v-model="teamtechnicians.teamid"/>
+										<select class="form-control" v-model="teamtechnicians.teamid">
+											<option v-for="item in sonMenu" :value="item.teamid">{{item.menuname}}</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>手机</label>
-										<input class="form-control"/>
+										<input class="form-control" v-model="teamtechnicians.phone"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>登录账号</label>
-										<input class="form-control"/>
+										<input class="form-control" v-model="teamtechnicians.loginname"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>地址</label>
-										<input class="form-control" id="address"/>
+										<input class="form-control" id="address" v-model="teamtechnicians.address"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>出生日期</label>
-										<input class="form-control" type="date"/>
+										<input class="form-control" type="date" v-model="teamtechnicians.birthday"/>
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="dv">
-										<label class="lb">微信号</label>
-										<input class="form-control"/>
-									</div>
-								</div>
+								
 								<div class="form-group">
 									<div class="dv">
 										<label>身份证号</label>
-										<input class="form-control" id="sfz"/>
+										<input class="form-control" id="sfz" v-model="teamtechnicians.idnumber"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>户口地址</label>
-										<input class="form-control" id="hkaddress"/>
+										<input class="form-control" id="hkaddress" v-model="teamtechnicians.residenceaddress"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>开户银行</label>
-										<select class="form-control" id="bank">
-											<option></option>
+										<select class="form-control" id="bank" v-model="teamtechnicians.bankid">
+											<option v-for="item in bank" :value="item.bankid">{{item.bankname}}</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>银行账号</label>
-										<input class="form-control" id="bankaccount"/>
+										<input class="form-control" id="bankaccount" v-model="teamtechnicians.bankaccount"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="cls" id="cl">
 										<label>等级编码</label>
-										<select class="form-control" id="code">
-											<option value=""></option>
+										<select class="form-control" id="code" v-model="teamtechnicians.code" @click="findByCode(teamtechnicians.code)">
+											<option v-for="item in mechanicstar" :value="item.code">{{item.code}}</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="cls">
 										<label>星级</label>
-										<input class="form-control" id="start"/>
+										<input class="form-control" id="start" v-model="mechanicstars.star"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="cls">
 										<label>等级</label>
-										<input class="form-control" id="grade"/>
+										<input class="form-control" id="grade" v-model="mechanicstars.grade"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>维修工种</label>
-										<input class="form-control" id="work"/>
+										<input class="form-control" id="work" v-model="teamtechnicians.type"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>维修品牌</label>
-										<input class="form-control" id="type"/>
+										<input class="form-control" id="type" v-model="teamtechnicians.maintenancetype"/>
 									</div>
 								</div>
 							</form>
@@ -410,7 +403,12 @@
 						teamtechnician:{},
 						menu:{},
 						xx:0,
-						menuid:{}
+						sonMenu:{},
+						mechanicstar:{},
+						mechanicstars:{},
+						teamtechnicians:{},
+						checked:true,
+						bank:{}
 					}
 				},
 				methods:{
@@ -424,6 +422,7 @@
 							}
 							return;
 						}else{
+							
 							this.xx=item.teamid;
 							let that=this;
 							$.ajax({
@@ -431,7 +430,6 @@
 								async:true,
 								type:"post",
 								success:function(result){
-									console.log(result);
 									that.teamtechnician=result;
 								}
 							});
@@ -453,10 +451,65 @@
 						}else{
 							$("#myModal1").modal("show");
 						}
-					}
+					},
+					findNoByParentId(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/menu/findNoByParentId",
+							type:"post",
+							success:function(result){
+								that.sonMenu=result;
+							}
+						});
+					},
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/find",
+							type:"post",
+							success:function(result){
+								that.mechanicstar=result;
+							}
+						});
+					},
+					findByCode(code){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/findById/"+code,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								that.mechanicstars=result;
+							}
+						});
+					},
+					check(){
+						if(this.checked==true){
+							this.checked=false;
+							this.teamtechnicians.headman="否";
+							alert(this.teamtechnicians.headman);
+						}else{
+							this.checked=true;
+							this.teamtechnicians.headman="是";
+							alert(this.teamtechnicians.headman);
+						}
+					},
+					findBank(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/bank/findBank",
+							type:"post",
+							success:function(result){
+								that.bank=result;
+							}
+						});
+					},
 				},
 				created(){
+					this.findNoByParentId();
 					this.findByParentId();
+					this.find();
+					this.findBank();
 				}
 			});
 		</script>

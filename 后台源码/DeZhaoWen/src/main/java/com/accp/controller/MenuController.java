@@ -39,5 +39,10 @@ public class MenuController {
         return service.list(queryWrapper).get(0);
     }
 
+    @RequestMapping("/findNoByParentId")
+    public List<Menu> findNoByParentId(){
+        return service.findNoByParentId();
+    }
+
 }
 

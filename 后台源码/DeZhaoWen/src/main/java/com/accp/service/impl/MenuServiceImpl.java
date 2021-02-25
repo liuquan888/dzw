@@ -27,4 +27,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
         return byParentId;
     }
+
+    public List<Menu> findNoByParentId(){
+        List<Menu> list=menuMapper.findNoByParentId(0);
+        return list;
+    }
 }
