@@ -221,7 +221,7 @@ public class RepairBillController {
         qw.in("reserved1",ids);
         return service.list(qw);
     }
-
+    //导出Excel
     @RequestMapping("/downloadExcel")
     public ResponseEntity<byte []> downloadExcel(Integer[] ids, Integer documentsType, Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState) throws IOException {
         List<RepairBill> list=find(ids,documentsType,balanceState,date1,date2,no,jsType,chepaiNo,name,ywType,remark,jiesuanRen,documentsState);
