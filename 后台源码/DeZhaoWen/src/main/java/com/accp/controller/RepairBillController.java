@@ -251,10 +251,10 @@ public class RepairBillController {
 
         //组装导出的学生数据，如果是其他业务，请根据业务情况进行编写
         if(list!=null){
-            for (int i = 1; i < list.size(); i++) {
+            for (int i = 0; i < list.size(); i++) {
                 RepairBill Value = list.get(i);
                 //导出excel数据
-                Row rowValue = sheet.createRow(i);
+                Row rowValue = sheet.createRow(i+1);
                 Cell data1 = rowValue.createCell(0);
                 Cell data2 = rowValue.createCell(1);
                 Cell data3 = rowValue.createCell(2);
