@@ -162,11 +162,11 @@
 						</tr>
 						<tr class="pintr2" v-for="item in mainlist" @click="mainclick(item)">
 							<td class="item"></td>
-							<td>{{item.service.serName}}</td>
+							<td v-if="item.service">{{item.service.serName}}</td>
 							<td>{{item.mid}}</td>
 							<td>{{item.mname}}</td>
-							<td>{{item.service.service.serName}}</td>
-							<td>{{item.income.inName}}</td>
+							<td v-if="item.service">{{item.service.service.serName}}</td>
+							<td v-if="item.income">{{item.income.inName}}</td>
 							<td>{{item.mnormalprice}}</td>
 							<td>{{item.mmemberprice}}</td>
 							<td>{{item.mvipprice}}</td>
