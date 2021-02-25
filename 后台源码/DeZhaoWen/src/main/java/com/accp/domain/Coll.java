@@ -1,23 +1,22 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@Data
 public class Coll {
-    private Customer client;
 
-    private Carheet carInfo;
+    @TableField(exist = false)
+    @ApiModelProperty(value = "客户")
+    public Customer client;
 
-    public Customer getClient() {
-        return client;
-    }
+    @TableField(exist = false)
+    @ApiModelProperty(value = "车辆")
+    public Carheet carInfo;
 
-    public void setClient(Customer client) {
-        this.client = client;
-    }
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
-    public Carheet getCarInfo() {
-        return carInfo;
-    }
-
-    public void setCarInfo(Carheet carInfo) {
-        this.carInfo = carInfo;
-    }
 }

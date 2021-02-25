@@ -39,6 +39,8 @@ public class CarheetController {
     @Autowired
     CustomerServiceImpl cuservice;
 
+
+
     //根据驾驶员姓名查询
     @RequestMapping("/queryCarInformationByCondition")
     public List<Carheet> queryCarInformationByCondition(String condition){
@@ -262,11 +264,12 @@ public class CarheetController {
         List<Carheet> list=service.list(queryWrapper);
         return list;
     }
+    //根据客户Id查询车辆信息
     @RequestMapping("/findIds")
-    public Carheet findIds(String number){
+    public Carheet findIds(String customernum){
         QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
-        if (number!=null){
-            queryWrapper.like("platename",number);
+        if (customernum!=null){
+            queryWrapper.like("platename",customernum);
         }
         List<Carheet> list=service.list(queryWrapper);
         return list.get(0);

@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -23,6 +24,7 @@ import lombok.experimental.Accessors;
 public class Brand extends Model<Brand> {
 
     private static final long serialVersionUID=1L;
+
 
     @ApiModelProperty(value = "车型品牌编号")
     private Integer bId;

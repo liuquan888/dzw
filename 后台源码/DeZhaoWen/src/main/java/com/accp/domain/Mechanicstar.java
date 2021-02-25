@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
@@ -25,6 +26,7 @@ public class Mechanicstar extends Model<Mechanicstar> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId
     @ApiModelProperty(value = "编码")
     private String code;
 

@@ -221,7 +221,6 @@
 						<br />
 						<div style="margin-left: 150px;">
 							<span>共计金额:{{data.sum}}</span>
-							<span style="color: red;font-style: oblique;">{{data.amount}}</span>
 						</div>
 						<div>
 							<form class="form-inline" style="margin-left: 150px;">
@@ -588,7 +587,8 @@
 							success:function(result){
 								if(result==1){
 									alert("成功");
-									location.href="jiesuanzhonxin.html";
+//									location.href="jiesuanzhonxin.html";
+									that.guanbi(true);
 								}
 							}
 						});

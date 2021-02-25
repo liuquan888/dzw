@@ -1,7 +1,9 @@
 package com.accp.controller;
 
 
+import com.accp.domain.Car;
 import com.accp.domain.Vehicle;
+import com.accp.service.impl.CarServiceImpl;
 import com.accp.service.impl.VehicleServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,29 +25,44 @@ import java.util.List;
 @RequestMapping("/car")
 public class CarController {
     @Autowired
-    VehicleServiceImpl service;
+    CarServiceImpl service;
     @RequestMapping("find")
-    public List<Vehicle> find(String condition,Integer carbrandid){
-        QueryWrapper<Vehicle> queryWrapper=new QueryWrapper<>();
-        if (carbrandid!=null){
-            queryWrapper.eq("vehicleid",carbrandid);
+    public List<Car> find(String carcoding, String tiaojian){
+        QueryWrapper<Car> queryWrapper=new QueryWrapper<>();
+        if (tiaojian!=null){
+            queryWrapper.eq("cCoder",tiaojian).or().eq("reserved1",tiaojian);
         }
-        if (condition!=null){
-            queryWrapper.like("vehiclename",condition);
+        if (carcoding!=null){
+            queryWrapper.eq("bId",carcoding);
         }
-        return service.list(queryWrapper);
+        List<Car> list=service.list(queryWrapper);
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
+        return list;
     }
     @RequestMapping("/findById")
-    public List<Vehicle> findById(String v){
-        QueryWrapper<Vehicle> query=new QueryWrapper<>();
+    public List<Car> findById(String v){
+        QueryWrapper<Car> query=new QueryWrapper<>();
         if (v!=null){
-            query.eq("carcoding",v);
+            query.eq("bId",v);
         }
-        List<Vehicle> list=service.list(query);
+        List<Car> list=service.list(query);
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
         return list;
     }
     @RequestMapping("/findAll")
-    public List<Vehicle> findAll(){
+    public List<Car> findAll(){
         return service.list();
     }
 }

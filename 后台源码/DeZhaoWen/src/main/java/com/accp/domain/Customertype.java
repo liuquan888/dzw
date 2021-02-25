@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -26,6 +27,10 @@ public class Customertype extends Model<Customertype> {
 
     @ApiModelProperty(value = "客户类别id")
     private Integer customerid;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
     @ApiModelProperty(value = "客户类别")
     private String customertypeid;
