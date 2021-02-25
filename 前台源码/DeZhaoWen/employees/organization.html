@@ -346,23 +346,21 @@
 							<tr>
 								<td v-for="f in field" class="d1" v-if="f.display==1">{{f.name}}</td>
 							</tr>
-							
-								<tr v-for="item in staff">
-									<td>{{item.yid}}</td>
-									<td>{{item.yname}}</td>
-									<td>{{item.ysex}}</td>
-									<td>{{item.gid}}</td>
-									<td>{{item.yhealth}}</td>
-									<td>{{item.yheigth}}</td>
-									<td>{{item.ynativplaceid}}</td>
-									<td>{{item.ynationid}}</td>
-									<td>{{item.yheigth}}</td>
-									<td>{{item.yeducationid}}</td>
-									<td>{{item.yschoolid}}</td>
-									<td>{{item.yspecialtyid}}</td>
-									<td>{{item.yspecialtynid}}</td>
-								</tr>
-							
+							<tr v-for="item in staff">
+								<td v-if="field[2].display==1">{{item.yid}}</td>
+								<td v-if="field[3].display==1">{{item.yname}}</td>
+								<td v-if="field[4].display==1">{{item.ysex}}</td>
+								<td v-if="field[5].display==1">{{item.gid}}</td>
+								<td v-if="field[6].display==1" v-if="field[2].display==1">{{item.yhealth}}</td>
+								<td v-if="field[7].display==1">{{item.yheigth}}</td>
+								<td v-if="field[8].display==1">{{item.ynativplaceid}}</td>
+								<td v-if="field[9].display==1">{{item.ynationid}}</td>
+								<td v-if="field[10].display==1">{{item.yheigth}}</td>
+								<td v-if="field[11].display==1">{{item.yeducationid}}</td>
+								<td v-if="field[12].display==1">{{item.yschoolid}}</td>
+								<td v-if="field[13].display==1">{{item.yspecialtyid}}</td>
+								<td v-if="field[14].display==1">{{item.yspecialtynid}}</td>
+							</tr>
 						</table>
 					</div>
 				</div>
