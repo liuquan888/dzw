@@ -243,9 +243,9 @@
 					
 					
 					<div class="lmenu">
-						<ul>
+						<ul v-for="item4 in menumerlist">
 							
-							<li aid="1" v-for="item in menumerlist.menuMerchandises">
+							<li aid="1" v-for="item in item4.menuMerchandises">
 								<span>
 									<em class="icoclose"></em>
 									<a class="a1" href="javascript:void(0)">
@@ -1197,11 +1197,22 @@
 		el:"#ctn",
 		data(){
 			return{
-				menumerlist:{},
+				menumerlist:[],
 				merlist:[],
 			}
 		},
 		methods:{
+			
+			
+			//维修项目菜单效果
+			doAction(index,item){
+			    var obj = document.getElementById('u' + index);
+					if(obj.style.display == 'none'){
+			            obj.style.display = 'block';
+					}else{
+						obj.style.display = 'none';
+					}
+			},
 			
 			//无限递归方法
 			findmenu(){

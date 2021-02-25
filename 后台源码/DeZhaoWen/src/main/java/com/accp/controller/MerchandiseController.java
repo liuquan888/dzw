@@ -60,8 +60,8 @@ public class MerchandiseController {
 
     //无限递归
     @GetMapping("/di")
-    public MenuMerchandise finddi(){
-        return menuMerchandiseMapper.findMenuByRoleId(0).get(0);
+    public List<MenuMerchandise> finddi(){
+        return menuMerchandiseMapper.findMenuByRoleId(0);
     }
 
 }
