@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -120,6 +121,11 @@ public class Merchandise extends Model<Merchandise> {
     @ApiModelProperty(value = "预留字段")
     private String reserved5;
 
+    @TableField(exist = false)
+    private Suppiler suppiler;
+
+    @TableField(exist = false)
+    private MenuMerchandise menuMerchandise;
 
     public static final String ME_ID = "me_id";
 

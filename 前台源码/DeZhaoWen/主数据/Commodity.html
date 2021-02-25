@@ -89,7 +89,109 @@
 			}
 			
 			
+			/* .icoopen , .icoopen2 , .icoclose , .icoclose2 , .iconleaf , .iconleaf2 ,.lmenu ul li span ,.search-side button{background: url("") no-repeat 0 0;width: 9px;height: 9px;top: 9px;}
+			.lmenu li{list-style: none;}
+			.lmenu em {display: block;position: absolute;cursor: pointer;}
+			.icoopen{left: 28px;background-position: 0 -39px;}
+			.icoopen2{left: 42px;background-position: -46px -88px;}
+			.icoclose{left: 28px;background-position: -45px -39px;}
+			.icoclose2{left: 42px;background-position: 0 -88px;}
+			 
+			.iconleaf , .iconleaf2{width: 3px;height: 5px;background-position: -87px -41px;}
+			 
+			.iconleaf {left: 47px;top: 11px;}
+			.iconleaf2 {left: 72px;top: 10px;}
+			 
+			.search-side{
+				width: 250px;
+				border-radius: 5px;
+				position: relative;
+				background-color: #FFFFFF;
+				border: 1px solid #ddd;
+				height: 36px;
+				line-height: 36px;
+			}
+			.search-side button{
+				background-position: 0 0;
+				border: 0 none;
+				cursor: pointer;
+				display: block;
+				height: 16px;
+				width: 16px;
+				position: relative;
+				left: 11px;
+			}
+			.search-box input{
+				position: absolute;
+				top: 11px;
+				background-color: transparent;
+				border: medium none;
+				color: #AFB0B0;
+				height: 16px;
+				margin-left: 37px;
+				outline: medium none;
+				width: 200px;
+			} */
+			 
+			 
+			.lmenu{
+				height: auto;
+				overflow: hidden;
+				font-family: "宋体",Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti;
+				margin-bottom: 10px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+			}
+			 
+			.lmenu ul li{
+				
+			}
+			.lmenu ul li ul{
+				max-height: 350px;
+				overflow: auto;
+			}
+			.lmenu ul li ul li ul{
+				height: auto;
+			}
+			.lmenu ul li span{
+				display: block;
+				width: 100%;
+				height: 28px;
+				line-height: 28px;
+				/* text-indent: 3em; */
+				/*font-weight: bolder;*/
+				font-size: 14px;
+				color: #0E3E5E;
+				border-bottom: 1px solid #D7D7D7;
+				background-position: -46px 0;
+			}
+			.lmenu ul li ul li , .lmenu ul li ul li span{
+				/*background-color: #F7F8F8;*/
+				background-color: #FFFFFF;
+				color: #333;
+				/* text-indent: 5em; */
+				font-size: 13px;
+				height: auto;
+				line-height: 28px;
+			 
+			}
+			.lmenu ul li ul li span{
+				background:none;
+			 
+			}
+			.lmenu ul li ul li ul li{
+				border:none;
+				text-indent: 2em;
+				font-size: 12px;
+				font-weight: normal;
+				height: 24px;
+				line-height: 24px;
+			}
 			
+			
+			.pintr2:nth-of-type(2){
+				background: sandybrown;
+			}
 		</style>
 	<body>
 		<div id="ctn">
@@ -138,9 +240,44 @@
 				<br><br />
 				<div style="width: 300px;height: 85%;margin-left: 0px; background: #ffffff;">
 					<br />
-					<div id="table" style="background: #ffffff;">
-						<div id="app"></div>
+					
+					
+					<div class="lmenu">
+						<ul>
+							
+							<li aid="1" v-for="item in menumerlist.menuMerchandises">
+								<span>
+									<em class="icoclose"></em>
+									<a class="a1" href="javascript:void(0)">
+										{{item.menuName}}
+									</a>
+								</span>
+								<ul style="display: none;">
+									<li aid="8" v-for="item2 in item.menuMerchandises" @click="findmerclick(item2)">
+										<span>
+											<em class="icoclose2"></em>
+											<a class="a1" href="javascript:void(0)">
+												{{item2.menuName}}
+											</a>
+										</span>
+										<ul style="display: none;">
+											<li aid="10" v-for="item3 in item2.menuMerchandises" @click="findmerclick(item3)">
+												<em class="iconleaf2"></em>
+												<a class="a1" href="javascript:void(0)">
+													{{item3.menuName}}
+												</a>
+											</li>
+										</ul>
+									</li>
+									
+								</ul>
+							</li>
+							
+						</ul>
 					</div>
+					
+					
+					
 				</div>
 				
 				<div style="margin-left: 350px;margin-top: -590px; border: 0px solid #000000;background: #ffffff;height: 90%;overflow: auto; width: 76.6%;" >
@@ -150,7 +287,6 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">登记门店</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">照片名</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">商品编码</td>
-							<td style="border: 1px solid #666; color: #FFFFFF;">商品名称</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">商品名称</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">商品品牌</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">适用车型</td>
@@ -173,90 +309,34 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">互换码</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">售价按</td>
 						</tr>
-						<tr class="pintr2">
+						<tr class="pintr2" v-for="item in merlist">
 							<td class="item"></td>
-							<td>总厂</td>
-							<td>465566546545</td>
-							<td>456645</td>
-							<td>喷油嘴</td>
-							<td></td>
-							<td>JN-5</td>
-							<td>件</td>
-							<td>发动机</td>
-							<td></td>
-							<td></td>
+							<td>{{item.meCheck}}</td>
+							<td>{{item.reserved1}}</td>
+							<td>{{item.meId}}</td>
+							<td>{{item.meName}}</td>
+							<td>{{item.meBrand}}</td>
+							<td>{{item.meAdaptable}}</td>
+							<td>{{item.meUnit}}</td>
+							<td v-if="item.menuMerchandise">{{item.menuMerchandise.menuName}}</td>
 							<td></td>
 							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>0.00</td>
-							<td>3454</td>
-							<td>售价表</td>
+							<td>{{item.meIncome}}</td>
+							<td>{{item.meMill}}</td>
+							<td>{{item.meGrade}}</td>
+							<td>{{item.mePlace}}</td>
+							<td v-if="item.suppiler">{{item.suppiler.pname}}</td>
+							<td>{{item.meCoding}}</td>
+							<td>{{item.meCode}}</td>
+							<td>{{item.meBack}}</td>
+							<td>{{item.meBulk}}</td>
+							<td>{{item.meGross}}</td>
+							<td>{{item.meSuttle}}</td>
+							<td>{{item.reserved2}}</td>
+							<td>{{item.meSwitch}}</td>
+							<td>{{item.reserved3}}</td>
+							
 						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>总厂</td>
-							<td>465566546545</td>
-							<td>456645</td>
-							<td>喷油嘴</td>
-							<td></td>
-							<td>JN-5</td>
-							<td>件</td>
-							<td>发动机</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>0.00</td>
-							<td>3454</td>
-							<td>售价表</td>
-						</tr>
-						<tr class="pintr2">
-							<td class="item"></td>
-							<td>总厂</td>
-							<td>465566546545</td>
-							<td>456645</td>
-							<td>喷油嘴</td>
-							<td></td>
-							<td>JN-5</td>
-							<td>件</td>
-							<td>发动机</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>0.00</td>
-							<td>3454</td>
-							<td>售价表</td>
-						</tr>	
 					</table>
 				</div>
 				
@@ -936,6 +1016,8 @@
 				
 				
 				
+				
+				
 				<!-- 查询 -->
 				<div class="modal fade" id="findgoodsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">
@@ -1108,87 +1190,61 @@
 <script src="../js/vue.js"></script>		
 <script>
 	
-	 //递归数据
-	 $(function () {
-	    var data = [
-	        {
-	            id: 1, name: "10-发动机", pid: 0,
-	            children: [
-	                {
-	                    id: 2, name: "100-发动机总成", pid: 1,
-	                    children: [
-	                        { id: 3, name: "1000-汽油发动机", pid: 2 },
-	                        { id: 4, name: "1001-柴油发动机", pid: 2 },
-	                    ],
-	                },
-	                { id: 8, name: "101-机体组", pid: 1 },
-	                {
-	                    id: 9, name: "泵", pid: 1,
-	                    children: [
-	                        { id: 10, name: "水泵", pid: 9 },
-	                    ]
-	                },
-	            ]
-	        },
-	        {
-	            id: 5, name: "11-传动系统", pid: 0,
-	            children: [
-	                {
-	                    id: 6, name: "105-离合器", pid: 5,
-	                    children: [
-	                        { id: 7, name: "1006-离合器器压片", pid: 6 },
-	                    ]
-	                },
-	            ]
-	        },
-	    ];
-	 
-	    var menu = '';
-	    menuFn(0, data)
-	    $("#app").append(menu)
-	 
-		//递归方法
-	    function menuFn(id, data) {
-	        if (data.length > 0) {
-	            menu += "<ul class='ul1'>"
-	            for (var i = 0; i < data.length; i++) { //获取省一级
-	                if (data[i].pid == id) {
-	                    menu += "<li style='margin-left: -10px;'>"
-	                    if(data[i].children){
-	                        menu += '<em style='+'margin-left: -80px;'+'></em><a href='+'javascript:void(0)'+'><span style='+'color:#000000;'+'>' + data[i].name + "</span></a>"
-	                        menuFn(data[i].id, data[i].children)   //递归
-	                    }else{
-	                        menu += '<a href='+'javascript:void(0)'+'><span style='+'color:#000000;'+'>' + data[i].name + "</span></a>"
-	                    }
-	                    menu += "</li>"
-	                }
-	            }
-	            menu += "</ul>"
-	            return menu;
-	        }
-	    }
-	 
-	    function fn() {
-	        var ull = $($(this).parent().children("ul")[0]);
-	        if (ull.length > 0) {
-	            ull.toggle();
-	            $(this).toggleClass("open")
-	        }
-	    }
-	    $("#app").delegate("a", "click", fn)
-	    $("#app").delegate("em", "click", fn)
-	})
-	//----------递归结束
 	
+	var BaseUrl="http://127.0.0.1:8080/";
 	
 	new Vue({
 		el:"#ctn",
 		data(){
 			return{
-				
+				menumerlist:{},
+				merlist:[],
 			}
 		},
 		methods:{
+			
+			
+			//维修项目菜单效果
+			doAction(index,item){
+			    var obj = document.getElementById('u' + index);
+					if(obj.style.display == 'none'){
+			            obj.style.display = 'block';
+					}else{
+						obj.style.display = 'none';
+					}
+			},
+			
+			//无限递归方法
+			findmenu(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"merchandise/di",
+					success:function(result){
+						that.menumerlist=result
+						console.log(that.menumerlist)
+					}
+				})
+			},
+			
+			
+			findmerclick(item){
+				this.findmer(item.menuId);
+			},
+			
+			findmer(meId){
+				if(!meId){
+					meId=0;
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"merchandise/findmer/"+meId,
+					success:function(result){
+						that.merlist=result
+						console.log(that.merlist)
+					}
+				})
+			},
+			
 			addgoods(){
 				$("#addgoodsmodal").modal("show");
 			},
@@ -1203,18 +1259,72 @@
 			},
 		},
 		created(){
-			
+			this.findmenu(null);
+			this.findmer();
 		}
 	});
-	$(".pintr").click(function(){
-		$(".pintr").css("background","#ffffff")
-		$(this).css("background","sandybrown")
-	});
-	$(".pintr2").click(function(){
+	
+	
+	$(function() {
+			loadMenu(function (id){
+				//window.location= '/index.php/index/baoku' + '/id/' + id + '.html';
+			});
+			//$('li[aid=]').css('background',"#F5F5F5");
+	 
+	 
+		});
+	 
+	/*传入一个函数参数为 id 即li上的属性 aid*/
+	function loadMenu (fun_clickAction) {
+		/*事件回调函数*/
+		clickAction = fun_clickAction;
+		/*一级菜单的样式*/
+		$(".lmenu > ul > li > span").prepend('<em class="icoclose"></em>');
+		/*二级菜单的样式*/
+		$(".lmenu > ul > li > ul > li").each(function(){
+			/*检查是否有节点*/
+			span = $(this).find("span"); 
+			if ( span.length ){
+				//有节点的话
+				span.prepend('<em class="icoclose2"></em>');
+			}else{
+				//无节点的话,绑定事件
+				$(this).prepend('<em class="iconleaf"></em>')
+					   .click(function(){
+							clickAction($(this).attr('aid'));
+					   });
+			}
+		});
+		/*三级菜单的样式*/
+		$(".lmenu > ul > li > ul > li > ul > li")
+			.prepend('<em class="iconleaf2"></em>')
+			.click(function(){
+				clickAction($(this).attr('aid'));
+			});
+	 
+		$(".lmenu ul li span").click(function(){
+			var ye = $(this).find('em');
+			classNama = ye.attr("class");
+			if( classNama == 'icoclose'){ye.attr('class','icoopen');}
+			else if( classNama == 'icoopen' ){ye.attr('class','icoclose');}
+			else if( classNama == 'icoclose2'){ye.attr('class','icoopen2');}
+			else if( classNama == 'icoopen2' ){ye.attr('class','icoclose2');}
+			$(this).siblings("ul").slideToggle("normal","swing");
+		});
+	}
+	
+	
+	
+		
+	$(document).on('click','.pintr2',function(){
 		$(".pintr2").css("background","#ffffff")
 		$(this).css("background","sandybrown")
-	});
+	})
 	
+	$(document).on('click','.a1',function(){
+		$(".a1").css("background","#ffffff")
+		$(this).css("background","sandybrown")
+	})
 	
 	$(".file1").mouseover(function(){
 		$(this).css("background","#e7e7e7")

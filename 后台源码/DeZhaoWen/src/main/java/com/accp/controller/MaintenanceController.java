@@ -1,12 +1,8 @@
 package com.accp.controller;
 
 
-import com.accp.domain.Car;
-import com.accp.domain.Income;
-import com.accp.domain.Maintenance;
+import com.accp.domain.*;
 
-import com.accp.domain.Service;
-import com.accp.mapper.EngineMapper;
 import com.accp.service.impl.IncomeServiceImpl;
 import com.accp.service.impl.MaintenanceServiceImpl;
 import com.accp.service.impl.ServiceServiceImpl;
@@ -14,8 +10,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.FileAlreadyExistsException;
-import java.util.DuplicateFormatFlagsException;
 import java.util.List;
 
 /**
@@ -153,6 +147,74 @@ public class MaintenanceController {
 
         }
         return "";
+    }
+
+    @PostMapping("/updatemain")
+    public String updatemain(Maintenance maintenance){
+        try {
+            return maintenanceService.updateById(maintenance)?"000000":"-1";
+        }catch (Exception ex){
+            return "500";
+        }
+    }
+
+    @GetMapping("/removeservice/{serId}")
+    public String removeservice(@PathVariable Integer serId){
+        try {
+            QueryWrapper mainqw=new QueryWrapper<Service>();
+            mainqw.eq("ser_id",serId);
+            maintenanceService.remove(mainqw);
+            return serviceService.removeById(serId)?"000000":"-1";
+        }catch (Exception ex){
+            return "500";
+        }
+    }
+
+    @GetMapping("/removemain/{mid}")
+    public String removemain(@PathVariable Integer mid){
+        try {
+            return maintenanceService.removeById(mid)?"000000":"-1";
+        }catch (Exception ex){
+            return "500";
+        }
+    }
+
+    @PostMapping("/maindim/{maindimtext}")
+    public List<Maintenance> maindim(@PathVariable String maindimtext,@RequestBody List<Integer> params){
+        try {
+            if(maindimtext.equals("975e65r45a4454a4d52s8a452d57")){
+                return findmain(null);
+            }
+
+            List<Maintenance> list=null;
+            QueryWrapper<Maintenance> mainqw=new QueryWrapper<Maintenance>();
+
+            if(params!=null && params.size()>0){
+                mainqw.lambda().in(Maintenance::getSerId,params);
+            }
+
+            mainqw.and(wrapper -> wrapper
+                    .eq("m_id", maindimtext)
+                    .or()
+                    .like("m_name",maindimtext)
+            );
+            list=maintenanceService.list(mainqw);
+            for(Maintenance maintenance:list){
+                QueryWrapper serqw=new QueryWrapper<Service>();
+                serqw.eq("ser_id",maintenance.getSerId());
+                maintenance.setService((Service) serviceService.list(serqw).get(0));
+                QueryWrapper serqw2=new QueryWrapper<Service>();
+                serqw2.eq("ser_id",maintenance.getService().getSerParent());
+                maintenance.getService().setService((Service) serviceService.list(serqw2).get(0));
+                QueryWrapper incqw=new QueryWrapper<Income>();
+                incqw.eq("in_id",maintenance.getInId());
+                maintenance.setIncome((Income) incomeService.list(incqw).get(0));
+            }
+            return list;
+        }catch (Exception ex){
+            System.out.print("查了个寂寞");
+        }
+        return findmain(null);
     }
 
 

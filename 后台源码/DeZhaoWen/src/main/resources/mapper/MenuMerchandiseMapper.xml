@@ -15,4 +15,12 @@
         menu_id, menu_name, menu_parent, menu_tag
     </sql>
 
+    <!-- 无限递归 -->
+    <resultMap type="com.accp.domain.MenuMerchandise" id="BaseResultMapExtends" extends="BaseResultMap">
+        <collection property="menuMerchandises" column="menu_id" ofType="com.accp.domain.MenuMerchandise" select="findMenuByRoleId"></collection>
+    </resultMap>
+    <select id="findMenuByRoleId" resultMap="BaseResultMapExtends">
+        select * from menu_merchandise where menu_parent=#{menuParent} <!-- and menu_type in ('F','M') -->
+    </select>
+
 </mapper>
