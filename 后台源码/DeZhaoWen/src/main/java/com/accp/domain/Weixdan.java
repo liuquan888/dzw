@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import java.io.Serializable;
@@ -22,16 +23,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @ApiModel(value="Weixdan对象", description="")
 public class Weixdan extends Model<Weixdan> {
-
-    private  MaintenanceItems mainte;
-
-    private  Pattern pat;
-
-    private  Jcyl jc;
-
-    private Businessclass busin;
-
-    private  Sgbc sg;
 
     private static final long serialVersionUID=1L;
 
@@ -56,6 +47,9 @@ public class Weixdan extends Model<Weixdan> {
     @ApiModelProperty(value = "发动机品牌")
     private Integer fdjpp;
 
+    @TableField(exist=false)
+    private String blangName;
+
     @ApiModelProperty(value = "服务顾问")
     private String fuwugw;
 
@@ -74,6 +68,9 @@ public class Weixdan extends Model<Weixdan> {
     @ApiModelProperty(value = "进厂油量")
     private Integer jcyl;
 
+    @TableField(exist=false)
+    private String jingc;
+
     @ApiModelProperty(value = "上次里程")
     private String sclc;
 
@@ -83,8 +80,14 @@ public class Weixdan extends Model<Weixdan> {
     @ApiModelProperty(value = "业务类别")
     private Integer ywlb;
 
+    @TableField(exist=false)
+    private String yewuleib;
+
     @ApiModelProperty(value = "施工班次")
     private Integer sgbc;
+
+    @TableField(exist=false)
+    private String sgigbc;
 
     @ApiModelProperty(value = "接车人")
     private String jcr;
