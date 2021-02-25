@@ -31,7 +31,10 @@ public class TeamtechnicianController {
         return service.findByTeamId(teamid);
     }
 
-    
+    @RequestMapping("/insertTeamtechnician")
+    public boolean insertTeamtechnician(Teamtechnician teamtechnician){
+        return service.save(teamtechnician);
+    }
 
 }
 
