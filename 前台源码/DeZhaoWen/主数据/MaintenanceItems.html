@@ -87,8 +87,8 @@
 				<div class="col-sm-6"></div>
 				<div class="col-sm-3">
 					<br />
-					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" style="height: 30px;"/>
-					<button class="btn btn-warning btn-sm">搜索</button>
+					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" style="height: 30px;" v-model="maindimtext" />
+					<button class="btn btn-warning btn-sm mainos" @click="maindim">搜索</button>
 				</div>
 				<div class="col-sm-1">
 					<br>
@@ -106,13 +106,13 @@
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<img src="../img/1.png" width="2%"><a href="javascript:void(0)" @click="addservicemo">添加分类</a> 
 							<img src="../img/2.png" width="2%"><a href="javascript:void(0)" @click="updateservicemo">修改分类</a> 
-							<img src="../img/3.png" width="2%"><a href="javascript:void(0)">删除</a> 
+							<img src="../img/3.png" width="2%"><a href="javascript:void(0)" @click="removeservice">删除分类</a> 
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addmainmo">增加</a> 
 						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updatemainmo">修改</a> 
-						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> &nbsp;
+						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="removemain" class="mainos">删除</a> &nbsp;
 						<img src="../zenglianjun/img/tempsnip.png" width="4%"><a href="javascript:void(0)" @click="pricechangemo">调价</a> 
 						<img src="img/QQ图片20210121164913.png" width="5%"><a href="javascript:void(0)">导出</a> 
 					</div>
@@ -136,7 +136,6 @@
 						               		<span class="servicename servicenames">{{item2.serId}} <span style="font-size: 15px;">—</span> {{item2.serName}}</span>
 						               	</a>
 						               </li>
-						               
 						            </ul>
 						        </ul>
 						    </div>
@@ -161,13 +160,13 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">保险价</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">备注</td>
 						</tr>
-						<tr class="pintr2" v-for="item in mainlist">
+						<tr class="pintr2" v-for="item in mainlist" @click="mainclick(item)">
 							<td class="item"></td>
-							<td>{{item.service.serName}}</td>
+							<td v-if="item.service">{{item.service.serName}}</td>
 							<td>{{item.mid}}</td>
 							<td>{{item.mname}}</td>
-							<td>{{item.service.service.serName}}</td>
-							<td>{{item.income.inName}}</td>
+							<td v-if="item.service">{{item.service.service.serName}}</td>
+							<td v-if="item.income">{{item.income.inName}}</td>
 							<td>{{item.mnormalprice}}</td>
 							<td>{{item.mmemberprice}}</td>
 							<td>{{item.mvipprice}}</td>
@@ -243,7 +242,7 @@
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="" v-model="main.mNormalprice" />
+										<input type="text" name="" id="" value="" v-model="main.mNormalprice" @input="price(main.mNormalprice)" />
 										
 										<span class="va">会员价</span>
 										<input type="text" name="" id="" value="" v-model="main.mMemberprice" />
@@ -288,7 +287,7 @@
 									<span class="til">服务项目定义</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success" @click="updatemain">保存</button>
+									<button type="button" class="btn btn-success" class="mainos" @click="updatemain">保存</button>
 								</div>
 							</div>
 							
@@ -296,12 +295,12 @@
 						</h4>
 				      </div>
 				      <div class="modal-body">
-							<div style="background:#f7f7f7 ;">
+				        	<div style="background:#f7f7f7 ;">
 								<br />
 								<p>
 									<span class="must">*</span>
 									<span class="va">项目编码</span>
-									<input type="text" name="" id="" value="" v-model="main.mId" />
+									<input type="text" name="" id="" v-model="main.mId" readonly="readonly"/>
 									<span class="must">*</span>
 									<span class="va">项目名称</span>
 									<input type="text" name="" id="" value="" v-model="main.mName"/>
@@ -331,7 +330,7 @@
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="" v-model="main.mNormalprice" />
+										<input type="text" name="" id="" value="" v-model="main.mNormalprice"  />
 										
 										<span class="va">会员价</span>
 										<input type="text" name="" id="" value="" v-model="main.mMemberprice" />
@@ -419,7 +418,7 @@
 									<span class="til">修改分类</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success" @click="updatemain">保存</button>
+									<button type="button" class="btn btn-success" @click="updateservice">保存</button>
 								</div>
 							</div>
 							
@@ -462,11 +461,9 @@
 									<span class="til">调价</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
+									<button type="button" class="btn btn-success" @click="priceclick">保存</button>
 								</div>
 							</div>
-							
-							
 						</h4>
 				      </div>
 				      <div class="modal-body">
@@ -476,19 +473,14 @@
 									<p>
 										<span class="must"></span>
 										<span class="va"></span>
-										<select style="width: 150px;height: 25px;">
-											<option>自费</option>
-											<option>促销</option>
-											<option>三包</option>
-											<option>标准价</option>
-											<option>会员价</option>
-											<option>VIP价</option>
-											<option>协议价</option>
-											<option>索赔价</option>
+										<select style="width: 150px;height: 25px;" v-model="co">
+											<option v-for="(item,index) in cost" :value="index">
+												{{item.name}}
+											</option>
 										</select>
 										<span class="must"></span>
 										<span class="va">=  标准价 *</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="mult" />
 									</p>
 								</p>
 								<br />
@@ -551,9 +543,64 @@
 				type:[],
 				//临时刷新数据
 				params:[],
+				//维修进程初始化数据
+				maininit:{},
+				//调价
+				cost:[
+					{name:"自费",it:1},
+					{name:"促销",it:1.2},
+					{name:"三包",it:1.3},
+					{name:"标准价",it:1.4},
+					{name:"会员价",it:1.5},
+					{name:"VIP价",it:1.6},
+					{name:"协议价",it:1.7},
+					{name:"索赔价",it:1.8},
+					{name:"保险价",it:1.9}
+				],
+				mult:null,
+				co:0,
+				
+				maindimtext:null,
 			}
 		},
 		methods:{
+			
+			maindim(){
+				if(this.maindimtext==null){
+					this.maindimtext='975e65r45a4454a4d52s8a452d57';
+				}
+				var json = JSON.stringify(this.params);
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/maindim/"+that.maindimtext,
+					data:json,
+					type:"post",
+					contentType:"application/json;cahrset=utf-8",
+					success:function(result){
+						that.mainlist=result;
+						that.maindimtext=null;
+						if(that.mainlist!=null){
+							that.mainclick(that.mainlist[0]);
+						}
+					},error:function(error){
+						console.log(error)
+					}
+				})
+			},
+			
+			priceclick(){
+				this.cost[this.co].it=this.mult
+				$("#pricechangemodal").modal("hide");
+			},
+			
+			price(mNormalprice){
+				this.main.mMemberprice=parseInt(mNormalprice*this.cost[4].it);
+				this.main.mVipprice=parseInt(mNormalprice*this.cost[5].it);
+				this.main.mDetaprice=parseInt(mNormalprice*this.cost[6].it);
+				this.main.mClaimprice=parseInt(mNormalprice*this.cost[7].it);
+				this.main.mSafetyprice=parseInt(mNormalprice*this.cost[8].it);
+			},
+			
 			//维修项目菜单
 			findmenu(){
 				let that=this;
@@ -562,12 +609,6 @@
 					success:function(result){
 						that.servicemenu=result
 						that.type=that.servicemenu[0].services;
-						if(that.main.serId==null&&that.type!=null){
-							that.main.serId=that.type[0].serId
-						}
-						if(that.main.inId==null&&that.gonglist!=null){
-							that.main.inId=that.gonglist[0].inId
-						}
 					}
 				})
 			},
@@ -583,7 +624,6 @@
 						var params = item.services.map(item=>item.serId);
 						this.findmainlist(params,item);
 						this.type=item.services;
-						console.log(this.type)
 					}else{
 						obj.style.display = 'none';
 					}
@@ -602,11 +642,21 @@
 					contentType:"application/json;cahrset=utf-8",
 					success:function(result){
 						that.mainlist=result;
+						if(that.mainlist!=null){
+							that.mainclick(that.mainlist[0]);
+						}
 					}
 				})
 			},
 			
 			addmainmo(){
+				this.main={};
+				if(this.main.serId==null&&this.type!=null){
+					this.main.serId=this.type[0].serId
+				}
+				if(this.main.inId==null&&this.gonglist!=null){
+					this.main.inId=this.gonglist[0].inId
+				}
 				$("#addmainmodal").modal("show");
 				
 			},
@@ -631,14 +681,40 @@
 			},
 			
 			
-			
+			mainclick(item){
+				this.maininit=item
+			},
 			
 			updatemainmo(){
-				this.main=this.serviceinit;
+				this.$set(this.main,"mId",this.maininit.mid);
+				this.$set(this.main,"mName",this.maininit.mname);
+				this.$set(this.main,"mNote",this.maininit.mnote);
+				this.$set(this.main,"mNormalprice",this.maininit.mnormalprice);
+				this.$set(this.main,"bId",this.maininit.bid);
+ 				this.$set(this.main,"serId",this.maininit.serId);
+				this.$set(this.main,"inId",this.maininit.inId);
+				this.$set(this.main,"mMemberprice",this.maininit.mmemberprice);
+ 				this.$set(this.main,"mVipprice",this.maininit.mvipprice);
+ 				this.$set(this.main,"mDetaprice",this.maininit.mdetaprice);
+				this.$set(this.main,"mClaimprice",this.maininit.mclaimprice);
+				this.$set(this.main,"mSafetyprice",this.maininit.msafetyprice);
+				//this.$set(this.main,"",this.maininit.);
 				$("#updatemainmodal").modal("show");
 			},
 			
-			
+			updatemain(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/updatemain",
+					data:that.main,
+					type:"post",
+					success:function(result){
+						$("#updatemainmodal").modal("hide");
+						that.findmenu();
+						that.findmainlist(that.params,[]);
+					}
+				})
+			},
 			
 			
 			
@@ -649,12 +725,14 @@
 					alert("只能定义车型，发动机外的分类！")
 					return
 				}
-				this.findtemp1(this.serviceinit.serId);
-				if(this.temp1==true){
-					alert("只能定义车型，发动机外的分类！")
-					return
-				}
-				$("#addservicemodal").modal("show");
+				this.findtemp1(this.serviceinit.serId,function(flag){
+					if(flag==true){
+						alert("只能定义车型，发动机外的分类！")
+						return
+					}
+					$("#addservicemodal").modal("show");
+				});
+				
 			},
 			
 			//添加维修项目菜单分类
@@ -679,6 +757,17 @@
 			},
 			
 			updateservicemo(){
+				if(this.serviceinit.serName=="车型"||this.serviceinit.serName=="发动机"){
+					alert("只能定义车型，发动机外的分类！")
+					return
+				}
+				this.findtemp1(this.serviceinit.serId,function(flag){
+					if(flag==true){
+						alert("只能定义车型，发动机外的分类！")
+						return
+					}
+					$("#updateservicemodal").modal("show");
+				});
 				//解除双向绑定
 				let formdata= JSON.parse(JSON.stringify(this.serviceinit))
 				if(this.serviceinit.serName=="车型"||this.serviceinit.serName==="发动机"){
@@ -686,10 +775,9 @@
 					return
 				}
 				this.service=formdata;
-				$("#updateservicemodal").modal("show");
 			},
 			
-			updatemain(){
+			updateservice(){
 				this.service.services=[];
 				this.service.service={};
 				let that=this;
@@ -716,14 +804,12 @@
 				})
 			},
 			
-			findtemp1(serId){
-				console.log(serId)
+			findtemp1(serId,callback){
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"maintenance/findtemp1/"+serId,
 					success:function(result){
-						that.temp1=result;
-						console.log(that.temp1)
+						callback(result);
 					}
 				})
 			},
@@ -751,16 +837,66 @@
 			},
 			
 			
+			
+			removeservice(){
+				if(this.serviceinit.services){
+					alert("删除只能选择子类")
+					return
+				}
+				let that2=this;
+				this.findtemp1(this.serviceinit.serId,function(flag){
+					if(flag==true){
+						alert("只能定义车型，发动机外的分类！")
+						return
+					}
+					
+					if(!confirm("删除项目类别时，连同下面的维修项目一起删除，是否确定？")){
+						return
+					}
+					
+					console.log(that2.serviceinit)
+					let that=that2;
+					$.ajax({
+						url:BaseUrl+"maintenance/removeservice/"+that.serviceinit.serId,
+						success:function(result){
+							if(result=="000000"){
+								window.location.reload();
+							}
+						}
+					})
+				});
+			},
+			
+			removemain(){
+				if(!confirm("删除此维修项目不可恢复，确认删除吗？")){
+					return
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"maintenance/removemain/"+that.maininit.mid,
+					success:function(result){
+						that.findmainlist(that.params,[]);
+						that.maininit=that.mainlist[0];
+					}
+				})
+			},
+			
+			
+			
 			pricechangemo(){
 				$("#pricechangemodal").modal("show");
 			}
 			
 		},
 		created(){
+			this.findgong();
 			this.findmenu();
 			this.findmainlist([],[]);
 			this.findmax();
-			this.findgong();
+
+		},
+		watch:{
+			
 		}
 	});
 	
@@ -774,10 +910,7 @@
 	
 	
 	
-	$(".pintr").click(function(){
-		$(".pintr").css("background","#ffffff")
-		$(this).css("background","sandybrown")
-	});
+
 	$(document).on('click','.pintr2',function(){
 		$(".pintr2").css("background","#ffffff")
 		$(this).css("background","sandybrown")
@@ -806,9 +939,11 @@
 		$(this).css("color","#ffffff")
 	})
 	
-	$(document).on('click','.servicenames',function(){
-		
+	$(document).on('click','.mainos',function(){
+		$(".pintr2").css("background","")
+		$(".pintr2").eq(0).css("background","sandybrown")
 	})
+	
 	
 </script>
 	</body>

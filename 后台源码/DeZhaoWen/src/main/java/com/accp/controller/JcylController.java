@@ -1,9 +1,14 @@
 package com.accp.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.accp.domain.GetMaterial;
+import com.accp.domain.Jcyl;
+import com.accp.service.impl.JcylServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * <p>
@@ -16,6 +21,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/jcyl")
 public class JcylController {
+
+    @Autowired
+    JcylServiceImpl jcyls;
+
+    @GetMapping("/findjcyl")
+    public List<Jcyl> show(){
+        return jcyls.list();
+    }
+
+    @PostMapping("/insert")
+    public String add(@RequestBody List<Jcyl> list){
+        for(Jcyl j:list){
+            if(j.getYlid()!=null){
+                jcyls.removeById(j.getYlid());
+            }
+            jcyls.save(j);
+        }
+        return "ss";
+    }
 
 }
 
