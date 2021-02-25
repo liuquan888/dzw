@@ -28,4 +28,8 @@
         select * from menu where parentid=#{id}
     </select>
 
+    <select id="findNoByParentId" resultMap="BaseResultMap">
+        SELECT * FROM menu WHERE parentid!=#{parentid}
+    </select>
+
 </mapper>

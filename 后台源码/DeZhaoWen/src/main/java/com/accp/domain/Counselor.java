@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
@@ -23,7 +24,12 @@ import lombok.experimental.Accessors;
 @ApiModel(value="Counselor对象", description="顾问表")
 public class Counselor extends Model<Counselor> {
 
+
     private static final long serialVersionUID=1L;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
     @TableId(value = "counselorid")
     @ApiModelProperty(value = "顾问Id")

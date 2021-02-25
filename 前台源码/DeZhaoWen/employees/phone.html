@@ -216,7 +216,7 @@
 			  <div class="col-md-1"><button class="btn" id="no">关闭</button></div>
 			</div>
 			<div class="men1" style="background-color:#F7F7F7;height: 60px;">
-				<button class="btn btn-success col-md-2" style="width: 70px;">
+				<button class="btn btn-success col-md-2" style="width: 70px;" @click="findById()">
 					<span style="font-size: 16px;">确定</span>
 				</button>
 				<div style="color: #686868;font-size:18px;" class="col-md-10">
@@ -236,7 +236,7 @@
 					  </tr>
 					  <tr v-for="o in organ">
 					  	<td style="background-color: #D6D6CE;"></td>
-					  	<td><input type="checkbox" :checked="bool"></td>
+					  	<td><input type="checkbox" :checked="bool" v-model="shu" :value="o.zid"></td>
 					  	<td>{{o.zid}}</td>
 					  	<td>{{o.zname}}</td>
 					  	<td>{{o.mcityid}}</td>
@@ -495,10 +495,25 @@
 						bool:false,
 						taffsdata:{},
 						taff:{},
-						organ:{}
+						organ:{},
+						shu:[]
 					}
 				},
 				methods:{
+					findById(){
+						var that=this;
+						var json=JSON.stringify(that.shu);
+						$.ajax({
+							url:"http://127.0.0.1:8080/staffData/findById",
+							data:json,
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								console.log(result);
+								that.taffsdata=result;
+							}
+						});
+					},
 					update(){
 						var that=this;
 						var json=JSON.stringify(that.taffsdata);

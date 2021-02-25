@@ -31,6 +31,10 @@ public class Car extends Model<Car> {
     @TableId(value = "c_id", type = IdType.AUTO)
     private Integer cId;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
+
     @ApiModelProperty(value = "车型编码")
     private String cCoder;
 
@@ -64,7 +68,7 @@ public class Car extends Model<Car> {
     @ApiModelProperty(value = "索赔厂，供货商编号")
     private String pId;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "车型名称")
     private String reserved1;
 
     @ApiModelProperty(value = "预留字段")

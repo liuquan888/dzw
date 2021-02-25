@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import java.util.List;
@@ -20,13 +21,11 @@ import lombok.experimental.Accessors;
  * @since 2021-02-04
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @ApiModel(value="Customer对象", description="客户表")
 public class Customer extends Model<Customer> {
-
     private static final long serialVersionUID=1L;
 
+    @TableId("customernum")
     @ApiModelProperty(value = "客户编码")
     private String customernum;
 
@@ -72,6 +71,10 @@ public class Customer extends Model<Customer> {
     @TableField(exist = false)
     @ApiModelProperty(value = "到期1")
     private String dq1;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check;
 
     @TableField(exist = false)
     @ApiModelProperty(value = "到期2")
@@ -249,9 +252,5 @@ public class Customer extends Model<Customer> {
 
     public static final String RESERVED5 = "reserved5";
 
-    @Override
-    protected Serializable pkVal() {
-        return this.customernum;
-    }
 
 }

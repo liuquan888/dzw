@@ -26,16 +26,14 @@ public class TeamtechnicianController {
     @Autowired
     TeamtechnicianServiceImpl service;
 
-    @RequestMapping("/findAll")
-    public List<Teamtechnician> findAll(){
-        return service.list();
+    @RequestMapping("/findByTeamId/{teamid}")
+    public List<Teamtechnician> findByTeamId(@PathVariable("teamid") Integer teamid){
+        return service.findByTeamId(teamid);
     }
 
-    @RequestMapping("/findByTeamId")
-    public List<Teamtechnician> findByTeamId(@PathVariable("teamid") Integer teamid){
-        QueryWrapper<Teamtechnician> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("teamid",teamid);
-        return service.list();
+    @RequestMapping("/insertTeamtechnician")
+    public boolean insertTeamtechnician(Teamtechnician teamtechnician){
+        return service.save(teamtechnician);
     }
 
 }

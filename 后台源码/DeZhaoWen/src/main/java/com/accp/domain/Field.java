@@ -1,6 +1,5 @@
 package com.accp.domain;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -11,35 +10,44 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 油量
+ * 
  * </p>
  *
  * @author quanl
- * @since 2021-02-22
+ * @since 2021-02-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Jcyl对象", description="油量")
-public class Jcyl extends Model<Jcyl> {
+@ApiModel(value="Field对象", description="")
+public class Field extends Model<Field> {
 
     private static final long serialVersionUID=1L;
 
-    @TableId("ylid")
-    @ApiModelProperty(value = "油量序号")
-    private Integer ylid;
+    private Integer id;
 
-    @ApiModelProperty(value = "油量")
-    private String yl;
+    private Integer width;
+
+    private String name;
+
+    private String zname;
+
+    private String display;
 
 
-    public static final String YLID = "ylid";
+    public static final String ID = "id";
 
-    public static final String YL = "yl";
+    public static final String WIDTH = "width";
+
+    public static final String NAME = "name";
+
+    public static final String ZNAME = "zname";
+
+    public static final String DISPLAY = "display";
 
     @Override
     protected Serializable pkVal() {
-        return this.ylid;
+        return this.id;
     }
 
 }

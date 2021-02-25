@@ -26,9 +26,11 @@ public class CarbrandController {
     @Autowired
     CarbrandServiceImpl service;
     @RequestMapping("/selectCarBrandByCondition")
-    public List<Carbrand> selectCarBrandByCondition(String condition){
+    public List<Carbrand> selectCarBrandByCondition(String carcoding){
         QueryWrapper<Carbrand> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("carcoding",condition);
+        if (carcoding!=null){
+            queryWrapper.eq("carcoding",carcoding).or().eq("brandname",carcoding);
+        }
         List<Carbrand> list=service.list(queryWrapper);
         return list;
     }
