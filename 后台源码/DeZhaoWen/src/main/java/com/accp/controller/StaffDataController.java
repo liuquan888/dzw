@@ -116,7 +116,7 @@ public class StaffDataController {
             queryWrapper.like("yattribute",s.getYattribute());
         }
         if (s.getYheigth()!=null) {
-            queryWrapper.like("yheigth",s.getYheigth());
+            queryWrapper.like("yheigth", s.getYheigth());
         }
         return sdService.list(queryWrapper);
     }

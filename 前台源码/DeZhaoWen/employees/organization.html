@@ -346,21 +346,23 @@
 							<tr>
 								<td v-for="f in field" class="d1" v-if="f.display==1">{{f.name}}</td>
 							</tr>
-							<tr v-for="item in staff">
-								<td>{{item.yid}}</td>
-								<td>{{item.yname}}</td>
-								<td>{{item.ysex}}</td>
-								<td>{{item.gid}}</td>
-								<td>{{item.yhealth}}</td>
-								<td>{{item.yheigth}}</td>
-								<td>{{item.ynativplaceid}}</td>
-								<td>{{item.ynationid}}</td>
-								<td>{{item.yheigth}}</td>
-								<td>{{item.yeducationid}}</td>
-								<td>{{item.yschoolid}}</td>
-								<td>{{item.yspecialtyid}}</td>
-								<td>{{item.yspecialtynid}}</td>
-							</tr>
+							
+								<tr v-for="item in staff">
+									<td>{{item.yid}}</td>
+									<td>{{item.yname}}</td>
+									<td>{{item.ysex}}</td>
+									<td>{{item.gid}}</td>
+									<td>{{item.yhealth}}</td>
+									<td>{{item.yheigth}}</td>
+									<td>{{item.ynativplaceid}}</td>
+									<td>{{item.ynationid}}</td>
+									<td>{{item.yheigth}}</td>
+									<td>{{item.yeducationid}}</td>
+									<td>{{item.yschoolid}}</td>
+									<td>{{item.yspecialtyid}}</td>
+									<td>{{item.yspecialtynid}}</td>
+								</tr>
+							
 						</table>
 					</div>
 				</div>
@@ -394,7 +396,8 @@
 												<td class="dd1">
 													性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:
 													<select class="aa8">
-														<option></option>
+														<option>男</option>
+														<option>女</option>
 													</select>
 													<span class="aa9"><a href="#myModal1" data-toggle="modal"><a href="#myModal1" data-toggle="modal"><img src="../img/u=3145729160,503038366&fm=26&gp=0.png" id="img1"></a></a></span>
 												</td>
@@ -665,9 +668,7 @@
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div style="background-color: lightgoldenrodyellow;text-align: right;width: 600;height: 40px;line-height: 40px;padding-right: 20px;">
-									<button style="height: 40px;width: 70px;border: 0px;background-color: #008000;color: #fff;margin-right: 290px;">确定</button>
-									<img src="../img/2.png" class="c1">全部选择
-									<img src="../img/2.png" class="c1">全部取消
+									<button @click="update()" style="height: 40px;width: 70px;border: 0px;background-color: #008000;color: #fff;">确定</button>
 								</div>
 								<div id="mm2" style="height:340px;overflow-x:scroll;">
 									<table>
@@ -679,7 +680,7 @@
 											<td>显示宽度</td>
 										</tr>
 										<tr v-for="f in field">
-											<td><input type="checkbox"></td>
+											<td><input type="checkbox" v-model="shuzu" :value="f.id"></td>
 											<td>{{f.zname}}</td>
 											<td>{{f.name}}</td>
 											<td>{{f.id}}</td>
@@ -1252,10 +1253,25 @@
 					menu:[],
 					tabs:[],
 					staff:{},
-					field:{}
+					field:{},
+					shuzu:[],
+					shuzuid:{}
 				}
 			},
 			methods:{
+				update(){
+					var that=this;
+					var json=JSON.stringify(that.shuzu);
+					$.ajax({
+						url:"http://127.0.0.1:8080/field/update",
+						data:json,
+						type:"post",
+						contentType:"application/json;charset=utf-8",
+						success:function(result){
+							
+						}
+					});
+				},
 				findField(){
 					var that=this;
 					$.ajax({
@@ -1263,6 +1279,8 @@
 						type:"post",
 						success:function(result){
 							that.field=result;
+							var temp = that.field.filter(item=>item.display==1);
+							that.shuzu = temp.map(item=>item.id);
 						}
 					});
 				},
