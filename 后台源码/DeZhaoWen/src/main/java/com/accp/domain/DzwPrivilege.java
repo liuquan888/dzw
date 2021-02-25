@@ -26,7 +26,6 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="DzwPrivilege对象", description="权限表")
-@TableName("dzw_privilege_table")
 public class DzwPrivilege extends Model<DzwPrivilege> {
 
     private static final long serialVersionUID=1L;
