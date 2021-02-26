@@ -141,6 +141,7 @@
 				<span @click="out"><button class="btn btn-success">收银</button></span>
 				<button class="btn btn-danger" @click="reset">重置</button>
 				<button class="btn btn-info" @click="find">查询</button>
+				<button class="btn btn-info" @click="export1">导出</button>
 			</div>
 			<div style="margin-left: 20px;">
 				<table class="table table-bordered">
@@ -500,7 +501,6 @@
 					},
 					find(){
 						let that=this;
-						var json=JSON.stringify(this.bill);
 						$.ajax({
 							url:"http://127.0.0.1:8080/repairBill/find",
 							type:"post",
@@ -592,6 +592,15 @@
 								}
 							}
 						});
+					},
+					export1(){
+						let that=this;
+						let path="http://127.0.0.1:8080/repairBill/downloadExcel?"
+						for(aa in this.bill){
+							path+= aa + "=" + this.bill[aa]+"&";
+							
+						}
+						location.href=path;
 					}
 				},
 				created(){
