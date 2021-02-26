@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-25
  */
 public interface StaffDataMapper extends BaseMapper<StaffData> {
     boolean lizhih(@Param("id") Integer id);

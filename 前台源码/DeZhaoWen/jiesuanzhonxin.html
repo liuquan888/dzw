@@ -141,6 +141,7 @@
 				<span @click="out"><button class="btn btn-success">收银</button></span>
 				<button class="btn btn-danger" @click="reset">重置</button>
 				<button class="btn btn-info" @click="find">查询</button>
+				<button class="btn btn-info" @click="export1">导出</button>
 			</div>
 			<div style="margin-left: 20px;">
 				<table class="table table-bordered">
@@ -210,7 +211,8 @@
 							</tr>
 							<tr class="input1">
 								<form class="form-inline">
-									<td><input disabled class="form-control" v-model="data.yugujine"></td>
+									<input type="hidden" class="form-control" v-model="data.no">
+									<td><input disabled class="form-control" v-model="data.price"></td>
 									<td><input class="form-control" v-model="data.shuilu"></td>
 									<td><input disabled class="form-control" v-model="data.jiashuijin"></td>
 									<td><input disabled class="form-control"></td>
@@ -225,7 +227,7 @@
 						<div>
 							<form class="form-inline" style="margin-left: 150px;">
 								结算状态：
-								<select class="form-control">
+								<select class="form-control" v-model="data.type">
 									<option>正常结算</option>
 								</select>
 							</form>
@@ -242,7 +244,15 @@
 						</div>
 						<div>
 							<button class="btn-success" @click="guanbi(true)">打印</button>
-							<button @click="gm">确定收款</button>
+							<form class="form-inline" action="http://127.0.0.1:8080/order/alipay" method="post">
+								<input type="hidden" class="form-control" v-model="data.no" name="no">
+								<td><input type="hidden" class="form-control" v-model="data.price" name="price"></td>
+								<td><input type="hidden" class="form-control" v-model="data.shuilu" name="shuilu"></td>
+								<td><input type="hidden"  class="form-control" v-model="data.jiashuijin" name="type"></td>
+								<td><input type="hidden" class="form-control"></td>
+								 <input type="submit" value="支付宝支付">
+							</form>
+							
 						</div>
 						<div v-if="this.xx" class="divdayin">
 							<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">打印报表<span @click="guanbi(false)" style="float: right;color: #000000;">&times;</span></div>
@@ -431,12 +441,14 @@
 							
 						},
 						data:{
+							price:"",
 							shuilu:"1.13",
-							jiashuijin:"0",
+							jiashuijin:"0.11",
 							moweisu:"0",
 							yugujine:"",
 							sum:"",
-							no:""
+							no:"",
+							type:""
 						},
 						f:false,
 						ff:{
@@ -500,7 +512,6 @@
 					},
 					find(){
 						let that=this;
-						var json=JSON.stringify(this.bill);
 						$.ajax({
 							url:"http://127.0.0.1:8080/repairBill/find",
 							type:"post",
@@ -561,9 +572,10 @@
 						});
 					},
 					givemoney(item){
+						this.data.price=item.amount;
 						this.data.yugujine=item.yugujine;
 						this.data.jiashuijin=this.data.yugujine*this.data.shuilu/100;
-						this.data.sum=this.data.yugujine+this.data.jiashuijin-this.data.moweisu;
+						this.data.sum=this.data.yugujine+this.data.price-this.data.moweisu;
 						this.data.no=item.no;
 						for(aa in item){
 							this.data[aa] = item[aa];
@@ -592,7 +604,29 @@
 								}
 							}
 						});
-					}
+					},
+					export1(){
+						let that=this;
+						let path="http://127.0.0.1:8080/repairBill/downloadExcel?"
+						for(aa in this.bill){
+							path+= aa + "=" + this.bill[aa]+"&";
+							
+						}
+						location.href=path;
+					},
+	/* 				zhifubao(){
+						alert(11);
+						let that =this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/order/alipay",
+							type:"post",
+							data:that.data,
+							dataType:"json",
+							success:function(result){
+								
+							}
+						});
+					} */
 				},
 				created(){
 					this.find();

@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-25
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -174,8 +174,22 @@ public class StaffData extends Model<StaffData> {
     @ApiModelProperty(value = "预留字段")
     private String reserved5;
 
+
     @TableField(exist = false)
     private DeparmentSurface bu;
+
+    @ApiModelProperty(value = "预留字段")
+    private String reserved6;
+
+    @ApiModelProperty(value = "预留字段")
+    private String reserved7;
+
+    @ApiModelProperty(value = "预留字段")
+    private String reserved8;
+
+    @ApiModelProperty(value = "预留字段")
+    private String reserved9;
+
 
 
     public static final String YID = "yid";
@@ -275,6 +289,14 @@ public class StaffData extends Model<StaffData> {
     public static final String RESERVED4 = "reserved4";
 
     public static final String RESERVED5 = "reserved5";
+
+    public static final String RESERVED6 = "reserved6";
+
+    public static final String RESERVED7 = "reserved7";
+
+    public static final String RESERVED8 = "reserved8";
+
+    public static final String RESERVED9 = "reserved9";
 
     @Override
     protected Serializable pkVal() {

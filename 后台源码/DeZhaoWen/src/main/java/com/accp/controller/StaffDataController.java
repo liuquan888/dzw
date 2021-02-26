@@ -1,24 +1,19 @@
 package com.accp.controller;
 
 
-
 import com.accp.domain.StaffData;
 import com.accp.service.IDeparmentSurfaceService;
 import com.accp.service.IStaffDataService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+
 import java.util.List;
 
 /**
@@ -27,7 +22,7 @@ import java.util.List;
  * </p>
  *
  * @author quanl
- * @since 2021-02-04
+ * @since 2021-02-25
  */
 @RestController
 @RequestMapping("/staffData")
