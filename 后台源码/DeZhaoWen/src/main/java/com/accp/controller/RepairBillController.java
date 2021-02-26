@@ -165,7 +165,14 @@ public class RepairBillController {
         service.updateById(bill);
         return 1;
     }
-
+    @RequestMapping("/findByCustomer")
+    public List<RepairBill> findByCustomer(String customernum){
+        QueryWrapper<RepairBill> queryWrapper=new QueryWrapper<>();
+        if (customernum!=null){
+            queryWrapper.eq("reserved1",customernum);
+        }
+        return service.list(queryWrapper);
+    }
     @RequestMapping("/find2")
     public  List<Billstype> find2(){
         return btService.list();

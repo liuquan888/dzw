@@ -155,7 +155,7 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "保修陈述")
     private String chenshu;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "客户ID")
     private String reserved1;
 
     @ApiModelProperty(value = "预留字段")
