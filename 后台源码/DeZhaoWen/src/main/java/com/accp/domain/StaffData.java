@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -24,6 +26,7 @@ public class StaffData extends Model<StaffData> {
 
     private static final long serialVersionUID=1L;
 
+    @TableId
     @ApiModelProperty(value = "员工编号")
     private Integer yid;
 
@@ -171,6 +174,10 @@ public class StaffData extends Model<StaffData> {
     @ApiModelProperty(value = "预留字段")
     private String reserved5;
 
+
+    @TableField(exist = false)
+    private DeparmentSurface bu;
+
     @ApiModelProperty(value = "预留字段")
     private String reserved6;
 
@@ -182,6 +189,7 @@ public class StaffData extends Model<StaffData> {
 
     @ApiModelProperty(value = "预留字段")
     private String reserved9;
+
 
 
     public static final String YID = "yid";
