@@ -77,7 +77,7 @@
 						list:[],
 						menuList:[],
 						list:[],
-						roleId:"",
+						userId:"",
 					}
 				},
 				methods:{
@@ -104,12 +104,13 @@
 					 	$('#myTree').jstree(true).deselect_all();
 						let that=this;
 						//根据角色获取到对应的权限列表
-						menuApi.findUser(item.roleId,function(result){
-							that.roleId=item.roleId;
-							//只要集合中的编号作为选中的唯一表示
-							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
+						menuApi.findUser(item.userId,function(result){
+							that.userId=item.userId;
+							console.log(result);
+						/* 	//只要集合中的编号作为选中的唯一表示
+							let selecedSet = result.map(item=>item.uId); */
 							//调用jstree的选中方法，可以传入集合
-							$('#myTree').jstree(true).select_node(selecedSet);
+							/* $('#myTree').jstree(true).select_node(selecedSet); */
 						});
 						//打开模态框
 						$("#authModal").modal("show");
