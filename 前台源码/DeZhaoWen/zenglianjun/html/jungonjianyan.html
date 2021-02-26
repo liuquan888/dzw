@@ -63,7 +63,6 @@
 										<td>维修单号</td>
 										<td>单据类型</td>
 										<td>业务类型</td>
-										<td>施工班次</td>
 										<td>车主姓名</td>
 										<td>车牌号</td>
 										<td>车型</td>
@@ -78,17 +77,16 @@
 										<td>处罚金额</td>
 										
 									</tr>
-									<tr>
+									<tr v-for="item in list">
 										<td class="dygtd"></td>
-										<td>维修单号</td>
-										<td>单据类型</td>
-										<td>业务类型</td>
-										<td>施工班次</td>
+										<td>{{item.no}}</td>
+										<td>{{item.dtype}}</td>
+										<td>{{item.yewulx}}</td>
 										<td>车主姓名</td>
-										<td>车牌号</td>
-										<td>车型</td>
-										<td>车架号</td>
-										<td>接车时间</td>
+										<td>{{item.chepai}}</td>
+										<td>{{item.chexin}}</td>
+										<td>{{item.chejiaoNo}}</td>
+										<td></td>
 										<td>预计完工</td>
 										<td>完工时间</td>
 										<td>误工原因</td>
@@ -540,14 +538,30 @@
 					new Vue({
 					el: "#ctn",
 					data() {
-						return {}
+						return {
+							list:[],
+							bill:{}
+						}
 					},
 					methods: {
 							dingsi(){
 								$("#dings").modal("show");
+							},
+							find(){
+								let that=this;
+								$.ajax({
+									url:"http://127.0.0.1:8080/repairBill/find",
+									type:"post",
+									data:that.bill,
+									success:function(result){
+										that.list=result;
+									}
+								});
 							}
 					},
-					created() {}
+					created() {
+						
+					}
 				});
 				
 				
