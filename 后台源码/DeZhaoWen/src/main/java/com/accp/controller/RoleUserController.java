@@ -41,8 +41,10 @@ public class RoleUserController {
         List<RoleUser> list=roleUserService.list(queryWrapper);
         List<DzwRole> li= new  ArrayList<>();
         for (RoleUser r:list) {
-            DzwRole role=roleService.getById(r.getRid());
-            li.add(role);
+            QueryWrapper<DzwRole> query=new QueryWrapper<>();
+            query.lambda().eq(DzwRole::getRoleId,r.getRid());
+            List<DzwRole> li2=roleService.list(query);
+            li.add(li2.get(0));
         }
         return li;
     }
