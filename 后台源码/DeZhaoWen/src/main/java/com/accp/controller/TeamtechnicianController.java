@@ -55,7 +55,7 @@ public class TeamtechnicianController {
     @RequestMapping("/findByAll")
     public List<Teamtechnician> findByAll(String name){
         QueryWrapper<Teamtechnician> queryWrapper=new QueryWrapper<>();
-        if(name!=null||name!=""||name.length()>0){
+        if(name!=null && name!=" " && name.length()>0){
             queryWrapper.like("technicianid",name).or().like("technicianidname",name).or().like("phone",name);
             return service.list(queryWrapper);
         }else{
