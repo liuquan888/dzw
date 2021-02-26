@@ -120,20 +120,57 @@ public class DzwUserController{
             for (DzwPrivilege d:list2){
                 ids.add(d.getPvgid());
             }
+
+            //根据左侧最上级meunID查询它的下级菜单
             QueryWrapper q=new QueryWrapper<DzwPrivilege>();
             q.in("pid",ids);
             List<DzwPrivilege> list3=dpser.list(q);
+
+//            for (PrivilegeRole pr:list){
+//                for (DzwPrivilege dp:list3){
+//                    if(pr.getPid()=){
+//
+//                    }
+//                }
+//            }
+
+            //循环左侧最上级meun
             for (DzwPrivilege dd:list2) {
+
+                //创建list4
                 List<DzwPrivilege> list4=new ArrayList<DzwPrivilege>();
+
+                //循环下级菜单
                 for (DzwPrivilege ddd:list3){
+
+                    //判断下级菜单的父级与之是否对应
                     if(dd.getPvgid()==ddd.getPid()){
-                        list4.add(ddd);
+
+                        for (PrivilegeRole pr:list){
+                            System.out.println(pr.getPid()+"=="+ddd.getPid());
+                            if(pr.getPid()==ddd.getPvgid()){
+                                System.out.println("我被干了"+ddd.getPvgName());
+                                list4.add(ddd);
+                            }
+                        }
+
+
                     }
+
+
                 }
                 dd.setChildren(list4);
             }
+
+
+
         }
         return list2;
+    }
+
+    @RequestMapping("select")
+    public List<DzwUser> select(){
+       return duser.list();
     }
 }
 

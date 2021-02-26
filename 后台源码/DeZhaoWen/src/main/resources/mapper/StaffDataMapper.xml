@@ -64,4 +64,16 @@
         yid, yname, ysex, yposition, yhealth, yloginemp, yheigth, ynativplaceid, ynationid, ymarriageid, yeducationid, yschoolid, yspecialtyid, yspecialtynid, yattribute, ycollegeid, yorganizationid, ynumber, yaddressh, yaddressx, yphonenumber, yphone, email, ybankid, ybankphone, yjname, yjphone, ystarttime, yendtime, ydatetime, ystarttimeh, yendtimeh, ytname, yratez, yrateg, yrates, yratej, ygong, yjiao, yhome, yjiang, yping, gid, bid, reserved1, reserved2, reserved3, reserved4, reserved5, reserved6, reserved7, reserved8, reserved9
     </sql>
 
+
+    <select id="find">
+        SELECT * FROM `staff_data` WHERE
+        <foreach collection="list" item="l" separator="or">
+            `reserved3` = #{l}
+        </foreach>
+    </select>
+    <update id="lizhih">
+        UPDATE `staffdata` SET `y1`=1 WHERE `yid`=${id}
+    </update>
+
+
 </mapper>
