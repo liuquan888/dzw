@@ -117,8 +117,8 @@
 				</span>
 				<span class="col-md-3 gb">
 					<form class="form-inline">
-						<input type="text" class="form-control" placeholder="匹配工号/姓名/手机" />
-						<button class="btn btn-warning">搜索</button>
+						<input type="text" class="form-control" placeholder="匹配工号/姓名/手机" v-model="names"/>
+						<button class="btn btn-warning" @click="findByAll">搜索</button>
 						<button class="btn btn-default">关闭</button>
 					</form>
 				</span>
@@ -126,11 +126,11 @@
 			<div class="row" id="dv1">
 				<div class="z1">
 					<div class="col-md-1"><a  id="a1" href="#myModal1" @click="toInsertStaff"><img src="../img/1.png" class="c1">增加员工</a></div>
-					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="../img/1.png" class="c1">增加班组</a></div>
-					<div class="col-md-1"><a href="#myModal2" data-toggle="modal"><img src="../img/1.png" class="c1">修改班组</a></div>
-					<div class="col-md-1"><img src="../img/1.png" class="c1">删除班组</div>
-					<div class="col-md-1"><a href="#myModal1" data-toggle="modal"><img src="../img/2.png" class="c1">修改</a></div>
-					<div class="col-md-1"><img src="../img/3.png" class="c1">删除</div>
+					<div class="col-md-1"><a href="#myModal2" @click="toInsertMenu"><img src="../img/1.png" class="c1">增加班组</a></div>
+					<div class="col-md-1"><a href="#myModal3" @click="toUpdateMenu"><img src="../img/1.png" class="c1">修改班组</a></div>
+					<div class="col-md-1" @click="removeMenu"><img src="../img/1.png" class="c1">删除班组</div>
+					<div class="col-md-1"><a href="#myModal4" @click="toupdateTeamtechnician"><img src="../img/2.png" class="c1">修改</a></div>
+					<div class="col-md-1" @click="removeById"><img src="../img/3.png" class="c1">删除</div>
 					<div class="col-md-1"><img src="../img/5.png" class="c1">置空密码</div>
 					<div class="col-md-1"><img src="../img/6.png" class="c1">导出</div>
 				</div>
@@ -159,24 +159,24 @@
 								<td>维修工种</td>
 								<td>维修品牌</td>
 							</tr>
-							<tr v-for="item in teamtechnician">
-								<td>{{item.teamid}}</td>
-								<td>{{item.teamname.menuname}}</td>
-								<td>{{item.technicianid}}</td>
-								<td>{{item.technicianidname}}</td>
-								<td>{{item.sex}}</td>
-								<td>{{item.phone}}</td>
-								<td>{{item.address}}</td>
-								<td>{{item.birthday}}</td>
-								<td>{{item.headman}}</td>
-								<td>{{item.loginname}}</td>
-								<td>{{item.idnumber}}</td>
-								<td>{{item.residenceaddress}}</td>
-								<td>{{item.bank.bankname}}</td>
-								<td>{{item.bankaccount}}</td>
-								<td>{{item.mechanicstar.star}}</td>
-								<td>{{item.type}}</td>
-								<td>{{item.maintenancetype}}</td>
+							<tr v-for="item in teamtechnician" @click="findByIds(item.id)">
+								<td class="pintr2">{{item.teamid}}</td>
+								<td class="pintr2">{{item.teamname.menuname}}</td>
+								<td class="pintr2">{{item.technicianid}}</td>
+								<td class="pintr2">{{item.technicianidname}}</td>
+								<td class="pintr2">{{item.sex}}</td>
+								<td class="pintr2">{{item.phone}}</td>
+								<td class="pintr2">{{item.address}}</td>
+								<td class="pintr2">{{item.birthday}}</td>
+								<td class="pintr2">{{item.headman}}</td>
+								<td class="pintr2">{{item.loginname}}</td>
+								<td class="pintr2">{{item.idnumber}}</td>
+								<td class="pintr2">{{item.residenceaddress}}</td>
+								<td class="pintr2">{{item.bank.bankname}}</td>
+								<td class="pintr2">{{item.bankaccount}}</td>
+								<td class="pintr2">{{item.mechanicstar.star}}</td>
+								<td class="pintr2">{{item.type}}</td>
+								<td class="pintr2">{{item.maintenancetype}}</td>
 							</tr>
 						</table>
 					</div>
@@ -188,7 +188,7 @@
 						<div class="modal-header">
 							<span class="close" data-dismiss="modal">&times;</span>
 							<h4 style="display: inline-block;">技工资料</h4>
-							<button class="btn btn-success" id="save">保存</button>
+							<button class="btn btn-success" id="save" @click="insertTeamtechnician">保存</button>
 						</div>
 						<div class="modal-body">
 							<form class="form-inline">
@@ -216,14 +216,14 @@
 								<div class="form-group">
 									<div class="dv">
 										<label class="checkbox-inline">
-											<input type="checkbox" @click="check" :checked="checked" value="是"/>组长
+											<input type="checkbox" :checked="checked" v-model="check_click"/>组长
 										</label>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="dv">
 										<label>所在班组</label>
-										<input class="form-control" v-model="teamtechnicians.teamid"/>
+										<input class="form-control" v-model="teamtechnicians.teamid" disabled="disabled"/>
 										<select class="form-control" v-model="teamtechnicians.teamid">
 											<option v-for="item in sonMenu" :value="item.teamid">{{item.menuname}}</option>
 										</select>
@@ -291,13 +291,13 @@
 								<div class="form-group">
 									<div class="cls">
 										<label>星级</label>
-										<input class="form-control" id="start" v-model="mechanicstars.star"/>
+										<input class="form-control" id="start" v-model="mechanicstars.star" disabled="disabled"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="cls">
 										<label>等级</label>
-										<input class="form-control" id="grade" v-model="mechanicstars.grade"/>
+										<input class="form-control" id="grade" v-model="mechanicstars.grade" disabled="disabled"/>
 									</div>
 								</div>
 								<div class="form-group">
@@ -326,26 +326,200 @@
 						<div class="modal-header">
 							<span class="close" data-dismiss="modal">&times;</span>
 							<h4 style="display: inline-block;">维修班组</h4>
-							<button class="btn btn-success" id="save1">保存</button>
+							<button class="btn btn-success" id="save1" @click="insertMenu">保存</button>
 						</div>
 						<div class="modal-body">
 							<form class="form-horizontal">
 								<div class="form-group">
 									<label class="col-xs-2">班组编码</label>
 									<div class="col-xs-10">
-										<input class="form-control"/>
+										<input class="form-control" v-model="menus.teamid"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-xs-2">班组名称</label>
 									<div class="col-xs-10">
-										<input class="form-control"/>
+										<input class="form-control" v-model="menus.menuname"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-xs-2">班组权重</label>
 									<div class="col-xs-10">
-										<input class="form-control"/>
+										<input class="form-control" v-model="menus.reserved3"/>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button data-dismiss="modal" class="btn btn-default btn-danger">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" data-backdrop="static" id="myModal4">
+				<div class="modal-dialog" style="width: 1100px;">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close" data-dismiss="modal">&times;</span>
+							<h4 style="display: inline-block;">技工资料</h4>
+							<button class="btn btn-success" id="save" @click="updateTeamtechnician">保存</button>
+						</div>
+						<div class="modal-body">
+							<form class="form-inline">
+								<div class="form-group">
+									<div class="dv">
+										<label>技工编号</label>
+										<input class="form-control" v-model="updateTeamtechnicians.technicianid"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>技工姓名</label>
+										<input class="form-control" v-model="updateTeamtechnicians.technicianidname"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>性别</label>
+										<select class="form-control" v-model="updateTeamtechnicians.sex">
+											<option value="男">男</option>
+											<option value="女">女</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label class="checkbox-inline">
+											<input type="checkbox" :checked="checked" @click="check"/>组长
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>所在班组</label>
+										<input class="form-control" v-model="updateTeamtechnicians.teamid" disabled="disabled"/>
+										<select class="form-control" v-model="updateTeamtechnicians.teamid">
+											<option v-for="item in sonMenu" :value="item.teamid">{{item.menuname}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>手机</label>
+										<input class="form-control" v-model="updateTeamtechnicians.phone"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>登录账号</label>
+										<input class="form-control" v-model="updateTeamtechnicians.loginname"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>地址</label>
+										<input class="form-control" id="address" v-model="updateTeamtechnicians.address"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>出生日期</label>
+										<input class="form-control" type="date" v-model="updateTeamtechnicians.birthday"/>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div class="dv">
+										<label>身份证号</label>
+										<input class="form-control" id="sfz" v-model="updateTeamtechnicians.idnumber"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>户口地址</label>
+										<input class="form-control" id="hkaddress" v-model="updateTeamtechnicians.residenceaddress"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>开户银行</label>
+										<select class="form-control" id="bank" v-model="updateTeamtechnicians.bankid">
+											<option v-for="item in bank" :value="item.bankid">{{item.bankname}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>银行账号</label>
+										<input class="form-control" id="bankaccount" v-model="updateTeamtechnicians.bankaccount"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="cls" id="cl">
+										<label>等级编码</label>
+										<select class="form-control" id="code" v-model="updateTeamtechnicians.code" @click="findByCode(updateTeamtechnicians.code)">
+											<option v-for="item in mechanicstar" :value="item.code">{{item.code}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="cls">
+										<label>星级</label>
+										<input class="form-control" id="start" v-model="mechanicstars.star" disabled="disabled"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="cls">
+										<label>等级</label>
+										<input class="form-control" id="grade" v-model="mechanicstars.grade" disabled="disabled"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>维修工种</label>
+										<input class="form-control" id="work" v-model="updateTeamtechnicians.type"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="dv">
+										<label>维修品牌</label>
+										<input class="form-control" id="type" v-model="updateTeamtechnicians.maintenancetype"/>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button data-dismiss="modal" class="btn btn-default btn-danger">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" data-backdrop="static" id="myModal3">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close" data-dismiss="modal">&times;</span>
+							<h4 style="display: inline-block;">维修班组</h4>
+							<button class="btn btn-success" id="save1" @click="updateMenu">保存</button>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-xs-2">班组编码</label>
+									<div class="col-xs-10">
+										<input class="form-control" v-model="updateMenus.teamid"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-2">班组名称</label>
+									<div class="col-xs-10">
+										<input class="form-control" v-model="updateMenus.menuname"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-2">班组权重</label>
+									<div class="col-xs-10">
+										<input class="form-control" v-model="updateMenus.reserved3"/>
 									</div>
 								</div>
 							</form>
@@ -400,20 +574,35 @@
 				el:".container-fluid",
 				data(){
 					return{
+						currentRemoveId:null,
 						teamtechnician:{},
 						menu:{},
 						xx:0,
 						sonMenu:{},
 						mechanicstar:{},
 						mechanicstars:{},
-						teamtechnicians:{},
+						teamtechnicians:{
+							headman:"是"
+						},
 						checked:true,
-						bank:{}
+						bank:{},
+						check_click:{},
+						menus:{
+							teamid:{},
+							parentid:0
+						},
+						maxid:0,
+						updateMenus:{},
+						currentId:0,
+						updateTeamtechnicians:{},
+						check_clicks:{},
+						names:""
 					}
 				},
 				methods:{
 					createTab(item){
 						if(item.childrens && item.childrens.length > 0) {
+							this.menus.parentid=item.id;
 							this.xx=0;
 							if(item.reserved2) {
 								item.reserved2 = false;
@@ -422,7 +611,7 @@
 							}
 							return;
 						}else{
-							
+							this.parentid=0;
 							this.xx=item.teamid;
 							let that=this;
 							$.ajax({
@@ -478,22 +667,11 @@
 							url:"http://127.0.0.1:8080/mechanicstar/findById/"+code,
 							type:"post",
 							success:function(result){
-								console.log(result);
 								that.mechanicstars=result;
 							}
 						});
 					},
-					check(){
-						if(this.checked==true){
-							this.checked=false;
-							this.teamtechnicians.headman="否";
-							alert(this.teamtechnicians.headman);
-						}else{
-							this.checked=true;
-							this.teamtechnicians.headman="是";
-							alert(this.teamtechnicians.headman);
-						}
-					},
+					
 					findBank(){
 						let that=this;
 						$.ajax({
@@ -504,14 +682,214 @@
 							}
 						});
 					},
+					insertTeamtechnician(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/teamtechnician/insertTeamtechnician",
+							data:that.teamtechnicians,
+							type:"post",
+							success:function(result){
+								$("#myModal1").modal("hide");
+								for(var item of that.teamtechnician){
+									that.createTab(item);
+								}
+							}
+						});
+					},
+					toInsertMenu(){
+						if(this.menus.parentid==0){
+							alert("您未选择联队");
+						}else{
+							$("#myModal2").modal("show");
+						}
+					},
+					findTeamIdDesc(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/menu/findTeamIdDesc",
+							type:"post",
+							success:function(result){
+								let id=result.teamid;
+								that.maxid=parseInt(id)+1;
+								that.menus.teamid=parseInt(id)+1;
+							}
+						});
+					},
+					insertMenu(){
+						let that=this;
+						if(this.menus.teamid<this.maxid){
+							alert("班组已存在，请勿重复");
+						}else{
+							$.ajax({
+								url:"http://127.0.0.1:8080/menu/insertMenu",
+								data:that.menus,
+								type:"post",
+								success:function(result){
+									$("#myModal2").modal("hide");
+									for(var item of that.teamtechnician){
+										that.createTab(item);
+									}
+								}
+							});
+						}
+					},
+					toUpdateMenu(){
+						if(this.xx==0){
+							alert("您未选中学校");
+						}else{
+							$("#myModal3").modal("show");
+							let that=this;
+							$.ajax({
+								url:"http://127.0.0.1:8080/menu/findByTeamId/"+that.xx,
+								type:"post",
+								success:function(result){
+									that.updateMenus=result;
+									that.currentId=result.teamid;
+								}
+							});
+						}
+					},
+					updateMenu(){
+						let that=this;
+						if(this.updateMenus.teamid>this.maxid || this.currentId==this.updateMenus.teamid){
+							var json=JSON.stringify(that.updateMenus);
+							$.ajax({
+								url:"http://127.0.0.1:8080/menu/updateMenu",
+								data:json,
+								type:"post",
+								contentType:"application/json;charset=utf-8",
+								success:function(result){
+									$("#myModal3").modal("hide");
+									for(var item of that.teamtechnician){
+										that.createTab(item);
+									}
+								}
+							});
+						}else{
+							alert("班组已存在，请勿重复");
+						}
+					},
+					removeMenu(){
+						let that=this;
+						if(this.xx==0){
+							alert("您未选中学校");
+						}else{
+							$.ajax({
+								url:"http://127.0.0.1:8080/menu/removeMenu/"+that.xx,
+								type:"post",
+								success:function(result){
+									alert("删除成功");
+									for(var item of that.teamtechnician){
+										that.createTab(item);
+									}
+								}
+							});
+						}
+					},
+					findByIds(id){
+						this.currentRemoveId=id;
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/teamtechnician/findByIds/"+id,
+							type:"post",
+							success:function(result){
+								that.updateTeamtechnicians=result;
+								that.findByCode(result.code);
+								if(result.headman=="是"){
+									that.checked=true
+								}else{
+									that.checked=false
+								}
+							}
+						});
+					},
+					removeById(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/teamtechnician/removeById/"+that.currentRemoveId,
+							type:"post",
+							success:function(result){
+								alert("删除成功");
+								for(var item of that.teamtechnician){
+									that.createTab(item);
+								}
+							}
+						});
+					},
+					check(){
+						if(this.checked==false){
+							this.checked=true;
+							this.updateTeamtechnicians.headman="是";
+						}else{
+							this.checked=false;
+							this.updateTeamtechnicians.headman="否";
+						}
+					},
+					toupdateTeamtechnician(){
+						if(this.currentRemoveId==null){
+							alert("请选择技工");
+						}else{
+							$("#myModal4").modal("show");
+						}
+					},
+					updateTeamtechnician(){
+						let that=this;
+						var json=JSON.stringify(that.updateTeamtechnicians);
+						$.ajax({
+							url:"http://127.0.0.1:8080/teamtechnician/updateTeamtechnician",
+							data:json,
+							type:"post",
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								$("#myModal4").modal("hide");
+								for(var item of that.teamtechnician){
+									that.createTab(item);
+								}
+							}
+						});
+					},
+					findByAll(){
+						alert(this.names);
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/teamtechnician/findByAll",
+							data:{
+								name:that.names
+							},
+							type:"post",
+							success:function(result){
+								if(result==null){
+									alert("请输入值");
+								}else{
+									console.log(result);
+								}
+							}
+						});
+					}
 				},
 				created(){
 					this.findNoByParentId();
 					this.findByParentId();
 					this.find();
 					this.findBank();
+					this.findTeamIdDesc();
+				},
+				watch:{
+					check_click(){
+						if(this.checked==true){
+							this.checked=false;
+							this.teamtechnicians.headman="否";
+						}else{
+							this.checked=true;
+							this.teamtechnicians.headman="是";
+						}
+					}
 				}
 			});
+			$(document).on('click','.pintr2',function(){
+				$(".pintr2").css("background","#ffffff")
+				$(this).css("background","sandybrown")
+			})
 		</script>
 	</body>
 </html>

@@ -4,14 +4,23 @@ package com.accp.controller;
 import com.accp.domain.*;
 import com.accp.service.impl.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.ui.Model;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import java.util.List;
@@ -81,7 +90,6 @@ public class RepairBillController {
                 System.out.println(i);
             }
         }
-        System.out.println(name);
         QueryWrapper qw=new QueryWrapper<RepairBill>();
         if (date1!=null&&date2!=null){
             qw.between("completion_time",date1,date2);
@@ -219,6 +227,71 @@ public class RepairBillController {
         QueryWrapper qw=new QueryWrapper<RepairBill>();
         qw.in("reserved1",ids);
         return service.list(qw);
+    }
+    //导出Excel
+    @RequestMapping("/downloadExcel")
+    public ResponseEntity<byte []> downloadExcel(Integer[] ids, Integer documentsType, Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState) throws IOException {
+        List<RepairBill> list=find(ids,documentsType,balanceState,date1,date2,no,jsType,chepaiNo,name,ywType,remark,jiesuanRen,documentsState);
+        Workbook book = new XSSFWorkbook();
+        Sheet sheet = book.createSheet();
+        //导出excel头部
+        Row rowTitle = sheet.createRow(0);
+        Cell head1 = rowTitle.createCell(0);
+        Cell head2 = rowTitle.createCell(1);
+        Cell head3 = rowTitle.createCell(2);
+        Cell head4 = rowTitle.createCell(3);
+        Cell head5 = rowTitle.createCell(4);
+        Cell head6 = rowTitle.createCell(5);
+        Cell head7 = rowTitle.createCell(6);
+        Cell head8 = rowTitle.createCell(7);
+        Cell head9 = rowTitle.createCell(8);
+
+        head1.setCellValue("销售单号");
+        head2.setCellValue("单据类型");
+        head3.setCellValue("支付方式");
+        head4.setCellValue("结算时间");
+        head5.setCellValue("客户名称");
+        head6.setCellValue("车牌号");
+        head7.setCellValue("联系电话");
+        head8.setCellValue("赔款公司");
+        head9.setCellValue("保险公司");
+
+        //组装导出的学生数据，如果是其他业务，请根据业务情况进行编写
+        if(list!=null){
+            for (int i = 0; i < list.size(); i++) {
+                RepairBill Value = list.get(i);
+                //导出excel数据
+                Row rowValue = sheet.createRow(i+1);
+                Cell data1 = rowValue.createCell(0);
+                Cell data2 = rowValue.createCell(1);
+                Cell data3 = rowValue.createCell(2);
+                Cell data4 = rowValue.createCell(3);
+                Cell data5 = rowValue.createCell(4);
+                Cell data6 = rowValue.createCell(5);
+                Cell data7 = rowValue.createCell(6);
+                Cell data8 = rowValue.createCell(7);
+                Cell data9 = rowValue.createCell(8);
+                data1.setCellValue(Value.getNo());
+                data2.setCellValue(Value.getDType());
+                data3.setCellValue(Value.getBType());
+                data4.setCellValue(Value.getJiesuanTime());
+                data5.setCellValue(Value.getKeihuName());
+                data6.setCellValue(Value.getChepai());
+                data7.setCellValue(Value.getPhone());
+                data8.setCellValue(Value.getPkCompany());
+                data9.setCellValue(Value.getBxCompany());
+
+            }
+        }
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        book.write(byteArrayOutputStream);
+        HttpHeaders headers = new HttpHeaders();
+        //设置响应内容为文件流模式
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        String fileName = new String("导出单据数据.xlsx".getBytes("utf-8"),"iso-8859-1");
+        //设置响应的文件的名称
+        headers.setContentDispositionFormData("attachment",fileName);
+        return new ResponseEntity(byteArrayOutputStream.toByteArray(), headers, HttpStatus.OK);
     }
 }
 

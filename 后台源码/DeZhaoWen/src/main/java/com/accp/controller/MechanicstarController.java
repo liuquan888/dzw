@@ -37,7 +37,6 @@ public class MechanicstarController {
 
     @RequestMapping("/findById/{code}")
     public Mechanicstar findById(@PathVariable("code") String code){
-        System.out.println(code);
         return service.getById(code);
     }
 
