@@ -1,4 +1,5 @@
-<!DOCTYPE HTML>
+
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -17,32 +18,30 @@
 			  	 </div>
 			  	  <div class="col-md-3" style="margin-top:2px;"></div>
 			  	 <div class="col-md-2" style="margin-top:2px; position: relative; left: -80px;">
-			  	 	<button class="btn btn-primary" @click="empty">清空条件</button>
-		  			<button type="button" @click="find" class="btn btn-success">查询</button>
-		  			<button type="button" class="btn btn-btn">关闭</button>
+			  			<button type="button" class="btn btn-success">查询</button>
+			  			<button type="button" class="btn btn-btn">关闭</button>
 			  	</div>
 			  </div>			    
 		</div>
 		<div class="zbu">			 
 			 <div class="col-md-10" style="color: aqua;">
 					<span>
-						开单日期<input type="text" size="15" v-model="searchTerms.opentime">~<input type="text" size="15" v-model="searchTerms.closetime">
+						开单日期<input type="text" size="15"><input type="text" size="15">
 					</span>
 					<span>
-						维修单号<input type="text" size="15" v-model="searchTerms.no">
+						维修单号<input type="text" size="15">
 					</span>
 					<span>
-						单据状态
-						<select class="form-control" style="width: 200px;border: 1px solid #000000;margin-left: 610px;margin-top: -23px;">
-							<option>完工</option>
-							<option>未完工</option>
-						</select>
+						单据状态<select class="form-control" style="width: 200px;border: 1px solid #000000;margin-left: 610px;margin-top: -23px;">
+										<option>成前</option>
+										<option>耶鲁</option>
+									</select>
 					</span>
 					<span>
-						车牌号<input type="text" size="15" v-model="searchTerms.chepaiNo">
+						车牌号<input type="text" size="15">
 					</span>
 					<span>
-						车架号<input type="text" size="15" v-model="searchTerms.chejiaoNo">
+						车架号<input type="text" size="15">
 					</span>
 			 </div>			 
 		</div>
@@ -57,46 +56,51 @@
 		
 		<div class="row5">
 			<div class="col-md-12" style="margin-top: 10px;">	
-				<div class="table-responsive" style="height:390px; overflow-y:auto">
-					<table width="2100px" class="table-bordered" style="table-layout: fixed;">
-						<tr class="dyg" style="color: white;">
-							<td class="dygtd"></td>
-							<td>维修单号</td>
-							<td>单据类型</td>
-							<td>业务类型</td>
-							<td>施工班次</td>
-							<td>车主姓名</td>
-							<td>车牌号</td>
-							<td>车型</td>
-							<td>车架号</td>
-							<td>接车时间</td>
-							<td>完工时间</td>
-							<td>误工原因</td>
-							<td>联系电话</td>
-							<td>责任人</td>
-							<td>处罚金额</td>
-							
-						</tr>
-						<tr v-for="item in list">
-							<td><input type="radio" name="name"></td>
-							<td>{{item.no}}</td>
-							<td>{{item.dtype}}</td>
-							<td>{{item.yewulx}}</td>
-							<td>{{item.dstate}}</td>
-							<td>{{item.bstate}}</td>
-							<td>{{item.chepai}}</td>
-							<td>{{item.chexin}}</td>
-							<td>{{item.chejiaoNo}}</td>
-							<td>{{item.jctime}}</td>
-							<td>{{item.completionTime}}</td>
-							<td>{{item.chepai}}</td>
-							<td>{{item.phone}}</td>
-							<td>{{item.reserved4}}</td>
-							<td>{{item.reserved5}}</td>
-						</tr>
-					
-					</table>
-				</div>
+							<div class="table-responsive" style="height:390px; overflow-y:auto">
+								<table width="2100px" class="table-bordered" style="table-layout: fixed;">
+									<tr class="dyg" style="color: white;">
+										<td class="dygtd"></td>
+										<td>维修单号</td>
+										<td>单据类型</td>
+										<td>业务类型</td>
+										<td>施工班次</td>
+										<td>车主姓名</td>
+										<td>车牌号</td>
+										<td>车型</td>
+										<td>车架号</td>
+										<td>接车时间</td>
+										<td>预计完工</td>
+										<td>完工时间</td>
+										<td>误工原因</td>
+										<td>返工数</td>
+										<td>返工原因</td>
+										<td>责任人</td>
+										<td>处罚金额</td>
+										
+									</tr>
+									<tr>
+										<td class="dygtd"></td>
+										<td>维修单号</td>
+										<td>单据类型</td>
+										<td>业务类型</td>
+										<td>施工班次</td>
+										<td>车主姓名</td>
+										<td>车牌号</td>
+										<td>车型</td>
+										<td>车架号</td>
+										<td>接车时间</td>
+										<td>预计完工</td>
+										<td>完工时间</td>
+										<td>误工原因</td>
+										<td>返工数</td>
+										<td>返工原因</td>
+										<td>责任人</td>
+										<td>处罚金额</td>
+										
+									</tr>
+								
+								</table>
+					</div>
 			</div>	
 		</div>
 		
@@ -202,7 +206,7 @@
 										<option>4</option>
 										<option>5</option>
 									</select>
-									<span style="position: relative;left: -40px;" >
+									<span style="position: relative;left: -40px;">
 										<img src="../img/捕获15.PNG">
 									</span>
 								</div>
@@ -536,33 +540,14 @@
 					new Vue({
 					el: "#ctn",
 					data() {
-						return {
-							list:[],
-							searchTerms:{}
-						}
+						return {}
 					},
 					methods: {
-						dingsi(){
-							$("#dings").modal("show");
-						},
-						find(){
-							let that=this;
-							$.ajax({
-								url:"http://127.0.0.1:8080/repairBill/find",
-								type:"post",
-								data:that.searchTerms,
-								success:function(result){
-									that.list=result;
-								}
-							});
-						},
-						empty(){
-							this.searchTerms={};
-						}
+							dingsi(){
+								$("#dings").modal("show");
+							}
 					},
-					created() {
-						this.find();
-					}
+					created() {}
 				});
 				
 				
