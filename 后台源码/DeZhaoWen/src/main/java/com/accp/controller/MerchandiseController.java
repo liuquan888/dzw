@@ -40,13 +40,25 @@ public class MerchandiseController {
     @Autowired
     MenuMerchandiseServiceImpl menuMerchandiseService;
 
-    @GetMapping("/findmer/{menuId}")
-    public List<Merchandise> findmer(@PathVariable Integer menuId){
+    @GetMapping("/findmer/{menuId}/{con1}/{con2}")
+    public List<Merchandise> findmer(@PathVariable Integer menuId,@PathVariable String con1,@PathVariable String con2){
+        System.out.print(con1+"------------");
+        System.out.print(con2);
+
         try {
             QueryWrapper<Merchandise> merqw=new QueryWrapper<>();
+            if(!con1.equals("0")){
+                merqw.and(wrapper -> wrapper.like("me_id",con1)
+                        .or()
+                        .like("me_name", con1)
+                        .or()
+                        .like("me_adaptable",con1)
+                );
+            }
             if (menuId!=0){
                 merqw.eq("menu_id",menuId);
             }
+            merqw.eq("reserved4",0);
             List<Merchandise> merchandiseList=merchandiseService.list(merqw);
             for(Merchandise merchandise:merchandiseList){
                 merchandise.setSuppiler(suppilerService.getById(merchandise.getPId()));
