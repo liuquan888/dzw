@@ -307,4 +307,59 @@ body{
  	 width: 100px;
  	height: 30px;
  }
- 
+ .pintr2 td input{
+	border: 0px;
+}
+.pintr2 td input:focus{
+	border: 0px;
+} 
+#light3{
+	position:absolute;
+	z-index: 99999;
+}
+
+.black_overlay2{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 500px;
+            height: 100%;
+            background-color: #f7f7f7;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=88);
+        }
+        .white_content2{
+            display: none;
+            position: absolute;
+            top: 100px;
+            left: 500px;
+            width: 500px;
+            height:550px;
+            padding: 20px;
+            border: 10px solid orange;
+            background-color: #f7f7f7;
+            z-index:1002;
+            overflow: auto;
+			overflow-y:hidden;
+}
+.djgb2{
+	position: absolute;
+	left: 350px;
+	top: 20px;
+}
+.xzyy{
+	width: 480px;
+}
+.beij{
+	border: 1px solid darkturquoise;
+	height: 400px;
+	width: 430px;
+	background-color: #FFFFFF;
+	
+}
+#ccc{
+	width: 30px;
+}
