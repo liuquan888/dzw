@@ -47,7 +47,29 @@
 		<script src="js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/api/menu.js" type="text/javascript" charset="utf-8"></script>
 		<script>
-
+			var menuList = [];
+			function findMenu(){
+				var that = this;
+				$.ajax({
+					url:"http://127.0.0.1:8080//dzwRole/find",
+					dataType:"json",
+					async:false,
+					success:function(result){
+						menuList=result.map(item=>{
+							return {
+								id:item.roleId+"",
+								parent:item.roleId==0?"#":item.roleId,
+								text:item.roleName,
+								state:{
+									selected:false
+								}
+							}
+						});
+					}
+				})
+			}
+			//初始化当前系统中所有权限数据，数据变量为menuList
+			findMenu();
 			var vm = new Vue({
 				el:"#ctn",
 				data(){
@@ -82,7 +104,7 @@
 					 	$('#myTree').jstree(true).deselect_all();
 						let that=this;
 						//根据角色获取到对应的权限列表
-						menuApi.findPerms(item.roleId,function(result){
+						menuApi.findUser(item.roleId,function(result){
 							that.roleId=item.roleId;
 							//只要集合中的编号作为选中的唯一表示
 							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
@@ -97,6 +119,17 @@
 					this.find();
 				}
 			})
+			
+			//加载jstree，不能放到vue中使用，与vue冲突
+			function loadTree(){
+				$('#myTree').jstree({
+					core:{
+						data:menuList,
+					},
+					"plugins" : ["checkbox" ]
+				});
+			}
+			loadTree();
 		</script>
 	</body>
 </html>

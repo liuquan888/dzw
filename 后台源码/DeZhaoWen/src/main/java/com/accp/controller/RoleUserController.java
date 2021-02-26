@@ -34,7 +34,7 @@ public class RoleUserController {
     @Autowired
     RoleUserServiceImpl roleUserService;
 
-    @RequestMapping("/findPerms")
+    @RequestMapping("/findUser")
     public List<DzwRole> findPerms(Integer userId){
         QueryWrapper<RoleUser> queryWrapper=new QueryWrapper<>();
         queryWrapper.lambda().eq(RoleUser::getUid,userId);
@@ -42,8 +42,9 @@ public class RoleUserController {
         List<DzwRole> li= new  ArrayList<>();
         for (RoleUser r:list) {
             DzwRole role=roleService.getById(r.getRid());
+            li.add(role);
         }
-        return null;
+        return li;
     }
 }
 
