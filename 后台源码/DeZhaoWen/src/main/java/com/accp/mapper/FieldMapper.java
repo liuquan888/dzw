@@ -13,4 +13,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface FieldMapper extends BaseMapper<Field> {
 
+    boolean updateField();
+
+    boolean updateFieldId(Integer id);
+
 }
