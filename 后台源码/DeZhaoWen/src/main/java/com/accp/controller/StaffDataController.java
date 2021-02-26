@@ -1,17 +1,24 @@
 package com.accp.controller;
 
 
-import com.accp.domain.PostList;
+
 import com.accp.domain.StaffData;
-import com.accp.service.impl.StaffDataServiceImpl;
+import com.accp.service.IDeparmentSurfaceService;
+import com.accp.service.IStaffDataService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,14 +31,25 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/staffData")
-public class StaffDataController {
+public class StaffDataController{
 
     @Autowired
-    StaffDataServiceImpl sdService;
+    IStaffDataService sdService;
+    @Autowired
+    IDeparmentSurfaceService bservice;
 
     @RequestMapping("/find")
-    public List<StaffData> queryAll(){
-        return sdService.list();
+    public List<StaffData> queryAll(String name){
+        QueryWrapper<StaffData> stu=new QueryWrapper<>();
+        if(name!=null&&name.length()>0){
+            stu.lambda().like(StaffData::getYid,name).or().like(StaffData::getYname,name);
+        }
+        stu.eq("y1",1);
+        List<StaffData> s= sdService.list(stu);
+        for (StaffData sd: s) {
+            sd.setBu(bservice.getById(sd.getBid()));
+        }
+        return s;
     }
 
     @RequestMapping("/update")
@@ -55,7 +73,12 @@ public class StaffDataController {
         for(Integer i:s){
             queryWrapper.or().eq("reserved3",i);
         }
-        return sdService.list(queryWrapper);
+        queryWrapper.eq("y1",1);
+        List<StaffData> sdd= sdService.list(queryWrapper);
+        for (StaffData c: sdd) {
+            c.setBu(bservice.getById(c.getBid()));
+        }
+        return sdd;
     }
 
     @RequestMapping("/findId")
@@ -85,12 +108,6 @@ public class StaffDataController {
         if (s.getYnationid()!=null) {
             queryWrapper.like("ynationid",s.getYnationid());
         }
-        if (s.getYmarriageid()!=null) {
-            queryWrapper.like("ymarriageid",s.getYmarriageid());
-        }
-        if (s.getYeducationid()!=null) {
-            queryWrapper.like("yeducationid",s.getYeducationid());
-        }
         if (s.getYschoolid()!=null) {
             queryWrapper.like("yschoolid",s.getYschoolid());
         }
@@ -116,9 +133,14 @@ public class StaffDataController {
             queryWrapper.like("yattribute",s.getYattribute());
         }
         if (s.getYheigth()!=null) {
-            queryWrapper.like("yheigth", s.getYheigth());
+            queryWrapper.like("yheigth",s.getYheigth());
         }
-        return sdService.list(queryWrapper);
+        queryWrapper.eq("y1",1);
+        List<StaffData> stt= sdService.list(queryWrapper);
+        for (StaffData sd: stt) {
+            sd.setBu(bservice.getById(sd.getBid()));
+        }
+        return stt;
     }
 }
 

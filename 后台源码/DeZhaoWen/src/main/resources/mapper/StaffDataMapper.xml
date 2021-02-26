@@ -66,5 +66,7 @@
             `reserved3` = #{l}
         </foreach>
     </select>
-
+    <update id="lizhih">
+        UPDATE `staffdata` SET `y1`=1 WHERE `yid`=${id}
+    </update>
 </mapper>
