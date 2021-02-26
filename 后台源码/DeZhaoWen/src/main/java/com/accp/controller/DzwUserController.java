@@ -135,5 +135,11 @@ public class DzwUserController{
         }
         return list2;
     }
+
+    @RequestMapping("select")
+    public List<DzwUser> select(){
+        System.out.println(111);
+       return duser.list();
+    }
 }
 

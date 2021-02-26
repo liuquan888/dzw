@@ -15,11 +15,11 @@
 					<td>操作</td>
 				</tr>
 				<tr v-for="item in list">
-					<td>{{item.roleId}}</td>
-					<td>{{item.roleName}}</td>
+					<td>{{item.userId}}</td>
+					<td>{{item.userRealname}}</td>
 					<td>
 						<span class="btn btn-danger">删除</span>
-						<span class="btn btn-success" @click="auth(item)">授权</span>
+						<span class="btn btn-success"  @click="auth(item)">授权</span>
 					</td>
 				</tr>
 			</table>
@@ -33,7 +33,7 @@
 							<div id="myTree"></div>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="menu">授权</button>
+							<button class="btn btn-primary" >授权</button>
 							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -47,29 +47,7 @@
 		<script src="js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/api/menu.js" type="text/javascript" charset="utf-8"></script>
 		<script>
-			var menuList = [];
-			function findMenu(){
-				var that = this;
-				$.ajax({
-					url:"http://127.0.0.1:8080/dzwPrivilege/find",
-					dataType:"json",
-					async:false,
-					success:function(result){
-						menuList=result.map(item=>{
-							return {
-								id:item.pvgid+"",
-								parent:item.pid==0?"#":item.pid,
-								text:item.pvgName,
-								state:{
-									selected:false
-								}
-							}
-						});
-					}
-				})
-			}
-			//初始化当前系统中所有权限数据，数据变量为menuList
-			findMenu();
+
 			var vm = new Vue({
 				el:"#ctn",
 				data(){
@@ -84,7 +62,7 @@
 					find(){
 						var that = this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/dzwRole/find",
+							url:"http://127.0.0.1:8080/dzwUser/select",
 							dataType:"json",
 							crossDomain: true,
 							success:function(result){
@@ -93,7 +71,6 @@
 						})
 					},
 					auth(item){
-						
 					/* 	var that = this;
 						//获取选中元素
 						var selected = $("#myTree").jstree(true).get_selected();
@@ -101,8 +78,6 @@
 						var undetermined = $("#myTree").jstree(true).get_undetermined();
 						//将选中的和半选的元素进行和并到一个数组
 						selected.push(...undetermined); */
-
-						
 						//取消全部被选中的节点
 					 	$('#myTree').jstree(true).deselect_all();
 						let that=this;
@@ -113,54 +88,15 @@
 							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
 							//调用jstree的选中方法，可以传入集合
 							$('#myTree').jstree(true).select_node(selecedSet);
-						}); 
+						});
 						//打开模态框
 						$("#authModal").modal("show");
 					},
-					menu(){
-						
-						var selected = $("#myTree").jstree(true).get_selected();
-						//获取半选状态
-						var undetermined = $("#myTree").jstree(true).get_undetermined();
-						//将选中的和半选的元素进行和并到一个数组
-						selected.push(...undetermined);
-						this.List=selected;
-						console.log(this.List);
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/dzwRole/add/"+that.roleId,
-							type:"post",
-							data:JSON.stringify(that.List),
-							dataType:"json",
-							contentType:"application/json;charset=utf-8",
-							xhrFields: {
-								withCredentials: true
-							},
-							crossDomain: true,
-							success:function(result){
-								alert(result);
-							},
-							error:function(){
-								
-							}
-						});
-					}
 				},
 				created() {
 					this.find();
 				}
 			})
-			
-			//加载jstree，不能放到vue中使用，与vue冲突
-			function loadTree(){
-				$('#myTree').jstree({
-					core:{
-						data:menuList,
-					},
-					"plugins" : ["checkbox" ]
-				});
-			}
-			loadTree();
 		</script>
 	</body>
 </html>
