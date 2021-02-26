@@ -131,8 +131,8 @@
 					<div class="col-md-1" @click="removeMenu"><img src="../img/1.png" class="c1">删除班组</div>
 					<div class="col-md-1"><a href="#myModal4" @click="toupdateTeamtechnician"><img src="../img/2.png" class="c1">修改</a></div>
 					<div class="col-md-1" @click="removeById"><img src="../img/3.png" class="c1">删除</div>
-					<div class="col-md-1"><img src="../img/5.png" class="c1">置空密码</div>
-					<div class="col-md-1"><img src="../img/6.png" class="c1">导出</div>
+					<div class="col-md-1" @click="clearPwd"><img src="../img/5.png" class="c1">置空密码</div>
+					<div class="col-md-1" @click="downloadExcel"><img src="../img/6.png" class="c1">导出</div>
 				</div>
 				<div style="width: 1535px; height: 570px;">
 					<div class="col-xs-2">
@@ -849,23 +849,64 @@
 						});
 					},
 					findByAll(){
-						alert(this.names);
+						if(this.names==""){
+							alert("请输入值");
+						}else{
+							let that=this;
+							$.ajax({
+								url:"http://127.0.0.1:8080/teamtechnician/findByAll",
+								data:{
+									name:that.names
+								},
+								type:"post",
+								success:function(result){
+									that.teamtechnician=result;
+								}
+							});
+						}
+					},
+					clearPwd(){
 						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/teamtechnician/findByAll",
-							data:{
-								name:that.names
-							},
+						if(this.currentRemoveId==null){
+							alert("请选择技工");
+						}else{
+							$.ajax({
+								url:"http://127.0.0.1:8080/teamtechnician/findByIds/"+that.currentRemoveId,
+								type:"post",
+								success:function(result){
+									if(result.reserved1==null){
+										alert("该技工密码已为空");
+									}else{
+										$.ajax({
+											url:"http://127.0.0.1:8080/teamtechnician/clearPwd/"+that.currentRemoveId,
+											type:"post",
+											success:function(result){
+												alert("置空成功");	
+											}
+										});
+									}
+								}
+							});
+							
+						}
+					},
+					downloadExcel(){
+                    	if(this.xx==0){
+                    		alert("您未选择班组");
+                    	}else{
+                    		window.location.href="http://127.0.0.1:8080/teamtechnician/downloadExcel?teamid="+this.xx;
+                    	}
+                	},
+                	findAll(){
+                		let that=this;
+                		$.ajax({
+							url:"http://127.0.0.1:8080/teamtechnician/findAll",
 							type:"post",
 							success:function(result){
-								if(result==null){
-									alert("请输入值");
-								}else{
-									console.log(result);
-								}
+								that.teamtechnician=result;
 							}
 						});
-					}
+                	}
 				},
 				created(){
 					this.findNoByParentId();
@@ -873,6 +914,7 @@
 					this.find();
 					this.findBank();
 					this.findTeamIdDesc();
+					this.findAll();
 				},
 				watch:{
 					check_click(){
