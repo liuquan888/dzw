@@ -146,7 +146,6 @@ public class DzwUserController{
                     //判断下级菜单的父级与之是否对应
                     if(dd.getPvgid()==ddd.getPid()){
 
-                        //循环id
                         for (PrivilegeRole pr:list){
                             System.out.println(pr.getPid()+"=="+ddd.getPid());
                             if(pr.getPid()==ddd.getPvgid()){
