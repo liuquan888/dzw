@@ -4,6 +4,7 @@ package com.accp.controller;
 import com.accp.domain.Field;
 import com.accp.service.impl.FieldServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -30,5 +31,13 @@ public class FieldController {
         return service.list();
     }
 
+    @RequestMapping("/update")
+    public boolean update(@RequestBody List<Integer> f){
+        service.updateField();
+        for(Integer i:f){
+            service.updateFieldId(i);
+        }
+        return true;
+    }
 }
 

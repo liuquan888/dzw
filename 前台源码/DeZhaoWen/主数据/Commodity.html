@@ -188,13 +188,19 @@
 				line-height: 24px;
 			}
 			
+			.lmenu span{
+				border-radius: 3px;
+			}
 			
 			.pintr2:nth-of-type(2){
 				background: sandybrown;
 			}
+			
+			
 		</style>
 	<body>
 		<div id="ctn">
+			
 			<div class="row">
 				<div class="col-sm-2">
 					<h3>&nbsp;&nbsp;&nbsp;商品资料</h3>
@@ -202,8 +208,8 @@
 				<div class="col-sm-5"></div>
 				<div class="col-sm-4">
 					<br />
-					<input type="text" name="" placeholder="匹配编码/名称/名称/简码/型号/大类+号双条件查询" id="" value="" style="width: 350px;height: 30px;"/>
-					<button class="btn btn-warning btn-sm">搜索</button>
+					<input type="text" name="" placeholder="匹配编码/名称/名称/简码/型号/大类+号双条件查询" id="" value="" v-model="merdimtext" style="width: 350px;height: 30px;"/>
+					<button class="btn btn-warning btn-sm" @click="merdim">搜索</button>
 				</div>
 				<div class="col-sm-1">
 					<br>
@@ -242,29 +248,27 @@
 					<br />
 					
 					
-					<div class="lmenu">
+					<div class="lmenu lm1">
 						<ul v-for="item4 in menumerlist">
 							
 							<li aid="1" v-for="item in item4.menuMerchandises">
 								<span>
 									<em class="icoclose"></em>
-									<a class="a1" href="javascript:void(0)">
 										{{item.menuName}}
-									</a>
 								</span>
 								<ul style="display: none;">
-									<li aid="8" v-for="item2 in item.menuMerchandises" @click="findmerclick(item2)">
-										<span>
+									<li aid="8" v-for="item2 in item.menuMerchandises" >
+										<span @click="findmerclick(item2)">
 											<em class="icoclose2"></em>
-											<a class="a1" href="javascript:void(0)">
 												{{item2.menuName}}
-											</a>
 										</span>
 										<ul style="display: none;">
 											<li aid="10" v-for="item3 in item2.menuMerchandises" @click="findmerclick(item3)">
 												<em class="iconleaf2"></em>
 												<a class="a1" href="javascript:void(0)">
-													{{item3.menuName}}
+													<span style="height: 100%;">
+														{{item3.menuName}}
+													</span>
 												</a>
 											</li>
 										</ul>
@@ -281,7 +285,7 @@
 				</div>
 				
 				<div style="margin-left: 350px;margin-top: -590px; border: 0px solid #000000;background: #ffffff;height: 90%;overflow: auto; width: 76.6%;" >
-					<table id="ctable" class="table table-bordered table-striped table-hover" style="white-space: nowrap" >
+					<table id="ctable" class="table table-bordered" style="white-space: nowrap" >
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;padding-left: 25px;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">登记门店</td>
@@ -400,7 +404,10 @@
 									<input type="text" name="" id="" value="" />
 									<span class="must"></span>
 									<span class="va">商品大类</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value=""  v-model="merchandise.menuMerchandise.menuName" />
+									<a href="javascript:void(0)" style="margin-left: -10px;" @click="broadmo">
+										<img src="../zenglianjun/img/三角形.PNG" width="35px" />
+									</a>
 								</p>
 								
 								<p>
@@ -1181,6 +1188,71 @@
 			</div>
 			
 			
+			<!-- 商品大类 -->
+			<div class="modal fade" id="broadmo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">
+						<div style="width: 100%;height: 5%;font-size: 12px; background: #00008B;color: #FFFFFF;line-height: 25px;">&nbsp;&nbsp;&nbsp;商品分类</div>
+						<div style="height: 20px;">
+							<br />
+							<div class="row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-3"><span style="font-size: 20px;">分类管理</span> </div>
+								<div class="col-sm-3"><span><button class="btn btn-success" @click="broadaff">选择</button></span> </div>
+								<div class="col-lg-2"></div>
+								<div class="col-lg-1"><button class="btn btn-danger">退出</button> </div>
+							</div>
+							<br />
+						</div>
+						
+					</h4>
+			      </div>
+			      <div class="modal-body">
+			        	<div id="mfieldmodal" style="">
+							<div>
+								<div class="lmenu lm2">
+									<ul v-for="item4 in menumerlist">
+										
+										<li aid="1" v-for="item in item4.menuMerchandises">
+											<span @click="broadck(item)">
+												<em class="icoclose"></em>
+													{{item.menuName}}
+											</span>
+											<ul style="display: none;">
+												<li aid="8" v-for="item2 in item.menuMerchandises" >
+													<span @click="broadck(item2)">
+														<em class="icoclose2"></em>
+															{{item2.menuName}}
+													</span>
+													<ul style="display: none;">
+														<li aid="10" v-for="item3 in item2.menuMerchandises">
+															<em class="iconleaf2"></em>
+															<a class="a1" href="javascript:void(0)">
+																<span style="height: 100%;" @click="broadck(item3)">
+																	{{item3.menuName}}
+																</span>
+															</a>
+														</li>
+													</ul>
+												</li>
+												
+											</ul>
+										</li>
+										
+									</ul>
+								</div>
+							</div>
+							
+							
+						</div>
+			      </div>
+			     
+			    </div>
+			  </div>
+			</div>
 			
 			
 		</div>
@@ -1199,19 +1271,64 @@
 			return{
 				menumerlist:[],
 				merlist:[],
+				merdimtext:null,
+				str:[],
+				con1:"0",
+				con2:"0",
+				menuinit:{},
+				broadshowhide:false,
+				broadtemp:{},
+				broad:{},
+				merchandise:{
+					menuMerchandise:{
+						menuName:"",
+					}
+				},
 			}
 		},
 		methods:{
 			
+			//显示商品大类选项
+			broadmo(){
+				$("#broadmo").modal("show");
+			},
 			
-			//维修项目菜单效果
-			doAction(index,item){
-			    var obj = document.getElementById('u' + index);
-					if(obj.style.display == 'none'){
-			            obj.style.display = 'block';
-					}else{
-						obj.style.display = 'none';
-					}
+			broadck(item){
+				this.broadtemp=item
+				console.log(this.broadtemp)
+			},
+			
+			broadaff(){
+				
+				console.log(this.broadtemp)
+				if(this.broadtemp.menuMerchandises[0]){
+					console.log(this.broadtemp.menuMerchandises)
+					alert("只能选择最底层目录！")
+					
+				}else{
+					this.broad=this.broadtemp;
+					this.broadtemp={},
+					console.log(this.broad)
+					$("#broadmo").modal("hide");
+					this.merchandise.menuMerchandise=this.broad
+					console.log(this.merchandise)
+				}
+			},
+			
+			merdim(){
+				if(!this.merdimtext){
+					return
+				}
+				if(this.merdimtext.indexOf("+")==-1){ //等于-1表示这个字符串中没有o这个字符
+					this.con1=this.merdimtext;
+				}else{
+					let str=[];
+					str=this.merdimtext.split("+");
+					console.log(str);
+					this.con1=str[0];
+					this.con2=str[1];
+				}
+				this.findmer(this.menuinit.menuId);
 			},
 			
 			//无限递归方法
@@ -1226,20 +1343,36 @@
 				})
 			},
 			
+			//初始化
+			init(){
+			},
 			
 			findmerclick(item){
+				this.menuinit=item;
+				console.log(this.menuinit);
 				this.findmer(item.menuId);
 			},
+			
+			
 			
 			findmer(meId){
 				if(!meId){
 					meId=0;
 				}
+				if(!this.con2){
+					this.con2="0"
+				}
+				if(!this.con1){
+					this.con1="0"
+				}
 				let that=this;
 				$.ajax({
-					url:BaseUrl+"merchandise/findmer/"+meId,
+					url:BaseUrl+"merchandise/findmer/"+meId+"/"+that.con1+"/"+that.con2,
 					success:function(result){
 						that.merlist=result
+						that.con1="0"
+						that.con2="0"
+						that.merdimtext=null
 						console.log(that.merlist)
 					}
 				})
@@ -1265,6 +1398,19 @@
 	});
 	
 	
+	//新增修改商品大类遮罩层
+	function showDiv(){
+		document.getElementById('popDiv').style.display='block';
+		document.getElementById('bg').style.display='block';
+	}
+	function closeDiv(){
+		document.getElementById('popDiv').style.display='none';
+		document.getElementById('bg').style.display='none';
+	}
+	
+	
+	
+	//树形菜单
 	$(function() {
 			loadMenu(function (id){
 				//window.location= '/index.php/index/baoku' + '/id/' + id + '.html';
@@ -1315,15 +1461,26 @@
 	
 	
 	
-		
+
+	
 	$(document).on('click','.pintr2',function(){
 		$(".pintr2").css("background","#ffffff")
 		$(this).css("background","sandybrown")
 	})
 	
-	$(document).on('click','.a1',function(){
-		$(".a1").css("background","#ffffff")
+	$(document).on('click','.lm1 span',function(){
+		$(".lm1 span").css("background","#ffffff")
+		$(".lm1 span").css("color","#000000")
+		$(this).css("background","#aaa")
+		$(this).css("color","#ffffff")
+		$(".pintr2").eq(0).css("background","sandybrown")
+	})
+	
+	$(document).on('click','.lm2 span',function(){
+		$(".lm2 span").css("background","#ffffff")
+		$(".lm2 span").css("color","#000000")
 		$(this).css("background","sandybrown")
+		$(this).css("color","#ffffff")
 	})
 	
 	$(".file1").mouseover(function(){

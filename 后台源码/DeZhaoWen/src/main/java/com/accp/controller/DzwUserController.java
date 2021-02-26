@@ -135,5 +135,10 @@ public class DzwUserController{
         }
         return list2;
     }
+
+    @RequestMapping("select")
+    public List<DzwUser> select(){
+       return duser.list();
+    }
 }
 

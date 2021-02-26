@@ -16,4 +16,12 @@
         id, width, name, zname, display
     </sql>
 
+    <update id="updateField">
+        UPDATE `field` SET `display`=0
+    </update>
+
+    <update id="updateFieldId">
+        UPDATE `field` SET `display`=1 WHERE `id`=#{id}
+    </update>
+
 </mapper>
