@@ -83,7 +83,7 @@ public class RepairBillController {
 
     @RequestMapping("/find")
     @ResponseBody
-    public List<RepairBill> find(Integer[] ids, Integer documentsType, Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
+    public List<RepairBill> find(String chejiaoNo,Integer[] ids, Integer documentsType, Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
         if(ids!=null){
             for (Integer i:ids
             ) {
@@ -91,6 +91,9 @@ public class RepairBillController {
             }
         }
         QueryWrapper qw=new QueryWrapper<RepairBill>();
+        if(chejiaoNo!=null){
+            qw.like("chejiao_no",chejiaoNo);
+        }
         if (date1!=null&&date2!=null){
             qw.between("completion_time",date1,date2);
         }
@@ -224,7 +227,7 @@ public class RepairBillController {
     //导出Excel
     @RequestMapping("/downloadExcel")
     public ResponseEntity<byte []> downloadExcel(Integer[] ids, Integer documentsType, Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState) throws IOException {
-        List<RepairBill> list=find(ids,documentsType,balanceState,date1,date2,no,jsType,chepaiNo,name,ywType,remark,jiesuanRen,documentsState);
+        List<RepairBill> list=find(null,ids,documentsType,balanceState,date1,date2,no,jsType,chepaiNo,name,ywType,remark,jiesuanRen,documentsState);
         Workbook book = new XSSFWorkbook();
         Sheet sheet = book.createSheet();
         //导出excel头部
