@@ -170,6 +170,7 @@
 							url:"http://127.0.0.1:8080/fieldvehicles/delete/"+that.id,
 							type:"post",
 							success:function(result){
+								alert("删除成功");
 								that.find();
 							}
 						});
@@ -181,6 +182,7 @@
 							data:that.fieldvehicles,
 							type:"post",
 							success:function(result){
+								alert("新增成功");
 								that.find();
 							}
 						});
@@ -194,6 +196,7 @@
 							type:"post",
 							contentType:"application/json;charset=utf-8",
 							success:function(result){
+								alert("修改成功");
 								that.find();
 							}
 						});
