@@ -71,11 +71,11 @@
 				<form class="form-inline frm">
 					<div class="form-group">
 						<label class="lbl">分类编码</label>
-						<input class="form-control" id="ipt1" v-model="mechaniccommission.typeid"/>
+						<input class="form-control" id="ipt1" v-model="mechaniccommission.typeid" disabled="disabled"/>
 					</div>
 					<div class="form-group">
 						<label class="lbl">分类名称</label>
-						<input class="form-control" id="ipt2" v-model="mechaniccommission.typename"/>
+						<input class="form-control" id="ipt2" v-model="mechaniccommission.typename" disabled="disabled"/>
 					</div><br /><br />
 					<div class="form-group">
 						<label class="lbl">站内白天</label>
@@ -94,9 +94,9 @@
 						<input class="form-control" id="ipt4" v-model="mechaniccommission.nightoutthestation"/>
 					</div>
 					<div class="form-group" id="div1">
-						<button class="btn btn-default" @click="insert">增加</button>
-						<button class="btn btn-default" @click="remove">删除</button>
-						<button class="btn btn-default" @click="update">保存</button>
+						<a class="btn btn-default" @click="insert">增加</a>
+						<a class="btn btn-default" @click="remove">删除</a>
+						<a class="btn btn-default" @click="update">保存</a>
 					</div>
 				</form>
 				
@@ -112,12 +112,12 @@
 						<td>站外晚上</td>
 					</tr>
 					<tr v-for="item in list" @click="findById(item.typeid)">
-						<td>{{item.typeid}}</td>
-						<td>{{item.typename}}</td>
-						<td>{{item.dayinthestation}}</td>
-						<td>{{item.nightinthestation}}</td>
-						<td>{{item.dayoutthestation}}</td>
-						<td>{{item.nightoutthestation}}</td>
+						<td class="pintr2">{{item.typeid}}</td>
+						<td class="pintr2">{{item.typename}}</td>
+						<td class="pintr2">{{item.dayinthestation}}</td>
+						<td class="pintr2">{{item.nightinthestation}}</td>
+						<td class="pintr2">{{item.dayoutthestation}}</td>
+						<td class="pintr2">{{item.nightoutthestation}}</td>
 					</tr>
 				</table>
 			</div>
@@ -163,12 +163,12 @@
 					},
 					remove(){
 						let that=this;
+						alert(this.typeid);
 						$.ajax({
 							url:"http://127.0.0.1:8080/mechaniccommission/delete/"+that.typeid,
 							type:"post",
 							success:function(result){
 								alert("删除成功");
-								that.find();
 							}
 						});
 					},
@@ -179,8 +179,8 @@
 							data:that.mechaniccommission,
 							type:"post",
 							success:function(result){
-								alert("新增成功");
-								that.find();
+								console.log(result);
+								
 							}
 						});
 					},
@@ -191,8 +191,8 @@
 							data:that.mechaniccommission,
 							type:"post",
 							success:function(result){
-								alert("修改成功");
-								that.find();
+								console.log(result);
+								
 							}
 						});
 					}
@@ -201,6 +201,10 @@
 					this.find();
 				}
 			});
+			$(document).on('click','.pintr2',function(){
+				$(".pintr2").css("background","#ffffff")
+				$(this).css("background","sandybrown")
+			})
 		</script>
 	</body>
 </html>

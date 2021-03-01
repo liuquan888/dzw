@@ -92,17 +92,16 @@
 					</div>
 					<div class="form-group">
 						<label class="lbl">班组</label>
-						<input class="form-control" id="ipt4" v-model="fieldvehicles.teamid"/>
-						<a href="#myModal" data-toggle="modal">
-							<select class="form-control">
-							
-							</select>
-						</a>
+						<input class="form-control" id="ipt4" v-model="fieldvehicles.teamid" disabled="disabled"/>
+						<select class="form-control" v-model="fieldvehicles.teamid">
+							<option v-for="item in sonMenu" :value="item.teamid">{{item.menuname}}</option>
+						</select>
+						
 					</div>
 					<div class="form-group" id="div1">
-						<button class="btn btn-default" @click="insert">增加</button>
-						<button class="btn btn-default" @click="remove">删除</button>
-						<button class="btn btn-default" @click="update">保存</button>
+						<a class="btn btn-default" @click="insert">增加</a>
+						<a class="btn btn-default" @click="remove">删除</a>
+						<a class="btn btn-default" @click="updateFieldvehicles">保存</a>
 					</div>
 				</form>
 				
@@ -117,45 +116,18 @@
 						<td>归属班组</td>
 					</tr>
 					<tr v-for="item in list" @click="findById(item.id)">
-						<td>{{item.licenseplate}}</td>
-						<td>{{item.brand}}</td>
-						<td>{{item.model}}</td>
-						<td>{{item.currentmileage}}</td>
-						<td>{{item.teamid}}</td>
+						<td class="pintr2">{{item.licenseplate}}</td>
+						<td class="pintr2">{{item.brand}}</td>
+						<td class="pintr2">{{item.model}}</td>
+						<td class="pintr2">{{item.currentmileage}}</td>
+						<td class="pintr2">{{item.menu.menuname}}</td>
 					</tr>
 				</table>
 			</div>
-			<div class="modal" data-backdrop="static" id="myModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<span class="close" data-dismiss="modal">&times;</span>
-							<h4 style="display: inline-block;">维修班组</h4>
-						</div>
-						<div class="modal-body">
-							<div class="">
-								<ul class="">
-									<li>
-										<a @click="xianshi()" href="#"><span>+</span>10-自建</a>
-										<ul class="ul1" v-if="this.xs">
-											<li><span id="j1"></span>1000-机修1组</li>
-											<li><span id="j1"></span>1001-机修2组</li>
-											<li><span id="j1"></span>1004-机电1组</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button data-dismiss="modal" class="btn btn-default btn-danger">取消</button>
-						</div>
-					</div>
-				</div>
-			<div>
-				<span>合计：1条记录</span>
-			</div>
+		<div>
+			<span>合计：1条记录</span>
 		</div>
-		</div>
+	</div>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="../js/vue.js" ></script>
@@ -164,27 +136,19 @@
 				el:".container-fluid",
 				data(){
 					return{
-						xs:true,
 						list:{},
 						id:"",
-						fieldvehicles:{}
+						fieldvehicles:{},
+						sonMenu:{}
 					}
 				},
 				methods:{
-					xianshi(){
-						if(this.xs){
-							this.xs=false;
-						}else{
-							this.xs=true;
-						}
-					},
 					find(){
 						let that=this;
 						$.ajax({
-							url:"http://127.0.0.1:8080/fieldvehicles/find",
+							url:"http://127.0.0.1:8080/fieldvehicles/findAll",
 							type:"post",
 							success:function(result){
-								console.log(result);
 								that.list=result;
 							}
 						});
@@ -197,7 +161,6 @@
 							type:"post",
 							success:function(result){
 								that.fieldvehicles=result;
-								console.log(result);
 							}
 						});
 					},
@@ -222,31 +185,40 @@
 							}
 						});
 					},
-					update(){
+					updateFieldvehicles(){
 						let that=this;
+						var json=JSON.stringify(that.fieldvehicles);
 						$.ajax({
 							url:"http://127.0.0.1:8080/fieldvehicles/update",
-							data:that.fieldvehicles,
+							data:json,
 							type:"post",
+							contentType:"application/json;charset=utf-8",
 							success:function(result){
 								that.find();
+							}
+						});
+					},
+					findNoByParentId(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/menu/findNoByParentId",
+							type:"post",
+							success:function(result){
+								that.sonMenu=result;
 							}
 						});
 					},
 					
 				},
 				created(){
+					this.findNoByParentId();
 					this.find();
 				}
 			});
-<<<<<<< HEAD
-			
 			$(document).on('click','.pintr2',function(){
 				$(".pintr2").css("background","#ffffff")
 				$(this).css("background","sandybrown")
 			})
-=======
->>>>>>> c91b0fa1c0c92de48cdc5a7a388af6cad7b18679
 		</script>
 	</body>
 </html>
