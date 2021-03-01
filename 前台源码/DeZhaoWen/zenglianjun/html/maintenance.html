@@ -5,6 +5,11 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="../js/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/jiecdji.css"/>
+		<style type="text/css">
+			.nav {
+				margin-left: 20px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="ctn">
@@ -14,7 +19,7 @@
 				  <div class="col-md-6">
 					 <h4>接车登记</h4>
 				 </div>
-				  <div class="col-md-3" style="margin-top:2px;"><input type="email" class="form-control" id="exampleInputEmail1" v-model="workdimtext" placeholder="匹配车牌号/车架号/手机/客户" style="border: 1px solid #101010;"></div>
+				  <div class="col-md-3" style="margin-top:2px;"><input type="email" class="form-control"  v-model="workdimtext" placeholder="匹配车牌号/车架号/手机/客户" style="border: 1px solid #101010;"></div>
 				 <div class="col-md-2" style="margin-top:2px; position: relative; left: -80px;">
 						<button type="button" class="btn btn-warning" @click="find5">搜索</button>
 						<button type="button" class="btn btn-btn">关闭</button>
@@ -38,7 +43,7 @@
 					<div class="col-md-3">
 							<p style="font-size: 20px;color: aqua;">公众号会员码</p>
 							<p class="_xian">
-								<input type="email" class="form-control" id="exampleInputEmail1" v-model="list5.membernum">
+								<input type="email" class="form-control"  v-model="list5.membernum">
 							</p>
 							<p class="ls" style="color: aqua;">车主信息
 								&nbsp;&nbsp;&nbsp;&nbsp;<span>{{list5.reserved1}}</span>
@@ -319,7 +324,7 @@
 				  <div class="col-md-6">
 					  <button type="button" class="btn btn-success " style="margin-top:2px; position: relative; left: 680px;">选择</button>
 				 </div>
-				  <div class="col-md-3" style="margin-top:2px;"><input type="text" class="form-control" id="exampleInputEmail1" placeholder="匹配驾驶员姓名/简码/手机/车牌号" style="border: 1px solid #101010;"></div>
+				  <div class="col-md-3" style="margin-top:2px;"><input type="text" class="form-control"  placeholder="匹配驾驶员姓名/简码/手机/车牌号" style="border: 1px solid #101010;"></div>
 				 <div class="col-md-2" style="margin-top:2px; position: relative; left: -10px;">
 						<button type="button" class="btn btn-warning">搜索</button>
 						<button type="button" class="btn btn-btn">关闭</button>
@@ -778,8 +783,8 @@
 			
 		<div id="light2" class="white_content"><br><a href = "javascript:void(0)" onclick = "document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'" class="djgb">点这里关闭本窗口<br>　　　　　　</a><br>　　　　　
 				<div class="row"style="width: 1480px;">
-					<div class="col-md-1" style="position: relative; left: 20px;">
-						<h4>维修单</h4>
+					<div class="col-md-2" style="position: relative; left: 20px;">
+						<h4>维修单:{{list6.weixdanh}}</h4>
 					</div>
 					<div class="col-md-6">
 						<div style="position: relative; left: 350px;" class="jieca">接车</div>
@@ -828,24 +833,24 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车架号</label>
-								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.chejiahao" disabled="disabled">
+								<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.chejiahao" disabled="disabled">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车辆型号</label>
-								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.cheliangxh" disabled="disabled">
+								<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.cheliangxh" disabled="disabled">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车辆品牌</label>
-								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.clpp" disabled="disabled">
+								<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.clpp" disabled="disabled">
 							</div></br>
 							<div style="margin-top: 5px;">
 								<div class="form-group" style="margin-left: 5px;">
 									<label for="exampleInputEmail2">发动机号</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.fdjh" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.fdjh" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 180px;">
 									<label for="exampleInputEmail2">发动品牌</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.blangName" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.blangName" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 65px;">
 									<label for="exampleInputEmail2"><span class="a">*</span>服务顾问</label>
@@ -859,21 +864,21 @@
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>车主姓名</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 400px;border: 1px solid #000000;" v-model="list6.czname" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 400px;border: 1px solid #000000;" v-model="list6.czname" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 60px;">
 									<label for="exampleInputEmail2"><span class="a">*</span>驾驶员</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.jsy" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.jsy" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 100px;">
 									<label for="exampleInputEmail2">联系电话</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.lxphone" disabled="disabled" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.lxphone" disabled="disabled" disabled="disabled">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2">进厂里程</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.jclc" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.jclc" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 60px;">
 									<label for="exampleInputEmail2">进厂油量</label>
@@ -890,11 +895,11 @@
 								</div>
 								<div class="form-group" style="margin-left: 33px;">
 									<label for="exampleInputEmail2">上次里程</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.sclc" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.sclc" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 70px;">
 									<label for="exampleInputEmail2">进厂时间</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.jcsj" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.jcsj" disabled="disabled">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
@@ -924,11 +929,11 @@
 								</div>
 								<div class="form-group" style="margin-left: 46px;">
 									<label for="exampleInputEmail2">接车人</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.jcr" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.jcr" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 55px;">
 									<label for="exampleInputEmail2">预计完工</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list6.yjwg" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;" v-model="list6.yjwg" disabled="disabled">
 									<span style="position: relative;left: -40px;">
 										<img src="../img/捕获15.PNG">
 									</span>
@@ -956,7 +961,7 @@
 								</div>
 								<div class="form-group" style="margin-left: 33px;">
 									<label for="exampleInputEmail2">完工时间</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.wgsj" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list6.wgsj" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 100px;">
 									<label for="exampleInputEmail2">上次进厂</label>
@@ -972,17 +977,17 @@
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>预估金额</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 200px;border: 1px solid #000000;" v-model="list6.ygje" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 200px;border: 1px solid #000000;" v-model="list6.ygje" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 55px;">
 									<label for="exampleInputEmail2">接待备注</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 660px;border: 1px solid #000000;" v-model="list6.jdbz" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 660px;border: 1px solid #000000;" v-model="list6.jdbz" disabled="disabled">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2" style="border: 1px solid #000000; width: 100px; height: 50px; text-align: center;line-height: 50px;">报修陈述</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 1000px; height: 50px;border: 1px solid #000000;" v-model="list6.cxms" disabled="disabled">
+									<input type="email" class="form-control"  placeholder="" style="width: 1000px; height: 50px;border: 1px solid #000000;" v-model="list6.cxms" disabled="disabled">
 								</div>
 							</div>
 						</form>
@@ -1000,8 +1005,8 @@
 								<li>维修项目</li>
 								<li @click="ddd">单个增加</li>
 								<li>多个增加</li>
-								<li>修改</li>
-								<li>删除</li>
+								<li @click="updatea">修改</li>
+								<li @click="remove">删除</li>
 								<li>维修班组</li>
 								<li>重置价格</li>
 							</ul>
@@ -1016,7 +1021,7 @@
 										<td>项目名称</td>
 										<td>数量</td>
 										<td>价类</td>
-										<td>单位</td>
+										<td>单价</td>
 										<td>金额</td>
 										<td>技师结算价</td>
 										<td>故障描述</td>
@@ -1026,28 +1031,28 @@
 										<td>工单号</td>
 										<td>免单原因</td>
 									</tr>
-									<tr style="color: #000000;">
+									<tr style="color: #000000;" v-for="item in list3">
 										<td class="dygtd"></td>
 										<td>
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+													<input type="checkbox" id="blankCheckbox" v-model="checks" :value="item.xmbh" aria-label="...">
 												</label>
 											</div>
 										</td>
-										<td>合计</td>
-										<td>项目名称</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>技师结算价</td>
-										<td>故障描述</td>
-										<td>故障原因</td>
-										<td>维修班组</td>
-										<td>作业人员</td>
-										<td>工单号</td>
-										<td>免单原因</td>
+										<td>{{item.xmbh}}</td>
+										<td>{{item.xmname}}</td>
+										<td>{{item.reserved3}}</td>
+										<td>{{item.jialei}}</td>
+										<td>{{item.jiesgs}}</td>
+										<td>{{item.gshije}}</td>
+										<td>{{item.reserved2}}</td>
+										<td>{{item.gzms}}</td>
+										<td>{{item.gzqr}}</td>
+										<td>{{item.reserved4}}</td>
+										<td>{{item.zuoyery}}</td>
+										<td>{{item.gdh}}</td>
+										<td>无</td>
 									</tr>
 								</table>
 							</div>
@@ -1070,25 +1075,20 @@
 												<td>价类</td>
 												<td>数量</td>
 												<td>单价</td>
-												<td>金额</td>
-												<td>免单原因</td>
-												<td>回收状态</td>
-												
+												<td>金额</td>												
 											</tr>
-											<tr>
+											<tr v-for="item in list4">
 												<td class="dygtd"></td>
-												<td>类别</td>
-												<td>领料日期</td>
-												<td>领料人</td>
-												<td>物料编码</td>
-												<td>物料名称</td>
-												<td>单位</td>
-												<td>价类</td>
-												<td>数量</td>
-												<td>单价</td>
-												<td>金额</td>
-												<td>免单原因</td>
-												<td>回收状态</td>
+												<td>{{item.lb}}</td>
+												<td>{{item.lingliaodate}}</td>
+												<td>{{item.lingliaor}}</td>
+												<td>{{item.wuliao}}</td>
+												<td>{{item.wuliaoname}}</td>
+												<td>{{item.dwei}}</td>
+												<td>{{item.jialei}}</td>
+												<td>{{item.shuliao}}</td>
+												<td>{{item.danjian}}</td>
+												<td>{{item.jine}}</td>
 											</tr>
 										</table>
 							</div>
@@ -1109,7 +1109,7 @@
 												<td>结算人</td>
 												<td>现金</td>
 												<td>银行卡</td>
-												<td>据票</td>
+												<td>票据</td>
 												<td>挂账金额</td>
 												<td>冲储值卡</td>
 												<td>冲定金</td>
@@ -1123,29 +1123,29 @@
 												<td>发票号</td>
 												<td>发票金额</td>
 											</tr>
-											<tr>
+											<tr v-for="item in list13">
 												<td class="dygtd"></td>
-												<td>结算状态</td>
-												<td>合计金额</td>
-												<td>材料费</td>
-												<td>工时费</td>
-												<td>结算时间</td>
-												<td>结算人</td>
-												<td>现金</td>
-												<td>银行卡</td>
-												<td>据票</td>
-												<td>挂账金额</td>
-												<td>冲储值卡</td>
-												<td>冲定金</td>
-												<td>收税金</td>
-												<td>抵用券</td>
-												<td>抹尾数</td>
-												<td>内部帐</td>
-												<td>积分抵扣</td>
-												<td>到账盈亏</td>
-												<td>发票种类</td>
-												<td>发票号</td>
-												<td>发票金额</td>
+												<td>{{item.jieszt}}</td>
+												<td>{{item.hjje}}</td>
+												<td>{{item.clf}}</td>
+												<td>{{item.goshf}}</td>
+												<td>{{item.jiesdate}}</td>
+												<td>{{item.jiesr}}</td>
+												<td>{{item.xj}}</td>
+												<td>{{item.yhk}}</td>
+												<td>{{item.piaoju}}</td>
+												<td>{{item.guazhang}}</td>
+												<td>{{item.xuka}}</td>
+												<td>{{item.dj}}</td>
+												<td>{{item.shuij}}</td>
+												<td>{{item.diyong}}</td>
+												<td>{{item.mws}}</td>
+												<td>{{item.lbuz}}</td>
+												<td>{{item.jfdk}}</td>
+												<td>{{item.dzyk}}</td>
+												<td>{{item.fpzl}}</td>
+												<td>{{item.fph}}</td>
+												<td>{{item.fpje}}</td>
 											</tr>
 										</table>
 							</div>
@@ -1200,6 +1200,16 @@
         <div id="fade" class="black_overlay2">
 			
 		</div>
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
 		
 		
 		
@@ -1342,7 +1352,7 @@
 						<div style="margin-top:2px; position: relative; left: -10px;">
 							<span>单号:54651223123</span>
 							<span style="margin-left: 300px;color: #00FFFF;">附单下次保养里程
-								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;position: relative;left: 540px;top: -30px;">
+								<input type="email" class="form-control"  placeholder="" style="width: 100px;position: relative;left: 540px;top: -30px;">
 							</span>
 						</div>
 					</div>
@@ -1467,34 +1477,34 @@
 								</div>
 								<div class="form-group">
 									<label for="exampleInputEmail2">出险时间</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+									<input type="email" class="form-control"  placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
 									<span style="margin-left: 280px;position: relative;top: -30px;">
 										<label for="exampleInputEmail2">查勘时间</label>
-										<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+										<input type="email" class="form-control"  placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
 									</span>
 								</div>
 								<div class="form-group" style="margin-top: -60px;">
 									<label for="exampleInputEmail2">报案号</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+									<input type="email" class="form-control"  placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
 									<span style="margin-left: 280px;position: relative;top: -30px;">
 										<label for="exampleInputEmail2">被保险人</label>
-										<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+										<input type="email" class="form-control"  placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
 									</span>
 								</div>
 								<div class="form-group" style="margin-top: -60px;">
 									<label for="exampleInputEmail2">协陪员</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+									<input type="email" class="form-control"  placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
 									<span style="position: relative;left: 235px;top: -30px;">
 										<img src="../img/捕获15.PNG">
 									</span>
 									<span style="margin-left: 260px;position: relative;top: -30px;">
 										<label for="exampleInputEmail2">保险单号</label>
-										<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+										<input type="email" class="form-control"  placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
 									</span>
 								</div>
 								<div class="form-group" style="margin-top: -60px;">
 									<label for="exampleInputEmail2">定损备注</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:480px;margin-left: 60px;margin-top: -30px;">				
+									<input type="email" class="form-control"  placeholder="" style="width:480px;margin-left: 60px;margin-top: -30px;">				
 								</div>
 							</div>
 						</font>
@@ -1509,10 +1519,10 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="modal-title" id="myModalLabel">维修项目</h4>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<button type="button"  @click="guanbi2">关闭</button>
 							<div class="">
 								<div class="" style="margin-left: 430px;">
-									<button type="button" class="btn btn-success">保存</button>
+									<button type="button" class="btn btn-success" @click="baocuns">保存</button>
 								</div>
 							</div>
 						</div>
@@ -1520,13 +1530,16 @@
 							<font>
 								<div style="margin-top: 5px;">
 									<div class="form-group">
-										维修项目<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 70px;position: relative;top: -30px;width:300px;" >
+										维修项目<input type="email" class="form-control"  placeholder=""	style="margin-left: 70px;position: relative;top: -30px;width:300px;" v-model="oopp.mname">
+										<span>
+											<input type="email" class="form-control"  placeholder=""	style="position: absolute; top: 10px;left:400px; width: 40px;" v-model="oopp.mid">
+										</span>
 										<span style="position: absolute;left:350px;top: 15px;">
-											<img src="../img/捕获15.PNG">
+											<a :href="'../../%E4%B8%BB%E6%95%B0%E6%8D%AE/MaintenanceItems.html?action='+data.findbycpA"><img src="../img/捕获15.PNG"></a>
 										</span>
 									</div>
 									<div class="form-group">
-										价类<select class="form-control" style="width: 100px;margin-left: 60px;margin-top: -30px;" >
+										价类<select class="form-control" style="width: 100px;margin-left: 60px;margin-top: -30px;" v-model="addwxxm.jialei">
 											<option>自费</option>
 											<option>免单</option>
 											<option>保险</option>
@@ -1550,38 +1563,38 @@
 									</div>
 									<div class="form-group" style="margin-top: 20px;">
 											服务顾问	
-											<input type="email" class="form-control" placeholder=""	style="margin-left: 90px;position: relative;top: -30px;width:100px;"  id="empatesw">
+											<input type="email" class="form-control" placeholder=""	style="margin-left: 90px;position: relative;top: -30px;width:100px;"  id="empatesw" v-model="addwxxm.reserved2">
 											<span style="position: absolute;left:170px;top: 128px;">
 												<img src="../img/捕获15.PNG" class="fwgw">
 											</span>
 									</div>
 									<div class="form-group" style="margin-top: -70px;margin-left: 250px;">
-											技师结算标价<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 90px;position: relative;top: -30px;width:150px;" >
+											技师结算标价<input type="email" class="form-control"  placeholder=""	style="margin-left: 90px;position: relative;top: -30px;width:150px;" v-model="oopp.mnormalprice" >
 									</div>
 									<div class="form-group" style="margin-top: -20px;">
-											数量<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:120px;" >
+											数量<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:120px;" value="1" v-model="addwxxm.reserved3">
 									</div>
 									<div class="form-group" style="margin-top: -70px;margin-left: 250px;">
-											工时单价<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:150px;" >
+											工时单价<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:150px;" v-model="oopp.mmemberprice">
 									</div>
 									<div class="form-group" style="margin-top: -20px;">
-											故障描述<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" >
+											故障描述<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" v-model="addwxxm.gzms">
 									</div>
 									<div class="form-group" style="margin-top: -20px;">
 											故障原因
-													<select class="form-control" style="width: 400px;margin-left: 60px;margin-top: -30px;" >
+													<select class="form-control" style="width: 400px;margin-left: 60px;margin-top: -30px;" v-model="addwxxm.gzqr">
 														<option>电路故障</option>
 														<option>水箱漏水</option>
 													</select>
-													<span style="position: absolute;left:400px;top: 275px;">
-														<img src="../img/捕获15.PNG">
-													</span>
 									</div>
 									<div class="form-group" style="margin-top: 20px;">
-											维修班组<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" >
+											维修班组<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" id="weixbanzu" v-model="addwxxm.reserved4">
+											<span style="position: absolute;left:400px;top: 315px;" class="wxbz">
+												<img src="../img/捕获15.PNG">
+											</span>
 									</div>
 									<div class="form-group" style="margin-top: -20px;">
-											工单号<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" >
+											工单号<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" v-model="addwxxm.gdh">
 									</div>
 								</div>
 							</font>
@@ -1589,7 +1602,133 @@
 					</div>
 				</div>
 			</div>
-		
+			
+				<div id="light4" class="white_content4"><br><a href = "javascript:void(0)" onclick = "document.getElementById('light4').style.display='none';document.getElementById('fade').style.display='none'" class="djgb4">点这里关闭本窗口<br>　　　　　　</a><br>　　　　　
+					<div class="wxbzs">
+						<h4 style="color: black; margin-left: 20px;position: relative;top: 18px;" >维修班组</h4>
+					</div>
+					
+					<tree :menu="menu" @create-tab="createTab"></tree>
+					
+				</div>
+				
+				
+				
+				
+				
+				
+				<div id="fade" class="black_overlay4">
+					
+				</div>
+				
+				
+					<div class="modal fade" id="xgai" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel">维修项目</h4>
+								<button type="button"  @click="guanbi3">关闭</button>
+								<div class="">
+									<div class="" style="margin-left: 430px;">
+										<button type="button" class="btn btn-success" @click="updatebyid">修改</button>
+									</div>
+								</div>
+							</div>
+							<div class="modal-body" style="width: 560px; background-color: #9D9D9D;margin-left: 20px;color: aqua;height: 400px;">
+								<font>
+									<div style="margin-top: 5px;">
+										<div class="form-group">
+											维修项目<input type="email" class="form-control"  placeholder=""	style="margin-left: 70px;position: relative;top: -30px;width:300px;" v-model="list14.xmname">
+											<span>
+												<input type="email" class="form-control"  placeholder=""	style="position: absolute; top: 10px;left:400px; width: 40px;" v-model="list14.xmbh">
+											</span>
+											<span style="position: absolute;left:350px;top: 15px;">
+												<a :href="'../../%E4%B8%BB%E6%95%B0%E6%8D%AE/MaintenanceItems.html?action='+data.findbycpA"><img src="../img/捕获15.PNG"></a>
+											</span>
+										</div>
+										<div class="form-group">
+											价类<select class="form-control" style="width: 100px;margin-left: 60px;margin-top: -30px;" v-model="list14.jialei">
+												<option>自费</option>
+												<option>免单</option>
+												<option>保险</option>
+												<option>索赔</option>
+												<option>索赔*</option>
+											</select>
+											
+										</div>
+										<div class="form-group" style="margin-top: -40px;margin-left: 250px;">
+											免单原因
+												<span style="position: absolute;left:390px;top: 85px;">
+													<img src="../img/捕获15.PNG">
+												</span>
+												<select class="form-control" style="width: 100px;margin-left: 60px;margin-top: -30px;"  disabled="disabled">
+													<option></option>
+													<option></option>
+													<option></option>
+													<option></option>
+													<option></option>
+												</select>
+										</div>
+										<div class="form-group" style="margin-top: 20px;">
+												服务顾问	
+												<input type="email" class="form-control" placeholder=""	style="margin-left: 90px;position: relative;top: -30px;width:100px;"  id="empatesw" v-model="list14.reserved2">
+												<span style="position: absolute;left:170px;top: 128px;">
+													<img src="../img/捕获15.PNG" class="fwgw">
+												</span>
+										</div>
+										<div class="form-group" style="margin-top: -70px;margin-left: 250px;">
+												技师结算标价<input type="email" class="form-control"  placeholder=""	style="margin-left: 90px;position: relative;top: -30px;width:150px;" v-model="list14.jiesgs">
+										</div>
+										<div class="form-group" style="margin-top: -20px;">
+												数量<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:120px;" value="1" v-model="list14.reserved1">
+										</div>
+										<div class="form-group" style="margin-top: -70px;margin-left: 250px;">
+												工时单价<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:150px;"  v-model="list14.gshije">
+										</div>
+										<div class="form-group" style="margin-top: -20px;">
+												故障描述<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" v-model="list14.gzms">
+										</div>
+										<div class="form-group" style="margin-top: -20px;">
+												故障原因
+														<select class="form-control" style="width: 400px;margin-left: 60px;margin-top: -30px;" v-model="list14.gzqr">
+															<option>电路故障</option>
+															<option>水箱漏水</option>
+														</select>
+										</div>
+										<div class="form-group" style="margin-top: 20px;">
+												维修班组<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;" id="weixbanzu"  v-model="list14.reserved4">
+												<span style="position: absolute;left:400px;top: 315px;" class="wxbz">
+													<img src="../img/捕获15.PNG">
+												</span>
+										</div>
+										<div class="form-group" style="margin-top: -20px;">
+												工单号<input type="email" class="form-control"  placeholder=""	style="margin-left: 60px;position: relative;top: -30px;width:400px;"  v-model="list14.gdh">
+										</div>
+									</div>
+								</font>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+					<div id="light5" class="white_content5"><br><a href = "javascript:void(0)" onclick = "document.getElementById('light4').style.display='none';document.getElementById('fade').style.display='none'" class="djgb5">点这里关闭本窗口<br>　　　　　　</a><br>　　　　　
+						<div class="wxbzs">
+							<h4 style="color: black; margin-left: 20px;position: relative;top: 18px;" >维修班组</h4>
+						</div>
+						
+						<tree :menu="menu" @create-tab="createTab"></tree>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					<div id="fade" class="black_overlay5">
+						
+					</div>
+				
 				
 		</div>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
@@ -1597,6 +1736,22 @@
 			<script src="../js/vue.js"></script>
 		<script type="text/javascript">
 			var BaseUrl="http://127.0.0.1:8080/";
+			Vue.component("tree", {
+				props: ["menu"],
+				template: `
+					<ul class="nav nav-pills nav-stacked">
+						<li v-for="item in menu">
+							<a href="#" @click="createTab(item)">{{item.menuname}}</a>
+							<tree @create-tab="createTab" :menu="item.childrens" ></tree>
+						</li>
+					</ul>
+				`,
+				methods: {
+					createTab(item) {
+						this.$emit("create-tab", item)
+					}
+				}
+			}),
 			new Vue({
 				el: "#ctn",
 				data() {
@@ -1617,9 +1772,119 @@
 						bname:"",
 						bnames:"",
 						list12:[],
+						data:{},
+						x:false,
+						weixdanhao:"",
+						chepai:"",
+						oopp:{},
+						menu:{},
+						addwxxm:{},
+						list13:[],
+						checks:[],
+						list14:{},
 					}
 				},
 				methods: {
+					updatebyid(){
+						let that=this;
+						$.ajax({
+								url:BaseUrl+"maintenanceItems/updateby",
+								type:"post",
+								data:this.list14,
+								success:function(result){
+									$("#xgai").modal("hide");
+									that.find3();
+								}
+						});
+					},
+					updatea(){
+						if(this.checks==""){
+							alert("请选择");
+							return;
+						}else{
+							let that=this;
+							if(this.checks.length!=1){
+								alert("最多选一个");
+								return; 
+							}
+							$("#xgai").modal("show");
+							$.ajax({
+								url:BaseUrl+"maintenanceItems/findbyxms/"+that.checks[0],		
+								success:function(result){
+									that.list14=result;
+								}
+							});
+						}		
+					},
+					remove(){
+						if(this.checks==""){
+							alert("请选择");
+						}else{
+							let that=this;
+							var json=JSON.stringify(that.checks);
+							$.ajax({
+								url:BaseUrl+"maintenanceItems/removebh",		
+								contentType: "application/json",
+								data:json,
+								type:"post",
+								success:function(result){
+									this.find3();
+								}
+							});
+						}		
+					},
+					find7(){
+						let that=this;
+						$.ajax({
+							url:BaseUrl+"clearing/findclear",
+							success:function(result){
+								that.list13=result;
+							}
+						});
+					},
+					baocuns(){
+						var sjs= Math.round(Math.random()*50000)
+						this.addwxxm.wxdh=sjs;
+						this.addwxxm.xmname=this.oopp.mname;
+						this.addwxxm.xmbh=this.oopp.mid;
+						this.addwxxm.reserved1=this.oopp.mnormalprice;
+						this.addwxxm.jialei=this.oopp.mmemberprice;
+						let that=this;
+						$.ajax({
+							url:BaseUrl+"maintenanceItems/addwx",
+							type:"post",
+							data:that.addwxxm,
+							success:function(result){
+								if(result=="000"){
+									alert("新增成功");
+									that.find3();
+								}else if(result=="-1"){
+									alert("新增失败");
+								}
+							}
+						});
+						$("#dgzj").modal("hide");
+					},
+					createTab(item){
+						alert(item.menuname)
+						var textsw = item.menuname;
+						 $("#weixbanzu").val(textsw);
+						$("#light4").css("display","none");
+						if(item.childrens && item.childrens.length > 0) {
+							return;
+						}
+					},
+					findByParentId(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/menu/findByParentId",
+							type:"post",
+							success:function(result){
+								that.menu=result;
+								console.log(that.menu);
+							}
+						});
+					},
 					bName(){
 						let that=this;
 						if(that.bname==""){
@@ -1632,6 +1897,13 @@
 								that.list12=result;
 							}
 						})
+					},
+					guanbi2(){
+							alert(11);
+						  $("#dgzj").modal("hide");
+					},
+					guanbi3(){
+						  $("#xgai").modal("hide");
 					},
 						//显示作业中车辆
 						find(){
@@ -1707,7 +1979,8 @@
 								success:function(result){
 										that.list5=result;
 								}
-							})
+							});
+							this.data.findbycpA=chepai;
 						},
 						tjxw() {
 							$("#ywlb").modal("show");
@@ -1767,13 +2040,13 @@
 							$("#dings").modal("show");
 						},
 						ddd(){
-							/*if(document.getElementById("yewulb").value==""){
+							if(document.getElementById("yewulb").value==""){
 								alert("业务类别不能为空");
 								return false;	
 							}else if(document.getElementById("fwgw").value==""){
 								alert("服务顾问不能为空");
 								return false;	
-							}	*/
+							}
 							$("#dgzj").modal("show");
 						},
 						add(){
@@ -1797,19 +2070,31 @@
 						},
 						removeStyle(){
 							setTimeout(function(){ sfjy1() }, 100);
+						},
+						open(){
+							var action=window.location.search;
+							action=action.slice(1);
+							if(action!=null && action!=""){
+								this.findbycp(action);
+									this.find();
+									this.oopp=JSON.parse(sessionStorage.getItem("wexjih"));
+							}
 						}
 				},
 				created() {
+					this.open();
 					this.find();
 					this.find2();
 					this.find3();
 					this.find4();	
+					this.find7();
 					this.cxzc();
 					this.cxbm();
 					this.bName();
+					this.findByParentId();
 				}
 			});
-				
+			
 				 function showText(obj) {
 					var text = obj.innerText;
 					$("#light3").css("display","none");
@@ -1962,6 +2247,11 @@
 				$(".caid3").css("display","block");
 				$("#xxxx").css("display","block");	
 			})
+		
+			
+			$(".fwgw").click(function(){
+				$("#light3").css("display","block");
+			})
 			
 			$(function(){ 
 				$("tr").click(function(){ 
@@ -2000,9 +2290,9 @@
 					return true;
 					}
 				}
-			})
-			$(".fwgw").click(function(){
-				$("#light3").css("display","block");
+			});
+			$(".wxbz").click(function(){
+				$("#light4").css("display","block");
 			})
 		</script>
 	</body>
