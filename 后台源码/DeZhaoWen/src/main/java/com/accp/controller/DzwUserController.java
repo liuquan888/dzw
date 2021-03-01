@@ -43,6 +43,9 @@ public class DzwUserController{
     @Autowired
     DzwPrivilegeServiceImpl dpser;
 
+    @Autowired
+    RoleUserServiceImpl role;
+
     @RequestMapping("/find")
     public DzwUser find(DzwUser user,HttpSession session){
         QueryWrapper<DzwUser> query=new QueryWrapper<>();
@@ -51,6 +54,10 @@ public class DzwUserController{
         if(li.size()>0){
             for(DzwUser us:li){
                 if(us!=null){
+                    QueryWrapper<RoleUser> userQueryWrapper= new QueryWrapper<>();
+                    userQueryWrapper.lambda().eq(RoleUser::getUid,li.get(0).getUserId());
+                    List<RoleUser> listrole= role.list(userQueryWrapper);
+                    us.setReserved1(listrole.get(0).getRid().toString());
                     session.setAttribute("user",li);
                 }
             }

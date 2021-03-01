@@ -7,6 +7,7 @@ var menuApi = {
 				roleId:roleId
 			},
 			success:function(result){
+				console.log(result);
 				callback(result);
 			},error:function(error){
 				console.log(error);
