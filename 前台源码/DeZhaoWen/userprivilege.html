@@ -20,6 +20,8 @@
 					<td>
 						<span class="btn btn-danger">删除</span>
 						<span class="btn btn-success"  @click="auth(item)">授权</span>
+						<span class="btn btn-primary"  @click="compile(item)">编辑</span>
+
 					</td>
 				</tr>
 			</table>
@@ -34,6 +36,47 @@
 						</div>
 						<div class="modal-footer">
 							<button class="btn btn-primary" >授权</button>
+							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="authModal2">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-danger">角色授权</h3>
+						</div>
+						<div class="modal-body">
+							<div id="myTree2">
+								<div class="form-group">
+									<div id="a">
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">用户编号</label>
+											<input  class="form-control" v-model="user.userId">
+										</form>
+									    <form class="form-inline">
+									    	<label class="text col-lg-2" for="exampleInputEmail2">登录账号</label>
+									   		<input  class="form-control" v-model="user.userLogin">
+									    </form>
+									    <form class="form-inline">
+									    	<label class="text col-lg-2" for="exampleInputEmail2">登录密码</label>
+									   		<input  class="form-control" v-model="user.userPwd">
+									    </form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">用户昵称</label>
+											<input  class="form-control" v-model="user.userName">
+										</form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">真实姓名</label>
+											<input  class="form-control" v-model="user.userRealname">
+										</form>
+								    </div>
+								  </div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="update">修改</button>
 							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -58,7 +101,7 @@
 						menuList=result.map(item=>{
 							return {
 								id:item.roleId+"",
-								parent:item.roleId==0?"#":item.roleId,
+								parent:'#',
 								text:item.roleName,
 								state:{
 									selected:false
@@ -78,6 +121,7 @@
 						menuList:[],
 						list:[],
 						userId:"",
+						user:{}
 					}
 				},
 				methods:{
@@ -106,15 +150,40 @@
 						//根据角色获取到对应的权限列表
 						menuApi.findUser(item.userId,function(result){
 							that.userId=item.userId;
-							console.log(result);
-						/* 	//只要集合中的编号作为选中的唯一表示
-							let selecedSet = result.map(item=>item.uId); */
+						 	//只要集合中的编号作为选中的唯一表示
+							let selecedSet = result.filter(item=>item.status=="0000").map(item=>item.roleId);
 							//调用jstree的选中方法，可以传入集合
-							/* $('#myTree').jstree(true).select_node(selecedSet); */
+							$('#myTree').jstree(true).select_node(selecedSet); 
 						});
-						//打开模态框
+						// //打开模态框
 						$("#authModal").modal("show");
+						
 					},
+					compile(item){
+						$("#authModal2").modal("show");
+						let that =this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/query",
+							dataType:"json",
+							data:{userId:item.userId},
+							success:function(result){
+								that.user=result;
+							}
+						})
+						
+					},
+					update(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/update",
+							data:that.user,
+							type:"post",
+							dataType:"json",
+							success:function(result){
+								console.log(result);
+							}
+						})
+					}
 				},
 				created() {
 					this.find();
