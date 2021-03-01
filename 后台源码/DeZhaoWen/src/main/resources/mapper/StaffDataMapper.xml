@@ -72,7 +72,11 @@
         </foreach>
     </select>
     <update id="lizhih">
-        UPDATE `staffdata` SET `y1`=1 WHERE `yid`=${id}
+        UPDATE `staff_data` SET `reserved6`=1,reserved7="",reserved8="" WHERE `yid`=${id}
+    </update>
+
+    <update id="lizhixz">
+        UPDATE `staff_data` SET `reserved6`=2,`reserved7`=#{reserved7},`reserved8`=#{reserved8} WHERE `yid`=#{yid}
     </update>
 
 
