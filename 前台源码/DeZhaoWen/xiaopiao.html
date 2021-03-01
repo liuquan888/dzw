@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.c{
+				margin-left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="c" id="ctn">
+			<p>欢迎光临</p>
+			<p>北京季开高卡车有限公司</p>
+			<p>消费结算单</p>
+			<p>业务员：{{}}</p>
+			<p>会员卡：车牌号：{{data.chepai}}</p>
+			<p>客户：{{data.keihuName}}</p>
+			<p>时间：{{data.jiesuanTime}}</p>
+			<p>单号：{{data.no}}</p>
+			<br />
+			<br />
+			<p>修理车顶（现场定价） ：{{data.jiecher}}</p>
+			<p>正常结算</p>
+			<p>收银员：{{data.jiesuanRen}}</p>
+			<p>{{data.btype}}：{{data.sum}}元</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		new Vue({
+			el:"#ctn",
+			data(){
+				return{
+					data:{}
+				}
+			},
+			methods:{
+				cc(){
+					var sURL = window.location.search;
+					console.log(sURL);
+//					this.data = sURL.split('=')[1];
+//					console.log(JSON.parse(this.data));
+
+					this.data = this.getQueryString(sURL);
+				},
+				getQueryString(name) {
+					var data = name.slice(1);
+					console.log(data);
+					data = data.split("&");
+					console.log(data);
+					var dataObj = {};
+					data.forEach(item=>{
+						var dataObj1 = item.split("=");
+						for(var i = 0;i<dataObj1.length;i++){
+							dataObj[dataObj1[i]] = decodeURIComponent(dataObj1[i+1]);
+							break;
+						}
+					})
+					return dataObj;
+				}
+			},
+			created(){
+				this.cc();
+			}
+		});
+	</script>
+</html>

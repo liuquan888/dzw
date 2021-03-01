@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div id="ctn">
+			<table class="table table-striped table-bordered">
+				<tr>
+					<td>维修单号</td>
+					<td>车主</td>
+					<td>车牌号</td>
+					<td>挂账时间</td>
+				</tr>
+				<tr v-for="item in list">
+					<td>{{item.no}}</td>
+					<td>{{item.jiashiyuan}}</td>
+					<td>{{item.chepai}}</td>
+					<td>{{item.completionTime}}</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						list:{}
+					}
+				},
+				methods:{
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find",
+							type:"post",
+							success:function(result){
+								that.list=result;
+							}
+						});
+					}
+				},
+				created(){
+					this.find();
+				}
+			});
+		</script>
+		</script>
+		</script>
+		</script>
+	</body>
+</html>

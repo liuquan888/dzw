@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style>
+			body{
+				margin: 0px;
+				padding: 0px;
+				background-color: #F7F7F7;
+			}
+			.div-shoyin{
+				position: absolute;
+				top:20px;
+				left: 350px;
+				border: 1px solid #337AB7;
+				width: 575px;
+				height: 520px;
+				background-color:#FFFFFF ;
+			}
+			.input1 input{
+				width: 100px;
+			}
+			.table1 td{
+				padding-right: 10px;
+			}
+			.div3{
+				background-color: #FFFFFF;
+				padding: 15px;
+			}
+			.divdayin{
+				width: 400px;
+				height: 220px;
+				border: 1px solid;
+				position: absolute;
+				top: 150px;
+				left: 80px;
+				background-color: #FFFFFF;
+				padding: 25px;
+			}
+			.btnn button{
+				margin-right: 30px;
+			}
+			.btnn{
+				margin-left: 50px;
+			}
+			.divcz{
+				width: 400px;
+				height: 350px;
+				padding: 25px;
+				background-color: #FFFFFF;
+				border: 1px solid #337AB7;
+				position: absolute;
+				top: 20px;
+				left: 500px;
+				
+			}
+			.divcz-02 div{
+				display: inline-block;
+				border: 1px solid #337AB7;
+				padding: 8px;
+				border-radius: 5px;
+				background: #EFEFEF;
+				margin-right: 20px;
+			}
+			.divcz-02{
+				margin-left: 50px;
+			}
+			.divcz-03{
+				margin-left: 50px;
+				
+			}
+			.divcz-03 button{
+				margin-right: 40px;
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctn">
+			<div style="background-color: #FFFFFF; margin: 0px;">
+				<h2 style="margin: 0px;color:#337AB7;line-height: 48px; margin-left: 20px;">会员充值</h2>
+			</div>
+			<div style="margin-left: 20px;">
+				<form class="form-inline">
+					 <div class="form-group">
+					    <label>入会时间：</label>
+					    <input type="date" class="form-control" v-model="bill.data1">~
+					    <input type="date" class="form-control" v-model="bill.data2">
+					 </div>
+					 <div class="form-group">
+					    <label>会员卡号：</label>
+					    <input type="text" class="form-control" v-model="bill.customernumber">
+					  </div>
+					  <div class="form-group">
+					    <label>手机号：</label>
+					    <input type="text" class="form-control" v-model="bill.phone">
+					  </div>
+					   <br /><br />
+					  <div class="form-group">
+					    <label>客户名称：</label>
+					    <input type="text" class="form-control" v-model="bill.customername">
+					  </div>
+					  <div class="form-group">
+					    <label>银行账号：</label>
+					    <input type="text" class="form-control" v-model="bill.bankaccount">
+					  </div>
+					  <div class="form-group">
+					    <label>备注：</label>
+					    <input type="text" class="form-control" v-model="bill.remark">
+					  </div>
+				</form>
+			</div>
+			<div style="margin-left: 20px;">
+				<span @click="open"><img src="img/shoyin.PNG">充值</span><button class="btn btn-primary" @click="find">查询</button><button class="btn btn-danger" @click="reset">重置</button>
+			</div>
+			<div style="margin-left: 20px;">
+				<table class="table table-bordered">
+					<tr>
+						<td>选择</td>
+						<td>客户名称</td>
+						<td>手机号</td>
+						<td>会员卡号</td>
+						<td>入会日期</td>
+						<td>到期时间</td>
+						<td>累计积分</td>
+						<td>挂账额度</td>
+						<td>开户银行</td>
+						<td>银行账号</td>
+						<td>卡上余额</td>
+						<td>备注</td>
+					</tr>
+					<tr v-for="item in list">
+						<td><input type="radio" name="rr" @click="choose(item)"></td>
+						<td>{{item.customername}}</td>
+						<td>{{item.phone}}</td>
+						<td>{{item.customernumber}}</td>
+						<td>{{item.jointime}}</td>
+						<td>{{item.outtime}}</td>
+						<td>{{item.integral}}</td>
+						<td>{{item.payment}}</td>
+						<td>{{item.desportbank}}</td>
+						<td>{{item.bankaccount}}</td>
+						<td>{{item.vipprice}}</td>
+						<td>{{item.remark}}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="divcz" v-if="x">
+				<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">
+					充值
+				</div>
+				<div style="float: right;">充值到{{name}}</div>
+				<br />
+				<br />
+				<div class="divcz-02">
+					<form class="form-inline">
+						<div class="c1" @click="dian($event,100)">100元</div><div class="c1" @click="dian($event,200)">200元</div><div class="c1" @click="dian($event,300)">300元</div><br /><br />
+						<div class="c1" @click="dian($event,500)">500元</div><div class="c1" @click="dian($event,1000)">1000元</div>
+						<input placeholder="其他余额" onblur="f()" @click="dian2" v-model="cc" class="form-control" style="width: 90px;"/>
+					</form>
+				</div>
+				<br />
+				<br />
+				<div class="divcz-03">
+					<button class="btn btn-primary" @click="sure">确定</button><button class="btn btn-primary" @click="out">取消</button>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			var myVue=new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						cs:{'background':'#EFEFEF','color':'#000'},
+						x:false,
+						list:[],
+						bill:{},
+						pay:{
+							id:"",
+							money:""
+						},
+						name:"",
+						cc:""
+					}
+				},
+				methods:{
+					dian(e,m){
+						$(".divcz-02 form div").css(this.cs);
+						$(e.target).css({"color":"#fff","background":"#3277B2"});
+						$(".divcz-02 form input").val("");
+						this.pay.money=m;
+					},
+					dian2(){
+						this.pay.money=0;
+						$(".divcz-02 form div").css(this.cs);
+					},
+					out(){
+						this.x=false;
+					},
+					open(){
+						if(this.name!=""){
+							this.x=true;
+						}else{
+							alert("未选择充值对象");
+						}
+						
+					},
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/find",
+							type:"post",
+							data:that.bill,
+							success:function(result){
+								that.list=result;
+							}
+						});
+					},
+					reset(){
+						this.bill={};
+					},
+					choose(item){
+						this.pay.id=item.customernum;
+						this.name=item.customername;
+					},
+					sure(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/customer/pay",
+							type:"post",
+							data:that.pay,
+							success:function(result){
+								if(result==0000){
+									alert("充值成功");
+									location.href="huiyuancz.html";
+								}else{
+									alert("系统错误！！！请联系管理员");
+								}
+								
+							}
+						});
+					}
+				},
+				created(){
+					this.find();
+				},
+				watch:{
+					
+				}
+			});
+			
+			function f(){
+				myVue.pay.money=myVue.cc;
+			}
+		</script>
+	</body>
+</html>

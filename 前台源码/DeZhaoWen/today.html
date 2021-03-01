@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style type="text/css">
+			body{
+				margin: 0px;
+				padding: 0px;
+			}
+			.span1{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				background-color: #D6D7CE;
+				font-size: 14px;
+				font-weight: bolder;
+				border: 1px solid #fff;
+			}
+			.span2{
+				font-size: 28px;
+				color: #636563;
+			}
+			.ddiv2{
+				display: inline-block;
+				vertical-align: top;
+				height: 500px;
+			}
+			.ddiv2 iframe{
+				height: 500px;
+			}
+			ul li{
+				list-style-type: none;
+			}
+			.ul1{
+				padding: 0px;
+				margin-left: 30px;
+				border-left: 1px dotted #444444;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctn">
+			<p style="background-color: #08206B;">
+				<span style="color: #FFFFFF;">今日提醒</span>
+				<!--<span class="span1">🗕</span>
+				<span class="span1" style="font-size: 14px;">🗖</span>
+				<span class="span1" style="font-size: 14px;">&times;</span>-->
+			</p>
+			<div style=" border-bottom: 1px solid #EFEBE7;">
+				<span class="span2">今日提醒</span>
+				<!--<button class="btn btn-group" style="font-size: 18px;float: right;" @click="out">关闭</button>-->
+				<span style="font-size: 25px; float: right;">导出</span>
+			</div>
+			<div>
+				<div class="ddiv2" style="width: 225px;">
+					<ul class="" style="font-size: 18px;">
+						<li>
+							<a @click="xianshi()" href="#" style="color:violet"><span>+</span>··提醒情况</a>
+							<ul class="ul1" v-if="this.xs">
+								<li @click="huan('01')">···待入库旧件0个</li>
+								<li @click="huan('02')">···账期超期0个</li>
+								<!--<li @click="huan('03')">···三包申报超期0个</li>
+								<li @click="huan('04')">···班组备件超期3个</li>
+								<li @click="huan('05')">···需年审车辆1个</li>
+								<li @click="huan('06')">···超龄库存配件0个</li>-->
+								<li @click="huan('07')">···应做二维车辆0个</li>
+								<li @click="huan('08')">···个人事务0个</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="ddiv2">
+					<iframe :src="'today-'+path+'table.html'" width="750px"></iframe>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						xs:true,
+						path:"01"
+					}
+				},
+				methods:{
+					xianshi(){
+						if(this.xs){
+							this.xs=false;
+						}else{
+							this.xs=true;
+						}
+						
+					},
+					huan(p){
+						this.path=p;
+					},
+					out(){
+					}
+				},
+				created(){
+					
+				},
+				watch:{
+					
+				}
+			});
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

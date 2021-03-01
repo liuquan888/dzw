@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<style>
+			body{
+				margin: 0px;
+				padding: 0px;
+				background-color: #F7F7F7;
+			}
+			.iframe{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				border: 0px;
+				background: #fff;
+			}
+			.ddiv{
+				border: 1px solid #CCCCCC;
+				line-height: 35px;
+				color: #888888;
+			}
+			.ddiv span{
+				margin-left: 50px;
+			}
+			.ddiv span:first-child{
+				color: #337AB7;
+				border-top: 3px solid #337AB7;
+				padding-top: 5px;
+			}
+			#iframe2{
+				position: absolute;
+				top: 0px;
+				right: 40px;
+				z-index: 5;
+			}
+			.div-shoyin{
+				position: absolute;
+				top:20px;
+				left: 350px;
+				border: 1px solid #337AB7;
+				width: 575px;
+				height: 520px;
+				background-color:#FFFFFF ;
+			}
+			.input1 input{
+				width: 100px;
+			}
+			.table1 td{
+				padding-right: 10px;
+			}
+			.div3{
+				background-color: #FFFFFF;
+				padding: 15px;
+			}
+			.divdayin{
+				width: 400px;
+				height: 220px;
+				border: 1px solid;
+				position: absolute;
+				top: 150px;
+				left: 80px;
+				background-color: #FFFFFF;
+				padding: 25px;
+			}
+			.divdayin-02{
+				width: 400px;
+				height: 280px;
+				border: 1px solid;
+				position: absolute;
+				top: 150px;
+				left: 80px;
+				background-color: #FFFFFF;
+				padding: 25px;
+			}
+			.btnn button{
+				margin-right: 30px;
+			}
+			.btnn{
+				margin-left: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctn">
+			<div style="background-color: #FFFFFF; margin: 0px;">
+				<h2 style="margin: 0px;color:#337AB7;line-height: 48px; margin-left: 20px;">结算中心</h2>
+			</div>
+			<div style="margin-left: 20px;">
+				<form class="form-inline">
+					 <div class="form-group">
+					    <label>开单日期：</label>
+					    <input type="date" v-model="bill.date1" class="form-control">~
+					    <input type="date" v-model="bill.date2" class="form-control">
+					 </div>
+					 <div class="form-group">
+					    <label>销售单号：</label>
+					    <input type="text" class="form-control" v-model="bill.no">
+					  </div>
+					  <div class="form-group">
+					    <label>结算状态：</label>
+					    <select class="form-control" v-model="bill.documentsState">
+					    	<option value="1">已结算</option>
+					    	<option value="2">未结算</option>
+					    </select>
+					  </div>
+					  <div class="form-group">
+					    <label>车牌号：</label>
+					    <input type="text" v-model="bill.chepaiNo" class="form-control">
+					  </div>
+					   <br /><br />
+					  <div class="form-group">
+					    <label>客户名称：</label>
+					    <input type="text" v-model="bill.name" class="form-control">
+					  </div>
+					  <div class="form-group">
+					    <label>结算人：</label>
+					    <input type="text" v-model="bill.jiesuanRen" class="form-control">
+					  </div>
+					  <div class="form-group">
+					    <label>单据类型：</label>
+					    <select class="form-control" v-model="bill.documentsType">
+					    	<option v-for="item in danjuType" :value="item.id">
+					    		{{item.type}}
+					    	</option>
+					    	<option></option>
+					    </select>
+					  </div>
+					  <div class="form-group">
+					    <label>备注：</label>
+					    <input type="text" v-model="bill.remark" class="form-control">
+					  </div>
+				</form>
+			</div>
+			<div style="margin-left: 20px;">
+				<span @click="daxxx"><button class="btn btn-primary">门店选择</button></span>
+				<span @click="out"><button class="btn btn-success">收银</button></span>
+				<button class="btn btn-danger" @click="reset">重置</button>
+				<button class="btn btn-info" @click="find">查询</button>
+				<button class="btn btn-info" @click="export1">导出</button>
+			</div>
+			<div style="margin-left: 20px;">
+				<table class="table table-bordered">
+					<tr>
+						<td>选择</td>
+						<td>销售单号</td>
+						<td>单据类型</td>
+						<td>结算方式</td>
+						<td>单据状态</td>
+						<td>结算状态</td>
+						<td>结算时间</td>
+						<td>结算人</td>
+						<td>结算金额</td>
+						<td>业务类型</td>
+						<td>客户名称</td>
+						<td>车牌号</td>
+						<td>车型</td>
+						<td>车架号</td>
+						<td>联系电话</td>
+						<td>保险公司</td>
+						<td>赔款公司</td>
+						<td>对方车牌</td>
+						<td>服务顾问</td>
+						<td>完工时间</td>
+						<td>备注</td>
+						<td>操作</td>
+					</tr>
+					<tr v-for="item in list">
+						<td><input @click="givemoney(item)" v-if="item.documentsState==2" name="ll" type="radio"></td>
+						<td>{{item.no}}</td>
+						<td>{{item.dtype}}</td>
+						<td>{{item.btype}}</td>
+						<td>{{item.dstate}}</td>
+						<td>{{item.bstate}}</td>
+						<td>{{item.jiesuanTime}}</td>
+						<td>{{item.jiesuanRen}}</td>
+						<td>{{item.amount}}</td>
+						<td>{{item.yewulx}}s</td>
+						<td>{{item.keihuName}}</td>
+						<td>{{item.chepai}}</td>
+						<td>{{item.chexin}}</td>
+						<td>{{item.chejiaoNo}}</td>
+						<td>{{item.phone}}</td>
+						<td>{{item.bxCompany}}</td>
+						<td>{{item.pkCompany}}</td>
+						<td>{{item.duifanchepai}}</td>
+						<td>{{item.coun}}</td>
+						<td>{{item.completionTime}}</td>
+						<td>{{item.remark}}</td>
+						<td @click="sel(item)"><button class="btn btn-primary">查看单据</button></td>
+					</tr>
+				</table>
+			</div>
+			
+			<!--收银模态框-->
+			<div class="div-shoyin" v-if="this.x">
+				<div style="background-color: #337AB7;color: #FFFFFF;">前台收银<span style="float: right;font-size: 15px;" @click="out">&times;&nbsp;</span></div>
+				<div>
+					<div class="div3">
+						<table class="table1">
+							<tr>
+								<td>客总费</td>
+								<td>税率（%）</td>
+								<td>加税金</td>
+								<td>抹尾数</td>
+								<td>积分抵扣（元）</td>
+							</tr>
+							<tr class="input1">
+								<form class="form-inline">
+									<input type="hidden" class="form-control" v-model="data.no">
+									<td><input disabled class="form-control" v-model="data.price"></td>
+									<td><input class="form-control" v-model="data.shuilu"></td>
+									<td><input disabled class="form-control" v-model="data.jiashuijin"></td>
+									<td><input disabled class="form-control"></td>
+									<td><input class="form-control"></td>
+								</form>
+							</tr>
+						</table>
+						<br />
+						<div style="margin-left: 150px;">
+							<span>共计金额:{{data.sum}}</span>
+						</div>
+						<div>
+							<form class="form-inline" style="margin-left: 150px;">
+								结算状态：
+								<select class="form-control" v-model="data.type">
+									<option>正常结算</option>
+								</select>
+							</form>
+						</div>
+						<br />
+						<div style="margin-left: 100px;">
+							<button class="btn btn-primary" style="width: 80px;" @click="weixin">微信</button>
+							<button class="btn btn-info" style="width: 80px;margin-left: 120px;" @click="zhifu">支付宝</button>
+						</div>
+						<br />
+						<div style="margin-left: 150px;">
+							<img v-if="this.img1" id="img1" src="img/42958655ea45a696edf23fc3606a873.png" height="260px" />
+							<img v-if="this.img2" id="img2" src="img/90cf1be414bae73600c0d591c8c3c8e.jpg" height="260px" style="margin-left: 15px;"/>
+						</div>
+						<div>
+							<button class="btn-success" @click="guanbi(true)">打印</button>
+							<form class="form-inline" action="http://127.0.0.1:8080/order/alipay" method="post">
+								<input type="hidden" class="form-control" v-model="data.no" name="no">
+								<td><input type="hidden" class="form-control" v-model="data.price" name="price"></td>
+								<td><input type="hidden" class="form-control" v-model="data.shuilu" name="shuilu"></td>
+								<td><input type="hidden"  class="form-control" v-model="data.jiashuijin" name="type"></td>
+								<td><input type="hidden" class="form-control"></td>
+								 <input type="submit" value="支付宝支付">
+							</form>
+							
+						</div>
+						<div v-if="this.xx" class="divdayin">
+							<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">打印报表<span @click="guanbi(false)" style="float: right;color: #000000;">&times;</span></div>
+							<div>
+								<form class="form-inline">
+									<br />
+									<div>
+										<select class="form-control" style="width: 150px;margin-left: 90px;">
+											<option>小票</option>
+											<option>大票</option>
+											<option>收据</option>
+										</select>
+									</div>
+									<br /><br />
+									<div class="btnn">
+										<a class="btn btn-success" @click="dayin()" style="margin-right: 30px;">打印</a>
+										<button class="btn btn-success">预览</button>
+										<button class="btn btn-success">设计</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--门店选择-->
+			<div>
+				<div v-if="this.xxx" class="divdayin-02">
+					<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">门店选择<span @click="guanxxx(false)" style="float: right;color: #000000;">&times;</span></div>
+					<div>
+						<table class="table table-striped">
+							<tr>
+								<td>选择</td>
+								<td>编号</td>
+								<td>门店名称</td>
+								<td>所在城市</td>
+							</tr>
+							<tr v-for="item in list6">
+								<td><input type="checkbox" v-model="ids" :value="item.factory"></td>
+								<td>{{item.factory}}</td>
+								<td>{{item.factoryname}}</td>
+								<td>北京</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+				
+			<!--单据查询-->
+			<div v-if="f" class="iframe">
+				<div style="padding-right: 50px;">
+					<span style="color: #84DA21; font-size: 25px;">维修单</span>
+					<button class="btn btn-info" style="float: right;" @click="sel()">取消</button>
+				</div>
+				<div>单号:<span>000000RE2100055621</span></div>
+				<div>
+					<form class="form-inline">
+						车牌号：<input class="form-control" v-model="ff.chepai"/>车辆型号：<input class="form-control" v-model="ff.chexin"/>车辆品牌：<input class="form-control" v-model="ff.yewulx"/>发动机品牌：<input class="form-control" v-model="ff.yewulx"/><br />
+						车架号：<input class="form-control" v-model="ff.chejiaoNo"/>发动机号：<input class="form-control" v-model="ff.motor_id"/>服务顾问：<input class="form-control" v-model="ff.coun"/>车主名：<input class="form-control" v-model="ff.motor_id"/><br />
+						驾驶员：<input class="form-control" v-model="ff.jiashiyuan"/>手&nbsp;机 &nbsp;号：<input class="form-control" v-model="ff.phone"/>进场里程<input class="form-control" v-model="ff.jclichen"/>进场油量<input class="form-control" v-model="ff.jcyoulian"/><br/>
+						上次里程<input class="form-control" v-model="ff.shancilichen"/>进场时间<input class="form-control" v-model="ff.jctime"/>业务类型<input v-model="ff.yewulx" class="form-control"/>结算方式：<input class="form-control" v-model="ff.btype"/><br />
+						施工班次<input class="form-control" v-model="ff.shigonbanci"/>接车人<input class="form-control" v-model="ff.jiecher"/>预计完工<input class="form-control" v-model="ff.yujitime"/>赔款公司<input class="form-control" v-model="ff.pkCompany"/><br />
+						上次进场<input class="form-control" v-model="ff.sctime"/>保险公司<input class="form-control" v-model="ff.bxCompany"/>完工时间<input class="form-control" v-model="ff.completionTime"/>预计金额<input class="form-control" v-model="ff.yugujine"/><br />
+						救援描述<textarea rows="3" v-model="ff.remark" cols="130" class="form-control"></textarea>
+					</form>
+				</div>
+				<div>
+					<div class="ddiv"><span @click="tables(1)">维修项目</span><span @click="tables(2)">领料情况</span><span @click="tables(3)">结算信息</span></div>
+					<table v-if="this.tab==1" class="table table-striped">
+						<tr>
+							<td>选择</td>
+							<td>项目编码</td>
+							<td>项目名称</td>
+							<td>价类</td>
+							<td>金额</td>
+							<td>接车时间</td>
+							<td>故障描述</td>
+							<td>故障原因</td>
+							<td>工单号</td>
+							<td>作业人员</td>
+							<td>工位</td>
+						</tr>
+						<tr v-for="item in list3">
+							<td><input type="checkbox"></td>
+							<td>{{item.wxdh}}</td>
+							<td>{{item.xmname}}</td>
+							<td>{{item.jialei}}</td>
+							<td>{{item.gshije}}</td>
+							<td>{{item.jcsj}}</td>
+							<td>{{item.gzms}}</td>
+							<td>{{item.gzqr}}</td>
+							<td>{{item.工单号}}</td>
+							<td>{{item.zuoyery}}</td>
+							<td>{{item.gwei}}</td>
+						</tr>
+					</table>
+					
+					<table v-if="this.tab==2" class="table table-striped">
+						<tr>
+							<td>选择</td>
+							<td>编码</td>
+							<td>类别</td>
+							<td>领料日期</td>
+							<td>领料人</td>
+							<td>物料编号</td>
+							<td>物料名称</td>
+							<td>单位</td>
+							<td>价类</td>
+							<td>数量</td>
+							<td>单价</td>
+							<td>金额</td>
+							<td>服务顾问</td>
+						</tr>
+						<tr v-for="item in list4">
+							<td><input type="checkbox"></td>
+							<td>{{item.id}}</td>
+							<td>{{item.lb}}</td>
+							<td>{{item.lingliaodate}}</td>
+							<td>{{item.lingliaor}}</td>
+							<td>{{item.wuliao}}</td>
+							<td>{{item.wuliaoname}}</td>
+							<td>{{item.dwei}}</td>
+							<td>{{item.jialei}}</td>
+							<td>{{item.shuliao}}</td>
+							<td>{{item.danjian}}</td>
+							<td>{{item.jine}}</td>
+							<td>{{item.fuwugw}}</td>
+						</tr>
+					</table>
+					
+					
+					<table v-if="this.tab==3" class="table table-striped">
+						<tr>
+							<td>选择</td>
+							<td>编码</td>
+							<td>结算状态</td>
+							<td>合计金额</td>
+							<td>材料费</td>
+							<td>工时费</td>
+							<td>结算时间</td>
+							<td>结算人</td>
+							<td>现金</td>
+							<td>银行卡</td>
+							<td>票据</td>
+							<td>挂账金额</td>
+							<td>发票金额</td>
+						</tr>
+						<tr v-for="item in list5">
+							<td><input type="checkbox"></td>
+							<td>{{item.clearingid}}</td>
+							<td>{{item.jieszt}}</td>
+							<td>{{item.hjje}}</td>
+							<td>{{item.clf}}</td>
+							<td>{{item.goshf}}</td>
+							<td>{{item.jiesdate}}</td>
+							<td>{{item.jiesr}}</td>
+							<td>{{item.xj}}</td>
+							<td>{{item.yhk}}</td>
+							<td>{{item.piaoju}}</td>
+							<td>{{item.guazhang}}</td>
+							<td>{{item.fpje}}</td>
+						</tr>
+					</table>
+					
+				</div>
+			</div>
+	
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						img1:true,
+						img2:false,
+						x:false,
+						xx:false,
+						xxx:false,
+						list:[],
+						bill:{
+							
+						},
+						data:{
+							price:"",
+							shuilu:"1.13",
+							jiashuijin:"0.11",
+							moweisu:"0",
+							yugujine:"",
+							sum:"",
+							no:"",
+							type:""
+						},
+						f:false,
+						ff:{
+							
+						},
+						tab:1,
+						danjuType:{
+							
+						},
+						list3:{},
+						list4:{},
+						list5:{},
+						list6:{},
+						ids:[1,2,3,4,5,6,7,8,9,10]
+					}
+				},
+				methods:{
+					zhifu(){
+						this.img2=true;
+						this.img1=false;
+					},
+					weixin(){
+						this.img2=false;
+						this.img1=true;
+					},
+					out(){
+						if(this.x){
+							this.x=false;
+						}else{
+							if(this.data.no!=""){
+								this.x=true;
+							}else{
+								alert("未选择收银对象");
+							}
+						}
+						
+					},
+					guanbi(i){
+						this.xx=i;
+					},
+					dayin(){
+						var str = "";
+						for(aa in this.data){
+							str+= aa + "=" + this.data[aa]+"&";
+							
+						}
+						console.log(str);
+						location.href="xiaopiao.html?"+str;
+					},
+					tables(i){
+						this.tab=i;
+					},
+					daxxx(){
+						this.xxx=true;
+					},
+					guanxxx(){
+						this.xxx=false;
+					},
+					reset(){
+						this.bill={};
+					},
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find",
+							type:"post",
+							data:that.bill,
+							success:function(result){
+								that.list=result;
+							}
+						});
+					},
+					find2(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find2",
+							type:"post",
+							success:function(result){
+								that.danjuType=result;
+							}
+						});
+					},
+					find3(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find3",
+							type:"post",
+							success:function(result){
+								that.list3=result;
+							}
+						});
+					},
+					find4(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find4",
+							type:"post",
+							success:function(result){
+								that.list4=result;
+							}
+						});
+					},
+					find5(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/find5",
+							type:"post",
+							success:function(result){
+								that.list5=result;
+							}
+						});
+					},
+					find6(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/findF",
+							type:"post",
+							success:function(result){
+								that.list6=result;
+							}
+						});
+					},
+					givemoney(item){
+						this.data.price=item.amount;
+						this.data.yugujine=item.yugujine;
+						this.data.jiashuijin=this.data.yugujine*this.data.shuilu/100;
+						this.data.sum=this.data.yugujine+this.data.price-this.data.moweisu;
+						this.data.no=item.no;
+						for(aa in item){
+							this.data[aa] = item[aa];
+						}
+						console.log(this.data);
+					},
+					sel(item){
+						if(this.f){
+							this.f=false;
+						}else{
+							this.ff=item;
+							this.f=true;
+						}
+					},
+					gm(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/givemoney",
+							type:"post",
+							data:that.data,
+							success:function(result){
+								if(result==1){
+									alert("成功");
+//									location.href="jiesuanzhonxin.html";
+									that.guanbi(true);
+								}
+							}
+						});
+					},
+					export1(){
+						let that=this;
+						let path="http://127.0.0.1:8080/repairBill/downloadExcel?"
+						for(aa in this.bill){
+							path+= aa + "=" + this.bill[aa]+"&";
+							
+						}
+						location.href=path;
+					},
+	/* 				zhifubao(){
+						alert(11);
+						let that =this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/order/alipay",
+							type:"post",
+							data:that.data,
+							dataType:"json",
+							success:function(result){
+								
+							}
+						});
+					} */
+				},
+				created(){
+					this.find();
+					this.find2();
+					this.find3();
+					this.find4();
+					this.find5();
+					this.find6();
+				},
+				watch:{
+					ids(){
+						let that=this;
+						this.bill['ids']=this.ids;
+						console.log(this.bill);
+						var json=JSON.stringify(this.ids);
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/findxx",
+							type:"post",
+							data:json,
+							contentType: 'application/json;charset=UTF-8',
+							success:function(result){
+								that.list=result;
+							}
+						});
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
