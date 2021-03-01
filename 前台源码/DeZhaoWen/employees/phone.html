@@ -208,10 +208,10 @@
 			</div>
 			<div class="row1">
 				<div style="color: #686868;font-size:18px;">
-					<div class="col-md-8" @click="show"><span id="yes">门店选择</span></div>
-					<div class="col-md-1" @click="update()">保存</div>
-					<div class="col-md-1" @click="show"><span id="yes1">查询</span></div>
-					<div class="col-md-1" @click="daochu()">导出</div>
+					<div class="col-md-8" @click="show"><img src="../img/1.png" /><span id="yes">门店选择</span></div>
+					<div class="col-md-1" @click="update()"><img src="../img/1.png" />保存</div>
+					<div class="col-md-1" @click="show"><img src="../img/1.png" /><span id="yes1">查询</span></div>
+					<div class="col-md-1" @click="daochu()"><img src="../img/1.png" />导出</div>
 				</div>
 				<div class="show1">
 					<table class="table table-bordered">
@@ -227,7 +227,7 @@
 						</tr>
 						<tr v-for="list in taffsdata" class="koko">
 							<td style="background-color: #D6D6CE;"></td>
-							<td v-if="list.bu">{{list.bu.bname}}</td>
+							<td v-if="list.bu">{{list.bu?list.bu.bname:''}}</td>
 							<td v-else></td>
 							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yid"></td>
 							<td><input type="text" style="border:0px;" v-model="list.yname"></td>
@@ -254,8 +254,8 @@
 					</button>
 					<div style="color: #686868;font-size:18px;" class="col-md-10">
 						<div class="col-md-6"></div>
-						<div class="col-md-3" @click="quan"><img src="img/a4efaa29e1e53466ce4e2bfbab02c0a.png" />全部选择</div>
-						<div class="col-md-3" @click="qu"><img src="img/cec08826e6c65a5c150f9ea106feb36.png" />全部取消</div>
+						<div class="col-md-3" @click="quan"><img src="../img/1.png" />全部选择</div>
+						<div class="col-md-3" @click="qu"><img src="../img/1.png" />全部取消</div>
 					</div>
 				</div>
 				<div class="shows" style="height: 480px;">
@@ -429,7 +429,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal" id="myModal3" data-backdrop>
+			<!--<div class="modal" id="myModal3" data-backdrop>
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
 						<span class="close" data-dismiss="modal">&times;</span>
@@ -473,7 +473,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -521,7 +521,8 @@
 						id: 0,
 						shu: [],
 						names: "",
-						namess:""
+						namess:"",
+						selected:""
 					}
 				},
 				methods: {
@@ -564,7 +565,7 @@
 					findByAll() {
 						var that = this;
 						$.ajax({
-							url: "http://127.0.0.1:8080/zuzhijiegoubiao/find",
+							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/findsd",
 							type: "post",
 							data: {
 								name: that.namess
@@ -627,34 +628,34 @@
 					daochu() {
 						window.location.href = "http://127.0.0.1:8080/staffData/downloadExcel";
 					},
-					lizhiB() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhib",
-							type: "post",
-							dataType: "json",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.post = result;
-							}
-						});
-					},
-					lizhiB1() {
-						var that = this;
-						$.ajax({
-							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhibu",
-							type: "post",
-							dataType: "json",
-							xhrFields: {
-								withCredentials: true
-							},
-							success: function(result) {
-								that.post1 = result;
-							}
-						});
-					},
+//					lizhiB() {
+//						var that = this;
+//						$.ajax({
+//							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhib",
+//							type: "post",
+//							dataType: "json",
+//							xhrFields: {
+//								withCredentials: true
+//							},
+//							success: function(result) {
+//								that.post = result;
+//							}
+//						});
+//					},
+//					lizhiB1() {
+//						var that = this;
+//						$.ajax({
+//							url: "http://127.0.0.1:8080/lizhiyuanyingbiao/lizhibu",
+//							type: "post",
+//							dataType: "json",
+//							xhrFields: {
+//								withCredentials: true
+//							},
+//							success: function(result) {
+//								that.post1 = result;
+//							}
+//						});
+//					},
 					lizhibb(id) {
 						var that = this;
 						that.id = id;
@@ -790,8 +791,8 @@
 				created() {
 					this.find();
 					this.findByAll();
-					this.lizhiB();
-					this.lizhiB1();
+//					this.lizhiB();
+//					this.lizhiB1();
 					this.query1();
 					this.query2();
 					this.query3();

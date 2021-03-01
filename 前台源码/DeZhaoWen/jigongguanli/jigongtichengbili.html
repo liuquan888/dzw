@@ -94,9 +94,9 @@
 						<input class="form-control" id="ipt4" v-model="mechaniccommission.nightoutthestation"/>
 					</div>
 					<div class="form-group" id="div1">
-						<a class="btn btn-default" @click="insert">增加</a>
-						<a class="btn btn-default" @click="remove">删除</a>
-						<a class="btn btn-default" @click="update">保存</a>
+						<button class="btn btn-default" @click="insert">增加</button>
+						<button class="btn btn-default" @click="remove">删除</button>
+						<button class="btn btn-default" @click="update">保存</button>
 					</div>
 				</form>
 				
@@ -112,12 +112,12 @@
 						<td>站外晚上</td>
 					</tr>
 					<tr v-for="item in list" @click="findById(item.typeid)">
-						<td class="pintr2">{{item.typeid}}</td>
-						<td class="pintr2">{{item.typename}}</td>
-						<td class="pintr2">{{item.dayinthestation}}</td>
-						<td class="pintr2">{{item.nightinthestation}}</td>
-						<td class="pintr2">{{item.dayoutthestation}}</td>
-						<td class="pintr2">{{item.nightoutthestation}}</td>
+						<td>{{item.typeid}}</td>
+						<td>{{item.typename}}</td>
+						<td>{{item.dayinthestation}}</td>
+						<td>{{item.nightinthestation}}</td>
+						<td>{{item.dayoutthestation}}</td>
+						<td>{{item.nightoutthestation}}</td>
 					</tr>
 				</table>
 			</div>
@@ -201,10 +201,6 @@
 					this.find();
 				}
 			});
-			$(document).on('click','.pintr2',function(){
-				$(".pintr2").css("background","#ffffff")
-				$(this).css("background","sandybrown")
-			})
 		</script>
 	</body>
 </html>

@@ -225,10 +225,17 @@
 					<div class="col-sm-3">
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						
+<<<<<<< HEAD
 						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoods">增加</a> 
 						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoods">修改</a> 
 						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> 
 						<img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoods">查询</a> 
+=======
+						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo" v-perms="'system:user:add'">增加</a> 
+						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" class="butt1" @click="updategoodsmo" v-perms="'system:user:update'">修改</a> 
+						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer" v-perms="'system:user:fs'">删除</a> 
+						<img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoodsmo">查询</a> 
+>>>>>>> bd8b148776cc695ebe1b2585d175a79c76413cd3
 					</div>
 					<div class="col-sm-9">
 						<img src="../zenglianjun/img/捕获11.PNG" width="2%"><a href="javascript:void(0)">导出</a> 
@@ -1259,7 +1266,8 @@
 		
 <script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/vue.js"></script>		
+<script src="../js/vue.js"></script>
+<script src="../js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 <script>
 	
 	
