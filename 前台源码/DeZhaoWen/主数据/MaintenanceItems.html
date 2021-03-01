@@ -160,7 +160,7 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">保险价</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">备注</td>
 						</tr>
-						<tr class="pintr2" v-for="item in mainlist" @click="mainclick(item)">
+						<tr class="pintr2" v-for="item in mainlist" @dblclick="danjiquzhi(item)" @click="mainclick(item)">
 							<td class="item"></td>
 							<td v-if="item.service">{{item.service.serName}}</td>
 							<td>{{item.mid}}</td>
@@ -522,6 +522,7 @@
 	
 	
 	var BaseUrl="http://127.0.0.1:8080/";
+					var clickTimer = null;
 	
 	new Vue({
 		el:"#ctn",
@@ -559,12 +560,29 @@
 				],
 				mult:null,
 				co:0,
-				
+				weixduixe1:{},
 				maindimtext:null,
+				data:{}
 			}
 		},
 		methods:{
-			
+			open(){
+				var url=window.location.search;
+				this.data=this.getQueryString(url);
+			},
+			getQueryString(name) {
+				var data = name.slice(1);
+				data = data.split("&");
+				var dataObj = {};
+				data.forEach(item=>{
+					var dataObj1 = item.split("=");
+					for(var i = 0;i<dataObj1.length;i++){
+						dataObj[dataObj1[i]] = decodeURIComponent(dataObj1[i+1]);
+						break;
+					}
+				})
+				return dataObj;
+			},
 			maindim(){
 				if(this.maindimtext==null){
 					this.maindimtext='975e65r45a4454a4d52s8a452d57';
@@ -682,9 +700,24 @@
 			
 			
 			mainclick(item){
-				this.maininit=item
+				this.maininit=item;
+				if (clickTimer) {
+					window.clearTimeout(clickTimer);
+					clickTimer = null;
+				}
+				clickTimer = window.setTimeout(function() {
+				}, 300);
 			},
-			
+			danjiquzhi(item){
+				if (clickTimer) {
+					window.clearTimeout(clickTimer);
+					clickTimer = null;
+				}
+				this.weixduixe1=item;
+				console.log(this.weixduixe1)
+				sessionStorage.setItem("wexjih",JSON.stringify(this.weixduixe1));
+				location.href="http://127.0.0.1:8848/DeZhaoWen/zenglianjun/html/maintenance.html?"+this.data.action;
+			},
 			updatemainmo(){
 				this.$set(this.main,"mId",this.maininit.mid);
 				this.$set(this.main,"mName",this.maininit.mname);
@@ -889,6 +922,7 @@
 			
 		},
 		created(){
+			this.open();
 			this.findgong();
 			this.findmenu();
 			this.findmainlist([],[]);
