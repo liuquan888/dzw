@@ -79,5 +79,7 @@
         UPDATE `staff_data` SET `reserved6`=2,`reserved7`=#{reserved7},`reserved8`=#{reserved8} WHERE `yid`=#{yid}
     </update>
 
-
+    <update id="xiugai">
+        UPDATE `staff_data` SET `reserved1`="" WHERE `yid`=#{id}
+    </update>
 </mapper>

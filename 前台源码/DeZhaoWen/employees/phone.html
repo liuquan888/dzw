@@ -217,7 +217,6 @@
 					<table class="table table-bordered">
 						<tr style="background-color:#39CEDE;">
 							<td width="70px"></td>
-							<td>部门</td>
 							<td>员工编号</td>
 							<td>姓名</td>
 							<td>分机/短号</td>
@@ -227,14 +226,13 @@
 						</tr>
 						<tr v-for="list in taffsdata" class="koko">
 							<td style="background-color: #D6D6CE;"></td>
-							<td v-if="list.bu">{{list.bu?list.bu.bname:''}}</td>
 							<td v-else></td>
 							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yid"></td>
 							<td><input type="text" style="border:0px;" v-model="list.yname"></td>
 							<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
-							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yphone"></td>
-							<td><input type="text" style="border:0px;" v-model="list.yphone"></td>
-							<td><input type="text" style="border:0px;" v-model="list.reserved1"></td>
+							<td><input type="text" style="border:0px;width: 100px;" v-model="list.yjphone"></td>
+							<td><input type="text" style="border:0px;" v-model="list.yphonenumber"></td>
+							<td><input type="text" style="border:0px;" v-model="list.email"></td>
 						</tr>
 					</table>
 				</div>
@@ -626,7 +624,7 @@
 						}
 					},
 					daochu() {
-						window.location.href = "http://127.0.0.1:8080/staffData/downloadExcel";
+						window.location.href="http://127.0.0.1:8080/staffData/daochu";
 					},
 //					lizhiB() {
 //						var that = this;

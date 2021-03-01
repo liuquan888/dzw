@@ -309,10 +309,10 @@
 					<h3 id="h3">组机构定义</h3>
 				</div>
 				<div class="col-md-3 " id="l1">
-					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机">
+					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机" v-model="names">
 				</div>
 				<div class="col-md-2 a5">
-					<button type="submit" class="btn btn-default" id="a1">搜索</button>
+					<button type="submit" class="btn btn-default" id="a1" @click="query()">搜索</button>
 					<button type="submit" class="btn btn-default" id="b1">关闭</button>
 				</div>
 			</div>
@@ -325,7 +325,7 @@
 					<div class="col-md-1" @click="jia1()"><a href="#myModal2" data-toggle="modal"><img src="../img/2.png" class="c1">修改员工</a></div>
 					<div class="col-md-1" @click="removeId()"><img src="../img/3.png" class="c1">删除</div>
 					<div class="col-md-1"><a href="#myModal7" data-toggle="modal"><img src="../img/4.png" class="c1">查询</a></div>
-					<div class="col-md-1"><img src="../img/5.png" class="c1">置空密码</div>
+					<div class="col-md-1" @click="emptypass"><img src="../img/5.png" class="c1">置空密码</div>
 					<div class="col-md-1" @click="daochu"><img src="../img/6.png" class="c1">导出</div>
 					<div class="col-md-1"><a href="#myModal6" data-toggle="modal"><img src="../img/7.png" class="c1">导入</a></div>
 					<div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="../img/8.png" class="c1">员工角色</a></div>
@@ -1314,6 +1314,7 @@
 			el:"#ctn",
 			data(){
 				return{
+					names:"",
 					jia:0,
 					y:{},
 					xs:true,
@@ -1344,6 +1345,19 @@
 				}
 			},
 			methods:{
+				emptypass(){
+					var that=this;
+					$.ajax({
+						url:"http://127.0.0.1:8080/staffData/emptypass",
+						data:{
+							id:that.id
+						},
+						type:"post",
+						success:function(result){
+							alert("置空成功!");
+						}
+					});
+				},
 				query2(){
 					var that=this;
 					$.ajax({
@@ -1358,7 +1372,8 @@
 				add(){
 					this.y.reserved5=this.dui.zid;
 					this.y.gid=11;
-					this.y.bid=this.dui.zid;
+					this.y.bid=2;
+					this.y.reserved6=1;
 					var that=this;
 					if(this.jia==0){
 						$.ajax({
@@ -1370,7 +1385,6 @@
 							}
 						});
 					}else{
-						console.log(that.y)
 						$.ajax({
 							url:"http://127.0.0.1:8080/staffData/updates",
 							data:JSON.stringify(that.y),
@@ -1589,7 +1603,10 @@
 				query(){
 					var that=this;
 					$.ajax({
-						url:"http://127.0.0.1:8080/staffData/query",
+						url:"http://127.0.0.1:8080/staffData/find",
+						data:{
+							name:that.names
+						},
 						type:"post",
 						success:function(result){
 							that.staff=result;

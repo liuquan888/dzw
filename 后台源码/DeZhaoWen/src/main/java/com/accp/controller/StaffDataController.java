@@ -4,6 +4,7 @@ package com.accp.controller;
 import com.accp.domain.StaffData;
 import com.accp.service.IDeparmentSurfaceService;
 import com.accp.service.IStaffDataService;
+import com.accp.service.impl.StaffDataServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.poi.ss.usermodel.Cell;
@@ -40,6 +41,8 @@ import java.util.List;
 public class StaffDataController{
 
     @Autowired
+    StaffDataServiceImpl s;
+    @Autowired
     IStaffDataService sdService;
     @Autowired
     IDeparmentSurfaceService bservice;
@@ -47,6 +50,11 @@ public class StaffDataController{
     @RequestMapping("/insert")
     public boolean insert(StaffData s){
         return sdService.save(s);
+    }
+
+    @RequestMapping("/emptypass")
+    public boolean remove(Integer id){
+        return s.gai(id);
     }
 
     @RequestMapping("/find")
