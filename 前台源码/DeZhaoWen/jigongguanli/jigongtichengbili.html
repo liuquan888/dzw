@@ -163,7 +163,6 @@
 					},
 					remove(){
 						let that=this;
-						alert(this.typeid);
 						$.ajax({
 							url:"http://127.0.0.1:8080/mechaniccommission/delete/"+that.typeid,
 							type:"post",
@@ -180,7 +179,7 @@
 							data:that.mechaniccommission,
 							type:"post",
 							success:function(result){
-								alert("删除成功");
+								alert("新增成功");
 								that.find();
 							}
 						});
@@ -192,7 +191,7 @@
 							data:that.mechaniccommission,
 							type:"post",
 							success:function(result){
-								alert("删除成功");
+								alert("修改成功");
 								that.find();
 								
 							}
