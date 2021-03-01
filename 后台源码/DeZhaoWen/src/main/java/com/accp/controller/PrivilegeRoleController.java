@@ -44,11 +44,9 @@ public class PrivilegeRoleController {
 //           listDzw.add(dzw);
 //        }
 //        return listDzw;
-
         QueryWrapper qw=new QueryWrapper<PrivilegeRole>();
         qw.eq("rid",roleId);
         List<PrivilegeRole> list=privilegeRoleService.list(qw);
-
         List<DzwPrivilege> list2=new ArrayList();
         for (PrivilegeRole pr:list){
             DzwPrivilege dzw = dzwPrivilegeService.getById(pr.getPid());
@@ -57,10 +55,7 @@ public class PrivilegeRoleController {
                 qq.eq("pvg_type",2);
                List<DzwPrivilege> list3 =dzwPrivilegeService.list(qq);
                for (DzwPrivilege dp:list3){
-
                    if(dzw.getPid()==dp.getPvgid()){
-
-
                        list2.add(dzw);
                        System.out.println(dp.getPvgName()+"的子级"+dzw.getPvgName());
                    }else{
@@ -70,8 +65,6 @@ public class PrivilegeRoleController {
                }
             }
         }
-
-
         return list2;
     }
 }

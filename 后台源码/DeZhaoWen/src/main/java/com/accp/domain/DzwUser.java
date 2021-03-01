@@ -76,6 +76,8 @@ public class DzwUser extends Model<DzwUser> {
     @ApiModelProperty(value = "预留字段")
     private String reserved5;
 
+    @ApiModelProperty(value="")
+
 
     public static final String USER_ID = "user_id";
 
