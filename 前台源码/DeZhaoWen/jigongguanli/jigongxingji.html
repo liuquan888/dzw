@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<style type="text/css">
+			html,body{
+				margin: 0px;
+				padding: 0px;
+			}
+			.gb{
+				margin-top: 10px;
+			}
+			#div{
+				background-color: #F7FFFF;
+			}
+			.frm{
+				height: 100px;
+				padding-left: 20px;
+				padding-top: 50px;
+				background-color: #F7F7F7;
+			}
+			.lbl{
+				font-size: 17px;
+				color: deepskyblue;
+			}
+			#ipt1{
+				width: 120px;
+			}
+			#ipt2{
+				width: 120px;
+			}
+			#ipt3{
+				width: 120px;
+			}
+			#ipt4{
+				width: 120px;
+			}
+			#div1{
+				margin-left: 500px;
+			}
+			#tab{
+				width: 100%;
+				height: 520px;
+			}
+			#table1 tr td{
+				padding-left: 20px;
+				width: 120px;
+				height: 35px;
+				border: 1px solid #E3E3E3;
+				line-height: 30px;
+			}
+			#tr1 td{
+				color: white;
+				background-color: #39CEDE;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="ctn" class="container-fluid">
+			<div id="div" class="row">
+				<span class="col-md-11">
+					<h2>技工星级</h2>
+				</span>
+				<span class="col-md-1 gb">
+					<button class="btn btn-default">关闭</button>
+				</span>
+			</div>
+			<div class="row">
+				<form class="form-inline frm">
+					<div class="form-group">
+						<label class="lbl">等级编码</label>
+						<input class="form-control" id="ipt1" v-model="mechanicstar.code"/>
+					</div>
+					<div class="form-group">
+						<label class="lbl">星级</label>
+						<input class="form-control" id="ipt2" v-model="mechanicstar.star"/>
+					</div>
+					<div class="form-group">
+						<label class="lbl">等级</label>
+						<input class="form-control" id="ipt3" v-model="mechanicstar.grade"/>
+					</div>
+					<div class="form-group">
+						<label class="lbl">提成权重</label>
+						<input class="form-control" id="ipt4" v-model="mechanicstar.commissionweight"/>
+					</div>
+					<div class="form-group" id="div1">
+						<button class="btn btn-default" @click="insert">增加</button>
+						<button class="btn btn-default" @click="remove">删除</button>
+						<button class="btn btn-default" @click="update">保存</button>
+					</div>
+				</form>
+				
+			</div>
+			<div id="tab">
+				<table id="table1">
+					<tr id="tr1">
+						<td>编码</td>
+						<td>星级</td>
+						<td>等级</td>
+						<td>提成权重</td>
+					</tr>
+					<tr v-for="item in list" @click="findById(item.code)">
+						<td>{{item.code}}</td>
+						<td>{{item.star}}</td>
+						<td>{{item.grade}}</td>
+						<td>{{item.commissionweight}}</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<span>合计：1条记录</span>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript">
+			new Vue({
+				el:"#ctn",
+				data(){
+					return{
+						list:{},
+						code:"",
+						mechanicstar:{}
+					}
+				},
+				methods:{
+					find(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/find",
+							type:"post",
+							success:function(result){
+								that.list=result;
+							}
+						});
+					},
+					findById(id){
+						this.code=id;
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/findById/"+that.code,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								that.mechanicstar=result;
+							}
+						});
+					},
+					remove(){
+						let that=this;
+						alert(this.code);
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/delete/"+that.code,
+							type:"post",
+							success:function(result){
+								if(result==true){
+									alert("删除成功");
+								}
+							}
+						});
+					},
+					insert(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/insert",
+							data:that.mechanicstar,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								
+							}
+						});
+					},
+					update(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/mechanicstar/update",
+							data:that.mechanicstar,
+							type:"post",
+							success:function(result){
+								console.log(result);
+								
+							}
+						});
+					}
+				},
+				created(){
+					this.find();
+				}
+			});
+		</script>
+	</body>
+</html>

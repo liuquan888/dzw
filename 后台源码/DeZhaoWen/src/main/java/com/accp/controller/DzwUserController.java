@@ -10,21 +10,14 @@ import com.accp.service.impl.DzwUserServiceImpl;
 import com.accp.service.impl.PrivilegeRoleServiceImpl;
 import com.accp.service.impl.RoleUserServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.DirectFieldAccessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.net.ssl.HandshakeCompletedEvent;
-import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.security.Principal;
 import java.util.*;
 
 /**
@@ -120,18 +113,50 @@ public class DzwUserController{
             for (DzwPrivilege d:list2){
                 ids.add(d.getPvgid());
             }
+
+            //根据左侧最上级meunID查询它的下级菜单
             QueryWrapper q=new QueryWrapper<DzwPrivilege>();
             q.in("pid",ids);
             List<DzwPrivilege> list3=dpser.list(q);
+
+//            for (PrivilegeRole pr:list){
+//                for (DzwPrivilege dp:list3){
+//                    if(pr.getPid()=){
+//
+//                    }
+//                }
+//            }
+
+            //循环左侧最上级meun
             for (DzwPrivilege dd:list2) {
+
+                //创建list4
                 List<DzwPrivilege> list4=new ArrayList<DzwPrivilege>();
+
+                //循环下级菜单
                 for (DzwPrivilege ddd:list3){
+
+                    //判断下级菜单的父级与之是否对应
                     if(dd.getPvgid()==ddd.getPid()){
-                        list4.add(ddd);
+
+                        for (PrivilegeRole pr:list){
+                            System.out.println(pr.getPid()+"=="+ddd.getPid());
+                            if(pr.getPid()==ddd.getPvgid()){
+                                System.out.println("我被干了"+ddd.getPvgName());
+                                list4.add(ddd);
+                            }
+                        }
+
+
                     }
+
+
                 }
                 dd.setChildren(list4);
             }
+
+
+
         }
         return list2;
     }
@@ -139,6 +164,20 @@ public class DzwUserController{
     @RequestMapping("select")
     public List<DzwUser> select(){
        return duser.list();
+    }
+
+    @RequestMapping("query")
+    public DzwUser query(Integer userId){
+        QueryWrapper<DzwUser> user=new QueryWrapper<>();
+        user.lambda().eq(DzwUser::getUserId,userId);
+        return duser.list(user).get(0);
+    }
+
+    @RequestMapping("update")
+    public boolean update(DzwUser user){
+        QueryWrapper<DzwUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id",user.getUserId());
+        return user.update(queryWrapper);
     }
 }
 
