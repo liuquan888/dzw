@@ -137,9 +137,7 @@ public class CarheetController {
                 if(coll.getCarInfo().getEnginenum()!=null&&coll.getCarInfo().getEnginenum().length()>0) {
                    queryWrapper.eq("enginenum",coll.getCarInfo().getEnginenum());
                 }
-                if(coll.getCarInfo().getMlicompanyid()!=null&&coll.getCarInfo().getMlicompanyid()>0) {
-                    queryWrapper.eq("mlicompanyid()",coll.getCarInfo().getMlicompanyid());
-                }
+
                 if(coll.getCarInfo().getEngineid()!=null&&coll.getCarInfo().getEngineid()>0) {
                     queryWrapper.eq("engineid",coll.getCarInfo().getEngineid());
                 }
