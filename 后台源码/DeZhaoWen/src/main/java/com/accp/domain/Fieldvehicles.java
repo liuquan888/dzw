@@ -1,6 +1,7 @@
 package com.accp.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -53,6 +54,9 @@ public class Fieldvehicles extends Model<Fieldvehicles> {
 
     @ApiModelProperty(value = "预留字段")
     private String reserved3;
+
+    @TableField(exist = false)
+    private Menu menu;
 
 
     public static final String ID = "id";

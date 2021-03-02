@@ -130,8 +130,18 @@
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
+		<script src="js/constant.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/api/menu.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			
+				Vue.directive("view",{
+				bind(el,binding,vnode,oldVnode){
+				},
+				inserted(el,binding,vnode,oldVnode){
+				},
+				update(el,binding,vnode,oldVnode){
+				}
+			})
 			Vue.component("tree",{
 				props:["list"],
 				template: `
@@ -159,7 +169,8 @@
 						tobu:[],
 						x:true,
 						leftx:true,
-						user:{}
+						user:{},
+						user2:{}
 					 }
 				},
 				methods:{
@@ -263,6 +274,11 @@
 					this.run();
 					this.find();
 					this.find2(1);
+					var user=JSON.parse(sessionStorage.getItem("user"));
+					console.log(user.reserved1);
+						menuApi.findPerms(parseInt(user.reserved1),function(result){
+							data.perms = result;
+						});
 				},
 				watch:{
 					

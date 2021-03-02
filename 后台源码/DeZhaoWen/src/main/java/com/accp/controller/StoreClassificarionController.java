@@ -1,9 +1,14 @@
 package com.accp.controller;
 
 
+import com.accp.domain.StoreClassificarion;
+import com.accp.service.impl.StoreClassificarionServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,5 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/storeClassificarion")
 public class StoreClassificarionController {
 
+    @Autowired
+    StoreClassificarionServiceImpl service;
+
+    @RequestMapping("/find")
+    public List<StoreClassificarion> find(){
+        return service.list();
+    }
 }
 

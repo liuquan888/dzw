@@ -71,6 +71,8 @@
 <script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 <script type="text/javascript" src="js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="js/vue.js" ></script>
+<script src="js/api/menu.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/constant.js" type="text/javascript" charset="utf-8"></script>
 <script>
 	var baseUrl = "http://127.0.0.1:8080/";
 	var user = sessionStorage.getItem("user");
@@ -90,6 +92,7 @@
 					type:"post",
 					dataType:"json",
 					success:function(result){
+						
 						if(result!=null){
 							sessionStorage.setItem("user",JSON.stringify(result));
 							window.location.href="index.html";
@@ -102,6 +105,12 @@
 					}
 				});
 			}
+		},
+		created() {
+			var that = this;
+			/* menuApi.findMenuByUserId(function(result){
+				that.menu = result;
+			}); */
 		}
 	})
 	

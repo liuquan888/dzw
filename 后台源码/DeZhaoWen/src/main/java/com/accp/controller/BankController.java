@@ -2,6 +2,7 @@ package com.accp.controller;
 
 
 import com.accp.domain.Bank;
+import com.accp.domain.Nation;
 import com.accp.service.impl.BankServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,5 +37,9 @@ public class BankController {
         return service.list();
     }
 
+    @RequestMapping("/find")
+    public List<Bank> find(){
+        return service.list();
+    }
 }
 
