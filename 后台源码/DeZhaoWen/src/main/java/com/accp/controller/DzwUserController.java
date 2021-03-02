@@ -147,9 +147,7 @@ public class DzwUserController{
                     if(dd.getPvgid()==ddd.getPid()){
 
                         for (PrivilegeRole pr:list){
-                            System.out.println(pr.getPid()+"=="+ddd.getPid());
                             if(pr.getPid()==ddd.getPvgid()){
-                                System.out.println("我被干了"+ddd.getPvgName());
                                 list4.add(ddd);
                             }
                         }
@@ -170,7 +168,7 @@ public class DzwUserController{
 
     @RequestMapping("select")
     public List<DzwUser> select(){
-       return duser.list();
+        return duser.list();
     }
 
     @RequestMapping("query")
@@ -185,6 +183,12 @@ public class DzwUserController{
         QueryWrapper<DzwUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",user.getUserId());
         return user.update(queryWrapper);
+    }
+
+    @RequestMapping
+    public String add(DzwUser user){
+      boolean bool=  duser.save(user);
+        return bool?"0000":"1111";
     }
 }
 

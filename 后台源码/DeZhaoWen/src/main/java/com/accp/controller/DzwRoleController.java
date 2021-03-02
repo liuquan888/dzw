@@ -44,7 +44,7 @@ public class DzwRoleController {
             privilegeRole.setRid(roleId);
             privilegeRoleService.save(privilegeRole);
         }
-        return "授权成功";
+        return "0000";
     }
 }
 

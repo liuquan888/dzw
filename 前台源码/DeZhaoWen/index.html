@@ -174,13 +174,18 @@
 				},
 				methods:{
 					 huan(item) {
+						 this.tabs.forEach(a=>{
+						 	if(a.pvgName==item.pvgName){
+						 		return;
+						 	}
+							return;
+						 });
 						if(item.children && item.children.length>0){
 							return;
 						}
-						
-						this.tabs.forEach(item=>{
-							item.ac=false;
-						})
+						this.tabs.forEach(a=>{
+							a.ac=false;
+						});
 						this.$set(item,"ac",true);
 						var filterItem = this.tabs.some(sitem=>sitem.pvgName==item.pvgName);
 						if (filterItem && filterItem.length>0) {
