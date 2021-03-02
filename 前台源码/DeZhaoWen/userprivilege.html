@@ -21,8 +21,6 @@
 					<td>
 						<span class="btn btn-danger" @click="remove(item)">删除</span>
 						<span class="btn btn-success"  @click="auth(item)">授权</span>
-						<span class="btn btn-primary"  @click="compile(item)">编辑</span>
-
 					</td>
 				</tr>
 			</table>
@@ -155,7 +153,7 @@
 						menuList=result.map(item=>{
 							return {
 								id:item.roleId+"",
-								parent:'#',
+								parent:item.roleId==0?"#":item.roleId,
 								text:item.roleName,
 								state:{
 									selected:false
@@ -174,8 +172,7 @@
 						list:[],
 						menuList:[],
 						list:[],
-						userId:"",
-						user:{}
+						roleId:"",
 					}
 				},
 				methods:{
@@ -202,16 +199,15 @@
 					 	$('#myTree').jstree(true).deselect_all();
 						let that=this;
 						//根据角色获取到对应的权限列表
-						menuApi.findUser(item.userId,function(result){
-							that.userId=item.userId;
-						 	//只要集合中的编号作为选中的唯一表示
-							let selecedSet = result.filter(item=>item.status=="0000").map(item=>item.roleId);
+						menuApi.findUser(item.roleId,function(result){
+							that.roleId=item.roleId;
+							//只要集合中的编号作为选中的唯一表示
+							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
 							//调用jstree的选中方法，可以传入集合
-							$('#myTree').jstree(true).select_node(selecedSet); 
+							$('#myTree').jstree(true).select_node(selecedSet);
 						});
-						// //打开模态框
+						//打开模态框
 						$("#authModal").modal("show");
-						
 					},
 					menu(){
 						var selected = $("#myTree").jstree(true).get_selected();

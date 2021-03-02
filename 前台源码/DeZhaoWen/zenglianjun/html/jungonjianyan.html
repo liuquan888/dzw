@@ -63,6 +63,7 @@
 										<td>维修单号</td>
 										<td>单据类型</td>
 										<td>业务类型</td>
+										<td>施工班次</td>
 										<td>车主姓名</td>
 										<td>车牌号</td>
 										<td>车型</td>
@@ -77,16 +78,17 @@
 										<td>处罚金额</td>
 										
 									</tr>
-									<tr v-for="item in list">
+									<tr>
 										<td class="dygtd"></td>
-										<td>{{item.no}}</td>
-										<td>{{item.dtype}}</td>
-										<td>{{item.yewulx}}</td>
+										<td>维修单号</td>
+										<td>单据类型</td>
+										<td>业务类型</td>
+										<td>施工班次</td>
 										<td>车主姓名</td>
-										<td>{{item.chepai}}</td>
-										<td>{{item.chexin}}</td>
-										<td>{{item.chejiaoNo}}</td>
-										<td></td>
+										<td>车牌号</td>
+										<td>车型</td>
+										<td>车架号</td>
+										<td>接车时间</td>
 										<td>预计完工</td>
 										<td>完工时间</td>
 										<td>误工原因</td>
@@ -149,24 +151,24 @@
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车架号</label>
-								<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车辆型号</label>
-								<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车辆品牌</label>
-								<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 							</div></br>
 							<div style="margin-top: 5px;">
 								<div class="form-group" style="margin-left: 5px;">
 									<label for="exampleInputEmail2">发动机号</label>
-									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 180px;">
 									<label for="exampleInputEmail2">发动品牌</label>
-									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 65px;">
 									<label for="exampleInputEmail2"><span class="a">*</span>服务顾问</label>
@@ -179,21 +181,21 @@
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>车主姓名</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 400px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 400px;border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 60px;">
 									<label for="exampleInputEmail2"><span class="a">*</span>驾驶员</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 100px;">
 									<label for="exampleInputEmail2">联系电话</label>
-									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2">进厂里程</label>
-									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 60px;">
 									<label for="exampleInputEmail2">进厂油量</label>
@@ -204,17 +206,17 @@
 										<option>4</option>
 										<option>5</option>
 									</select>
-									<span style="position: relative;left: -40px;">
+									<span style="position: relative;left: -40px;" @click="jcyl">
 										<img src="../img/捕获15.PNG">
 									</span>
 								</div>
 								<div class="form-group" style="margin-left: 33px;">
 									<label for="exampleInputEmail2">上次里程</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 70px;">
 									<label for="exampleInputEmail2">进厂时间</label>
-									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
@@ -227,7 +229,7 @@
 										<option>4</option>
 										<option>5</option>
 									</select>
-									<span style="position: relative;left: -40px;">
+									<span style="position: relative;left: -40px;" @click="tjxw">
 										<img src="../img/捕获15.PNG">
 									</span>
 								</div>
@@ -237,17 +239,17 @@
 										<option>晚上</option>
 										<option>白天</option>
 									</select>
-									<span style="position: relative;left: -40px;">
+									<span style="position: relative;left: -40px;" @click="sgbc">
 										<img src="../img/捕获15.PNG">
 									</span>
 								</div>
 								<div class="form-group" style="margin-left: 46px;">
 									<label for="exampleInputEmail2">接车人</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 55px;">
 									<label for="exampleInputEmail2">预计完工</label>
-									<input type="email" class="form-control"  placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
 									<span style="position: relative;left: -40px;">
 										<img src="../img/捕获15.PNG">
 									</span>
@@ -275,7 +277,7 @@
 								</div>
 								<div class="form-group" style="margin-left: 33px;">
 									<label for="exampleInputEmail2">完工时间</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 100px;">
 									<label for="exampleInputEmail2">上次进厂</label>
@@ -291,17 +293,17 @@
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>预估金额</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 200px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 200px;border: 1px solid #000000;">
 								</div>
 								<div class="form-group" style="margin-left: 55px;">
 									<label for="exampleInputEmail2">接待备注</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 660px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 660px;border: 1px solid #000000;">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2" style="border: 1px solid #000000; width: 100px; height: 50px; text-align: center;line-height: 50px;">报修陈述</label>
-									<input type="email" class="form-control"  placeholder="" style="width: 1000px; height: 50px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 1000px; height: 50px;border: 1px solid #000000;">
 								</div>
 							</div>
 						</form>
@@ -489,34 +491,34 @@
 										</div>
 										<div class="form-group">
 											<label for="exampleInputEmail2">出险时间</label>
-											<input type="email" class="form-control"  placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
 											<span style="margin-left: 280px;position: relative;top: -30px;">
 												<label for="exampleInputEmail2">查勘时间</label>
-												<input type="email" class="form-control"  placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+												<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
 											</span>
 										</div>
 										<div class="form-group" style="margin-top: -60px;">
 											<label for="exampleInputEmail2">报案号</label>
-											<input type="email" class="form-control"  placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
 											<span style="margin-left: 280px;position: relative;top: -30px;">
 												<label for="exampleInputEmail2">被保险人</label>
-												<input type="email" class="form-control"  placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+												<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
 											</span>
 										</div>
 										<div class="form-group" style="margin-top: -60px;">
 											<label for="exampleInputEmail2">协陪员</label>
-											<input type="email" class="form-control"  placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
 											<span style="position: relative;left: 235px;top: -30px;">
 												<img src="../img/捕获15.PNG">
 											</span>
 											<span style="margin-left: 260px;position: relative;top: -30px;">
 												<label for="exampleInputEmail2">保险单号</label>
-												<input type="email" class="form-control"  placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+												<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
 											</span>
 										</div>
 										<div class="form-group" style="margin-top: -60px;">
 											<label for="exampleInputEmail2">定损备注</label>
-											<input type="email" class="form-control"  placeholder="" style="width:480px;margin-left: 60px;margin-top: -30px;">				
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:480px;margin-left: 60px;margin-top: -30px;">				
 										</div>
 									</div>
 								</font>
@@ -538,30 +540,14 @@
 					new Vue({
 					el: "#ctn",
 					data() {
-						return {
-							list:[],
-							bill:{}
-						}
+						return {}
 					},
 					methods: {
 							dingsi(){
 								$("#dings").modal("show");
-							},
-							find(){
-								let that=this;
-								$.ajax({
-									url:"http://127.0.0.1:8080/repairBill/find",
-									type:"post",
-									data:that.bill,
-									success:function(result){
-										that.list=result;
-									}
-								});
 							}
 					},
-					created() {
-						
-					}
+					created() {}
 				});
 				
 				

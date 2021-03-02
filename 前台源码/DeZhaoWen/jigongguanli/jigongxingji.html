@@ -144,20 +144,19 @@
 							url:"http://127.0.0.1:8080/mechanicstar/findById/"+that.code,
 							type:"post",
 							success:function(result){
-								console.log(result);
 								that.mechanicstar=result;
 							}
 						});
 					},
 					remove(){
 						let that=this;
-						alert(this.code);
 						$.ajax({
 							url:"http://127.0.0.1:8080/mechanicstar/delete/"+that.code,
 							type:"post",
 							success:function(result){
 								if(result==true){
 									alert("删除成功");
+									that.find();
 								}
 							}
 						});
@@ -169,8 +168,8 @@
 							data:that.mechanicstar,
 							type:"post",
 							success:function(result){
-								console.log(result);
-								
+								alert("新增成功");
+								that.find();
 							}
 						});
 					},
@@ -181,8 +180,8 @@
 							data:that.mechanicstar,
 							type:"post",
 							success:function(result){
-								console.log(result);
-								
+								alert("修改成功");
+								that.find();
 							}
 						});
 					}

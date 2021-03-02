@@ -102,9 +102,10 @@
 				</div>
 				<div id="tt" class="col-md-10" style="margin: 0px; padding: 0px;">
 					<ul class="nav nav-tabs" style="background-color:#294173; margin-left: 0px; width: 100%; padding-left: 0px;">
-						<li v-for="item,index in tabs" :class=" item.ac?'active':''">
-							<a :href="'#'+item.id" data-toggle="tab"  @click="shuan(item)">{{item.pvgName}}</a>
-							<span v-if="index!=0" @click="dd(item,index)" class="del">&times;</span>
+						<li v-for="item,index in tabs" :class=" item.ac?'active':'' " @click="shuan(item)">
+							<a :href="'#'+item.id" data-toggle="tab">{{item.pvgName}}
+								<span v-if="index!=0" @click="dd(index)" class="del">&times;</span>
+							</a>
 						</li>
 					</ul>
 					<div class="tab-content">
@@ -186,26 +187,31 @@
 						this.tabs.forEach(a=>{
 							a.ac=false;
 						});
+					huan(item){
+//						this.leftx=false;
+//						$(".leftguan").css("left","0px");
+//						$(".leftguan").html("▶");
+//						$("#tt").css("width","100%");
+						if(item.children && item.children.length>0){
+							return;
+						}
+						this.tabs.forEach(item=>{
+							item.ac=false;
+						})
 						this.$set(item,"ac",true);
-						var filterItem = this.tabs.some(sitem=>sitem.pvgName==item.pvgName);
-						if (filterItem && filterItem.length>0) {
-							this.$set(filterItem[0], "ac", true);
-						}else{
+						var flag=this.tabs.some(sitem=>sitem.pvgName==item.pvgName);
+						if(!flag){
 							this.tabs.push(item);
 						}
+						
 					},
-					dd(obj,index){
+					dd(index){
 						if(index==this.tabs.length-1)
 						{
-							this.tabs[index-1].ac = true
-
-							this.tabs = JSON.parse(JSON.stringify(this.tabs));
-							this.tabs.splice(index,1);
-							console.log(this.tabs)
-						}else{
-							this.tabs.splice(index,1);
+							this.tabs[index-1].ac=true;
+							console.log(this.tabs[index-1]);
 						}
-
+						this.tabs.splice(index,1);
 					},
 					shuan(item){
 						if(item.children && item.children.length>0){

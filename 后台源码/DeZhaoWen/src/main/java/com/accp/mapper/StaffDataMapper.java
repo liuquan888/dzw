@@ -14,4 +14,6 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface StaffDataMapper extends BaseMapper<StaffData> {
     boolean lizhih(@Param("id") Integer id);
+    boolean lizhixz(StaffData stu);
+    boolean xiugai(Integer id);
 }
