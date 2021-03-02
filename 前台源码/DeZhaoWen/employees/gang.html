@@ -41,6 +41,12 @@
 			.show1 table tr td{
 				text-align:center;
 			}
+			.c1{
+				width:20px;
+				height:15px;
+				margin-top:-2px;
+				margin-right: 4px;
+			}
 		</style>
 	</head>
 	<body>
@@ -52,10 +58,10 @@
 			<div class="row1">
 				<div style="color: #686868;font-size: 18px;">
 					<div class="col-md-8"></div>
-					<div class="col-md-1" @click="add()">增加</div>
-					<div class="col-md-1"><span data-target="#myModal" data-toggle="modal">删除</span></div>
-					<div class="col-md-1" @click="update()">保存</div>
-					<div class="col-md-1">导出</div>
+					<div class="col-md-1" @click="add()"><img src="../img/1.png" class="c1">增加</div>
+					<div class="col-md-1"><span data-target="#myModal" data-toggle="modal"><img src="../img/2.png" class="c1">删除</span></div>
+					<div class="col-md-1" @click="update()"><img src="../img/3.png" class="c1">保存</div>
+					<div class="col-md-1" @click="daochu"><img src="../img/4.png" class="c1">导出</div>
 				</div>
 				<form class="form-inline">
 				  <div class="form-group">
@@ -69,7 +75,7 @@
 				</form>
 				<div class="show1">
 					<table class="table table-bordered">
-					  <tr style="background-color:#39CEDE;">
+					  <tr style="background-color:darkturquoise;color: #fff;">
 					  	<td width="70px"></td>
 					  	<td>岗位编码</td>
 					  	<td>岗位名称</td>
@@ -113,6 +119,9 @@
 						id:1
 					};
 				},methods:{
+					daochu(){
+						window.location.href="http://127.0.0.1:8080/postList/daochu";
+					},
 					query(){
 						var that=this;
 						$.ajax({
