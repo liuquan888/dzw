@@ -1,7 +1,11 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -25,24 +29,32 @@ public class Linkman extends Model<Linkman> {
 
     private static final long serialVersionUID=1L;
 
+    @JsonProperty("lId")
+    @TableId(type = IdType.AUTO)
     @ApiModelProperty(value = "供应商联系人编号")
     private Integer lId;
 
+    @JsonProperty("lPost")
     @ApiModelProperty(value = "供应商联系人职位")
     private String lPost;
 
+    @JsonProperty("lName")
     @ApiModelProperty(value = "供应商联系人姓名")
     private String lName;
 
+    @JsonProperty("lPhone")
     @ApiModelProperty(value = "供应商联系人电话")
     private String lPhone;
 
+    @JsonProperty("lMobile")
     @ApiModelProperty(value = "供应商联系人手机")
     private String lMobile;
 
+    @JsonProperty("lEmile")
     @ApiModelProperty(value = "供应商联系人Emile")
     private String lEmile;
 
+    @JsonProperty("pId")
     @ApiModelProperty(value = "供应商编号")
     private String pId;
 

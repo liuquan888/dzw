@@ -116,7 +116,7 @@ public class Carheet extends Model<Carheet> {
     private String carouttime;
 
     @ApiModelProperty(value = "交强险保险公司id")
-    private Integer mlicompanyid;
+    private String mlicompanyid;
 
     @ApiModelProperty(value = "交强险到期")
     private String mliouttime;
@@ -130,7 +130,7 @@ public class Carheet extends Model<Carheet> {
     private String jq2;
 
     @ApiModelProperty(value = "商业险保险公司id")
-    private Integer cicompanyid;
+    private String cicompanyid;
 
     @ApiModelProperty(value = "商业险到期")
     private String ciouttime;
@@ -178,7 +178,7 @@ public class Carheet extends Model<Carheet> {
     private String reserved3;
 
     @ApiModelProperty(value = "预留字段")
-    private String reserved4;
+    private Integer reserved4;
 
     @ApiModelProperty(value = "车型ID")
     private String reserved5;

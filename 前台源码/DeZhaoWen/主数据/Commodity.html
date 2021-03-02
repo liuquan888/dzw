@@ -226,6 +226,11 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						
 <<<<<<< HEAD
+						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo">增加</a> 
+						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoodsmo">修改</a> 
+						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer">删除</a> 
+=======
+<<<<<<< HEAD
 						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoods">增加</a> 
 						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoods">修改</a> 
 						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> 
@@ -234,11 +239,12 @@
 						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo" v-perms="'system:user:add'">增加</a> 
 						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" class="butt1" @click="updategoodsmo" v-perms="'system:user:update'">修改</a> 
 						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer" v-perms="'system:user:fs'">删除</a> 
+>>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 						<img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoodsmo">查询</a> 
 >>>>>>> bd8b148776cc695ebe1b2585d175a79c76413cd3
 					</div>
 					<div class="col-sm-9">
-						<img src="../zenglianjun/img/捕获11.PNG" width="2%"><a href="javascript:void(0)">导出</a> 
+						<img src="../zenglianjun/img/捕获11.PNG" width="2%"><a href="javascript:void(0)" @click="downloadExcel">导出</a> 
 						<img src="img/111.PNG" width="2%"><a href="javascript:void(0)">照片</a> 
 						<img src="img/112.PNG" width="2%"><a href="javascript:void(0)">条码</a> 
 						<img src="../img/8.png" width="2%"><a href="javascript:void(0)">分类设置</a> 
@@ -265,7 +271,7 @@
 								</span>
 								<ul style="display: none;">
 									<li aid="8" v-for="item2 in item.menuMerchandises" >
-										<span @click="findmerclick(item2)">
+										<span @click="findmerclick(item2)" class="span1">
 											<em class="icoclose2"></em>
 												{{item2.menuName}}
 										</span>
@@ -273,7 +279,7 @@
 											<li aid="10" v-for="item3 in item2.menuMerchandises" @click="findmerclick(item3)">
 												<em class="iconleaf2"></em>
 												<a class="a1" href="javascript:void(0)">
-													<span style="height: 100%;">
+													<span style="height: 100%;" class="span1">
 														{{item3.menuName}}
 													</span>
 												</a>
@@ -413,7 +419,11 @@
 									<span class="va">商品大类</span>
 									<input type="text" name="" id="" value=""  v-model="merchandise.menuMerchandise.menuName" />
 									<a href="javascript:void(0)" style="margin-left: -10px;" @click="broadmo">
+<<<<<<< HEAD
+										<img class="broadid" src="../zenglianjun/img/三角形.PNG" width="35px" />
+=======
 										<img src="../zenglianjun/img/三角形.PNG" width="35px" />
+>>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 									</a>
 								</p>
 								
@@ -544,7 +554,11 @@
 									<span class="til">商品资料编辑</span>
 								</div>
 								<div class="col-sm-1">
+<<<<<<< HEAD
+									<button type="button" class="btn btn-success butt1" @click="updatemer">保存</button>
+=======
 									<button type="button" class="btn btn-success">保存</button>
+>>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 								</div>
 							</div>
 							
@@ -583,7 +597,14 @@
 									<input type="text" name="" id="" value="所有" />
 									<span class="must"></span>
 									<span class="va">商品大类</span>
+<<<<<<< HEAD
+									<input type="text" name="" id="" value="" disabled="disabled" v-model="broad.menuName" />
+									<a href="javascript:void(0)" style="margin-left: -10px;" @click="broadmo">
+										<img class="broadid" src="../zenglianjun/img/三角形.PNG" width="35px" />
+									</a>
+=======
 									<input type="text" name="" id="" value="" />
+>>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 								</p>
 								
 								<p>
@@ -1303,7 +1324,35 @@
 			
 			broadck(item){
 				this.broadtemp=item
-				console.log(this.broadtemp)
+				//console.log(this.broadtemp)
+			},
+			
+			removemer(){
+				if(!confirm("确认删除吗？")){
+					return
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"merchandise/removemer/"+that.merinit.meId,
+					success:function(result){
+						if(result=="000000"){
+							var tr=document.getElementsByClassName("pintr2");
+							for(var i=0;i<tr.length;i++){
+								tr[i].style.background='none';
+							}
+							tr[0].style.background='sandybrown';
+							that.findmer(that.menuinit.menuId)
+						}
+					}
+				})
+			},
+			
+			//导出
+			downloadExcel(){
+				if(this.menuinit.menuId==null){
+					this.menuinit.menuId=0;
+				}
+				window.location.href="http://127.0.0.1:8080/fileshan/downloadExcel?menuid="+this.menuinit.menuId+"&con1="+this.con1+"&con2="+this.con2;
 			},
 			
 			broadaff(){
@@ -1346,7 +1395,11 @@
 					url:BaseUrl+"merchandise/di",
 					success:function(result){
 						that.menumerlist=result
+<<<<<<< HEAD
+						console.log(that.menumerlist[0])
+=======
 						console.log(that.menumerlist)
+>>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 					}
 				})
 			},
@@ -1397,6 +1450,13 @@
 			},
 			findgoods(){
 				$("#findgoodsmodal").modal("show");
+			},
+			
+			//初始化
+			init(){
+				//this.findmer()
+				this.merinit=this.merlist[0];
+				
 			},
 		},
 		created(){
@@ -1469,11 +1529,24 @@
 	
 	
 	
-
+	
+	$(document).on('click','.broadid',function(){
+		$(".lm2 span").css("color","#000000")
+		$(".lm2 span").css("background","#ffffff")
+		$("#ul1 ul").css("display","none")
+	})
 	
 	$(document).on('click','.pintr2',function(){
 		$(".pintr2").css("background","#ffffff")
 		$(this).css("background","sandybrown")
+	})
+	
+	$(document).on('click','.lm1 .span1',function(){
+		$(".lm1 span").css("background","#ffffff")
+		$(".lm1 span").css("color","#000000")
+		$(this).css("background","#aaa")
+		$(this).css("color","#ffffff")
+		$(".pintr2").eq(0).css("background","sandybrown")
 	})
 	
 	$(document).on('click','.lm1 span',function(){
@@ -1481,8 +1554,15 @@
 		$(".lm1 span").css("color","#000000")
 		$(this).css("background","#aaa")
 		$(this).css("color","#ffffff")
+	})
+	
+	
+	$(document).on('click','.butt1',function(){
+		$(".pintr2").css("background","")
 		$(".pintr2").eq(0).css("background","sandybrown")
 	})
+	
+
 	
 	$(document).on('click','.lm2 span',function(){
 		$(".lm2 span").css("background","#ffffff")
