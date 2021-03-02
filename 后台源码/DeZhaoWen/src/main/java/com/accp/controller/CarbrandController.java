@@ -32,11 +32,26 @@ public class CarbrandController {
             queryWrapper.eq("carcoding",carcoding).or().eq("brandname",carcoding);
         }
         List<Carbrand> list=service.list(queryWrapper);
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
         return list;
     }
     @RequestMapping("/find")
     public List<Carbrand> find(){
-        return service.list();
+        List<Carbrand> car=service.list();
+        for(int i=0;i<car.size();i++) {
+            if(i==0) {
+                car.get(i).setCheck(true);
+            }else {
+                car.get(i).setCheck(false);
+            }
+        }
+        return car;
     }
     @RequestMapping("/findAll")
     public List<Carbrand> findAll(@PathVariable Carbrand cb){
@@ -51,6 +66,13 @@ public class CarbrandController {
             query.lambda().like(Carbrand::getInitial,cb.getInitial());
         }
         List<Carbrand> list=service.list(query);
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
         return list;
     }
 

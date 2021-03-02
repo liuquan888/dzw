@@ -64,43 +64,43 @@ public class CustomerController {
         return list;
     }
     @RequestMapping("/findX")
-    public List<Customer> findX(Coll coll){
+    public List<Customer> findX(@RequestBody Coll coll){
         QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
         QueryWrapper<Carheet>queryWrapper1=new QueryWrapper<>();
         if (coll!=null){
             if (coll.getClient()!=null){
                 if (coll.getClient().getCustomernum()!=null){
-                    queryWrapper.eq("customernum",coll.getClient().getCustomernum());
+                    queryWrapper.eq("customernum",coll.getClient().getCustomernum()).or();
                 }
                 if (coll.getClient().getCustomername()!=null){
-                    queryWrapper.like("customername",coll.getClient().getCustomername());
+                    queryWrapper.like("customername",coll.getClient().getCustomername()).or();
                 }
                 if (coll.getClient().getCustomertypeid()!=null){
-                    queryWrapper.eq("customertypeid",coll.getClient().getCustomertypeid());
+                    queryWrapper.eq("customertypeid",coll.getClient().getCustomertypeid()).or();
                 }
                 if (coll.getClient().getLinkman()!=null){
-                    queryWrapper.like("linkman",coll.getClient().getLinkman());
+                    queryWrapper.like("linkman",coll.getClient().getLinkman()).or();
                 }
                 if (coll.getClient().getPhone()!=null){
-                    queryWrapper.like("phone",coll.getClient().getPhone());
+                    queryWrapper.like("phone",coll.getClient().getPhone()).or();
                 }
                 if (coll.getClient().getCustomeraddress()!=null){
-                    queryWrapper.like("customeraddress",coll.getClient().getCustomeraddress());
+                    queryWrapper.like("customeraddress",coll.getClient().getCustomeraddress()).or();
                 }
                 if (coll.getClient().getRemark()!=null){
-                    queryWrapper.like("remark",coll.getClient().getRemark());
+                    queryWrapper.like("remark",coll.getClient().getRemark()).or();
                 }
                 if (coll.getClient().getBirthday()!=null){
-                    queryWrapper.eq("birthady",coll.getClient().getBirthday());
+                    queryWrapper.eq("birthady",coll.getClient().getBirthday()).or();
                 }
                 if (coll.getClient().getCounselorid()!=null){
-                    queryWrapper.eq("counselorid",coll.getClient().getCounselorid());
+                    queryWrapper.eq("counselorid",coll.getClient().getCounselorid()).or();
                 }
                 if (coll.getClient().getReserved4()!=null){
-                    queryWrapper.eq("reserved4",coll.getClient().getReserved4());
+                    queryWrapper.eq("reserved4",coll.getClient().getReserved4()).or();
                 }
                 if (coll.getClient().getReserved1()!=null&&coll.getClient().getReserved2()!= null&&coll.getClient().getReserved3()!=null){
-                    queryWrapper.eq("reserved1",coll.getClient().getReserved1());
+                    queryWrapper.eq("reserved1",coll.getClient().getReserved1()).or();
                 }
             }
             if (coll.getCarInfo()!=null){
@@ -110,7 +110,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum());
+                            queryWrapper.eq("customernum",car.getCustomernum()).or().or();
                         }
                     }
                 }
@@ -119,7 +119,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0) {
                         for (Carheet car : list) {
-                            queryWrapper.eq("customernum",car.getCustomernum());
+                            queryWrapper.eq("customernum",car.getCustomernum()).or();
                         }
                     }
                 }
@@ -128,7 +128,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum());
+                            queryWrapper.eq("customernum",car.getCustomernum()).or();
                         }
                     }
                 }
@@ -137,7 +137,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
                     }
                 }
                 if (coll.getCarInfo().getEnginenum()!=null){
@@ -145,7 +145,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
                     }
                 }
                 if (coll.getCarInfo().getEngineid()!=null){
@@ -153,7 +153,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
                     }
                 }
                 if (coll.getCarInfo().getDriver()!=null){
@@ -161,7 +161,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
                     }
                 }
                 if (coll.getCarInfo().getDriverphone()!=null){
@@ -169,7 +169,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0) {
                         for (Carheet car : list) {
-                            queryWrapper.eq("customernum", car.getCustomernum());
+                            queryWrapper.eq("customernum", car.getCustomernum()).or();
                         }
                     }
                 }
@@ -178,7 +178,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum());                    }
+                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
                     }
                 }
             }
@@ -187,28 +187,54 @@ public class CustomerController {
 
             for (Customer cus:list){
                 Customertype type=typeservice.getById(cus.getCustomertypeid());
-                cus.setLeibie(type.getCustomertypeid());
+                if (type!=null){
+                    cus.setLeibie(type.getCustomertypeid());
+                }
                 Counselor con=counservice.getById(cus.getCounselorid());
-                cus.setFw(con.getCounselorname());
+                if (con!=null){
+                    cus.setFw(con.getCounselorname());
+                }
             }
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
 
         return list;
     }
-
-    //根据ID查询
-    @RequestMapping("/selectClientInformationByClientId")
-    public List<Customer> selectClientInformationByClientId(String customernum){
+    @RequestMapping("/queryClientByNumber/{number}")
+    public String queryClientByNumber(@PathVariable Integer number){
         QueryWrapper<Customer> queryWrappernew =new QueryWrapper<>();
-        System.out.printf(customernum);
+        if (number!=null){
+            queryWrappernew.eq("customernum",number);
+        }
+        List<Customer> list=Service.list(queryWrappernew);
+        if (list.size()>0){
+            return "1";
+        }else {
+            return "0";
+        }
+    }
+    //根据ID查询
+    @RequestMapping("/selectClientInformationByClientId/{customernum}")
+    public Customer selectClientInformationByClientId(@PathVariable String customernum){
+        QueryWrapper<Customer> queryWrappernew =new QueryWrapper<>();
         if (customernum!=null){
             queryWrappernew.eq("customernum",customernum);
         }
         List<Customer> list=Service.list(queryWrappernew);
         for (Customer cus:list){
             Customertype type=typeservice.getById(cus.getCustomertypeid());
-            cus.setLeibie(type.getCustomertypeid());
+            if (type!=null){
+                cus.setLeibie(type.getCustomertypeid());
+            }
             Counselor con=counservice.getById(cus.getCounselorid());
-            cus.setFw(con.getCounselorname());
+            if (con!=null){
+                cus.setFw(con.getCounselorname());
+            }
         }
         for(int i=0;i<list.size();i++) {
             if(i==0) {
@@ -217,7 +243,8 @@ public class CustomerController {
                 list.get(i).setCheck(false);
             }
         }
-        return list;
+        System.out.println(list.size());
+        return list.get(0);
     }
     @RequestMapping("/downloadExcel")
     public ResponseEntity<byte []> downloadExcel(Customer customer) throws IOException {
@@ -442,9 +469,8 @@ public class CustomerController {
         return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
     }
     @RequestMapping("/findss")
-    public Customer findss(String customernum){
+    public Customer findss(Integer customernum){
         QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
-        System.out.printf(customernum);
         if (customernum!=null){
             queryWrapper.eq("customernum",customernum);
         }
@@ -465,9 +491,13 @@ public class CustomerController {
         if (list.size()>0){
             for (Customer cus:list){
                 Customertype type=typeservice.getById(cus.getCustomertypeid());
-                cus.setLeibie(type.getCustomertypeid());
+                if (type!=null){
+                    cus.setLeibie(type.getCustomertypeid());
+                }
                 Counselor con=counservice.getById(cus.getCounselorid());
-                cus.setFw(con.getCounselorname());
+                if (con!=null){
+                    cus.setFw(con.getCounselorname());
+                }
             }
             for(int i=0;i<list.size();i++) {
                 if(i==0) {
@@ -480,7 +510,7 @@ public class CustomerController {
         return list;
     }
     @RequestMapping("/insertCustomerAndCarheet")
-    public boolean insertCustomerAndCarheet(Coll coll){
+    public boolean insertCustomerAndCarheet(@RequestBody Coll coll){
         boolean bo=Service.save(coll.getClient());
         if (bo){
             return carservice.save(coll.getCarInfo());

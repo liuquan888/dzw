@@ -176,13 +176,21 @@ public class RepairBillController {
         service.updateById(bill);
         return 1;
     }
-    @RequestMapping("/findByCustomer")
-    public List<RepairBill> findByCustomer(String customernum){
+    @RequestMapping("/findByCustomer/{qwe}")
+    public List<RepairBill> findByCustomer(@PathVariable String qwe){
         QueryWrapper<RepairBill> queryWrapper=new QueryWrapper<>();
-        if (customernum!=null){
-            queryWrapper.eq("reserved1",customernum);
+        if (qwe!=null){
+            queryWrapper.eq("reserved1",qwe);
         }
-        return service.list(queryWrapper);
+        List<RepairBill> list=service.list(queryWrapper);
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
+        return list;
     }
     @RequestMapping("/find2")
     public  List<Billstype> find2(){

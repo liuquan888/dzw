@@ -63,7 +63,15 @@ public class CarController {
     }
     @RequestMapping("/findAll")
     public List<Car> findAll(){
-        return service.list();
+        List<Car> list=service.list();
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
+        return list;
     }
 }
 
