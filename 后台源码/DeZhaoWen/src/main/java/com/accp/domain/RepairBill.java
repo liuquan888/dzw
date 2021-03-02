@@ -35,7 +35,7 @@ public class RepairBill extends Model<RepairBill> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check=true;
+    private boolean check=false;
 
 
     @ApiModelProperty(value = "单据类型表外键id")

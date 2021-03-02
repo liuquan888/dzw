@@ -33,7 +33,7 @@ public class Car extends Model<Car> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check;
+    private boolean check=false;
 
     @ApiModelProperty(value = "车型编码")
     private String cCoder;

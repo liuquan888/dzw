@@ -74,7 +74,7 @@ public class Customer extends Model<Customer> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check=true;
+    private boolean check=false;
 
     @TableField(exist = false)
     @ApiModelProperty(value = "到期2")

@@ -29,7 +29,7 @@ public class Carbrand extends Model<Carbrand> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check;
+    private boolean check=false;
 
     @TableId(value = "carcoding")
     @ApiModelProperty(value = "车辆编码")

@@ -29,7 +29,7 @@ public class Carheet extends Model<Carheet> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check;
+    private boolean check=false;
 
     @TableId(value = "carnum",type= IdType.AUTO)
     @ApiModelProperty(value = "车辆号码")
