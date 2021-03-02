@@ -220,7 +220,12 @@ public class RepairBillController {
     @RequestMapping("/findF")
     public List<Factory> findF(){ return fser.list(); }
 
-
+    @RequestMapping("/findcarnum")
+    public List<RepairBill> findcarnum(String number){
+        QueryWrapper<RepairBill> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("chepai_no",number);
+        return service.list(queryWrapper);
+    }
     @RequestMapping("/findxx")
     @ResponseBody
     public List<RepairBill> findxx(@RequestBody Integer[] ids){

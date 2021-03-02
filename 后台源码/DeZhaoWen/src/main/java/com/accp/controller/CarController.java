@@ -49,7 +49,7 @@ public class CarController {
     public List<Car> findById(String v){
         QueryWrapper<Car> query=new QueryWrapper<>();
         if (v!=null){
-            query.eq("bId",v);
+            query.eq("b_id",v);
         }
         List<Car> list=service.list(query);
         for(int i=0;i<list.size();i++) {

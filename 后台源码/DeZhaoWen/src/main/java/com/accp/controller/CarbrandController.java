@@ -34,6 +34,10 @@ public class CarbrandController {
         List<Carbrand> list=service.list(queryWrapper);
         return list;
     }
+    @RequestMapping("/find")
+    public List<Carbrand> find(){
+        return service.list();
+    }
     @RequestMapping("/findAll")
     public List<Carbrand> findAll(@PathVariable Carbrand cb){
         QueryWrapper<Carbrand> query=new QueryWrapper<>();

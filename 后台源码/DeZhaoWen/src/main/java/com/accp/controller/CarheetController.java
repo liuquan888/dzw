@@ -39,7 +39,8 @@ public class CarheetController {
     @Autowired
     CustomerServiceImpl cuservice;
 
-
+    @Autowired
+    CarServiceImpl carService;
 
     //根据驾驶员姓名查询
     @RequestMapping("/queryCarInformationByCondition")
@@ -47,6 +48,27 @@ public class CarheetController {
         QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
         queryWrapper.like("driver",condition);
         List<Carheet> lastlist=service.list(queryWrapper);
+        for (Carheet car:lastlist){
+            Carbrand brand=brandService.getById(car.getCarbrandid());
+            if (brand!=null){
+                car.setPp(brand.getBrandname());
+            }
+            Car c=carService.getById(car.getReserved5());
+            if (c!=null){
+                car.setChexing(c.getReserved1());
+            }
+            Engine engine=engservice.getById(car.getEngineid());
+            if (engine!=null){
+                car.setFdj(engine.getEName());
+            }
+        }
+        for(int i=0;i<lastlist.size();i++) {
+            if(i==0) {
+                lastlist.get(i).setCheck(true);
+            }else {
+                lastlist.get(i).setCheck(false);
+            }
+        }
         return lastlist;
     }
     @RequestMapping("updateByplatename")
@@ -54,6 +76,125 @@ public class CarheetController {
         QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("platename",car.getPlatename());
         return service.update(queryWrapper);
+    }
+    @RequestMapping("/findX")
+    public List<Carheet> findX(@RequestBody Coll cob){
+        QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
+        if (cob!=null){
+            if (cob.getCarInfo()!=null){
+                if (cob.getCarInfo().getPlatename()!=null){
+                    queryWrapper.eq("platename",cob.getCarInfo().getPlatename());
+                }
+                if (cob.getCarInfo().getCarbrandid()!=null){
+                    queryWrapper.eq("carbrandid",cob.getCarInfo().getCarbrandid());
+                }
+                if (cob.getCarInfo().getReserved5()!=null){
+                    queryWrapper.eq("reserved5",cob.getCarInfo().getReserved5());
+                }
+                if (cob.getCarInfo().getFramnum()!=null){
+                    queryWrapper.eq("framnum",cob.getCarInfo().getFramnum());
+                }
+                if (cob.getCarInfo().getEnginenum()!=null){
+                    queryWrapper.eq("enginenum",cob.getCarInfo().getEnginenum());
+                }
+                if (cob.getCarInfo().getEngineid()!=null){
+                    queryWrapper.eq("engineid",cob.getCarInfo().getEngineid());
+                }
+                if (cob.getCarInfo().getDriver()!=null){
+                    queryWrapper.eq("driver",cob.getCarInfo().getDriver());
+                }
+                if (cob.getCarInfo().getDriverphone()!=null){
+                    queryWrapper.eq("driverphone",cob.getCarInfo().getDriverphone());
+                }
+                if (cob.getCarInfo().getBirthday()!=null){
+                    queryWrapper.eq("birthday",cob.getCarInfo().getBirthday());
+                }
+            }
+            if (cob.getClient()!=null){
+                QueryWrapper<Customer> queryWrapper1=new QueryWrapper<>();
+                if (cob.getClient().getCustomernum()!=null){
+                    queryWrapper1.eq("customernum",cob.getClient().getCustomernum());
+                }
+                if (cob.getClient().getCustomername()!=null){
+                    queryWrapper1.eq("customername",cob.getClient().getCustomername());
+                }
+                if (cob.getClient().getCustomertypeid()!=null){
+                    queryWrapper1.eq("customertypeid",cob.getClient().getCustomertypeid());
+                }
+                if (cob.getClient().getLinkman()!=null){
+                    queryWrapper1.eq("linkman",cob.getClient().getLinkman());
+                }
+                if (cob.getClient().getPhone()!=null){
+                    queryWrapper1.eq("phone",cob.getClient().getPhone());
+                }
+                if (cob.getClient().getCustomeraddress()!=null){
+                    queryWrapper1.eq("customeraddress",cob.getClient().getCustomeraddress());
+                }
+                if (cob.getClient().getRemark()!=null){
+                    queryWrapper1.eq("remark",cob.getClient().getRemark());
+                }
+                if (cob.getClient().getBirthday()!=null){
+                    queryWrapper1.eq("birthday",cob.getClient().getBirthday());
+                }
+                List<Customer> list=cuservice.list(queryWrapper1);
+                if (list.size()>0) {
+                    for (Customer cus : list) {
+                        queryWrapper.eq("customernum", cus.getCustomernum());
+                    }
+                }
+            }
+            List<Carheet> list1=service.list(queryWrapper);
+            if (list1.size()>0){
+                for (Carheet car:list1){
+                    Carbrand brand=brandService.getById(car.getCarbrandid());
+                    if (brand!=null){
+                        car.setPp(brand.getBrandname());
+                    }
+                    Car c=carService.getById(car.getReserved5());
+                    if (c!=null){
+                        car.setChexing(c.getReserved1());
+                    }
+                    Engine engine=engservice.getById(car.getEngineid());
+                    if (engine!=null){
+                        car.setFdj(engine.getEName());
+                    }
+                }
+                for(int i=0;i<list1.size();i++) {
+                    if(i==0) {
+                        list1.get(i).setCheck(true);
+                    }else {
+                        list1.get(i).setCheck(false);
+                    }
+                }
+            }
+            return list1;
+        }else {
+            List<Carheet> list3=service.list();
+            if (list3.size()>0){
+                for (Carheet car:list3){
+                    Carbrand brand=brandService.getById(car.getCarbrandid());
+                    if (brand!=null){
+                        car.setPp(brand.getBrandname());
+                    }
+                    Car c=carService.getById(car.getReserved5());
+                    if (c!=null){
+                        car.setChexing(c.getReserved1());
+                    }
+                    Engine engine=engservice.getById(car.getEngineid());
+                    if (engine!=null){
+                        car.setFdj(engine.getEName());
+                    }
+                }
+                for(int i=0;i<list3.size();i++) {
+                    if(i==0) {
+                        list3.get(i).setCheck(true);
+                    }else {
+                        list3.get(i).setCheck(false);
+                    }
+                }
+            }
+            return list3;
+        }
     }
     //根据条件查询
     @RequestMapping("/selectCarInformationByCondition")
@@ -69,7 +210,7 @@ public class CarheetController {
             boolean flag1=checkUtils.objCheckIsNull(coll.getCarInfo());
             boolean flag2=checkUtils.objCheckIsNull(coll.getClient());
             System.out.println(flag1+"+"+flag2);
-            if(flag1==true&&flag2==true) {
+            if(flag1==true&&flag2==true){
                 lastlist=list;
             }else if(flag1==true&&flag2==false) {
                 QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
@@ -137,7 +278,7 @@ public class CarheetController {
                 if(coll.getCarInfo().getEnginenum()!=null&&coll.getCarInfo().getEnginenum().length()>0) {
                    queryWrapper.eq("enginenum",coll.getCarInfo().getEnginenum());
                 }
-                if(coll.getCarInfo().getMlicompanyid()!=null&&coll.getCarInfo().getMlicompanyid()>0) {
+                if(coll.getCarInfo().getMlicompanyid()!=null&&coll.getCarInfo().getMlicompanyid().length()>0) {
                     queryWrapper.eq("mlicompanyid()",coll.getCarInfo().getMlicompanyid());
                 }
                 if(coll.getCarInfo().getEngineid()!=null&&coll.getCarInfo().getEngineid()>0) {
@@ -245,6 +386,27 @@ public class CarheetController {
                     }
                 }
                 lastlist=qwelist;
+                for (Carheet car:list){
+                    Carbrand brand=brandService.getById(car.getCarbrandid());
+                    if (brand!=null){
+                        car.setPp(brand.getBrandname());
+                    }
+                    Car c=carService.getById(car.getReserved5());
+                    if (c!=null){
+                        car.setChexing(c.getReserved1());
+                    }
+                    Engine engine=engservice.getById(car.getEngineid());
+                    if (engine!=null){
+                        car.setFdj(engine.getEName());
+                    }
+                }
+            }
+        }
+        for(int i=0;i<lastlist.size();i++) {
+            if(i==0) {
+                lastlist.get(i).setCheck(true);
+            }else {
+                lastlist.get(i).setCheck(false);
             }
         }
         return lastlist;
@@ -253,26 +415,79 @@ public class CarheetController {
     @RequestMapping("/selectAllCarInfo")
     public List<Carheet> selectAllCarInfo(){
         List<Carheet> list=service.list();
+        if (list.size()>0){
+            for (Carheet car:list){
+                Carbrand brand=brandService.getById(car.getCarbrandid());
+                if (brand!=null){
+                    car.setPp(brand.getBrandname());
+                }
+                Car c=carService.getById(car.getReserved5());
+                if (c!=null){
+                    car.setChexing(c.getReserved1());
+                }
+                Engine engine=engservice.getById(car.getEngineid());
+                if (engine!=null){
+                    car.setFdj(engine.getEName());
+                }
+            }
+            for(int i=0;i<list.size();i++) {
+                if(i==0) {
+                    list.get(i).setCheck(true);
+                }else {
+                    list.get(i).setCheck(false);
+                }
+            }
+        }
         return list;
     }
-    @RequestMapping("/findId")
-    public List<Carheet> findId(String number){
-        QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
-        if (number!=null){
-            queryWrapper.like("platename",number);
-        }
-        List<Carheet> list=service.list(queryWrapper);
+    @RequestMapping("/findId/{number}")
+    public Carheet findId(@PathVariable Integer number){
+        Carheet list=service.getById(number);
+            Carbrand brand=brandService.getById(list.getCarbrandid());
+            if (brand!=null){
+                list.setPp(brand.getBrandname());
+            }
+            Car c=carService.getById(list.getReserved5());
+            if (c!=null){
+                list.setChexing(c.getReserved1());
+            }
+            Engine engine=engservice.getById(list.getEngineid());
+            if (engine!=null){
+                list.setFdj(engine.getEName());
+            }
+            list.setCheck(true);
         return list;
     }
     //根据客户Id查询车辆信息
     @RequestMapping("/findIds")
-    public Carheet findIds(String customernum){
+    public List<Carheet> findIds(@RequestBody Customer customer){
         QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
-        if (customernum!=null){
-            queryWrapper.like("platename",customernum);
+        if (customer!=null){
+            queryWrapper.like("customernum",customer.getCustomernum());
         }
         List<Carheet> list=service.list(queryWrapper);
-        return list.get(0);
+        for (Carheet car:list){
+            Carbrand brand=brandService.getById(car.getCarbrandid());
+            if (brand!=null){
+                car.setPp(brand.getBrandname());
+            }
+            Car c=carService.getById(car.getReserved5());
+            if (c!=null){
+                car.setChexing(c.getReserved1());
+            }
+            Engine engine=engservice.getById(car.getEngineid());
+            if (engine!=null){
+                car.setFdj(engine.getEName());
+            }
+        }
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
+        return list;
     }
     @RequestMapping("findBybramch")
     public List<Carheet> finBybramch(String customernum){
@@ -280,7 +495,23 @@ public class CarheetController {
         if (customernum!=null){
             queryWrapper.eq("customernum",customernum);
         }
-        return service.list(queryWrapper);
+        List<Carheet> list=service.list(queryWrapper);
+        for(Carheet car:list){
+            Carbrand brand=brandService.getById(car.getCarbrandid());
+            car.setPp(brand.getBrandname());
+            Car c=carService.getById(car.getReserved5());
+            car.setChexing(c.getReserved1());
+            Engine engine=engservice.getById(car.getEngineid());
+            car.setFdj(engine.getEName());
+        }
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
+        return list;
     }
     @RequestMapping("/deleteByplatename")
     public boolean deleteByplatename(String platename){
@@ -464,6 +695,13 @@ public class CarheetController {
                 ca.setFdj(eng.getEName());
             }
         }
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
         return list;
     }
     @RequestMapping("/delete")
@@ -477,13 +715,21 @@ public class CarheetController {
             return false;
         }
     }
+    @RequestMapping("/remove/{number}")
+    public boolean remove(@PathVariable Integer number){
+        QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("carnum",number);
+        return service.remove(queryWrapper);
+    }
     @RequestMapping("/insert")
     public boolean insert(Carheet car){
         return service.save(car);
     }
     @RequestMapping("/update")
-    public boolean update(Carheet car){
-        return service.updateById(car);
+    public boolean update(@RequestBody Carheet car){
+        QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("carnum",car.getCarnum());
+        return service.update(car,queryWrapper);
     }
     @RequestMapping("/findById/{id}")
     public Carheet findById(@PathVariable Integer id){
