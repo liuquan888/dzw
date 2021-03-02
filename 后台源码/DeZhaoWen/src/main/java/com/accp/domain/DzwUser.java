@@ -56,10 +56,10 @@ public class DzwUser extends Model<DzwUser> {
     private String status;
 
     @ApiModelProperty(value = "创建时间")
-    private LocalDate createDate;
+    private String createDate;
 
     @ApiModelProperty(value = "最近更新时间")
-    private LocalDate updateDate;
+    private String updateDate;
 
     @ApiModelProperty(value = "预留字段")
     private String reserved1;
@@ -75,6 +75,8 @@ public class DzwUser extends Model<DzwUser> {
 
     @ApiModelProperty(value = "预留字段")
     private String reserved5;
+
+    @ApiModelProperty(value="")
 
 
     public static final String USER_ID = "user_id";

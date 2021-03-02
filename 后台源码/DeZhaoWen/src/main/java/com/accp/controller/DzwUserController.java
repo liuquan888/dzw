@@ -10,21 +10,14 @@ import com.accp.service.impl.DzwUserServiceImpl;
 import com.accp.service.impl.PrivilegeRoleServiceImpl;
 import com.accp.service.impl.RoleUserServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.DirectFieldAccessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpRequest;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.net.ssl.HandshakeCompletedEvent;
-import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.security.Principal;
 import java.util.*;
 
 /**
@@ -50,6 +43,9 @@ public class DzwUserController{
     @Autowired
     DzwPrivilegeServiceImpl dpser;
 
+    @Autowired
+    RoleUserServiceImpl role;
+
     @RequestMapping("/find")
     public DzwUser find(DzwUser user,HttpSession session){
         QueryWrapper<DzwUser> query=new QueryWrapper<>();
@@ -58,6 +54,10 @@ public class DzwUserController{
         if(li.size()>0){
             for(DzwUser us:li){
                 if(us!=null){
+                    QueryWrapper<RoleUser> userQueryWrapper= new QueryWrapper<>();
+                    userQueryWrapper.lambda().eq(RoleUser::getUid,li.get(0).getUserId());
+                    List<RoleUser> listrole= role.list(userQueryWrapper);
+                    us.setReserved1(listrole.get(0).getRid().toString());
                     session.setAttribute("user",li);
                 }
             }
@@ -171,6 +171,20 @@ public class DzwUserController{
     @RequestMapping("select")
     public List<DzwUser> select(){
        return duser.list();
+    }
+
+    @RequestMapping("query")
+    public DzwUser query(Integer userId){
+        QueryWrapper<DzwUser> user=new QueryWrapper<>();
+        user.lambda().eq(DzwUser::getUserId,userId);
+        return duser.list(user).get(0);
+    }
+
+    @RequestMapping("update")
+    public boolean update(DzwUser user){
+        QueryWrapper<DzwUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id",user.getUserId());
+        return user.update(queryWrapper);
     }
 }
 

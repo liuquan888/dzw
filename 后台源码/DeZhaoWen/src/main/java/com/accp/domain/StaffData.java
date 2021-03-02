@@ -190,8 +190,6 @@ public class StaffData extends Model<StaffData> {
     @ApiModelProperty(value = "预留字段")
     private String reserved9;
 
-
-
     public static final String YID = "yid";
 
     public static final String YNAME = "yname";

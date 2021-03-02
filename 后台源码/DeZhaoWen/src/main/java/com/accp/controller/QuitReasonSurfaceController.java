@@ -54,12 +54,21 @@ public class QuitReasonSurfaceController {
         if(name!=null&&name.length()>0){
             stu.lambda().like(StaffData::getYid,name).or().like(StaffData::getYname,name);
         }
-        stu.eq("y1",2);
+        stu.eq("reserved6",2);
         List<StaffData> s= service.list(stu);
         for (StaffData sd: s) {
             sd.setBu(bservice.getById(sd.getBid()));
         }
         return s;
+    }
+
+    @RequestMapping("/findsd")
+    public List<OrganizationSurface> findByAlls(String name){
+        QueryWrapper<OrganizationSurface> stu=new QueryWrapper<>();
+        if(name!=null&&name.length()>0){
+            stu.lambda().like(OrganizationSurface::getZid,name).or().like(OrganizationSurface::getZname,name);
+        }
+        return o.list(stu);
     }
 
     @RequestMapping("/lizhih/{id}")
@@ -113,7 +122,7 @@ public class QuitReasonSurfaceController {
         for(Integer i:s){
             queryWrapper.or().eq("reserved3",i);
         }
-        queryWrapper.eq("y1",2);
+        queryWrapper.eq("reserved6",2);
         List<StaffData> sdd= service.list(queryWrapper);
         for (StaffData c: sdd) {
             c.setBu(bservice.getById(c.getBid()));
@@ -124,6 +133,23 @@ public class QuitReasonSurfaceController {
     @RequestMapping("/lizhib1/{id}")
     public DeparmentSurface lizhib1(@PathVariable("id") Integer id){
         return bservice.getById(id);
+    }
+
+    @RequestMapping("/lizhiyuans")
+    public List<StaffData> LizhiYuans(){
+        QueryWrapper<StaffData> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("reserved6",1);
+        List<StaffData> sdd= service.list(queryWrapper);
+        for (StaffData c: sdd) {
+            c.setBu(bservice.getById(c.getBid()));
+        }
+        return sdd;
+    }
+
+    @RequestMapping("/lizhixz")
+    public boolean LizhiXz(StaffData stu){
+        boolean s=ymapper.lizhixz(stu);
+        return s;
     }
 
     @RequestMapping("/allc")
@@ -180,7 +206,7 @@ public class QuitReasonSurfaceController {
         if (s.getYheigth()!=null) {
             queryWrapper.like("yheigth",s.getYheigth());
         }
-        queryWrapper.eq("y1",2);
+        queryWrapper.eq("reserved6",2);
         List<StaffData> stt= service.list(queryWrapper);
         for (StaffData sd: stt) {
             sd.setBu(bservice.getById(sd.getBid()));

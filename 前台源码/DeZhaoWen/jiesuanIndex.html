@@ -51,7 +51,7 @@
 						<img src="img/jsshan01.PNG" width="80px"/>
 					</div>
 					<div style="display: inline-block;">
-						<p>￥&nbsp;50,455</p>
+						<p>￥&nbsp;{{sumQ}}</p>
 						<p>今日前台</p>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 						<img src="img/jsshan02.PNG" width="70px"/>
 					</div>
 					<div style="display: inline-block;">
-						<p>￥&nbsp;50,455</p>
+						<p>￥&nbsp;0</p>
 						<p>今日库房</p>
 					</div>
 				</div>
@@ -69,7 +69,7 @@
 						<img src="img/jsshan03.PNG" width="74px"/>
 					</div>
 					<div style="display: inline-block;">
-						<p>￥&nbsp;50,455</p>
+						<p>￥&nbsp;{{sumJ}}</p>
 						<p>今日结算</p>
 					</div>
 				</div>
@@ -89,8 +89,8 @@
 				<div class="div-2-2" style="vertical-align: top;border: 1px;">
 					<div v-if="this.i==1">
 						<ul class="ul01">
-							<li>接车台次：0</li>
-							<li>结算台次：0</li>
+							<li>接车台次：{{sumJC}}</li>
+							<li>结算台次：{{sumJT}}</li>
 							<li>在线修车：15</li>
 							<li>首保台次：0</li>
 							<li>返修台次：0</li>
@@ -98,7 +98,7 @@
 						<ul class="ul01">
 							<li>站内维修台次：0</li>
 							<li>站外维修台次：0</li>
-							<li>自费维修产值：￥15.00元</li>
+							<li>自费维修产值：￥0.00元</li>
 							<li>保险理赔产值：￥0.00元</li>
 							<li>索赔申报金额.：￥0.00元</li>
 						</ul>
@@ -108,14 +108,14 @@
 						<ul class="ul01">
 							<li>进货：0</li>
 							<li>出货：0</li>
-							<li>库存共计：15</li>
+							<li>库存共计：0</li>
 							<li>首保台次：0</li>
 							<li>返修台次：0</li>
 						</ul>
 						<ul class="ul01">
 							<li>站内维修台次：0</li>
 							<li>站外维修台次：0</li>
-							<li>自费维修产值：￥15.00元</li>
+							<li>自费维修产值：￥0.00元</li>
 							<li>保险理赔产值：￥0.00元</li>
 							<li>索赔申报金额.：￥0.00元</li>
 						</ul>
@@ -132,7 +132,7 @@
 						<ul class="ul01">
 							<li>站内维修台次：0</li>
 							<li>站外维修台次：0</li>
-							<li>自费维修产值：￥15.00元</li>
+							<li>自费维修产值：￥0.00元</li>
 							<li>保险理赔产值：￥0.00元</li>
 							<li>索赔申报金额.：￥0.00元</li>
 						</ul>
@@ -149,13 +149,63 @@
 				el:"#ctn",
 				data(){
 					return{
-						i:1
+						i:1,
+						sumQ:0,
+						sumJ:0,
+						sumJC:0,
+						sumJT:0
 					}
 				},
 				methods:{
 					dian(s){
 						this.i=s;
+					},
+					find1(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/qiantai",
+							type:"post",
+							success:function(result){
+								that.sumQ=result;
+							}
+						});
+					},
+					find2(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/jiesuan",
+							type:"post",
+							success:function(result){
+								that.sumJ=result;
+							}
+						});
+					},
+					find3(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/jieche",
+							type:"post",
+							success:function(result){
+								that.sumJC=result;
+							}
+						});
+					},
+					find4(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/jieTai",
+							type:"post",
+							success:function(result){
+								that.sumJT=result;
+							}
+						});
 					}
+				},
+				created(){
+					this.find1();
+					this.find2();
+					this.find3();
+					this.find4();
 				}
 			});
 		</script>
