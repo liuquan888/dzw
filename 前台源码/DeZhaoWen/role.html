@@ -187,11 +187,7 @@
 						menuApi.findPerms(item.roleId,function(result){
 							that.roleId=item.roleId;
 							//只要集合中的编号作为选中的唯一表示
-							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
 							 let selecedSet = result.map(item=>{ if(item.pvgType !=1 && item.pvgType != 2) return item.pvgid});
-							// let selecedSet = result.filter(item=>item.pvgType!=1||item.pvgType != 2).map(item=>item.pvgid);
-							// let selecedSet = result.map(item=>{ if(item.pvgType !=1 && item.pvgType != 2) return item.pvgid});
-							let selecedSet = result.filter(item=>item.pvgType!=1||item.pvgType != 2).map(item=>item.pvgid);
 
 							//调用jstree的选中方法，可以传入集合
 							$('#myTree').jstree(true).select_node(selecedSet);
