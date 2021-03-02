@@ -157,7 +157,7 @@
 								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a> 
 								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a> 
 								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="carremove">删除</a> 
-								<img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimagemo">照片</a> 
+								<!-- <img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimagemo">照片</a> -->
 								<br /><br />
 								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"  v-model="cardimtext"/>
 								<span><button class="btn btn-warning btn-sm" id="cardimbutton" @click="cardim">搜索</button></span>
@@ -211,7 +211,7 @@
 							<td>{{item.cpower}}</td>
 							<td>{{item.cfuel}}</td>
 							<td>{{item.cload}}kg</td>
-							<td>{{item.suppiler.pname}}</td>
+							<td>{{item.suppiler.pName}}</td>
 						</tr>
 						
 					</table>
@@ -349,7 +349,7 @@
 									<span class="must">*</span>
 									<span class="va">索赔厂商</span>
 									<select style="width: 150px;height: 30px;" v-model="car.pId">
-										<option v-for="item in claim" :value="item.pid">{{item.pname}}</option>
+										<option v-for="item in claim" :value="item.pId">{{item.pName}}</option>
 									</select>
 								</p>
 								<p>
@@ -361,7 +361,7 @@
 								</p>
 								
 								
-								 <div align="center" id="div9" style="">
+								 <div align="center" id="div9" style="" v-if="false">
 									<span class="btn btn-success fileinput-button" id="div7">
 										<span class="span1">照</span>
 										<span class="span2">片</span>
@@ -374,7 +374,7 @@
 							</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary" @click="addcar">保存</button>
+				        <button type="button" class="btn btn-primary butt1" @click="addcar">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -441,7 +441,7 @@
 				        			<span class="must">*</span>
 				        			<span class="va">索赔厂商</span>
 				        			<select style="width: 150px;height: 30px;" v-model="car.pId">
-				        				<option v-for="item in claim" :value="item.pid">{{item.pname}}</option>
+				        				<option v-for="item in claim" :value="item.pId">{{item.pName}}</option>
 				        			</select>
 				        		</p>
 				        		<p>
@@ -453,7 +453,7 @@
 				        		</p>
 				        		
 				        		
-				        		 <div align="center" id="div9" style="">
+				        		 <div align="center" id="div9" style="" v-if="false">
 				        			<span class="btn btn-success fileinput-button" id="div7">
 				        				<span class="span1">照</span>
 				        				<span class="span2">片</span>
@@ -466,7 +466,7 @@
 				        	</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary" @click="updatecar">保存</button>
+				        <button type="button" class="btn btn-primary butt1" @click="updatecar">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -718,7 +718,12 @@
 						url:BaseUrl+"brand/removecar/"+that.carapplocation.cid,
 						success:function(result){
 							if(result=='000000'){
-								window.location.reload();
+								that.findbyidcar(that.brandapplocation.bid);
+								var tr=document.getElementsByClassName("pintr2");
+								for(var i=0;i<tr.length;i++){
+									tr[i].style.background='none';
+								}
+								tr[0].style.background='sandybrown';
 							}
 						}
 					})
@@ -885,6 +890,10 @@
 		
 	})
 	
+	$(document).on('click','.butt1',function(){
+		$(".pintr2").css("background","#ffffff")	
+			$(".pintr2").eq(0).css("background","sandybrown");
+	})
 	
 </script>
 	</body>

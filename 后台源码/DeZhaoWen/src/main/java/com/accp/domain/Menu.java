@@ -40,7 +40,7 @@ public class Menu extends Model<Menu> {
     private Integer parentid;
 
     @ApiModelProperty(value = "班组编号")
-    private String teamid;
+    private Integer teamid;
 
     @ApiModelProperty(value = "预留字段")
     private Integer reserved1;
