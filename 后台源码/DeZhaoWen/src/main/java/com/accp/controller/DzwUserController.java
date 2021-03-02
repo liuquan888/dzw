@@ -12,10 +12,7 @@ import com.accp.service.impl.RoleUserServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.DirectFieldAccessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.*;
 import java.util.*;
@@ -185,10 +182,32 @@ public class DzwUserController{
         return user.update(queryWrapper);
     }
 
-    @RequestMapping
-    public String add(DzwUser user){
+    @PostMapping("add")
+    public String add(@RequestBody DzwUser user){
       boolean bool=  duser.save(user);
         return bool?"0000":"1111";
+    }
+
+    @RequestMapping("remove")
+    public String remove( Integer userId){
+        QueryWrapper<DzwUser> dzwuser=new QueryWrapper<>();
+        dzwuser.lambda().eq(DzwUser::getUserId,userId);
+        boolean bool= duser.remove(dzwuser);
+        return bool?"0000":"1111";
+    }
+
+    @PostMapping("insert/{userId}")
+    public String insert(@RequestBody List<Integer> list, @PathVariable Integer userId){
+        QueryWrapper<RoleUser> roleuser=new QueryWrapper<>();
+        roleuser.lambda().eq(RoleUser::getUid,userId);
+        ruser.remove(roleuser);
+        for (Integer l:list) {
+            RoleUser role=new RoleUser();
+            role.setUid(userId);
+            role.setRid(l);
+            ruser.save(role);
+        }
+        return "0000";
     }
 }
 
