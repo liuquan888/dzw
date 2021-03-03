@@ -26,8 +26,6 @@ import java.util.List;
 public class DzwPrivilegeController {
     @Autowired
     DzwPrivilegeServiceImpl privilege;
-
-
     @RequestMapping("/find")
     public List<DzwPrivilege> find(){
         return privilege.list();
