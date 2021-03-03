@@ -1,6 +1,8 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -27,8 +29,9 @@ public class Carheet extends Model<Carheet> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check;
+    private boolean check=false;
 
+    @TableId(value = "carnum",type= IdType.AUTO)
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;
 
@@ -52,7 +55,7 @@ public class Carheet extends Model<Carheet> {
     private String birthday;
 
     @ApiModelProperty(value = "车辆归属id")
-    private Integer caraffiliationid;
+    private String caraffiliationid;
 
     @TableField(exist = false)
     @ApiModelProperty(value = "车辆归属")
@@ -150,7 +153,7 @@ public class Carheet extends Model<Carheet> {
     private String twotime;
 
     @ApiModelProperty(value = "燃油类别id")
-    private Integer oiltypeid;
+    private String oiltypeid;
 
     @ApiModelProperty(value = "下次保养里程")
     private String nextmileage;
@@ -181,7 +184,7 @@ public class Carheet extends Model<Carheet> {
     private Integer reserved4;
 
     @ApiModelProperty(value = "车型ID")
-    private String reserved5;
+    private Integer reserved5;
 
     @TableField(exist = false)
     @ApiModelProperty(value = "车型")

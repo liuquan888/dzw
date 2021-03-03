@@ -312,7 +312,7 @@
 					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机" v-model="names">
 				</div>
 				<div class="col-md-2 a5">
-					<button type="submit" class="btn btn-default" id="a1" @click="query()">搜索</button>
+					<button type="submit" class="btn btn-success" @click="query()">搜索</button>
 					<button type="submit" class="btn btn-default" id="b1">关闭</button>
 				</div>
 			</div>
@@ -1408,6 +1408,7 @@
 						type:"post",
 						success:function(result){
 							that.findId();
+								$("#myModal5").modal("hide");
 						}
 					});
 				},
@@ -1555,6 +1556,7 @@
 							},
 							type:"post",
 							success:function(result){
+								$("#myModal19").modal("hide");
 								that.findId();
 							}
 						});

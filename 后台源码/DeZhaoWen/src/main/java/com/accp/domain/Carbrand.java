@@ -1,6 +1,8 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -27,8 +29,9 @@ public class Carbrand extends Model<Carbrand> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check;
+    private boolean check=false;
 
+    @TableId(value = "carcoding")
     @ApiModelProperty(value = "车辆编码")
     private String carcoding;
 
