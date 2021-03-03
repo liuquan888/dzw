@@ -181,7 +181,7 @@ public class Carheet extends Model<Carheet> {
     private String reserved3;
 
     @ApiModelProperty(value = "预留字段")
-    private String reserved4;
+    private Integer reserved4;
 
     @ApiModelProperty(value = "车型ID")
     private Integer reserved5;

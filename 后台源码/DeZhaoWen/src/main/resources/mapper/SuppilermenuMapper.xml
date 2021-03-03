@@ -15,4 +15,12 @@
         s_id, s_name, s_parent, s_tag
     </sql>
 
+    <!-- 无限递归 -->
+    <resultMap type="com.accp.domain.Suppilermenu" id="BaseResultMapExtends" extends="BaseResultMap">
+        <collection property="suppilermenus" column="s_id" ofType="com.accp.domain.Suppilermenu" select="findMenuByRoleId"></collection>
+    </resultMap>
+    <select id="findMenuByRoleId" resultMap="BaseResultMapExtends">
+        select * from suppilermenu where s_parent=#{sParent} <!-- and menu_type in ('F','M') -->
+    </select>
+
 </mapper>

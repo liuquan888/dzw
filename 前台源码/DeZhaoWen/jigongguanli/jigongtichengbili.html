@@ -94,9 +94,9 @@
 						<input class="form-control" id="ipt4" v-model="mechaniccommission.nightoutthestation"/>
 					</div>
 					<div class="form-group" id="div1">
-						<a class="btn btn-default" @click="insert">增加</a>
-						<a class="btn btn-default" @click="remove">删除</a>
-						<a class="btn btn-default" @click="update">保存</a>
+						<a class="btn btn-success" @click="insert">增加</a>
+						<a class="btn btn-danger" @click="remove">删除</a>
+						<a class="btn btn-info" @click="update">保存</a>
 					</div>
 				</form>
 				
@@ -122,7 +122,7 @@
 				</table>
 			</div>
 			<div>
-				<span>合计：1条记录</span>
+				<span>合计：{{list.length}}条记录</span>
 			</div>
 		</div>
 		<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>

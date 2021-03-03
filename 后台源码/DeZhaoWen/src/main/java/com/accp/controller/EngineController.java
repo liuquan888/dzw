@@ -4,6 +4,7 @@ package com.accp.controller;
 import com.accp.domain.Engine;
 import com.accp.mapper.EngineMapper;
 import com.accp.service.impl.EngineServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +48,11 @@ public class EngineController {
     //添加发动机品牌
     @PostMapping("/add")
     public String add(Engine engine){
+        QueryWrapper<Engine> engineQueryWrapper=new QueryWrapper<>();
+        engineQueryWrapper.eq("e_coder",engine.getECoder());
+        if(engineService.list(engineQueryWrapper).size()>0){
+            return "000001";
+        }
         boolean result = engineService.save(engine);
         if (result){
             return "新增成功";

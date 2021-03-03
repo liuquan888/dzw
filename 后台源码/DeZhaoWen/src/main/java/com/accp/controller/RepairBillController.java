@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpHeaders;
@@ -308,6 +309,59 @@ public class RepairBillController {
         //设置响应的文件的名称
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(), headers, HttpStatus.OK);
+    }
+
+    @RequestMapping("/qiantai")
+    public Integer qiantai(){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        QueryWrapper qw=new QueryWrapper<RepairBill>();
+        qw.eq("reserved2",df.format(new Date()).toString());
+        List<RepairBill> list=service.list(qw);
+        Integer sum=0;
+        for (RepairBill bill:list){
+            sum=sum+ bill.getYugujine().intValue();
+        }
+        return sum;
+    }
+
+    @RequestMapping("/jiesuan")
+    public Integer jiesuan(){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        QueryWrapper qw=new QueryWrapper<RepairBill>();
+        qw.eq("reserved2",df.format(new Date()).toString());
+        List<RepairBill> list=service.list(qw);
+        Integer sum=0;
+        for (RepairBill bill:list){
+            sum=sum+ bill.getAmount().intValue();
+        }
+        return sum;
+    }
+
+    @RequestMapping("/jieche")
+    public Integer jieche(){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        QueryWrapper qw=new QueryWrapper<RepairBill>();
+        qw.eq("reserved2",df.format(new Date()).toString());
+        List<RepairBill> list=service.list(qw);
+        Integer sum=0;
+        for (RepairBill bill:list){
+            sum=sum+ 1;
+        }
+        return sum;
+    }
+
+    @RequestMapping("/jieTai")
+    public Integer jieTai(){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        QueryWrapper qw=new QueryWrapper<RepairBill>();
+        qw.eq("reserved2",df.format(new Date()).toString());
+        qw.eq("documents_state",1);
+        List<RepairBill> list=service.list(qw);
+        Integer sum=0;
+        for (RepairBill bill:list){
+            sum=sum+ 1;
+        }
+        return sum;
     }
 }
 

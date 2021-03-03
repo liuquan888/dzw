@@ -63,13 +63,13 @@
 				<hr />
 				<div>
 					<div style="margin-left: 80%;">
-						<span @click="toadd"><img src="../img/1.png" width="6%"><a href="javascript:void(0)">增加</a></span>
+						<span @click="toadd"><img src="../img/1.png" width="6%"><a href="javascript:void(0)" class="butt1">增加</a></span>
 						<span><img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="remove">删除</a> </span>
 						<span><img src="img/113.png" width="6%"><a href="javascript:void(0)" @click="carry">保存</a> </span>
-						<span><img src="../img/6.png" width="6%"><a href="javascript:void(0)">导出</a> </span>
+						<span><img src="../img/6.png" width="6%"><a href="javascript:void(0)" @click="EngineExcel">导出</a> </span>
 					</div>
 					<br />
-					<span style="margin-left: 50px;" v-if="addtext">
+					<span class="a1" style="margin-left: 50px;" v-if="addtext">
 						分类代码&nbsp;&nbsp;<input type="text" v-model="engine.eCoder" />
 						&nbsp;&nbsp;&nbsp;
 						分类名称&nbsp;&nbsp;<input type="text" v-model="engine.eName"/>
@@ -119,6 +119,12 @@
 		},
 		methods:{
 			
+			
+			//导出
+			EngineExcel(){
+				window.location.href="http://127.0.0.1:8080/fileshan/EngineExcel";
+			},
+			
 			//显示所有
 			find(){
 				let that=this;
@@ -151,6 +157,9 @@
 						if(error.responseText=="新增成功"){
 							alert(error.responseText)
 						}
+						if(error.responseText=="000001"){
+							alert("编号不允许重复！")
+						}
 						that.engine={};
 						that.find();
 					}
@@ -165,9 +174,12 @@
 					type:"get",
 					success:function(result){
 						that.application1={},
+						that.addtext=false;
+						that.updatetext=true;
 						that.find()
 					},error:function(error){
-						alert(error.responseText)
+						that.addtext=false;
+						that.updatetext=true;
 						that.find();
 					}
 				})
@@ -181,11 +193,15 @@
 					type:"get",
 					success:function(result){
 						console.log(result);
-						that.application1.eId=result.eid;
-						that.application1.eCoder=result.ecoder;
-						that.application1.eName=result.ename;
+						that.$set(that.application1,"eId",result.eid);
+						that.$set(that.application1,"eCoder",result.ecoder);
+						that.$set(that.application1,"eName",result.ename);
+// 						that.application1.eId=result.eid;
+// 						that.application1.eCoder=result.ecoder;
+// 						that.application1.eName=result.ename;
 						that.addtext=false;
 						that.updatetext=true;
+						console.log(that.application1)
 					}
 				})
 			},
@@ -230,9 +246,6 @@
 		},
 		created() {
 			this.find();
-		},
-		watch:{
-			
 		}
 		
 	})
@@ -242,7 +255,9 @@
 		$(this).css("background","sandybrown")
 	})
 	
-	
+	$(document).on('click','.butt1',function(){
+		$(".pintr").css("background","#ffffff")
+	})
 	
 	
 </script>

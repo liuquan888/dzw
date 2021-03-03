@@ -114,7 +114,7 @@
 						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updatemainmo">修改</a> 
 						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="removemain" class="mainos">删除</a> &nbsp;
 						<img src="../zenglianjun/img/tempsnip.png" width="4%"><a href="javascript:void(0)" @click="pricechangemo">调价</a> 
-						<img src="img/QQ图片20210121164913.png" width="5%"><a href="javascript:void(0)">导出</a> 
+						<img src="img/QQ图片20210121164913.png" width="5%"><a href="javascript:void(0)" @click="mainExcel">导出</a> 
 					</div>
 				</div>
 				<br />
@@ -564,6 +564,12 @@
 			}
 		},
 		methods:{
+			
+			//导出
+			mainExcel(){
+				window.location.href="http://127.0.0.1:8080/fileshan/mainExcel?params="+this.params;
+			},
+			
 			
 			maindim(){
 				if(this.maindimtext==null){
