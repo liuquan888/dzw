@@ -21,6 +21,7 @@
 					<td>
 						<span class="btn btn-danger" @click="remove(item)">删除</span>
 						<span class="btn btn-success"  @click="auth(item)">授权</span>
+						<span class="btn btn-primary"  @click="compile(item)">修改</span>
 					</td>
 				</tr>
 			</table>
@@ -150,10 +151,11 @@
 					dataType:"json",
 					async:false,
 					success:function(result){
+						console.log(result);
 						menuList=result.map(item=>{
 							return {
 								id:item.roleId+"",
-								parent:item.roleId==0?"#":item.roleId,
+								parent:"#",
 								text:item.roleName,
 								state:{
 									selected:false
@@ -172,7 +174,8 @@
 						list:[],
 						menuList:[],
 						list:[],
-						roleId:"",
+						userId:"",
+						user:{}
 					}
 				},
 				methods:{
@@ -188,22 +191,15 @@
 						})
 					},
 					auth(item){
-					/* 	var that = this;
-						//获取选中元素
-						var selected = $("#myTree").jstree(true).get_selected();
-						//获取半选状态
-						var undetermined = $("#myTree").jstree(true).get_undetermined();
-						//将选中的和半选的元素进行和并到一个数组
-						selected.push(...undetermined); */
-						//取消全部被选中的节点
 					 	$('#myTree').jstree(true).deselect_all();
 						let that=this;
 						//根据角色获取到对应的权限列表
-						menuApi.findUser(item.roleId,function(result){
-							that.roleId=item.roleId;
+						menuApi.findUser(item.userId,function(result){
+							that.userId=item.userId;
 							//只要集合中的编号作为选中的唯一表示
-							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
+							let selecedSet = result.map(item=>item.roleId);
 							//调用jstree的选中方法，可以传入集合
+							console.log(result);
 							$('#myTree').jstree(true).select_node(selecedSet);
 						});
 						//打开模态框
@@ -259,7 +255,11 @@
 							type:"post",
 							dataType:"json",
 							success:function(result){
-								console.log(result);
+								if(result==true){
+									alert("修改成功！");
+									$("#authModal2").modal("hide");
+									that.find();
+								}
 							}
 						})
 					},

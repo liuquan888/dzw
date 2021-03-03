@@ -22,7 +22,6 @@ var menuApi = {
 				userId:userId
 			},
 			success:function(result){
-				console.log(result);
 				callback(result);
 			},error:function(error){
 				console.log(error);
