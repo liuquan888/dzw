@@ -143,24 +143,24 @@
 					<div class="row" style="margin-left: 20px;">
 						<div class="col-sm-5" >
 							<div>
-								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addbrandmo">增加品牌</a> 
-								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatebrandmo">修改</a> 
-								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="removebrand">删除</a> 
+								<span v-perms="'modelfile:brand:add'"><img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addbrandmo">增加品牌</a></span>
+								<span v-perms="'modelfile:brand:update'"><img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatebrandmo">修改</a></span>
+								<span v-perms="'modelfile:brand:remove'"><img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="removebrand">删除</a></span>
 								
 								<br /><br />
 								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母" style="height: 30px;" v-model="branddimtext"/>
-								<span><button class="btn btn-warning btn-sm" id="branddimbutton" @click="branddim" >搜索</button></span>
+								<span v-perms="'modelfile:brand:seek'"><button class="btn btn-warning btn-sm" id="branddimbutton" @click="branddim" >搜索</button></span>
 							</div>
 						</div>
 						<div class="col-sm-5" >
 							<div>
-								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a> 
-								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a> 
-								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="carremove">删除</a> 
+								<span v-perms="'modelfile:car:add'"><img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a></span>
+								<span v-perms="'modelfile:car:update'"><img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a></span>
+								<span v-perms="'modelfile:car:remove'"><img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="carremove">删除</a></span>
 								<!-- <img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimagemo">照片</a> -->
 								<br /><br />
 								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"  v-model="cardimtext"/>
-								<span><button class="btn btn-warning btn-sm" id="cardimbutton" @click="cardim">搜索</button></span>
+								<span v-perms="'modelfile:car:seek'"><button class="btn btn-warning btn-sm" id="cardimbutton" @click="cardim">搜索</button></span>
 							</div>
 						</div>
 					</div>
@@ -711,6 +711,10 @@
 			
 			//删除车型
 			carremove(){
+				if(this.carlist.length==0){
+					alert("很抱歉，你暂未选择车型！")
+					return
+				}
 				var hint=confirm("确认删除此车型吗？删除后不可恢复！")
 				if(hint){
 					let that=this;
@@ -805,6 +809,10 @@
 				})
 			},
 			updatecarmo(){
+				if(this.carlist.length==0){
+					alert("很抱歉，你暂未选择车型！")
+					return
+				}
 				//解除双向绑定
 				let formdata= JSON.parse(JSON.stringify(this.carapplocation));
  				this.car={};

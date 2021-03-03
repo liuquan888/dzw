@@ -88,7 +88,7 @@
 				<div class="col-sm-3">
 					<br />
 					<input type="text" name="" placeholder="匹配编码/名称/名称简码" id="" value="" style="height: 30px;" v-model="maindimtext" />
-					<button class="btn btn-warning btn-sm mainos" @click="maindim">搜索</button>
+					<span v-perms="'maintenanceitems:items:seek'"><button class="btn btn-warning btn-sm mainos" @click="maindim">搜索</button></span>
 				</div>
 				<div class="col-sm-1">
 					<br>
@@ -104,17 +104,17 @@
 					<div class="col-sm-8">
 						<div v-if="bott1">
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<img src="../img/1.png" width="2%"><a href="javascript:void(0)" @click="addservicemo">添加分类</a> 
-							<img src="../img/2.png" width="2%"><a href="javascript:void(0)" @click="updateservicemo">修改分类</a> 
-							<img src="../img/3.png" width="2%"><a href="javascript:void(0)" @click="removeservice">删除分类</a> 
+							<span v-perms="'maintenanceitems:classify:add'"><img src="../img/1.png" width="2%"><a href="javascript:void(0)" @click="addservicemo">添加分类</a></span>
+							<span v-perms="'maintenanceitems:classify:update'"><img src="../img/2.png" width="2%"><a href="javascript:void(0)" @click="updateservicemo">修改分类</a></span> 
+							<span v-perms="'maintenanceitems:classify:remove'"><img src="../img/3.png" width="2%"><a href="javascript:void(0)" @click="removeservice">删除分类</a> </span>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addmainmo">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updatemainmo">修改</a> 
-						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="removemain" class="mainos">删除</a> &nbsp;
-						<img src="../zenglianjun/img/tempsnip.png" width="4%"><a href="javascript:void(0)" @click="pricechangemo">调价</a> 
-						<img src="img/QQ图片20210121164913.png" width="5%"><a href="javascript:void(0)" @click="mainExcel">导出</a> 
+						<span v-perms="'maintenanceitems:items:add'"><img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addmainmo">增加</a></span>
+						<span v-perms="'maintenanceitems:items:update'"><img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updatemainmo">修改</a></span>
+						<span v-perms="'maintenanceitems:items:remove'"><img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="removemain">删除</a></span> &nbsp;
+						<span v-perms="'maintenanceitems:items:price'"><img src="../zenglianjun/img/tempsnip.png" width="4%"><a href="javascript:void(0)" @click="pricechangemo">调价</a></span>
+						<span v-perms="'maintenanceitems:items:export'"><img src="img/QQ图片20210121164913.png" width="5%"><a href="javascript:void(0)" @click="mainExcel">导出</a></span>
 					</div>
 				</div>
 				<br />
@@ -124,10 +124,10 @@
 					<div id="table" style="background: #ffffff;">
 						<div id="d1">
 						    <div id="d1_body">
-						        <ul style="margin-left: -20px;" v-for="(item,index) in servicemenu">
+						        <ul style="margin-left: -20px;" v-for="(item,index) in servicemenu" @click="replenish1(item)">
 						            <li>
 										<img src="image/小房子.PNG" style="vertical-align: middle;" width="12%">
-						                <span @click="doAction(index,item);"><a href="javascript:void(0)"><span class="servicename">{{item.serName}}</span></a></span>
+						                <span @click="doAction(index,item);"><a href="javascript:void(0)"><span class="">{{item.serName}}</span></a></span>
 						            </li>
 						            <ul style="display:none;margin-left: -20px;font-size: 13px;"  :id="'u'+index">
 						                <li v-for="item2 in item.services">
@@ -142,9 +142,8 @@
 						</div>
 					</div>
 				</div>
-				
-				<div style="margin-left: 250px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;height: 85%;">
-					<table class="table table-bordered">
+				<div style="margin-left: 250px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;overflow: auto;height: 80%;">
+					<table class="table table-bordered" style="height-space: nowrap">
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">项目类别</td>
@@ -158,9 +157,9 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">协议价</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">索赔价</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">保险价</td>
-							<td style="border: 1px solid #666; color: #FFFFFF;">备注</td>
+							<td v-if="false" style="border: 1px solid #666; color: #FFFFFF;">备注</td>
 						</tr>
-						<tr class="pintr2" v-for="item in mainlist" @click="mainclick(item)">
+						<tr class="pintr2" v-for="item in mainlist" @dblclick="danjiquzhi(item)" @click="mainclick(item)">
 							<td class="item"></td>
 							<td v-if="item.service">{{item.service.serName}}</td>
 							<td>{{item.mid}}</td>
@@ -173,11 +172,10 @@
 							<td>{{item.mdetaprice}}</td>
 							<td>{{item.mclaimprice}}</td>
 							<td>{{item.msafetyprice}}</td>
-							<td>{{item.mnote}}</td>
+							<td v-if="false">{{item.mnote}}</td>
 						</tr>
 					</table>
 				</div>
-				
 			</div>
 			
 			
@@ -287,7 +285,7 @@
 									<span class="til">服务项目定义</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success" class="mainos" @click="updatemain">保存</button>
+									<button type="button" class="btn btn-success" @click="updatemain">保存</button>
 								</div>
 							</div>
 							
@@ -431,7 +429,7 @@
 								<p>
 									<span class="must"></span>
 									<span class="va">类别编码</span>
-									<input type="text" name="" id="" v-model="service.serId" readonly="readonly"/>
+									<input type="text" name="" id="" v-model="service.serId" readonly="readonly" />
 								</p>
 								<p>
 									<span class="must"></span>
@@ -522,7 +520,7 @@
 	
 	
 	var BaseUrl="http://127.0.0.1:8080/";
-	
+	var clickTimer = null;
 	new Vue({
 		el:"#ctn",
 		data(){
@@ -559,32 +557,82 @@
 				],
 				mult:null,
 				co:0,
-				
-				maindimtext:null,
+				maindimtexttemp:"",
+				maindimtext:"",
+				fmenuinit:{},
 			}
 		},
 		methods:{
 			
+			open(){
+				var url=window.location.search;
+				this.data=this.getQueryString(url);
+			},
+			getQueryString(name) {
+				var data = name.slice(1);
+				data = data.split("&");
+				var dataObj = {};
+				data.forEach(item=>{
+					var dataObj1 = item.split("=");
+					for(var i = 0;i<dataObj1.length;i++){
+						dataObj[dataObj1[i]] = decodeURIComponent(dataObj1[i+1]);
+						break;
+					}
+				})
+				return dataObj;
+			},
+			mainclick(item){
+				this.maininit=item;
+				if (clickTimer) {
+					window.clearTimeout(clickTimer);
+					clickTimer = null;
+				}
+				clickTimer = window.setTimeout(function() {
+				}, 300);
+			},
+			danjiquzhi(item){
+				if (clickTimer) {
+					window.clearTimeout(clickTimer);
+					clickTimer = null;
+				}
+				this.weixduixe1=item;
+				console.log(this.weixduixe1)
+				sessionStorage.setItem("wexjih",JSON.stringify(this.weixduixe1));
+				location.href="http://127.0.0.1:8848/DeZhaoWen/zenglianjun/html/maintenance.html?"+this.data.action;
+			},
+
+			
+			replenish1(item){
+				this.fmenu=item
+				this.type=item.services;
+			},
+			
+			
 			//导出
 			mainExcel(){
-				window.location.href="http://127.0.0.1:8080/fileshan/mainExcel?params="+this.params;
+				if(this.mainlist.length==0){
+					alert("很抱歉，没有记录暂时无法导出数据！")
+					return
+				}
+				window.location.href="http://127.0.0.1:8080/fileshan/mainExcel?params="+this.params+"&maindimtext="+this.maindimtexttemp;
 			},
 			
 			
 			maindim(){
-				if(this.maindimtext==null){
-					this.maindimtext='975e65r45a4454a4d52s8a452d57';
+				this.maindimtexttemp='975e65r45a4454a4d52s8a452d57'
+				if(this.maindimtext!=null&&this.maindimtext!=""){
+					this.maindimtexttemp=this.maindimtext;
 				}
 				var json = JSON.stringify(this.params);
+				console.log(this.params)
 				let that=this;
 				$.ajax({
-					url:BaseUrl+"maintenance/maindim/"+that.maindimtext,
+					url:BaseUrl+"maintenance/maindim/"+that.maindimtexttemp,
 					data:json,
 					type:"post",
 					contentType:"application/json;cahrset=utf-8",
 					success:function(result){
 						that.mainlist=result;
-						that.maindimtext=null;
 						if(that.mainlist!=null){
 							that.mainclick(that.mainlist[0]);
 						}
@@ -596,6 +644,7 @@
 			
 			priceclick(){
 				this.cost[this.co].it=this.mult
+				this.mult=null
 				$("#pricechangemodal").modal("hide");
 			},
 			
@@ -629,7 +678,13 @@
 						}
 						var params = item.services.map(item=>item.serId);
 						this.findmainlist(params,item);
-						this.type=item.services;
+						
+						var tr=document.getElementsByClassName("pintr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
+						
 					}else{
 						obj.style.display = 'none';
 					}
@@ -669,6 +724,10 @@
 			
 			//新增维修进程
 			addmain(){
+				if(!this.main.mId||!this.main.mName){
+					alert("项目编码与项目名称不能为空！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"maintenance/addmain",
@@ -678,8 +737,13 @@
 						if(result=="000001"){
 							alert("编号不允许重复！")
 						}
+						var tr=document.getElementsByClassName("pintr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
 						that.findmenu();
-						that.findmainlist(that.params,[]);
+						that.findmainlist(that.params,that.serviceinit);
 						that.main={},
 						$("#addmainmodal").modal("hide");
 					}
@@ -692,6 +756,10 @@
 			},
 			
 			updatemainmo(){
+				if(this.mainlist.length==0){
+					alert("很抱歉，你暂未选择维修项目！")
+					return
+				}
 				this.$set(this.main,"mId",this.maininit.mid);
 				this.$set(this.main,"mName",this.maininit.mname);
 				this.$set(this.main,"mNote",this.maininit.mnote);
@@ -709,6 +777,10 @@
 			},
 			
 			updatemain(){
+				if(!this.main.mId||!this.main.mName){
+					alert("项目编码与项目名称不能为空！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"maintenance/updatemain",
@@ -716,8 +788,7 @@
 					type:"post",
 					success:function(result){
 						$("#updatemainmodal").modal("hide");
-						that.findmenu();
-						that.findmainlist(that.params,[]);
+						that.findmainlist(that.params,that.serviceinit);
 					}
 				})
 			},
@@ -727,6 +798,7 @@
 			
 			
 			addservicemo(){
+				let that=this;
 				if(this.serviceinit.serName=="车型"||this.serviceinit.serName=="发动机"){
 					alert("只能定义车型，发动机外的分类！")
 					return
@@ -736,6 +808,7 @@
 						alert("只能定义车型，发动机外的分类！")
 						return
 					}
+					that.service={},
 					$("#addservicemodal").modal("show");
 				});
 				
@@ -763,6 +836,7 @@
 			},
 			
 			updateservicemo(){
+				 console.log(this.serviceinit)
 				if(this.serviceinit.serName=="车型"||this.serviceinit.serName=="发动机"){
 					alert("只能定义车型，发动机外的分类！")
 					return
@@ -795,7 +869,7 @@
 					success:function(result){
 						$("#updateservicemodal").modal("hide");
 						that.findmenu();
-						that.findmainlist(that.params,[]);
+						that.findmainlist(that.params,that.service);
 					}
 				})
 			},
@@ -874,6 +948,10 @@
 			},
 			
 			removemain(){
+				if(this.mainlist.length==0){
+					alert("很抱歉，你暂未选择维修项目！")
+					return
+				}
 				if(!confirm("删除此维修项目不可恢复，确认删除吗？")){
 					return
 				}
@@ -881,7 +959,12 @@
 				$.ajax({
 					url:BaseUrl+"maintenance/removemain/"+that.maininit.mid,
 					success:function(result){
-						that.findmainlist(that.params,[]);
+						var tr=document.getElementsByClassName("pintr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
+						that.findmainlist(that.params,that.serviceinit);
 						that.maininit=that.mainlist[0];
 					}
 				})

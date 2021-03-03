@@ -208,8 +208,8 @@
 				<div class="col-sm-5"></div>
 				<div class="col-sm-4">
 					<br />
-					<input type="text" name="" placeholder="匹配编码/名称/名称/简码/型号/大类+号双条件查询" id="" value="" v-model="merdimtext" style="width: 350px;height: 30px;"/>
-					<button class="btn btn-warning btn-sm" @click="merdim">搜索</button>
+					<input type="text" name="" placeholder="匹配编码/名称/名称/简码/型号/大类" id="" value="" v-model="merdimtext" style="width: 350px;height: 30px;"/>
+					<button class="btn btn-warning btn-sm butt1" @click="merdim">搜索</button>
 				</div>
 				<div class="col-sm-1">
 					<br>
@@ -225,37 +225,28 @@
 					<div class="col-sm-3">
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						
-<<<<<<< HEAD
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoodsmo">修改</a> 
-						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer">删除</a> 
-=======
-<<<<<<< HEAD
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoods">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoods">修改</a> 
-						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> 
-						<img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoods">查询</a> 
-=======
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo" v-perms="'system:user:add'">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" class="butt1" @click="updategoodsmo" v-perms="'system:user:update'">修改</a> 
-						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer" v-perms="'system:user:fs'">删除</a> 
->>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
-						<img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoodsmo">查询</a> 
->>>>>>> bd8b148776cc695ebe1b2585d175a79c76413cd3
+						<span v-perms="'commodity:goods:add'"><img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo">增加</a></span>
+						<span v-perms="'commodity:goods:update'"><img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoodsmo">修改</a></span>
+						<span v-perms="'commodity:goods:remove'"><img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer">删除</a></span> 
+						&nbsp;
+						<!-- <span v-perms="''"><img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoodsmo">查询</a></span> -->
+						<span v-perms="'commodity:goods:export'"><img src="../zenglianjun/img/捕获11.PNG" width="6%"><a href="javascript:void(0)" @click="downloadExcel">导出</a></span> 
 					</div>
 					<div class="col-sm-9">
-						<img src="../zenglianjun/img/捕获11.PNG" width="2%"><a href="javascript:void(0)" @click="downloadExcel">导出</a> 
-						<img src="img/111.PNG" width="2%"><a href="javascript:void(0)">照片</a> 
-						<img src="img/112.PNG" width="2%"><a href="javascript:void(0)">条码</a> 
-						<img src="../img/8.png" width="2%"><a href="javascript:void(0)">分类设置</a> 
-						<img src="../img/9.png" width="2%"><a href="javascript:void(0)" @click="addfield">字段设置</a> 
+						
+						<!-- <span><img src="img/111.PNG" width="2%"><a href="javascript:void(0)">照片</a> -->
+						<!-- <span><img src="img/112.PNG" width="2%"><a href="javascript:void(0)">条码</a> -->
+						<!-- <span><img src="../img/8.png" width="2%"><a href="javascript:void(0)">分类设置</a> -->
+						<!-- <span><img src="../img/9.png" width="2%"><a href="javascript:void(0)" @click="addfield">字段设置</a> -->
 						
 					</div>
 				</div>
-				<br />
+				
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" name="" id="" value="" placeholder="匹配	编码/名称" style="height: 30px;"/>
-				<button class="btn btn-warning btn-sm">搜索</button>
+				<span v-if="false">
+					<input type="text" name="" id="" value="" placeholder="匹配	编码/名称" style="height: 30px;"/>
+					<span v-perms="'commodity:goods:seek'"><button class="btn btn-warning btn-sm">搜索</button></span>
+				</span>
 				<br><br />
 				<div style="width: 300px;height: 85%;margin-left: 0px; background: #ffffff;">
 					<br />
@@ -302,7 +293,7 @@
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;padding-left: 25px;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">登记门店</td>
-							<td style="border: 1px solid #666; color: #FFFFFF;">照片名</td>
+							<!-- <td style="border: 1px solid #666; color: #FFFFFF;">照片名</td> -->
 							<td style="border: 1px solid #666; color: #FFFFFF;">商品编码</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">商品名称</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">商品品牌</td>
@@ -326,23 +317,23 @@
 							<td style="border: 1px solid #666; color: #FFFFFF;">互换码</td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">售价按</td>
 						</tr>
-						<tr class="pintr2" v-for="item in merlist">
+						<tr class="pintr2" v-for="item in merlist" @click="merck(item)">
 							<td class="item"></td>
 							<td>{{item.meCheck}}</td>
-							<td>{{item.reserved1}}</td>
+							<!-- <td>{{item.reserved1}}</td> -->
 							<td>{{item.meId}}</td>
 							<td>{{item.meName}}</td>
 							<td>{{item.meBrand}}</td>
 							<td>{{item.meAdaptable}}</td>
 							<td>{{item.meUnit}}</td>
-							<td v-if="item.menuMerchandise">{{item.menuMerchandise.menuName}}</td>
+							<td><span v-if="item.menuMerchandise">{{item.menuMerchandise.menuName}}</span></td>
 							<td></td>
 							<td></td>
 							<td>{{item.meIncome}}</td>
 							<td>{{item.meMill}}</td>
 							<td>{{item.meGrade}}</td>
 							<td>{{item.mePlace}}</td>
-							<td v-if="item.suppiler">{{item.suppiler.pname}}</td>
+							<td><span v-if="item.suppiler">{{item.suppiler.pname}}</span></td>
 							<td>{{item.meCoding}}</td>
 							<td>{{item.meCode}}</td>
 							<td>{{item.meBack}}</td>
@@ -378,7 +369,7 @@
 									<span class="til">商品资料编辑</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success">保存</button>
+									<button type="button" class="btn btn-success" @click="addmer">保存</button>
 								</div>
 							</div>
 							
@@ -391,144 +382,147 @@
 								<p>
 									<span class="must">*</span>
 									<span class="va">商品编码</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meId" />
 									<span class="must">*</span>
 									<span class="va">商品名称</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meName" />
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">商品品牌</span>
-									<select style="width: 150px;height: 25px;">
-										<option>别克</option>
-										<option>米其林</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meBrand">
+										<option value="别克">别克</option>
+										<option value="宝马">宝马</option>
+										<option value="宝骏">宝骏</option>
+										<option value="东风">东风</option>
 									</select>
 									<span class="must"></span>
 									<span class="va">数量单位</span>
-									<select style="width: 150px;height: 25px;">
-										<option>件</option>
-										<option>个</option>
-										<option>把</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meUnit">
+										<option value="件">件</option>
+										<option value="个">个</option>
+										<option value="只">只</option>
+										<option value="条">条</option>
+										<option value="把">把</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">适用车型</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meAdaptable" />
 									<span class="must"></span>
 									<span class="va">商品大类</span>
-									<input type="text" name="" id="" value=""  v-model="merchandise.menuMerchandise.menuName" />
+									<input type="text" name="" id="" value="" disabled="disabled" v-model="broad.menuName" />
 									<a href="javascript:void(0)" style="margin-left: -10px;" @click="broadmo">
-<<<<<<< HEAD
 										<img class="broadid" src="../zenglianjun/img/三角形.PNG" width="35px" />
-=======
-										<img src="../zenglianjun/img/三角形.PNG" width="35px" />
->>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 									</a>
 								</p>
 								
 								<p>
 									<span class="must"></span>
 									<span class="va">收入分类</span>
-									<select style="width: 150px;height: 25px;">
-										<option>机修</option>
-										<option>钣喷</option>
-										<option>燃油</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meIncome">
+										<option value="工时费">工时费</option>
+										<option value="燃油费">燃油费</option>
+										<option value="代办费">代办费</option>
+										<option value="其他">其他</option>
 									</select>
 									<span class="must"></span>
 									<span class="va">原厂副厂</span>
-									<select style="width: 150px;height: 25px;">
-										<option>一号厂</option>
-										<option>二号厂</option>
-										<option>三号厂</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meMill">
+										<option value="一号厂">一号厂</option>
+										<option value="二号厂">二号厂</option>
+										<option value="三号厂">三号厂</option>
 									</select>
 								</p>
 								
 								<p>
 									<span class="must"></span>
 									<span class="va">商品等级</span>
-									<select style="width: 150px;height: 25px;">
-										<option>A级</option>
-										<option>B级</option>
-										<option>C级</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meGrade">
+										<option value="优">优</option>
+										<option value="良">良</option>
+										<option value="差">差</option>
 									</select>
 									<span class="must"></span>
 									<span class="va">商品产地</span>
-									<select style="width: 150px;height: 25px;">
-										<option>湖南</option>
-										<option>北京</option>
-										<option>广东</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.mePlace">
+										<option value="湖南">湖南</option>
+										<option value="北京">北京</option>
+										<option value="广东">广东</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">厂商名称</span>
-									<input type="text" name="" id="" value="" style="width: 388px;"/>
+									<select  style="width: 388px; height: 25px;" v-model="merchandise.pId">
+										<option v-for="item in supplist" :value="item.pId">{{item.pName}}</option>
+									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">原厂编码</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meCoding"/>
 									<span class="must"></span>
 									<span class="va">条形码</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meCode"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">包装规格</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meBack"/>
 									<span class="must"></span>
 									<span class="va">体积A</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meBulk"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">毛重</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meGross"/>
 									<span class="must"></span>
 									<span class="va">净重</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meSuttle"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">进货价</span>
-									<input type="text" name="" id="" value="" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meCost"/>
 									<span class="must"></span>
 									<span class="va">售价按</span>
-									<select style="width: 150px;height: 25px;">
-										<option>售价表</option>
-										<option>加价率</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.reserved3">
+										<option value="售价表">售价表</option>
+										<option value="加价率">加价率</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">互换码</span>
-									<input type="text" name="" id="" value="" style="width: 388px;"/>
+									<input type="text" name="" id="" value="" style="width: 388px;" v-model="merchandise.meSwitch"/>
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meNormalprice"/>
 										
 										<span class="va">会员价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meMemberprice"/>
 										
 										<span class="va">VIP价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meVipprice"/>
 									</div>
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">协议价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meDetaprice"/>
 										
 										<span class="va">索赔价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meClaimprice"/>
 										
 										<span class="va">保险价</span>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meSafetyprice"/>
 									</div>
 								</p>
 								<br />
@@ -554,11 +548,7 @@
 									<span class="til">商品资料编辑</span>
 								</div>
 								<div class="col-sm-1">
-<<<<<<< HEAD
 									<button type="button" class="btn btn-success butt1" @click="updatemer">保存</button>
-=======
-									<button type="button" class="btn btn-success">保存</button>
->>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 								</div>
 							</div>
 							
@@ -571,153 +561,156 @@
 								<p>
 									<span class="must">*</span>
 									<span class="va">商品编码</span>
-									<input type="text" name="" id="" value="111" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meId" readonly="readonly" />
 									<span class="must">*</span>
 									<span class="va">商品名称</span>
-									<input type="text" name="" id="" value="汽油发动机" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meName" />
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">商品品牌</span>
-									<select style="width: 150px;height: 25px;">
-										<option>别克</option>
-										<option>米其林</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meBrand">
+										<option value="别克">别克</option>
+										<option value="宝马">宝马</option>
+										<option value="宝骏">宝骏</option>
+										<option value="东风">东风</option>
 									</select>
 									<span class="must"></span>
 									<span class="va">数量单位</span>
-									<select style="width: 150px;height: 25px;">
-										<option>件</option>
-										<option>个</option>
-										<option>把</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meUnit">
+										<option value="件">件</option>
+										<option value="个">个</option>
+										<option value="只">只</option>
+										<option value="条">条</option>
+										<option value="把">把</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">适用车型</span>
-									<input type="text" name="" id="" value="所有" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meAdaptable" />
 									<span class="must"></span>
 									<span class="va">商品大类</span>
-<<<<<<< HEAD
 									<input type="text" name="" id="" value="" disabled="disabled" v-model="broad.menuName" />
 									<a href="javascript:void(0)" style="margin-left: -10px;" @click="broadmo">
 										<img class="broadid" src="../zenglianjun/img/三角形.PNG" width="35px" />
 									</a>
-=======
-									<input type="text" name="" id="" value="" />
->>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 								</p>
 								
 								<p>
 									<span class="must"></span>
 									<span class="va">收入分类</span>
-									<select style="width: 150px;height: 25px;">
-										<option>机修</option>
-										<option>钣喷</option>
-										<option>燃油</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meIncome">
+										<option value="工时费">工时费</option>
+										<option value="燃油费">燃油费</option>
+										<option value="代办费">代办费</option>
+										<option value="其他">其他</option>
 									</select>
 									<span class="must"></span>
 									<span class="va">原厂副厂</span>
-									<select style="width: 150px;height: 25px;">
-										<option>一号厂</option>
-										<option>二号厂</option>
-										<option>三号厂</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meMill">
+										<option value="一号厂">一号厂</option>
+										<option value="二号厂">二号厂</option>
+										<option value="三号厂">三号厂</option>
 									</select>
 								</p>
 								
 								<p>
 									<span class="must"></span>
 									<span class="va">商品等级</span>
-									<select style="width: 150px;height: 25px;">
-										<option>A级</option>
-										<option>B级</option>
-										<option>C级</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.meGrade">
+										<option value="优">优</option>
+										<option value="良">良</option>
+										<option value="差">差</option>
 									</select>
 									<span class="must"></span>
 									<span class="va">商品产地</span>
-									<select style="width: 150px;height: 25px;">
-										<option>湖南</option>
-										<option>北京</option>
-										<option>广东</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.mePlace">
+										<option value="湖南">湖南</option>
+										<option value="北京">北京</option>
+										<option value="广东">广东</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">厂商名称</span>
-									<input type="text" name="" id="" value="" style="width: 388px;"/>
+									<select  style="width: 388px; height: 25px;" v-model="merchandise.pid">
+										<option v-for="item in supplist" :value="item.pId">{{item.pName}}</option>
+									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">原厂编码</span>
-									<input type="text" name="" id="" value="1221" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meCoding"/>
 									<span class="must"></span>
 									<span class="va">条形码</span>
-									<input type="text" name="" id="" value="24334234" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meCode"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">包装规格</span>
-									<input type="text" name="" id="" value="规格" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meBack"/>
 									<span class="must"></span>
 									<span class="va">体积A</span>
-									<input type="text" name="" id="" value="10000kg" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meBulk"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">毛重</span>
-									<input type="text" name="" id="" value="44545kg" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meGross"/>
 									<span class="must"></span>
 									<span class="va">净重</span>
-									<input type="text" name="" id="" value="54566kg" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meSuttle"/>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">进货价</span>
-									<input type="text" name="" id="" value="1233124" />
+									<input type="text" name="" id="" value="" v-model="merchandise.meCost"/>
 									<span class="must"></span>
 									<span class="va">售价按</span>
-									<select style="width: 150px;height: 25px;">
-										<option>售价表</option>
-										<option>加价率</option>
+									<select style="width: 150px;height: 25px;" v-model="merchandise.reserved3">
+										<option value="售价表">售价表</option>
+										<option value="加价率">加价率</option>
 									</select>
 								</p>
 								<p>
 									<span class="must"></span>
 									<span class="va">互换码</span>
-									<input type="text" name="" id="" value="66465D45F45GF45" style="width: 388px;"/>
+									<input type="text" name="" id="" value="" style="width: 388px;" v-model="merchandise.meSwitch"/>
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">标准价</span>
-										<input type="text" name="" id="" value="324324" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meNormalprice"/>
 										
 										<span class="va">会员价</span>
-										<input type="text" name="" id="" value="43234" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meMemberprice"/>
 										
 										<span class="va">VIP价</span>
-										<input type="text" name="" id="" value="32434" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meVipprice"/>
 									</div>
 								</p>
 								<p>
 									<div class="price">
 										<span class="must"></span>
 										<span class="va">协议价</span>
-										<input type="text" name="" id="" value="34234" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meDetaprice"/>
 										
 										<span class="va">索赔价</span>
-										<input type="text" name="" id="" value="23454" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meClaimprice"/>
 										
 										<span class="va">保险价</span>
-										<input type="text" name="" id="" value="23454" />
+										<input type="text" name="" id="" value="" v-model="merchandise.meSafetyprice"/>
 									</div>
 								</p>
 								<br />
 							</div>
 				      </div>
+				     
 				    </div>
 				  </div>
 				</div>
-				
 				
 				
 				<!-- 字段设置 -->
@@ -767,7 +760,7 @@
 								<div style="overflow: auto; width: 100%;height: 70%;margin-top: -20px;" >
 									<table id="ctable" class="table table-bordered table-striped table-hover" style="width: nowrap" >
 										
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>asdasd</td>
@@ -775,7 +768,7 @@
 											<td>1</td>
 											<td>165</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pint3r">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -783,7 +776,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -791,7 +784,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -799,7 +792,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -807,7 +800,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -815,7 +808,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -823,7 +816,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -831,7 +824,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -839,7 +832,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -847,7 +840,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -855,7 +848,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -863,7 +856,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -871,7 +864,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -879,7 +872,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -887,7 +880,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -895,7 +888,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -903,7 +896,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -911,7 +904,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -919,7 +912,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -927,7 +920,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -935,7 +928,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -943,7 +936,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -951,7 +944,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -959,7 +952,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -967,7 +960,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -975,7 +968,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -983,7 +976,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -991,7 +984,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -999,7 +992,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -1007,7 +1000,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -1015,7 +1008,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -1023,7 +1016,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -1031,7 +1024,7 @@
 											<td>2</td>
 											<td>155</td>
 										</tr>
-										<tr class="pintr2">
+										<tr class="pintr3">
 											<td class="item"></td>
 											<td style="text-align: center;"><input type="checkbox"/></td>
 											<td>sdeffds</td>
@@ -1242,7 +1235,7 @@
 			        	<div id="mfieldmodal" style="">
 							<div>
 								<div class="lmenu lm2">
-									<ul v-for="item4 in menumerlist">
+									<ul id="ul1" v-for="item4 in menumerlist">
 										
 										<li aid="1" v-for="item in item4.menuMerchandises">
 											<span @click="broadck(item)">
@@ -1287,7 +1280,7 @@
 		
 <script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/vue.js"></script>
+<script src="../js/vue.js"></script>		
 <script src="../js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 <script>
 	
@@ -1300,6 +1293,8 @@
 			return{
 				menumerlist:[],
 				merlist:[],
+				supplist:[],
+				merinit:{},
 				merdimtext:null,
 				str:[],
 				con1:"0",
@@ -1308,11 +1303,7 @@
 				broadshowhide:false,
 				broadtemp:{},
 				broad:{},
-				merchandise:{
-					menuMerchandise:{
-						menuName:"",
-					}
-				},
+				merchandise:{},
 			}
 		},
 		methods:{
@@ -1328,6 +1319,10 @@
 			},
 			
 			removemer(){
+				if(this.merlist.length==0){
+					alert("很抱歉，你暂未选择商品！")
+					return
+				}
 				if(!confirm("确认删除吗？")){
 					return
 				}
@@ -1349,6 +1344,10 @@
 			
 			//导出
 			downloadExcel(){
+				if(this.merlist.length==0){
+					alert("很抱歉，没有商品无法导出数据！")
+					return
+				}
 				if(this.menuinit.menuId==null){
 					this.menuinit.menuId=0;
 				}
@@ -1356,19 +1355,15 @@
 			},
 			
 			broadaff(){
-				
-				console.log(this.broadtemp)
+				//console.log(this.broadtemp)
 				if(this.broadtemp.menuMerchandises[0]){
-					console.log(this.broadtemp.menuMerchandises)
+					//console.log(this.broadtemp.menuMerchandises)
 					alert("只能选择最底层目录！")
 					
 				}else{
-					this.broad=this.broadtemp;
-					this.broadtemp={},
-					console.log(this.broad)
+					let formdata= JSON.parse(JSON.stringify(this.broadtemp))
+					this.broad=formdata;
 					$("#broadmo").modal("hide");
-					this.merchandise.menuMerchandise=this.broad
-					console.log(this.merchandise)
 				}
 			},
 			
@@ -1388,6 +1383,16 @@
 				this.findmer(this.menuinit.menuId);
 			},
 			
+			findsupp(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"merchandise/findsupp",
+					success:function(result){
+						that.supplist=result
+					}
+				})
+			},
+			
 			//无限递归方法
 			findmenu(){
 				let that=this;
@@ -1395,20 +1400,16 @@
 					url:BaseUrl+"merchandise/di",
 					success:function(result){
 						that.menumerlist=result
-<<<<<<< HEAD
 						console.log(that.menumerlist[0])
-=======
-						console.log(that.menumerlist)
->>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 					}
 				})
 			},
 			
-			//初始化
-			init(){
-			},
+			
 			
 			findmerclick(item){
+				this.con1="0"
+				this.con2="0"
 				this.menuinit=item;
 				console.log(this.menuinit);
 				this.findmer(item.menuId);
@@ -1431,24 +1432,94 @@
 					url:BaseUrl+"merchandise/findmer/"+meId+"/"+that.con1+"/"+that.con2,
 					success:function(result){
 						that.merlist=result
-						that.con1="0"
-						that.con2="0"
 						that.merdimtext=null
-						console.log(that.merlist)
+						that.init();
 					}
 				})
 			},
 			
-			addgoods(){
+			
+			merck(item){
+				
+				this.merinit=item
+			},
+			
+			addgoodsmo(){
+				this.broad={};
+				this.merchandise={};
 				$("#addgoodsmodal").modal("show");
 			},
-			updategoods(){
+			addmer(){
+				
+				if(!this.merchandise.menuId){
+					this.merchandise.menuId=this.broad.menuId
+				}
+				if(!this.merchandise.menuId||!this.merchandise.meName||!this.merchandise.meId){
+					alert("商品名称与商品编码，商品大类不能为空！")
+					return
+				}
+
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"merchandise/addmer",
+					type:"post",
+					data:that.merchandise,
+					success:function(result){
+						if(result=="000001"){
+							alert("编号不允许重复！")
+						}else{
+							var tr=document.getElementsByClassName("pintr2");
+							for(var i=0;i<tr.length;i++){
+								tr[i].style.background='none';
+							}
+							tr[0].style.background='sandybrown';
+							$("#addgoodsmodal").modal("hide");
+							that.findmer(that.menuinit.menuId)
+						}
+						
+					}
+					
+				})
+			},
+			
+			updategoodsmo(){
+				if(this.merlist.length==0){
+					alert("很抱歉，你暂未选择商品！")
+					return
+				}
+				let formdata= JSON.parse(JSON.stringify(this.merinit))
+				this.merchandise=formdata
+				this.broad=this.merchandise.menuMerchandise
 				$("#updategoodsmodal").modal("show");
 			},
+			
+			updatemer(){
+				this.merchandise.menuId=this.broad.menuId
+				if(!this.merchandise.menuId||!this.merchandise.meName||!this.merchandise.meId){
+					alert("商品名称与商品编码，商品大类不能为空！")
+					return
+				}
+				this.merchandise.suppiler={};
+				this.merchandise.menuMerchandise={};
+				console.log(this.merchandise)
+				let that=this;
+				
+				$.ajax({
+					url:BaseUrl+"merchandise/updatemer",
+					type:"post",
+					data:that.merchandise,
+					success:function(result){
+						$("#updategoodsmodal").modal("hide");
+						that.findmer(that.menuinit.menuId)
+					}
+					
+				})
+			},
+			
 			addfield(){
 				$("#addfieldmodal").modal("show");
 			},
-			findgoods(){
+			findgoodsmo(){
 				$("#findgoodsmodal").modal("show");
 			},
 			
@@ -1460,8 +1531,10 @@
 			},
 		},
 		created(){
-			this.findmenu(null);
+			this.findmenu();
 			this.findmer();
+			this.findsupp();
+			
 		}
 	});
 	
@@ -1515,8 +1588,9 @@
 			.click(function(){
 				clickAction($(this).attr('aid'));
 			});
+			
 	 
-		$(".lmenu ul li span").click(function(){
+		$(document).on('click','.lmenu ul li span',function(){
 			var ye = $(this).find('em');
 			classNama = ye.attr("class");
 			if( classNama == 'icoclose'){ye.attr('class','icoopen');}
@@ -1546,6 +1620,7 @@
 		$(".lm1 span").css("color","#000000")
 		$(this).css("background","#aaa")
 		$(this).css("color","#ffffff")
+		$(".pintr2").css("background","")
 		$(".pintr2").eq(0).css("background","sandybrown")
 	})
 	

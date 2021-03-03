@@ -63,10 +63,10 @@
 				<hr />
 				<div>
 					<div style="margin-left: 80%;">
-						<span @click="toadd"><img src="../img/1.png" width="6%"><a href="javascript:void(0)" class="butt1">增加</a></span>
-						<span><img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="remove">删除</a> </span>
-						<span><img src="img/113.png" width="6%"><a href="javascript:void(0)" @click="carry">保存</a> </span>
-						<span><img src="../img/6.png" width="6%"><a href="javascript:void(0)" @click="EngineExcel">导出</a> </span>
+						<span v-perms="'enginebrand:engine:add'" @click="toadd"><img src="../img/1.png" width="6%"><a href="javascript:void(0)" class="butt1">增加</a></span>
+						<span v-perms="'enginebrand:engine:remove'" ><img src="../img/3.png" width="6%"><a href="javascript:void(0)" @click="remove">删除</a> </span>
+						<span v-perms="'enginebrand:engine:save'" ><img src="img/113.png" width="6%"><a href="javascript:void(0)" @click="carry">保存</a> </span>
+						<span v-perms="'enginebrand:engine:export'" ><img src="../img/6.png" width="6%"><a href="javascript:void(0)" @click="EngineExcel">导出</a> </span>
 					</div>
 					<br />
 					<span class="a1" style="margin-left: 50px;" v-if="addtext">
@@ -155,7 +155,6 @@
 						console.log(result)
 					},error:function(error){
 						if(error.responseText=="新增成功"){
-							alert(error.responseText)
 						}
 						if(error.responseText=="000001"){
 							alert("编号不允许重复！")
@@ -168,19 +167,29 @@
 			
 			//删除
 			remove(){
+				
+				if(!this.application1.eId){
+					console.log(this.engine)
+					alert("请选择需要删除的品牌！")
+					return
+				}
+				
+				if(!confirm("确认删除该品牌吗？")){
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"engine/remove/"+that.application1.eId,
 					type:"get",
 					success:function(result){
-						that.application1={},
+						if(result=="000002"){
+							alert("该发动机品牌不可删除！")
+						}else{
+							that.application1={};
+						}
 						that.addtext=false;
 						that.updatetext=true;
 						that.find()
-					},error:function(error){
-						that.addtext=false;
-						that.updatetext=true;
-						that.find();
 					}
 				})
 			},
@@ -208,6 +217,10 @@
 			
 			//修改
 			update(){
+				if(!this.application1.eName||!this.application1.eCoder){
+					alert("发动机编码与名称不允许为空！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"engine/update",
@@ -217,8 +230,8 @@
 					success:function(result){
 						console.log(result)
 					},error:function(error){
-						if(error.responseText=="修改成功"){
-							alert(error.responseText)
+						if(error.responseText=="000001"){
+							alert("编号不允许重复！")
 						}
 						that.find();
 					}

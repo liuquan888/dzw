@@ -85,6 +85,7 @@ public class MerchandiseController {
     @PostMapping("/addmer")
     public String addmer(Merchandise merchandise){
         try {
+            merchandise.setMeCheck("暂无门店");
             merchandise.setReserved4("0");
             QueryWrapper merqw=new QueryWrapper<Merchandise>();
             merqw.eq("me_id",merchandise.getMeId());
