@@ -43,12 +43,18 @@ public class MaintenanceItemsController {
 
     @PostMapping("/removebh")
     public String remove(@RequestBody List<String> list) {
-        QueryWrapper<MaintenanceItems> brandqw=new QueryWrapper();
-        for (String s:list){
-            brandqw.eq("xmbh",s);
-            mainren.remove(brandqw);
+        try {
+            QueryWrapper<MaintenanceItems> brandqw = new QueryWrapper();
+            for (String s : list) {
+                brandqw.eq("xmbh", s);
+                mainren.remove(brandqw);
+            }
+            return "删除成功";
+        }catch (Exception exception){
+            return "00003";
         }
-        return "删除成功";
+
+
     }
 
     @GetMapping("/findbyxms/{checks}")
