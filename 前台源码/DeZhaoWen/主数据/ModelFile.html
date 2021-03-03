@@ -610,10 +610,10 @@
 			},
 			//添加品牌
 			addbrand(){
-				if(!this.brand.bId||!this.brand.bName||!this.brand.bInital){
-					alert("品牌编码与品牌名称，品牌首字母必须填写！")
-					return
-				}
+// 				if(!this.brand.bId||!this.brand.bName||!this.brand.bInital){
+// 					alert("品牌编码与品牌名称，品牌首字母必须填写！")
+// 					return
+// 				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"brand/addbrand",
@@ -636,6 +636,10 @@
 			
 			//删除品牌
 			removebrand(){
+				if(this.list.length==0){
+					alert("很抱歉，你暂未选择品牌！")
+					return
+				}
 				var hint=confirm("确认删除此品牌吗？删除此品牌会将该品牌下所有车系删除！")
 				if(hint){
 					let that=this;
@@ -650,6 +654,10 @@
 			
 			//打开修改模态框
 			updatebrandmo(){
+// 				if(this.list.length==0){
+// 					alert("很抱歉，你暂未选择品牌！")
+// 					return
+// 				}
 				//解除双向绑定
 				let formdata= JSON.parse(JSON.stringify(this.brandapplocation))
 				this.brand={};
