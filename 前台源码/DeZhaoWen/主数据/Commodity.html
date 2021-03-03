@@ -224,13 +224,6 @@
 				<div class="row">
 					<div class="col-sm-3">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoodsmo">修改</a> 
-						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer">删除</a> 
-						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoods">增加</a> 
-						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" @click="updategoods">修改</a> 
-						<img src="../img/3.png" width="6%"><a href="javascript:void(0)">删除</a> 
-						<img src="../img/4.png" width="6%"><a href="javascript:void(0)" @click="findgoods">查询</a> 
 						<img src="../img/1.png" width="6%"><a href="javascript:void(0)" @click="addgoodsmo" v-perms="'system:user:add'">增加</a> 
 						<img src="../img/2.png" width="6%"><a href="javascript:void(0)" class="butt1" @click="updategoodsmo" v-perms="'system:user:update'">修改</a> 
 						<img src="../img/3.png" width="6%"><a href="javascript:void(0)" class="butt2" @click="removemer" v-perms="'system:user:fs'">删除</a> 
@@ -1333,8 +1326,7 @@
 					this.menuinit.menuId=0;
 				}
 				window.location.href="http://127.0.0.1:8080/fileshan/downloadExcel?menuid="+this.menuinit.menuId+"&con1="+this.con1+"&con2="+this.con2;
-			},
-			
+			},		
 			broadaff(){
 				
 				console.log(this.broadtemp)
@@ -1350,8 +1342,7 @@
 					this.merchandise.menuMerchandise=this.broad
 					console.log(this.merchandise)
 				}
-			},
-			
+			},			
 			merdim(){
 				if(!this.merdimtext){
 					return
@@ -1366,8 +1357,7 @@
 					this.con2=str[1];
 				}
 				this.findmer(this.menuinit.menuId);
-			},
-			
+			},		
 			//无限递归方法
 			findmenu(){
 				let that=this;
@@ -1375,27 +1365,19 @@
 					url:BaseUrl+"merchandise/di",
 					success:function(result){
 						that.menumerlist=result
-<<<<<<< HEAD
 						console.log(that.menumerlist[0])
-=======
 						console.log(that.menumerlist)
->>>>>>> d15e587987bb4bdb094173ed9c8eb3d3a845da22
 					}
 				})
-			},
-			
+			},			
 			//初始化
 			init(){
-			},
-			
+			},			
 			findmerclick(item){
 				this.menuinit=item;
 				console.log(this.menuinit);
 				this.findmer(item.menuId);
-			},
-			
-			
-			
+			},	
 			findmer(meId){
 				if(!meId){
 					meId=0;
@@ -1418,7 +1400,6 @@
 					}
 				})
 			},
-			
 			addgoods(){
 				$("#addgoodsmodal").modal("show");
 			},
@@ -1431,13 +1412,12 @@
 			findgoods(){
 				$("#findgoodsmodal").modal("show");
 			},
-			
 			//初始化
 			init(){
 				//this.findmer()
 				this.merinit=this.merlist[0];
 				
-			},
+			}
 		},
 		created(){
 			this.findmenu(null);

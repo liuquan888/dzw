@@ -2760,8 +2760,8 @@
 			//根据车牌号查询车辆资料
 			function selectCarInfoByCarNumber(number) {
 				$.ajax({
-					url: data.ip+"/carheet/findId",
-					data:number,
+					url: data.ip+"/carheet/findId/"+number,
+					
 					
 					type: "post",
 					dataType: "json",
@@ -2793,7 +2793,7 @@
 						var carinfo = JSON.stringify(vm.CarInfo);
 						console.log(carinfo);
 						 
-						if(response > 0) {
+						if(response=="1") {
 							updateCarInfo(carinfo);
 						} else {
 							insertCarInfo(carinfo);
@@ -3403,6 +3403,7 @@
 						var that = this;
 						for(var i = 0; i < that.carinfo.length; i++) {
 							if(that.carinfo[i].check == true) {
+								
 								queryCarInfoByCarNumber(that.carinfo[i].platename);
 								i++;
 							}

@@ -229,26 +229,24 @@ public class CarheetController {
     }
     //根据ID查询指定信息
     @RequestMapping("/findId/{number}")
-    public Carheet findId(@PathVariable String number){
+    public String findId(@PathVariable String number){
         QueryWrapper<Carheet> queryWrapper=new QueryWrapper<>();
         if (number!=null){
             queryWrapper.eq("platename",number);
         }
-        Carheet list=service.list(queryWrapper).get(0);
-            Carbrand brand=brandService.getById(list.getCarbrandid());
-            if (brand!=null){
-                list.setPp(brand.getBrandname());
+        List<Carheet> list=service.list(queryWrapper);
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
             }
-            Car c=carService.getById(list.getReserved5());
-            if (c!=null){
-                list.setChexing(c.getReserved1());
-            }
-            Engine engine=engservice.getById(list.getEngineid());
-            if (engine!=null){
-                list.setFdj(engine.getEName());
-            }
-            list.setCheck(true);
-        return list;
+        }
+        if (list.size()>0){
+            return "1";
+        }else {
+            return "0";
+        }
     }
     @RequestMapping("/findssss/{qwe}")
     public List<Carheet> findssss(@PathVariable String qwe){
