@@ -142,8 +142,8 @@
 						</div>
 					</div>
 				</div>
-				<div style="margin-left: 250px;margin-top: -550px; border: 0px solid #000000;background: #ffffff;overflow: auto;height: 80%;">
-					<table class="table table-bordered" style="height-space: nowrap">
+				<div style="margin-left: 250px;margin-top: -520px; border: 0px solid #000000;background: #ffffff;overflow: auto;height: 80%;border-radius: 2px;">
+					<table class="table table-bordered" style="" >
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">项目类别</td>
@@ -313,11 +313,20 @@
 									</select>
 									<span class="must">*</span>
 									<span class="va">项目类别</span>
-									<select style="width: 150px;height: 25px;" v-model="main.serId">
-										<option v-for="item in type" :value="item.serId" >
-											{{item.serName}}
-										</option>
-									</select>
+									<span v-if="select1">
+										<select style="width: 150px;height: 25px;"  disabled="disabled">
+											<option selected="selected" v-if="main.service">
+												{{main.service.serName}}
+											</option>
+										</select>
+									</span>
+									<span v-if="!select1">
+										<select style="width: 150px;height: 25px;" v-model="main.serId">
+											<option v-for="item in type" :value="item.serId">
+												{{item.serName}}
+											</option>
+										</select>
+									</span>
 								</p>
 								<p>
 									<span class="must"></span>
@@ -560,6 +569,7 @@
 				maindimtexttemp:"",
 				maindimtext:"",
 				fmenuinit:{},
+				select1:true,
 			}
 		},
 		methods:{
@@ -636,6 +646,7 @@
 						if(that.mainlist!=null){
 							that.mainclick(that.mainlist[0]);
 						}
+						console.log(result)
 					},error:function(error){
 						console.log(error)
 					}
@@ -664,6 +675,7 @@
 					success:function(result){
 						that.servicemenu=result
 						that.type=that.servicemenu[0].services;
+						//that.type1();
 					}
 				})
 			},
@@ -684,6 +696,10 @@
 							tr[i].style.background='none';
 						}
 						tr[0].style.background='sandybrown';
+						
+						if(this.select1){
+							this.select1=false
+						}
 						
 					}else{
 						obj.style.display = 'none';
@@ -760,6 +776,7 @@
 					alert("很抱歉，你暂未选择维修项目！")
 					return
 				}
+				
 				this.$set(this.main,"mId",this.maininit.mid);
 				this.$set(this.main,"mName",this.maininit.mname);
 				this.$set(this.main,"mNote",this.maininit.mnote);
@@ -772,6 +789,7 @@
  				this.$set(this.main,"mDetaprice",this.maininit.mdetaprice);
 				this.$set(this.main,"mClaimprice",this.maininit.mclaimprice);
 				this.$set(this.main,"mSafetyprice",this.maininit.msafetyprice);
+				this.$set(this.main,"service",this.maininit.service);
 				//this.$set(this.main,"",this.maininit.);
 				$("#updatemainmodal").modal("show");
 			},
@@ -970,6 +988,13 @@
 				})
 			},
 			
+			type1(){
+				console.log(this.servicemenu)
+				this.type=this.servicemenu[0].services
+				for(var i=0;i>this.servicemenu.size;i++){
+					console.log("1");
+				}
+			},
 			
 			
 			pricechangemo(){
@@ -982,9 +1007,9 @@
 			this.findmenu();
 			this.findmainlist([],[]);
 			this.findmax();
-
+			
 		},
-		watch:{
+		watch(){
 			
 		}
 	});

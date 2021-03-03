@@ -187,8 +187,8 @@
 					</div>
 				</div>
 				<br /><br />
-				<div style="margin-left: 400px;margin-top: -460px; border: 0px solid #000000;background: #ffffff;height: 80%;">
-					<table class="table table-bordered table-striped" id="cartable">
+				<div style="margin-left: 400px;margin-top: -460px; border: 0px solid #000000;background: #ffffff;height: 70%;">
+					<table class="table table-bordered table-striped" id="cartable" style="overflow: auto;">
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">车型ID</td>
@@ -319,7 +319,7 @@
 								</p>
 								<p>
 									
-									<span class="must">*</span>
+									<span class="must"></span>
 									<span class="va">进口国产</span>
 									<select style="width: 120px;height: 30px;" v-model="car.dId">
 										<option v-for="item in made" :value="item.did">{{item.dname}}</option>
@@ -346,14 +346,14 @@
 									<input type="text" name="" id="" value="" v-model="car.cLoad"/>
 								</p>
 								<p>
-									<span class="must">*</span>
+									<span class="must"></span>
 									<span class="va">索赔厂商</span>
 									<select style="width: 150px;height: 30px;" v-model="car.pId">
 										<option v-for="item in claim" :value="item.pId">{{item.pName}}</option>
 									</select>
 								</p>
 								<p>
-									<span class="must">*</span>
+									<span class="must"></span>
 									<span class="va">发动机品牌</span>
 									<select style="width: 327px;height: 30px;" v-model="car.eId">
 										<option v-for="item in engine" :value="item.eid">{{item.ename}}</option>
@@ -374,7 +374,7 @@
 							</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary butt1" @click="addcar">保存</button>
+				        <button type="button" class="btn btn-primary" @click="addcar">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -411,7 +411,7 @@
 				        		</p>
 				        		<p>
 				        			
-				        			<span class="must">*</span>
+				        			<span class="must"></span>
 				        			<span class="va">进口国产</span>
 				        			<select style="width: 120px;height: 30px;" v-model="car.dId">
 				        				<option v-for="item in made" :value="item.did">{{item.dname}}</option>
@@ -438,14 +438,14 @@
 				        			<input type="text" name="" id="" value="" v-model="car.cLoad"/>
 				        		</p>
 				        		<p>
-				        			<span class="must">*</span>
+				        			<span class="must"></span>
 				        			<span class="va">索赔厂商</span>
 				        			<select style="width: 150px;height: 30px;" v-model="car.pId">
 				        				<option v-for="item in claim" :value="item.pId">{{item.pName}}</option>
 				        			</select>
 				        		</p>
 				        		<p>
-				        			<span class="must">*</span>
+				        			<span class="must"></span>
 				        			<span class="va">发动机品牌</span>
 				        			<select style="width: 327px;height: 30px;" v-model="car.eId">
 				        				<option v-for="item in engine" :value="item.eid">{{item.ename}}</option>
@@ -466,7 +466,7 @@
 				        	</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary butt1" @click="updatecar">保存</button>
+				        <button type="button" class="btn btn-primary" @click="updatecar">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -610,6 +610,10 @@
 			},
 			//添加品牌
 			addbrand(){
+				if(!this.brand.bId||!this.brand.bName||!this.brand.bInital){
+					alert("品牌编码与品牌名称，品牌首字母必须填写！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"brand/addbrand",
@@ -669,6 +673,7 @@
 						that.brandapplocation.bname=that.brand.bName;
 						that.brandapplocation.binital=that.brand.bInital;
 						that.findallpin();
+						
 					},error:function(errpr){
 						console.log(errpr)
 					}
@@ -785,6 +790,10 @@
 			},
 
 			addcar(){
+				if(!this.car.reserved1||!this.car.cCoder){
+					alert("车型编码与车型名称必须填写！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"brand/addcar",
@@ -804,6 +813,12 @@
 						$("#addcarmodal").modal("hide");
 						that.findbyidcar(that.brandapplocation.bid);
 						that.car={};
+						
+						var tr=document.getElementsByClassName("pintr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
 						//that.findbyidcar();
 					}
 				})
@@ -832,6 +847,10 @@
 			},
 			
 			updatecar(){
+				if(!this.car.reserved1||!this.car.cCoder){
+					alert("车型编码与车型名称必须填写！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"brand/updatecar",
@@ -847,6 +866,11 @@
 						}
 						$("#updatecarmodal").modal("hide");
 						that.findbyidcar(that.brandapplocation.bid);
+						var tr=document.getElementsByClassName("pintr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
 					}
 				})
 			},

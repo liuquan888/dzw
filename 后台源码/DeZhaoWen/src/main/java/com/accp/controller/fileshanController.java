@@ -234,7 +234,7 @@ public class fileshanController {
 
     //车型品牌导出Excel
     @RequestMapping("/mainExcel")
-    public ResponseEntity<byte []> mainExcel(String maindimtext,String params) throws IOException {
+    public ResponseEntity<byte []> mainExcel(String maindimtexttemp,String params) throws IOException {
         List<Integer> intlist2=new ArrayList<>();
         if(params!=null&&params!=""){
             List<String> Stringlist= Arrays.asList(params.split(","));
@@ -242,7 +242,7 @@ public class fileshanController {
                 intlist2.add(Integer.valueOf(item));
             });
         }
-        List<Maintenance> list=maintenanceController.maindim(maindimtext,intlist2);
+        List<Maintenance> list=maintenanceController.maindim(maindimtexttemp,intlist2);
        // List<Maintenance> list=maintenanceController.findmain(params)
         Workbook book = new XSSFWorkbook();
         Sheet sheet = book.createSheet();

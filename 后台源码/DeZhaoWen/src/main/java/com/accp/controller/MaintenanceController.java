@@ -179,8 +179,8 @@ public class MaintenanceController {
         }
     }
 
-    @PostMapping("/maindim/{maindimtext}")
-    public List<Maintenance> maindim(@PathVariable String maindimtext,@RequestBody List<Integer> params){
+    @PostMapping("/maindim/{maindimtexttemp}")
+    public List<Maintenance> maindim(@PathVariable String maindimtexttemp,@RequestBody List<Integer> params){
         try {
 
             List<Maintenance> list=null;
@@ -189,12 +189,12 @@ public class MaintenanceController {
             if(params!=null && params.size()>0){
                 mainqw.lambda().in(Maintenance::getSerId,params);
             }
-            
-            if(!maindimtext.equals("975e65r45a4454a4d52s8a452d57")){
+
+            if(!maindimtexttemp.equals("975e65r45a4454a4d52s8a452d57")){
                 mainqw.and(wrapper -> wrapper
-                        .eq("m_id", maindimtext)
+                        .eq("m_id",maindimtexttemp)
                         .or()
-                        .like("m_name",maindimtext)
+                        .like("m_name",maindimtexttemp)
                 );
             }
 

@@ -30,9 +30,22 @@ public class EngineController {
     //查看所有发动机品牌
     @GetMapping("/findall")
     public List<Engine> findall(){
-        return  engineService.list();
-    }
+        List<Engine> list=engineService.list();
 
+        return  list;
+    }
+    @RequestMapping("/findA")
+    public List<Engine> findA(){
+        List<Engine> list=engineService.list();
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
+        return list;
+    }
     //添加发动机品牌
     @PostMapping("/add")
     public String add(Engine engine){
