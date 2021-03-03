@@ -124,17 +124,11 @@ public class CarheetController {
                 if (cob.getClient().getLinkman()!=null){
                     queryWrapper1.eq("linkman",cob.getClient().getLinkman()).or();
                 }
-<<<<<<< HEAD
                 if (cob.getClient().getPhone()!=null){
                     queryWrapper1.eq("phone",cob.getClient().getPhone()).or();
                 }
                 if (cob.getClient().getCustomeraddress()!=null){
                     queryWrapper1.eq("customeraddress",cob.getClient().getCustomeraddress()).or();
-=======
-
-                if(coll.getCarInfo().getEngineid()!=null&&coll.getCarInfo().getEngineid()>0) {
-                    queryWrapper.eq("engineid",coll.getCarInfo().getEngineid());
->>>>>>> 5b4a7041a9c35d5e3db967c3f71ab1e442f1c8d0
                 }
                 if (cob.getClient().getRemark()!=null){
                     queryWrapper1.eq("remark",cob.getClient().getRemark()).or();
