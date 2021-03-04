@@ -243,7 +243,7 @@
 				<div style="color: #686868;font-size:18px;">
 					<div class="col-md-5" @click="show"><img src="../img/1.png" style="width: 20px;height: 15px;" /><span id="yes">门店选择</span></div>
 					<div class="col-md-1" @click="show"><img src="../img/2.png" style="width: 20px;height: 15px;" /><span id="yes2">离职</span></div>
-					<div class="col-md-1"><img src="../img/3.png" style="width: 20px;height: 15px;" /><span data-target="#myModal2" data-toggle="modal">回滚</span></div>
+					<div class="col-md-1" @click="shanchu"><img src="../img/3.png" style="width: 20px;height: 15px;" />回滚</div>
 					<div class="col-md-1"><img src="../img/4.png" style="width: 20px;height: 15px;" /><span data-target="#myModal1" data-toggle="modal">删除</span></div>
 					<div class="col-md-1" @click="show"><img src="../img/5.png" style="width: 20px;height: 15px;" /><span id="yes1">查询</span></div>
 					<div class="col-md-1" @click="daochu()"><img src="../img/6.png" style="width: 20px;height: 15px;" />导出</div>
@@ -635,6 +635,12 @@
 					}
 				},
 				methods: {
+					shanchu(){
+						var bool= confirm("是否恢复入职?");
+						if(bool){
+							this.lizhiH();
+						}
+					},
 					jkl1(){
 						$("#yuan").css("display","none");
 					},
