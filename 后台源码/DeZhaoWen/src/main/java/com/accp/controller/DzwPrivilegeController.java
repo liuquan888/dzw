@@ -26,11 +26,22 @@ import java.util.List;
 public class DzwPrivilegeController {
     @Autowired
     DzwPrivilegeServiceImpl privilege;
-
-
     @RequestMapping("/find")
     public List<DzwPrivilege> find(){
         return privilege.list();
+    }
+
+    @RequestMapping("query")
+    public List<DzwPrivilege> query(Integer pvgType){
+        QueryWrapper<DzwPrivilege> dzwPrivilegeQueryWrapper=new QueryWrapper<>();
+        dzwPrivilegeQueryWrapper.lambda().eq(DzwPrivilege::getPvgType,pvgType);
+       return privilege.list(dzwPrivilegeQueryWrapper);
+    }
+
+    @RequestMapping("update")
+    public boolean update(DzwPrivilege menus){
+        menus.setReserved1(null);
+        return privilege.updateById(menus);
     }
 }
 
