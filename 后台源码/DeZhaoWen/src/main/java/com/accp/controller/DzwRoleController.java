@@ -41,8 +41,8 @@ public class DzwRoleController {
     }
 
     @PostMapping("add/{roleId}")
-    public String add(@RequestBody List<Integer> list, @PathVariable Integer roleId){
-        QueryWrapper<PrivilegeRole> queryWrapper = new QueryWrapper<>();
+    public boolean add(@RequestBody List<Integer> list, @PathVariable Integer roleId){
+       QueryWrapper<PrivilegeRole> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(PrivilegeRole::getRid,roleId);
         privilegeRoleService.remove(queryWrapper);
         for (Integer li:list) {
@@ -51,7 +51,7 @@ public class DzwRoleController {
             privilegeRole.setRid(roleId);
             privilegeRoleService.save(privilegeRole);
         }
-        return "0000";
+        return true;
     }
 
     @PostMapping("address")

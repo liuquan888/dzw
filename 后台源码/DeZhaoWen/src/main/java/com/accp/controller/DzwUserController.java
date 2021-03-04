@@ -116,7 +116,6 @@ public class DzwUserController{
             List<Integer> ids=new ArrayList<Integer>();
             for (DzwPrivilege d:list2){
                 ids.add(d.getPvgid());
-                System.out.println("ids+==="+d.getPid());
             }
 
             //根据左侧最上级meunID查询它的下级菜单
@@ -149,17 +148,10 @@ public class DzwUserController{
                                 list4.add(ddd);
                             }
                         }
-
-
                     }
-
-
                 }
                 dd.setChildren(list4);
             }
-
-
-
         }
         return list2;
     }
@@ -178,8 +170,8 @@ public class DzwUserController{
 
     @RequestMapping("update")
     public boolean update(DzwUser user){
-        user.setCreateDate(null);
         user.setUpdateDate(null);
+        user.setCreateDate(null);
         QueryWrapper<DzwUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",user.getUserId());
         return user.update(queryWrapper);
@@ -187,13 +179,16 @@ public class DzwUserController{
 
     @PostMapping("add")
     public String add(@RequestBody DzwUser user){
-        boolean bool=  duser.save(user);
+      boolean bool=  duser.save(user);
         return bool?"0000":"1111";
     }
 
     @RequestMapping("remove")
     public String remove( Integer userId){
         QueryWrapper<DzwUser> dzwuser=new QueryWrapper<>();
+        QueryWrapper<RoleUser> roleUserQueryWrapper=new QueryWrapper<>();
+        roleUserQueryWrapper.lambda().eq(RoleUser::getUid,userId);
+        role.remove(roleUserQueryWrapper);
         dzwuser.lambda().eq(DzwUser::getUserId,userId);
         boolean bool= duser.remove(dzwuser);
         return bool?"0000":"1111";

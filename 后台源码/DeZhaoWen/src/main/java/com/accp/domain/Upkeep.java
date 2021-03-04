@@ -1,6 +1,8 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -29,6 +31,7 @@ public class Upkeep extends Model<Upkeep> {
     @ApiModelProperty(value = "判断")
     private boolean check;
 
+    @TableId(value = "upkeepid",type=IdType.AUTO)
     @ApiModelProperty(value = "保养id")
     private Integer upkeepid;
 

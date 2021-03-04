@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import java.io.Serializable;
@@ -26,6 +28,7 @@ public class DzwRole extends Model<DzwRole> {
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "角色唯一编号")
+    @TableId(type = IdType.INPUT)
     private Integer roleId;
 
     @ApiModelProperty(value = "角色名称")

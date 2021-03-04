@@ -5,6 +5,7 @@ import com.accp.domain.Upkeep;
 import com.accp.service.impl.UpkeepServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,11 +26,18 @@ import java.util.List;
 public class UpkeepController {
     @Autowired
     UpkeepServiceImpl service;
-    @RequestMapping("/findById/{carnum}")
-    public List<Upkeep> findById(Integer id){
+    @RequestMapping("/findById/{number}")
+    public List<Upkeep> findById(@PathVariable Integer number){
         QueryWrapper<Upkeep> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("carnum",id);
+        queryWrapper.eq("carnum",number);
         List<Upkeep> list=service.list(queryWrapper);
+        for(int i=0;i<list.size();i++) {
+            if(i==0) {
+                list.get(i).setCheck(true);
+            }else {
+                list.get(i).setCheck(false);
+            }
+        }
         return list;
     }
     @RequestMapping("/insertBaoYang")
@@ -50,8 +58,8 @@ public class UpkeepController {
             return "0";
         }
     }
-    @RequestMapping("/deleteBaoYang")
-    public String deleteBaoYang(int id) {
+    @RequestMapping("/deleteBaoYang/{id}")
+    public String deleteBaoYang(@PathVariable Integer id) {
         boolean i=service.removeById(id);
         if(i) {
             return "1";

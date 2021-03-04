@@ -35,7 +35,7 @@ public class DzwPrivilegeController {
     public List<DzwPrivilege> query(Integer pvgType){
         QueryWrapper<DzwPrivilege> dzwPrivilegeQueryWrapper=new QueryWrapper<>();
         dzwPrivilegeQueryWrapper.lambda().eq(DzwPrivilege::getPvgType,pvgType);
-        return privilege.list(dzwPrivilegeQueryWrapper);
+       return privilege.list(dzwPrivilegeQueryWrapper);
     }
 
     @RequestMapping("update")
