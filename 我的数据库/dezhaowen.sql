@@ -71,7 +71,7 @@ CREATE TABLE `brand` (
 
 /*Data for the table `brand` */
 
-insert  into `brand`(`b_id`,`b_name`,`b_inital`) values (1,'中国重汽1224','AD'),(2,'陕汽重卡12A','B'),(3,'上海红岩','C'),(6,'中国东风','FD'),(13,'其他重型车辆','E'),(33,'12','12');
+insert  into `brand`(`b_id`,`b_name`,`b_inital`) values (1,'中国重汽1224','AD'),(2,'陕汽重卡12A','B'),(3,'上海红岩','C'),(6,'中国东风','FD'),(13,'其他重型车辆','E');
 
 /*Table structure for table `businessclass` */
 
@@ -460,7 +460,7 @@ CREATE TABLE `dzw_role` (
 
 /*Data for the table `dzw_role` */
 
-insert  into `dzw_role`(`role_id`,`role_name`,`role_desc`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`) values (1,'总经理','超级管理员','0000','2021-02-22','2021-02-22',NULL,NULL,NULL),(2,'人事经理','人事管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL),(3,'市场经理','客户管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL),(4,'产品经理','维修管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL);
+insert  into `dzw_role`(`role_id`,`role_name`,`role_desc`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`) values (1,'总经理','超级管理员','0000','2021-02-22','2021-02-22',NULL,NULL,NULL),(2,'人事经理','人事管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL),(3,'市场经理','客户管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL),(4,'产品经理','维修管理','0000','2021-02-25','2021-02-25','','',''),(5,'保安队队长','公司保安','0000',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `dzw_user` */
 
@@ -489,7 +489,7 @@ CREATE TABLE `dzw_user` (
 
 /*Data for the table `dzw_user` */
 
-insert  into `dzw_user`(`user_id`,`user_name`,`user_login`,`user_pwd`,`user_realname`,`user_sex`,`user_phone`,`user_eamil`,`user_address`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'德召文','admin','0','王泽旭','11','12311112222','123@qq.com','湖南省','0000','2021-02-04','2021-02-04','','','','',''),(2,'一包辣条','admin2','0','单观柏','11','12322223333','123@qq.com','湖南省','0000','2021-02-25','2021-02-25','','','','','');
+insert  into `dzw_user`(`user_id`,`user_name`,`user_login`,`user_pwd`,`user_realname`,`user_sex`,`user_phone`,`user_eamil`,`user_address`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'德召文','admin','0','王泽旭','11','12311112222','123@qq.com','湖南省','0000','2021-02-04','2021-02-04','','','','',''),(2,'一包辣条','admin2','0','单观柏1','11','12322223333','123@qq.com','湖南省','0000','2021-02-25','2021-02-25','','','','','');
 
 /*Table structure for table `education` */
 
@@ -549,7 +549,7 @@ CREATE TABLE `field` (
 
 /*Data for the table `field` */
 
-insert  into `field`(`id`,`width`,`name`,`zname`,`display`) values (1,100,'部门代码','a1','0'),(2,100,'部门名称','a1','0'),(3,100,'工号','a1','1'),(4,100,'姓名','a1','1'),(5,100,'性别','a1','1'),(6,100,'岗位名称','a1','1'),(7,100,'身体状况','a1','1'),(8,100,'身高','a1','1'),(9,100,'籍贯','a1','1'),(10,100,'民族','a1','1'),(11,100,'婚姻状况','a1','1'),(12,100,'学历','a1','1'),(13,100,'毕业学校','a1','1'),(14,100,'专业','a1','1'),(15,100,'专业资格','a1','0'),(16,100,'学位','a1','0'),(17,100,'编制','a1','0'),(18,100,'身份证号','a1','0'),(19,100,'户口地址','a1','0'),(20,100,'邮编','a1','0'),(21,100,'现住地址','a1','0'),(22,100,'邮编','a1','0'),(23,100,'联系电话','a1','0'),(24,100,'手机','a1','0'),(25,100,'email','a1','0'),(26,100,'紧急情况联系人','a1','0'),(27,100,'联系电话','a1','0'),(28,100,'现在何处','a1','0'),(29,100,'使用到期','a1','0'),(30,100,'入职日期','a1','0'),(31,100,'出生日期','a1','0'),(32,100,'合同开始日期','a1','0'),(33,100,'合同结束日期','a1','0'),(34,100,'登陆账号','a1','0');
+insert  into `field`(`id`,`width`,`name`,`zname`,`display`) values (1,100,'部门代码','a1','0'),(2,100,'部门名称','a1','0'),(3,100,'工号','a1','1'),(4,100,'姓名','a1','1'),(5,100,'性别','a1','1'),(6,100,'岗位名称','a1','0'),(7,100,'身体状况','a1','1'),(8,100,'身高','a1','1'),(9,100,'籍贯','a1','0'),(10,100,'民族','a1','0'),(11,100,'婚姻状况','a1','0'),(12,100,'学历','a1','0'),(13,100,'毕业学校','a1','0'),(14,100,'专业','a1','0'),(15,100,'专业资格','a1','0'),(16,100,'学位','a1','0'),(17,100,'编制','a1','0'),(18,100,'身份证号','a1','1'),(19,100,'户口地址','a1','1'),(20,100,'邮编','a1','1'),(21,100,'现住地址','a1','1'),(22,100,'邮编','a1','0'),(23,100,'联系电话','a1','1'),(24,100,'手机','a1','1'),(25,100,'email','a1','0'),(26,100,'紧急情况联系人','a1','0'),(27,100,'联系电话','a1','0'),(28,100,'现在何处','a1','0'),(29,100,'使用到期','a1','0'),(30,100,'入职日期','a1','0'),(31,100,'出生日期','a1','0'),(32,100,'合同开始日期','a1','0'),(33,100,'合同结束日期','a1','0'),(34,100,'登陆账号','a1','0');
 
 /*Table structure for table `fieldvehicles` */
 
@@ -571,7 +571,7 @@ CREATE TABLE `fieldvehicles` (
 
 /*Data for the table `fieldvehicles` */
 
-insert  into `fieldvehicles`(`id`,`licenseplate`,`brand`,`model`,`currentmileage`,`teamid`,`reserved1`,`reserved2`,`reserved3`) values (1,'2333','abc','11122','111','1002',NULL,NULL,NULL),(2,'410','631','520','50','1000',NULL,NULL,NULL),(3,'431333','1','1','1','1003',NULL,NULL,NULL),(5,'520','520','4102','20','1001',NULL,NULL,NULL);
+insert  into `fieldvehicles`(`id`,`licenseplate`,`brand`,`model`,`currentmileage`,`teamid`,`reserved1`,`reserved2`,`reserved3`) values (1,'湘B70712','马自达','cx-5','111','1002',NULL,NULL,NULL),(2,'湘B21U53','本田','雅阁','50','1000',NULL,NULL,NULL),(3,'湘BLC212','北京现代','索纳塔','1','1003',NULL,NULL,NULL),(5,'湘B88888','宝马','760','20','1000',NULL,NULL,NULL);
 
 /*Table structure for table `get_material` */
 
@@ -815,7 +815,7 @@ CREATE TABLE `maintenance_items` (
 
 /*Data for the table `maintenance_items` */
 
-insert  into `maintenance_items`(`wxdh`,`jcsj`,`wgsj`,`jsdate`,`xmbh`,`xmname`,`jialei`,`jiesgs`,`gshije`,`zuoyery`,`gzms`,`gzqr`,`gdh`,`gwei`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('1','2021-02-23','2021-03-17','2021-03-09','1','1','1',1,9,'1','22','1','1','1','8','1','1','1','1'),('22145678','2021-03-11','2021-03-04','2021-03-10','5252','玛蒂卡','12',123,123,'杀个白','无','电路故障','222','嗡嗡嗡','1','2','3','4','5'),('8888','2021-03-03','2021-03-03','2021-03-04','999','三十四','2',2,2,'啪啪啪','哦哦','漏水','222','嘎嘎嘎','5','6','7','8','9');
+insert  into `maintenance_items`(`wxdh`,`jcsj`,`wgsj`,`jsdate`,`xmbh`,`xmname`,`jialei`,`jiesgs`,`gshije`,`zuoyery`,`gzms`,`gzqr`,`gdh`,`gwei`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('1','2021-02-23','2021-03-17','2021-03-09','1','1','1',1,9,'1','22','1','1','1','8','1','1','1','1'),('22145678','2021-03-11','2021-03-04','2021-03-10','5252','玛蒂卡','12',123,123,'杀个白','无','电路故障','222','嗡嗡嗡','1','2','3','4','5');
 
 /*Table structure for table `maintenances` */
 
@@ -889,7 +889,7 @@ CREATE TABLE `mechanicstar` (
 
 /*Data for the table `mechanicstar` */
 
-insert  into `mechanicstar`(`code`,`star`,`grade`,`Commissionweight`) values ('11','2星','2','0.4'),('1223','3星','3','0.8'),('13','5星','1','1'),('141','专家','5','9.1'),('142','大师','7','9.5');
+insert  into `mechanicstar`(`code`,`star`,`grade`,`Commissionweight`) values ('xj001','2星','2','0.4'),('xj002','3星','3','0.8'),('xj003','5星','1','1'),('xj004','专家','5','9.1'),('xj005','大师','6','9.5');
 
 /*Table structure for table `menu` */
 
@@ -1098,7 +1098,7 @@ CREATE TABLE `organization_surface` (
 
 /*Data for the table `organization_surface` */
 
-insert  into `organization_surface`(`zid`,`zname`,`msname`,`mshou`,`mdianid`,`mzuishu`,`mtiao`,`mcityid`,`mkai`,`maddress`,`mshui`,`mphone`,`mlname`,`mhang`,`mzhang`,`mgouid`,`mru`,`mting`,`zids`,`zyid`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'株洲市汽修','a','100',1,'10000','20',5,'毛主席','北京天安门','1433223','13117334216','九某',1,'iogei',1,'没开','否',0,1,'1','1','1','1','1'),(2,'总厂','株洲市汽修','100',1,'10000','20',5,'毛主席','北京天安门','1433223','13117334216','九某',1,'iogei',1,'没开','否',1,1,'1','1','1','1','1'),(3,'副厂','株洲市汽修',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,'1',NULL,NULL,NULL,NULL),(4,'机电组','总厂','1111',NULL,'','',NULL,'','','','','',NULL,'',NULL,'','',2,NULL,'1','技术部','二部','',''),(5,'维修组','副厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,'1','维修部','二部',NULL,NULL),(6,'人事部','总厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'1','人事部','一部',NULL,NULL),(7,'市场部','副厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,'1','市场部','一部',NULL,NULL);
+insert  into `organization_surface`(`zid`,`zname`,`msname`,`mshou`,`mdianid`,`mzuishu`,`mtiao`,`mcityid`,`mkai`,`maddress`,`mshui`,`mphone`,`mlname`,`mhang`,`mzhang`,`mgouid`,`mru`,`mting`,`zids`,`zyid`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'株洲市汽修','a','100',1,'10000','20',5,'毛主席','北京天安门','1433223','13117334216','九某',1,'iogei',1,'没开','否',0,NULL,'1','1','1','1','1'),(2,'总厂','株洲市汽修','100',1,'10000','20',5,'毛主席','北京天安门','1433223','13117334216','九某',1,'iogei',1,'没开','否',1,NULL,'1','1','1','1','1'),(3,'副厂','株洲市汽修',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,'1',NULL,NULL,NULL,NULL),(4,'机电组','总厂','1111',NULL,'','',NULL,'','','','','',NULL,'',NULL,'','',2,NULL,'1','技术部','二部','',''),(5,'维修组','副厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,'1','维修部','二部',NULL,NULL),(6,'人事部','总厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'1','人事部','一部',NULL,NULL),(7,'市场部','副厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,'1','市场部','一部',NULL,NULL);
 
 /*Table structure for table `pattern` */
 
@@ -1158,7 +1158,7 @@ CREATE TABLE `privilege_role` (
 
 /*Data for the table `privilege_role` */
 
-insert  into `privilege_role`(`pid`,`rid`) values (38,3),(24,3),(10,3),(4,3),(38,2),(24,2),(10,2),(4,2),(22,4),(24,4),(36,4),(38,4),(39,4),(40,4),(41,4),(42,4),(43,4),(48,4),(49,4),(50,4),(65,4),(66,4),(67,4),(68,4),(69,4),(70,4),(71,4),(72,4),(10,4),(4,4),(25,4),(1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(38,1),(39,1),(40,1),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,1),(50,1),(51,1),(52,1),(53,1),(54,1),(55,1),(56,1),(57,1),(58,1),(59,1),(60,1),(61,1),(62,1),(63,1),(64,1),(65,1),(66,1),(67,1),(68,1),(69,1),(70,1),(71,1),(72,1),(73,1),(74,1),(75,1),(76,1),(77,1),(78,1),(79,1),(80,1),(81,1),(82,1),(83,1),(84,1),(85,1),(86,1),(87,1),(88,1),(89,1),(90,1),(91,1),(92,1),(93,1),(94,1),(95,1),(96,1),(97,1),(98,1),(99,1),(100,1),(101,1),(102,1),(103,1),(104,1),(105,1),(106,1),(107,1),(108,1),(110,1),(111,1),(112,1),(113,1),(114,1),(115,1),(116,1),(117,1),(118,1),(119,1),(120,1),(121,1),(122,1),(123,1),(124,1),(125,1),(126,1);
+insert  into `privilege_role`(`pid`,`rid`) values (38,3),(24,3),(10,3),(4,3),(38,2),(24,2),(10,2),(4,2),(22,4),(24,4),(36,4),(38,4),(39,4),(40,4),(41,4),(42,4),(43,4),(48,4),(49,4),(50,4),(65,4),(66,4),(67,4),(68,4),(69,4),(70,4),(71,4),(72,4),(10,4),(4,4),(25,4),(1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(38,1),(39,1),(40,1),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,1),(50,1),(51,1),(52,1),(53,1),(54,1),(55,1),(56,1),(57,1),(58,1),(59,1),(60,1),(61,1),(62,1),(63,1),(64,1),(65,1),(66,1),(67,1),(68,1),(69,1),(70,1),(71,1),(72,1),(73,1),(74,1),(75,1),(76,1),(77,1),(78,1),(79,1),(80,1),(81,1),(82,1),(83,1),(84,1),(85,1),(86,1),(87,1),(88,1),(89,1),(90,1),(91,1),(92,1),(93,1),(94,1),(95,1),(96,1),(97,1),(98,1),(99,1),(100,1),(101,1),(102,1),(103,1),(104,1),(105,1),(106,1),(107,1),(108,1),(110,1),(111,1),(112,1),(113,1),(114,1),(115,1),(116,1),(117,1),(118,1),(119,1),(120,1),(121,1),(122,1),(123,1),(124,1),(125,1),(126,1),(15,5),(126,5),(7,5),(1,5);
 
 /*Table structure for table `professional_qualification` */
 
@@ -1297,7 +1297,7 @@ CREATE TABLE `role_user` (
 
 /*Data for the table `role_user` */
 
-insert  into `role_user`(`rid`,`uid`) values (1,1),(2,2),(3,2);
+insert  into `role_user`(`rid`,`uid`) values (1,1),(5,2);
 
 /*Table structure for table `service` */
 
@@ -1432,7 +1432,7 @@ CREATE TABLE `staff_data` (
 
 /*Data for the table `staff_data` */
 
-insert  into `staff_data`(`yid`,`yname`,`ysex`,`yposition`,`yhealth`,`yloginemp`,`yheigth`,`ynativplaceid`,`ynationid`,`ymarriageid`,`yeducationid`,`yschoolid`,`yspecialtyid`,`yspecialtynid`,`yattribute`,`ycollegeid`,`yorganizationid`,`ynumber`,`yaddressh`,`yaddressx`,`yphonenumber`,`yphone`,`email`,`ybankid`,`ybankphone`,`yjname`,`yjphone`,`ystarttime`,`yendtime`,`ydatetime`,`ystarttimeh`,`yendtimeh`,`ytname`,`yratez`,`yrateg`,`yrates`,`yratej`,`ygong`,`yjiao`,`yhome`,`yjiang`,`yping`,`gid`,`bid`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`,`reserved6`,`reserved7`,`reserved8`,`reserved9`) values (1,'好大儿','男','1','1','1',1,1,1,2,1,5,1,1,'1',1,1,'1','1','1','1','2','1',1,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',11,2,'2064239692@qq.com','有','1','市场部','4','1','2020-12-12','2020-12-12','一部'),(2,'小大二','女','1','1','1',1,2,2,2,2,4,2,1,'1',1,1,'1','1','1','1','2','1',1,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',18,2,'4456465464@qq.com','没','2','人事部','5','1','2020-12-12','414141','一部'),(3,'好大二','男','1','1','1',1,3,3,1,3,3,3,1,'1',1,1,'11','1','11','11','1','1',2,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',14,3,'12312312','11','1','技术部','6','1','','','二部'),(4,'小大儿','女','1','1','1',1,1,4,1,4,2,4,1,'1',1,1,'1','11','1','1','1','1',3,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',14,4,'123213123','22','2','维修部','7','1','','','二部');
+insert  into `staff_data`(`yid`,`yname`,`ysex`,`yposition`,`yhealth`,`yloginemp`,`yheigth`,`ynativplaceid`,`ynationid`,`ymarriageid`,`yeducationid`,`yschoolid`,`yspecialtyid`,`yspecialtynid`,`yattribute`,`ycollegeid`,`yorganizationid`,`ynumber`,`yaddressh`,`yaddressx`,`yphonenumber`,`yphone`,`email`,`ybankid`,`ybankphone`,`yjname`,`yjphone`,`ystarttime`,`yendtime`,`ydatetime`,`ystarttimeh`,`yendtimeh`,`ytname`,`yratez`,`yrateg`,`yrates`,`yratej`,`ygong`,`yjiao`,`yhome`,`yjiang`,`yping`,`gid`,`bid`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`,`reserved6`,`reserved7`,`reserved8`,`reserved9`) values (1,'刘某某','男','秘书','良好','admin1',175,1,1,2,1,5,1,1,'1',1,1,'5252516516526265','湖南省','株洲市','13117334216','5433125','5433125',1,'admin5','没有','13117334217','2019-05-06','2020-05-06','2020-05-06','刘某某','1','1',1,1,1,1,1,1,'没有','没有','没有',11,2,'2064239692@qq.com','有','1','市场部','4','1','2020-12-12','2020-12-12','一部'),(2,'张某某','男','总经理','良好','admin1',175,1,2,2,1,5,3,1,'有',1,2,'5252516516526265','湖南省','株洲市','13117334216','5433125','5433125',3,'admin1','没有','13117334217','2019-05-06','2020-05-06','2020-05-06','刘某某','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'9年','没有','没有',11,1,'1651515615@qq.com','有','2','市场部','5','1','','','一部'),(3,'李某某','女','人事经理','优秀','admin3',165,1,1,1,1,1,1,1,'有',1,1,'534345633434534','湖南省','浏阳市','13117334214','5433125','5433125',1,'admin3','没有','13117334217','2019-05-06','2020-05-06','2020-05-06','刘某某','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'7年','没有','没有',15,3,'2641245438@qq.com','有','1','技术部','6','1','2020-12-12','2020-12-12','二部'),(4,'王某某','女','财务经理','优秀','admin4',165,1,1,1,1,1,1,1,'有',1,1,'287258728772872','河南省','株洲市','13117334213','5433125','5433125',2,'admin4','没有','13117334217','2019-05-06','2020-05-06','2020-05-06','刘某某','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'6年','没有','没有',13,4,'1798928221@qq.com','有','2','维修部','7','1','2020-12-12','2020-12-12','二部');
 
 /*Table structure for table `store_classificarion` */
 
@@ -1537,11 +1537,11 @@ CREATE TABLE `teamtechnician` (
   KEY `teamtechnician_ibfk_1` (`teamid`),
   CONSTRAINT `teamtechnician_ibfk_2` FOREIGN KEY (`bankid`) REFERENCES `bank` (`bankid`),
   CONSTRAINT `teamtechnician_ibfk_3` FOREIGN KEY (`code`) REFERENCES `mechanicstar` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*Data for the table `teamtechnician` */
 
-insert  into `teamtechnician`(`id`,`teamid`,`technicianid`,`technicianidname`,`sex`,`phone`,`address`,`birthday`,`headman`,`loginname`,`idnumber`,`residenceaddress`,`bankid`,`bankaccount`,`code`,`type`,`maintenancetype`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (2,1000,'1','王泽旭','女','123213','东南亚金三角','2021-03-03','否','41213','00000011111122','非洲土著',1,'21341542198351656','11','1','1',NULL,NULL,NULL,NULL,NULL),(3,1000,'1','骆华','女','123213','东南亚金三角','2021-03-03','是','41213','00000011111122','非洲土著',1,'21341542198351656','11','1','1',NULL,NULL,NULL,NULL,NULL),(4,1001,'1','张毅峰','男','123213','东南亚金三角','2021-03-03','是','41213','00000011111122','非洲土著',1,'21341542198351656','11','1','1',NULL,NULL,NULL,NULL,NULL);
+insert  into `teamtechnician`(`id`,`teamid`,`technicianid`,`technicianidname`,`sex`,`phone`,`address`,`birthday`,`headman`,`loginname`,`idnumber`,`residenceaddress`,`bankid`,`bankaccount`,`code`,`type`,`maintenancetype`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (3,1000,'BCX-001','王泽旭','男','16545835761','株洲市石峰区','2002-07-29','是','wzx','42321432543512353','株洲市醴陵县',1,'2134213543534623','xj001','进出厂检验员','不限','123',NULL,NULL,NULL,NULL),(4,1000,'BCX-002','骆华','女','15424561397','株洲市石峰区','1995-04-21','是','lh','4321423523125324','株洲市醴陵县',2,'45322314325424123','xj002','索赔员','不限','123',NULL,NULL,NULL,NULL),(5,1000,'BCX-003','林子豪','男','17543369233','株洲市芦淞区','1998-11-16','否','lzh','42321423523213523432','株洲市攸县',1,'4231243242351235324','xj001','电工','不限','123',NULL,NULL,NULL,NULL),(6,1001,'BCX-004','张毅丰','男','13742464256','株洲市天元区','2003-05-14','否','zyf','4632214325346343213','株洲市株洲县',3,'4213532453451343','xj004','漆工','不限','123',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `upkeep` */
 
