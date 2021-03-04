@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<div id="ctn">
+			<span class="btn btn-success"  @click="add">添加</span>
 			<table class="table table-hover">
 				<tr>
 					<td>编号</td>
@@ -18,8 +19,9 @@
 					<td>{{item.userId}}</td>
 					<td>{{item.userRealname}}</td>
 					<td>
-						<span class="btn btn-danger">删除</span>
+						<span class="btn btn-danger" @click="remove(item)">删除</span>
 						<span class="btn btn-success"  @click="auth(item)">授权</span>
+						<span class="btn btn-primary"  @click="compile(item)">修改</span>
 					</td>
 				</tr>
 			</table>
@@ -33,7 +35,101 @@
 							<div id="myTree"></div>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" >授权</button>
+							<button class="btn btn-primary" @click="menu()">授权</button>
+							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="authModal2">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-danger">角色授权</h3>
+						</div>
+						<div class="modal-body">
+							<div id="myTree2">
+								<div class="form-group">
+									<div id="a">
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">用户编号</label>
+											<input  class="form-control" v-model="user.userId">
+										</form>
+									    <form class="form-inline">
+									    	<label class="text col-lg-2" for="exampleInputEmail2">登录账号</label>
+									   		<input  class="form-control" v-model="user.userLogin">
+									    </form>
+									    <form class="form-inline">
+									    	<label class="text col-lg-2" for="exampleInputEmail2">登录密码</label>
+									   		<input  class="form-control" v-model="user.userPwd">
+									    </form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">用户昵称</label>
+											<input  class="form-control" v-model="user.userName">
+										</form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">真实姓名</label>
+											<input  class="form-control" v-model="user.userRealname">
+										</form>
+								    </div>
+								  </div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="update">修改</button>
+							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal" id="authModal3">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="text-danger">角色授权</h3>
+						</div>
+						<div class="modal-body">
+							<div id="myTree2">
+								<div class="form-group">
+									<div id="a">
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">用户编号</label>
+											<input  class="form-control" v-model="user.userId">
+										</form>
+									    <form class="form-inline">
+									    	<label class="text col-lg-2" for="exampleInputEmail2">登录账号</label>
+									   		<input  class="form-control" v-model="user.userLogin">
+									    </form>
+									    <form class="form-inline">
+									    	<label class="text col-lg-2" for="exampleInputEmail2">登录密码</label>
+									   		<input  class="form-control" v-model="user.userPwd">
+									    </form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">用户昵称</label>
+											<input  class="form-control" v-model="user.userName">
+										</form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">真实姓名</label>
+											<input  class="form-control" v-model="user.userRealname">
+										</form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">手机号码</label>
+											<input  class="form-control" v-model="user.userPhone">
+										</form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">邮箱</label>
+											<input  class="form-control" v-model="user.userEamil">
+										</form>
+										<form class="form-inline">
+											<label class="text col-lg-2" for="exampleInputEmail2">用户状态</label>
+											<input  class="form-control" v-model="user.status">
+										</form>
+								    </div>
+								  </div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" @click="address()">添加</button>
 							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -55,10 +151,11 @@
 					dataType:"json",
 					async:false,
 					success:function(result){
+						console.log(result);
 						menuList=result.map(item=>{
 							return {
 								id:item.roleId+"",
-								parent:item.roleId==0?"#":item.roleId,
+								parent:"#",
 								text:item.roleName,
 								state:{
 									selected:false
@@ -77,7 +174,8 @@
 						list:[],
 						menuList:[],
 						list:[],
-						roleId:"",
+						userId:"",
+						user:{}
 					}
 				},
 				methods:{
@@ -93,27 +191,137 @@
 						})
 					},
 					auth(item){
-					/* 	var that = this;
-						//获取选中元素
-						var selected = $("#myTree").jstree(true).get_selected();
-						//获取半选状态
-						var undetermined = $("#myTree").jstree(true).get_undetermined();
-						//将选中的和半选的元素进行和并到一个数组
-						selected.push(...undetermined); */
-						//取消全部被选中的节点
 					 	$('#myTree').jstree(true).deselect_all();
 						let that=this;
 						//根据角色获取到对应的权限列表
-						menuApi.findUser(item.roleId,function(result){
-							that.roleId=item.roleId;
+						menuApi.findUser(item.userId,function(result){
+							that.userId=item.userId;
 							//只要集合中的编号作为选中的唯一表示
-							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
+							let selecedSet = result.map(item=>item.roleId);
 							//调用jstree的选中方法，可以传入集合
+							console.log(result);
 							$('#myTree').jstree(true).select_node(selecedSet);
 						});
 						//打开模态框
 						$("#authModal").modal("show");
 					},
+					menu(){
+						var selected = $("#myTree").jstree(true).get_selected();
+						//获取半选状态
+						var undetermined = $("#myTree").jstree(true).get_undetermined();
+						//将选中的和半选的元素进行和并到一个数组
+						selected.push(...undetermined);
+						this.List=selected;
+						console.log(this.List);
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwRole/insert/"+that.userId,
+							type:"post",
+							data:JSON.stringify(that.List),
+							contentType:"application/json;charset=utf-8",
+							xhrFields: {
+								withCredentials: true
+							},
+							crossDomain: true,
+							success:function(result){
+								if(result="0000"){
+									alert("授权成功！");
+									$("#authModal").modal("hide");
+								}
+							},
+							error:function(){
+								
+							}
+						});
+					},
+					compile(item){
+						$("#authModal2").modal("show");
+						let that =this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/query",
+							dataType:"json",
+							data:{userId:item.userId},
+							success:function(result){
+								that.user=result;
+							}
+						})
+						
+					},
+					update(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/update",
+							data:that.user,
+							type:"post",
+							dataType:"json",
+							success:function(result){
+								if(result==true){
+									alert("修改成功！");
+									$("#authModal2").modal("hide");
+									that.find();
+								}
+							}
+						})
+					},
+					add(){
+							$("#authModal3").modal("show");
+					},
+					address(){
+						let  that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/add",
+							type:"post",
+							data:JSON.stringify(that.user),
+							contentType:"application/json;charset=utf-8",
+							xhrFields: {
+								withCredentials: true
+							},
+							crossDomain: true,
+							success:function(result){
+								if(result=="0000"){
+									$("#authModal3").modal("hide");
+									that.find();
+								}
+							}
+						})
+					},
+					remove(item){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/remove",
+							data:{userId:item.userId},
+							success:function(result){
+								if(result=="0000"){
+									alert("删除成功！")
+									that.find();
+								}
+							}
+						})
+					},
+					menu(){
+						var selected = $("#myTree").jstree(true).get_selected();
+						//获取半选状态
+						var undetermined = $("#myTree").jstree(true).get_undetermined();
+						//将选中的和半选的元素进行和并到一个数组
+						selected.push(...undetermined);
+						this.List=selected;
+						console.log(this.List);
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/dzwUser/insert/"+that.userId,
+							type:"post",
+							data:JSON.stringify(that.List),
+							contentType:"application/json;charset=utf-8",
+							success:function(result){
+								if(result="0000"){
+									alert("授权成功！");
+									$("#authModal").modal("hide");
+								}
+							},
+							error:function(){
+							}
+						});
+					}
 				},
 				created() {
 					this.find();

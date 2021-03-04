@@ -65,7 +65,9 @@ public class MenuController {
 
     @RequestMapping("/removeMenu/{teamid}")
     public boolean removeMenu(@PathVariable("teamid") Integer teamid){
-        return service.removeById(teamid);
+        QueryWrapper<Menu> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("teamid",teamid);
+        return service.remove(queryWrapper);
     }
 
 }

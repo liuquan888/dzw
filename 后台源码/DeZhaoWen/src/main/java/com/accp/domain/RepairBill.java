@@ -33,6 +33,9 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "销售单号")
     private String no;
 
+    @TableField(exist = false)
+    @ApiModelProperty(value = "判断")
+    private boolean check=false;
 
 
     @ApiModelProperty(value = "单据类型表外键id")
@@ -155,7 +158,7 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "保修陈述")
     private String chenshu;
 
-    @ApiModelProperty(value = "预留字段")
+    @ApiModelProperty(value = "客户ID")
     private String reserved1;
 
     @ApiModelProperty(value = "预留字段")
