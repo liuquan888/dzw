@@ -27,4 +27,16 @@ public class TeamtechnicianServiceImpl extends ServiceImpl<TeamtechnicianMapper,
         return teamtechnicianMapper.findByTeamId(teamid);
     }
 
+    public List<Teamtechnician> findByAll(String name){
+        return teamtechnicianMapper.findByAll(name);
+    }
+
+    public boolean clearPwd(Integer id){
+        return teamtechnicianMapper.clearPwd(id);
+    }
+
+    public List<Teamtechnician> findAll(){
+        return teamtechnicianMapper.findAll();
+    }
+
 }

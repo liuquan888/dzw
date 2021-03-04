@@ -28,6 +28,8 @@ CREATE TABLE `academic_degree` (
 
 /*Data for the table `academic_degree` */
 
+insert  into `academic_degree`(`collegeid`,`name`) values (1,'研究生'),(2,'博士'),(3,'硕士');
+
 /*Table structure for table `bank` */
 
 DROP TABLE IF EXISTS `bank`;
@@ -36,11 +38,11 @@ CREATE TABLE `bank` (
   `bankid` int(11) NOT NULL AUTO_INCREMENT COMMENT '银行编号',
   `bankname` varchar(50) DEFAULT NULL COMMENT '银行名称',
   PRIMARY KEY (`bankid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='银行表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='银行表';
 
 /*Data for the table `bank` */
 
-insert  into `bank`(`bankid`,`bankname`) values (1,'1');
+insert  into `bank`(`bankid`,`bankname`) values (1,'中国银行'),(2,'农业银行'),(3,'建设银行');
 
 /*Table structure for table `billstype` */
 
@@ -54,7 +56,7 @@ CREATE TABLE `billstype` (
 
 /*Data for the table `billstype` */
 
-insert  into `billstype`(`id`,`type`) values (1,'1');
+insert  into `billstype`(`id`,`type`) values (1,'维修单'),(2,'站外援助单');
 
 /*Table structure for table `brand` */
 
@@ -68,6 +70,8 @@ CREATE TABLE `brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车型品牌';
 
 /*Data for the table `brand` */
+
+insert  into `brand`(`b_id`,`b_name`,`b_inital`) values (1,'中国重汽1224','AD'),(2,'陕汽重卡12A','B'),(3,'上海红岩','C'),(6,'中国东风','FD'),(13,'其他重型车辆','E'),(33,'12','12');
 
 /*Table structure for table `businessclass` */
 
@@ -107,14 +111,12 @@ CREATE TABLE `car` (
   KEY `e_id` (`e_id`),
   KEY `d_id` (`d_id`),
   KEY `b_id` (`b_id`),
-  KEY `p_id` (`p_id`),
-  CONSTRAINT `car_ibfk_1` FOREIGN KEY (`e_id`) REFERENCES `engine` (`e_id`),
-  CONSTRAINT `car_ibfk_2` FOREIGN KEY (`d_id`) REFERENCES `domestic` (`d_id`),
-  CONSTRAINT `car_ibfk_3` FOREIGN KEY (`b_id`) REFERENCES `brand` (`b_id`),
-  CONSTRAINT `car_ibfk_4` FOREIGN KEY (`p_id`) REFERENCES `suppiler` (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车型表';
+  KEY `p_id` (`p_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='车型表';
 
 /*Data for the table `car` */
+
+insert  into `car`(`c_id`,`c_coder`,`c_show`,`c_refeprice`,`c_vehicle`,`c_power`,`c_fuel`,`c_load`,`e_id`,`d_id`,`b_id`,`p_id`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'1',NULL,6000,20000,'2022','11','200201',2,1,1,'24','德隆s5',NULL,NULL,NULL,NULL),(2,'2',NULL,45455,2445540,'24','2','21312',2,2,2,'1111','德隆sd62',NULL,NULL,NULL,NULL),(3,'3',NULL,123123,422424,'53','3','1221',3,1,3,'1111','大众504',NULL,NULL,NULL,NULL),(4,'4',NULL,24445,545445,'45','4','311221',4,1,1,'23','福特454',NULL,NULL,NULL,NULL),(5,'5',NULL,424545,422442,'42','5','12454',5,2,2,'18','保时捷985',NULL,NULL,NULL,NULL),(9,'9',NULL,12323,342,'45','4','432',8,3,6,'23','宝马985',NULL,NULL,NULL,NULL),(18,'1211',NULL,123123,13,'13','13','13',2,2,13,'3','兰博基尼985',NULL,NULL,NULL,NULL),(19,'1311',NULL,34234,21,'213','3213','213',1,1,13,'24','东风悦达起亚985',NULL,NULL,NULL,NULL),(20,'12323',NULL,3252,123,'231','21','21',2,1,13,'3','东风日产985',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `caraffiliation` */
 
@@ -141,18 +143,20 @@ CREATE TABLE `carbrand` (
 
 /*Data for the table `carbrand` */
 
+insert  into `carbrand`(`carcoding`,`brandname`,`initial`) values ('1','大众','D'),('2','奥迪','A'),('3','奔驰','B');
+
 /*Table structure for table `carheet` */
 
 DROP TABLE IF EXISTS `carheet`;
 
 CREATE TABLE `carheet` (
-  `carnum` int(11) NOT NULL COMMENT '车辆号码',
+  `carnum` int(11) NOT NULL AUTO_INCREMENT COMMENT '车辆号码',
   `platename` varchar(50) DEFAULT NULL COMMENT '车牌号',
   `carbrandid` varchar(50) DEFAULT NULL COMMENT '车辆品牌id',
   `driver` varchar(50) DEFAULT NULL COMMENT '驾驶员',
   `driverphone` varchar(50) DEFAULT NULL COMMENT '驾驶员电话',
   `birthday` varchar(50) DEFAULT NULL COMMENT '出生日期',
-  `caraffiliationid` int(11) DEFAULT NULL COMMENT '车辆归属id',
+  `caraffiliationid` varchar(50) DEFAULT NULL COMMENT '车辆归属id',
   `driveraddress` varchar(50) DEFAULT NULL COMMENT '驾驶员地址',
   `drivingouttime` varchar(50) DEFAULT NULL COMMENT '驾证到期',
   `framnum` varchar(50) DEFAULT NULL COMMENT '车驾号',
@@ -165,13 +169,13 @@ CREATE TABLE `carheet` (
   `buytime` varchar(50) DEFAULT NULL COMMENT '购买日期',
   `uptime` varchar(50) DEFAULT NULL COMMENT '上牌日期',
   `carouttime` varchar(50) DEFAULT NULL COMMENT '车险到期',
-  `mlicompanyid` int(11) DEFAULT NULL COMMENT '交强险保险公司id',
+  `mlicompanyid` varchar(50) DEFAULT NULL COMMENT '交强险保险公司id',
   `mliouttime` varchar(50) DEFAULT NULL COMMENT '交强险到期',
-  `cicompanyid` int(11) DEFAULT NULL COMMENT '商业险保险公司id',
+  `cicompanyid` varchar(50) DEFAULT NULL COMMENT '商业险保险公司id',
   `ciouttime` varchar(50) DEFAULT NULL COMMENT '商业险到期',
   `mytoucar` varchar(50) DEFAULT NULL COMMENT '在我投保车',
   `twotime` varchar(50) DEFAULT NULL COMMENT '二维日期',
-  `oiltypeid` int(11) DEFAULT NULL COMMENT '燃油类别id',
+  `oiltypeid` varchar(50) DEFAULT NULL COMMENT '燃油类别id',
   `nextmileage` varchar(50) DEFAULT NULL COMMENT '下次保养里程',
   `nextupkeeptime` varchar(50) DEFAULT NULL COMMENT '下次保养日期',
   `membernum` varchar(50) DEFAULT NULL COMMENT '会员码',
@@ -180,23 +184,19 @@ CREATE TABLE `carheet` (
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved4` varchar(50) DEFAULT NULL COMMENT '预留字段',
-  `reserved5` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved5` int(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`carnum`),
   KEY `carbrandid` (`carbrandid`),
   KEY `caraffiliationid` (`caraffiliationid`),
   KEY `engineid` (`engineid`),
   KEY `mlicompanyid` (`mlicompanyid`),
   KEY `cicompanyid` (`cicompanyid`),
-  KEY `oiltypeid` (`oiltypeid`),
-  CONSTRAINT `carheet_ibfk_1` FOREIGN KEY (`carbrandid`) REFERENCES `carbrand` (`carcoding`),
-  CONSTRAINT `carheet_ibfk_2` FOREIGN KEY (`caraffiliationid`) REFERENCES `caraffiliation` (`caraffiliationid`),
-  CONSTRAINT `carheet_ibfk_3` FOREIGN KEY (`engineid`) REFERENCES `engine` (`e_id`),
-  CONSTRAINT `carheet_ibfk_4` FOREIGN KEY (`mlicompanyid`) REFERENCES `mlicompany` (`mlicompanyid`),
-  CONSTRAINT `carheet_ibfk_5` FOREIGN KEY (`cicompanyid`) REFERENCES `cicompany` (`cicompanyid`),
-  CONSTRAINT `carheet_ibfk_6` FOREIGN KEY (`oiltypeid`) REFERENCES `oiltype` (`oiltypeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆资料表';
+  KEY `oiltypeid` (`oiltypeid`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='车辆资料表';
 
 /*Data for the table `carheet` */
+
+insert  into `carheet`(`carnum`,`platename`,`carbrandid`,`driver`,`driverphone`,`birthday`,`caraffiliationid`,`driveraddress`,`drivingouttime`,`framnum`,`enginenum`,`engineid`,`carnyear`,`mileage`,`load`,`carseries`,`buytime`,`uptime`,`carouttime`,`mlicompanyid`,`mliouttime`,`cicompanyid`,`ciouttime`,`mytoucar`,`twotime`,`oiltypeid`,`nextmileage`,`nextupkeeptime`,`membernum`,`customernum`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'湘B:SB','1','邓泽玉','111111','2020-01-10','公司车','111','2021-07-01','111','111111',1,'2017','2000','1000','1',NULL,NULL,NULL,'阳光人寿保险','2021-07-01','阳光人寿保险','1',NULL,NULL,'1',NULL,NULL,NULL,'1',NULL,NULL,NULL,NULL,1),(2,'111','1','111','11','2021-02-28','公司车',NULL,'','111','1111',1,'111','111','111','11111','2021-02-28','2021-02-28','2021-02-28','阳光人寿保险','2021-02-28','阳光人寿保险','2021-02-28',NULL,NULL,'111','1111','2021-02-28',NULL,'1',NULL,NULL,NULL,NULL,1),(3,'1111','1','111','1111','2021-02-28','公司车',NULL,'2021-02-28','1111','111',1,'1111','111','111','11','','2021-02-28','2021-02-28','阳光人寿保险','2021-02-28','阳光人寿保险','2021-02-28',NULL,NULL,'1','111','2021-02-28',NULL,'1',NULL,NULL,NULL,NULL,2),(4,'111','1','11','111','','公司车',NULL,'2021-02-28','111','111',1,'11','111','11','11','2021-02-28','2021-02-28','2021-02-28','阳光人寿保险','','阳光人寿保险','2021-02-28',NULL,NULL,'1','111','2021-02-28',NULL,'1',NULL,NULL,NULL,NULL,1),(12,'179','1','111','111','2021-03-02','公司车',NULL,'2021-03-02','111','111',1,'111','111','111','111','2021-03-02','2021-03-02','2021-03-02','阳光人寿保险','2021-03-02','阳光人寿保险','2021-03-02',NULL,NULL,'1','111','2021-03-02',NULL,'2',NULL,NULL,NULL,NULL,1),(13,'945','1','111','11','2021-03-02','公司车',NULL,'2021-03-02','1','1',1,'1','1','1','11','2021-03-02','2021-03-02','2021-03-02','阳光人寿保险','2021-03-02','阳光人寿保险','2021-03-02',NULL,NULL,'1','11','2021-03-02',NULL,'2',NULL,NULL,NULL,NULL,NULL),(14,'756','1','11','11',NULL,'公司车',NULL,NULL,'11','11',1,'11','11','11','11',NULL,NULL,NULL,'阳光人寿保险',NULL,'阳光人寿保险',NULL,NULL,NULL,'11','11',NULL,NULL,'5',NULL,NULL,NULL,NULL,NULL),(15,'852','1','11','11',NULL,'公司车',NULL,'2021-03-03','11','11',1,'11','11','111','11',NULL,NULL,'2021-03-03','阳光人寿保险',NULL,'阳光人寿保险','2021-03-03',NULL,NULL,'111','111',NULL,NULL,'8',NULL,NULL,NULL,NULL,1);
 
 /*Table structure for table `cicompany` */
 
@@ -222,6 +222,8 @@ CREATE TABLE `city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='城市表';
 
 /*Data for the table `city` */
+
+insert  into `city`(`qcityid`,`qcityname`,`cityid`) values (1,'河北',0),(2,'湖南',0),(3,'河南',0),(4,'郑州',3),(5,'长沙',2),(6,'北京',1);
 
 /*Table structure for table `clearing` */
 
@@ -272,7 +274,7 @@ CREATE TABLE `clearing_form` (
 
 /*Data for the table `clearing_form` */
 
-insert  into `clearing_form`(`id`,`type`) values (1,'1');
+insert  into `clearing_form`(`id`,`type`) values (1,'微信支付'),(2,'支付宝支付');
 
 /*Table structure for table `construction` */
 
@@ -305,7 +307,7 @@ CREATE TABLE `counselor` (
 
 /*Data for the table `counselor` */
 
-insert  into `counselor`(`counselorid`,`counselorname`,`counselorphone`,`bramch`,`jobnum`,`factoryid`,`reserved1`,`reserved2`,`reserved3`) values (1,'1','1','1','1',1,NULL,NULL,NULL);
+insert  into `counselor`(`counselorid`,`counselorname`,`counselorphone`,`bramch`,`jobnum`,`factoryid`,`reserved1`,`reserved2`,`reserved3`) values (1,'骆华','1','1','1',1,NULL,NULL,NULL);
 
 /*Table structure for table `customer` */
 
@@ -348,15 +350,12 @@ CREATE TABLE `customer` (
   PRIMARY KEY (`customernum`),
   KEY `customertypeid` (`customertypeid`),
   KEY `counselorid` (`counselorid`),
-  KEY `desportbank` (`desportbank`),
-  CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`customertypeid`) REFERENCES `customertype` (`customerid`),
-  CONSTRAINT `customer_ibfk_2` FOREIGN KEY (`counselorid`) REFERENCES `counselor` (`counselorid`),
-  CONSTRAINT `customer_ibfk_3` FOREIGN KEY (`desportbank`) REFERENCES `bank` (`bankid`)
+  KEY `desportbank` (`desportbank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户表';
 
 /*Data for the table `customer` */
 
-insert  into `customer`(`customernum`,`customername`,`customeraddress`,`linkman`,`phone`,`birthday`,`customertypeid`,`customernumber`,`jointime`,`outtime`,`remark`,`filing`,`counselorid`,`paytime`,`payment`,`integral`,`earnest`,`paytest`,`registerphone`,`desportbank`,`bankaccount`,`registeraddress`,`otherone`,`othertwo`,`otherthree`,`otherfour`,`photo`,`vipprice`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('1','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `customer`(`customernum`,`customername`,`customeraddress`,`linkman`,`phone`,`birthday`,`customertypeid`,`customernumber`,`jointime`,`outtime`,`remark`,`filing`,`counselorid`,`paytime`,`payment`,`integral`,`earnest`,`paytest`,`registerphone`,`desportbank`,`bankaccount`,`registeraddress`,`otherone`,`othertwo`,`otherthree`,`otherfour`,`photo`,`vipprice`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('1','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,100002000,NULL,NULL,NULL,NULL,NULL),('10','邓泽玉','湖南株洲','王泽旭','1981333','2020-02-26',1,'123456','2020-02-26','2021-02-26','牛逼','2021-21-26',1,26,10000,1200,NULL,'66666666','111111',1,'123456456','湖南',NULL,NULL,NULL,NULL,NULL,NULL,'上海','上海','长宁区','123123123',NULL),('2','1234','1111',NULL,'111','2021-03-02',NULL,NULL,NULL,NULL,'111',NULL,1,3,111,NULL,NULL,'1111','1111',111,'111','111',NULL,NULL,NULL,NULL,NULL,NULL,'广东','广州','越秀区','1',NULL),('3','骆华','1111',NULL,'11111','2021-03-02',NULL,NULL,NULL,NULL,'1111',NULL,1,5,11111,NULL,NULL,'111','111',111,'1111','1111',NULL,NULL,NULL,NULL,NULL,NULL,'上海','上海','黄浦区','1',NULL),('4','111','111','111','111','2021-03-02',NULL,NULL,NULL,NULL,'111',NULL,1,3,111,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'上海','上海','黄浦区','1',NULL),('5','王泽旭','111','1111','111','2021-03-02',NULL,NULL,NULL,NULL,'11',NULL,1,2,111,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'广东','广州','越秀区','1',NULL),('8','阿达不是大V','6666',NULL,'66666','2021-03-02',NULL,NULL,NULL,NULL,'111',NULL,1,4,111,NULL,NULL,'11','11',111,'11','11',NULL,NULL,NULL,NULL,NULL,NULL,'内蒙古','呼和浩特','回民区','1',NULL);
 
 /*Table structure for table `customertype` */
 
@@ -370,7 +369,7 @@ CREATE TABLE `customertype` (
 
 /*Data for the table `customertype` */
 
-insert  into `customertype`(`customerid`,`customertypeid`) values (1,'1');
+insert  into `customertype`(`customerid`,`customertypeid`) values (1,'1'),(2,'高级客户'),(3,'nbp'),(4,'普通客户');
 
 /*Table structure for table `deparment_surface` */
 
@@ -385,6 +384,8 @@ CREATE TABLE `deparment_surface` (
 
 /*Data for the table `deparment_surface` */
 
+insert  into `deparment_surface`(`bid`,`bname`,`blei`) values (1,'市场部',1),(2,'人事部',1),(3,'技术部',2),(4,'维修部',2);
+
 /*Table structure for table `document_status` */
 
 DROP TABLE IF EXISTS `document_status`;
@@ -397,7 +398,7 @@ CREATE TABLE `document_status` (
 
 /*Data for the table `document_status` */
 
-insert  into `document_status`(`id`,`type`) values (1,'1'),(2,'2');
+insert  into `document_status`(`id`,`type`) values (1,'完工'),(2,'未完工'),(3,'误工');
 
 /*Table structure for table `domestic` */
 
@@ -407,9 +408,11 @@ CREATE TABLE `domestic` (
   `d_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '进口国产序号',
   `d_name` varchar(20) DEFAULT NULL COMMENT '进口国产名称',
   PRIMARY KEY (`d_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='进口国产';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='进口国产';
 
 /*Data for the table `domestic` */
+
+insert  into `domestic`(`d_id`,`d_name`) values (1,'一号国产1'),(2,'二号国产'),(3,'三号国产');
 
 /*Table structure for table `dzw_privilege` */
 
@@ -419,7 +422,7 @@ CREATE TABLE `dzw_privilege` (
   `pvgid` int(11) NOT NULL AUTO_INCREMENT COMMENT '唯一编号',
   `pvg_name` varchar(50) NOT NULL COMMENT '权限名称',
   `pvg_verify` varchar(50) DEFAULT NULL COMMENT '权限验证',
-  `pvg_type` int(11) NOT NULL COMMENT '类别，1是父级菜单，2是子级菜单，3是功能',
+  `pvg_type` int(50) NOT NULL COMMENT '类别，1是父级菜单，2是子级菜单，3是功能',
   `pvg_path` varchar(50) DEFAULT NULL COMMENT '路径（是菜单才拥有）',
   `pid` int(11) NOT NULL COMMENT '父级编号',
   `reserved1` int(11) DEFAULT NULL COMMENT '预留字段',
@@ -428,11 +431,11 @@ CREATE TABLE `dzw_privilege` (
   PRIMARY KEY (`pvgid`),
   KEY `reserved1` (`reserved1`),
   CONSTRAINT `dzw_privilege_ibfk_1` FOREIGN KEY (`reserved1`) REFERENCES `factory` (`factory`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 /*Data for the table `dzw_privilege` */
 
-insert  into `dzw_privilege`(`pvgid`,`pvg_name`,`pvg_verify`,`pvg_type`,`pvg_path`,`pid`,`reserved1`,`reserved2`,`reserved3`) values (1,'服务接待',NULL,1,'',0,NULL,NULL,NULL),(2,'结算中心',NULL,1,NULL,0,NULL,NULL,NULL),(3,'客户档案',NULL,1,NULL,0,NULL,NULL,NULL),(4,'基础数据',NULL,1,NULL,0,NULL,NULL,NULL),(5,'行政人事',NULL,1,'',0,NULL,NULL,NULL),(6,'系统设置',NULL,1,NULL,0,NULL,NULL,NULL),(7,'服务接待',NULL,2,NULL,1,NULL,NULL,NULL),(8,'前台结算',NULL,2,'',2,NULL,NULL,NULL),(9,'客服档案',NULL,2,NULL,3,NULL,NULL,NULL),(10,'主数据',NULL,2,NULL,4,NULL,NULL,NULL),(11,'员工资料',NULL,2,NULL,5,NULL,NULL,NULL),(12,'技工管理',NULL,2,NULL,5,NULL,NULL,NULL),(13,'权限控制',NULL,2,NULL,6,NULL,NULL,NULL),(14,'维修接车',NULL,2,'zenglianjun/html/maintenance.html',7,NULL,NULL,NULL),(15,'竣工校验',NULL,2,'zenglianjun/html/jungonjianyan.html',7,NULL,NULL,NULL),(16,'保险对价',NULL,2,NULL,7,NULL,NULL,NULL),(17,'结算中心',NULL,2,'jiesuanzhonxin.html',8,NULL,NULL,NULL),(18,'会员充值',NULL,2,'huiyuancz.html',8,NULL,NULL,NULL),(19,'客户资料',NULL,2,'kehuziliao/kehuziliao.html',9,NULL,NULL,NULL),(20,'车辆资料',NULL,2,'kehuziliao/cheliang.html',9,NULL,NULL,NULL),(21,'发动机品牌',NULL,2,'主数据/EngineBrand.html',10,NULL,NULL,NULL),(22,'车型档案',NULL,2,'主数据/ModelFile.html',10,NULL,NULL,NULL),(23,'维修项目',NULL,2,'主数据/MaintenanceItems.html',10,NULL,NULL,NULL),(24,'商品资料',NULL,2,'主数据/Commodity.html',10,NULL,NULL,NULL),(25,'供货单位',NULL,2,'主数据/Supplier.html',10,NULL,NULL,NULL),(26,'组织机构',NULL,2,'employees/organization.html',11,NULL,NULL,NULL),(27,'岗位定义',NULL,2,'employees/gang.html',11,NULL,NULL,NULL),(28,'离职登记',NULL,2,'employees/lizhi.html',11,NULL,NULL,NULL),(29,'通讯名录',NULL,2,'employees/phone.html',11,NULL,NULL,NULL),(30,'技工星级',NULL,2,'jigongguanli/jigongxingji.html',12,NULL,NULL,NULL),(31,'班组技工',NULL,2,'jigongguanli/banzujigong.html',12,NULL,NULL,NULL),(32,'外勤车辆',NULL,2,'jigongguanli/waiqincheliang.html',12,NULL,NULL,NULL),(33,'技工提成比例',NULL,2,'jigongguanli/jigongtichengbili.html',12,NULL,NULL,NULL),(34,'员工权限控制',NULL,2,NULL,13,NULL,NULL,NULL),(35,'角色权限控制',NULL,2,NULL,13,NULL,NULL,NULL);
+insert  into `dzw_privilege`(`pvgid`,`pvg_name`,`pvg_verify`,`pvg_type`,`pvg_path`,`pid`,`reserved1`,`reserved2`,`reserved3`) values (1,'服务接待','',1,'',0,NULL,'',''),(2,'结算中心',NULL,1,NULL,0,NULL,NULL,NULL),(3,'客户档案',NULL,1,NULL,0,NULL,NULL,NULL),(4,'基础数据',NULL,1,NULL,0,NULL,NULL,NULL),(5,'行政人事',NULL,1,'',0,NULL,NULL,NULL),(6,'系统设置',NULL,1,NULL,0,NULL,NULL,NULL),(7,'服务接待',NULL,2,NULL,1,NULL,NULL,NULL),(8,'前台结算',NULL,2,'',2,NULL,NULL,NULL),(9,'客服档案',NULL,2,NULL,3,NULL,NULL,NULL),(10,'主数据',NULL,2,NULL,4,NULL,NULL,NULL),(11,'员工资料',NULL,2,NULL,5,NULL,NULL,NULL),(12,'技工管理',NULL,2,NULL,5,NULL,NULL,NULL),(13,'权限控制',NULL,2,NULL,6,NULL,NULL,NULL),(14,'维修接车',NULL,2,'zenglianjun/html/maintenance.html',7,NULL,NULL,NULL),(15,'竣工校验',NULL,2,'zenglianjun/html/jungonjianyan.html',7,NULL,NULL,NULL),(17,'结算中心',NULL,2,'jiesuanzhonxin.html',8,NULL,NULL,NULL),(18,'会员中心',NULL,2,'huiyuancz.html',8,NULL,NULL,NULL),(19,'客户资料',NULL,2,'kehuziliao/kehuziliao.html',9,NULL,NULL,NULL),(20,'车辆资料',NULL,2,'kehuziliao/cheliang.html',9,NULL,NULL,NULL),(21,'发动机品牌',NULL,2,'主数据/EngineBrand.html',10,NULL,NULL,NULL),(22,'车型档案',NULL,2,'主数据/ModelFile.html',10,NULL,NULL,NULL),(23,'维修项目',NULL,2,'主数据/MaintenanceItems.html',10,NULL,NULL,NULL),(24,'商品资料',NULL,2,'主数据/Commodity.html',10,NULL,NULL,NULL),(25,'供货单位',NULL,2,'主数据/Supplier.html',10,NULL,NULL,NULL),(26,'组织机构',NULL,2,'employees/organization.html',11,NULL,NULL,NULL),(27,'岗位定义	\r\n',NULL,2,'employees/gang.html',11,NULL,NULL,NULL),(28,'离职登记',NULL,2,'employees/lizhi.html',11,NULL,NULL,NULL),(29,'通讯名录',NULL,2,'employees/phone.html',11,NULL,NULL,NULL),(30,'技工星级',NULL,2,'jigongguanli/jigongxingji.html',12,NULL,NULL,NULL),(31,'班组技工',NULL,2,'jigongguanli/banzujigong.html',12,NULL,NULL,NULL),(32,'外勤车辆',NULL,2,'jigongguanli/waiqincheliang.html',12,NULL,NULL,NULL),(33,'技工提成比例',NULL,2,'jigongguanli/jigongtichengbili.html',12,NULL,NULL,NULL),(34,'用户权限控制',NULL,2,'userprivilege.html',13,NULL,NULL,NULL),(35,'角色权限控制',NULL,2,'role.html',13,NULL,NULL,NULL),(36,'增加商品资料按钮		\r\n','commodity:goods:add\r\n',3,NULL,24,NULL,NULL,NULL),(38,'修改商品资料按钮		\r\n','commodity:goods:update\r\n',3,NULL,24,NULL,NULL,NULL),(39,'删除商品资料按钮		\r\n','commodity:goods:remove\r\n',3,NULL,24,NULL,NULL,NULL),(40,'搜索商品资料按钮		\r\n','commodity:goods:seek\r\n',3,NULL,24,NULL,NULL,NULL),(41,'导出商品资料按钮		\r\n','commodity:goods:export\r\n',3,NULL,24,NULL,NULL,NULL),(42,'增加联系人按钮		\r\n','supplier:linkman:add\r\n',3,NULL,25,NULL,NULL,NULL),(43,'增加供货商按钮','supplier:supply:add\r\n',3,NULL,25,NULL,NULL,NULL),(44,'修改供货商按钮		\r\n','supplier:supply:update\r\n',3,NULL,25,NULL,NULL,NULL),(45,'删除供货商按钮		\r\n','supplier:supply:remove\r\n',3,NULL,25,NULL,NULL,NULL),(46,'搜索供货商按钮		\r\n','supplier:supply:seek\r\n',3,NULL,25,NULL,NULL,NULL),(47,'导出供货商管理数据按钮		\r\n','supplier:supply:export\r\n',3,NULL,25,NULL,NULL,NULL),(48,'联系人管理按钮		\r\n','supplier:supply:linkman\r\n',3,NULL,25,NULL,NULL,NULL),(49,'保存联系人按钮		\r\n','supplier:linkman:save\r\n',3,NULL,25,NULL,NULL,NULL),(50,'删除联系人按钮		\r\n','supplier:linkman:remove\r\n',3,NULL,25,NULL,NULL,NULL),(51,'收银','shouying',3,NULL,17,NULL,NULL,NULL),(52,'门店选择','mendianxuaze',3,NULL,17,NULL,NULL,NULL),(53,'查询','jiesuanchaxun',3,NULL,17,NULL,NULL,NULL),(54,'导出','jiesuandaochu',3,NULL,17,NULL,NULL,NULL),(55,'查看单据','chakandanju',3,NULL,17,NULL,NULL,NULL),(56,'查询','huiyuanchaxun',3,NULL,18,NULL,NULL,NULL),(57,'充值','huiyuanchongzhi',3,NULL,18,NULL,NULL,NULL),(58,'客户编辑\r\n','Client	\r\n',3,NULL,19,NULL,NULL,NULL),(59,'车资料\r\n','Carheet	\r\n',3,NULL,19,NULL,NULL,NULL),(60,'客户分类\r\n','ClientType	\r\n',3,NULL,19,NULL,NULL,NULL),(61,'增加发动机品牌按钮		','enginebrand:engine:add',3,NULL,21,NULL,NULL,NULL),(62,'删除发动机品牌按钮		\r\n','enginebrand:engine:remove\r\n',3,NULL,21,NULL,NULL,NULL),(63,'保存按钮		\r\n','enginebrand:engine:save\r\n',3,NULL,21,NULL,NULL,NULL),(64,'导出按钮		\r\n','enginebrand:engine:export\r\n',3,NULL,21,NULL,NULL,NULL),(65,'增加车型品牌按钮		\r\n','modelfile:brand:add\r\n',3,NULL,22,NULL,NULL,NULL),(66,'修改车型品牌按钮		\r\n','modelfile:brand:update\r\n',3,NULL,22,NULL,NULL,NULL),(67,'删除车型品牌按钮		\r\n','modelfile:brand:remove\r\n',3,NULL,22,NULL,NULL,NULL),(68,'搜索车型品牌按钮		\r\n','modelfile:brand:seek\r\n',3,NULL,22,NULL,NULL,NULL),(69,'增加车型按钮		\r\n','modelfile:car:add\r\n',3,NULL,22,NULL,NULL,NULL),(70,'修改车型按钮		\r\n','modelfile:car:update\r\n',3,NULL,22,NULL,NULL,NULL),(71,'删除车型按钮		\r\n','modelfile:car:remove\r\n',3,NULL,22,NULL,NULL,NULL),(72,'搜索车型按钮		\r\n','modelfile:car:seek\r\n',3,NULL,22,NULL,NULL,NULL),(73,'添加分类按钮		\r\n','maintenanceitems:classify:add\r\n',3,NULL,23,NULL,NULL,NULL),(74,'修改分类按钮		\r\n','maintenanceitems:classify:update\r\n',3,NULL,23,NULL,NULL,NULL),(75,'删除分类按钮		\r\n','maintenanceitems:classify:remove\r\n',3,NULL,23,NULL,NULL,NULL),(76,'搜索维修项目按钮		\r\n','maintenanceitems:items:seek\r\n',3,NULL,23,NULL,NULL,NULL),(77,'增加维修项目按钮		\r\n','maintenanceitems:items:add\r\n',3,NULL,23,NULL,NULL,NULL),(78,'修改维修项目按钮		\r\n','maintenanceitems:items:update\r\n',3,NULL,23,NULL,NULL,NULL),(79,' 删除维修项目按钮		\r\n','maintenanceitems:items:remove\r\n',3,NULL,23,NULL,NULL,NULL),(80,'调价按钮		\r\n','maintenanceitems:items:price\r\n',3,NULL,23,NULL,NULL,NULL),(81,'导出维修项目数据按钮\n	\r\n','maintenanceitems:items:export\r\n',3,NULL,23,NULL,NULL,NULL),(82,'查询\r\n','selectClient	\r\n',3,NULL,19,NULL,NULL,NULL),(83,'增加\r\n','insertCarheet	\r\n',3,NULL,20,NULL,NULL,NULL),(84,'修改\r\n','updateCarheet	\r\n',3,NULL,20,NULL,NULL,NULL),(85,'删除\r\n','deleteCarheet	\r\n',3,NULL,20,NULL,NULL,NULL),(86,'查询\r\n','selectCarheet	\r\n',3,NULL,20,NULL,NULL,NULL),(87,'保养\r\n','upKeep	\r\n',3,NULL,20,NULL,NULL,NULL),(88,'删除门店\r\n','zyfOrganizationdelete\r\n',3,NULL,26,NULL,NULL,NULL),(89,'使用门店\r\n','zyfOrganizationinsert\r\n',3,NULL,26,NULL,NULL,NULL),(90,'门店编辑\r\n','zyfOrganizationupdate\r\n',3,NULL,26,NULL,NULL,NULL),(91,'增加员工\r\n','zyfOrganizationinsert2\r\n',3,NULL,26,NULL,NULL,NULL),(92,'修改员工\r\n','zyfOrganizationupdate2\r\n',3,NULL,26,NULL,NULL,NULL),(93,'删除门店\r\n','zyfOrganizationdelete2',3,NULL,26,NULL,NULL,NULL),(94,'导出\r\n','zyfOrganizationexport\r\n',3,NULL,26,NULL,NULL,NULL),(95,'导入\r\n','zyfOrganizationImport\r\n',3,NULL,26,NULL,NULL,NULL),(96,'增加\r\n','zyfjobdefinitioninsert\r\n',3,NULL,27,NULL,NULL,NULL),(97,'删除\r\n','zyfjobdefinitiondelete\r\n',3,NULL,27,NULL,NULL,NULL),(98,'保存\r\n','zyfjobdefinitionpreservation\r\n',3,NULL,27,NULL,NULL,NULL),(99,'导出\r\n','zyfjobdefinitionexport\r\n',3,NULL,27,NULL,NULL,NULL),(100,'离职登记\r\n','zyfresignationregistrationquit\r\n',3,NULL,28,NULL,NULL,NULL),(101,'回滚\r\n','zyfresignationregistrationrollback \r\n',3,NULL,28,NULL,NULL,NULL),(102,'删除\r\n','zyfresignationregistrationdelete\r\n',3,NULL,28,NULL,NULL,NULL),(103,'导出\r\n','zyfresignationregistrationexport\r\n',3,NULL,28,NULL,NULL,NULL),(104,'门店编辑\r\n','zyfresignationregistrationupdate\r\n',3,NULL,28,NULL,NULL,NULL),(105,'导出','zyfmailinglistexport',3,NULL,29,NULL,NULL,NULL),(106,'门店选择\r\n','zyfmailinglistchoice\r\n',3,NULL,29,NULL,NULL,NULL),(107,'用户授权','yonghushouquan',3,NULL,34,NULL,NULL,NULL),(108,'角色授权','jueseshouquan',3,NULL,35,NULL,NULL,NULL),(110,'模块管理','mokuai',2,'module.html',13,NULL,NULL,NULL),(111,'模块授权','mokuaishouquan',3,NULL,110,NULL,NULL,NULL),(112,'增加\r\n','MechanicStar:insert\r\n',3,NULL,30,NULL,NULL,NULL),(113,'删除\r\n','MechanicStar:delete\r\n',3,NULL,30,NULL,NULL,NULL),(114,'保存\r\n','MechanicStar:save\r\n',3,NULL,30,NULL,NULL,NULL),(115,'增加员工\r\n','TeamTechnician:insertY\r\n',3,NULL,31,NULL,NULL,NULL),(116,'增加班组\r\n','TeamTechnician:insertB\r\n',3,NULL,31,NULL,NULL,NULL),(117,'修改班组\r\n','TeamTechnician:updateB\r\n',3,NULL,31,NULL,NULL,NULL),(118,'删除班组\r\n','TeamTechnician:deleteB\r\n',3,NULL,31,NULL,NULL,NULL),(119,'增加\r\n','fieldvehicles:insert\r\n',3,NULL,32,NULL,NULL,NULL),(120,'删除\r\n','fieldvehicles:delete\r\n',3,NULL,32,NULL,NULL,NULL),(121,'保存\r\n','fieldvehicles:save\r\n',3,NULL,32,NULL,NULL,NULL),(122,'增加\r\n','mechaniccommission:insert\r\n',3,NULL,33,NULL,NULL,NULL),(123,'删除\r\n','mechaniccommission:delete\r\n',3,NULL,33,NULL,NULL,NULL),(124,'保存\r\n','mechaniccommission:save\r\n',3,NULL,33,NULL,NULL,NULL),(125,'查看','chakan',3,NULL,14,NULL,NULL,NULL),(126,'查看','chakan',3,NULL,15,NULL,NULL,NULL),(127,'查看','chakan',3,NULL,16,NULL,NULL,NULL);
 
 /*Table structure for table `dzw_role` */
 
@@ -443,8 +446,8 @@ CREATE TABLE `dzw_role` (
   `role_name` varchar(50) NOT NULL COMMENT '角色名称',
   `role_desc` varchar(50) NOT NULL COMMENT '角色描述',
   `status` varchar(10) NOT NULL COMMENT '角色状态，0000：代表有效，0001：代表无效，0002：代表伪删除',
-  `create_date` date NOT NULL COMMENT '创建时间',
-  `update_date` date NOT NULL COMMENT '最近更新时间',
+  `create_date` date DEFAULT NULL COMMENT '创建时间',
+  `update_date` date DEFAULT NULL COMMENT '最近更新时间',
   `reserved1` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
@@ -453,7 +456,7 @@ CREATE TABLE `dzw_role` (
 
 /*Data for the table `dzw_role` */
 
-insert  into `dzw_role`(`role_id`,`role_name`,`role_desc`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`) values (1,'1','1','1','2021-02-22','2021-02-22',NULL,NULL,NULL);
+insert  into `dzw_role`(`role_id`,`role_name`,`role_desc`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`) values (1,'总经理','超级管理员','0000','2021-02-22','2021-02-22',NULL,NULL,NULL),(2,'人事经理','人事管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL),(3,'市场经理','客户管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL),(4,'产品经理','维修管理','0000','2021-02-25','2021-02-25',NULL,NULL,NULL);
 
 /*Table structure for table `dzw_user` */
 
@@ -465,13 +468,13 @@ CREATE TABLE `dzw_user` (
   `user_login` varchar(50) NOT NULL COMMENT '登录账号',
   `user_pwd` varchar(50) NOT NULL COMMENT '登录密码',
   `user_realname` varchar(50) NOT NULL COMMENT '真实姓名',
-  `user_sex` varchar(50) NOT NULL COMMENT '用户性别，00：代表女，11：代表男，03：代表未知',
-  `user_phone` varchar(50) DEFAULT NULL COMMENT '手机号',
-  `user_eamil` varchar(50) DEFAULT NULL COMMENT '邮箱',
+  `user_sex` varchar(50) DEFAULT NULL COMMENT '用户性别，00：代表女，11：代表男，03：代表未知',
+  `user_phone` varchar(50) NOT NULL COMMENT '手机号',
+  `user_eamil` varchar(50) NOT NULL COMMENT '邮箱',
   `user_address` varchar(100) DEFAULT NULL COMMENT '地址',
   `status` varchar(10) NOT NULL COMMENT '用户状态，0000：代表有效，0001：代表无效，0002：代表伪删除',
-  `create_date` date NOT NULL COMMENT '创建时间',
-  `update_date` date NOT NULL COMMENT '最近更新时间',
+  `create_date` date DEFAULT NULL COMMENT '创建时间',
+  `update_date` date DEFAULT NULL COMMENT '最近更新时间',
   `reserved1` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
@@ -482,7 +485,7 @@ CREATE TABLE `dzw_user` (
 
 /*Data for the table `dzw_user` */
 
-insert  into `dzw_user`(`user_id`,`user_name`,`user_login`,`user_pwd`,`user_realname`,`user_sex`,`user_phone`,`user_eamil`,`user_address`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'德召文','admin','0','王泽旭','11','12311112222','123@qq.com','湖南省','0000','2021-02-04','2021-02-04',NULL,NULL,NULL,NULL,NULL);
+insert  into `dzw_user`(`user_id`,`user_name`,`user_login`,`user_pwd`,`user_realname`,`user_sex`,`user_phone`,`user_eamil`,`user_address`,`status`,`create_date`,`update_date`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'德召文','admin','0','王泽旭','11','12311112222','123@qq.com','湖南省','0000','2021-02-04','2021-02-04','','','','',''),(2,'一包辣条','admin2','0','单观柏','11','12322223333','123@qq.com','湖南省','0000','2021-02-25','2021-02-25',NULL,NULL,NULL,NULL,NULL),(7,'7','71','7','71','','7','7','','0000',NULL,NULL,'','','','','');
 
 /*Table structure for table `education` */
 
@@ -496,6 +499,8 @@ CREATE TABLE `education` (
 
 /*Data for the table `education` */
 
+insert  into `education`(`educationid`,`name`) values (1,'小学'),(2,'初中'),(3,'高中'),(4,'大专'),(5,'本科');
+
 /*Table structure for table `engine` */
 
 DROP TABLE IF EXISTS `engine`;
@@ -505,11 +510,11 @@ CREATE TABLE `engine` (
   `e_coder` varchar(20) DEFAULT NULL COMMENT '发动机品牌编码',
   `e_name` varchar(20) DEFAULT NULL COMMENT '发动机品牌名称',
   PRIMARY KEY (`e_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='发动机表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='发动机表';
 
 /*Data for the table `engine` */
 
-insert  into `engine`(`e_id`,`e_coder`,`e_name`) values (1,'1','1');
+insert  into `engine`(`e_id`,`e_coder`,`e_name`) values (1,'11','一号发动机'),(2,'22','二号发动机'),(3,'33','三号发动机'),(4,'44','四号发动机'),(5,'55','小胖发动机'),(6,'66','曾子发动机'),(8,'77','军子发动机'),(10,'2','大胖发动机'),(11,'3','中胖发动机');
 
 /*Table structure for table `factory` */
 
@@ -522,6 +527,25 @@ CREATE TABLE `factory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工厂表';
 
 /*Data for the table `factory` */
+
+insert  into `factory`(`factory`,`factoryname`) values (1,'北京卡修有限公司');
+
+/*Table structure for table `field` */
+
+DROP TABLE IF EXISTS `field`;
+
+CREATE TABLE `field` (
+  `id` int(11) NOT NULL,
+  `width` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `zname` varchar(50) DEFAULT NULL,
+  `display` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `field` */
+
+insert  into `field`(`id`,`width`,`name`,`zname`,`display`) values (1,100,'部门代码','a1','0'),(2,100,'部门名称','a1','0'),(3,100,'工号','a1','1'),(4,100,'姓名','a1','1'),(5,100,'性别','a1','1'),(6,100,'岗位名称','a1','1'),(7,100,'身体状况','a1','1'),(8,100,'身高','a1','1'),(9,100,'籍贯','a1','1'),(10,100,'民族','a1','1'),(11,100,'婚姻状况','a1','1'),(12,100,'学历','a1','1'),(13,100,'毕业学校','a1','1'),(14,100,'专业','a1','1'),(15,100,'专业资格','a1','0'),(16,100,'学位','a1','0'),(17,100,'编制','a1','0'),(18,100,'身份证号','a1','0'),(19,100,'户口地址','a1','0'),(20,100,'邮编','a1','0'),(21,100,'现住地址','a1','0'),(22,100,'邮编','a1','0'),(23,100,'联系电话','a1','0'),(24,100,'手机','a1','0'),(25,100,'email','a1','0'),(26,100,'紧急情况联系人','a1','0'),(27,100,'联系电话','a1','0'),(28,100,'现在何处','a1','0'),(29,100,'使用到期','a1','0'),(30,100,'入职日期','a1','0'),(31,100,'出生日期','a1','0'),(32,100,'合同开始日期','a1','0'),(33,100,'合同结束日期','a1','0'),(34,100,'登陆账号','a1','0');
 
 /*Table structure for table `fieldvehicles` */
 
@@ -539,9 +563,11 @@ CREATE TABLE `fieldvehicles` (
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`id`),
   KEY `teamid` (`teamid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='外勤车辆表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='外勤车辆表';
 
 /*Data for the table `fieldvehicles` */
+
+insert  into `fieldvehicles`(`id`,`licenseplate`,`brand`,`model`,`currentmileage`,`teamid`,`reserved1`,`reserved2`,`reserved3`) values (1,'2333','abc','11122','111','1002',NULL,NULL,NULL),(2,'410','631','520','50','1000',NULL,NULL,NULL),(3,'431333','1','1','1','1003',NULL,NULL,NULL),(5,'520','520','4102','20','1001',NULL,NULL,NULL);
 
 /*Table structure for table `get_material` */
 
@@ -585,6 +611,8 @@ CREATE TABLE `graduate_school` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='学校表';
 
 /*Data for the table `graduate_school` */
+
+insert  into `graduate_school`(`schoolid`,`name`) values (1,'湖南科技大学'),(2,'武汉体育大学'),(3,'清华大学'),(4,'北京大学'),(5,'国防科技大学');
 
 /*Table structure for table `history` */
 
@@ -670,9 +698,11 @@ CREATE TABLE `income` (
   `in_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '收入种类编号',
   `in_name` varchar(20) DEFAULT NULL COMMENT '收入种类名称',
   PRIMARY KEY (`in_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收入种类';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='收入种类';
 
 /*Data for the table `income` */
+
+insert  into `income`(`in_id`,`in_name`) values (1,'工时费1'),(2,'燃油费'),(3,'代办费'),(4,'其他');
 
 /*Table structure for table `jcyl` */
 
@@ -691,7 +721,7 @@ CREATE TABLE `jcyl` (
 DROP TABLE IF EXISTS `linkman`;
 
 CREATE TABLE `linkman` (
-  `l_id` int(11) NOT NULL COMMENT '供应商联系人编号',
+  `l_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '供应商联系人编号',
   `l_post` varchar(50) DEFAULT NULL COMMENT '供应商联系人职位',
   `l_name` varchar(50) DEFAULT NULL COMMENT '供应商联系人姓名',
   `l_phone` varchar(50) DEFAULT NULL COMMENT '供应商联系人电话',
@@ -704,9 +734,11 @@ CREATE TABLE `linkman` (
   PRIMARY KEY (`l_id`),
   KEY `p_id` (`p_id`),
   CONSTRAINT `linkman_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `suppiler` (`p_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='联系人\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='联系人\r\n';
 
 /*Data for the table `linkman` */
+
+insert  into `linkman`(`l_id`,`l_post`,`l_name`,`l_phone`,`l_mobile`,`l_emile`,`p_id`,`reserved1`,`reserved2`,`reserved3`) values (2,'副经理','李四','3214122','123432','12311@qq.com','2','0',NULL,NULL),(3,'副经理','李四','123124','123124','12311@qq.com','3','0',NULL,NULL),(4,'副经理','张三','123','123124','12311@qq.com','4','0',NULL,NULL),(5,'副经理','赵六','124124123','12432','12311@qq.com','5','0',NULL,NULL),(6,'总经理','赵六','1231241','12342','12311@qq.com','6','0',NULL,NULL),(7,'总经理','张三','2312412','112312','12311@qq.com','7','0',NULL,NULL),(8,'总经理','赵六','312412','4123','12311@qq.com','8','0',NULL,NULL),(9,'总经理','张三','31421','4213213','12311@qq.com','9','0',NULL,NULL),(10,'总经理','李四1','312412','4324123','12311@qq.com','10','0','',''),(11,'总经理','李四1','31241','123431','12311@qq.com','11','0','',''),(12,'普通员工','李四','31243123','123124','12311@qq.com','12','0',NULL,NULL),(13,'普通员工','李四','124','12412','12311@qq.com','13','0',NULL,NULL),(14,'普通员工','王五12','1231233','12124','12311@qq.com','1','0','',''),(15,'普通员工','王五','4123','12412','12311@qq.com','2','0',NULL,NULL),(16,'普通员工','王五','412','12412','12311@qq.com','3','0',NULL,NULL),(17,'普通员工','王五','3124','123124','12311@qq.com','4','0',NULL,NULL),(18,'普通员工','王五','123124','3124123','12311@qq.com','5','0',NULL,NULL),(19,'普通员工','赵六','123124','124123','12311@qq.com','6','0',NULL,NULL),(20,'普通员工','赵六','123412','12312','12311@qq.com','7','0',NULL,NULL),(27,'普通员工','老八','1313','1313','13','1',NULL,NULL,NULL),(30,'普通员工','刘七','32','31','4','1111',NULL,NULL,NULL),(31,'普通员工','张三','12','23','41','1111','','',''),(32,'不普通员工','刘七','11','112','11','123','','','');
 
 /*Table structure for table `maintenance` */
 
@@ -714,7 +746,7 @@ DROP TABLE IF EXISTS `maintenance`;
 
 CREATE TABLE `maintenance` (
   `m_id` int(11) NOT NULL COMMENT '维修进程编号',
-  `m_name` varchar(10) DEFAULT NULL COMMENT '维修进程项目名',
+  `m_name` varchar(50) DEFAULT NULL COMMENT '维修进程项目名',
   `m_note` varchar(255) DEFAULT NULL COMMENT '维修进程备注',
   `m_type` varchar(10) DEFAULT NULL COMMENT '维修进程种类',
   `m_normalprice` float DEFAULT NULL COMMENT '维修进程标准价',
@@ -743,6 +775,8 @@ CREATE TABLE `maintenance` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='历史维修表';
 
 /*Data for the table `maintenance` */
+
+insert  into `maintenance`(`m_id`,`m_name`,`m_note`,`m_type`,`m_normalprice`,`m_memberprice`,`m_vipprice`,`m_detaprice`,`m_claimprice`,`m_safetyprice`,`in_id`,`b_id`,`e_id`,`ser_id`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (4,'修矫驾驶室顶棚','好好修',NULL,1100,412,123,123,435,234,1,NULL,5,1002,NULL,NULL,NULL,NULL,NULL),(5,'前一桥前轮保养（碟刹）','1',NULL,532,123,432,432,532,435,4,NULL,5,1002,NULL,NULL,NULL,NULL,NULL),(6,'检查差速器通气孔','12',NULL,33,52,2345,23,2,234,2,NULL,4,1006,NULL,NULL,NULL,NULL,NULL),(8,'更换前轮轮胎螺栓（不含拆装轮胎）','1',NULL,234,123,123,12,234,532,2,NULL,2,1001,NULL,NULL,NULL,NULL,NULL),(12,'检查后钢板吊耳及座子','12',NULL,23,234,54,23,34,243,1,NULL,10,1007,NULL,NULL,NULL,NULL,NULL),(13,'紧固中冷水箱增压器等各类抱箍（单个）','12',NULL,21,32,123,321,34,234,2,NULL,8,1007,NULL,NULL,NULL,NULL,NULL),(1322,'检查增压机间隙及进排气叶轮磨损程度','钱喂',NULL,12,12,21,12,12,21,2,NULL,NULL,1003,NULL,NULL,NULL,NULL,NULL),(2134,'检查发动机有无异响或异常','1',NULL,23,2,23,234,32,1,4,NULL,NULL,1007,NULL,NULL,NULL,NULL,NULL),(4545,'检查进排气歧管是否漏气','11',NULL,12,18,144,234,21,22,1,NULL,NULL,1008,NULL,NULL,NULL,NULL,NULL),(1113,'检查蓄电池电量是否充足','没有备注',NULL,12,18,19,43234,21,22,1,NULL,NULL,1001,NULL,NULL,NULL,NULL,NULL),(1,'前一桥前轮保养碟刹','11',NULL,11,435,17,423,19,20,1,NULL,NULL,1001,NULL,NULL,NULL,NULL,NULL),(2,'紧固中冷水箱增压器等各类抱箍（单个）','1',NULL,12,634,234234,2323,2345,123,1,NULL,NULL,1002,NULL,NULL,NULL,NULL,NULL),(3,'检查增压机间隙及进排气叶轮磨损程度','1',NULL,31,4754,243,235,435,43,2,NULL,NULL,1003,NULL,NULL,NULL,NULL,NULL),(4,'检查发动机有无异响或异常','1',NULL,42,346,34,2,3453,23,3,NULL,NULL,1004,NULL,NULL,NULL,NULL,NULL),(5,'检查进排气歧管是否漏气','1',NULL,1,5346,234,23,34,4,1,NULL,NULL,1005,NULL,NULL,NULL,NULL,NULL),(6,'检查差速器通气孔','12',NULL,33,52,2345,23,2,234,2,NULL,NULL,1006,NULL,NULL,NULL,NULL,NULL),(7,'检查制动阀是否漏气','1',NULL,123,23,53,234,5,3,3,NULL,NULL,1007,NULL,NULL,NULL,NULL,NULL),(8,'检查转向系统是否正常',NULL,NULL,4,4523,6,235,2,63,4,NULL,NULL,1008,NULL,NULL,NULL,NULL,NULL),(9,'检查刮水器是否异常','1',NULL,1234,45,346,234,235,6,3,NULL,NULL,1007,NULL,NULL,NULL,NULL,NULL),(12,'检查后钢板吊耳及座子','12',NULL,23,234,54,23,34,243,1,NULL,NULL,1007,NULL,NULL,NULL,NULL,NULL),(13,'紧固中冷水箱增压器等各类抱箍（单个）','12',NULL,21,32,123,321,34,234,2,NULL,NULL,1007,NULL,NULL,NULL,NULL,NULL),(14,'检查蓄电池电量是否充足','1',NULL,4,7345,346,4,234,634,4,NULL,NULL,1005,NULL,NULL,NULL,NULL,NULL),(15,'检查前桥直拉杆球头开口销',NULL,NULL,423,45745,34,23,234,3,1,NULL,NULL,1004,NULL,NULL,NULL,NULL,NULL),(16,'检查发动机是否漏水','1',NULL,523,36,364,4,234,23,2,NULL,NULL,1005,NULL,NULL,NULL,NULL,NULL),(19,'检查前束是否准确',NULL,NULL,125,2342,346,42,234,235,2,NULL,NULL,1006,NULL,NULL,NULL,NULL,NULL),(20,'检查发动机前引进脚','1',NULL,235,234,346,12,23,346346,1,NULL,NULL,1005,NULL,NULL,NULL,NULL,NULL),(21,'检查发动机后引进脚','1',NULL,2522,234,346,345,423,24,2,NULL,NULL,1005,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `maintenance_items` */
 
@@ -808,6 +842,8 @@ CREATE TABLE `marital_status` (
 
 /*Data for the table `marital_status` */
 
+insert  into `marital_status`(`marriageid`,`name`) values (1,'已婚'),(2,'未婚');
+
 /*Table structure for table `mechaniccommission` */
 
 DROP TABLE IF EXISTS `mechaniccommission`;
@@ -827,6 +863,8 @@ CREATE TABLE `mechaniccommission` (
 
 /*Data for the table `mechaniccommission` */
 
+insert  into `mechaniccommission`(`typeid`,`typename`,`dayinthestation`,`nightinthestation`,`dayoutthestation`,`nightoutthestation`,`reserved1`,`reserved2`,`reserved3`) values (10,'工时费',0.5,0.6,0.6,0.7,NULL,NULL,NULL),(20,'保养费',0.1,0.12,0.12,0.15,'','',''),(30,'燃油费',0.15,0.15,0.15,0.15,NULL,NULL,NULL),(40,'代办费',0.15,0.15,0.15,0.15,NULL,NULL,NULL),(50,'其他费',0,0,0,0,NULL,NULL,NULL);
+
 /*Table structure for table `mechanicstar` */
 
 DROP TABLE IF EXISTS `mechanicstar`;
@@ -841,6 +879,8 @@ CREATE TABLE `mechanicstar` (
 
 /*Data for the table `mechanicstar` */
 
+insert  into `mechanicstar`(`code`,`star`,`grade`,`Commissionweight`) values ('11','2星','2','0.4'),('1223','3星','3','0.8'),('13','5星','1','1'),('141','专家','5','9.1'),('142','大师','7','9.5');
+
 /*Table structure for table `menu` */
 
 DROP TABLE IF EXISTS `menu`;
@@ -849,14 +889,16 @@ CREATE TABLE `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `menuname` varchar(50) DEFAULT NULL COMMENT '菜单名称',
   `parentid` int(11) DEFAULT NULL COMMENT '父级编号',
-  `teamid` varchar(50) NOT NULL COMMENT '班组编号',
+  `teamid` int(50) NOT NULL COMMENT '班组编号',
   `reserved1` int(11) DEFAULT NULL COMMENT '预留字段',
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='树形菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='树形菜单';
 
 /*Data for the table `menu` */
+
+insert  into `menu`(`id`,`menuname`,`parentid`,`teamid`,`reserved1`,`reserved2`,`reserved3`) values (1,'10-自建',0,10,NULL,'false','1'),(2,'11-联队',0,11,NULL,'false','1'),(3,'12-加盟',0,12,NULL,'false','1'),(4,'13-合伙人',0,13,NULL,'false','1'),(5,'1000-机修一组',1,1000,NULL,'false','1'),(6,'1001-机修二组',1,1001,NULL,'false','1'),(7,'1004-机电一组',1,1004,NULL,'false','1'),(10,'1002-华山队',2,1002,NULL,'false','1'),(11,'1003-武昌队',3,1003,NULL,'false','1');
 
 /*Table structure for table `menu_merchandise` */
 
@@ -871,6 +913,8 @@ CREATE TABLE `menu_merchandise` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单商品资料表';
 
 /*Data for the table `menu_merchandise` */
+
+insert  into `menu_merchandise`(`menu_id`,`menu_name`,`menu_parent`,`menu_tag`) values (1,'总',0,NULL),(100,'发动机',1,NULL),(101,'传动装置',1,NULL),(1001,'发动机总成',100,NULL),(1002,'机体组',100,NULL),(1003,'离合器',101,NULL),(1004,'变速器',101,NULL),(10001,'柴油发动机',1001,NULL),(10002,'汽油发动机',1001,NULL),(10003,'燃气轮机',1001,NULL),(10004,'汽缸体',1002,NULL),(10005,'缸盖',1002,NULL),(10006,'缸套',1002,NULL),(10007,'离合器片',1003,NULL),(10008,'离合器压板',1003,NULL),(10009,'离合器总泵',1003,NULL),(10010,'变速轴',1004,NULL),(10011,'同步器',1004,NULL),(10012,'分动器',1004,NULL);
 
 /*Table structure for table `merchandise` */
 
@@ -918,6 +962,8 @@ CREATE TABLE `merchandise` (
 
 /*Data for the table `merchandise` */
 
+insert  into `merchandise`(`me_id`,`me_check`,`me_name`,`me_brand`,`me_adaptable`,`me_unit`,`me_income`,`me_mill`,`me_grade`,`me_place`,`me_coding`,`me_code`,`me_back`,`me_bulk`,`me_gross`,`me_suttle`,`me_cost`,`me_switch`,`me_normalprice`,`me_memberprice`,`me_vipprice`,`me_detaprice`,`me_claimprice`,`me_show`,`me_safetyprice`,`menu_id`,`p_id`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('1','一号门店','氧传感器\\前','宝马','一号发动机','个','燃油费','三号厂','良','北京','1232','123123342dasd2','一号规格','20','15','12','12343','123123',12,23,43,23,12,NULL,123,10002,'1111','照片名','0.00','售价表','0',''),('10','一号门店','怠速马达','别克','一号发动机','件','代办费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10001,'1111','','','','0',''),('11','一号门店','阀门','别克','一号发动机','件','代办费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10003,'1111','','','','0',''),('11313','','1','','','个','','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10005,NULL,'','','','1',''),('1133',NULL,'31',NULL,NULL,'个',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,10006,NULL,NULL,NULL,NULL,'1',NULL),('12','一号门店','活性碳罐控制阀','别克','一号发动机','件','代办费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10005,'1111','','','','0',''),('123','','喷油嘴','别克','31','条','燃油费','一号厂','优','湖南','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10007,'23','','','','0',''),('12333','暂无门店','喷油嘴','宝马','','件','燃油费','二号厂','良','湖南','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10010,'23','','','','0',''),('13','一号门店','空气流量计','宝骏','一号发动机','个','代办费','','优','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10002,'1111','','','','0',''),('131','','节气门','东风','东风','条','燃油费','一号厂','优','湖南','13','13','13','31','31','31','13','13',31,13,13,13,31,NULL,13,10010,'1111','','','售价表','0',''),('1311','','电动汽油泵总成','宝马','','个','代办费','二号厂','优','湖南','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10007,NULL,'','','','0',''),('133','','电动汽油泵芯','宝马','1','个','工时费','一号厂','良','湖南','12','12','12','12','12','21','12','12',12,12,12,12,12,NULL,12,10008,'1111','','','售价表','0',''),('14','一号门店','电瓶 92AH','宝骏','二号发动机','只','其他','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1001,NULL,'','','','0',''),('144','','电瓶   110A','宝骏','123','件','工时费','一号厂','优','湖南','123','123','213','12','23','213','23','32',32,12,13,13,23,NULL,123,10002,'23','','','售价表','0',''),('15','一号门店','电瓶/72ah','宝骏','三号发动机','只','其他','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1002,'1111','照片','0.00','加价率','0',''),('16','一号门店','电瓶/95A','宝骏','三号发动机','只','其他','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1003,NULL,'','','','0',''),('17','一号门店','雨刮联动机构','东风','三号发动机','条','其他','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1004,NULL,'','','','0',''),('18','一号门店','汽油滤清器','东风','三号发动机','只','其他','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1001,NULL,'','','','0',''),('19','一号门店','风帆电瓶','宝马','三号发动机','条','其他','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1002,NULL,'','','','0',''),('2','一号门店','火花塞\\白金','宝马','一号发动机','件','代办费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10005,'1111','','','','0',''),('20','一号门店','一号商品','东风','三号发动机','条','其他',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1003,NULL,NULL,NULL,NULL,'0',NULL),('21','','变速箱油  无极','宝马','宝马是','件','其他','一号厂','优','湖南','121','条形码','规格','体积','100','100','100','123123123123123',11,11,11,11,11,NULL,11,10001,'1111','','','售价表','0',''),('231','','换档机构','宝马','123','只','代办费','二号厂','良','湖南','12','21','','21','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,1002,'1111','','','','0',''),('3','一号门店','风扇电机','宝马','一号发动机','个','代办费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10009,'1111','','','','0',''),('4','一号门店','空气滤清器','宝马','二号发动机','个','燃油费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10004,'1111','','','','0',''),('5','二号门店','防撞胶条','宝马','二号发动机','个','燃油费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10002,'1111','','','','0',''),('6','二号门店','空调管\\细','宝骏','二号发动机','个','燃油费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10010,'1111','','','','0',''),('7','二号门店','防冻液','宝骏','二号发动机','个','燃油费','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10011,'1111','','','','0',''),('8','一号门店','一号商品','宝骏','二号发动机','个','其他','','','','','','','','','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,10011,'1111','','','','1','');
+
 /*Table structure for table `mlicompany` */
 
 DROP TABLE IF EXISTS `mlicompany`;
@@ -945,6 +991,8 @@ CREATE TABLE `motor` (
 
 /*Data for the table `motor` */
 
+insert  into `motor`(`mo_id`,`mo_name`,`e_id`) values (1,'柴胡发动机',1);
+
 /*Table structure for table `nation` */
 
 DROP TABLE IF EXISTS `nation`;
@@ -957,6 +1005,8 @@ CREATE TABLE `nation` (
 
 /*Data for the table `nation` */
 
+insert  into `nation`(`nationid`,`name`) values (1,'汉族'),(2,'土族'),(3,'满族'),(4,'回族');
+
 /*Table structure for table `nativ_place` */
 
 DROP TABLE IF EXISTS `nativ_place`;
@@ -968,6 +1018,8 @@ CREATE TABLE `nativ_place` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='籍贯表';
 
 /*Data for the table `nativ_place` */
+
+insert  into `nativ_place`(`jnativplaceid`,`jname`) values (1,'湖南'),(2,'北京'),(3,'河南');
 
 /*Table structure for table `oiltype` */
 
@@ -993,16 +1045,18 @@ CREATE TABLE `organization` (
 
 /*Data for the table `organization` */
 
+insert  into `organization`(`organizationid`,`name`) values (1,'无编制'),(2,'有编制');
+
 /*Table structure for table `organization_surface` */
 
 DROP TABLE IF EXISTS `organization_surface`;
 
 CREATE TABLE `organization_surface` (
   `zid` int(11) NOT NULL COMMENT '机构id',
-  `zname` varchar(50) NOT NULL COMMENT '机构姓名',
+  `zname` varchar(50) DEFAULT NULL COMMENT '机构姓名',
   `msname` varchar(50) DEFAULT NULL COMMENT '上级门店',
-  `mshou` varchar(50) NOT NULL COMMENT '售价权重',
-  `mdianid` int(11) NOT NULL COMMENT '门店分类id',
+  `mshou` varchar(50) DEFAULT NULL COMMENT '售价权重',
+  `mdianid` int(11) DEFAULT NULL COMMENT '门店分类id',
   `mzuishu` varchar(50) DEFAULT NULL COMMENT '最大许可数',
   `mtiao` varchar(50) DEFAULT NULL COMMENT '调拨价类',
   `mcityid` int(11) DEFAULT NULL COMMENT '城市id',
@@ -1016,8 +1070,8 @@ CREATE TABLE `organization_surface` (
   `mgouid` int(11) DEFAULT NULL COMMENT '横装门店id',
   `mru` varchar(50) DEFAULT NULL COMMENT '入户开单/审核分开',
   `mting` varchar(50) DEFAULT NULL COMMENT '停用',
-  `zids` int(11) NOT NULL COMMENT '机构id外键',
-  `zyid` int(11) NOT NULL COMMENT '员工表id外键',
+  `zids` int(11) DEFAULT NULL COMMENT '机构id外键',
+  `zyid` int(11) DEFAULT NULL COMMENT '员工表id外键',
   `reserved1` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
@@ -1033,6 +1087,8 @@ CREATE TABLE `organization_surface` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='组织机构定义表';
 
 /*Data for the table `organization_surface` */
+
+insert  into `organization_surface`(`zid`,`zname`,`msname`,`mshou`,`mdianid`,`mzuishu`,`mtiao`,`mcityid`,`mkai`,`maddress`,`mshui`,`mphone`,`mlname`,`mhang`,`mzhang`,`mgouid`,`mru`,`mting`,`zids`,`zyid`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (1,'株洲市汽修','a','100',1,'10000','20',5,'毛主席','北京天安门','1433223','13117334216','九某',1,'iogei',1,'没开','否',0,1,'1','1','1','1','1'),(2,'总厂','株洲市汽修','100',1,'10000','20',5,'毛主席','北京天安门','1433223','13117334216','九某',1,'iogei',1,'没开','否',1,1,'1','1','1','1','1'),(3,'副厂','株洲市汽修',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,'1',NULL,NULL,NULL,NULL),(4,'机电组','总厂','1111',NULL,'','',NULL,'','','','','',NULL,'',NULL,'','',2,NULL,'1','技术部','二部','',''),(5,'维修组','副厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,'1','维修部','二部',NULL,NULL),(6,'人事部','总厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'1','人事部','一部',NULL,NULL),(7,'市场部','副厂',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,3,NULL,'1','市场部','一部',NULL,NULL);
 
 /*Table structure for table `pattern` */
 
@@ -1059,7 +1115,7 @@ CREATE TABLE `platenumber` (
 
 /*Data for the table `platenumber` */
 
-insert  into `platenumber`(`plateid`,`platename`) values (1,'1');
+insert  into `platenumber`(`plateid`,`platename`) values (1,'1'),(2,'湘B12345');
 
 /*Table structure for table `post_list` */
 
@@ -1090,7 +1146,7 @@ CREATE TABLE `privilege_role` (
 
 /*Data for the table `privilege_role` */
 
-insert  into `privilege_role`(`pid`,`rid`) values (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(16,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1);
+insert  into `privilege_role`(`pid`,`rid`) values (38,3),(24,3),(10,3),(4,3),(38,2),(24,2),(10,2),(4,2),(4,4),(10,4),(21,4),(22,4),(23,4),(24,4),(25,4),(36,4),(38,4),(46,4),(47,4),(48,4),(49,4),(50,4),(1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(9,1),(10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(17,1),(18,1),(19,1),(20,1),(21,1),(22,1),(23,1),(24,1),(25,1),(26,1),(27,1),(28,1),(29,1),(30,1),(31,1),(32,1),(33,1),(34,1),(35,1),(36,1),(38,1),(39,1),(40,1),(41,1),(42,1),(43,1),(44,1),(45,1),(46,1),(47,1),(48,1),(49,1),(50,1),(51,1),(52,1),(53,1),(54,1),(55,1),(56,1),(57,1),(58,1),(59,1),(60,1),(61,1),(62,1),(63,1),(64,1),(65,1),(66,1),(67,1),(68,1),(69,1),(70,1),(71,1),(72,1),(73,1),(74,1),(75,1),(76,1),(77,1),(78,1),(79,1),(80,1),(81,1),(82,1),(83,1),(84,1),(85,1),(86,1),(87,1),(88,1),(89,1),(90,1),(91,1),(92,1),(93,1),(94,1),(95,1),(96,1),(97,1),(98,1),(99,1),(100,1),(101,1),(102,1),(103,1),(104,1),(105,1),(106,1),(107,1),(108,1),(110,1),(111,1),(112,1),(113,1),(114,1),(115,1),(116,1),(117,1),(118,1),(119,1),(120,1),(121,1),(122,1),(123,1),(124,1),(125,1),(126,1),(127,1);
 
 /*Table structure for table `professional_qualification` */
 
@@ -1103,6 +1159,8 @@ CREATE TABLE `professional_qualification` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专业资格表';
 
 /*Data for the table `professional_qualification` */
+
+insert  into `professional_qualification`(`specialtynid`,`name`) values (1,'金融'),(2,'历史'),(3,'国学'),(4,'会计');
 
 /*Table structure for table `quit_reason_surface` */
 
@@ -1182,11 +1240,11 @@ CREATE TABLE `repair_bill` (
   `sctime` datetime DEFAULT NULL COMMENT '上次进场时间',
   `yugujine` double DEFAULT NULL COMMENT '预估金额',
   `chenshu` varchar(50) DEFAULT NULL COMMENT '保修陈述',
-  `reserved1` int(50) DEFAULT NULL COMMENT '预留字段',
-  `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
-  `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
-  `reserved4` varchar(50) DEFAULT NULL COMMENT '预留字段',
-  `reserved5` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved1` int(50) DEFAULT NULL COMMENT '外键，厂表',
+  `reserved2` varchar(50) DEFAULT NULL COMMENT '开单日期',
+  `reserved3` varchar(50) DEFAULT NULL COMMENT '误工原因',
+  `reserved4` varchar(50) DEFAULT NULL COMMENT '责任人',
+  `reserved5` varchar(50) DEFAULT NULL COMMENT '处罚金额',
   PRIMARY KEY (`no`),
   KEY `documents_type` (`documents_type`),
   KEY `balance_type` (`balance_type`),
@@ -1197,7 +1255,6 @@ CREATE TABLE `repair_bill` (
   KEY `motor_id` (`motor_id`),
   KEY `customer_id` (`customer_id`),
   KEY `reserved1` (`reserved1`),
-  CONSTRAINT `repair_bill_ibfk_9` FOREIGN KEY (`reserved1`) REFERENCES `factory` (`factory`),
   CONSTRAINT `repair_bill_ibfk_1` FOREIGN KEY (`documents_type`) REFERENCES `billstype` (`id`),
   CONSTRAINT `repair_bill_ibfk_2` FOREIGN KEY (`balance_type`) REFERENCES `clearing_form` (`id`),
   CONSTRAINT `repair_bill_ibfk_3` FOREIGN KEY (`documents_state`) REFERENCES `settlement_status` (`id`),
@@ -1205,12 +1262,13 @@ CREATE TABLE `repair_bill` (
   CONSTRAINT `repair_bill_ibfk_5` FOREIGN KEY (`chepai_no`) REFERENCES `platenumber` (`plateid`),
   CONSTRAINT `repair_bill_ibfk_6` FOREIGN KEY (`counsellor`) REFERENCES `counselor` (`counselorid`),
   CONSTRAINT `repair_bill_ibfk_7` FOREIGN KEY (`motor_id`) REFERENCES `motor` (`mo_id`),
-  CONSTRAINT `repair_bill_ibfk_8` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customertypeid`)
+  CONSTRAINT `repair_bill_ibfk_8` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customertypeid`),
+  CONSTRAINT `repair_bill_ibfk_9` FOREIGN KEY (`reserved1`) REFERENCES `factory` (`factory`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='维修单据表';
 
 /*Data for the table `repair_bill` */
 
-insert  into `repair_bill`(`no`,`documents_type`,`balance_type`,`documents_state`,`balance_state`,`jiesuan_time`,`jiesuan_ren`,`amount`,`yewulx`,`keihu_name`,`chepai_no`,`chexin`,`chejiao_no`,`phone`,`bx_company`,`pk_company`,`duifanchepai`,`counsellor`,`completion_time`,`remark`,`motor_id`,`customer_id`,`jiashiyuan`,`jclichen`,`jcyoulian`,`shancilichen`,`jctime`,`shigonbanci`,`jiecher`,`yujitime`,`sctime`,`yugujine`,`chenshu`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('11',1,1,2,2,'2021-02-22 10:00:10','1',100,'1','1',1,'1','1','1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,300,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `repair_bill`(`no`,`documents_type`,`balance_type`,`documents_state`,`balance_state`,`jiesuan_time`,`jiesuan_ren`,`amount`,`yewulx`,`keihu_name`,`chepai_no`,`chexin`,`chejiao_no`,`phone`,`bx_company`,`pk_company`,`duifanchepai`,`counsellor`,`completion_time`,`remark`,`motor_id`,`customer_id`,`jiashiyuan`,`jclichen`,`jcyoulian`,`shancilichen`,`jctime`,`shigonbanci`,`jiecher`,`yujitime`,`sctime`,`yugujine`,`chenshu`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('11',1,1,1,2,'2021-02-22 10:00:10','1',300,'1','1',1,'1','1','1','1','1','1',1,'2021-03-02 15:12:38','1',1,1,'韩寒','23','32','20','2021-03-04 08:12:38','5','6','2021-03-04 08:12:50','2021-03-04 08:13:07',300,NULL,1,'2021-3-2',NULL,NULL,NULL),('366010111111',1,1,2,2,'2021-02-23 09:57:21','单观柏吃屎',200,'100','单观柏',2,'九手奥拓','1','12312311231','1','1','1',1,'2021-03-02 15:12:36','1',1,1,'天机看','32','10','30','2021-03-04 08:12:41','5','6','2021-03-04 08:13:04','2021-03-04 08:13:09',600,NULL,1,'2021-3-2',NULL,NULL,NULL);
 
 /*Table structure for table `role_user` */
 
@@ -1227,7 +1285,7 @@ CREATE TABLE `role_user` (
 
 /*Data for the table `role_user` */
 
-insert  into `role_user`(`rid`,`uid`) values (1,1);
+insert  into `role_user`(`rid`,`uid`) values (1,1),(3,2),(3,7),(4,7);
 
 /*Table structure for table `service` */
 
@@ -1247,6 +1305,8 @@ CREATE TABLE `service` (
 
 /*Data for the table `service` */
 
+insert  into `service`(`ser_id`,`ser_name`,`ser_parent`,`ser_img`,`ser_tag`,`reserved1`,`reserved2`,`reserved3`) values (1,'总',0,NULL,NULL,NULL,NULL,NULL),(100,'车型',1,NULL,NULL,NULL,NULL,NULL),(101,'发动机',1,'','','','',''),(102,'钣喷1',1,'','','','',''),(1001,'中国重汽1',100,NULL,NULL,NULL,NULL,NULL),(1002,'陕汽重卡',100,NULL,NULL,NULL,NULL,NULL),(1003,'中国红旗',100,NULL,NULL,NULL,NULL,NULL),(1004,'一号发动机1',101,NULL,NULL,NULL,NULL,NULL),(1005,'二号发动机',101,NULL,NULL,NULL,NULL,NULL),(1006,'三号发动机',101,NULL,NULL,NULL,NULL,NULL),(1007,'轻度1',102,'','','','',''),(1008,'中度12',102,'','','','',''),(1009,'重度',102,'','','','','');
+
 /*Table structure for table `settlement_status` */
 
 DROP TABLE IF EXISTS `settlement_status`;
@@ -1259,7 +1319,7 @@ CREATE TABLE `settlement_status` (
 
 /*Data for the table `settlement_status` */
 
-insert  into `settlement_status`(`id`,`type`) values (1,'1'),(2,'未结算');
+insert  into `settlement_status`(`id`,`type`) values (1,'已结算'),(2,'未结算');
 
 /*Table structure for table `sgbc` */
 
@@ -1279,9 +1339,9 @@ DROP TABLE IF EXISTS `staff_data`;
 
 CREATE TABLE `staff_data` (
   `yid` int(11) NOT NULL COMMENT '员工编号',
-  `yname` varchar(50) NOT NULL COMMENT '员工姓名',
-  `ysex` varchar(10) NOT NULL COMMENT '员工性别',
-  `yposition` varchar(20) NOT NULL COMMENT '员工职位',
+  `yname` varchar(50) DEFAULT NULL COMMENT '员工姓名',
+  `ysex` varchar(10) DEFAULT NULL COMMENT '员工性别',
+  `yposition` varchar(20) DEFAULT NULL COMMENT '员工职位',
   `yhealth` varchar(20) DEFAULT NULL COMMENT '身体状况',
   `yloginemp` varchar(10) DEFAULT NULL COMMENT '登录账号',
   `yheigth` int(11) DEFAULT NULL COMMENT '身高',
@@ -1320,13 +1380,17 @@ CREATE TABLE `staff_data` (
   `yhome` varchar(50) DEFAULT NULL COMMENT '教育经历',
   `yjiang` varchar(50) DEFAULT NULL COMMENT '奖惩记录',
   `yping` varchar(50) DEFAULT NULL COMMENT '聘用记录',
-  `gid` int(11) NOT NULL COMMENT '岗位编码',
-  `bid` int(11) NOT NULL COMMENT '部门',
+  `gid` int(11) DEFAULT NULL COMMENT '岗位编码',
+  `bid` int(11) DEFAULT NULL COMMENT '部门',
   `reserved1` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved4` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved5` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved6` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved7` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved8` varchar(50) DEFAULT NULL COMMENT '预留字段',
+  `reserved9` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`yid`),
   KEY `ynativplaceid` (`ynativplaceid`),
   KEY `ynationid` (`ynationid`),
@@ -1354,6 +1418,8 @@ CREATE TABLE `staff_data` (
 
 /*Data for the table `staff_data` */
 
+insert  into `staff_data`(`yid`,`yname`,`ysex`,`yposition`,`yhealth`,`yloginemp`,`yheigth`,`ynativplaceid`,`ynationid`,`ymarriageid`,`yeducationid`,`yschoolid`,`yspecialtyid`,`yspecialtynid`,`yattribute`,`ycollegeid`,`yorganizationid`,`ynumber`,`yaddressh`,`yaddressx`,`yphonenumber`,`yphone`,`email`,`ybankid`,`ybankphone`,`yjname`,`yjphone`,`ystarttime`,`yendtime`,`ydatetime`,`ystarttimeh`,`yendtimeh`,`ytname`,`yratez`,`yrateg`,`yrates`,`yratej`,`ygong`,`yjiao`,`yhome`,`yjiang`,`yping`,`gid`,`bid`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`,`reserved6`,`reserved7`,`reserved8`,`reserved9`) values (1,'好大儿','男','1','1','1',1,1,1,2,1,5,1,1,'1',1,1,'1','1','1','1','2','1',1,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',11,2,'2064239692@qq.com','有','1','市场部','4','1','2020-12-12','2020-12-12','一部'),(2,'小大二','女','1','1','1',1,2,2,2,2,4,2,1,'1',1,1,'1','1','1','1','2','1',1,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',18,2,'4456465464@qq.com','没','2','人事部','5','1','2020-12-12','414141','一部'),(3,'好大二','男','1','1','1',1,3,3,1,3,3,3,1,'1',1,1,'11','1','11','11','1','1',2,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',14,3,'12312312','11','1','技术部','6','1','','','二部'),(4,'小大儿','女','1','1','1',1,1,4,1,4,2,4,1,'1',1,1,'1','11','1','1','1','1',3,'1','1','1','1','1','1','1','1','1',1,1,1,1,1,1,'1','1','1',14,4,'123213123','22','2','维修部','7','1','','','二部');
+
 /*Table structure for table `store_classificarion` */
 
 DROP TABLE IF EXISTS `store_classificarion`;
@@ -1365,6 +1431,8 @@ CREATE TABLE `store_classificarion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='门店分类表';
 
 /*Data for the table `store_classificarion` */
+
+insert  into `store_classificarion`(`mlid`,`mlname`) values (1,'终极门店'),(2,'高级门店'),(3,'中级门店'),(4,'低级门店');
 
 /*Table structure for table `suppiler` */
 
@@ -1404,6 +1472,8 @@ CREATE TABLE `suppiler` (
 
 /*Data for the table `suppiler` */
 
+insert  into `suppiler`(`p_id`,`p_name`,`p_address`,`p_case`,`p_url`,`p_bank`,`p_bankaccount`,`pa_id`,`ra_id`,`p_brand`,`p_linkman`,`p_phone`,`p_mobile`,`p_email`,`p_days`,`p_remark`,`sid`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('1','河南众鑫汽车服务有限公司','湖南省株洲市','月入--10万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','123124214','12432423','565546656@qq.com','1231','无',10001,'按月结算','A','0','',''),('10','优汽在线','广东省佛山市','月入--10万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','2342523','12432423','565546656@qq.com','34','无',10007,'分期付款','B','0','',''),('11','优汽开封站','湖南省株洲市','月入--10万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','423523432','234234','565546656@qq.com','235','无',10008,'按月结算','A','0','',''),('1111','郑州欧意商贸有限公司','湖南省长沙市','月入--200万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','35235235','12432423','565546656@qq.com','234','无',10006,'按月结算','A','0','',''),('12','顺丰物流','湖南省株洲市','月入--200万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','3523523','232342','565546656@qq.com','2352','无',10008,'货到付款','B','0','',''),('123','曾练军无限公司','九郎山家园','月入--200万','123',123,'213',NULL,NULL,'123','123','12','123','12','112','123',1004,'按月结算','A','0','',''),('12343','石峰区厂王曾练军无限公司','荷塘区','月入--200万','222.com',4556,'56565',NULL,NULL,'非常耗的品牌','曾子','3112','1212','3112','13','1313',10004,'货到付款','B','0','',''),('13','石峰区北大青鸟无限公司','广东省佛山市','月入--200万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','2352352352','234234','565546656@qq.com','42352','无',10008,'货到付款','B','0','',''),('1332','建坤养殖场','湖南省株洲市','月入--11000万','www.baidu.com',11111,'1212112',NULL,NULL,'杜蕾斯','刘全','1658554','1755652','232656@qq.com','20','没有备注',10003,'货到付款','B','0','',''),('14','曾练军养殖场','广东省佛山市','月入--11000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','23235235','12432423','565546656@qq.com','423','无',10006,'货到付款','B','0','',''),('15','曾练军养猪场无限公司','广东省佛山市','月入--11000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','23523523','12432423','565546656@qq.com','523','无',1001,'货到付款','C','0','',''),('16','上海天维有限公司','广东省佛山市','月入--11000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','23523523','12432423','565546656@qq.com','4','无',10005,'货到付款','B','0','',''),('17','兴科有限公司','湖南省株洲市','月入--1000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','2352352523','12432423','565546656@qq.com','25','无',10005,'分期付款','B','0','',''),('18','沛权有限公司','广东省佛山市','月入--1000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','235','323423','565546656@qq.com','32','无',1003,'分期付款','B','0','',''),('19','蓝受有限公司','广东省佛山市','月入--1000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','3523523','23423423','5655461656@qq.com','5234','无',1000,'货到付款','C','0','',''),('2','绿瘦有限公司','湖南省株洲市','月入--1000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','123123412','234234','565546656@qq.com','1321','无',10005,'按月结算','A','0','',''),('20','普鲁士有限公司','湖南省株洲市','月入--1000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','5235','12432423','565546656@qq.com','2352','无',10007,'分期付款','B','0','',''),('21','阿萨大有限公司','广东省佛山市','月入--1000万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','235235','12432423','565546656@qq.com','34235','无',10008,'货到付款','B','0',NULL,NULL),('22','迫使有限公司','湖南省株洲市','月入--500万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','23523','12432423','565546656@qq.com','234','无',10005,'按月结算','A','0','',''),('23','破裂有限公司','湖南省株洲市','月入--500万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','2352','12432423','565546656@qq.com','235','无',1001,'分期付款','B','0',NULL,NULL),('24','较的有限公司','湖南省株洲市','月入--500万','5565.com',12321232,'1323213',NULL,NULL,'撒旦','刘全二号','232323','132323','232332','32','232322',10001,'按月结算','B','0',NULL,NULL),('25','圣诞信息有限公司','温州龙湾区','月入--10万','565.com',2332,'23265',NULL,NULL,'232','黄鹤','565265','1265','56565','7255','倒闭了',1004,'按月结算','A','0',NULL,NULL),('3','慢慢有限公司','广东省佛山市','月入--500万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','123123123','234234','565546656@qq.com','4325','无',1001,'货到付款','B','0',NULL,NULL),('311','克丝有限公司','12','月入--500万','21',31,'12',NULL,NULL,'12','21','12','12','12','21','12',10004,'分期付款','A','0',NULL,NULL),('3212','欧升有限公司','123','月入--500万','12',23,'23',NULL,NULL,'123','21','3','321','32','213','123',10003,'按月结算','A','0',NULL,NULL),('4','士大有限公司','广东省佛山市','月入--500万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','43242352','324234','565546656@qq.com','5345','无',1001,'货到付款','C','0',NULL,NULL),('5','大飒信息科技有限公司','湖南省株洲市','月入--500万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','3423414235','4234234','565546656@qq.com','234','无',10004,'按月结算','A','0',NULL,NULL),('6','前外科技有限公司','湖南省株洲市','月入--50万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','25234235','12432423','565546656@qq.com','235','无',10007,'按月结算','A','0',NULL,NULL),('7','卡萨丁有限公司','广东省佛山市','月入--50万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','534634523','2342343','565546656@qq.com','32434235','无',10008,'分期付款','B','0',NULL,NULL),('8','泰隆有限公司','湖南省株洲市','月入--50万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','张三','52563423','12432423','565546656@qq.com','2','无',10003,'按月结算','A','0',NULL,NULL),('9','雷恩加尔科技有限公司','广东省佛山市','月入--50万','www.550.com',12343223,'431231316512',NULL,NULL,'品品牌牌','李四','523523','23423423','565546656@qq.com','52','无',1000,'货到付款','C','0',NULL,NULL);
+
 /*Table structure for table `suppilermenu` */
 
 DROP TABLE IF EXISTS `suppilermenu`;
@@ -1417,6 +1487,8 @@ CREATE TABLE `suppilermenu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供货商菜单';
 
 /*Data for the table `suppilermenu` */
+
+insert  into `suppilermenu`(`s_id`,`s_name`,`s_parent`,`s_tag`) values (1,'总',0,NULL),(100,'湖南',1,NULL),(101,'广东',1,NULL),(102,'浙江',1,NULL),(1000,'株洲',100,NULL),(1001,'佛山',101,NULL),(1003,'长沙',100,NULL),(1004,'温州',102,NULL),(10001,'石峰区',1000,NULL),(10002,'顺德区',1001,NULL),(10003,'芦淞区',1000,NULL),(10004,'荷塘区',1000,NULL),(10005,'北滘区',1001,NULL),(10006,'芙蓉区',1003,NULL),(10007,'开福区',1003,NULL),(10008,'岳麓区',1003,NULL);
 
 /*Table structure for table `teamtechnician` */
 
@@ -1449,12 +1521,13 @@ CREATE TABLE `teamtechnician` (
   KEY `bankid` (`bankid`),
   KEY `code` (`code`),
   KEY `teamtechnician_ibfk_1` (`teamid`),
-  CONSTRAINT `teamtechnician_ibfk_1` FOREIGN KEY (`teamid`) REFERENCES `menu` (`id`),
   CONSTRAINT `teamtechnician_ibfk_2` FOREIGN KEY (`bankid`) REFERENCES `bank` (`bankid`),
   CONSTRAINT `teamtechnician_ibfk_3` FOREIGN KEY (`code`) REFERENCES `mechanicstar` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 /*Data for the table `teamtechnician` */
+
+insert  into `teamtechnician`(`id`,`teamid`,`technicianid`,`technicianidname`,`sex`,`phone`,`address`,`birthday`,`headman`,`loginname`,`idnumber`,`residenceaddress`,`bankid`,`bankaccount`,`code`,`type`,`maintenancetype`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values (2,1000,'1','王泽旭','女','123213','东南亚金三角','2021-03-03','否','41213','00000011111122','非洲土著',1,'21341542198351656','11','1','1',NULL,NULL,NULL,NULL,NULL),(3,1000,'1','骆华','女','123213','东南亚金三角','2021-03-03','是','41213','00000011111122','非洲土著',1,'21341542198351656','11','1','1',NULL,NULL,NULL,NULL,NULL),(4,1001,'1','张毅峰','男','123213','东南亚金三角','2021-03-03','是','41213','00000011111122','非洲土著',1,'21341542198351656','11','1','1',NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `upkeep` */
 
@@ -1578,11 +1651,11 @@ CREATE TABLE `weixdan` (
   KEY `ywlb` (`ywlb`),
   KEY `jcyl` (`jcyl`),
   KEY `sgbc` (`sgbc`),
-  CONSTRAINT `weixdan_ibfk_5` FOREIGN KEY (`sgbc`) REFERENCES `sgbc` (`xuhid`),
   CONSTRAINT `weixdan_ibfk_1` FOREIGN KEY (`weixdanh`) REFERENCES `maintenance_items` (`wxdh`),
   CONSTRAINT `weixdan_ibfk_2` FOREIGN KEY (`fdjpp`) REFERENCES `pattern` (`pa_id`),
   CONSTRAINT `weixdan_ibfk_3` FOREIGN KEY (`ywlb`) REFERENCES `businessclass` (`businessid`),
-  CONSTRAINT `weixdan_ibfk_4` FOREIGN KEY (`jcyl`) REFERENCES `jcyl` (`ylid`)
+  CONSTRAINT `weixdan_ibfk_4` FOREIGN KEY (`jcyl`) REFERENCES `jcyl` (`ylid`),
+  CONSTRAINT `weixdan_ibfk_5` FOREIGN KEY (`sgbc`) REFERENCES `sgbc` (`xuhid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `weixdan` */

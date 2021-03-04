@@ -32,4 +32,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
         List<Menu> list=menuMapper.findNoByParentId(0);
         return list;
     }
+
+    public Menu findTeamIdDesc(){
+        return menuMapper.findTeamIdDesc();
+    }
 }

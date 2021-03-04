@@ -30,11 +30,10 @@ public class Engine extends Model<Engine> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check;
+    private boolean check=false;
 
     @TableId(type= IdType.AUTO)
     @ApiModelProperty(value = "发动机品牌编号")
-
     private Integer eId;
 
     @ApiModelProperty(value = "发动机品牌编码")

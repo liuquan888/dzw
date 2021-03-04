@@ -53,12 +53,17 @@
         <result column="reserved3" property="reserved3" />
         <result column="reserved4" property="reserved4" />
         <result column="reserved5" property="reserved5" />
+        <result column="reserved6" property="reserved6" />
+        <result column="reserved7" property="reserved7" />
+        <result column="reserved8" property="reserved8" />
+        <result column="reserved9" property="reserved9" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        yid, yname, ysex, yposition, yhealth, yloginemp, yheigth, ynativplaceid, ynationid, ymarriageid, yeducationid, yschoolid, yspecialtyid, yspecialtynid, yattribute, ycollegeid, yorganizationid, ynumber, yaddressh, yaddressx, yphonenumber, yphone, email, ybankid, ybankphone, yjname, yjphone, ystarttime, yendtime, ydatetime, ystarttimeh, yendtimeh, ytname, yratez, yrateg, yrates, yratej, ygong, yjiao, yhome, yjiang, yping, gid, bid, reserved1, reserved2, reserved3, reserved4, reserved5
+        yid, yname, ysex, yposition, yhealth, yloginemp, yheigth, ynativplaceid, ynationid, ymarriageid, yeducationid, yschoolid, yspecialtyid, yspecialtynid, yattribute, ycollegeid, yorganizationid, ynumber, yaddressh, yaddressx, yphonenumber, yphone, email, ybankid, ybankphone, yjname, yjphone, ystarttime, yendtime, ydatetime, ystarttimeh, yendtimeh, ytname, yratez, yrateg, yrates, yratej, ygong, yjiao, yhome, yjiang, yping, gid, bid, reserved1, reserved2, reserved3, reserved4, reserved5, reserved6, reserved7, reserved8, reserved9
     </sql>
+
 
     <select id="find">
         SELECT * FROM `staff_data` WHERE
@@ -66,5 +71,15 @@
             `reserved3` = #{l}
         </foreach>
     </select>
+    <update id="lizhih">
+        UPDATE `staff_data` SET `reserved6`=1,reserved7="",reserved8="" WHERE `yid`=${id}
+    </update>
 
+    <update id="lizhixz">
+        UPDATE `staff_data` SET `reserved6`=2,`reserved7`=#{reserved7},`reserved8`=#{reserved8} WHERE `yid`=#{yid}
+    </update>
+
+    <update id="xiugai">
+        UPDATE `staff_data` SET `reserved1`="" WHERE `yid`=#{id}
+    </update>
 </mapper>

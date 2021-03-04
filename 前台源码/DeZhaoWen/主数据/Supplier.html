@@ -12,63 +12,135 @@
 			ul li{
 				list-style: none;
 			}
+			
+			 
+			.lmenu{
+				height: auto;
+				overflow: hidden;
+				font-family: "宋体",Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti;
+				margin-bottom: 10px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+			}
+			 
+			.lmenu ul li{
+				
+			}
+			.lmenu ul li ul{
+				max-height: 350px;
+				overflow: auto;
+			}
+			.lmenu ul li ul li ul{
+				height: auto;
+			}
+			.lmenu ul li span{
+				display: block;
+				width: 100%;
+				height: 28px;
+				line-height: 28px;
+				 text-indent: 1em; 
+				/*font-weight: bolder;*/
+				font-size: 14px;
+				color: #0E3E5E;
+				border-bottom: 1px solid #D7D7D7;
+				background-position: -46px 0;
+			}
+			.lmenu ul li ul li , .lmenu ul li ul li span{
+				/*background-color: #F7F8F8;*/
+				background-color: #FFFFFF;
+				color: #333;
+				 text-indent: 3em; 
+				font-size: 13px;
+				height: auto;
+				line-height: 28px;
+			 
+			}
+			.lmenu ul li ul li span{
+				background:none;
+			 
+			}
+			.lmenu ul li ul li ul li{
+				border:none;
+				text-indent: 3em;
+				font-size: 12px;
+				font-weight: normal;
+				height: 24px;
+				line-height: 24px;
+			}
+			
+			.lmenu span{
+				border-radius: 3px;
+			}
+			
+			.tr1:nth-of-type(2){
+				background: sandybrown;
+			}
+			
+			.modal label{
+				color: #39cede;
+			}
+			
+			.table td{
+				border-top:none;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="ctn" style="width: 1533px;margin-left:-14px;" class="container-fluid">
 			<div style="width: 1533px;line-height: 40px; background:#F7FFFF ; float: left;">
 				<span style="font-size: 22px;margin-left: 10px;">供货单位</span>
-				<input placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="height: 26px;width: 320px;margin-left: 950px;"/>
-				<button class="btn btn-default" style="background: #F8A621;color: white;width: 80px;">搜索</button>
-				<button class="btn btn-default" style="background: #C6C6C6;color: white;">关闭</button>
+				<input placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="height: 26px;width: 320px;margin-left: 950px;" v-model="suppdimtext" />
+				<span v-perms="'supplier:supply:seek'"><button class="btn btn-default btn-sm butt1" style="background: #F8A621;color: white;width: 50px;" @click="suppdim">搜索</button></span>
+				<button class="btn btn-default btn-sm" style="background: #C6C6C6;color: white:50px;">关闭</button>
 			</div>
 			<div style="float: left;width: 1533px;background: #F7F7F7;line-height: 30px;">
-				<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()">增加</span>
-				<img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1">修改</span>
-				<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span>删除</span>
-				<img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2">查询</span>
-				<img  src="img/QQ图片20210121164913.png" width="14" style="margin-left:11px;"><span>导出</span>
-				<img  src="img/QQ图片20210121164909.png" width="14" style="margin-left:11px;"><span @click="en3">照片</span>
-				<img width="14" src="img/20210126185750.png"><span @click="en5">联系人</span>
-				<img src="img/QQ图片20210121164909.png" width="14"><span @click="en4">字段设置</span>
+				<span v-perms="'supplier:supply:add'"><img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()">增加</span></span>
+				<span v-perms="'supplier:supply:update'"><img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1">修改</span></span>
+				<span v-perms="'supplier:supply:remove'"><img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="removesupp">删除</span></span>
+				<!-- <span ><img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2">查询</span></span> -->
+				<span v-perms="'supplier:supply:export'"><img  src="img/QQ图片20210121164913.png" width="14" style="margin-left:11px;"><span @click="suppilerExcel">导出</span></span>
+				<!-- <span ><img src="img/QQ图片20210121164909.png" width="14" style="margin-left:11px;"><span @click="en3">照片</span></span> -->
+				<span v-perms="'supplier:supply:linkman'"><img width="14" src="img/20210126185750.png"><span @click="en5">联系人</span></span>
+				<!-- <span ><img src="img/QQ图片20210121164909.png" width="14"><span @click="en4">字段设置</span></span> -->
 			</div>
-			<div class="modal" id="mymodal" data-backdrop="static">
+			<div class="modal fade" id="mymodal" data-backdrop="static">
 					<div style="width: 900px;" class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
 								<span class="close" data-dismiss="modal">&times;</span>
 								<h3 class="col-xs-10">供货单位编辑</h3>
-								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;margin-top: 15px;">保存</button>
+								<button class="btn btn-warning col-xs-1 butt1"  @click="suppadd">保存</button>
 							</div>
 							<div class="modal-body" style="background-color: #F7F7F7;">
-								<table class="table table-hover">
+								<table class="table" style="">
 									<tr>
-										<td>*<label style="margin-left: 10px;">厂商代码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" />*<label style="margin-left: 10px;">厂商名称</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">*<label style="margin-left: 10px;">地址</label><input style="width: 330px;margin-left: 17px;margin-right: 10px;"></td>
+										<td style="border-top:none;">*<label style="margin-left: 10px;">厂商代码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="supp.pId" />*<label style="margin-left: 10px;">厂商名称</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="supp.pName">*<label style="margin-left: 10px;">地址</label><input style="width: 330px;margin-left: 17px;margin-right: 10px;" v-model="supp.pAddress"></td>
 									</tr>
 
 									<tr>
-										<td>
-											<label style="margin-left: 11px;">经营情况</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">网址</label><input style="width: 120px; margin-left: 47px;margin-right: 10px;"><label style="margin-left: 11px;">开户行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">
+										<td style="border-top:none;">
+											<label style="margin-left: 11px;">经营情况</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" v-model="supp.pCase" /><label style="margin-left: 11px;">网址</label><input style="width: 120px; margin-left: 47px;margin-right: 10px;"v-model="supp.pUrl" ><label style="margin-left: 11px;">开户行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"v-model="supp.pBank" >
 										</td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">银行账号</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">付款账号</label><select style="height: 27px;margin-left: 20px;width: 105px;"><option>按月结算</option><option>货到付款</option><option>分期付款</option></select><img @click="mo" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /><label style="margin-left: 11px;">厂商等级</label><select style="width: 100px;height:27px;margin-left: 7px;"><option>A</option><option>B</option><option>C</option></select><img @click="mo1" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /></td>
+										<td style="border-top:none;"><label style="margin-left: 11px;">银行账号</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" v-model="supp.pBankaccount" /><label style="margin-left: 11px;">付款账号</label><select style="height: 27px;margin-left: 20px;width: 105px;" v-model="supp.reserved1" ><option>按月结算</option><option>货到付款</option><option>分期付款</option></select><!-- <img @click="mo" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /> --><label style="margin-left: 11px;">厂商等级</label><select style="width: 100px;height:27px;margin-left: 7px;" v-model="supp.reserved2"><option>A</option><option>B</option><option>C</option></select><!-- <img @click="mo1" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /> --></td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">经营品牌</label>
-											<input style="width: 120px;margin-left: 9px;margin-right: 10px;" />
-											<label style="margin-left: 11px;">厂商类别</label><input disabled="disabled" style="width: 100px; margin-left: 10px;margin-right: 10px;"><input disabled="disabled" style="width: 220px;">
-											<img @click="mo2" src="img/20210125084610.png" height="21" width="16px" style="margin-top:-4px;margin-left: -2px;" />
+										<td style="border-top:none;"><label style="margin-left: 11px;">经营品牌</label>
+											<input style="width: 120px;margin-left: 9px;margin-right: 10px;" v-model="supp.pBrand"/>
+											<label style="margin-left: 11px;">厂商类别</label><input disabled="disabled" style="width: 100px; margin-left: 10px;margin-right: 10px;" v-model="suppsid.sId"><input disabled="disabled" style="width: 220px;"  v-model="suppsid.sName">
+											<img @click="mo2" class="broadid" src="img/20210125084610.png" height="21" width="16px" style="margin-top:-4px;margin-left: -2px;" />
 										</td>
 									</tr>
 									<tr>
-										<td><label style="margin-left: 11px;">联系人</label><input style="width: 120px;margin-left: 24px;margin-right: 10px;"><label style="margin-left: 32px;">手机</label><input style="width: 130px; margin-left: 23px;margin-right: 10px;"><label style="margin-left: 11px;">电话</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">Email</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;"></td>
+										<td style="border-top:none;"><label style="margin-left: 11px;">联系人</label><input style="width: 120px;margin-left: 24px;margin-right: 10px;" v-model="supp.pLinkman" ><label style="margin-left: 32px;">手机</label><input style="width: 130px; margin-left: 23px;margin-right: 10px;" v-model="supp.pMobile"><label style="margin-left: 11px;">电话</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;" v-model="supp.pPhone"><label style="margin-left: 11px;">Email</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;" v-model="supp.pEmail"></td>
 									</tr>
 									<tr>
-										<td>
+										<td style="border-top:none;">
 											<label style="margin-left: 11px;">账期(天)</label>
-											<input type="number" style="width: 60px;margin-left: 10px;">
-											<label style="margin-left: 11px;">备注</label><input style="width: 620px; margin-left: 10px;margin-right: 10px;">
+											<input type="number" style="width: 60px;margin-left: 10px;" v-model="supp.pDays">
+											<label style="margin-left: 11px;">备注</label><input style="width: 620px; margin-left: 10px;margin-right: 10px;" v-model="supp.pRemark">
 										</td>
 									</tr>
 								</table>
@@ -76,50 +148,50 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal" id="mymodal1" data-backdrop="static">
-					<div style="width: 900px;" class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<span class="close" data-dismiss="modal">&times;</span>
-								<h3 class="col-xs-10">供货单位编辑</h3>
-								<button class="btn btn-default col-xs-1" style="background-color:#82D921 ;margin-top: 15px;">保存</button>
-							</div>
-							<div class="modal-body" style="background-color: #F7F7F7;">
-								<table class="table table-hover">
-									<tr>
-										<td>*<label style="margin-left: 10px;">厂商代码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" />*<label style="margin-left: 10px;">厂商名称</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">*<label style="margin-left: 10px;">地址</label><input style="width: 330px;margin-left: 17px;margin-right: 10px;"></td>
-									</tr>
-
-									<tr>
-										<td>
-											<label style="margin-left: 11px;">经营情况</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">网址</label><input style="width: 120px; margin-left: 47px;margin-right: 10px;"><label style="margin-left: 11px;">开户行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;">
-										</td>
-									</tr>
-									<tr>
-										<td><label style="margin-left: 11px;">银行账号</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" /><label style="margin-left: 11px;">付款账号</label><select style="height: 27px;margin-left: 20px;width: 105px;"><option>按月结算</option><option>货到付款</option><option>分期付款</option></select><img src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /><label style="margin-left: 11px;">厂商等级</label><select style="width: 100px;height:27px;margin-left: 7px;"><option>A</option><option>B</option><option>C</option></select><img src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /></td>
-									</tr>
-									<tr>
-										<td><label style="margin-left: 11px;">经营品牌</label>
-											<input style="width: 120px;margin-left: 9px;margin-right: 10px;" />
-											<label style="margin-left: 11px;">厂商类别</label><input style="width: 100px; margin-left: 10px;margin-right: 10px;"><input style="width: 220px;">
-											<img src="img/20210125084610.png" height="21" width="16px" style="margin-top:-4px;margin-left: -2px;" />
-										</td>
-									</tr>
-									<tr>
-										<td><label style="margin-left: 11px;">联系人</label><input style="width: 120px;margin-left: 24px;margin-right: 10px;"><label style="margin-left: 32px;">手机</label><input style="width: 130px; margin-left: 23px;margin-right: 10px;"><label style="margin-left: 11px;">电话</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;"><label style="margin-left: 11px;">Email</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;"></td>
-									</tr>
-									<tr>
-										<td>
-											<label style="margin-left: 11px;">账期(天)</label>
-											<input type="number" style="width: 60px;margin-left: 10px;">
-											<label style="margin-left: 11px;">备注</label><input style="width: 620px; margin-left: 10px;margin-right: 10px;">
-										</td>
-									</tr>
-								</table>
+				<div class="modal fade" id="mymodal1" data-backdrop="static">
+						<div style="width: 900px;" class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<span class="close" data-dismiss="modal">&times;</span>
+									<h3 class="col-xs-10">供货单位编辑</h3>
+									<button class="btn btn-warning col-xs-1 butt1" @click="suppupdate">保存</button>
+								</div>
+								<div class="modal-body" style="background-color: #F7F7F7;">
+									<table class="table" style="">
+										<tr>
+											<td style="border-top:none;">*<label style="margin-left: 10px;">厂商代码</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" readonly="readonly" v-model="supp.pId" />*<label style="margin-left: 10px;">厂商名称</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="supp.pName">*<label style="margin-left: 10px;">地址</label><input style="width: 330px;margin-left: 17px;margin-right: 10px;" v-model="supp.pAddress"></td>
+										</tr>
+				
+										<tr>
+											<td style="border-top:none;">
+												<label style="margin-left: 11px;">经营情况</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" v-model="supp.pCase" /><label style="margin-left: 11px;">网址</label><input style="width: 120px; margin-left: 47px;margin-right: 10px;"v-model="supp.pUrl" ><label style="margin-left: 11px;">开户行</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;"v-model="supp.pBank" >
+											</td>
+										</tr>
+										<tr>
+											<td style="border-top:none;"><label style="margin-left: 11px;">银行账号</label><input style="width: 120px;margin-left: 9px;margin-right: 10px;" v-model="supp.pBankaccount" /><label style="margin-left: 11px;">付款账号</label><select style="height: 27px;margin-left: 20px;width: 105px;" v-model="supp.reserved1" ><option>按月结算</option><option>货到付款</option><option>分期付款</option></select><!-- <img @click="mo" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /> --><label style="margin-left: 11px;">厂商等级</label><select style="width: 100px;height:27px;margin-left: 7px;" v-model="supp.reserved2"><option>A</option><option>B</option><option>C</option></select><!-- <img @click="mo1" src="img/20210125084610.png" height="25" width="16px" style="margin-top:-4px;margin-left: 0px;" /> --></td>
+										</tr>
+										<tr>
+											<td style="border-top:none;"><label style="margin-left: 11px;">经营品牌</label>
+												<input style="width: 120px;margin-left: 9px;margin-right: 10px;" v-model="supp.pBrand"/>
+												<label style="margin-left: 11px;">厂商类别</label><input disabled="disabled" style="width: 100px; margin-left: 10px;margin-right: 10px;" v-model="suppsid.sId"><input disabled="disabled" style="width: 220px;"  v-model="suppsid.sName">
+												<img @click="mo2" class="broadid" src="img/20210125084610.png" height="21" width="16px" style="margin-top:-4px;margin-left: -2px;" />
+											</td>
+										</tr>
+										<tr>
+											<td style="border-top:none;"><label style="margin-left: 11px;">联系人</label><input style="width: 120px;margin-left: 24px;margin-right: 10px;" v-model="supp.pLinkman" ><label style="margin-left: 32px;">手机</label><input style="width: 130px; margin-left: 23px;margin-right: 10px;" v-model="supp.pMobile"><label style="margin-left: 11px;">电话</label><input style="width: 130px;margin-left: 7px;margin-right: 10px;" v-model="supp.pPhone"><label style="margin-left: 11px;">Email</label><input style="width: 137px;margin-left: 7px;margin-right: 10px;" v-model="supp.pEmail"></td>
+										</tr>
+										<tr>
+											<td style="border-top:none;">
+												<label style="margin-left: 11px;">账期(天)</label>
+												<input type="number" style="width: 60px;margin-left: 10px;" v-model="supp.pDays">
+												<label style="margin-left: 11px;">备注</label><input style="width: 620px; margin-left: 10px;margin-right: 10px;" v-model="supp.pRemark">
+											</td>
+										</tr>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 				<div class="modal" id="mymodal2" data-backdrop="static">
 					<div style="width: 600px;" class="modal-dialog">
 						<div class="modal-content">
@@ -288,24 +360,38 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<span class="close" data-dismiss="modal">&times;</span>
-								<span style="font-size: 22px;">河南众鑫汽车服务有限公司的联系人</span>
+								<span style="font-size: 22px;" v-if="suppinit">{{suppinit.pName}} 的联系人</span>
 								<button class="btn btn-default " style="background-color:#C6C6C6;margin-top: 0px;margin-left:330px;">关闭</button>
 							</div>
 							<div class="modal-body" style="background-color: #F7F7F7;">
 								<div style="width: 800px;">
-									<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 600px;"><span @click="en()">增加</span>
-									<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span>删除</span>
-									<img src="img/20210125191943.png" width="14" style="margin-left:11px;"><span>保存</span>
+									<span v-perms="'supplier:linkman:add'"><img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 600px;"><span @click="toaddlinkman" class="span2">增加</span></span>
+									<span v-perms="'supplier:linkman:remove'"><img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="linkmanremove">删除</span></span>
+									<span v-perms="'supplier:linkman:save'"><img src="img/20210125191943.png" width="14" style="margin-left:11px;"><span @click="linkmansave" class="span2">保存</span></span>
 								</div>
-								<table class="table table-hover">
-									<tr>
-										<td>*<label style="margin-left: 12px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" /><label style="margin-left: 10px;">手机</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"><label style="margin-left: 10px;">职位</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;"></td>
-									</tr>
-
-									<tr>
-										<td><label style="margin-left: 12px;">电话</label><input style="width: 120px;margin-left: 27px;margin-right: 10px;" /><label style="margin-left: 3px;">email</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;">
-									</tr>
-									
+								<table>
+										<tr>
+											<td v-if="add">
+												<table class="table table-hover">
+													<tr>
+														<td>*<label style="margin-left: 12px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="linkman.lName" /><label style="margin-left: 10px;">手机</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="linkman.lMobile"><label style="margin-left: 10px;">职位</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="linkman.lPost"></td>
+													</tr>
+													<tr>
+														<td><label style="margin-left: 12px;">电话</label><input style="width: 120px;margin-left: 27px;margin-right: 10px;" v-model="linkman.lPhone" /><label style="margin-left: 3px;">email</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="linkman.lEmile">
+													</tr>
+												</table>
+											</td>
+											<td v-if="update">
+												<table class="table table-hover">
+													<tr>
+														<td>*<label style="margin-left: 12px;">联系人</label><input style="width: 120px;margin-left: 7px;margin-right: 10px;" v-model="linkman.lName" /><label style="margin-left: 10px;">手机</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="linkman.lMobile"><label style="margin-left: 10px;">职位</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="linkman.lPost"></td>
+													</tr>
+													<tr>
+														<td><label style="margin-left: 12px;">电话</label><input style="width: 120px;margin-left: 27px;margin-right: 10px;" v-model="linkman.lPhone" /><label style="margin-left: 3px;">email</label><input style="width: 120px; margin-left: 10px;margin-right: 10px;" v-model="linkman.lEmile">
+													</tr>
+												</table>
+											</td>
+										</tr>
 								</table>
 								<table class="table table-bordered" style="width: 600px;">
 									<tr style="background: #39CEDE;">
@@ -315,23 +401,16 @@
 										<td style="width: 140px;">电话</td>
 										<td style="width: 140px;">Email</td>
 									</tr>
-									<tr>
-										<td>123</td>
-										<td>123</td>
-										<td>123萨达萨达</td>
-										<td>123</td>
-										<td>123</td>
-									</tr>
-									<tr>
-										<td>阿x</td>
-										<td>码农</td>
-										<td>13873335490</td>
-										<td>13873335490</td>
-										<td>123@163.com</td>
+									<tr v-for="item in linkmanlist" class="tr2" @click="linkmanclick(item)">
+										<td>{{item.lName}}</td>
+										<td>{{item.lPost}}</td>
+										<td>{{item.lMobile}}</td>
+										<td>{{item.lPhone}}</td>
+										<td>{{item.lEmile}}</td>
 									</tr>
 								</table>
 							</div>
-							<div style="line-height: 30px; margin-left: 10px;">合计2条</div>
+							<div style="line-height: 30px; margin-left: 10px;"><span v-if="linkmanlist">合计{{linkmanlist.length}}条</span> </div>
 						</div>
 					</div>
 				</div>
@@ -411,45 +490,111 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal" id="mymodal8" data-backdrop="static">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<span class="close" data-dismiss="modal">&times;</span>
-								<span style="font-size: 24px;">厂商分类选择</span>
-								<button class="btn btn-default" style="width: 100px;background: #81D722;margin-left: 300px;">选择</button>
-							</div>
-							<div class="modal-body" style="margin-top: -14px;margin-left: -16px;height: 400px;">
-								<div style="width:400px;height: 300px;">
-									<ul class="ul1" style="margin-left: 20px;">
-										<li v-for="item in sp1">
-											<span @click="xd1">+</span><span style="font-size: 16px;">{{item.name}}</span>
-											<ul v-if="xsa1">
-												<li  v-for="items in item.children">
-												<span style="margin-left: 10px;">+</span><span style="font-size: 16px;">{{items.name}}</span>
-												</li>
-											</ul>
-										</li>
-									</ul>
+				
+				<div class="modal fade" id="mymodal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">
+							<div style="width: 100%;height: 5%;font-size: 12px; background: #00008B;color: #FFFFFF;line-height: 25px;">&nbsp;&nbsp;&nbsp;商品分类</div>
+							<div style="height: 20px;">
+								<br />
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<div class="col-sm-3"><span style="font-size: 20px;">分类管理</span> </div>
+									<div class="col-sm-3"><span><button class="btn btn-success" @click="suresuppsid">选择</button></span> </div>
+									<div class="col-lg-2"></div>
+									<div class="col-lg-1"> <button type="button" class="btn btn-danger" data-dismiss="modal">退出</button> </div>
 								</div>
+								<br />
 							</div>
-							<div class="modal-footer" style="background-color:#F7F7F7;">
-								<button class="btn btn-default" style="background-color:#82DA23;width: 90px;line-height: 24px;">选择</button>
+							
+						</h4>
+				      </div>
+				      <div class="modal-body">
+				        	<div id="mfieldmodal" style="">
+								<div>
+									<div class="lmenu lm2">
+										<ul  id="ul1" v-for="item4 in suppmenu">
+											
+											<li aid="1" v-for="item in item4.suppilermenus">
+												<span @click="suppsidclick(item)">
+													<em class="icoclose"></em>
+														{{item.sName}}
+												</span>
+												<ul style="display: none;">
+													<li aid="8" v-for="item2 in item.suppilermenus" >
+														<span class="span1" @click="suppsidclick(item2)">
+															<em class="icoclose2"></em>
+																{{item2.sName}}
+														</span>
+														<ul style="display: none;">
+															<li aid="10" v-for="item3 in item2.suppilermenus">
+																<em class="iconleaf2"></em>
+																<a class="a1" href="javascript:void(0)">
+																	<span class="span1" style="height: 100%;text-indent: 6em;" @click="suppsidclick(item3)">
+																		{{item3.sName}}
+																	</span>
+																</a>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+											
+										</ul>
+									</div>
+								</div>
+								
+								
 							</div>
-						</div>
-					</div>
+				      </div>
+				     
+				    </div>
+				  </div>
 				</div>
+				
+				 
 			<div class="ddiv2" style="float: left;background: white;width: 230px;height: 658px;">
-						<ul class="ul1" style="margin-left: 20px;">
-							<li v-for="item in sp">
-								<span @click="xd">+</span><span style="font-size: 16px;">{{item.name}}</span>
-								<ul v-if="xsa">
-									<li  v-for="items in item.children">
-										<span style="margin-left: 10px;">+</span><span style="font-size: 16px;">{{items.name}}</span>
+				
+				
+				<div style="width: 220px;">
+					<div class="lmenu lm1">
+						<ul v-for="item4 in suppmenu">
+							
+							<li aid="1" v-for="item in item4.suppilermenus">
+								<span>
+									<em class="icoclose"></em>
+										{{item.sName}}
+								</span>
+								<ul style="display: none;">
+									<li aid="8" v-for="item2 in item.suppilermenus" >
+										<span @click="menuclick(item2)" class="span1">
+											<em class="icoclose2"></em>
+												{{item2.sName}}
+										</span>
+										<ul style="display: none;">
+											<li aid="10" v-for="item3 in item2.suppilermenus">
+												<em class="iconleaf2"></em>
+												<a class="a1" href="javascript:void(0)">
+													<span class="span1" style="height: 100%;text-indent: 4em;" @click="menuclick(item3)">
+														{{item3.sName}}
+													</span>
+												</a>
+											</li>
+										</ul>
 									</li>
 								</ul>
 							</li>
+							
 						</ul>
+					</div>
+				</div>
+						
+						
+						
+						
 			</div>
 			<div style="float: left;width: 1273px;height:400px; overflow-x:scroll;">
 				<table class="table table-bordered" style="width: 1800px;max-width: 1803px;">
@@ -472,24 +617,24 @@
 						<td>账期(天)</td>
 						<td>备注</td>
 					</tr>
-					<tr>
-						<td>00000PO210100</td>
-						<td>的的</td>
-						<td>的</td>
-						<td>1</td>
-						<td>的</td>
-						<td>1</td>
-						<td>1</td>
-						<td>货到付款3</td>
-						<td>A</td>
-						<td>1</td>
-						<td>北京</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
+					<tr class="tr1" v-for="item in supplist" @click="suppclick(item)">
+						<td>{{item.pId}}</td>
+						<td>{{item.pName}}</td>
+						<td>{{item.pAddress}}</td>
+						<td>{{item.pCase}}</td>
+						<td>{{item.pUrl}}</td>
+						<td>{{item.pBank}}</td>
+						<td>{{item.pBankaccount}}</td>
+						<td>{{item.reserved1}}</td>
+						<td>{{item.reserved2}}</td>
+						<td>{{item.pBrand}}</td>
+						<td><span v-if="item.suppilermenu">{{item.suppilermenu.sName}}</span> </td>
+						<td>{{item.pLinkman}}</td>
+						<td>{{item.pPhone}}</td>
+						<td>{{item.pMobile}}</td>
+						<td>{{item.pEmail}}</td>
+						<td>{{item.pDays}}天</td>
+						<td>{{item.pRemark}}</td>
 					</tr>
 				</table>
 			</div>
@@ -505,110 +650,306 @@
 						<td>电话</td>
 						<td>Email</td>
 					</tr>
-					<tr>
-						<td>123</td>
-						<td>123</td>
-						<td>123萨达萨达</td>
-						<td>123</td>
-						<td>123</td>
-					</tr>
-					<tr>
-						<td>阿x</td>
-						<td>码农</td>
-						<td>13873335490</td>
-						<td>13873335490</td>
-						<td>123@163.com</td>
+					<tr  v-for="item in linkmanlist">
+						<td>{{item.lName}}</td>
+						<td>{{item.lPost}}</td>
+						<td>{{item.lMobile}}</td>
+						<td>{{item.lPhone}}</td>
+						<td>{{item.lEmile}}</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="../js/jquery-1.12.4.js" ></script>
-	<script type="text/javascript" src="../js/vue.js" ></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js" ></script>
+	<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/vue.js"></script>		
+	<script src="../js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-	var sp=[{
-				id:1,
-				name:"10-北京",
-				ename:'sys',
-				children:[
-					{
-						id:4,
-						name:"1001-s",
-						ename:"sys",
-					}
-				]
-				},{
-						id:2,
-						name:"20-上海",
-						ename:"sys",
-						
-				},{
-						id:3,
-						name:"30-湖南",
-						ename:"sys",
-						
-				}
-			];
-			var sp1=[{
-				id:1,
-				name:"10-北京",
-				ename:'sys',
-				children:[
-					{
-						id:4,
-						name:"1001-s",
-						ename:"sys",
-					}
-				]
-				},{
-						id:2,
-						name:"20-上海",
-						ename:"sys",
-						
-				},{
-						id:3,
-						name:"30-湖南",
-						ename:"sys",
-						
-				}
-			];
+
+			
+			var BaseUrl="http://127.0.0.1:8080/";
+			
 	new Vue({
 		el:"#ctn",
 		data(){
 			return {
-				sp:sp,
-				xsa:false,
-				xsa1:false,
-				sp1:sp1
+				add:true,
+				update:false,
+				suppmenu:[],
+				supplist:[],
+				linkmanlist:[],
+				supp:{},
+				suppsidtemp:{},
+				suppsid:{},
+				menuinit:{},
+				suppinit:{},
+				linkman:{},
+				suppdimtext:"",
 			}
 		},
 		methods:{
 			
-			xd(){
-					if(this.xsa){
-						this.xsa=false;
-					}else{
-						this.xsa=true;
-					}
+			suppdim(){
+				
+				this.findsupp(this.menuinit.sId)
 			},
-			xd1(){
-					if(this.xsa1){
-						this.xsa1=false;
-					}else{
-						this.xsa1=true;
-					}
+			
+						//导出
+			suppilerExcel(){
+				if(this.supplist.length==0){
+					alert("很抱歉，没有数据暂时无法导出供货商数据！")
+					return
+				}
+				if(this.menuinit.sId==null){
+					this.menuinit.sId=0;
+				}
+				if(this.suppdimtext==""){
+					this.suppdimtext='5d12ds5a445wq12f'
+				}
+				console.log(this.suppdimtext)
+				window.location.href="http://127.0.0.1:8080/fileshan/suppilerExcel?sid="+this.menuinit.sId+"&suppdimtext="+this.suppdimtext;
 			},
+			
+			toaddlinkman(){
+				this.add=true;
+				this.update=false;
+				this.linkman={};
+			},
+			
+			linkmanremove(){
+				if(this.linkmanlist.length==0){
+					alert("很抱歉，你暂未选择联系人！")
+					return
+				}
+				if(!confirm("你确定要删除此联系人吗？")){
+					return
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/linkmanremove/"+that.linkman.lId,
+					success:function(result){
+						that.findlinkman(that.suppinit.pId)
+						var tr=document.getElementsByClassName("tr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						that.toaddlinkman();
+					}
+				})
+			},
+			
+			linkmansave(){
+				if(this.add){
+					this.linkmanadd();
+				}else{
+					this.linkmanupdate();
+				}
+				this.linkman={};
+			},
+			
+			linkmanadd(){
+				if(!this.linkman.lName){
+					alert("联系人姓名不能为空！")
+					return
+				}
+				this.linkman.pId=this.suppinit.pId;
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/linkmanadd",
+					type:"post",
+					data:that.linkman,
+					success:function(result){
+						that.findlinkman(that.suppinit.pId)
+					}
+				})
+			},
+			
+			linkmanupdate(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/linkmanupdate",
+					type:"post",
+					data:that.linkman,
+					success:function(result){
+						that.toaddlinkman();
+						that.findlinkman(that.suppinit.pId)
+					}
+				})
+			},
+			
+			linkmanclick(item){
+				this.add=false
+				this.update=true
+				let formdata= JSON.parse(JSON.stringify(item))
+				this.linkman=formdata
+			},
+			
+			init(){
+				if(this.supplist.length!=0){
+					this.findlinkman(this.supplist[0].pId)
+				}else{
+					this.findlinkman(null)
+				}
+				this.suppinit=this.supplist[0]
+			},
+			
+			findsuppmenu(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/suppmenu",
+					success:function(result){
+						that.suppmenu=result
+					}
+				})
+			},
+			
+			suppsidclick(item){
+				this.suppsidtemp=item;
+				console.log(this.suppsidtemp)
+			},
+			
+			suresuppsid(){
+				if(this.suppsidtemp.suppilermenus.length!=0){
+					alert("只能选择最底层目录")
+					return
+				}
+				this.suppsid=this.suppsidtemp;
+				this.supp.sid=this.suppsid.sId;
+				$("#mymodal8").modal("hide");
+			},
+			
+			removesupp(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
+				if(!confirm("你确定要删除此供应商吗？")){
+					return
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/suppremove/"+that.suppinit.pId,
+					success:function(result){
+						var tr=document.getElementsByClassName("tr1");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
+						that.findsupp(that.menuinit.sId);
+					}
+				})
+			},
+			
+			findsupp(sid){
+				console.log(sid)
+				let formdata= "";
+				if(!this.suppdimtext){
+					formdata='5d12ds5a445wq12f'
+				}else{
+					formdata= JSON.parse(JSON.stringify(this.suppdimtext))
+				}
+				if(sid==null){
+					sid=0
+				}
+				let that=this;
+				
+				$.ajax({
+					url:BaseUrl+"suppiler/findsupp/"+sid+"/"+formdata,
+					success:function(result){
+						if(result!=null){
+							console.log(result)
+							that.supplist=result
+						}
+						that.init();
+					}
+				})
+			},
+			
+			
+			
+			menuclick(item){
+				this.suppdimtext="";
+				console.log(item.sId)
+				this.findsupp(item.sId)
+				this.menuinit=item
+			},
+			
+			suppclick(item){
+				this.findlinkman(item.pId)
+				this.suppinit=item
+			},
+			
+			findlinkman(pId){
+				if(pId==null){
+					this.linkmanlist=null
+				}
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/findlinkman/"+pId,
+					success:function(result){
+						that.linkmanlist=result
+					}
+				})
+			},
+			
+			
+			suppadd(){
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/suppadd",
+					type:"post",
+					data:that.supp,
+					success:function(result){
+						if(result=="000001"){
+							alert("编号不允许重复！")
+						}
+						that.findsupp(that.menuinit.sId);
+						$("#mymodal").modal("hide");
+					}
+				})
+			},
+			
+			suppupdate(){
+				this.supp.suppilermenu={};
+				let that=this;
+				$.ajax({
+					url:BaseUrl+"suppiler/suppupdate",
+					type:"post",
+					data:that.supp,
+					success:function(result){
+						that.findsupp(that.menuinit.sId);
+						$("#mymodal1").modal("hide");
+					}
+				})
+			},
+			
+			
 			en(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
+				this.supp={},
+				this.suppsid={},
 				$("#mymodal").modal("show");
 			},
 			en1(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
+				let formdata= JSON.parse(JSON.stringify(this.suppinit))
+				this.supp=formdata;
+				this.suppsid=this.supp.suppilermenu;
 				$("#mymodal1").modal("show");
 			},
 			en2(){
+				
 				$("#mymodal2").modal("show");
 			},
 			en3(){
+				
 				$("#mymodal3").modal("show");
 			},
 			ba(){
@@ -618,9 +959,15 @@
 				$("#mymodal4").modal("show");
 			},
 			en5(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
+				this.linkman={};
 				$("#mymodal5").modal("show");
 			},
 			mo(){
+				
 				$("#mymodal6").modal("show");
 			},
 			mo1(){
@@ -631,9 +978,119 @@
 			}
 		},
 		created(){
-			
+			this.findsuppmenu();
+			this.findsupp();
 		}
 	});
+	
+	
+	
+	//树形菜单
+	$(function() {
+			loadMenu(function (id){
+				//window.location= '/index.php/index/baoku' + '/id/' + id + '.html';
+			});
+			//$('li[aid=]').css('background',"#F5F5F5");
+	 
+	 
+		});
+	 
+	/*传入一个函数参数为 id 即li上的属性 aid*/
+	function loadMenu (fun_clickAction) {
+		/*事件回调函数*/
+		clickAction = fun_clickAction;
+		/*一级菜单的样式*/
+		$(".lmenu > ul > li > span").prepend('<em class="icoclose"></em>');
+		/*二级菜单的样式*/
+		$(".lmenu > ul > li > ul > li").each(function(){
+			/*检查是否有节点*/
+			span = $(this).find("span"); 
+			if ( span.length ){
+				//有节点的话
+				
+				span.prepend('<em class="icoclose2"></em>');
+			}else{
+				//无节点的话,绑定事件
+				$(this).prepend('<em class="iconleaf"></em>')
+					   .click(function(){
+							clickAction($(this).attr('aid'));
+					   });
+			}
+		});
+		/*三级菜单的样式*/
+		$(".lmenu > ul > li > ul > li > ul > li")
+			.prepend('<em class="iconleaf2"></em>')
+			.click(function(){
+				clickAction($(this).attr('aid'));
+			});
+	 
+		
+		$(document).on('click','.lmenu ul li span',function(){
+			var ye = $(this).find('em');
+			classNama = ye.attr("class");
+			if( classNama == 'icoclose'){ye.attr('class','icoopen');}
+			else if( classNama == 'icoopen' ){ye.attr('class','icoclose');}
+			else if( classNama == 'icoclose2'){ye.attr('class','icoopen2');}
+			else if( classNama == 'icoopen2' ){ye.attr('class','icoclose2');}
+			$(this).siblings("ul").slideToggle("normal","swing");
+		});
+	}
+	
+	$(document).on('click','.lm1 span',function(){
+		$(".lm1 span").css("background","#ffffff")
+		$(".lm1 span").css("color","#000000")
+		$(this).css("background","#aaa")
+		$(this).css("color","#ffffff")
+	})
+	
+	$(document).on('click','.lm2 span',function(){
+		$(".lm2 span").css("background","#ffffff")
+		$(".lm2 span").css("color","#000000")
+		$(this).css("background","#aaa")
+		$(this).css("color","#ffffff")
+	})
+	
+	$(document).on('click','.tr1',function(){
+		$(".tr1").css("background","none")
+		$(this).css("background","sandybrown")
+	})
+	
+	$(document).on('click','.tr2',function(){
+		$(".tr2").css("background","none")
+		$(this).css("background","sandybrown")
+	})
+	
+	$(document).on('click','.lm1 .span1',function(){
+		$(".lm1 span").css("background","#ffffff")
+		$(".lm1 span").css("color","#000000")
+		$(this).css("background","#aaa")
+		$(this).css("color","#ffffff")
+		$(".tr1").css("background","none")
+		$(".tr1").eq(0).css("background","sandybrown")
+	})
+	
+	$(document).on('click','.lm1 span',function(){
+		$(".lm1 span").css("background","#ffffff")
+		$(".lm1 span").css("color","#000000")
+		$(this).css("background","#aaa")
+		$(this).css("color","#ffffff")
+	})
+	
+	$(document).on('click','.broadid',function(){
+		$(".lm2 span").css("color","#000000")
+		$(".lm2 span").css("background","#ffffff")
+		$("#ul1 ul").css("display","none")
+	})
+	
+	$(document).on('click','.butt1',function(){
+		$(".tr1").css("background","none")
+		$(".tr1").eq(0).css("background","sandybrown")
+	})
+	
+	$(document).on('click','.span2',function(){
+		$(".tr2").css("background","none")
+	})
+	
 	</script>
 	
 	</body>

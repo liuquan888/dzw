@@ -32,4 +32,8 @@
         SELECT * FROM menu WHERE parentid!=#{parentid}
     </select>
 
+    <select id="findTeamIdDesc" resultMap="BaseResultMap">
+        SELECT * FROM menu ORDER BY teamid DESC LIMIT 0,1
+    </select>
+
 </mapper>

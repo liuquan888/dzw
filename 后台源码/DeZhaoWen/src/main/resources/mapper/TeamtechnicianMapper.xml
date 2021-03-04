@@ -60,4 +60,18 @@
         AND `bank`.`bankid`=`teamtechnician`.`bankid` AND `mechanicstar`.code=`teamtechnician`.`code` AND `teamtechnician`.`teamid`=#{teamid}
     </select>
 
+    <select id="findByAll" resultMap="BaseResultMap">
+        SELECT `teamtechnician`.*,`menu`.`menuname`,`bank`.`bankname`,`mechanicstar`.star FROM menu,`teamtechnician`,`bank`,`mechanicstar` WHERE `menu`.`teamid`=`teamtechnician`.`teamid`
+        AND `bank`.`bankid`=`teamtechnician`.`bankid` AND `mechanicstar`.code=`teamtechnician`.`code` AND (`teamtechnician`.`technicianid` LIKE concat('%',#{name},'%') OR `teamtechnician`.`technicianidname` LIKE concat('%',#{name},'%') OR `teamtechnician`.`phone` LIKE concat('%',#{name},'%'))
+    </select>
+
+    <update id="clearPwd">
+        UPDATE `teamtechnician` SET reserved1=NULL WHERE id=#{id}
+    </update>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT `teamtechnician`.*,`menu`.`menuname`,`bank`.`bankname`,`mechanicstar`.star FROM menu,`teamtechnician`,`bank`,`mechanicstar` WHERE `menu`.`teamid`=`teamtechnician`.`teamid`
+        AND `bank`.`bankid`=`teamtechnician`.`bankid` AND `mechanicstar`.code=`teamtechnician`.`code`
+    </select>
+
 </mapper>

@@ -13,11 +13,31 @@
         <result column="reserved1" property="reserved1" />
         <result column="reserved2" property="reserved2" />
         <result column="reserved3" property="reserved3" />
+        <association property="menu" column="teamid"
+                     javaType="com.accp.domain.Menu">
+            <id column="id" property="id" />
+            <result column="menuname" property="menuname" />
+            <result column="parentid" property="parentid" />
+            <result column="teamid" property="teamid" />
+            <result column="reserved1" property="reserved1" />
+            <result column="reserved2" property="reserved2" />
+            <result column="reserved3" property="reserved3" />
+        </association>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, licenseplate, brand, model, currentmileage, teamid, reserved1, reserved2, reserved3
     </sql>
+    
+    <select id="findByTeamId" resultMap="BaseResultMap">
+        SELECT `fieldvehicles`.*,`menu`.`menuname` FROM `fieldvehicles`,`menu`
+        WHERE `fieldvehicles`.teamid=`menu`.`teamid` AND `fieldvehicles`.teamid=#{teamid}
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT `fieldvehicles`.*,`menu`.`menuname` FROM `fieldvehicles`,`menu`
+        WHERE `fieldvehicles`.teamid=`menu`.`teamid`
+    </select>
 
 </mapper>

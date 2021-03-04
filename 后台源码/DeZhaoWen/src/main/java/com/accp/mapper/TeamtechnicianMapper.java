@@ -15,4 +15,10 @@ import java.util.List;
  */
 public interface TeamtechnicianMapper extends BaseMapper<Teamtechnician> {
     List<Teamtechnician> findByTeamId(Integer teamid);
+
+    List<Teamtechnician> findByAll(String name);
+
+    boolean clearPwd(Integer id);
+
+    List<Teamtechnician> findAll();
 }
