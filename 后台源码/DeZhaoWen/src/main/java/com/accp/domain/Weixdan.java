@@ -75,7 +75,7 @@ public class Weixdan extends Model<Weixdan> {
     private String sclc;
 
     @ApiModelProperty(value = "进厂时间")
-    private LocalDate jcsj;
+    private String jcsj;
 
     @ApiModelProperty(value = "业务类别")
     private Integer ywlb;
@@ -93,7 +93,7 @@ public class Weixdan extends Model<Weixdan> {
     private String jcr;
 
     @ApiModelProperty(value = "预计完工")
-    private LocalDate yjwg;
+    private String yjwg;
 
     @ApiModelProperty(value = "结算方式")
     private String jiesfs;
@@ -102,10 +102,10 @@ public class Weixdan extends Model<Weixdan> {
     private String pkgs;
 
     @ApiModelProperty(value = "完工时间")
-    private LocalDate wgsj;
+    private String wgsj;
 
     @ApiModelProperty(value = "上次进厂")
-    private LocalDate scjc;
+    private String scjc;
 
     @ApiModelProperty(value = "预估金额")
     private Double ygje;

@@ -18,7 +18,7 @@
 			  	 </div>
 			  	  <div class="col-md-3" style="margin-top:2px;"></div>
 			  	 <div class="col-md-2" style="margin-top:2px; position: relative; left: -80px;">
-			  			<button type="button" class="btn btn-success">查询</button>
+			  			<button type="button" class="btn btn-success" @click="find()">查询</button>
 			  			<button type="button" class="btn btn-btn">关闭</button>
 			  	</div>
 			  </div>			    
@@ -26,31 +26,26 @@
 		<div class="zbu">			 
 			 <div class="col-md-10" style="color: aqua;">
 					<span>
-						开单日期<input type="text" size="15"><input type="text" size="15">
+						开单日期<input size="15" v-model="jg.date1"><input size="15" v-model="jg.date2">
 					</span>
 					<span>
-						维修单号<input type="text" size="15">
+						维修单号<input size="15" v-model="jg.reserved3">
 					</span>
 					<span>
-						单据状态<select class="form-control" style="width: 200px;border: 1px solid #000000;margin-left: 610px;margin-top: -23px;">
-										<option>成前</option>
-										<option>耶鲁</option>
+						单据状态<select class="form-control" style="width: 200px;border: 1px solid #000000;margin-left: 610px;margin-top: -23px;" v-model="jg.chenshu">
+										<option>待骏工车</option>
+										<option>已骏工车</option>
 									</select>
 					</span>
 					<span>
-						车牌号<input type="text" size="15">
+						车牌号<input size="15" v-model="jg.chepaiNo">
 					</span>
 					<span>
-						车架号<input type="text" size="15">
+						车架号<input size="15" v-model="jg.chejiao_no">
 					</span>
 			 </div>			 
 		</div>
 		<div>
-			<div style="margin-left: 1300px;margin-top: 10px;">
-				<a href = "javascript:void(0)"onclick = "document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">
-					<img src="../../img/4.png" >打开单据
-				</a>
-			</div>
 		</div>
 		
 		
@@ -76,29 +71,26 @@
 										<td>返工原因</td>
 										<td>责任人</td>
 										<td>处罚金额</td>
-										
 									</tr>
-									<tr>
+									<tr v-for="item in list" @dblclick="shishiClick(item)">
 										<td class="dygtd"></td>
-										<td>维修单号</td>
-										<td>单据类型</td>
-										<td>业务类型</td>
-										<td>施工班次</td>
-										<td>车主姓名</td>
-										<td>车牌号</td>
-										<td>车型</td>
-										<td>车架号</td>
-										<td>接车时间</td>
-										<td>预计完工</td>
-										<td>完工时间</td>
-										<td>误工原因</td>
-										<td>返工数</td>
-										<td>返工原因</td>
-										<td>责任人</td>
-										<td>处罚金额</td>
-										
-									</tr>
-								
+										<td>{{item.reserved3}}</td>
+										<td>{{item.dstate}}</td>
+										<td>{{item.yewulx}}</td>
+										<td>{{item.shigonbanci}}</td>
+										<td>{{item.chezhuxm}}</td>
+										<td>{{item.chepai}}</td>
+										<td>{{item.chexin}}</td>
+										<td>{{item.chejiaoNo}}</td>
+										<td>{{item.sctime}}</td>
+										<td>{{item.yujitime}}</td>
+										<td>{{item.completionTime}}</td>
+										<td>无</td>
+										<td>无</td>
+										<td>无</td>
+										<td>{{item.reserved4}}</td>
+										<td>{{item.reserved5}}</td>
+									</tr>								
 								</table>
 					</div>
 			</div>	
@@ -110,7 +102,7 @@
 						<h4>维修单</h4>
 					</div>
 					<div class="col-md-6">
-						<div style="position: relative; left: 350px;" class="jieca">接车</div>
+						<div style="position: relative; left: 350px;" class="jieca">作业中</div>
 					</div>
 					<div class="col-md-3" style="margin-top:2px;"></div>
 					<div class="col-md-2" style="margin-top:2px; position: relative; left: -10px;">
@@ -121,12 +113,12 @@
 				
 				<div class="row2">
 					<div class="col-md-3">
-						<h4>单号:12345456465</h4>
+						<h4>单号:{{list2.weixdanh}}</h4>
 					</div>
 					<div class="col-md-9" style="margin-top:8px;">
 						<div class="abc">
 							<span>
-								<img src="../img/捕获7.PNG">竣工检验
+								<img src="../img/捕获7.PNG" class="jungjy">竣工检验
 							</span>
 							<span>
 								<img src="../img/捕获8.PNG">委托书
@@ -147,32 +139,32 @@
 						<form class="form-inline">
 							<div class="form-group">
 								<label for="exampleInputName2"><span class="a">*</span>车牌号码</label>
-								<input type="text" class="form-control" id="exampleInputName2" placeholder="" style="border: 1px solid #000000;">
+								<input type="text" class="form-control" id="exampleInputName2" placeholder="" style="border: 1px solid #000000;" v-model="list2.chepaih" disabled="disabled">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车架号</label>
-								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.chejiahao" disabled="disabled">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车辆型号</label>
-								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.cheliangxh" disabled="disabled">
 							</div>
 							<div class="form-group">
 								<label for="exampleInputEmail2">车辆品牌</label>
-								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.clpp" disabled="disabled">
 							</div></br>
 							<div style="margin-top: 5px;">
 								<div class="form-group" style="margin-left: 5px;">
 									<label for="exampleInputEmail2">发动机号</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.fdjh" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 180px;">
 									<label for="exampleInputEmail2">发动品牌</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.blangName" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 65px;">
 									<label for="exampleInputEmail2"><span class="a">*</span>服务顾问</label>
-									<select class="form-control" style="width: 200px;border: 1px solid #000000;">
+									<select class="form-control" style="width: 200px;border: 1px solid #000000;" v-model="list2.fuwugw" disabled="disabled">
 										<option>成前</option>
 										<option>耶鲁</option>
 									</select>
@@ -181,53 +173,44 @@
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>车主姓名</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 400px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 400px;border: 1px solid #000000;"  v-model="list2.czname" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 60px;">
 									<label for="exampleInputEmail2"><span class="a">*</span>驾驶员</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.jsy" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 100px;">
 									<label for="exampleInputEmail2">联系电话</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.lxphone" disabled="disabled">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2">进厂里程</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.jclc" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 60px;">
 									<label for="exampleInputEmail2">进厂油量</label>
-									<select class="form-control" style="width: 100px;border: 1px solid #000000;">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;width: 100px;" v-model="list2.jingc" disabled="disabled">
 									<span style="position: relative;left: -40px;" @click="jcyl">
 										<img src="../img/捕获15.PNG">
 									</span>
 								</div>
 								<div class="form-group" style="margin-left: 33px;">
 									<label for="exampleInputEmail2">上次里程</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.sclc" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 70px;">
 									<label for="exampleInputEmail2">进厂时间</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.jcsj" disabled="disabled">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>业务类别</label>
-									<select class="form-control" style="width: 100px;border: 1px solid #000000;">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.yewuleib" disabled="disabled">
+										<option>美国重汽</option>
+										<option>中国重汽</option>
 									</select>
 									<span style="position: relative;left: -40px;" @click="tjxw">
 										<img src="../img/捕获15.PNG">
@@ -235,7 +218,7 @@
 								</div>
 								<div class="form-group" style="margin-left: 150px;">
 									<label for="exampleInputEmail2"><span class="a">*</span>施工班次</label>
-									<select class="form-control" style="width: 100px;border: 1px solid #000000;">
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.sgigbc" disabled="disabled">
 										<option>晚上</option>
 										<option>白天</option>
 									</select>
@@ -245,11 +228,11 @@
 								</div>
 								<div class="form-group" style="margin-left: 46px;">
 									<label for="exampleInputEmail2">接车人</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.jcr" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 55px;">
 									<label for="exampleInputEmail2">预计完工</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.yjwg" disabled="disabled">
 									<span style="position: relative;left: -40px;">
 										<img src="../img/捕获15.PNG">
 									</span>
@@ -258,7 +241,7 @@
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>结算方式</label>
-									<select class="form-control" style="width: 100px;border: 1px solid #000000;">
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.jiesfs" disabled="disabled">
 										<option>现金</option>
 										<option>微信</option>
 										<option>支付宝</option>
@@ -267,7 +250,7 @@
 								</div>
 								<div class="form-group" style="margin-left: 155px;">
 									<label for="exampleInputEmail2">赔款公司</label>
-									<select class="form-control" style="width: 100px;border: 1px solid #000000;">
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.pkgs" disabled="disabled">
 										<option>1</option>
 										<option>2</option>
 										<option>3</option>
@@ -277,33 +260,27 @@
 								</div>
 								<div class="form-group" style="margin-left: 33px;">
 									<label for="exampleInputEmail2">完工时间</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.wgsj" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 100px;">
 									<label for="exampleInputEmail2">上次进厂</label>
-									<select class="form-control" style="width: 200px;border: 1px solid #000000;">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 200px;border: 1px solid #000000;" v-model="list2.scjc" disabled="disabled">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2"><span class="a">*</span>预估金额</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 200px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 200px;border: 1px solid #000000;" v-model="list2.ygje" disabled="disabled">
 								</div>
 								<div class="form-group" style="margin-left: 55px;">
 									<label for="exampleInputEmail2">接待备注</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 660px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 660px;border: 1px solid #000000;" v-model="list2.jdbz" disabled="disabled">
 								</div>
 							</div>
 							<div style="margin-top: 5px;">
 								<div class="form-group">
 									<label for="exampleInputEmail2" style="border: 1px solid #000000; width: 100px; height: 50px; text-align: center;line-height: 50px;">报修陈述</label>
-									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 1000px; height: 50px;border: 1px solid #000000;">
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 1000px; height: 50px;border: 1px solid #000000;" v-model="list2.cxms" disabled="disabled">
 								</div>
 							</div>
 						</form>
@@ -346,18 +323,18 @@
 											</div>
 										</td>
 										<td>合计</td>
-										<td>项目名称</td>
+										<td></td>
+										<td></td>
+										<td></td>
 										<td>0</td>
+										<td></td>
 										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>技师结算价</td>
-										<td>故障描述</td>
-										<td>故障原因</td>
-										<td>维修班组</td>
-										<td>作业人员</td>
-										<td>工单号</td>
-										<td>免单原因</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
 									</tr>
 								</table>
 							</div>
@@ -387,18 +364,18 @@
 											</tr>
 											<tr>
 												<td class="dygtd"></td>
-												<td>类别</td>
-												<td>领料日期</td>
-												<td>领料人</td>
-												<td>物料编码</td>
-												<td>物料名称</td>
-												<td>单位</td>
-												<td>价类</td>
-												<td>数量</td>
-												<td>单价</td>
-												<td>金额</td>
-												<td>免单原因</td>
-												<td>回收状态</td>
+												<td>合计</td>
+												<td>1900/1/1</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td>0</td>
+												<td></td>
+												<td></td>
+												<td></td>
 											</tr>
 										</table>
 							</div>
@@ -436,27 +413,27 @@
 											</tr>
 											<tr>
 												<td class="dygtd"></td>
-												<td>结算状态</td>
-												<td>合计金额</td>
-												<td>材料费</td>
-												<td>工时费</td>
+												<td>预估金额</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
 												<td>结算时间</td>
 												<td>结算人</td>
-												<td>现金</td>
-												<td>银行卡</td>
-												<td>据票</td>
-												<td>挂账金额</td>
-												<td>冲储值卡</td>
-												<td>冲定金</td>
-												<td>收税金</td>
-												<td>抵用券</td>
-												<td>抹尾数</td>
-												<td>内部帐</td>
-												<td>积分抵扣</td>
-												<td>到账盈亏</td>
-												<td>发票种类</td>
-												<td>发票号</td>
-												<td>发票金额</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td>0.00</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td>0.00</td>
 											</tr>
 										</table>
 							</div>
@@ -532,22 +509,524 @@
 		 <div id="fade" class="black_overlay">
 			
 		</div>
+		
+		
+		<div id="light3" class="white_content"><br><a href = "javascript:void(0)" onclick = "document.getElementById('light3').style.display='none';document.getElementById('fade').style.display='none'" class="djgb2">点这里关闭本窗口<br>　　　　　　</a><br>
+				<div class="row"style="width: 1485px;">
+					<div class="col-md-1" style="position: relative; left: 20px;">
+						<h4>站外救援单</h4>
+					</div>
+					<div class="col-md-6">
+						<div style="position: relative; left: 350px;" class="jieca">完工待结</div>
+					</div>
+					<div class="col-md-3" style="margin-top:2px;"></div>
+					<div class="col-md-2" style="margin-top:2px; position: relative; left: -10px;">
+						<button type="button" class="btn btn-success">搜索</button>
+						<button type="button" class="btn btn-btn">关闭</button>
+					</div>
+				</div>
+				
+				<div class="row2">
+					<div class="col-md-3">
+						<h4>单号:{{list2.weixdanh}}</h4>
+					</div>
+					<div class="col-md-9" style="margin-top:8px;">
+						<div class="abc">
+							<span>
+								<img src="../img/捕获7.PNG" class="jungjy">竣工检验
+							</span>
+							<span>
+								<img src="../img/捕获8.PNG">委托书
+							</span>
+							<span>
+								<img src="../img/捕获9.PNG">照片
+							</span>
+							<span @click="dingsi">
+								<img src="../img/捕获10.PNG">定损
+							</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row3" style="background-color: white;width: 1450px;height: 700px;margin-left: 15px;color: #5fd0dc;margin-top: 45px;">
+					<p class="sbx"></p>
+					<div class="col-md-12">
+						<form class="form-inline">
+							<div class="form-group">
+								<label for="exampleInputName2"><span class="a">*</span>车牌号码</label>
+								<input type="text" class="form-control" id="exampleInputName2" placeholder="" style="border: 1px solid #000000;" v-model="list2.chepaih" disabled="disabled">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail2">车架号</label>
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.chejiahao" disabled="disabled">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail2">车辆型号</label>
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.cheliangxh" disabled="disabled">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail2">车辆品牌</label>
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.clpp" disabled="disabled">
+							</div></br>
+							<div style="margin-top: 5px;">
+								<div class="form-group" style="margin-left: 5px;">
+									<label for="exampleInputEmail2">发动机号</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.fdjh" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 180px;">
+									<label for="exampleInputEmail2">发动品牌</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.blangName" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 65px;">
+									<label for="exampleInputEmail2"><span class="a">*</span>服务顾问</label>
+									<select class="form-control" style="width: 200px;border: 1px solid #000000;" v-model="list2.fuwugw" disabled="disabled">
+										<option>成前</option>
+										<option>耶鲁</option>
+									</select>
+								</div>
+							</div>
+							<div style="margin-top: 5px;">
+								<div class="form-group">
+									<label for="exampleInputEmail2"><span class="a">*</span>车主姓名</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 400px;border: 1px solid #000000;"  v-model="list2.czname" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 60px;">
+									<label for="exampleInputEmail2"><span class="a">*</span>驾驶员</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.jsy" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 100px;">
+									<label for="exampleInputEmail2">联系电话</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.lxphone" disabled="disabled">
+								</div>
+							</div>
+							<div style="margin-top: 5px;">
+								<div class="form-group">
+									<label for="exampleInputEmail2">进厂里程</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.jclc" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 60px;">
+									<label for="exampleInputEmail2">进厂油量</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;width: 100px;" v-model="list2.jingc" disabled="disabled">
+									<span style="position: relative;left: -40px;" @click="jcyl">
+										<img src="../img/捕获15.PNG">
+									</span>
+								</div>
+								<div class="form-group" style="margin-left: 33px;">
+									<label for="exampleInputEmail2">上次里程</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.sclc" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 70px;">
+									<label for="exampleInputEmail2">进厂时间</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.jcsj" disabled="disabled">
+								</div>
+							</div>
+							<div style="margin-top: 5px;">
+								<div class="form-group">
+									<label for="exampleInputEmail2"><span class="a">*</span>业务类别</label>
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.yewuleib" disabled="disabled">
+										<option>美国重汽</option>
+										<option>中国重汽</option>
+									</select>
+									<span style="position: relative;left: -40px;" @click="tjxw">
+										<img src="../img/捕获15.PNG">
+									</span>
+								</div>
+								<div class="form-group" style="margin-left: 150px;">
+									<label for="exampleInputEmail2"><span class="a">*</span>施工班次</label>
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.sgigbc" disabled="disabled">
+										<option>晚上</option>
+										<option>白天</option>
+									</select>
+									<span style="position: relative;left: -40px;" @click="sgbc">
+										<img src="../img/捕获15.PNG">
+									</span>
+								</div>
+								<div class="form-group" style="margin-left: 46px;">
+									<label for="exampleInputEmail2">接车人</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.jcr" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 55px;">
+									<label for="exampleInputEmail2">预计完工</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="border: 1px solid #000000;" v-model="list2.yjwg" disabled="disabled">
+									<span style="position: relative;left: -40px;">
+										<img src="../img/捕获15.PNG">
+									</span>
+								</div>
+							</div>
+							<div style="margin-top: 5px;">
+								<div class="form-group">
+									<label for="exampleInputEmail2"><span class="a">*</span>结算方式</label>
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.jiesfs" disabled="disabled">
+										<option>现金</option>
+										<option>微信</option>
+										<option>支付宝</option>
+										<option>银行卡转账</option>
+									</select>
+								</div>
+								<div class="form-group" style="margin-left: 155px;">
+									<label for="exampleInputEmail2">赔款公司</label>
+									<select class="form-control" style="width: 100px;border: 1px solid #000000;" v-model="list2.pkgs" disabled="disabled">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group" style="margin-left: 33px;">
+									<label for="exampleInputEmail2">完工时间</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 100px;border: 1px solid #000000;" v-model="list2.wgsj" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 100px;">
+									<label for="exampleInputEmail2">上次进厂</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 200px;border: 1px solid #000000;" v-model="list2.scjc" disabled="disabled">
+								</div>
+							</div>
+							<div style="margin-top: 5px;">
+								<div class="form-group">
+									<label for="exampleInputEmail2"><span class="a">*</span>预估金额</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 200px;border: 1px solid #000000;" v-model="list2.ygje" disabled="disabled">
+								</div>
+								<div class="form-group" style="margin-left: 55px;">
+									<label for="exampleInputEmail2">接待备注</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 660px;border: 1px solid #000000;" v-model="list2.jdbz" disabled="disabled">
+								</div>
+							</div>
+							<div style="margin-top: 5px;">
+								<div class="form-group">
+									<label for="exampleInputEmail2" style="border: 1px solid #000000; width: 100px; height: 50px; text-align: center;line-height: 50px;">报修陈述</label>
+									<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width: 1000px; height: 50px;border: 1px solid #000000;" v-model="list2.cxms" disabled="disabled">
+								</div>
+							</div>
+						</form>
+						
+						
+						<div class="caid">
+							<ul>
+								<li class="wxls11" style="color: aqua;">维修项目</li>
+								<li class="wxls12">领料情况</li>
+								<li class="wxls13">结算信息</li>
+							</ul>
+						</div><br />
+						<div class="col-md-12" style="margin-top: 10px;display: block;" id="wxxm2">
+							<div class="table-responsive" style="height:250px; overflow-y:auto">
+								<table width="2090px" class="table-bordered" style="table-layout: fixed;">
+									<tr class="dyg" style="color: white;">
+										<td class="dygtd"></td>
+										<td>选择</td>
+										<td>项目编码</td>
+										<td>项目名称</td>
+										<td>数量</td>
+										<td>价类</td>
+										<td>单位</td>
+										<td>金额</td>
+										<td>技师结算价</td>
+										<td>故障描述</td>
+										<td>故障原因</td>
+										<td>维修班组</td>
+										<td>作业人员</td>
+										<td>工单号</td>
+										<td>免单原因</td>
+									</tr>
+									<tr style="color: #000000;" v-for="item in list3">
+										<td class="dygtd"></td>
+										<td>
+											<div class="checkbox">
+												<label>
+													<input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+												</label>
+											</div>
+										</td>
+										<td>{{item.xmbh}}</td>
+										<td>{{item.xmname}}</td>
+										<td>{{item.reserved3}}</td>
+										<td>{{item.jialei}}</td>
+										<td>{{item.jiesgs}}</td>
+										<td>{{item.gshije}}</td>
+										<td>{{item.reserved2}}</td>
+										<td>{{item.gzms}}</td>
+										<td>{{item.gzqr}}</td>
+										<td>{{item.reserved4}}</td>
+										<td>{{item.zuoyery}}</td>
+										<td>{{item.gdh}}</td>
+										<td>无</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="llqk2" style="display: none;">
+					<div class="col-md-12" style=" margin-top: px; margin-left: 28px;position: absolute;top: 510px;width: 1300px;" id="dygg">	
+									<div class="table-responsive" style="height:200px; overflow-y:auto">
+										<table width="1400px" class="table-bordered" style="table-layout: fixed;">
+											<tr class="dyg" style="color: white;">
+												<td class="dygtd"></td>
+												<td>类别</td>
+												<td>领料日期</td>
+												<td>领料人</td>
+												<td>物料编码</td>
+												<td>物料名称</td>
+												<td>单位</td>
+												<td>价类</td>
+												<td>数量</td>
+												<td>单价</td>
+												<td>金额</td>
+												<td>免单原因</td>
+												<td>回收状态</td>
+												
+											</tr>
+											<tr>
+												<td class="dygtd"></td>
+													<tr v-for="item in list4">
+												<td class="dygtd"></td>
+												<td>{{item.lb}}</td>
+												<td>{{item.lingliaodate}}</td>
+												<td>{{item.lingliaor}}</td>
+												<td>{{item.wuliao}}</td>
+												<td>{{item.wuliaoname}}</td>
+												<td>{{item.dwei}}</td>
+												<td>{{item.jialei}}</td>
+												<td>{{item.shuliao}}</td>
+												<td>{{item.danjian}}</td>
+												<td>{{item.jine}}</td>
+											</tr>
+											</tr>
+										</table>
+							</div>
+					</div>	
+				</div>
+				
+				
+				<div id="jsxx2" style="display: none;">
+					<div class="col-md-12" style=" margin-top:10 px; margin-left: 28px;position: absolute;top: 510px;width: 1300px;" id="dygg">	
+									<div class="table-responsive" style="height:200px; overflow-y:auto">
+										<table width="1400px" class="table-bordered" style="table-layout: fixed;">
+											<tr class="dyg" style="color: white;">
+												<td class="dygtd"></td>
+												<td>结算状态</td>
+												<td>合计金额</td>
+												<td>材料费</td>
+												<td>工时费</td>
+												<td>结算时间</td>
+												<td>结算人</td>
+												<td>现金</td>
+												<td>银行卡</td>
+												<td>据票</td>
+												<td>挂账金额</td>
+												<td>冲储值卡</td>
+												<td>冲定金</td>
+												<td>收税金</td>
+												<td>抵用券</td>
+												<td>抹尾数</td>
+												<td>内部帐</td>
+												<td>积分抵扣</td>
+												<td>到账盈亏</td>
+												<td>发票种类</td>
+												<td>发票号</td>
+												<td>发票金额</td>
+											</tr>
+											<tr v-for="item in list13">
+												<td class="dygtd"></td>
+												<td>{{item.jieszt}}</td>
+												<td>{{item.hjje}}</td>
+												<td>{{item.clf}}</td>
+												<td>{{item.goshf}}</td>
+												<td>{{item.jiesdate}}</td>
+												<td>{{item.jiesr}}</td>
+												<td>{{item.xj}}</td>
+												<td>{{item.yhk}}</td>
+												<td>{{item.piaoju}}</td>
+												<td>{{item.guazhang}}</td>
+												<td>{{item.xuka}}</td>
+												<td>{{item.dj}}</td>
+												<td>{{item.shuij}}</td>
+												<td>{{item.diyong}}</td>
+												<td>{{item.mws}}</td>
+												<td>{{item.lbuz}}</td>
+												<td>{{item.jfdk}}</td>
+												<td>{{item.dzyk}}</td>
+												<td>{{item.fpzl}}</td>
+												<td>{{item.fph}}</td>
+												<td>{{item.fpje}}</td>
+											</tr>
+										</table>
+							</div>
+					</div>	
+				</div>
+				
+				<!--定损-->
+				<div class="modal fade" id="dings" tabindex="100" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">维修定损</h4>
+								<div class="">
+									<div class="" style="margin-left: 430px;">
+										<button type="button" class="btn btn-success">保存</button>
+									</div>
+								</div>
+							</div>
+							<div class="modal-body" style="width: 560px; background-color: #9D9D9D;margin-left: 20px;color: aqua;">
+								<font>
+									<div style="margin-top: 5px;">
+										<div class="form-group">
+											<label for="exampleInputEmail2">赔款公司</label>
+											<select class="form-control" style="width: 200px;margin-left: 60px;margin-top: -30px;" >
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="exampleInputEmail2">出险时间</label>
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+											<span style="margin-left: 280px;position: relative;top: -30px;">
+												<label for="exampleInputEmail2">查勘时间</label>
+												<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+											</span>
+										</div>
+										<div class="form-group" style="margin-top: -60px;">
+											<label for="exampleInputEmail2">报案号</label>
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+											<span style="margin-left: 280px;position: relative;top: -30px;">
+												<label for="exampleInputEmail2">被保险人</label>
+												<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+											</span>
+										</div>
+										<div class="form-group" style="margin-top: -60px;">
+											<label for="exampleInputEmail2">协陪员</label>
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:200px;margin-left: 60px;margin-top: -30px;">
+											<span style="position: relative;left: 235px;top: -30px;">
+												<img src="../img/捕获15.PNG">
+											</span>
+											<span style="margin-left: 260px;position: relative;top: -30px;">
+												<label for="exampleInputEmail2">保险单号</label>
+												<input type="email" class="form-control" id="exampleInputEmail2" placeholder=""	style="margin-left: 340px;position: relative;top: -30px;width:200px;" >
+											</span>
+										</div>
+										<div class="form-group" style="margin-top: -60px;">
+											<label for="exampleInputEmail2">定损备注</label>
+											<input type="email" class="form-control" id="exampleInputEmail2" placeholder="" style="width:480px;margin-left: 60px;margin-top: -30px;">				
+										</div>
+									</div>
+								</font>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+		</div>
+		
+		 <div id="fade" class="black_overlay">
+			
+		</div>
+		
+		
 	</div>
 			<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
 			<script src="../js/bootstrap.min.js"></script>
 			<script src="../js/vue.js"></script>
 			<script>
+					var BaseUrl="http://127.0.0.1:8080/";
 					new Vue({
 					el: "#ctn",
 					data() {
-						return {}
+						return {
+							jg:{},
+							list:[],
+							list2:{},
+							list4:[],
+							list13:[],
+							list3:[],
+							a:{},
+						}
 					},
 					methods: {
-							dingsi(){
-								$("#dings").modal("show");
+						shishiClick(item){
+							if(item.chenshu=='待骏工车'){
+							$("#light2").show();
+								let that=this;
+								$.ajax({
+									url:BaseUrl+"weixdan/findww/"+item.reserved3,
+									success:function(result){
+											that.list2=result;
+									}
+								});
+							}else{
+								$("#light3").show();
+								let that=this;
+								$.ajax({
+									url:BaseUrl+"weixdan/findww/"+item.reserved3,
+									success:function(result){
+											that.list2=result;
+									}
+								});
 							}
+								
+						},
+						find7(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"clearing/findclear",
+								success:function(result){
+									that.list13=result;
+								}
+							});
+						},
+						find4(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"getMaterial/findgetm",
+								success:function(result){
+									that.list4=result;
+									console.log(that.list4)
+								}
+							})
+						},
+						find3(){
+							let that=this;
+							$.ajax({
+								url:BaseUrl+"maintenanceItems/findten",
+								success:function(result){
+									that.list3=result;
+								}
+							})
+						},
+						jcyl(){
+							
+						},
+						tjxw(){
+							
+						},
+						sgbc(){
+							
+						},
+						find(){
+								let that=this;
+								$.ajax({
+									url:BaseUrl+"weixdan/find",
+									data:that.jg,
+									success:function(result){
+										console.log(result);
+										that.list=result;
+									}
+								})
+							},
+						dingsi(){
+								$("#dings").modal("show");
+						}
 					},
-					created() {}
+					created() {
+						this.find();
+						this.find3();
+						this.find4();
+						this.find7();
+					}
 				});
 				
 				
@@ -561,30 +1040,59 @@
 					$("#jsxx").css("display","none");
 					$(this).css("border-top", "4px solid aqua");
 					$(this).css("color", "aqua");
-					$("#wxxm").css("display","block");
+					$("#wxxm2").css("display","block");
 				});
-				$(".wxls6").click(function(){
-					$(".wxls9").css("color", "#999999");
-					$(".wxls9").css("border-top", "0px solid #66AFE9");
-					$(".wxls8").css("color", "#999999");
-					$(".wxls8").css("border-top", "0px solid #66AFE9");
-					$("#wxxm").css("display","none");
-					$("#jsxx").css("display","none");
+				
+				$(".wxls11").click(function() {
+					$(".wxls12").css("color", "#999999");
+					$(".wxls12").css("border-top", "0px solid #66AFE9");
+					$(".wxls13").css("color", "#999999");
+					$(".wxls13").css("border-top", "0px solid #66AFE9");
+					$("#llqk2").css("display","none");
+					$("#jsxx2").css("display","none");
 					$(this).css("border-top", "4px solid aqua");
 					$(this).css("color", "aqua");
-					$("#llqk").css("display","block");
+					$("#wxxm2").css("display","block");
+				});
+				
+				$(".wxls12").click(function(){
+					$(".wxls11").css("color", "#999999");
+					$(".wxls11").css("border-top", "0px solid #66AFE9");
+					$(".wxls13").css("color", "#999999");
+					$(".wxls13").css("border-top", "0px solid #66AFE9");
+					$("#wxxm2").css("display","none");
+					$("#jsxx2").css("display","none");
+					$(this).css("border-top", "4px solid aqua");
+					$(this).css("color", "aqua");
+					$("#llqk2").css("display","block");
 				})
-				$(".wxls8").click(function() {
-					$(".wxls9").css("color", "#999999");
-					$(".wxls9").css("border-top", "0px solid #66AFE9");
-					$(".wxls6").css("color", "#999999");
-					$(".wxls6").css("border-top", "0px solid #66AFE9");
-					$("#wxxm").css("display","none");
-					$("#llqk").css("display","none");
+				$(".wxls13").click(function() {
+					$(".wxls11").css("color", "#999999");
+					$(".wxls11").css("border-top", "0px solid #66AFE9");
+					$(".wxls12").css("color", "#999999");
+					$(".wxls12").css("border-top", "0px solid #66AFE9");
+					$("#wxxm2").css("display","none");
+					$("#llqk2").css("display","none");
 					$(this).css("border-top", "4px solid aqua");
 					$(this).css("color", "aqua");
-					$("#jsxx").css("display","block");
+					$("#jsxx2").css("display","block");
 				});
+				
+				
+				
+				$(function(){ 
+					$("tr").click(function(){ 
+						$("tr").css("background-color",""); 
+						$(this).css("background-color","yellow"); 
+						$(".dyg").css("background-color",""); 
+						}); 
+				});
+				$(".jungjy").click(function(){
+					alert("必须存在维修项目，才能做完工处理");
+				})
+				$(".dkdj").click(function(){
+					
+				})
 			</script>
 		
 	</body>

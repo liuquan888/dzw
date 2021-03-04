@@ -48,7 +48,7 @@ body{
 	height: 40px;
 	margin-left: 20px;
 }
-ul li{
+ul>li{
 	 margin-top: -10px;
 	 list-style: none;
 	 float: left;
@@ -57,7 +57,6 @@ ul li{
 	 text-align: center;
 	 line-height: 30px;
  }
- 
 .row5{
 	background-color: #FFFFFF;
 	width: 1500px;
@@ -362,4 +361,82 @@ body{
 }
 #ccc{
 	width: 30px;
+}
+
+
+
+#light4{
+	position:absolute;
+	z-index: 99999;
+}
+.black_overlay4{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 500px;
+            height: 100%;
+            background-color: #f7f7f7;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=88);
+        }
+        .white_content4{
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 560px;
+            width: 400px;
+            height:550px;
+            padding: 20px;
+            border: 5px solid #00FFFF;
+            background-color: #f7f7f7;
+            z-index:1002;
+            overflow: auto;
+			overflow-y:hidden;
+}
+.djgb4{
+	position: absolute;
+	left: 260px;
+	top: 20px;
+}
+.wxbzs{
+	width: 400px;
+	height: 50px;
+	margin-left: -20px;
+	background-color: #A6E1EC;
+}
+
+.black_overlay5{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 500px;
+            height: 100%;
+            background-color: #f7f7f7;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=88);
+        }
+        .white_content5{
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 560px;
+            width: 400px;
+            height:550px;
+            padding: 20px;
+            border: 5px solid #00FFFF;
+            background-color: #f7f7f7;
+            z-index:1002;
+            overflow: auto;
+			overflow-y:hidden;
+}
+.djgb5{
+	position: absolute;
+	left: 260px;
+	top: 20px;
 }

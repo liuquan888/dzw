@@ -96,3 +96,35 @@ body{
 	 margin-top: -5px;
 	 color: #999999;
  }
+ 
+ .black_overlay3{
+             display: none;
+             position: absolute;
+             top: 0%;
+             left: 0%;
+             width: 100%;
+             height: 100%;
+             background-color: #f7f7f7;
+             z-index:1001;
+             -moz-opacity: 0.8;
+             opacity:.80;
+             filter: alpha(opacity=88);
+         }
+         .white_content 3{
+             display: none;
+             position: absolute;
+             top: -1%;
+             left: %;
+             width: 1520px;
+             height:750px;
+             padding: 20px;
+             border: 10px solid orange;
+             background-color: #f7f7f7;
+             z-index:1002;
+             overflow: auto;
+ }
+ .djgb2{
+ 	position: absolute;
+ 	left: 1350px;
+ 	top: 20px;
+ }

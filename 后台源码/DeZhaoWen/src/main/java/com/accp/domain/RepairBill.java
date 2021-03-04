@@ -125,6 +125,10 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "车主id,客户表外键")
     private Integer customerId;
 
+    @TableField(exist=false)
+    @ApiModelProperty(value = "车主姓名")
+    private String chezhuxm;
+
     @ApiModelProperty(value = "驾驶员")
     private String jiashiyuan;
 

@@ -1,5 +1,7 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import java.io.Serializable;
@@ -29,15 +31,16 @@ public class MaintenanceItems extends Model<MaintenanceItems> {
     private String wxdh;
 
     @ApiModelProperty(value = "接车时间")
-    private LocalDate jcsj;
+    private String jcsj;
 
     @ApiModelProperty(value = "完工时间")
-    private LocalDate wgsj;
+    private String wgsj;
 
     @ApiModelProperty(value = "结算时间")
-    private LocalDate jsdate;
+    private String jsdate;
 
     @ApiModelProperty(value = "项目编码")
+    @TableId("xmbh")
     private String xmbh;
 
     @ApiModelProperty(value = "项目名称")
