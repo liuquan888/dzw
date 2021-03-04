@@ -88,7 +88,7 @@ input.form-control{
 	margin-right: 0px;
 }
 .row4 div ul li:first-of-type{
-	border-top:4px solid aqua;
+	border-top:4px solid darkturquoise;
 }
 .shju{
 	margin-left: 10px;
@@ -96,7 +96,7 @@ input.form-control{
 	bottom: -10px;
 }
 .dyg{
-	background-color: aqua;
+	background-color: darkturquoise;
 }
 .tobu{
 	background-color: #39cede;
@@ -185,11 +185,11 @@ input.form-control{
 	margin-top: -22px;
 	text-align: center;
 	line-height: 30px;
-	color: aqua;
+	color: darkturquoise;
 	background-color: white;
 }
 .wz{
-	border-top: 4px solid aqua;
+	border-top: 4px solid darkturquoise;
 	width: 100px;
 	text-align: center;
 	position: relative;
@@ -234,7 +234,7 @@ body{
 
 
 .sbx{
-	border-top: 2px solid aqua;
+	border-top: 2px solid darkturquoise;
 	width: 1450px;
 	margin-left: 20px4
 }
@@ -251,7 +251,7 @@ body{
 	 line-height: 30px;
  }
  .caid ul li:first-of-type{
-	 	border-top:4px solid aqua;
+	 	border-top:4px solid darkturquoise;
  }
  .caid{
 	 margin-left: 0px;
@@ -288,6 +288,7 @@ body{
  }
  .dygtd{
  	background: #ADADAD;
+	width: 20px;
  }
  .caid3{
 	 margin-left: -19px;
