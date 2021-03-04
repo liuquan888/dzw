@@ -203,7 +203,7 @@
 				<div class="col-md-4">
 					<input type="text" class="form-control" placeholder="匹配工号/姓名" v-model="names">
 				</div>
-				<div class="col-md-1"><button class="btn btn-success" @click="find()">搜索</button></div>
+				<div class="col-md-1"><button class="btn btn-warning" @click="find()">搜索</button></div>
 				<div class="col-md-1"><button class="btn">关闭</button></div>
 			</div>
 			<div class="row1">
@@ -279,7 +279,7 @@
 				<div class="mens">
 					<div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
 					<div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no1">确定</button></div>
-					<div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
+					<div class="col-md-1"><button class="btn" id="no1" @click="jkl1">关闭</button></div>
 					<div class="wo1">
 						<form class="form-inline">
 							<div class="form-group">
@@ -524,6 +524,9 @@
 					}
 				},
 				methods: {
+					jkl1(){
+						$("#yuan").css("display","none");
+					},
 					dian(cid) {
 						this.id = cid;
 					},

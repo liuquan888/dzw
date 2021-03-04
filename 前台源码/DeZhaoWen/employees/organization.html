@@ -10,7 +10,6 @@
 			}
 			#a1{
 				width:70px;
-				background-color: orange;
 				border:0px;
 			}
 			.aa2{
@@ -313,7 +312,7 @@
 					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机" v-model="names">
 				</div>
 				<div class="col-md-2 a5">
-					<button type="submit" class="btn btn-default" id="a1" @click="query()">搜索</button>
+					<button type="submit" class="btn btn-warning" id="a1" @click="query()">搜索</button>
 					<button type="submit" class="btn btn-default" id="b1">关闭</button>
 				</div>
 			</div>
@@ -345,11 +344,9 @@
 					<div class="col-xs-10 a" style="width:1258px;overflow-x:scroll;height:470px;">
 						<table id="table1" style="width: 1900px;">
 							<tr>
-								<td style="width:5px;background-color:#E3E3E3;"></td>
 								<td v-for="f in field" class="d1" v-if="f.display==1">{{f.name}}</td>
 							</tr>
-							<tr v-for="item in staff">
-								<td><input type="radio" name="name" @click="remove(item)"></td>
+							<tr v-for="item in staff" @click="remove(item)" class="ji1">
 								<td v-if="field[1].display==1">{{item.yid}}</td>
 								<td v-if="field[2].display==1">{{item.yid}}</td>
 								<td v-if="field[3].display==1">{{item.yname}}</td>
@@ -366,13 +363,13 @@
 								<td v-if="field[14].display==1">{{item.yspecialtynid}}</td>
 								<td v-if="field[15].display==1">{{item.yid}}</td>
 								<td v-if="field[16].display==1">{{item.yid}}</td>
-								<td v-if="field[17].display==1">{{item.yname}}</td>
-								<td v-if="field[18].display==1">{{item.ysex}}</td>
-								<td v-if="field[19].display==1">{{item.gid}}</td>
-								<td v-if="field[20].display==1" v-if="field[2].display==1">{{item.yhealth}}</td>
+								<td v-if="field[17].display==1">{{item.ynumber}}</td>
+								<td v-if="field[18].display==1">{{item.yaddressh}}</td>
+								<td v-if="field[19].display==1">{{item.reserved1}}</td>
+								<td v-if="field[20].display==1" v-if="field[2].display==1">{{item.yaddressh}}</td>
 								<td v-if="field[21].display==1">{{item.yheigth}}</td>
-								<td v-if="field[22].display==1">{{item.ynativplaceid}}</td>
-								<td v-if="field[23].display==1">{{item.ynationid}}</td>
+								<td v-if="field[22].display==1">{{item.yphonenumber}}</td>
+								<td v-if="field[23].display==1">{{item.yphone}}</td>
 								<td v-if="field[24].display==1">{{item.yheigth}}</td>
 							</tr>
 						</table>
@@ -1294,6 +1291,10 @@
 	<script type="text/javascript" src="../js/vue.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+		$(document).on('click','.ji1',function(){
+			$(".ji1").css("background-color","#fff")
+			$(this).css("background-color","sandybrown")
+		})
 		Vue.component("tree",{
 			props:["menu"],
 			template:`

@@ -13,11 +13,13 @@
 				<tr>
 					<td>编号</td>
 					<td>角色名称</td>
+					<td>角色描述</td>
 					<td>操作</td>
 				</tr>
 				<tr v-for="item in list">
 					<td>{{item.roleId}}</td>
 					<td>{{item.roleName}}</td>
+					<td>{{item.roleDesc}}</td>
 					<td>
 						<span class="btn btn-danger" @click="remove(item)">删除</span>
 						<span class="btn btn-success" @click="auth(item)">授权</span>
@@ -53,19 +55,19 @@
 									<div id="a">
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">角色编号</label>
-											<input  class="form-control" v-model="dzwrole.roleId">
+											<input  class="form-control" v-model="role.roleId">
 										</form>
 									    <form class="form-inline">
 									    	<label class="text col-lg-2" for="exampleInputEmail2">角色名称</label>
-									   		<input  class="form-control" v-model="dzwrole.roleName">
+									   		<input  class="form-control" v-model="role.roleName">
 									    </form>
 									    <form class="form-inline">
 									    	<label class="text col-lg-2" for="exampleInputEmail2">角色描述</label>
-									   		<input  class="form-control" v-model="dzwrole.roleDesc">
+									   		<input  class="form-control" v-model="role.roleDesc">
 									    </form>
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">角色状态</label>
-											<input  class="form-control" v-model="dzwrole.status">
+											<input  class="form-control" v-model="role.status">
 										</form>
 								    </div>
 								  </div>
@@ -109,7 +111,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" @click="update2()">添加</button>
+							<button class="btn btn-primary" @click="update2()">修改</button>
 							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -154,7 +156,8 @@
 						menuList:[],
 						list:[],
 						roleId:"",
-						dzwrole:{}
+						dzwrole:{},
+						role:{}
 					}
 				},
 				methods:{
@@ -190,7 +193,6 @@
 							//let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
 							// let selecedSet = result.map(item=>{ if(item.pvgType !=1 && item.pvgType != 2) return item.pvgid});
 							let selecedSet = result.filter(item=>item.pvgType!=1||item.pvgType != 2).map(item=>item.pvgid);
-
 							//调用jstree的选中方法，可以传入集合
 							$('#myTree').jstree(true).select_node(selecedSet);
 						}); 
@@ -198,7 +200,6 @@
 						$("#authModal").modal("show");
 					},
 					menu(){
-						
 						var selected = $("#myTree").jstree(true).get_selected();
 						//获取半选状态
 						var undetermined = $("#myTree").jstree(true).get_undetermined();
@@ -223,7 +224,6 @@
 								}
 							},
 							error:function(){
-								
 							}
 						});
 					},
@@ -235,7 +235,7 @@
 						$.ajax({
 							url:"http://127.0.0.1:8080/dzwRole/address",
 							type:"post",
-							data:JSON.stringify(that.dzwrole),
+							data:JSON.stringify(that.role),
 							contentType:"application/json;charset=utf-8",
 							success:function(result){
 								if(result=="0000"){

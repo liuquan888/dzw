@@ -94,35 +94,35 @@
 									<div id="a">
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">用户编号</label>
-											<input  class="form-control" v-model="user.userId">
+											<input  class="form-control" v-model="users.userId">
 										</form>
 									    <form class="form-inline">
 									    	<label class="text col-lg-2" for="exampleInputEmail2">登录账号</label>
-									   		<input  class="form-control" v-model="user.userLogin">
+									   		<input  class="form-control" v-model="users.userLogin">
 									    </form>
 									    <form class="form-inline">
 									    	<label class="text col-lg-2" for="exampleInputEmail2">登录密码</label>
-									   		<input  class="form-control" v-model="user.userPwd">
+									   		<input  class="form-control" v-model="users.userPwd">
 									    </form>
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">用户昵称</label>
-											<input  class="form-control" v-model="user.userName">
+											<input  class="form-control" v-model="users.userName">
 										</form>
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">真实姓名</label>
-											<input  class="form-control" v-model="user.userRealname">
+											<input  class="form-control" v-model="users.userRealname">
 										</form>
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">手机号码</label>
-											<input  class="form-control" v-model="user.userPhone">
+											<input  class="form-control" v-model="users.userPhone">
 										</form>
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">邮箱</label>
-											<input  class="form-control" v-model="user.userEamil">
+											<input  class="form-control" v-model="users.userEamil">
 										</form>
 										<form class="form-inline">
 											<label class="text col-lg-2" for="exampleInputEmail2">用户状态</label>
-											<input  class="form-control" v-model="user.status">
+											<input  class="form-control" v-model="users.status">
 										</form>
 								    </div>
 								  </div>
@@ -175,7 +175,8 @@
 						menuList:[],
 						list:[],
 						userId:"",
-						user:{}
+						user:{},
+						users:{}
 					}
 				},
 				methods:{
@@ -271,7 +272,7 @@
 						$.ajax({
 							url:"http://127.0.0.1:8080/dzwUser/add",
 							type:"post",
-							data:JSON.stringify(that.user),
+							data:JSON.stringify(that.users),
 							contentType:"application/json;charset=utf-8",
 							xhrFields: {
 								withCredentials: true
