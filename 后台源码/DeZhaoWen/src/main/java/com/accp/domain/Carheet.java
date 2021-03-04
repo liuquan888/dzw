@@ -1,8 +1,6 @@
 package com.accp.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -29,9 +27,8 @@ public class Carheet extends Model<Carheet> {
 
     @TableField(exist = false)
     @ApiModelProperty(value = "判断")
-    private boolean check=false;
+    private boolean check;
 
-    @TableId(value = "carnum",type= IdType.AUTO)
     @ApiModelProperty(value = "车辆号码")
     private Integer carnum;
 
@@ -55,7 +52,7 @@ public class Carheet extends Model<Carheet> {
     private String birthday;
 
     @ApiModelProperty(value = "车辆归属id")
-    private String caraffiliationid;
+    private Integer caraffiliationid;
 
     @TableField(exist = false)
     @ApiModelProperty(value = "车辆归属")
@@ -119,7 +116,7 @@ public class Carheet extends Model<Carheet> {
     private String carouttime;
 
     @ApiModelProperty(value = "交强险保险公司id")
-    private String mlicompanyid;
+    private Integer mlicompanyid;
 
     @ApiModelProperty(value = "交强险到期")
     private String mliouttime;
@@ -133,7 +130,7 @@ public class Carheet extends Model<Carheet> {
     private String jq2;
 
     @ApiModelProperty(value = "商业险保险公司id")
-    private String cicompanyid;
+    private Integer cicompanyid;
 
     @ApiModelProperty(value = "商业险到期")
     private String ciouttime;
@@ -153,7 +150,7 @@ public class Carheet extends Model<Carheet> {
     private String twotime;
 
     @ApiModelProperty(value = "燃油类别id")
-    private String oiltypeid;
+    private Integer oiltypeid;
 
     @ApiModelProperty(value = "下次保养里程")
     private String nextmileage;
@@ -181,10 +178,10 @@ public class Carheet extends Model<Carheet> {
     private String reserved3;
 
     @ApiModelProperty(value = "预留字段")
-    private Integer reserved4;
+    private String reserved4;
 
     @ApiModelProperty(value = "车型ID")
-    private Integer reserved5;
+    private String reserved5;
 
     @TableField(exist = false)
     @ApiModelProperty(value = "车型")

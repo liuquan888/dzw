@@ -8,7 +8,6 @@
 	</head>
 	<body>
 		<div id="ctn">
-			<span class="btn btn-success"  @click="add()">添加</span>
 			<table class="table table-hover">
 				<tr>
 					<td>编号</td>
@@ -19,9 +18,8 @@
 					<td>{{item.roleId}}</td>
 					<td>{{item.roleName}}</td>
 					<td>
-						<span class="btn btn-danger" @click="remove(item)">删除</span>
+						<span class="btn btn-danger">删除</span>
 						<span class="btn btn-success" @click="auth(item)">授权</span>
-						<span class="btn btn-primary"  @click="update(item)">编辑</span>
 					</td>
 				</tr>
 			</table>
@@ -36,80 +34,6 @@
 						</div>
 						<div class="modal-footer">
 							<button class="btn btn-primary" @click="menu">授权</button>
-							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal" id="authModal3">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="text-danger">角色授权</h3>
-						</div>
-						<div class="modal-body">
-							<div id="myTree2">
-								<div class="form-group">
-									<div id="a">
-										<form class="form-inline">
-											<label class="text col-lg-2" for="exampleInputEmail2">角色编号</label>
-											<input  class="form-control" v-model="dzwrole.roleId">
-										</form>
-									    <form class="form-inline">
-									    	<label class="text col-lg-2" for="exampleInputEmail2">角色名称</label>
-									   		<input  class="form-control" v-model="dzwrole.roleName">
-									    </form>
-									    <form class="form-inline">
-									    	<label class="text col-lg-2" for="exampleInputEmail2">角色描述</label>
-									   		<input  class="form-control" v-model="dzwrole.roleDesc">
-									    </form>
-										<form class="form-inline">
-											<label class="text col-lg-2" for="exampleInputEmail2">角色状态</label>
-											<input  class="form-control" v-model="dzwrole.status">
-										</form>
-								    </div>
-								  </div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-primary" @click="address()">添加</button>
-							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal" id="authModal2">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3 class="text-danger">角色授权</h3>
-						</div>
-						<div class="modal-body">
-							<div id="myTree2">
-								<div class="form-group">
-									<div id="a">
-										<form class="form-inline">
-											<label class="text col-lg-2" for="exampleInputEmail2">角色编号</label>
-											<input  class="form-control" v-model="dzwrole.roleId">
-										</form>
-									    <form class="form-inline">
-									    	<label class="text col-lg-2" for="exampleInputEmail2">角色名称</label>
-									   		<input  class="form-control" v-model="dzwrole.roleName">
-									    </form>
-									    <form class="form-inline">
-									    	<label class="text col-lg-2" for="exampleInputEmail2">角色描述</label>
-									   		<input  class="form-control" v-model="dzwrole.roleDesc">
-									    </form>
-										<form class="form-inline">
-											<label class="text col-lg-2" for="exampleInputEmail2">角色状态</label>
-											<input  class="form-control" v-model="dzwrole.status">
-										</form>
-								    </div>
-								  </div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-primary" @click="update2()">添加</button>
 							<button class="btn btn-danger" data-dismiss="modal">关闭</button>
 						</div>
 					</div>
@@ -154,7 +78,6 @@
 						menuList:[],
 						list:[],
 						roleId:"",
-						dzwrole:{}
 					}
 				},
 				methods:{
@@ -187,8 +110,13 @@
 						menuApi.findPerms(item.roleId,function(result){
 							that.roleId=item.roleId;
 							//只要集合中的编号作为选中的唯一表示
-							 let selecedSet = result.map(item=>{ if(item.pvgType !=1 && item.pvgType != 2) return item.pvgid});
-
+<<<<<<< HEAD
+							let selecedSet = result.filter(item=>item.pvgType==2).map(item=>item.pvgid);
+=======
+						
+							// let selecedSet = result.map(item=>{ if(item.pvgType !=1 && item.pvgType != 2) return item.pvgid});
+							let selecedSet = result.filter(item=>item.pvgType!=1||item.pvgType != 2).map(item=>item.pvgid);
+>>>>>>> bd8b148776cc695ebe1b2585d175a79c76413cd3
 							//调用jstree的选中方法，可以传入集合
 							$('#myTree').jstree(true).select_node(selecedSet);
 						}); 
@@ -196,6 +124,7 @@
 						$("#authModal").modal("show");
 					},
 					menu(){
+						
 						var selected = $("#myTree").jstree(true).get_selected();
 						//获取半选状态
 						var undetermined = $("#myTree").jstree(true).get_undetermined();
@@ -214,67 +143,11 @@
 							},
 							crossDomain: true,
 							success:function(result){
-								if(result="0000"){
-									alert("授权成功！");
-									$("#authModal").modal("hide");
-								}
 							},
 							error:function(){
 								
 							}
 						});
-					},
-					add(){
-						$("#authModal3").modal("show");
-					},
-					address(){
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/dzwRole/address",
-							type:"post",
-							data:JSON.stringify(that.dzwrole),
-							contentType:"application/json;charset=utf-8",
-							success:function(result){
-								if(result=="0000"){
-									$("#authModal3").modal("hide");
-									that.find();
-								}
-							}
-						})
-					},
-					remove(item){
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/dzwRole/remove",
-							type:"post",
-							data:{roleId:item.roleId},
-							success:function(result){
-								if(result=="0000"){
-									alert("删除成功！")
-									that.find();
-								}
-							}
-						})
-					},
-					update(item){
-						$("#authModal2").modal("show");
-						this.dzwrole=item;
-					},
-					update2(){
-						let that=this;
-						$.ajax({
-							url:"http://127.0.0.1:8080/dzwRole/update",
-							data:that.dzwrole,
-							type:"post",
-							dataType:"json",
-							success:function(result){
-								if(result==true){
-									alert("修改成功！")
-									$("#authModal2").modal("hide");
-									that.find();
-								}
-							}
-						})
 					}
 				},
 				created() {

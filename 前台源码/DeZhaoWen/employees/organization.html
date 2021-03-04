@@ -312,7 +312,7 @@
 					<input type="text" class="form-control" id="exampleInputName2" placeholder="匹配工号/姓名/手机" v-model="names">
 				</div>
 				<div class="col-md-2 a5">
-					<button type="submit" class="btn btn-success" @click="query()">搜索</button>
+					<button type="submit" class="btn btn-default" id="a1" @click="query()">搜索</button>
 					<button type="submit" class="btn btn-default" id="b1">关闭</button>
 				</div>
 			</div>
@@ -328,7 +328,7 @@
 					<div class="col-md-1" @click="emptypass"><img src="../img/5.png" class="c1">置空密码</div>
 					<div class="col-md-1" @click="daochu"><img src="../img/6.png" class="c1">导出</div>
 					<div class="col-md-1"><a href="#myModal6" data-toggle="modal"><img src="../img/7.png" class="c1">导入</a></div>
-					<!-- <div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="../img/8.png" class="c1">员工角色</a></div> -->
+					<div class="col-md-1"><a href="#myModal4" data-toggle="modal"><img src="../img/8.png" class="c1">员工角色</a></div>
 					<div class="col-md-1"><a href="#myModal5" data-toggle="modal"><img src="../img/9.png" class="c1">字段设置</a></div>
 				</div>
 				<div class="z2">
@@ -349,6 +349,7 @@
 							</tr>
 							<tr v-for="item in staff">
 								<td><input type="radio" name="name" @click="remove(item)"></td>
+								<td v-if="field[1].display==1">{{item.yid}}</td>
 								<td v-if="field[2].display==1">{{item.yid}}</td>
 								<td v-if="field[3].display==1">{{item.yname}}</td>
 								<td v-if="field[4].display==1">{{item.ysex}}</td>
@@ -377,7 +378,7 @@
 					</div>
 				</div>
 				<div class="z3">
-					合计:{{staff.length}}条记录
+					合计:1条记录
 				</div>
 			</div>
 			<div class="modal" id="myModal2" data-backdrop>
@@ -695,15 +696,14 @@
 			<div class="modal" id="myModal6" data-backdrop>
 				<div class="modal-dialog">
 					<div class="modal-content" id="model2">
-						<span class="close" data-dismiss="modal" style="margin-top: 25px;font-size: 15px;color: #000;margin-right:15px;">
-							<a href="http://127.0.0.1:8080/staffData/download?templateName=StudentTemplate.xlsx" style="color:#000;">下载excel导入模版</a>
-						</span>
-						<form action="http://127.0.0.1:8080/staffData/upload" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
+						<span class="close" data-dismiss="modal">&times;</span>
+						<form action="http://127.0.0.1:8080/file/upload" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data">
 							<div class="modal-header">
+								<span> <a href="http://127.0.0.1:8080/file/download?templateName=StudentTemplate.xlsx">标准格式</a></span>
 								<span>
 									<button type="submit" class="btn btn-primary" style="border: 0px;background-color:#fff;color: #000;">确认转入</button>
 								</span>
-								<span><a data-toggle="modal" data-dismiss="modal">退出</a></span>
+								<span>退出</span>
 							</div>
 							<div class="modal-body">
 								<form class="form-horizontal">
@@ -711,10 +711,18 @@
 										<span> 
 											<div class="form-group">
 												<div style="margin-top: -7px;margin-left: 26px;">
-													<input type="file" name="file" id="input" class="form-control" value="" required="required" pattern="" title="">
+													<input style="width: 300px;" type="file" name="file" id="input" class="form-control" value="" required="required" pattern="" title="">
 												</div>
 											</div>
 										</span>
+										<div style="position: absolute;top:15px;left: 360px;">
+											导入方式
+											<select style="height: 25px;width: 150px;">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+											</select>
+										</div>
 									</div>
 									<div id="mm2" style="width: 563px;margin:0px;overflow-x: scroll;">
 										<table style="width:1200px;">
@@ -1408,7 +1416,6 @@
 						type:"post",
 						success:function(result){
 							that.findId();
-								$("#myModal5").modal("hide");
 						}
 					});
 				},
@@ -1556,7 +1563,6 @@
 							},
 							type:"post",
 							success:function(result){
-								$("#myModal19").modal("hide");
 								that.findId();
 							}
 						});
@@ -1617,7 +1623,6 @@
 						type:"post",
 						contentType:"application/json;charset=utf-8",
 						success:function(result){
-							$("#myModal5").modal("hide");
 							that.query();
 						}
 					});

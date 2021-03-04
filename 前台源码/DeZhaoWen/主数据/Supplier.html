@@ -91,18 +91,18 @@
 			<div style="width: 1533px;line-height: 40px; background:#F7FFFF ; float: left;">
 				<span style="font-size: 22px;margin-left: 10px;">供货单位</span>
 				<input placeholder="匹配名称/联系人/简码/手机+号实现双条件查询" style="height: 26px;width: 320px;margin-left: 950px;" v-model="suppdimtext" />
-				<button class="btn btn-default btn-sm butt1" style="background: #F8A621;color: white;width: 50px;" @click="suppdim">搜索</button>
+				<span v-perms="'supplier:supply:seek'"><button class="btn btn-default btn-sm butt1" style="background: #F8A621;color: white;width: 50px;" @click="suppdim">搜索</button></span>
 				<button class="btn btn-default btn-sm" style="background: #C6C6C6;color: white:50px;">关闭</button>
 			</div>
 			<div style="float: left;width: 1533px;background: #F7F7F7;line-height: 30px;">
-				<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()">增加</span>
-				<img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1">修改</span>
-				<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="removesupp">删除</span>
-				<img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2">查询</span>
-				<img  src="img/QQ图片20210121164913.png" width="14" style="margin-left:11px;"><span @click="suppilerExcel">导出</span>
-				<img  src="img/QQ图片20210121164909.png" width="14" style="margin-left:11px;"><span @click="en3">照片</span>
-				<img width="14" src="img/20210126185750.png"><span @click="en5">联系人</span>
-				<img src="img/QQ图片20210121164909.png" width="14"><span @click="en4">字段设置</span>
+				<span v-perms="'supplier:supply:add'"><img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 1070px;"><span @click="en()">增加</span></span>
+				<span v-perms="'supplier:supply:update'"><img src="img/QQ图片20210121164604.png" width="14" style="margin-left:11px;"><span @click="en1">修改</span></span>
+				<span v-perms="'supplier:supply:remove'"><img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="removesupp">删除</span></span>
+				<!-- <span ><img src="img/QQ图片20210121164614.png" width="14" style="margin-left:11px;"><span @click="en2">查询</span></span> -->
+				<span v-perms="'supplier:supply:export'"><img  src="img/QQ图片20210121164913.png" width="14" style="margin-left:11px;"><span @click="suppilerExcel">导出</span></span>
+				<!-- <span ><img src="img/QQ图片20210121164909.png" width="14" style="margin-left:11px;"><span @click="en3">照片</span></span> -->
+				<span v-perms="'supplier:supply:linkman'"><img width="14" src="img/20210126185750.png"><span @click="en5">联系人</span></span>
+				<!-- <span ><img src="img/QQ图片20210121164909.png" width="14"><span @click="en4">字段设置</span></span> -->
 			</div>
 			<div class="modal fade" id="mymodal" data-backdrop="static">
 					<div style="width: 900px;" class="modal-dialog">
@@ -365,9 +365,9 @@
 							</div>
 							<div class="modal-body" style="background-color: #F7F7F7;">
 								<div style="width: 800px;">
-									<img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 600px;"><span @click="toaddlinkman" class="span2">增加</span>
-									<img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="linkmanremove">删除</span>
-									<img src="img/20210125191943.png" width="14" style="margin-left:11px;"><span @click="linkmansave" class="span2">保存</span>
+									<span v-perms="'supplier:linkman:add'"><img src="img/QQ图片20210121164522.png" width="14" style="margin-left: 600px;"><span @click="toaddlinkman" class="span2">增加</span></span>
+									<span v-perms="'supplier:linkman:remove'"><img src="img/QQ图片20210121164610.png" width="14" style="margin-left:11px;"><span @click="linkmanremove">删除</span></span>
+									<span v-perms="'supplier:linkman:save'"><img src="img/20210125191943.png" width="14" style="margin-left:11px;"><span @click="linkmansave" class="span2">保存</span></span>
 								</div>
 								<table>
 										<tr>
@@ -664,6 +664,7 @@
 	<script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/vue.js"></script>		
+	<script src="../js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 
 			
@@ -696,6 +697,10 @@
 			
 						//导出
 			suppilerExcel(){
+				if(this.supplist.length==0){
+					alert("很抱歉，没有数据暂时无法导出供货商数据！")
+					return
+				}
 				if(this.menuinit.sId==null){
 					this.menuinit.sId=0;
 				}
@@ -713,6 +718,10 @@
 			},
 			
 			linkmanremove(){
+				if(this.linkmanlist.length==0){
+					alert("很抱歉，你暂未选择联系人！")
+					return
+				}
 				if(!confirm("你确定要删除此联系人吗？")){
 					return
 				}
@@ -740,6 +749,10 @@
 			},
 			
 			linkmanadd(){
+				if(!this.linkman.lName){
+					alert("联系人姓名不能为空！")
+					return
+				}
 				this.linkman.pId=this.suppinit.pId;
 				let that=this;
 				$.ajax({
@@ -807,6 +820,10 @@
 			},
 			
 			removesupp(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
 				if(!confirm("你确定要删除此供应商吗？")){
 					return
 				}
@@ -909,11 +926,19 @@
 			
 			
 			en(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
 				this.supp={},
 				this.suppsid={},
 				$("#mymodal").modal("show");
 			},
 			en1(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
 				let formdata= JSON.parse(JSON.stringify(this.suppinit))
 				this.supp=formdata;
 				this.suppsid=this.supp.suppilermenu;
@@ -934,6 +959,10 @@
 				$("#mymodal4").modal("show");
 			},
 			en5(){
+				if(this.supplist.length==0){
+					alert("很抱歉，你暂未选择供货商！")
+					return
+				}
 				this.linkman={};
 				$("#mymodal5").modal("show");
 			},

@@ -36,7 +36,7 @@ public class MyGenerator {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://127.0.0.1:3306/dezhaowen?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
 	private static final String USER_NAME = "root";
-	private static final String PASSWORD = "123456";
+	private static final String PASSWORD = "123";
 
 	/**
 	 * <p>

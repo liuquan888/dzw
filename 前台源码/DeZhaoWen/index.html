@@ -144,14 +144,14 @@
 			})
 			Vue.component("tree",{
 				props:["list"],
-				template: 
-				`
+				template: `
 					<ul class="nav nav-pills nav-stacked">
 						<li v-for="item in list" >
 							<a href="#" @click="huan(item)" style="color:violet">{{item.pvgName}}</a>
 							<tree :list="item.children" @huan="huan"></tree>
 						</li>
-					</ul>`,
+					</ul>
+				`,
 				methods:{
 					huan(item){
 						this.$emit("huan",item);
@@ -174,20 +174,6 @@
 					 }
 				},
 				methods:{
-					 huan(item) {
-						 this.tabs.forEach(a=>{
-						 	if(a.pvgName==item.pvgName){
-						 		return;
-						 	}
-							return;
-						 });
-						if(item.children && item.children.length>0){
-							return;
-						}
-						this.tabs.forEach(a=>{
-							a.ac=false;
-						});
-					},
 					huan(item){
 //						this.leftx=false;
 //						$(".leftguan").css("left","0px");
@@ -204,6 +190,7 @@
 						if(!flag){
 							this.tabs.push(item);
 						}
+						
 					},
 					dd(index){
 						if(index==this.tabs.length-1)

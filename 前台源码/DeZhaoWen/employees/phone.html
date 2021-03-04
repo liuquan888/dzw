@@ -193,12 +193,6 @@
 				height: 330px;
 				margin-left: 4px;
 			}
-			.c1{
-				width:20px;
-				height:15px;
-				margin-top:-2px;
-				margin-right: 4px;
-			}
 		</style>
 	</head>
 
@@ -209,19 +203,19 @@
 				<div class="col-md-4">
 					<input type="text" class="form-control" placeholder="匹配工号/姓名" v-model="names">
 				</div>
-				<div class="col-md-1"><button class="btn btn-success" @click="find()">搜索</button></div>
+				<div class="col-md-1"><button class="btn btn-danger" @click="find()">搜索</button></div>
 				<div class="col-md-1"><button class="btn">关闭</button></div>
 			</div>
 			<div class="row1">
 				<div style="color: #686868;font-size:18px;">
-					<div class="col-md-8" @click="show"><img src="../img/1.png" class="c1" /><span id="yes">门店选择</span></div>
-					<div class="col-md-1" @click="update()"><img src="../img/2.png" class="c1" />保存</div>
-					<div class="col-md-1" @click="show"><img src="../img/3.png" class="c1" /><span id="yes1">查询</span></div>
-					<div class="col-md-1" @click="daochu()"><img src="../img/4.png" class="c1" />导出</div>
+					<div class="col-md-8" @click="show"><img src="../img/1.png" /><span id="yes">门店选择</span></div>
+					<div class="col-md-1" @click="update()"><img src="../img/1.png" />保存</div>
+					<div class="col-md-1" @click="show"><img src="../img/1.png" /><span id="yes1">查询</span></div>
+					<div class="col-md-1" @click="daochu()"><img src="../img/1.png" />导出</div>
 				</div>
 				<div class="show1">
 					<table class="table table-bordered">
-						<tr style="background-color:darkturquoise;color: #fff;">
+						<tr style="background-color:#39CEDE;">
 							<td width="70px"></td>
 							<td>员工编号</td>
 							<td>姓名</td>
@@ -285,7 +279,7 @@
 				<div class="mens">
 					<div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
 					<div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no1">确定</button></div>
-					<div class="col-md-1"><button class="btn" id="no1" @click="close">关闭</button></div>
+					<div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
 					<div class="wo1">
 						<form class="form-inline">
 							<div class="form-group">
@@ -530,9 +524,6 @@
 					}
 				},
 				methods: {
-					close(){
-						$("#yuan").css("display","none");
-					},
 					dian(cid) {
 						this.id = cid;
 					},

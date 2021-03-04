@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="fonts/css/vendor.bundle.base.css" />
 		<link rel="stylesheet" href="fonts/mdi/css/materialdesignicons.css" />
 		<link rel="stylesheet" href="fonts/mdi/css/materialdesignicons.min.css" />
@@ -699,13 +699,13 @@
 													<form class="form-inline form-dinyi">
 														<table style="border-collapse:separate;border-spacing:5px;">
 															<tr>
-																
+
 																<td><span>车牌号码：</span></td>
-																<td><input class="form-control" name="carnumber" style="width: 135px;" v-model="carInformationModel.platename" type="text" /><input type="text" style="display: none;" name="iddd" v-model="carInformationModel.carnum"/></td>
+																<td><input class="form-control" name="carnumber" style="width: 135px;" v-model="carInformationModel.platename" type="text" /></td>
 																<td><span>车辆品牌：</span></td>
 																<td>
 																	<div class="input-group">
-																		<input class="form-control" readonly="readonly" name="carBrand" style="width: 125px;" type="text" class="form-control" v-model="carInformationModel.pp">
+																		<input class="form-control" readonly="readonly" name="carBrand" style="width: 125px;" type="text" class="form-control">
 																		<span style="width: 125px;" class="input-group-btn">
         																<button @click="openbrandmodels()" data-toggle="modal" data-target="#myModal3" class="btn btn-default" type="button">
         																<span class="glyphicon glyphicon-triangle-bottom">		
@@ -718,7 +718,7 @@
 																	<span>车辆型号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.chexing" style="width: 115px;" name="carType" readonly="readonly" type="text" />
+																	<input class="form-control" style="width: 115px;" name="carType" readonly="readonly" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -747,7 +747,7 @@
 																	<span>车辆归属：</span>
 																</td>
 																<td>
-																	<select class="form-control" name="affiliation" style="width: 165px;" v-model="carInformationModel.caraffiliationid">
+																	<select class="form-control" name="affiliation" style="width: 165px;">
 																		<option value="公司车">公司车</option>
 																		<option value="个人车">个人车</option>
 																	</select>
@@ -756,14 +756,14 @@
 																	<span>驾证到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.drivingouttime" type="date" />
+																	<input class="form-control" v-model="carInformationModel.drivinglicence" type="date" />
 																</td>
 
 																<td>
 																	<span>车架号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.framnum" type="text" />
+																	<input class="form-control" v-model="carInformationModel.drivingouttime" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -771,13 +771,13 @@
 																	<span>发动机号：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.enginenum" type="text" />
+																	<input class="form-control" v-model="carInformationModel.enginenumber" type="text" />
 																</td>
 																<td>
 																	<span>车辆年款：</span>
 																</td>
 																<td>
-																	<input class="form-control" style="width: 100px;" v-model="carInformationModel.carnyear" type="text" />
+																	<input class="form-control" style="width: 100px;" v-model="carInformationModel.yearprice" type="text" />
 																</td>
 																<td>
 																	<span>里程：</span>
@@ -791,21 +791,21 @@
 																	<span>发动机品牌：</span>
 																</td>
 																<td>
-																	<select class="form-control" name="engine" style="width: 150px;" >
-																		<option :engineid="item.eid" v-for="item in engineBrand">{{item.ename}}</option>
+																	<select class="form-control" name="engine" style="width: 150px;">
+																		<option :engineid="item.id" v-for="item in engineBrand">{{item.enginebrandname}}</option>
 																	</select>
 																</td>
 																<td>
 																	<span>载重：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.load" type="text" />
+																	<input class="form-control" v-model="carInformationModel.deadweight" type="text" />
 																</td>
 																<td>
 																	<span>购买日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.buytime" type="date" />
+																	<input class="form-control" v-model="carInformationModel.buydate" type="date" />
 																</td>
 															</tr>
 
@@ -814,19 +814,19 @@
 																	<span>上牌日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.uptime" type="date" />
+																	<input class="form-control" v-model="carInformationModel.dutydate" type="date" />
 																</td>
 																<td>
 																	<span>车检日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.carouttime" type="date" />
+																	<input class="form-control" v-model="carInformationModel.carcheckdate" type="date" />
 																</td>
 																<td>
 																	<span>燃油类别：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.oiltypeid" type="text" />
+																	<input class="form-control" v-model="carInformationModel.fueloiltype" type="text" />
 																</td>
 															</tr>
 															<tr>
@@ -841,7 +841,7 @@
 																	<span>交强险保险公司：</span>
 																</td>
 																<td>
-																	<select class="form-control" name="qbaoxian" style="width: 150px;" >
+																	<select class="form-control" name="qbaoxian" style="width: 150px;">
 																		<option value="阳光人寿保险">阳光人寿保险</option>
 																		<option value="太平洋保险">太平洋保险</option>
 																		<option value="人寿保险">人寿保险</option>
@@ -852,7 +852,7 @@
 																	<span>交强险到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.mliouttime" type="date" />
+																	<input class="form-control" v-model="carInformationModel.jqinsurancedate" type="date" />
 																</td>
 															</tr>
 															<tr>
@@ -860,7 +860,7 @@
 																	<span>商业险保险公司：</span>
 																</td>
 																<td>
-																	<select class="form-control" name="sbaoxian" style="width: 150px;" >
+																	<select class="form-control" name="sbaoxian" style="width: 150px;">
 																		<option value="阳光人寿保险">阳光人寿保险</option>
 																		<option value="太平洋保险">太平洋保险</option>
 																		<option value="人寿保险">人寿保险</option>
@@ -871,7 +871,7 @@
 																	<span>商业险到期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.ciouttime" type="date" />
+																	<input class="form-control" v-model="carInformationModel.syinsurancedate" type="date" />
 																</td>
 																<td>
 																	<span>在我投保车：</span>
@@ -885,13 +885,13 @@
 																	<span>下次保养里程：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.nextmileage" type="text" />
+																	<input class="form-control" v-model="carInformationModel.maintain" type="text" />
 																</td>
 																<td>
 																	<span>下次保养日期：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="carInformationModel.nextupkeeptime" type="date" />
+																	<input class="form-control" v-model="carInformationModel.maintaindate" type="date" />
 																</td>
 																<td>
 																	<span>客户名称：</span>
@@ -899,7 +899,7 @@
 																<td>
 
 																	<div class="input-group">
-																		<input class="form-control" readonly="readonly" name="customernumberandname" style="width: 180px;" type="text" >
+																		<input class="form-control" readonly="readonly" name="customernumberandname" style="width: 180px;" type="text">
 																		<span style="width: 125px;" class="input-group-btn">
         																<button @click="openselectcustomer()"  data-toggle="modal" data-target="#myModal4" class="btn btn-default" type="button">
         																<span class="glyphicon glyphicon-triangle-bottom">		
@@ -983,19 +983,20 @@
 								<td>{{item.outtime}}</td>
 								<td>{{item.remark}}</td>
 								<td>{{item.filing}}</td>
-								<td>{{item.fw}}</td>
+								<td>{{item.reserved5}}</td>
 								<td>{{item.reserved4}}</td>
 								<td>{{item.paytime}}</td>
 								<td>{{item.payment}}</td>
 								<td>{{item.integral}}</td>
 								<td>{{item.earnest}}</td>
+								<td></td>
 								<td>{{item.reserved1}}</td>
 								<td>{{item.reserved2}}</td>
 								<td>{{item.reserved3}}</td>
 								<td>{{item.paytest}}</td>
 								<td>{{item.registerphone}}</td>
-								<td>{{item.desportbank}}</td>
-								<td>{{item.bankaccount}}</td>
+								<td>{{item.bank}}</td>
+								<td>{{item.banknumber}}</td>
 								<td>{{item.registeraddress}}</td>
 							</tr>
 						</tbody>
@@ -1037,6 +1038,10 @@
 																		<span id="img" class="glyphicon glyphicon-remove"></span>
 																		<span @click="deletebaoyang()" id="font">删除</span>
 																	</li>
+																	<!--<li>
+																		<span id="img" class="glyphicon glyphicon-list-alt"></span>
+																		<span id="font">导出</span>
+																	</li>-->
 																</ul>
 															</div>
 															<div style="clear: both;padding-top: 10px;">
@@ -1201,7 +1206,7 @@
 																</td>
 																<td>
 																	<div class="input-group">
-																		<input class="form-control" readonly="readonly" style="width: 125px;" type="text" v-model="Client.counselorid+Client.fw" class="form-control">
+																		<input class="form-control" readonly="readonly" style="width: 125px;" type="text" v-model="Client.counselorid+Client.reserved5" class="form-control">
 																		<span style="width: 125px;" class="input-group-btn">
         																<button  @click="openselectemployee()" data-toggle="modal" data-target="#myModal1" class="btn btn-default" type="button">
         																<span class="glyphicon glyphicon-triangle-bottom">		
@@ -1255,7 +1260,7 @@
 																	<span>车牌号码：</span>
 																</td>
 																<td>
-																	<input class="form-control" v-model="CarInfo.platename" type="text" />
+																	<input class="form-control" v-model="CarInfo.carnum" type="text" />
 																</td>
 																<td>
 																	<span>车辆品牌：</span>
@@ -1314,7 +1319,7 @@
 																<td>
 																	<select class="form-control" name="engineBrand" style="width: 130px;margin-left: 5px;">
 																		<option></option>
-																		<option :engineid="item.eid" v-for="item in engineBrand">{{item.ename}}</option>
+																		<option :engineid="item.eId" v-for="item in engineBrand">{{item.eName}}</option>
 																	</select>
 																</td>
 																<td>
@@ -1369,7 +1374,7 @@
 								</select>
 								<select @change="updatecondition($event)" style="width: 565px;border-radius: 5px;margin-bottom: 10px;">
 									<option did="">所有</option>
-									<option v-bind:did="item.counselorid" v-for="item in department">{{item.bramch}}</option>
+									<option v-bind:did="item.id" v-for="item in department">{{item.bramch}}</option>
 								</select>
 								<div style="overflow: scroll;">
 									<table class="table table-bordered">
@@ -1389,7 +1394,7 @@
 													<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 												</td>
 												<td>{{item.bramch}}</td>
-												<td>{{item.jobnum}}</td>
+												<td>{{item.counselorid}}</td>
 												<td>{{item.counselorname}}</td>
 											</tr>
 										</tbody>
@@ -1464,10 +1469,10 @@
 																	<td style="width: 40px;">
 																		<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 																	</td>
-																	<td>{{item.cId}}</td>
-																	<td>{{item.reserved1}}</td>
-																	<td>{{item.cRefeprice}}</td>
-																	<td>{{item.dId}}</td>
+																	<td>{{item.vehicleid}}</td>
+																	<td>{{item.vehiclename}}</td>
+																	<td>{{item.referenceprice}}</td>
+																	<td>{{item.iod}}</td>
 																</tr>
 															</tbody>
 														</table>
@@ -1519,14 +1524,14 @@
 							<span id="img" class="glyphicon glyphicon-tint"></span>
 							<span data-toggle="modal" data-target="#aa" @click="opencustomerclassify()" id="font">保养</span>
 						</li>
-						<!--<li>
+						<li>
 							<span id="img" class="glyphicon glyphicon-share"></span>
 							<span @click="exportExcel()" id="font">导出</span>
 						</li>
 						<li>
 							<span id="img" class="glyphicon glyphicon-cog"></span>
 							<span id="font">字段设置</span>
-						</li>-->
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -1536,6 +1541,8 @@
 					<li @click="openaddcustomerandcar()" id="functionli">增加客户和车</li>
 					<li @click="opencustomerdata()" id="functionli">增加客户</li>
 					<li @click="opencustomerdata()" id="functionli">修改客户</li>
+					<li id="functionli">相关证照</li>
+					<li @click="openupdateword()" id="functionli">设置密码</li>
 				</ul>
 				<div @click="customerup()" id="functionupdiv">
 					<span id="trigon">▲</span>
@@ -1595,25 +1602,25 @@
 							</td>
 							<td>{{item.platename}}</td>
 							<td>{{item.pp}}</td>
-							<td>{{item.chexing}}</td>
+							<td>{{item.carseries}}</td>
 							<td>{{item.driver}}</td>
 							<td>{{item.driverphone}}</td>
-							<td>{{item.birthday}}</td>
-							<td>{{item.caraffiliationid}}</td>
+							<td>{{item.borndate}}</td>
+							<td>{{item.affiliation}}</td>
+							<td>{{item.drivinglicence}}</td>
 							<td>{{item.drivingouttime}}</td>
-							<td>{{item.framnum}}</td>
 							<td>{{item.enginenum}}</td>
 							<td>{{item.fdj}}</td>
-							<td>{{item.carnyear}}</td>
+							<td>{{item.yearprice}}</td>
 							<td>{{item.mileage}}</td>
-							<td>{{item.load}}</td>
-							<td>{{item.buytime}}</td>
-							<td>{{item.uptime}}</td>
-							<td>{{item.carouttime}}</td>
+							<td>{{item.deadweight}}</td>
+							<td>{{item.buydate}}</td>
+							<td>{{item.dutydate}}</td>
+							<td>{{item.carcheckdate}}</td>
 							<td>{{item.mlicompanyid}}</td>
 							<td>{{item.mliouttime}}</td>
 							<td>{{item.cicompanyid}}</td>
-							<td>{{item.ciouttime}}</td>
+							<td>{{item.carouttime}}</td>
 							<td v-if="item.insuredcar=='1'">投保车</td>
 							<td v-else>非投保车</td>
 							<td>{{item.oiltypeid}}</td>
@@ -1661,34 +1668,34 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr v-for="item in clientInformation">
 							<td style="width: 40px;">
-								<span v-if="clientInformation.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
+								<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
 							</td>
-							<td>{{clientInformation.customernum}}</td>
-							<td>{{clientInformation.customername}}</td>
-							<td>{{clientInformation.customeraddress}}</td>
-							<td>{{clientInformation.linkman}}</td>
-							<td>{{clientInformation.phone}}</td>
-							<td>{{clientInformation.birthday}}</td>
-							<td>{{clientInformation.leibie}}</td>
+							<td>{{item.customernum}}</td>
+							<td>{{item.customername}}</td>
+							<td>{{item.customeraddress}}</td>
+							<td>{{item.linkman}}</td>
+							<td>{{item.phone}}</td>
+							<td>{{item.birthday}}</td>
+							<td>{{item.leibie}}</td>
 
-							<td>{{clientInformation.remark}}</td>
-							<td>{{clientInformation.filing}}</td>
-							<td>{{clientInformation.fw}}</td>
-							<td>{{clientInformation.reserved4}}</td>
-							<td>{{clientInformation.paytime}}</td>
-							<td>{{clientInformation.payment}}</td>
-							<td>{{clientInformation.integral}}</td>
+							<td>{{item.remark}}</td>
+							<td>{{item.filing}}</td>
+							<td>{{item.fw}}</td>
+							<td>{{item.reserved4}}</td>
+							<td>{{item.paytime}}</td>
+							<td>{{item.payment}}</td>
+							<td>{{item.integral}}</td>
 
-							<td>{{clientInformation.reserved1}}</td>
-							<td>{{clientInformation.reserved2}}</td>
-							<td>{{clientInformation.reserved3}}</td>
-							<td>{{clientInformation.paytest}}</td>
-							<td>{{clientInformation.registerphone}}</td>
-							<td>{{clientInformation.desportbank}}</td>
-							<td>{{clientInformation.bankaccount}}</td>
-							<td>{{clientInformation.registeraddress}}</td>
+							<td>{{item.reserved1}}</td>
+							<td>{{item.reserved2}}</td>
+							<td>{{item.reserved3}}</td>
+							<td>{{item.paytest}}</td>
+							<td>{{item.registerphone}}</td>
+							<td>{{item.bank}}</td>
+							<td>{{item.banknumber}}</td>
+							<td>{{item.registeraddress}}</td>
 						</tr>
 
 					</tbody>
@@ -1703,21 +1710,21 @@
 							<td>进厂时间</td>
 							<td>完工时间</td>
 							<td>结算时间</td>
-							<td>消费时间</td>
+							<td>结算金额</td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr @click="updatecarinfocheck(item)" v-for="item in repairInfo">
-							<!--<td style="width: 40px;">
+							<td style="width: 40px;">
 								<span v-if="item.check==true" style="font-size: 8px;" class="glyphicon glyphicon-play"></span>
-							</td>-->
-							<!--<td>{{item.dType}}</td>
-							<td>{{item.no}}</td>
-							<td>{{item.chepaiNo}}</td>
-							<td>{{item.jctime}}</td>
-							<td>{{item.completionTime}}</td>
-							<td>{{item.jiesuanTime}}</td>
-							<td>{{item.amount}}</td>-->
+							</td>
+							<td>{{item.danju}}</td>
+							<td>{{item.xiaos}}</td>
+							<td>{{item.chepai}}</td>
+							<td>{{item.jincdate}}</td>
+							<td>{{item.wangongdate}}</td>
+							<td>{{item.jiesdate}}</td>
+							<td>{{item.jiesmone}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -1725,7 +1732,6 @@
 
 			<div><span>共<span>{{carInformation.length}}</span>条记录</span><span>第<span></span>页</span><span>共<span></span>页</span>
 			</div>
-
 			<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -1767,12 +1773,11 @@
 			</div>
 
 		</div>
-		
 		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="js/vue.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/map.js"></script>
-		<script type="text/javascript" src="js/data.js"></script>
+		<script type="text/javascript" src="js/map.js" ></script>
+		<script type="text/javascript" src="js/data.js" ></script>
 		<script>
 			//查询全部车辆信息
 			function selectAllCarInfo() {
@@ -1780,12 +1785,14 @@
 					url: data.ip+"/carheet/selectAllCarInfo",
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.carInformation = response;
 						console.log(vm.carInformation);
 						selectClientInformationByClientId();
-//						selectRepairByCarNumber();
+						selectRepairByCarNumber();
 					},
 					error: function(error) {
 						console.log(error);
@@ -1794,19 +1801,25 @@
 			}
 			//根据客户编号查询客户信息
 			function selectClientInformationByClientId() {
-				var customernum = 0;
+				var clientId = 0;
 				for(var i = 0; i < vm.carInformation.length; i++) {
 					if(vm.carInformation[i].check == true) {
-						customernum = vm.carInformation[i].customernum;
+						clientId = vm.carInformation[i].clientid;
 					}
 				}
 				$.ajax({
-					type:"post",
-					url:data.ip+"/customer/selectClientInformationByClientId/"+customernum,
+					url: data.ip+"/customer/selectClientInformationByClientId",
+					data: {
+						clientId: clientId
+					},
+					type: "post",
 					dataType: "json",
-					success:function(response){
-						vm.clientInformation=response;
-						console.log(vm.clientInformation);
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.clientInformation = response;
+
 					},
 					error: function(error) {
 						console.log(error);
@@ -1817,9 +1830,11 @@
 			function selectAllEngineBrand() {
 				$.ajax({
 					url: data.ip+"/engine/findall",
-					type: "get",
+					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.engineBrand = response;
 					},
@@ -1834,7 +1849,9 @@
 					url: data.ip+"/customer/selectClientInfo",
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.allClientInformation = response;
 
@@ -1854,7 +1871,9 @@
 					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.carBrand = response;
 						selectCarByCarBrandId();
@@ -1870,7 +1889,7 @@
 				var carbrandid = 0;
 				for(var i = 0; i < vm.carBrand.length; i++) {
 					if(vm.carBrand[i].check == true) {
-						carbrandid = vm.carBrand[i].carcoding;
+						carbrandid = vm.carBrand[i].id;
 						break;
 					}
 				}
@@ -1882,7 +1901,9 @@
 					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.car = response;
 					},
@@ -1891,12 +1912,15 @@
 					}
 				});
 			}
-			//查询所有车辆品牌
+			//查询所有品牌车型
 			function selectAllCarBrand() {
 				$.ajax({
-					url: data.ip+"/carbrand/find",
+					url: data.ip+"/carbrand/findAll",
 					type: "post",
 					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.carBrand = response;
 						selectCarByCarBrandId();
@@ -1911,7 +1935,7 @@
 				var carbrandid = 0;
 				for(var i = 0; i < vm.carBrand.length; i++) {
 					if(vm.carBrand[i].check == true) {
-						carbrandid = vm.carBrand[i].carcoding;
+						carbrandid = vm.carBrand[i].id;
 						break;
 					}
 				}
@@ -1919,11 +1943,13 @@
 				$.ajax({
 					url: data.ip+"/car/findById",
 					data: {
-						v: carbrandid
+						carbrandid: carbrandid
 					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.car = response;
 					},
@@ -1932,7 +1958,23 @@
 					}
 				});
 			}
-			
+			//查询所有发动机品牌
+			function selectAllEngineBrand() {
+				$.ajax({
+					url: data.ip+"/engine/findall",
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						vm.engineBrand = response;
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
+			}
 			//增加车辆资料
 			function insertCarInfo(carinfo) {
 				$.ajax({
@@ -1941,7 +1983,9 @@
 					type: "post",
 					dataType: "json",
 					contentType: "application/json;charset=utf-8",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						selectAllCarInfo();
 					},
@@ -1959,7 +2003,9 @@
 					type: "post",
 					dataType: "json",
 					contentType: "application/json;charset=utf-8",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						selectAllCarInfo();
 					},
@@ -1971,10 +2017,15 @@
 			//根据车牌号删除车辆资料
 			function deleteCarInfoByCarNumber(number) {
 				$.ajax({
-					url: data.ip+"/carheet/remove/"+number,
+					url: data.ip+"/carheet/delete",
+					data: {
+						number: number
+					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						selectAllCarInfo();
 					},
@@ -1986,14 +2037,18 @@
 			//根据车牌号查询车辆资料
 			function selectCarInfoByCarNumber(number) {
 				$.ajax({
-					url: data.ip+"/carheet/findId/"+number,
+					url: data.ip+"/carheet/findId",
+					data: {
+						number: number
+					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						console.log($("[name=insuredcar]").is(":checked"));
 						var bool = $("[name=insuredcar]").prop("checked");
-						console.log(bool);
 						if(bool == true) {
 							vm.carInformationModel.insuredcar = 1;
 						} else {
@@ -2001,20 +2056,27 @@
 						}
 						for(var i = 0; i < vm.allClientInformation.length; i++) {
 							if(vm.allClientInformation[i].check == true) {
-								vm.carInformationModel.customernum = vm.allClientInformation[i].customernum;
+								vm.carInformationModel.clientid = vm.allClientInformation[i].number;
 							}
 						}
-						vm.carInformationModel.caraffiliationid = $("[name=affiliation]").val();
+						vm.carInformationModel.affiliation = $("[name=affiliation]").val();
+						vm.carInformationModel.affiliation = $("[name=affiliation]").val();
 						vm.carInformationModel.engineid = $("[name=engine]").find(":checked").attr("engineid");
 						vm.carInformationModel.carbrandid = $("[name=carBrand]").attr("carbrandid");
-						vm.carInformationModel.reserved5 = $("[name=carType]").attr("carid");
-						vm.carInformationModel.mlicompanyid = $("[name=qbaoxian]").val();
-						vm.carInformationModel.cicompanyid = $("[name=sbaoxian]").val();
-						vm.carInformationModel.reserved5=vm.selectcar.cid;
+						vm.carInformationModel.carid = $("[name=carType]").attr("carid");
+						var bool = $("[name=insuredcar]").prop("checked");
+						console.log(bool);
+						if(bool == true) {
+							vm.carInformationModel.insuredcar = 1;
+						} else {
+							vm.carInformationModel.insuredcar = 2;
+						}
+						vm.carInformationModel.jqinsurance = $("[name=qbaoxian]").val();
+						vm.carInformationModel.syinsurance = $("[name=sbaoxian]").val();
 						var carinfo = JSON.stringify(vm.carInformationModel);
 						console.log(carinfo);
 
-						if(response=="1") {
+						if(response > 0) {
 							console.log(1);
 							updateCarInfo(carinfo);
 						} else {
@@ -2029,22 +2091,28 @@
 			}
 			//根据车牌号查询车辆指定资料
 			function queryCarInfoByCarNumber(number) {
-				console.log(number)
 				$.ajax({
-					url: data.ip+"/carheet/findId/"+number,
+					url: data.ip+"/carheet/findIds",
+					data: {
+						number: number
+					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.carInformationModel = response;
 						$("[name=carBrand]").attr("carbrandid", response.carbrandid);
-						$("[name=carType]").attr("carid", response.reserved5);
-						$("[name=carBrand]").val(vm.carInformationModel.fdj);
-						$("[name=carType]").val(vm.carInformationModel.chexing);
-						$("[name=customernumberandname]").val(vm.carInformationModel.customernum + vm.carInformationModel.reserved2);
-						$("[name=affiliation]").find("option[value=" + vm.carInformationModel.caraffiliationid + "]").prop("selected", true);
-						$("[name=qbaoxian]").find("option[value=" + vm.carInformationModel.mlicompanyid + "]").prop("selected", true);
-						$("[name=sbaoxian]").find("option[value=" + vm.carInformationModel.cicompanyid + "]").prop("selected", true);
+						$("[name=carType]").attr("carid", response.carid);
+						$("[name=carBrand]").val(vm.carInformationModel.carbrandname);
+						$("[name=carType]").val(vm.carInformationModel.cartypename);
+						$("[name=customernumberandname]").val(vm.carInformationModel.clientid + vm.carInformationModel.clientname);
+						$("[name=affiliation]").find("option[value=" + vm.carInformationModel.affiliation + "]").prop("selected", true);
+						$("[name=qbaoxian]").find("option[value=" + vm.carInformationModel.jqinsurance + "]").prop("selected", true);
+						$("[name=sbaoxian]").find("option[value=" + vm.carInformationModel.syinsurance + "]").prop("selected", true);
+						console.log($("[name=qbaoxian]").val());
+						console.log($("[name=sbaoxian]").val());
 						if(vm.carInformationModel.insuredcar == "1") {
 							$("[name=insuredcar]").prop("checked", "checked");
 						} else {
@@ -2059,10 +2127,12 @@
 			//查询所有客户类型
 			function selectAllClientType() {
 				$.ajax({
-					url: data.ip+"/customertype/findAll",
+					url: data.ip+"/customer/finds",
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.clientType = response;
 					},
@@ -2080,7 +2150,9 @@
 					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.staff = response;
 						console.log(vm.staff);
@@ -2096,7 +2168,9 @@
 					url: data.ip+"/counselor/findAll",
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						vm.department = response;
 					},
@@ -2116,7 +2190,9 @@
 					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						console.log(response);
 						vm.carInformation = response;
@@ -2128,40 +2204,40 @@
 			}
 			//根据车牌号查询历史维修记录
 			function selectRepairByCarNumber() {
-//				var number = 0;
-//				for(var i = 0; i < vm.carInformation.length; i++) {
-//					if(vm.carInformation[i].check == true) {
-//						number = vm.carInformation[i].carnum;
-//					}
-//				}
-//				$.ajax({
-//					url: data.ip+"/repairBill/findcarnum",
-//					data: {
-//						number: number
-//					},
-//					type: "post",
-//					dataType: "json",
-//					xhrFields: {
-//						withCredentials: true
-//					},
-//					success: function(response) {
-//						console.log(response);
-//						vm.repairInfo = response;
-//					},
-//					error: function(error) {
-//						console.log(error);
-//					}
-//				});
+				var number = 0;
+				for(var i = 0; i < vm.carInformation.length; i++) {
+					if(vm.carInformation[i].check == true) {
+						number = vm.carInformation[i].carnumber;
+					}
+				}
+				$.ajax({
+					url: data.ip+"/maintenances/selectRepairByCarNumber",
+					data: {
+						number: number
+					},
+					type: "post",
+					dataType: "json",
+					xhrFields: {
+						withCredentials: true
+					},
+					success: function(response) {
+						console.log(response);
+						vm.repairInfo = response;
+					},
+					error: function(error) {
+						console.log(error);
+					}
+				});
 			}
 			//根据条件查询客户信息
 			function selectCarInformationByCondition() {
 				vm.Client.reserved1 = $("[name=sheng]").val();
 				vm.Client.reserved2 = $("[name=shi]").val();
 				vm.Client.reserved3 = $("[name=qv]").val();
-				var enginename = $("[name=engineBrand]").find("option:checked").val();
+				var enginenum = $("[name=engineBrand]").find("option:checked").val();
 				for(var i = 0; i < vm.engineBrand.length; i++) {
-					if(vm.engineBrand[i].eName == enginename) {
-						vm.CarInfo.engineid = vm.engineBrand[i].eId;
+					if(vm.engineBrand[i].enginebrandname == enginename) {
+						vm.CarInfo.engineid = vm.engineBrand[i].id;
 						break;
 					}
 					if(i == vm.engineBrand.length - 1) {
@@ -2169,7 +2245,7 @@
 					}
 				}
 				vm.CarInfo.carbrandid = $("[name=carBrand]").attr("carbrandid");
-				vm.CarInfo.reserved5 = $("[name=carType]").attr("carid");
+				vm.CarInfo.platename = $("[name=carType]").attr("carid");
 				vm.CarInfo.mlicompanyid = $("[name=baoxian").val();
 				vm.coll.carInfo = vm.CarInfo;
 				vm.coll.client = vm.Client;
@@ -2177,12 +2253,14 @@
 				console.log(coll);
 
 				$.ajax({
-					url: data.ip+"/carheet/findX",
+					url: data.ip+"/carheet/selectCarInformationByCondition",
 					data: coll,
 					type: "post",
 					dataType: "json",
 					contentType: "application/json;charset=utf-8",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						console.log(response);
 						vm.carInformation = response;
@@ -2199,10 +2277,10 @@
 				vm.Client.reserved1 = $("[name=sheng]").val();
 				vm.Client.reserved2 = $("[name=shi]").val();
 				vm.Client.reserved3 = $("[name=qv]").val();
-				var enginename = $("[name=engineBrand]").find("option:checked").val();
+				var enginenum = $("[name=engineBrand]").find("option:checked").val();
 				for(var i = 0; i < vm.engineBrand.length; i++) {
-					if(vm.engineBrand[i].eName == enginename) {
-						vm.CarInfo.engineid = vm.engineBrand[i].eId;
+					if(vm.engineBrand[i].enginebrandname == enginename) {
+						vm.CarInfo.engineid = vm.engineBrand[i].id;
 						break;
 					}
 					if(i == vm.engineBrand.length - 1) {
@@ -2216,10 +2294,7 @@
 					vm.Client.reserved1 = "";
 					vm.Client.reserved2 = "";
 					vm.Client.reserved3 = "";
-					vm.CarInfo.driver = condition;
-					vm.CarInfo.check = true;
-				} else {
-					vm.CarInfo.check = false;
+					vm.CarInfo.carer = condition;
 				}
 				vm.coll.carInfo = vm.CarInfo;
 				vm.coll.client = vm.Client;
@@ -2244,7 +2319,7 @@
 				}
 				form.submit();
 				form.remove();
-				vm.CarInfo.driver = "";
+				vm.CarInfo.carer = "";
 				vm.CarInfo.check = "";
 			}
 			//根据车牌号查询保养计划
@@ -2252,17 +2327,21 @@
 				var number = 0;
 				for(var i = 0; i < vm.carInformation.length; i++) {
 					if(vm.carInformation[i].check == true) {
-						number = vm.carInformation[i].carnum;
+						number = vm.carInformation[i].carnumber;
 					}
 				}
 				console.log(number);
 				$("[name=carNumberSpan]").text(number);
 				$.ajax({
-					url: data.ip+"/upkeep/findById/"+number,
-					
+					url: data.ip+"/upkeep/selectMaintainregistInfoByCarNumber",
+					data: {
+						carNumber: number
+					},
 					type: "post",
 					dataType: "json",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						console.log(response);
 						vm.maintainregistInfo = response;
@@ -2277,11 +2356,11 @@
 				var number = 0;
 				for(var i = 0; i < vm.carInformation.length; i++) {
 					if(vm.carInformation[i].check == true) {
-						number = vm.carInformation[i].carnum;
+						number = vm.carInformation[i].carnumber;
 					}
 				}
 				console.log(number);
-				vm.baoyang.carnum=number;
+				vm.baoyang.otherone=number;
 				var main=JSON.stringify(vm.baoyang);
 				$.ajax({
 					url: data.ip+"/upkeep/insertBaoYang",
@@ -2289,7 +2368,9 @@
 					type: "post",
 					dataType: "json",
 					contentType: "application/json;charset=utf-8",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						console.log(response);
 						selectMaintainregistInfoByCarNumber();
@@ -2304,11 +2385,11 @@
 				var number = 0;
 				for(var i = 0; i < vm.carInformation.length; i++) {
 					if(vm.carInformation[i].check == true) {
-						number = vm.carInformation[i].carnum;
+						number = vm.carInformation[i].carnumber;
 					}
 				}
 				console.log(number);
-				vm.baoyang.carnum=number;
+				vm.baoyang.otherone=number;
 				var main=JSON.stringify(vm.baoyang);
 				$.ajax({
 					url: data.ip+"/upkeep/updateBaoYang",
@@ -2316,7 +2397,9 @@
 					type: "post",
 					dataType: "json",
 					contentType: "application/json;charset=utf-8",
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						console.log(response);
 						selectMaintainregistInfoByCarNumber();
@@ -2328,18 +2411,20 @@
 			}
 			//删除保养
 			function deleteBaoYang(){
-				var ids = 0;
+				var id = 0;
 				for(var i = 0; i < vm.carInformation.length; i++) {
 					if(vm.carInformation[i].check == true) {
-						ids = vm.carInformation[i].carnum;
+						id = vm.carInformation[i].id;
 					}
-				}	
-				console.log(vm.baoyang.upkeepid);
+				}					 
 				$.ajax({
-					url: data.ip+"/upkeep/deleteBaoYang/"+vm.baoyang.upkeepid,
+					url: data.ip+"/upkeep/deleteBaoYang",
+					data: {id:id},
 					type: "post",
 					dataType: "json",			 
-					
+					xhrFields: {
+						withCredentials: true
+					},
 					success: function(response) {
 						console.log(response);
 						selectMaintainregistInfoByCarNumber();
@@ -2353,7 +2438,6 @@
 				el: ".container-fluid",
 				data() {
 					return {
-						selectcar:{},
 						maintainregistInfo: {},
 						qwe: "1",
 						arr: arrAll,
@@ -2368,88 +2452,106 @@
 						clientType: [],
 						staff: {},
 						repairInfo: {
-							"dType": null,
-							"no": null,
-							"carnum": null,
-							"jctime": null,
-							"completionTime": null,
-							"jiesuanTime": null
+							"danju": "",
+							"xiaos": "",
+							"chepai": "",
+							"jincdate": "",
+							"wangongdate": "",
+							"jiesdate": ""
 						},
 						Client: {
-							"customernum": null,
-							"customername": null,
-							"linkman": null,
-							"phone": null,
-							"customeraddress": null,
-							"birthday": null,
-							"paytime": null,
-							"payment": null,
-							"counselorid": null,
-							"reserved4": null,
-							"reserved1": null,
-							"reserved2": null,
-							"reserved3": null,
-							"remark": null,
-							"paytest": null,
-							"registerphone": null,
-							"desportbank": null,
-							"bankaccount": null,
-							"registeraddress": null,
-							"fw": null
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
+							"linkman": "",
+							"phone": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
+							"remark": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
+							"registerphone": "",
+							"desportbank": "",
+							"bankaccount": "",
+							"registeraddress": "",
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 						},
 						CarInfo: {
-							"platename": null,
-							"carbrandid": null,
-							"reserved5": null,
-							"driver": null,
-							"driverphone": null,
-							"birthday": null,
-							"caraffiliationid": null,
-							"drivingouttime": null,
-							"framnum": null,
-							"enginenum": null,
-							"carnyear": null,
-							"mileage": null,
-							"engineid": null,
-							"load": null,
-							"buytime": null,
-							"uptime": null,
-							"carouttime": null,
-							"oiltypeid": null,
-							"carseries": null,
-							"mlicompanyid": null,
-							"mliouttime": null,
-							"cicompanyid": null,
-							"ciouttime": null,
-							"nextmileage": null,
-							"nextupkeeptime": null
+							"platename": "",
+							"carbrandid": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
+							"engineid": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
+							"carseries": "",
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 						},
 						carInformationModel: {
-							"customernum": null,
-							"customername": null,
-							"linkman": null,
-							"phone": null,
-							"customeraddress": null,
-							"birthday": null,
-							"paytime": null,
-							"payment": null,
-							"counselorid": null,
-							"reserved4": null,
-							"reserved1": null,
-							"reserved2": null,
-							"reserved3": null,
-							"remark": null,
-							"paytest": null,
-							"registerphone": null,
-							"desportbank": null,
-							"bankaccount": null,
-							"registeraddress": null,
-							"fw": null
+							"platename": "",
+							"carbrandid": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
+							"engineid": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
+							"carseries": "",
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 						},
-						baoyang:{"upkeepid":"","upkeepname":"","plantime":"","planmileage":"","facttime":"","factmileage":"","carnum":""},
+						baoyang:{"upkeepid":"","upkeepname":"","planmileage":"","plantime":"","facttime":"","factmileage":"","carnum":""},
 						allClientInformation: {},
-						carheet:{},
-						customerr:[],
 						car: [],
 						carBrand: [],
 						addcustomerinfo: {},
@@ -2470,8 +2572,8 @@
 								break;
 							}
 						}
-						if(this.addcustomerinfo.reserved2 && this.addcustomerinfo.reserved2.length > 0) {
-							this.city = this.addcustomerinfo.reserved2;
+						if(this.addcustomerinfo.reserved1 && this.addcustomerinfo.reserved1.length > 0) {
+							this.city = this.addcustomerinfo.reserved1;
 							return;
 						}
 						if(this.prov == "") {
@@ -2493,8 +2595,8 @@
 							return;
 						}
 						if(this.districtArr && this.districtArr.length > 0 && this.districtArr[1].name) {
-							if(this.addcustomerinfo.reserved3 && this.addcustomerinfo.reserved3.length > 0) {
-								this.district = this.addcustomerinfo.reserved3;
+							if(this.addcustomerinfo.qv && this.addcustomerinfo.qv.length > 0) {
+								this.district = this.addcustomerinfo.qv;
 								return;
 							}
 							this.district = this.districtArr[1].name;
@@ -2504,29 +2606,21 @@
 					},
 					//删除保养计划
 					deletebaoyang:function(){
-						var that=this;
 						if(confirm("确定删除吗？")==true){
-							for(var i=0;i<that.maintainregistInfo.length;i++){
-								if(that.maintainregistInfo[i].check==true){
-									that.baoyang.upkeepid=that.maintainregistInfo[i].upkeepid;
-								}
-							}
 							deleteBaoYang();
 						}
 					},
 					//修改保养点击事件
 					updatebaoyang:function(){
 						var that=this;
-						for(var i=0;i<that.maintainregistInfo.length;i++){
-							if(that.maintainregistInfo[i].check==true){
+						
 								that.baoyang.upkeepid=that.maintainregistInfo[i].upkeepid;
 								that.baoyang.upkeepname=that.maintainregistInfo[i].upkeepname;
 								that.baoyang.planmileage=that.maintainregistInfo[i].planmileage;
 								that.baoyang.factmileage=that.maintainregistInfo[i].factmileage;
 								that.baoyang.facttime=that.maintainregistInfo[i].facttime;
 								that.baoyang.plantime=that.maintainregistInfo[i].plantime;
-							}
-						}
+						
 					},
 					//保存保养编辑
 					savebaoyang:function(){
@@ -2548,53 +2642,64 @@
 					//根据条件查询车辆信息
 					queryCarInformationByCondition: function() {
 						this.Client = {
-							"customernum": null,
-							"customername": null,
-							"linkman": null,
-							"phone": null,
-							"customeraddress": null,
-							"birthday": null,
-							"paytime": null,
-							"payment": null,
-							"counselorid": null,
-							"reserved4": null,
-							"reserved1": null,
-							"reserved2": null,
-							"reserved3": null,
-							"remark": null,
-							"paytest": null,
-							"registerphone": null,
-							"desportbank": null,
-							"bankaccount": null,
-							"registeraddress": null,
-							"fw": null
+							"customernum": "",
+							"customername": "",
+							"customeraddress": "",
+							"linkman": "",
+							"phone": "",
+							"birthday": "",
+							"customertypeid": "",
+							"customernumber": "",
+							"jointime": "",
+							"outtime": "",
+							"remark": "",
+							"filing": "",
+							"counselorid": "",
+							"paytime": "",
+							"payment": "",
+							"integral": "",
+							"earnest": "",
+							"paytest": "",
+							"registerphone": "",
+							"desportbank": "",
+							"bankaccount": "",
+							"registeraddress": "",
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"reserved4": "",
+							"reserved5": ""
 							},
 							this.CarInfo = {
-							"platename": null,
-							"carbrandid": null,
-							"reserved5": null,
-							"driver": null,
-							"driverphone": null,
-							"birthday": null,
-							"caraffiliationid": null,
-							"drivingouttime": null,
-							"framnum": null,
-							"enginenum": null,
-							"carnyear": null,
-							"mileage": null,
-							"engineid": null,
-							"load": null,
-							"buytime": null,
-							"uptime": null,
-							"carouttime": null,
-							"oiltypeid": null,
-							"carseries": null,
-							"mlicompanyid": null,
-							"mliouttime": null,
-							"cicompanyid": null,
-							"ciouttime": null,
-							"nextmileage": null,
-							"nextupkeeptime": null
+							"platename": "",
+							"carbrandid": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
+							"engineid": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
+							"carseries": "",
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 							}
 						queryCarInformationByCondition();
 					},
@@ -2606,20 +2711,20 @@
 						}
 						item.check = true;
 						selectClientInformationByClientId();
-//						selectRepairByCarNumber();
+						selectRepairByCarNumber();
 					},
 					//选择客户
 					checkcustomer: function() {
 						for(var i = 0; i < vm.allClientInformation.length; i++) {
 							if(vm.allClientInformation[i].check == true) {
-								$("[name=customernumberandname]").val(vm.allClientInformation[i].customernum + vm.allClientInformation[i].customername);
+								$("[name=customernumberandname]").val(vm.allClientInformation[i].number + vm.allClientInformation[i].name);
 							}
 						}
 						$("#selectcustomer").removeClass("show");
 					},
 					//双击选择客户
 					doublecheckcustomer: function(item) {
-						$("[name=customernumberandname]").val(item.customernum + item.customername);
+						$("[name=customernumberandname]").val(item.number + item.name);
 						$("#selectcustomer").removeClass("show");
 					},
 					//切换选择客户信息
@@ -2648,31 +2753,35 @@
 					//打开新增车资料窗体
 					openinsertcarinfoedit: function() {
 						vm.carInformationModel = {
-							"platename": null,
-							"carbrandid": null,
-							"reserved5": null,
-							"driver": null,
-							"driverphone": null,
-							"birthday": null,
-							"caraffiliationid": null,
-							"drivingouttime": null,
-							"framnum": null,
-							"enginenum": null,
-							"carnyear": null,
-							"mileage": null,
-							"engineid": null,
-							"load": null,
-							"buytime": null,
-							"uptime": null,
-							"carouttime": null,
-							"oiltypeid": null,
-							"carseries": null,
-							"mlicompanyid": null,
-							"mliouttime": null,
-							"cicompanyid": null,
-							"ciouttime": null,
-							"nextmileage": null,
-							"nextupkeeptime": null
+							"platename": "",
+							"carbrandid": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"caraffiliationid": "",
+							"driveraddress": "",
+							"drivingouttime": "",
+							"framnum": "",
+							"enginenum": "",
+							"engineid": "",
+							"carnyear": "",
+							"mileage": "",
+							"load": "",
+							"carseries": "",
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"oiltypeid": "",
+							"mytoucar": "",
+							"customernum": "",
+							"membernum": "",
+							"nextmileage": "",
+							"nextupkeeptime": "",
+							"reserved1": ""
 						}
 						$("[name=carnumber]").removeAttr("readonly");
 						$("[name=customernumberandname]").val("");
@@ -2689,9 +2798,8 @@
 						var that = this;
 						for(var i = 0; i < that.carInformation.length; i++) {
 							if(that.carInformation[i].check == true) {
-								queryCarInfoByCarNumber(that.carInformation[i].platename);
+								queryCarInfoByCarNumber(that.carInformation[i].carnumber);
 								j = 1;
-								
 							}
 						}
 						if(j == 0) {
@@ -2705,7 +2813,7 @@
 						if(confirm("确定删除此车辆资料吗？") == true) {
 							for(var i = 0; i < vm.carInformation.length; i++) {
 								if(vm.carInformation[i].check == true) {
-									deleteCarInfoByCarNumber(vm.carInformation[i].carnum);
+									deleteCarInfoByCarNumber(vm.carInformation[i].carnumber);
 								}
 							}
 						}
@@ -2748,10 +2856,10 @@
 						var that = this;
 						for(var i = 0; i < that.staff.length; i++) {
 							if(that.staff[i].check == true) {
-								$("[name=staffname]").val(that.staff[i].counselorid + "  " + that.staff[i].counselorname);
-								vm.Client.reserved4 = that.staff[i].counselorphone;
-								vm.Client.counselorid = that.staff[i].counselorid;
-								vm.Client.fw = that.staff[i].counselorname;
+								$("[name=staffname]").val(that.staff[i].staffno + "  " + that.staff[i].name);
+								vm.Client.counselorphone = that.staff[i].counselorphone;
+								vm.Client.bramch = that.staff[i].bramch;
+								vm.Client.counselorname = that.staff[i].counselorname;
 								$("#selectemployee").removeClass("show");
 							}
 						}
@@ -2766,9 +2874,9 @@
 					},
 					//双击选择员工事件
 					staffcheck: function(item) {
-						vm.Client.reserved4 = item.counselorphone;
-						vm.Client.counselorid = item.counselorid;
-						vm.Client.fw = item.counselorname;
+						vm.Client.counselorphone = item.counselorphone;
+						vm.Client.bramch = item.bramch;
+						vm.Client.counselorname = item.counselorname;
 						$("#selectemployee").removeClass("show");
 					},
 					//切换选择的员工
@@ -2801,8 +2909,8 @@
 						}
 						for(var j = 0; j < that.car.length; j++) {
 							if(that.car[j].check == true) {
-								$("[name=carType]").val(that.car[j].reserved1);
-								$("[name=carType]").attr("carid", that.car[j].cId);
+								$("[name=carType]").val(that.car[j].cartypename);
+								$("[name=carType]").attr("carnum", that.car[j].id);
 							}
 						}
 						selectAllCarBrand();
@@ -2826,7 +2934,6 @@
 							that.car[i].check = false;
 						}
 						item.check = true;
-						this.selectcar=JSON.parse(JSON.stringify(item));
 					},
 					//根据条件查询车辆品牌
 					selectCarBrandByCondition: function() {
@@ -2863,7 +2970,7 @@
 						$("[name=tabletwo]").hide();
 						$("[name=tableone]").show();
 						selectClientInformationByClientId();
-//						selectRepairByCarNumber();
+						selectRepairByCarNumber();
 						$(".carinfo").addClass("color").siblings().removeClass("color");
 					},
 					//历史维修
@@ -2874,7 +2981,7 @@
 						//selectRepairByCarNumber();
 						$("[name=tableone]").hide();
 						$("[name=tabletwo]").show();
-//						selectRepairByCarNumber();
+						selectRepairByCarNumber();
 						$(".pastbuy").addClass("color").siblings().removeClass("color");
 					},
 					customerdown: function() {
@@ -2892,53 +2999,52 @@
 					//打开客户查询窗体
 					openstaffquery: function() {
 						vm.Client = {
-							"customernum": null,
-							"customername": null,
-							"linkman": null,
-							"phone": null,
-							"customeraddress": null,
-							"birthday": null,
-							"paytime": null,
-							"payment": null,
-							"counselorid": null,
-							"reserved4": null,
-							"reserved1": null,
-							"reserved2": null,
-							"reserved3": null,
-							"remark": null,
-							"paytest": null,
-							"registerphone": null,
-							"desportbank": null,
-							"bankaccount": null,
-							"registeraddress": null,
-							"fw": null
+							"customernum": "",
+							"customername": "",
+							"linkman": "",
+							"phone": "",
+							"customeraddress": "",
+							"birthday": "",
+							"paytime": "",
+							"payment": "",
+							"counselorid": "",
+							"reserved4": "",
+							"reserved1": "",
+							"reserved2": "",
+							"reserved3": "",
+							"remark": "",
+							"taxpayernumber": "",
+							"desportbank": "",
+							"bankaccount": "",
+							"registeraddress": "",
+							"reserved5": ""
 						};
 						vm.CarInfo = {
-							"platename": null,
-							"carbrandid": null,
-							"reserved5": null,
-							"driver": null,
-							"driverphone": null,
-							"birthday": null,
-							"caraffiliationid": null,
-							"drivingouttime": null,
-							"framnum": null,
-							"enginenum": null,
-							"carnyear": null,
-							"mileage": null,
-							"engineid": null,
-							"load": null,
-							"buytime": null,
-							"uptime": null,
-							"carouttime": null,
-							"oiltypeid": null,
-							"carseries": null,
-							"mlicompanyid": null,
-							"mliouttime": null,
-							"cicompanyid": null,
-							"ciouttime": null,
-							"nextmileage": null,
-							"nextupkeeptime": null
+							"platename": "",
+							"carbrandid": "",
+							"carnum": "",
+							"driver": "",
+							"driverphone": "",
+							"birthday": "",
+							"affiliation": "",
+							"caraffiliationid": "",
+							"framnum": "",
+							"enginenum": "",
+							"carnyear": "",
+							"mileage": "",
+							"engineid": "",
+							"load": "",
+							"buytime": "",
+							"uptime": "",
+							"carouttime": "",
+							"oiltypeid": "",
+							"carseries": "",
+							"cicompanyid": "",
+							"ciouttime": "",
+							"mlicompanyid": "",
+							"mliouttime": "",
+							"nextmileage": "",
+							"nextupkeeptime": ""
 						};
 						vm.prov = "";
 						vm.city = "";
@@ -2954,9 +3060,9 @@
 					},
 					//按条件查询客户资料
 					selectCarInformationByCondition: function() {
-						vm.Client.reserved1 = $("[name=sheng]").val();
-						vm.Client.reserved2 = $("[name=shi]").val();
-						vm.Client.reserved3 = $("[name=qv]").val();
+						vm.Client.sheng = $("[name=sheng]").val();
+						vm.Client.shi = $("[name=shi]").val();
+						vm.Client.qv = $("[name=qv]").val();
 						selectCarInformationByCondition();
 						$("#staffquery").removeClass("show");
 					}
@@ -2966,7 +3072,6 @@
 					//查询所有客户类型
 					selectAllClientType();
 					selectAllCarInfo();
-					
 					$("[name=tabletwo]").hide();
 					$("[name=tableone]").show();
 				},

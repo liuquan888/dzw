@@ -48,52 +48,23 @@ public class PrivilegeRoleController {
         qw.eq("rid",roleId);
         List<PrivilegeRole> list=privilegeRoleService.list(qw);
         List<DzwPrivilege> list2=new ArrayList();
-
-        QueryWrapper qq=new QueryWrapper<DzwPrivilege>();
-        Integer [] types={2};
-        qq.in("pvg_type",types);
-        List<DzwPrivilege> list3 =dzwPrivilegeService.list(qq);
-
-        List<Integer> list4=new ArrayList();
-
         for (PrivilegeRole pr:list){
             DzwPrivilege dzw = dzwPrivilegeService.getById(pr.getPid());
-
-            if(dzw.getPvgType()==3){
-                for (DzwPrivilege dp:list3) {
-                    if(dzw.getPid()==dp.getPvgid()){
-                        list4.add(dzw.getPid());
-                        list2.add(dzw);
-                    }
-                }
+            if(dzw.getPvgType()==2){
+                QueryWrapper qq=new QueryWrapper<DzwPrivilege>();
+                qq.eq("pvg_type",2);
+               List<DzwPrivilege> list3 =dzwPrivilegeService.list(qq);
+               for (DzwPrivilege dp:list3){
+                   if(dzw.getPid()==dp.getPvgid()){
+                       list2.add(dzw);
+                       System.out.println(dp.getPvgName()+"的子级"+dzw.getPvgName());
+                   }else{
+                       System.out.println(0);
+                       System.out.println(dp.getPvgName()+"*****/"+dzw.getPvgName());
+                   }
+               }
             }
-
         }
-
-//        List<Integer> list5=new ArrayList();
-//
-//        for (PrivilegeRole pr:list){
-//            DzwPrivilege dzw = dzwPrivilegeService.getById(pr.getPid());
-//            if(dzw.getPvgType()==2){
-//                for (Integer i : list4){
-//                    if(dzw.getPvgid()!=i){
-//                        list5.add(dzw.getPvgid());
-//                    }
-//                }
-//            }
-//        }
-//        List<Integer> list6=new ArrayList();
-//        for (PrivilegeRole pr:list){
-//            list6.add(pr.getPid());
-//        }
-//        QueryWrapper tiaoj=new QueryWrapper<DzwPrivilege>();
-//        tiaoj.in("pvgid",list6);
-//        tiaoj.notIn("pvgid",list5);
-//        tiaoj.eq("pvg_type",2);
-//        List<DzwPrivilege> list7=dzwPrivilegeService.list(tiaoj);
-//        for (DzwPrivilege data:list7){
-//            System.out.println(data.getPvgName());
-//        }
         return list2;
     }
 }

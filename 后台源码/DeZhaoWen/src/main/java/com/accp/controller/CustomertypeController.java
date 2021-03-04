@@ -4,8 +4,6 @@ package com.accp.controller;
 import com.accp.domain.Customertype;
 import com.accp.service.impl.CustomertypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -30,15 +28,15 @@ public class CustomertypeController {
         return service.list();
     }
     @RequestMapping("/insert")
-    public boolean insert(@RequestBody Customertype cus){
+    public boolean insert(Customertype cus){
         return service.save(cus);
     }
     @RequestMapping("/update")
-    public boolean update(@RequestBody Customertype cus){
+    public boolean update(Customertype cus){
         return service.updateById(cus);
     }
-    @RequestMapping("/delete/{id}")
-    public boolean delete(@PathVariable Integer id){
+    @RequestMapping("/delete")
+    public boolean delete(Integer id){
         return service.removeById(id);
     }
 }

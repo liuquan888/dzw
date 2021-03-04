@@ -8,20 +8,13 @@ import com.accp.service.impl.CustomerServiceImpl;
 import com.accp.service.impl.CustomertypeServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 /**
@@ -46,61 +39,46 @@ public class CustomerController {
 
     @Autowired
     CounselorServiceImpl counservice;
-    @RequestMapping("/findcus")
-    public List<Customer> findcus(){
-        List<Customer> list=Service.list();
-        if (list.size()>0){
-            for (Customer cus:list){
-                Customertype type=typeservice.getById(cus.getCustomertypeid());
-                if (type!=null){
-                    cus.setLeibie(type.getCustomertypeid());
-                }
-                Counselor con=counservice.getById(cus.getCounselorid());
-                if (con!=null){
-                    cus.setFw(con.getCounselorname());
-                }
-            }
-        }
-        return list;
-    }
+    //根据客户Id查询
+
     @RequestMapping("/findX")
-    public List<Customer> findX(@RequestBody Coll coll){
+    public List<Customer> findX(Coll coll){
         QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
         QueryWrapper<Carheet>queryWrapper1=new QueryWrapper<>();
         if (coll!=null){
             if (coll.getClient()!=null){
                 if (coll.getClient().getCustomernum()!=null){
-                    queryWrapper.eq("customernum",coll.getClient().getCustomernum()).or();
+                    queryWrapper.eq("customernum",coll.getClient().getCustomernum());
                 }
                 if (coll.getClient().getCustomername()!=null){
-                    queryWrapper.like("customername",coll.getClient().getCustomername()).or();
+                    queryWrapper.like("customername",coll.getClient().getCustomername());
                 }
                 if (coll.getClient().getCustomertypeid()!=null){
-                    queryWrapper.eq("customertypeid",coll.getClient().getCustomertypeid()).or();
+                    queryWrapper.eq("customertypeid",coll.getClient().getCustomertypeid());
                 }
                 if (coll.getClient().getLinkman()!=null){
-                    queryWrapper.like("linkman",coll.getClient().getLinkman()).or();
+                    queryWrapper.like("linkman",coll.getClient().getLinkman());
                 }
                 if (coll.getClient().getPhone()!=null){
-                    queryWrapper.like("phone",coll.getClient().getPhone()).or();
+                    queryWrapper.like("phone",coll.getClient().getPhone());
                 }
                 if (coll.getClient().getCustomeraddress()!=null){
-                    queryWrapper.like("customeraddress",coll.getClient().getCustomeraddress()).or();
+                    queryWrapper.like("customeraddress",coll.getClient().getCustomeraddress());
                 }
                 if (coll.getClient().getRemark()!=null){
-                    queryWrapper.like("remark",coll.getClient().getRemark()).or();
+                    queryWrapper.like("remark",coll.getClient().getRemark());
                 }
                 if (coll.getClient().getBirthday()!=null){
-                    queryWrapper.eq("birthady",coll.getClient().getBirthday()).or();
+                    queryWrapper.eq("birthady",coll.getClient().getBirthday());
                 }
                 if (coll.getClient().getCounselorid()!=null){
-                    queryWrapper.eq("counselorid",coll.getClient().getCounselorid()).or();
+                    queryWrapper.eq("counselorid",coll.getClient().getCounselorid());
                 }
                 if (coll.getClient().getReserved4()!=null){
-                    queryWrapper.eq("reserved4",coll.getClient().getReserved4()).or();
+                    queryWrapper.eq("reserved4",coll.getClient().getReserved4());
                 }
                 if (coll.getClient().getReserved1()!=null&&coll.getClient().getReserved2()!= null&&coll.getClient().getReserved3()!=null){
-                    queryWrapper.eq("reserved1",coll.getClient().getReserved1()).or();
+                    queryWrapper.eq("reserved1",coll.getClient().getReserved1());
                 }
             }
             if (coll.getCarInfo()!=null){
@@ -110,7 +88,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum()).or().or();
+                            queryWrapper.eq("customernum",car.getCustomernum());
                         }
                     }
                 }
@@ -119,7 +97,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0) {
                         for (Carheet car : list) {
-                            queryWrapper.eq("customernum",car.getCustomernum()).or();
+                            queryWrapper.eq("customernum",car.getCustomernum());
                         }
                     }
                 }
@@ -128,7 +106,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum()).or();
+                            queryWrapper.eq("customernum",car.getCustomernum());
                         }
                     }
                 }
@@ -137,7 +115,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
                     }
                 }
                 if (coll.getCarInfo().getEnginenum()!=null){
@@ -145,7 +123,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
                     }
                 }
                 if (coll.getCarInfo().getEngineid()!=null){
@@ -153,7 +131,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
                     }
                 }
                 if (coll.getCarInfo().getDriver()!=null){
@@ -161,7 +139,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
                     }
                 }
                 if (coll.getCarInfo().getDriverphone()!=null){
@@ -169,7 +147,7 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0) {
                         for (Carheet car : list) {
-                            queryWrapper.eq("customernum", car.getCustomernum()).or();
+                            queryWrapper.eq("customernum", car.getCustomernum());
                         }
                     }
                 }
@@ -178,298 +156,35 @@ public class CustomerController {
                     List<Carheet> list=carservice.list(queryWrapper1);
                     if (list.size()>0){
                         for (Carheet car:list){
-                            queryWrapper.eq("customernum",car.getCustomernum()).or();                    }
+                            queryWrapper.eq("customernum",car.getCustomernum());                    }
                     }
                 }
             }
         }
         List<Customer> list=Service.list(queryWrapper);
-
+        if (list.size()>0){
             for (Customer cus:list){
                 Customertype type=typeservice.getById(cus.getCustomertypeid());
-                if (type!=null){
-                    cus.setLeibie(type.getCustomertypeid());
-                }
+                cus.setLeibie(type.getCustomertypeid());
                 Counselor con=counservice.getById(cus.getCounselorid());
-                if (con!=null){
-                    cus.setFw(con.getCounselorname());
-                }
-            }
-        for(int i=0;i<list.size();i++) {
-            if(i==0) {
-                list.get(i).setCheck(true);
-            }else {
-                list.get(i).setCheck(false);
+                cus.setFw(con.getCounselorname());
             }
         }
-
         return list;
     }
-    @RequestMapping("/queryClientByNumber/{number}")
-    public String queryClientByNumber(@PathVariable Integer number){
-        QueryWrapper<Customer> queryWrappernew =new QueryWrapper<>();
-        if (number!=null){
-            queryWrappernew.eq("customernum",number);
-        }
-        List<Customer> list=Service.list(queryWrappernew);
-        if (list.size()>0){
-            return "1";
-        }else {
-            return "0";
-        }
-    }
-    //根据ID查询
-    @RequestMapping("/selectClientInformationByClientId/{customernum}")
-    public Customer selectClientInformationByClientId(@PathVariable String customernum){
+
+
+    @RequestMapping("/selectClientInformationByClientId")
+    public Customer selectClientInformationByClientId(String customernum){
         QueryWrapper<Customer> queryWrappernew =new QueryWrapper<>();
         if (customernum!=null){
             queryWrappernew.eq("customernum",customernum);
         }
-        List<Customer> list=Service.list(queryWrappernew);
-        for (Customer cus:list){
-            Customertype type=typeservice.getById(cus.getCustomertypeid());
-            if (type!=null){
-                cus.setLeibie(type.getCustomertypeid());
-            }
-            Counselor con=counservice.getById(cus.getCounselorid());
-            if (con!=null){
-                cus.setFw(con.getCounselorname());
-            }
-        }
-        for(int i=0;i<list.size();i++) {
-            if(i==0) {
-                list.get(i).setCheck(true);
-            }else {
-                list.get(i).setCheck(false);
-            }
-        }
-        System.out.println(list.size());
-        return list.get(0);
-    }
-    @RequestMapping("/downloadExcel")
-    public ResponseEntity<byte []> downloadExcel(Customer customer) throws IOException {
-        QueryWrapper<Customer> query=new QueryWrapper<>();
-        List<Customer> list=Service.list();
-        for (Customer customer1:list) {
-            if (customer1.getCustomertypeid()!=null){
-                Integer id=Integer.valueOf(customer1.getCustomertypeid());
-                System.out.print(id);
-                Customertype type=typeservice.getById(id);
-                customer1.setLeibie(type.getCustomertypeid());
-            }
-            if (customer1.getCounselorid()!=null) {
-                Integer yid=customer1.getCounselorid();
-                Counselor cou=counservice.getById(yid);
-                customer1.setFw(cou.getCounselorname());
-            }
-        }
-        Workbook book=new XSSFWorkbook();
-        Sheet sheet=book.createSheet();
-        Row rowTitle=sheet.createRow(0);
-        Cell customerNum=rowTitle.createCell(0);
-        Cell customerYname=rowTitle.createCell(1);
-        Cell customerAddress=rowTitle.createCell(2);
-        Cell customerLinkman=rowTitle.createCell(3);
-        Cell customerPhone=rowTitle.createCell(4);
-        Cell customerBirthday=rowTitle.createCell(5);
-        Cell customertype=rowTitle.createCell(6);
-        Cell customerNumber=rowTitle.createCell(7);
-        Cell customerJointime=rowTitle.createCell(8);
-        Cell customerOuttime=rowTitle.createCell(9);
-        Cell customerRemark=rowTitle.createCell(10);
-        Cell customerFiling=rowTitle.createCell(11);
-        Cell customerCounselor=rowTitle.createCell(12);
-        Cell customerYphonenumber=rowTitle.createCell(13);
-        Cell customerPaytime=rowTitle.createCell(14);
-        Cell customerPayment=rowTitle.createCell(15);
-        Cell customerIntegral=rowTitle.createCell(16);
-        Cell customerEarnest=rowTitle.createCell(17);
-        Cell customerProvince=rowTitle.createCell(18);
-        Cell customerCity=rowTitle.createCell(19);
-        Cell customerArea=rowTitle.createCell(20);
-        Cell customerPaytest=rowTitle.createCell(21);
-        Cell customerRegisterphone=rowTitle.createCell(22);
-        Cell customerDesportbank=rowTitle.createCell(23);
-        Cell customerBankaccount=rowTitle.createCell(24);
-        Cell customerRegisteraddress=rowTitle.createCell(25);
-        Cell customerOtherone=rowTitle.createCell(26);
-        Cell customerOthertwo=rowTitle.createCell(27);
-        Cell customerOtherthree=rowTitle.createCell(28);
-        Cell customerOtherfour=rowTitle.createCell(29);
-        customerNum.setCellValue("客户编码");
-        customerYname.setCellValue("客户名称");
-        customerAddress.setCellValue("详细地址");
-        customerLinkman.setCellValue("联系人");
-        customerPhone.setCellValue("手机");
-        customerBirthday.setCellValue("客户生日");
-        customertype.setCellValue("客户类别");
-        customerNumber.setCellValue("会员卡号");
-        customerJointime.setCellValue("入会日期");
-        customerOuttime.setCellValue("会员到期");
-        customerRemark.setCellValue("备注");
-        customerFiling.setCellValue("建档日期");
-        customerCounselor.setCellValue("服务顾问");
-        customerYphonenumber.setCellValue("业务员电话");
-        customerPaytime.setCellValue("账期");
-        customerPayment.setCellValue("挂账额度");
-        customerIntegral.setCellValue("累计积分");
-        customerEarnest.setCellValue("定金金额");
-        customerProvince.setCellValue("客户省");
-        customerCity.setCellValue("客户市");
-        customerArea.setCellValue("客户区");
-        customerPaytest.setCellValue("纳税人识别号");
-        customerRegisterphone.setCellValue("注册电话");
-        customerDesportbank.setCellValue("开户银行");
-        customerBankaccount.setCellValue("银行账号");
-        customerRegisteraddress.setCellValue("注册地址");
-        customerOtherone.setCellValue("其他一");
-        customerOthertwo.setCellValue("其他二");
-        customerOtherthree.setCellValue("其他三");
-        customerOtherfour.setCellValue("其他四");
-        if(list!=null){
-            for (int i=1;i<=list.size();i++){
-                Customer c=list.get(i-1);
-                Row rowValue=sheet.createRow(i);
-                Cell customerValue=rowValue.createCell(0);
-                Cell customerValueValue=rowValue.createCell(1);
-                Cell customerAddressValue=rowValue.createCell(2);
-                Cell customerLinkmanValue=rowValue.createCell(3);
-                Cell customerPhoneValue=rowValue.createCell(4);
-                Cell customerBirthdayValue=rowValue.createCell(5);
-                Cell customertypeValue=rowValue.createCell(6);
-                Cell customerNumberValue=rowValue.createCell(7);
-                Cell customerJointimeValue=rowValue.createCell(8);
-                Cell customerOuttimeValue=rowValue.createCell(9);
-                Cell customerRemarkValue=rowValue.createCell(10);
-                Cell customerFilingValue=rowValue.createCell(11);
-                Cell customerCounselorValue=rowValue.createCell(12);
-                Cell customerYphonenumberValue=rowValue.createCell(13);
-                Cell customerPaytimeValue=rowValue.createCell(14);
-                Cell customerPaymentValue=rowValue.createCell(15);
-                Cell customerIntegralValue=rowValue.createCell(16);
-                Cell customerEarnestValue=rowValue.createCell(17);
-                Cell customerProvinceValue=rowValue.createCell(18);
-                Cell customerCityValue=rowValue.createCell(19);
-                Cell customerAreaValue=rowValue.createCell(20);
-                Cell customerPaytestValue=rowValue.createCell(21);
-                Cell customerRegisterphoneValue=rowValue.createCell(22);
-                Cell customerDesportbankValue=rowValue.createCell(23);
-                Cell customerBankaccountValue=rowValue.createCell(24);
-                Cell customerRegisteraddressValue=rowValue.createCell(25);
-                Cell customerOtheroneValue=rowValue.createCell(26);
-                Cell customerOthertwoValue=rowValue.createCell(27);
-                Cell customerOtherthreeValue=rowValue.createCell(28);
-                Cell customerOtherfourValue=rowValue.createCell(29);
-                customerValue.setCellValue(c.getCustomernum());
-                customerProvinceValue.setCellValue(c.getReserved1());
-                customerCityValue.setCellValue(c.getReserved2());
-                customerAreaValue.setCellValue(c.getReserved3());
-                customerValueValue.setCellValue(c.getCustomername());
-                customerAddressValue.setCellValue(c.getCustomeraddress());
-                customerLinkmanValue.setCellValue(c.getLinkman());
-                customerPhoneValue.setCellValue(c.getPhone());
-                customerBirthdayValue.setCellValue(c.getBirthday());
-                if(c.getLeibie()!=null){
-                    customertypeValue.setCellValue(c.getLeibie());
-                }else{
-                    customertypeValue.setCellValue("");
-                }
-                customerNumberValue.setCellValue(c.getCustomernumber());
-                customerJointimeValue.setCellValue(c.getJointime());
-                customerOuttimeValue.setCellValue(c.getOuttime());
-                customerRemarkValue.setCellValue(c.getRemark());
-                customerFilingValue.setCellValue(c.getFiling());
-                if(c.getFw()!=null){
-                    customerCounselorValue.setCellValue(c.getFw());
-                }else{
-                    customerCounselorValue.setCellValue("");
-                }
-                if(c.getFw()!=null){
-                    customerYphonenumberValue.setCellValue(c.getReserved4());
-                }else{
-                    customerYphonenumberValue.setCellValue("");
-                }
-                if(c.getPaytime()!=null){
-                    customerPaytimeValue.setCellValue(c.getPaytime());
-                }else{
-                    customerPaytimeValue.setCellValue("");
-                }
-                if(c.getPayment()!=null){
-                    customerPaymentValue.setCellValue(c.getPayment());
-                }else{
-                    customerPaymentValue.setCellValue("");
-                }
-                if(c.getIntegral()!=null){
-                    customerIntegralValue.setCellValue(c.getIntegral());
-                }else{
-                    customerIntegralValue.setCellValue("");
-                }
-                if(c.getEarnest()!=null){
-                    customerEarnestValue.setCellValue(c.getEarnest());
-                }else{
-                    customerEarnestValue.setCellValue("");
-                }
-                customerProvinceValue.setCellValue("省");
-                customerCityValue.setCellValue("市");
-                customerAreaValue.setCellValue("区");
-                if(c.getPaytest()!=null){
-                    customerPaytestValue.setCellValue(c.getPaytest());
-                }else{
-                    customerPaytestValue.setCellValue("");
-                }
-                if(c.getRegisterphone()!=null){
-                    customerRegisterphoneValue.setCellValue(c.getRegisterphone());
-                }else{
-                    customerRegisterphoneValue.setCellValue("");
-                }
-                if(c.getDesportbank()!=null){
-                    customerDesportbankValue.setCellValue(c.getDesportbank());
-                }else{
-                    customerDesportbankValue.setCellValue("");
-                }
-                if(c.getBankaccount()!=null){
-                    customerBankaccountValue.setCellValue(c.getBankaccount());
-                }else{
-                    customerBankaccountValue.setCellValue("");
-                }
-                if(c.getRegisteraddress()!=null){
-                    customerRegisteraddressValue.setCellValue(c.getRegisteraddress());
-                }else{
-                    customerRegisteraddressValue.setCellValue("");
-                }
-                if(c.getOtherone()!=null){
-                    customerOtheroneValue.setCellValue(c.getOtherone());
-                }else{
-                    customerOtheroneValue.setCellValue("");
-                }
-                if(c.getOthertwo()!=null){
-                    customerOthertwoValue.setCellValue(c.getOthertwo());
-                }else{
-                    customerOthertwoValue.setCellValue("");
-                }
-                if(c.getOtherthree()!=null){
-                    customerOtherthreeValue.setCellValue(c.getOtherthree());
-                }else{
-                    customerOtherthreeValue.setCellValue("");
-                }
-                if(c.getOtherfour()!=null){
-                    customerOtherfourValue.setCellValue(c.getOtherfour());
-                }else{
-                    customerOtherfourValue.setCellValue("");
-                }
-            }
-        }
-        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
-        book.write(byteArrayOutputStream);
-        HttpHeaders headers=new HttpHeaders();
-        //设置响应内容为文件流模式
-        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        String fileName=new String("顾客导出数据".getBytes("utf-8"),"iso-8859-1");
-        headers.setContentDispositionFormData("attachment",fileName);
-        return new ResponseEntity(byteArrayOutputStream.toByteArray(),headers, HttpStatus.OK);
+        Customer list=Service.list(queryWrappernew).get(0);
+        return list;
     }
     @RequestMapping("/findss")
-    public Customer findss(Integer customernum){
+    public Customer findss(String customernum){
         QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
         if (customernum!=null){
             queryWrapper.eq("customernum",customernum);
@@ -488,29 +203,10 @@ public class CustomerController {
     @RequestMapping("/selectClientInfo")
     public List<Customer> selectClientInfo(){
         List<Customer> list=Service.list();
-        if (list.size()>0){
-            for (Customer cus:list){
-                Customertype type=typeservice.getById(cus.getCustomertypeid());
-                if (type!=null){
-                    cus.setLeibie(type.getCustomertypeid());
-                }
-                Counselor con=counservice.getById(cus.getCounselorid());
-                if (con!=null){
-                    cus.setFw(con.getCounselorname());
-                }
-            }
-            for(int i=0;i<list.size();i++) {
-                if(i==0) {
-                    list.get(i).setCheck(true);
-                }else {
-                    list.get(i).setCheck(false);
-                }
-            }
-        }
         return list;
     }
     @RequestMapping("/insertCustomerAndCarheet")
-    public boolean insertCustomerAndCarheet(@RequestBody Coll coll){
+    public boolean insertCustomerAndCarheet(Coll coll){
         boolean bo=Service.save(coll.getClient());
         if (bo){
             return carservice.save(coll.getCarInfo());
@@ -691,8 +387,11 @@ public class CustomerController {
         return Service.list(queryWrapper).get(0);
     }
     @RequestMapping("/insert")
-    public boolean insert(@RequestBody Customer cus){
+    public boolean insert(Customer cus){
         boolean bool=Service.save(cus);
+        if (cus.getCar()!=null&&bool){
+            carservice.save(cus.getCar());
+        }
         return bool;
     }
     @RequestMapping("/finds")
@@ -700,15 +399,14 @@ public class CustomerController {
         return Service.list();
     }
     @RequestMapping("/update")
-    public boolean update(@RequestBody Customer cus){
+    public boolean update(Customer cus){
         QueryWrapper<Customer> queryWrapper=new QueryWrapper<>();
-        System.out.printf(cus.getCustomernum());
         if (cus!=null){
             if (cus.getCustomernum()!=null){
                 queryWrapper.eq("customernum",cus.getCustomernum());
             }
         }
-        return Service.update(cus,queryWrapper);
+        return Service.update(queryWrapper);
     }
     @RequestMapping("/findById/{id}")
     public Customer findById(@PathVariable String id){

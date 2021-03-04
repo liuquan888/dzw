@@ -179,12 +179,9 @@ public class MaintenanceController {
         }
     }
 
-    @PostMapping("/maindim/{maindimtext}")
-    public List<Maintenance> maindim(@PathVariable String maindimtext,@RequestBody List<Integer> params){
+    @PostMapping("/maindim/{maindimtexttemp}")
+    public List<Maintenance> maindim(@PathVariable String maindimtexttemp,@RequestBody List<Integer> params){
         try {
-            if(maindimtext.equals("975e65r45a4454a4d52s8a452d57")){
-                return findmain(null);
-            }
 
             List<Maintenance> list=null;
             QueryWrapper<Maintenance> mainqw=new QueryWrapper<Maintenance>();
@@ -193,11 +190,14 @@ public class MaintenanceController {
                 mainqw.lambda().in(Maintenance::getSerId,params);
             }
 
-            mainqw.and(wrapper -> wrapper
-                    .eq("m_id", maindimtext)
-                    .or()
-                    .like("m_name",maindimtext)
-            );
+            if(!maindimtexttemp.equals("975e65r45a4454a4d52s8a452d57")){
+                mainqw.and(wrapper -> wrapper
+                        .eq("m_id",maindimtexttemp)
+                        .or()
+                        .like("m_name",maindimtexttemp)
+                );
+            }
+
             list=maintenanceService.list(mainqw);
             for(Maintenance maintenance:list){
                 QueryWrapper serqw=new QueryWrapper<Service>();

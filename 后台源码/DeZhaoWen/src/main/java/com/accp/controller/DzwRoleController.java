@@ -2,12 +2,9 @@ package com.accp.controller;
 
 
 import com.accp.domain.DzwRole;
-import com.accp.domain.DzwUser;
 import com.accp.domain.PrivilegeRole;
-import com.accp.domain.RoleUser;
 import com.accp.service.impl.DzwRoleServiceImpl;
 import com.accp.service.impl.PrivilegeRoleServiceImpl;
-import com.accp.service.impl.RoleUserServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,10 +28,6 @@ public class DzwRoleController {
     @Autowired
     PrivilegeRoleServiceImpl privilegeRoleService;
 
-    @Autowired
-    RoleUserServiceImpl roleuser;
-
-
     @RequestMapping("/find")
     public List<DzwRole> find(){
         return role.list();
@@ -51,34 +44,7 @@ public class DzwRoleController {
             privilegeRole.setRid(roleId);
             privilegeRoleService.save(privilegeRole);
         }
-        return "0000";
-    }
-
-    @PostMapping("address")
-    public String address(@RequestBody DzwRole dzwrole){
-        boolean bool=role.save(dzwrole);
-        return bool?"0000":"1111";
-    }
-
-    @RequestMapping("/remove")
-    public String remove( Integer roleId){
-        QueryWrapper<DzwRole> dzwrole=new QueryWrapper<>();
-        QueryWrapper<RoleUser> roleUserQueryWrapper=new QueryWrapper<>();
-        QueryWrapper<PrivilegeRole> privilegeRoleQueryWrapper=new QueryWrapper<>();
-        privilegeRoleQueryWrapper.lambda().eq(PrivilegeRole::getRid,roleId);
-        privilegeRoleService.remove(privilegeRoleQueryWrapper);
-        roleUserQueryWrapper.lambda().eq(RoleUser::getRid,roleId);
-        roleuser.remove(roleUserQueryWrapper);
-        dzwrole.lambda().eq(DzwRole::getRoleId,roleId);
-        boolean bool= role.remove(dzwrole);
-        return bool?"0000":"1111";
-    }
-
-    @RequestMapping("update")
-    public boolean update(DzwRole dzwRole){
-//        QueryWrapper<DzwRole> queryWrapper = new QueryWrapper<>();
-//        queryWrapper.eq("role_id",dzwRole.getRoleId());
-        return role.updateById(dzwRole);
+        return "授权成功";
     }
 }
 

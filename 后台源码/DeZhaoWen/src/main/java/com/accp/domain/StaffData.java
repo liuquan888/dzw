@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * <p>
@@ -302,64 +301,4 @@ public class StaffData extends Model<StaffData> {
         return this.yid;
     }
 
-    public StaffData(){
-        return;
-    }
-
-    public StaffData(Integer yid, String yname, String ysex, String yposition, String yhealth, String yloginemp, Integer yheigth, Integer ynativplaceid, Integer ynationid, Integer ymarriageid, Integer yeducationid, Integer yschoolid, Integer yspecialtyid, Integer yspecialtynid, String yattribute, Integer ycollegeid, Integer yorganizationid, String ynumber, String yaddressh, String yaddressx, String yphonenumber, String yphone, String email, Integer ybankid, String ybankphone, String yjname, String yjphone, String ystarttime, String yendtime, String ydatetime, String ystarttimeh, String yendtimeh, String ytname, Float yratez, Float yrateg, Float yrates, Float yratej, Float ygong, Float yjiao, String yhome, String yjiang, String yping, Integer gid, Integer bid, String reserved1, String reserved2, String reserved3, String reserved4, String reserved5, String reserved6, String reserved7, String reserved8, String reserved9) {
-        this.yid = yid;
-        this.yname = yname;
-        this.ysex = ysex;
-        this.yposition = yposition;
-        this.yhealth = yhealth;
-        this.yloginemp = yloginemp;
-        this.yheigth = yheigth;
-        this.ynativplaceid = ynativplaceid;
-        this.ynationid = ynationid;
-        this.ymarriageid = ymarriageid;
-        this.yeducationid = yeducationid;
-        this.yschoolid = yschoolid;
-        this.yspecialtyid = yspecialtyid;
-        this.yspecialtynid = yspecialtynid;
-        this.yattribute = yattribute;
-        this.ycollegeid = ycollegeid;
-        this.yorganizationid = yorganizationid;
-        this.ynumber = ynumber;
-        this.yaddressh = yaddressh;
-        this.yaddressx = yaddressx;
-        this.yphonenumber = yphonenumber;
-        this.yphone = yphone;
-        this.email = email;
-        this.ybankid = ybankid;
-        this.ybankphone = ybankphone;
-        this.yjname = yjname;
-        this.yjphone = yjphone;
-        this.ystarttime = ystarttime;
-        this.yendtime = yendtime;
-        this.ydatetime = ydatetime;
-        this.ystarttimeh = ystarttimeh;
-        this.yendtimeh = yendtimeh;
-        this.ytname = ytname;
-        this.yratez = yratez;
-        this.yrateg = yrateg;
-        this.yrates = yrates;
-        this.yratej = yratej;
-        this.ygong = ygong;
-        this.yjiao = yjiao;
-        this.yhome = yhome;
-        this.yjiang = yjiang;
-        this.yping = yping;
-        this.gid = gid;
-        this.bid = bid;
-        this.reserved1 = reserved1;
-        this.reserved2 = reserved2;
-        this.reserved3 = reserved3;
-        this.reserved4 = reserved4;
-        this.reserved5 = reserved5;
-        this.bu = bu;
-        this.reserved6 = reserved6;
-        this.reserved7 = reserved7;
-        this.reserved8 = reserved8;
-        this.reserved9 = reserved9;
-    }
 }

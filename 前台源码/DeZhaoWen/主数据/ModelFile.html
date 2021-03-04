@@ -143,24 +143,24 @@
 					<div class="row" style="margin-left: 20px;">
 						<div class="col-sm-5" >
 							<div>
-								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addbrandmo">增加品牌</a> 
-								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatebrandmo">修改</a> 
-								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="removebrand">删除</a> 
+								<span v-perms="'modelfile:brand:add'"><img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addbrandmo">增加品牌</a></span>
+								<span v-perms="'modelfile:brand:update'"><img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatebrandmo">修改</a></span>
+								<span v-perms="'modelfile:brand:remove'"><img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="removebrand">删除</a></span>
 								
 								<br /><br />
 								<input type="text" placeholder="匹配 品牌编码/品牌名称/首字母" style="height: 30px;" v-model="branddimtext"/>
-								<span><button class="btn btn-warning btn-sm" id="branddimbutton" @click="branddim" >搜索</button></span>
+								<span v-perms="'modelfile:brand:seek'"><button class="btn btn-warning btn-sm" id="branddimbutton" @click="branddim" >搜索</button></span>
 							</div>
 						</div>
 						<div class="col-sm-5" >
 							<div>
-								<img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a> 
-								<img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a> 
-								<img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="carremove">删除</a> 
+								<span v-perms="'modelfile:car:add'"><img src="../img/1.png" width="3%"><a href="javascript:void(0)" @click="addcarmo">增加车型</a></span>
+								<span v-perms="'modelfile:car:update'"><img src="../img/2.png" width="3%"><a href="javascript:void(0)" @click="updatecarmo">修改</a></span>
+								<span v-perms="'modelfile:car:remove'"><img src="../img/3.png" width="3%"><a href="javascript:void(0)" @click="carremove">删除</a></span>
 								<!-- <img src="img/111.PNG" width="3%"><a href="javascript:void(0)" @click="carimagemo">照片</a> -->
 								<br /><br />
 								<input type="text" placeholder="匹配 车型编码/车型名称" style="height: 30px;"  v-model="cardimtext"/>
-								<span><button class="btn btn-warning btn-sm" id="cardimbutton" @click="cardim">搜索</button></span>
+								<span v-perms="'modelfile:car:seek'"><button class="btn btn-warning btn-sm" id="cardimbutton" @click="cardim">搜索</button></span>
 							</div>
 						</div>
 					</div>
@@ -187,8 +187,8 @@
 					</div>
 				</div>
 				<br /><br />
-				<div style="margin-left: 400px;margin-top: -460px; border: 0px solid #000000;background: #ffffff;height: 80%;">
-					<table class="table table-bordered table-striped" id="cartable">
+				<div style="margin-left: 400px;margin-top: -460px; border: 0px solid #000000;background: #ffffff;height: 70%;">
+					<table class="table table-bordered table-striped" id="cartable" style="overflow: auto;">
 						<tr style="background: #39cede;">
 							<td style="border: 1px solid #666; color: #FFFFFF;"></td>
 							<td style="border: 1px solid #666; color: #FFFFFF;">车型ID</td>
@@ -319,7 +319,7 @@
 								</p>
 								<p>
 									
-									<span class="must">*</span>
+									<span class="must"></span>
 									<span class="va">进口国产</span>
 									<select style="width: 120px;height: 30px;" v-model="car.dId">
 										<option v-for="item in made" :value="item.did">{{item.dname}}</option>
@@ -346,14 +346,14 @@
 									<input type="text" name="" id="" value="" v-model="car.cLoad"/>
 								</p>
 								<p>
-									<span class="must">*</span>
+									<span class="must"></span>
 									<span class="va">索赔厂商</span>
 									<select style="width: 150px;height: 30px;" v-model="car.pId">
 										<option v-for="item in claim" :value="item.pId">{{item.pName}}</option>
 									</select>
 								</p>
 								<p>
-									<span class="must">*</span>
+									<span class="must"></span>
 									<span class="va">发动机品牌</span>
 									<select style="width: 327px;height: 30px;" v-model="car.eId">
 										<option v-for="item in engine" :value="item.eid">{{item.ename}}</option>
@@ -374,7 +374,7 @@
 							</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary butt1" @click="addcar">保存</button>
+				        <button type="button" class="btn btn-primary" @click="addcar">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -411,7 +411,7 @@
 				        		</p>
 				        		<p>
 				        			
-				        			<span class="must">*</span>
+				        			<span class="must"></span>
 				        			<span class="va">进口国产</span>
 				        			<select style="width: 120px;height: 30px;" v-model="car.dId">
 				        				<option v-for="item in made" :value="item.did">{{item.dname}}</option>
@@ -438,14 +438,14 @@
 				        			<input type="text" name="" id="" value="" v-model="car.cLoad"/>
 				        		</p>
 				        		<p>
-				        			<span class="must">*</span>
+				        			<span class="must"></span>
 				        			<span class="va">索赔厂商</span>
 				        			<select style="width: 150px;height: 30px;" v-model="car.pId">
 				        				<option v-for="item in claim" :value="item.pId">{{item.pName}}</option>
 				        			</select>
 				        		</p>
 				        		<p>
-				        			<span class="must">*</span>
+				        			<span class="must"></span>
 				        			<span class="va">发动机品牌</span>
 				        			<select style="width: 327px;height: 30px;" v-model="car.eId">
 				        				<option v-for="item in engine" :value="item.eid">{{item.ename}}</option>
@@ -466,7 +466,7 @@
 				        	</div>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary butt1" @click="updatecar">保存</button>
+				        <button type="button" class="btn btn-primary" @click="updatecar">保存</button>
 				      </div>
 				    </div>
 				  </div>
@@ -517,6 +517,7 @@
 <script src="../js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/vue.js"></script>		
+<script src="../js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
 <script>
 	
 	var BaseUrl="http://127.0.0.1:8080/";
@@ -610,6 +611,10 @@
 			},
 			//添加品牌
 			addbrand(){
+// 				if(!this.brand.bId||!this.brand.bName||!this.brand.bInital){
+// 					alert("品牌编码与品牌名称，品牌首字母必须填写！")
+// 					return
+// 				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"brand/addbrand",
@@ -632,6 +637,10 @@
 			
 			//删除品牌
 			removebrand(){
+				if(this.list.length==0){
+					alert("很抱歉，你暂未选择品牌！")
+					return
+				}
 				var hint=confirm("确认删除此品牌吗？删除此品牌会将该品牌下所有车系删除！")
 				if(hint){
 					let that=this;
@@ -646,6 +655,10 @@
 			
 			//打开修改模态框
 			updatebrandmo(){
+// 				if(this.list.length==0){
+// 					alert("很抱歉，你暂未选择品牌！")
+// 					return
+// 				}
 				//解除双向绑定
 				let formdata= JSON.parse(JSON.stringify(this.brandapplocation))
 				this.brand={};
@@ -669,6 +682,7 @@
 						that.brandapplocation.bname=that.brand.bName;
 						that.brandapplocation.binital=that.brand.bInital;
 						that.findallpin();
+						
 					},error:function(errpr){
 						console.log(errpr)
 					}
@@ -711,6 +725,10 @@
 			
 			//删除车型
 			carremove(){
+				if(this.carlist.length==0){
+					alert("很抱歉，你暂未选择车型！")
+					return
+				}
 				var hint=confirm("确认删除此车型吗？删除后不可恢复！")
 				if(hint){
 					let that=this;
@@ -781,6 +799,10 @@
 			},
 
 			addcar(){
+				if(!this.car.reserved1||!this.car.cCoder){
+					alert("车型编码与车型名称必须填写！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"brand/addcar",
@@ -800,11 +822,21 @@
 						$("#addcarmodal").modal("hide");
 						that.findbyidcar(that.brandapplocation.bid);
 						that.car={};
+						
+						var tr=document.getElementsByClassName("pintr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
 						//that.findbyidcar();
 					}
 				})
 			},
 			updatecarmo(){
+				if(this.carlist.length==0){
+					alert("很抱歉，你暂未选择车型！")
+					return
+				}
 				//解除双向绑定
 				let formdata= JSON.parse(JSON.stringify(this.carapplocation));
  				this.car={};
@@ -824,6 +856,10 @@
 			},
 			
 			updatecar(){
+				if(!this.car.reserved1||!this.car.cCoder){
+					alert("车型编码与车型名称必须填写！")
+					return
+				}
 				let that=this;
 				$.ajax({
 					url:BaseUrl+"brand/updatecar",
@@ -839,6 +875,11 @@
 						}
 						$("#updatecarmodal").modal("hide");
 						that.findbyidcar(that.brandapplocation.bid);
+						var tr=document.getElementsByClassName("pintr2");
+						for(var i=0;i<tr.length;i++){
+							tr[i].style.background='none';
+						}
+						tr[0].style.background='sandybrown';
 					}
 				})
 			},
