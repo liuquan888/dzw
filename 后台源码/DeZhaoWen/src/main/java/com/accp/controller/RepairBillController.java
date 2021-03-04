@@ -82,6 +82,9 @@ public class RepairBillController {
     @Autowired
     FactoryServiceImpl fser;
 
+    @Autowired
+    CustomerServiceImpl cuser;
+
     @RequestMapping("/find")
     @ResponseBody
     public List<RepairBill> find(String chejiaoNo,Integer[] ids, Integer documentsType, Integer balanceState, String date1, String date2, String no, Integer jsType, String chepaiNo, String name, Integer ywType, String remark, String jiesuanRen, Integer documentsState){
@@ -176,6 +179,27 @@ public class RepairBillController {
         bill.setAmount(sum);
         service.updateById(bill);
         return 1;
+    }
+
+    @RequestMapping("/givemoney2")
+    public String givemoney2(String no,Double sum,Integer customerId){
+        RepairBill bill=new RepairBill();
+        bill.setNo(no);
+        bill.setDocumentsState(1);
+        bill.setAmount(sum);
+        if(customerId==null){
+            return "0002";
+        }
+        Customer customer=cuser.getById(customerId);
+        if(customer.getVipprice()<sum){
+            return "0001";
+        }else{
+            customer.setVipprice(customer.getVipprice()-sum.floatValue());
+            cuser.updateById(customer);
+            service.updateById(bill);
+            return "0000";
+        }
+
     }
     @RequestMapping("/findByCustomer/{qwe}")
     public List<RepairBill> findByCustomer(@PathVariable String qwe){
