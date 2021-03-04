@@ -13,11 +13,13 @@
 				<tr>
 					<td>编号</td>
 					<td>板块名称名称</td>
+					<td>菜单类型(1为头部菜单,2为左侧菜单)</td>
 					<td>操作</td>
 				</tr>
 				<tr v-for="item in list">
 					<td>{{item.pvgid}}</td>
 					<td>{{item.pvgName}}</td>
+					<td>{{item.pvgType}}</td>
 					<td>
 						<span class="btn btn-success" @click="update(item)">编辑</span>
 					</td>
