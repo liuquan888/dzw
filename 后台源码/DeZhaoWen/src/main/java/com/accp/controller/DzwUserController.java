@@ -116,6 +116,7 @@ public class DzwUserController{
             List<Integer> ids=new ArrayList<Integer>();
             for (DzwPrivilege d:list2){
                 ids.add(d.getPvgid());
+                System.out.println("ids+==="+d.getPid());
             }
 
             //根据左侧最上级meunID查询它的下级菜单
@@ -177,6 +178,8 @@ public class DzwUserController{
 
     @RequestMapping("update")
     public boolean update(DzwUser user){
+        user.setCreateDate(null);
+        user.setUpdateDate(null);
         QueryWrapper<DzwUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",user.getUserId());
         return user.update(queryWrapper);
