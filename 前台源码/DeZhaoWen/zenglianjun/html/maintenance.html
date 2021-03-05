@@ -1250,7 +1250,7 @@
 							<h4 style="color: black; margin-left: 20px;position: relative;top: 18px;" >维修班组</h4>
 						</div>
 						
-						<tree :menu="menu" @create-tab="createTab"></tree>
+						<tree :menu="menu" @create-tab="createTab""></tree>
 						
 					</div>
 					
@@ -1274,7 +1274,7 @@
 				props: ["menu"],
 				template: `
 					<ul class="nav nav-pills nav-stacked">
-						<li v-for="item in menu">
+						<li v-for="item in menu" >
 							<a href="#" @click="createTab(item)">{{item.menuname}}</a>
 							<tree @create-tab="createTab" :menu="item.childrens" v-if="item.reserved2==false"></tree>
 						</li>
