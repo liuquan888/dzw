@@ -103,7 +103,7 @@
 				</div>
 				<div id="tt" class="col-md-10" style="margin: 0px; padding: 0px;">
 					<ul class="nav nav-tabs" style="background-color:#294173; margin-left: 0px; width: 100%; padding-left: 0px;">
-						<li v-for="item,index in tabs" :class=" item.ac?'active':'' " @click="shuan(item)">
+						<li v-for="item,index in tabs" :class=" item.ac?'active':'' " >
 							<a :href="'#'+item.id" data-toggle="tab">{{item.pvgName}}
 								<span v-if="index!=0" @click="dd(index)" class="del">&times;</span>
 							</a>
