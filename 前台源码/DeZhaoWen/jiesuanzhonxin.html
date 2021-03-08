@@ -5,6 +5,7 @@
 		<title></title>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<style>
+
 			body{
 				margin: 0px;
 				padding: 0px;
@@ -40,11 +41,11 @@
 			}
 			.div-shoyin{
 				position: absolute;
-				top:20px;
+				top:60px;
 				left: 350px;
 				border: 1px solid #337AB7;
 				width: 575px;
-				height: 520px;
+				height: 320px;
 				background-color:#FFFFFF ;
 			}
 			.input1 input{
@@ -86,6 +87,7 @@
 		</style>
 	</head>
 	<body>
+		
 		<div id="ctn">
 			<div style="background-color: #FFFFFF; margin: 0px;">
 				<h2 style="margin: 0px;color:#337AB7;line-height: 48px; margin-left: 20px;">结算中心</h2>
@@ -201,13 +203,11 @@
 				<div style="background-color: #337AB7;color: #FFFFFF;">前台收银<span style="float: right;font-size: 15px;" @click="out">&times;&nbsp;</span></div>
 				<div>
 					<div class="div3">
-						<table class="table1">
+						<table class="table" style="border: 0px;">
 							<tr>
 								<td>客总费</td>
 								<td>税率（%）</td>
 								<td>加税金</td>
-								<td>抹尾数</td>
-								<td>积分抵扣（元）</td>
 							</tr>
 							<tr class="input1">
 								<form class="form-inline">
@@ -215,45 +215,36 @@
 									<td><input disabled class="form-control" v-model="data.price"></td>
 									<td><input class="form-control" v-model="data.shuilu"></td>
 									<td><input disabled class="form-control" v-model="data.jiashuijin"></td>
-									<td><input disabled class="form-control"></td>
-									<td><input class="form-control"></td>
 								</form>
 							</tr>
 						</table>
 						<br />
 						<div style="margin-left: 150px;">
-							<span>共计金额:{{data.sum}}</span>
+							<span>共计金额：{{data.sum}}</span>
 						</div>
 						<div>
 							<form class="form-inline" style="margin-left: 150px;">
 								结算状态：
-								<select class="form-control" v-model="data.type">
-									<option>正常结算</option>
+								<select class="form-control">
+									<option >正常结算</option>
 								</select>
 							</form>
 						</div>
 						<br />
-						<div style="margin-left: 100px;">
-							<button class="btn btn-primary" style="width: 80px;" @click="weixin">微信</button>
-							<button class="btn btn-info" style="width: 80px;margin-left: 120px;" @click="zhifu">支付宝</button>
-						</div>
-						<br />
-						<div style="margin-left: 150px;">
-							<img v-if="this.img1" id="img1" src="img/42958655ea45a696edf23fc3606a873.png" height="260px" />
-							<img v-if="this.img2" id="img2" src="img/90cf1be414bae73600c0d591c8c3c8e.jpg" height="260px" style="margin-left: 15px;"/>
-						</div>
-						<div>
-							<button class="btn-success" @click="guanbi(true)">打印</button>
-							<form class="form-inline" action="http://127.0.0.1:8080/order/alipay" method="post">
+						<form class="form-inline" action="http://127.0.0.1:8080/order/alipay" method="post" id="form1">
+							<div style="margin-left: 100px;">
+								<button class="btn btn-success" style="width: 100px;" @click="gm2" type="button">会员卡支付</button>
+								<button class="btn btn-info" style="width: 100px;margin-left: 120px;" @click="gm" type="button">支付宝支付</button>
+							</div>
+							<br />
+							<div>
 								<input type="hidden" class="form-control" v-model="data.no" name="no">
 								<td><input type="hidden" class="form-control" v-model="data.price" name="price"></td>
 								<td><input type="hidden" class="form-control" v-model="data.shuilu" name="shuilu"></td>
 								<td><input type="hidden"  class="form-control" v-model="data.jiashuijin" name="type"></td>
 								<td><input type="hidden" class="form-control"></td>
-								 <input type="submit" value="支付宝支付">
-							</form>
-							
-						</div>
+							</div>
+						</form>
 						<div v-if="this.xx" class="divdayin">
 							<div style="color: #5CB85C;padding-left: 5px; font-size: 25px;border-left:4px solid #84DA21 ;">打印报表<span @click="guanbi(false)" style="float: right;color: #000000;">&times;</span></div>
 							<div>
@@ -261,9 +252,7 @@
 									<br />
 									<div>
 										<select class="form-control" style="width: 150px;margin-left: 90px;">
-											<option>小票</option>
-											<option>大票</option>
-											<option>收据</option>
+											<option>票据</option>
 										</select>
 									</div>
 									<br /><br />
@@ -577,6 +566,7 @@
 						this.data.jiashuijin=this.data.yugujine*this.data.shuilu/100;
 						this.data.sum=this.data.yugujine+this.data.price-this.data.moweisu;
 						this.data.no=item.no;
+						this.data.customerId=item.customerId;
 						for(aa in item){
 							this.data[aa] = item[aa];
 						}
@@ -598,9 +588,27 @@
 							data:that.data,
 							success:function(result){
 								if(result==1){
-									alert("成功");
-//									location.href="jiesuanzhonxin.html";
 									that.guanbi(true);
+									$("#form1").submit();
+									alert("支付成功");
+								}
+							}
+						});
+					},
+					gm2(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/repairBill/givemoney2",
+							type:"post",
+							data:that.data,
+							success:function(result){
+								if(result=="0000"){
+									alert("支付成功");
+									that.guanbi(true);
+								}else if(result=="0001"){
+									alert("你的余额不足，请及时充值");
+								}else{
+									alert("系统繁忙，稍后再试");
 								}
 							}
 						});

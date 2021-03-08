@@ -41,10 +41,10 @@ public class DzwRole extends Model<DzwRole> {
     private String status;
 
     @ApiModelProperty(value = "创建时间")
-    private LocalDate createDate;
+    private String createDate;
 
     @ApiModelProperty(value = "最近更新时间")
-    private LocalDate updateDate;
+    private String updateDate;
 
     @ApiModelProperty(value = "预留字段")
     private String reserved1;

@@ -9,6 +9,7 @@
 			.nav {
 				margin-left: 20px;
 			}
+
 		</style>
 	</head>
 	<body>
@@ -41,11 +42,11 @@
 			</div>
 			<div class="row3">
 					<div class="col-md-3">
-							<p style="font-size: 20px;color: aqua;">公众号会员码</p>
+							<p style="font-size: 20px;color: darkturquoise;">公众号会员码</p>
 							<p class="_xian">
 								<input type="email" class="form-control"  v-model="list5.membernum">
 							</p>
-							<p class="ls" style="color: aqua;">车主信息
+							<p class="ls" style="color: darkturquoise;">车主信息
 								&nbsp;&nbsp;&nbsp;&nbsp;<span>{{list5.reserved1}}</span>
 							</p>
 							<p>车主：
@@ -62,7 +63,7 @@
 							</p>
 					</div>
 					<div class="col-md-3">
-							<p style="font-size: 20px;color: aqua;" class="ls">车牌号
+							<p style="font-size: 20px;color:darkturquoise;" class="ls">车牌号
 								<span>					
 										<a href = "javascript:void(0)"onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><img src="../img/三角形.PNG" class="cziliao"></a><br>　　　　 </p>
 								</span>
@@ -70,9 +71,9 @@
 							<p class="_xian">
 							<input type="email" class="form-control" id="exampleInputEmail12" v-model="list5.platename">
 							</p>
-							<p class="ls" style="color: aqua;">
+							<p class="ls" style="color: darkturquoise;">
 								<span>车辆信息</span>
-								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: aqua;">购买日期:{{list5.buytime}}</span>
+								&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: darkturquoise;">购买日期:{{list5.buytime}}</span>
 							</p>
 							<p>品牌：
 								<span>{{list5.carbrandid}}</span>
@@ -110,9 +111,9 @@
 				<div class="row5">
 					<div class="col-md-12" style="margin-top: 10px;">	
 									<div class="table-responsive" style="height:390px; overflow-y:auto">
-										<table width="2100px" class="table-bordered" style="table-layout: fixed;" >
+										<table width="1500px" class="table-bordered" style="table-layout: fixed;" >
 											<tr class="dyg" style="color: white;" >
-												<td></td>
+												<td class="dygtd" style="width: 70px;"></td>
 												<td>单据状态</td>
 												<td>业务类型</td>
 												<td>客户名称</td>
@@ -155,9 +156,9 @@
 				<div class="row6">
 					<div class="col-md-12" style="margin-top: 10px;">	
 									<div class="table-responsive" style="height:390px; overflow-y:auto">
-										<table width="2100px" class="table-bordered" style="table-layout: fixed;" >
+										<table  width="1100px" class="table-bordered" style="table-layout: fixed;" >
 											<tr class="dyg" style="color: white;">
-												<td></td>
+												<td class="dygtd" style="width: 70px;"></td>
 												<td>维修单号</td>
 												<td>接车时间</td>
 												<td>业务类型</td>
@@ -190,9 +191,9 @@
 				<div class="row7">
 					<div class="col-md-12" style="margin-top: 10px;">	
 									<div class="table-responsive" style="height:390px; overflow-y:auto">
-										<table width="2100px" class="table-bordered" style="table-layout: fixed;" >
+										<table width="1500px" class="table-bordered" style="table-layout: fixed;" >
 											<tr class="dyg" style="color: white;">
-												<td></td>
+												<td class="dygtd" style="width: 70px;"></td>
 												<td>维修单号</td>
 												<td>接车时间</td>
 												<td>业务类型</td>
@@ -235,9 +236,9 @@
 				<div class="row8">
 					<div class="col-md-12" style="margin-top: 10px;">	
 									<div class="table-responsive" style="height:390px; overflow-y:auto">
-										<table width="2100px" class="table-bordered" style="table-layout: fixed;">
+										<table width="1500px" class="table-bordered" style="table-layout: fixed;">
 											<tr class="dyg" style="color: white;">
-												<td></td>
+												<td class="dygtd" style="width: 70px;"></td>
 												<td>维修单号</td>
 												<td>接车时间</td>
 												<td>业务类型</td>
@@ -359,7 +360,7 @@
 				
 				
 				
-				<div class="row3" style="background-color: white;width: 1450px;height: 700px;margin-left: 15px;color: #5fd0dc;margin-top: 10px;">
+				<div class="row3" style="background-color: white;width: 1450px;height: 700px;margin-left: 15px;color: darkturquoise;margin-top: 10px;">
 					<p class="sbx"></p>
 					<div class="col-md-12">
 						<form class="form-inline">
@@ -547,9 +548,9 @@
 						</div>
 						<div class="col-md-12" style="margin-top: 10px;display: block;" id="wxxm">
 							<div class="table-responsive" style="height:250px; overflow-y:auto">
-								<table width="2090px" class="table-bordered" style="table-layout: fixed;">
+								<table width="1500px" class="table-bordered" style="table-layout: fixed;">
 									<tr class="dyg" style="color: white;">
-										<td class="dygtd"></td>
+										<td class="dygtd" style="width: 70px;"></td>
 										<td>选择</td>
 										<td>项目编码</td>
 										<td>项目名称</td>
@@ -597,9 +598,9 @@
 				<div id="llqk" style="display: none;">
 					<div class="col-md-12" style=" margin-top: px; margin-left: 28px;position: absolute;top: 530px;width: 1300px;" id="dygg">	
 									<div class="table-responsive" style="height:200px; overflow-y:auto">
-										<table width="1400px" class="table-bordered" style="table-layout: fixed;">
+										<table width="1100px" class="table-bordered" style="table-layout: fixed;">
 											<tr class="dyg" style="color: white;">
-												<td class="dygtd"></td>
+												<td class="dygtd" style="width: 70px;"></td>
 												<td>类别</td>
 												<td>领料日期</td>
 												<td>领料人</td>
@@ -632,9 +633,9 @@
 				<div id="jsxx" style="display: none;">
 					<div class="col-md-12" style=" margin-top:10 px; margin-left: 28px;position: absolute;top: 530px;width: 1300px;" id="dygg">	
 									<div class="table-responsive" style="height:200px; overflow-y:auto">
-										<table width="1400px" class="table-bordered" style="table-layout: fixed;">
+										<table width="1500px" class="table-bordered" style="table-layout: fixed;">
 											<tr class="dyg" style="color: white;">
-												<td class="dygtd"></td>
+												<td class="dygtd" style="width: 70px;"></td>
 												<td>结算状态</td>
 												<td>合计金额</td>
 												<td>材料费</td>
@@ -1250,7 +1251,7 @@
 							<h4 style="color: black; margin-left: 20px;position: relative;top: 18px;" >维修班组</h4>
 						</div>
 						
-						<tree :menu="menu" @create-tab="createTab"></tree>
+						<tree :menu="menu" @create-tab="createTab""></tree>
 						
 					</div>
 					
@@ -1274,7 +1275,7 @@
 				props: ["menu"],
 				template: `
 					<ul class="nav nav-pills nav-stacked">
-						<li v-for="item in menu">
+						<li v-for="item in menu" >
 							<a href="#" @click="createTab(item)">{{item.menuname}}</a>
 							<tree @create-tab="createTab" :menu="item.childrens" v-if="item.reserved2==false"></tree>
 						</li>
@@ -1677,8 +1678,8 @@
 				$(".row6").css("display","none");
 				$(".row7").css("display","none");
 				$(".row8").css("display","none");
-			  $(this).css("border-top","4px solid aqua");
-			   $(this).css("color","#66AFE9");
+			  $(this).css("border-top","4px solid darkturquoise");
+			   $(this).css("color","darkturquoise");
 			   $(".row5").css("display","block");
 			});
 			$(".wxls2").click(function(){
@@ -1691,8 +1692,8 @@
 				$(".row5").css("display","none");
 				$(".row7").css("display","none");
 				$(".row8").css("display","none");
-			  $(this).css("border-top","4px solid aqua");
-			   $(this).css("color","#66AFE9");
+			  $(this).css("border-top","4px solid darkturquoise");
+			   $(this).css("color","darkturquoise");
 			   $(".row6").css("display","block");
 			});
 			$(".wxls3").click(function(){
@@ -1705,8 +1706,8 @@
 				$(".row6").css("display","none");
 				$(".row5").css("display","none");
 				$(".row8").css("display","none");
-			  $(this).css("border-top","4px solid aqua");
-			   $(this).css("color","#66AFE9");
+			  $(this).css("border-top","4px solid darkturquoise");
+			   $(this).css("color","darkturquoise");
 			   $(".row7").css("display","block");
 			});
 			$(".wxls4").click(function(){
@@ -1719,24 +1720,24 @@
 				$(".row6").css("display","none");
 				$(".row5").css("display","none");
 				$(".row7").css("display","none");
-			  $(this).css("border-top","4px solid aqua");
-			   $(this).css("color","#66AFE9");
+			  $(this).css("border-top","4px solid darkturquoise");
+			   $(this).css("color","darkturquoise");
 			   $(".row8").css("display","block");
 			});
 			$(".wz2").click(function(){
 				 $(".wz").css("color","#000000");
 				$(".wz").css("border-top","0px solid #66AFE9");
 				$("#dygg").css("display","none");
-			  $(this).css("border-top","4px solid aqua");
-			   $(this).css("color","#66AFE9");
+			  $(this).css("border-top","4px solid darkturquoise");
+			   $(this).css("color","darkturquoise");
 			   $("#dyg2").css("display","block");
 			});
 			$(".wz").click(function(){
 				 $(".wz2").css("color","#000000");
 				$(".wz2").css("border-top","0px solid #66AFE9");
 				$("#dyg2").css("display","none");
-			  $(this).css("border-top","4px solid aqua");
-			   $(this).css("color","#66AFE9");
+			  $(this).css("border-top","4px solid darkturquoise");
+			   $(this).css("color","darkturquoise");
 			   $("#dygg").css("display","block");
 			});
 			
@@ -1748,8 +1749,8 @@
 				$(".wxls8").css("border-top", "0px solid #66AFE9");
 				$("#llqk").css("display","none");
 				$("#jsxx").css("display","none");
-				$(this).css("border-top", "4px solid aqua");
-				$(this).css("color", "aqua");
+				$(this).css("border-top", "4px solid darkturquoise");
+				$(this).css("color", "darkturquoise");
 				$("#wxxm").css("display","block");
 				$(".caid2").css("display","block");
 			});
@@ -1761,8 +1762,8 @@
 				$("#wxxm").css("display","none");
 				$(".caid2").css("display","none");
 				$("#jsxx").css("display","none");
-				$(this).css("border-top", "4px solid aqua");
-				$(this).css("color", "aqua");
+				$(this).css("border-top", "4px solid darkturquoise");
+				$(this).css("color", "darkturquoise");
 				$("#llqk").css("display","block");
 			})
 			$(".wxls8").click(function() {
@@ -1773,8 +1774,8 @@
 				$("#wxxm").css("display","none");
 				$(".caid2").css("display","none");
 				$("#llqk").css("display","none");
-				$(this).css("border-top", "4px solid aqua");
-				$(this).css("color", "aqua");
+				$(this).css("border-top", "4px solid darkturquoise");
+				$(this).css("color", "darkturquoise");
 				$("#jsxx").css("display","block");
 			});
 			$(".qingk").click(function(){
@@ -1782,7 +1783,7 @@
 				$(".weixxm").css("border-top", "0px solid #66AFE9");
 				$(".caid3").css("display","none");
 				$("#xxxx").css("display","none");	
-				$(this).css("border-top", "4px solid aqua");
+				$(this).css("border-top", "4px solid darkturquoise");
 				$(this).css("color", "aqua");
 				$(".caid4").css("display","block");
 				$("#cccc").css("display","block");	
@@ -1792,7 +1793,7 @@
 				$(".qingk").css("border-top", "0px solid #66AFE9");
 				$(".caid4").css("display","none");
 				$("#cccc").css("display","none");	
-				$(this).css("border-top", "4px solid aqua");
+				$(this).css("border-top", "4px solid darkturquoise");
 				$(this).css("color", "aqua");
 				$(".caid3").css("display","block");
 				$("#xxxx").css("display","block");	
@@ -1806,7 +1807,7 @@
 			$(function(){ 
 				$("tr").click(function(){ 
 					$("tr").css("background-color",""); 
-					$(this).css("background-color","yellow"); 
+					$(this).css("background-color","sandybrown"); 
 					$(".dyg").css("background-color",""); 
 					}); 
 			});
@@ -1818,7 +1819,7 @@
 	
 			
 			$(".bianss").click(function(){
-				$(this).css("background-color","yellow"); 	
+				$(this).css("background-color","sandybrown"); 	
 				$("tr").css("background-color",""); 
 			})
 			

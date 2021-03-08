@@ -236,7 +236,7 @@
 				<div class="col-md-4">
 					<input type="text" class="form-control" placeholder="员工编号/姓名" v-model="names">
 				</div>
-				<div class="col-md-1"><button class="btn btn-danger" @click="lizhiFind()">搜索</button></div>
+				<div class="col-md-1"><button class="btn btn-warning" @click="lizhiFind()">搜索</button></div>
 				<div class="col-md-1"><button class="btn">关闭</button></div>
 			</div>
 			<div class="row1">
@@ -251,7 +251,6 @@
 				<div class="show1">
 					<table class="table table-bordered">
 						<tr style="background-color:#39CEDE;">
-							<td width="70px"></td>
 							<td>所在门店</td>
 							<td>部门</td>
 							<td>员工编号</td>
@@ -261,8 +260,7 @@
 							<td>离职日期</td>
 							<td>离职原因</td>
 						</tr>
-						<tr v-for="item in list">
-							<td style="background-color: #D6D6CE;"><input type="radio" name="name" @click="dian(item.yid)"></td>
+						<tr v-for="item in list" class="ji1" @click="dian(item.yid)">
 							<td>总厂</td>
 							<td>{{item.reserved4}}</td>
 							<td>{{item.yid}}</td>
@@ -317,7 +315,7 @@
 				<div class="mens">
 					<div class="col-md-10" style="font-size: 25px;color: #1A2846;">员工查询</div>
 					<div class="col-md-1"><button class="btn btn-success" @click="findId()" id="no1">确定</button></div>
-					<div class="col-md-1"><button class="btn" id="no1">关闭</button></div>
+					<div class="col-md-1"><button class="btn" id="no1" @click="jkl1">关闭</button></div>
 					<div class="wo1">
 						<form class="form-inline">
 							<div class="form-group">
@@ -582,6 +580,10 @@
 		<script type="text/javascript" src="../js/vue.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<script type="text/javascript">
+			$(document).on('click','.ji1',function(){
+				$(".ji1").css("background-color","#fff")
+				$(this).css("background-color","sandybrown")
+			})
 			function my(id) {
 				return document.getElementById(id);
 			}
@@ -633,6 +635,9 @@
 					}
 				},
 				methods: {
+					jkl1(){
+						$("#yuan").css("display","none");
+					},
 					quan() {
 						this.bool = true;
 					},
