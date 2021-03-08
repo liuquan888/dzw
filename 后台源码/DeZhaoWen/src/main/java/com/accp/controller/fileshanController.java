@@ -225,14 +225,14 @@ public class fileshanController {
         HttpHeaders headers = new HttpHeaders();
         //设置响应内容为文件流模式
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        String fileName = new String("导出商品信息数据.xlsx".getBytes("utf-8"),"iso-8859-1");
+        String fileName = new String("导出供货商数据.xlsx".getBytes("utf-8"),"iso-8859-1");
         //设置响应的文件的名称
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(), headers, HttpStatus.OK);
     }
 
 
-    //车型品牌导出Excel
+    //维修项目导出Excel
     @RequestMapping("/mainExcel")
     public ResponseEntity<byte []> mainExcel(String params) throws IOException {
         List<Integer> intlist2=new ArrayList<>();
@@ -295,7 +295,7 @@ public class fileshanController {
         HttpHeaders headers = new HttpHeaders();
         //设置响应内容为文件流模式
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        String fileName = new String("导出商品信息数据.xlsx".getBytes("utf-8"),"iso-8859-1");
+        String fileName = new String("导出维修项目数据.xlsx".getBytes("utf-8"),"iso-8859-1");
         //设置响应的文件的名称
         headers.setContentDispositionFormData("attachment",fileName);
         return new ResponseEntity(byteArrayOutputStream.toByteArray(), headers, HttpStatus.OK);
