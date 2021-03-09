@@ -39,6 +39,9 @@
 				right: 40px;
 				z-index: 5;
 			}
+			.anniu span{
+				margin-left: 10px;
+			}
 			.div-shoyin{
 				position: absolute;
 				top:60px;
@@ -138,12 +141,12 @@
 					  </div>
 				</form>
 			</div>
-			<div style="margin-left: 20px;">
+			<div style="margin-right: 20px;float: right;" class="anniu">
 				<span @click="daxxx"><button class="btn btn-primary">门店选择</button></span>
 				<span @click="out"><button class="btn btn-success">收银</button></span>
-				<button class="btn btn-danger" @click="reset">重置</button>
-				<button class="btn btn-info" @click="find">查询</button>
-				<button class="btn btn-info" @click="export1">导出</button>
+				<span></span><button class="btn btn-danger" @click="reset">重置</button></span>
+				<span><button class="btn btn-info" @click="find">查询</button></span>
+				<span><button class="btn btn-info" @click="export1">导出</button></span>
 			</div>
 			<div style="margin-left: 20px;">
 				<table class="table table-bordered">
@@ -172,7 +175,7 @@
 						<td>操作</td>
 					</tr>
 					<tr v-for="item in list">
-						<td><input @click="givemoney(item)" v-if="item.documentsState==2" name="ll" type="radio"></td>
+						<td><input @click="givemoney(item,this.name)" v-if="item.documentsState==2&&item.balanceState==1" name="ll" type="radio"></td>
 						<td>{{item.no}}</td>
 						<td>{{item.dtype}}</td>
 						<td>{{item.btype}}</td>
@@ -181,7 +184,7 @@
 						<td>{{item.jiesuanTime}}</td>
 						<td>{{item.jiesuanRen}}</td>
 						<td>{{item.amount}}</td>
-						<td>{{item.yewulx}}s</td>
+						<td>{{item.yewulx}}</td>
 						<td>{{item.keihuName}}</td>
 						<td>{{item.chepai}}</td>
 						<td>{{item.chexin}}</td>
@@ -560,7 +563,10 @@
 							}
 						});
 					},
-					givemoney(item){
+					givemoney(item,elem){
+						console.log(elem);
+//						elem.parent().parent().css("background-color","sandybrown");
+						$(elem).parent().parent().css("background-color","sandybrown");
 						this.data.price=item.amount;
 						this.data.yugujine=item.yugujine;
 						this.data.jiashuijin=this.data.yugujine*this.data.shuilu/100;
@@ -570,7 +576,6 @@
 						for(aa in item){
 							this.data[aa] = item[aa];
 						}
-						console.log(this.data);
 					},
 					sel(item){
 						if(this.f){
