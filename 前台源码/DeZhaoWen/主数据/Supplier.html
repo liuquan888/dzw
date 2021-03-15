@@ -617,7 +617,7 @@
 						<td>账期(天)</td>
 						<td>备注</td>
 					</tr>
-					<tr class="tr1" v-for="item in supplist" @click="suppclick(item)">
+					<tr class="tr1" v-for="item in supplist" @click="suppclick(item)" style="font-size: 13px;">
 						<td>{{item.pId}}</td>
 						<td>{{item.pName}}</td>
 						<td>{{item.pAddress}}</td>
@@ -642,7 +642,7 @@
 				<div style="float: left;width: 1273px;line-height: 30px;background: #F7F7F7;">
 					<div style="float: left; width: 80px;line-height: 30px; border-top: solid 3px #39CEDE;text-align: center;">联系人</div>
 				</div>
-				<table class="table table-bordered" style="width: 700px;">
+				<table class="table table-bordered" style="width: 700px;font-size: 13px;">
 					<tr style="background: #39CEDE;">
 						<td>联系人</td>
 						<td>职位</td>
@@ -709,6 +709,9 @@
 				}
 				console.log(this.suppdimtext)
 				window.location.href="http://127.0.0.1:8080/fileshan/suppilerExcel?sid="+this.menuinit.sId+"&suppdimtext="+this.suppdimtext;
+				if(this.suppdimtext=="5d12ds5a445wq12f"){
+					this.suppdimtext=''
+				}
 			},
 			
 			toaddlinkman(){
