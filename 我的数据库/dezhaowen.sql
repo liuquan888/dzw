@@ -278,7 +278,7 @@ CREATE TABLE `clearing_form` (
 
 /*Data for the table `clearing_form` */
 
-insert  into `clearing_form`(`id`,`type`) values (1,'微信支付'),(2,'支付宝支付');
+insert  into `clearing_form`(`id`,`type`) values (1,'会员卡支付'),(2,'支付宝支付'),(3,'未支付');
 
 /*Table structure for table `construction` */
 
@@ -514,7 +514,7 @@ CREATE TABLE `engine` (
   `e_coder` varchar(20) DEFAULT NULL COMMENT '发动机品牌编码',
   `e_name` varchar(20) DEFAULT NULL COMMENT '发动机品牌名称',
   PRIMARY KEY (`e_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='发动机表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='发动机表';
 
 /*Data for the table `engine` */
 
@@ -532,7 +532,7 @@ CREATE TABLE `factory` (
 
 /*Data for the table `factory` */
 
-insert  into `factory`(`factory`,`factoryname`) values (1,'北京卡修有限公司');
+insert  into `factory`(`factory`,`factoryname`) values (1,'北京卡修有限公司'),(2,'北京卡修有限公司分部');
 
 /*Table structure for table `field` */
 
@@ -742,7 +742,7 @@ CREATE TABLE `linkman` (
   PRIMARY KEY (`l_id`),
   KEY `p_id` (`p_id`),
   CONSTRAINT `linkman_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `suppiler` (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='联系人\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='联系人\r\n';
 
 /*Data for the table `linkman` */
 
@@ -904,7 +904,7 @@ CREATE TABLE `menu` (
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='树形菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='树形菜单';
 
 /*Data for the table `menu` */
 
@@ -1280,7 +1280,7 @@ CREATE TABLE `repair_bill` (
 
 /*Data for the table `repair_bill` */
 
-insert  into `repair_bill`(`no`,`documents_type`,`balance_type`,`documents_state`,`balance_state`,`jiesuan_time`,`jiesuan_ren`,`amount`,`yewulx`,`keihu_name`,`chepai_no`,`chexin`,`chejiao_no`,`phone`,`bx_company`,`pk_company`,`duifanchepai`,`counsellor`,`completion_time`,`remark`,`motor_id`,`customer_id`,`jiashiyuan`,`jclichen`,`jcyoulian`,`shancilichen`,`jctime`,`shigonbanci`,`jiecher`,`yujitime`,`sctime`,`yugujine`,`chenshu`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('11',1,1,1,2,'2021-02-22 10:00:10','1',100,'中国重汽','1',1,'1','之u7','1','1','1','1',1,'2021-03-02 15:12:38','1',1,1,'韩寒','23','32','20','2021-03-04 08:12:38','5','6','2021-03-04 08:12:50','2021-03-04 08:13:07',300,NULL,1,'2021-3-2',NULL,NULL,NULL),('22',1,1,2,2,'2021-03-12 14:28:25','1',100,'中国重汽','1',1,'1','之u7','1',NULL,NULL,NULL,NULL,'2021-03-14 14:29:06',NULL,NULL,1,NULL,'白天','白天','白天','2021-03-10 14:29:40','7','7','2021-03-05 14:30:21','2021-02-13 14:30:37',300,'待骏工车',NULL,'2010-02-04','1','责任人','处罚金额'),('33',1,1,2,2,'2021-03-03 14:32:51','1',211,'美国重汽','1',2,'1','1111','1',NULL,NULL,NULL,1,'2021-03-05 14:33:32',NULL,1,1,'ss','晚上','晚上','晚上','2021-03-03 14:34:13','7','9','2021-03-03 14:34:24','2021-03-06 14:34:26',800,'已骏工车',1,'2012-08-09','2','责任人','处罚金额'),('366010111111',1,1,2,2,'2021-02-23 09:57:21','单观柏吃屎',200,'100','单观柏',2,'九手奥拓','1','12312311231','1','1','1',1,'2021-03-02 15:12:36','1',1,1,'天机看','32','10','30','2021-03-04 08:12:41','5','6','2021-03-04 08:13:04','2021-03-04 08:13:09',600,NULL,1,'2021-3-2',NULL,NULL,NULL);
+insert  into `repair_bill`(`no`,`documents_type`,`balance_type`,`documents_state`,`balance_state`,`jiesuan_time`,`jiesuan_ren`,`amount`,`yewulx`,`keihu_name`,`chepai_no`,`chexin`,`chejiao_no`,`phone`,`bx_company`,`pk_company`,`duifanchepai`,`counsellor`,`completion_time`,`remark`,`motor_id`,`customer_id`,`jiashiyuan`,`jclichen`,`jcyoulian`,`shancilichen`,`jctime`,`shigonbanci`,`jiecher`,`yujitime`,`sctime`,`yugujine`,`chenshu`,`reserved1`,`reserved2`,`reserved3`,`reserved4`,`reserved5`) values ('jingnosty0554',1,1,1,1,'2021-02-22 10:00:10','赵信',100,'中国重汽','刘朝阳',1,'QQ汽车','dsnh-iyo022','1','1','1','1',1,'2021-03-02 15:12:38','1',1,1,'韩寒','23','32','20','2021-03-04 08:12:38','5','6','2021-03-04 08:12:50','2021-03-04 08:13:07',300,'无',2,'2021-3-2','',NULL,NULL),('jingnosty0555',1,3,2,1,'2021-02-23 09:57:21','单观',0,'美国重汽','落霞',2,'九手奥拓','dsnh-iyo022','12312311231','1','1','1',1,'2021-03-02 15:12:36','1',1,1,'天机看','32','10','30','2021-03-04 08:12:41','5','6','2021-03-04 08:13:04','2021-03-04 08:13:09',600,'无',2,'2021-3-2','',NULL,NULL),('jingnosty0556',2,3,2,2,'2021-03-03 14:32:51','赵信',0,'美国重汽','卢欧杰',2,'路虎s1','oioi-015','1','1','1','1',1,'2021-03-05 14:33:32','1',1,1,'德莱文','晚上','晚上','晚上','2021-03-03 14:34:13','7','9','2021-03-03 14:34:24','2021-03-06 14:34:26',800,'无',1,'2012-08-09','','',''),('jingnosty0557',2,3,2,2,'2021-03-12 14:28:25','李玉兰',0,'中国重汽','韩寒',1,'大众','kk09-6','1','1','1','1',1,'2021-03-14 14:29:06','1',1,1,'德莱厄斯','白天','白天','白天','2021-03-10 14:29:40','7','7','2021-03-05 14:30:21','2021-02-13 14:30:37',300,'无',1,'2010-02-04','员工出车祸了','刘全','500');
 
 /*Table structure for table `role_user` */
 
@@ -1559,7 +1559,7 @@ CREATE TABLE `upkeep` (
   `reserved2` varchar(50) DEFAULT NULL COMMENT '预留字段',
   `reserved3` varchar(50) DEFAULT NULL COMMENT '预留字段',
   PRIMARY KEY (`upkeepid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='保养表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='保养表';
 
 /*Data for the table `upkeep` */
 
@@ -1630,6 +1630,25 @@ CREATE TABLE `vehicle` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='外勤车辆表';
 
 /*Data for the table `vehicle` */
+
+/*Table structure for table `waiqin` */
+
+DROP TABLE IF EXISTS `waiqin`;
+
+CREATE TABLE `waiqin` (
+  `id` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `chepai` varchar(50) NOT NULL,
+  `guzhang` varchar(50) DEFAULT NULL,
+  `adname` varchar(50) NOT NULL,
+  `cost` float DEFAULT NULL,
+  `distance` float DEFAULT NULL,
+  `desc` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`,`name`,`phone`,`chepai`,`adname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `waiqin` */
 
 /*Table structure for table `weixdan` */
 

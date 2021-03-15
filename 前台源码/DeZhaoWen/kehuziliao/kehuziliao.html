@@ -16,7 +16,9 @@
 				border: 0px solid red;
 				 
 			}
-			
+			thead{
+				background-color: #39CEDE;
+			}
 			#buttondiv {
 				width: auto;
 				height: 50px;
@@ -700,19 +702,19 @@
 
 					<ul id="buttondivul">
 						<li>
-							
+							<img src="../img/1.png" width="40px" height="25px" />
 							<span @click="customerdown()" id="font">客户编辑</span>
 						</li>
 						<li>
-							
+							<img src="../img/1.png" width="40px" height="25px" />
 							<span @click="cardown()" id="font">车资料</span>
 						</li>
 						<li>
-							
+							<img src="../img/1.png" width="40px" height="25px" />
 							<span data-toggle="modal" data-target="#aa" @click="opencustomerclassify()" id="font">客户分类</span>
 						</li>
 						<li style="padding-right: 200px;">
-							
+							<img src="../img/1.png" width="40px" height="25px" />
 							<span data-toggle="modal" data-target="#ww" @click="openstaffquery()" id="font">查询</span>
 						</li>
 						<li>
@@ -1163,7 +1165,7 @@
 						<div class="modal-body">
 
 							<div class="row border-def" style="height: 44.5%;">
-								<div class="col-md-12" style=" overflow: auto;height: 100%;">
+								<div class="col-md-12" style=" overflow: auto;height: 90%%;">
 									<div>
 										<!-- Tab panes -->
 										<div class="tab-content">
@@ -1507,15 +1509,16 @@
 					<div>
 						<ul style="border: 0px solid red;float: right; margin-right: 60px;margin-top: 20px;">
 							<li>
-								<span id="img" class="glyphicon glyphicon-plus"></span>
+								
+								<img src="../img/1.png" width="40px" height="25px" />
 								<span @click="insertclienttype()" id="font">增加</span>
 							</li>
 							<li>
-								<span id="img" class="glyphicon glyphicon-remove"></span>
+								<img src="../img/1.png" width="40px" height="25px" />
 								<span @click="deleteclienttype()" id="font">删除</span>
 							</li>
 							<li>
-								<span id="img" class="glyphicon glyphicon-save-file"></span>
+								<img src="../img/1.png" width="40px" height="25px" />
 								<span @click="saveclienttype()" id="font">保存</span>
 							</li>
 						</ul>
