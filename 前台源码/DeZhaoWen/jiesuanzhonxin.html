@@ -98,11 +98,7 @@
 			</div>
 			<div style="margin-left: 20px;">
 				<form class="form-inline">
-					 <div class="form-group">
-					    <label>开单日期：</label>
-					    <input type="date" v-model="bill.date1" class="form-control">~
-					    <input type="date" v-model="bill.date2" class="form-control">
-					 </div>
+					 <br />
 					 <div class="form-group">
 					    <label>销售单号：</label>
 					    <input type="text" class="form-control" v-model="bill.no">
@@ -118,11 +114,11 @@
 					    <label>车牌号：</label>
 					    <input type="text" v-model="bill.chepaiNo" class="form-control">
 					  </div>
-					   <br /><br />
 					  <div class="form-group">
 					    <label>客户名称：</label>
 					    <input type="text" v-model="bill.name" class="form-control">
 					  </div>
+					  <br /><br />
 					  <div class="form-group">
 					    <label>结算人：</label>
 					    <input type="text" v-model="bill.jiesuanRen" class="form-control">
@@ -142,6 +138,7 @@
 					  </div>
 				</form>
 			</div>
+			<br />
 			<div style="margin-right: 20px;float: right;" class="anniu">
 				<span @click="daxxx"><button class="btn btn-primary">门店选择</button></span>
 				<span @click="out"><button class="btn btn-success">收银</button></span>
@@ -167,11 +164,8 @@
 						<td>车型</td>
 						<td>车架号</td>
 						<td>联系电话</td>
-						<td>保险公司</td>
-						<td>赔款公司</td>
-						<td>对方车牌</td>
 						<td>服务顾问</td>
-						<td>完工时间</td>
+						<td>开单时间</td>
 						<td>备注</td>
 						<td>操作</td>
 					</tr>
@@ -191,11 +185,8 @@
 						<td>{{item.chexin}}</td>
 						<td>{{item.chejiaoNo}}</td>
 						<td>{{item.phone}}</td>
-						<td>{{item.bxCompany}}</td>
-						<td>{{item.pkCompany}}</td>
-						<td>{{item.duifanchepai}}</td>
 						<td>{{item.coun}}</td>
-						<td>{{item.completionTime}}</td>
+						<td>{{item.reserved2}}</td>
 						<td>{{item.remark}}</td>
 						<td @click="sel(item)"><button class="btn btn-primary">查看单据</button></td>
 					</tr>

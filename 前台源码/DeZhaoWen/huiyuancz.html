@@ -85,11 +85,7 @@
 			</div>
 			<div style="margin-left: 20px;">
 				<form class="form-inline">
-					 <div class="form-group">
-					    <label>入会时间：</label>
-					    <input type="date" class="form-control" v-model="bill.data1">~
-					    <input type="date" class="form-control" v-model="bill.data2">
-					 </div>
+					  <br />
 					 <div class="form-group">
 					    <label>会员卡号：</label>
 					    <input type="text" class="form-control" v-model="bill.customernumber">
@@ -98,7 +94,7 @@
 					    <label>手机号：</label>
 					    <input type="text" class="form-control" v-model="bill.phone">
 					  </div>
-					   <br /><br />
+					  
 					  <div class="form-group">
 					    <label>客户名称：</label>
 					    <input type="text" class="form-control" v-model="bill.customername">
@@ -107,12 +103,14 @@
 					    <label>银行账号：</label>
 					    <input type="text" class="form-control" v-model="bill.bankaccount">
 					  </div>
+					   <br /><br />
 					  <div class="form-group">
 					    <label>备注：</label>
 					    <input type="text" class="form-control" v-model="bill.remark">
 					  </div>
 				</form>
 			</div>
+			 <br />
 			<div style="margin-left: 20px;">
 				<span class="btn btn-success" @click="open">充值</span><button class="btn btn-primary" @click="find">查询</button><button class="btn btn-danger" @click="reset">重置</button>
 			</div>
@@ -127,7 +125,6 @@
 						<td>到期时间</td>
 						<td>累计积分</td>
 						<td>挂账额度</td>
-						<td>开户银行</td>
 						<td>银行账号</td>
 						<td>卡上余额</td>
 						<td>备注</td>
@@ -141,7 +138,6 @@
 						<td>{{item.outtime}}</td>
 						<td>{{item.integral}}</td>
 						<td>{{item.payment}}</td>
-						<td>{{item.desportbank}}</td>
 						<td>{{item.bankaccount}}</td>
 						<td>{{item.vipprice}}</td>
 						<td>{{item.remark}}</td>
