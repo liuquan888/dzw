@@ -1650,6 +1650,8 @@ CREATE TABLE `waiqin` (
 
 /*Data for the table `waiqin` */
 
+insert  into `waiqin`(`id`,`name`,`phone`,`chepai`,`guzhang`,`adname`,`cost`,`distance`,`desc`) values ('00000','单观柏','13212341234','湘B10000','漏油','石峰区',20,20,'九郎山家园');
+
 /*Table structure for table `weixdan` */
 
 DROP TABLE IF EXISTS `weixdan`;
