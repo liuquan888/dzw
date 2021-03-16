@@ -3,11 +3,14 @@ package com.accp.controller;
 
 import com.accp.domain.DzwPrivilege;
 import com.accp.domain.DzwUser;
+import com.accp.domain.Waiqin;
 import com.accp.service.impl.DzwPrivilegeServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -42,6 +45,12 @@ public class DzwPrivilegeController {
     public boolean update(DzwPrivilege menus){
         menus.setReserved1(null);
         return privilege.updateById(menus);
+    }
+
+    @RequestMapping("add")
+    public String add(@RequestBody Waiqin data){
+        System.out.println(data);
+        return "";
     }
 }
 
