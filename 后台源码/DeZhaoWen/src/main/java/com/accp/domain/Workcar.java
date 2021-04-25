@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -52,16 +54,16 @@ public class Workcar extends Model<Workcar> {
 
     @ApiModelProperty(value = "单据类型")
     private String djlx;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "开单时间")
     private LocalDate kddate;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "预计完工")
     private LocalDate yujwg;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "完工时间")
     private LocalDate wgdate;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "结算时间")
     private LocalDate jsdate;
 

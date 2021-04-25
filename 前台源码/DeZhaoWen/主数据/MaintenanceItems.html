@@ -285,7 +285,7 @@
 									<span class="til">服务项目定义</span>
 								</div>
 								<div class="col-sm-1">
-									<button type="button" class="btn btn-success" @click="updatemain">保存</button>
+									<button type="button" class="btn btn-success butt1" @click="updatemain">保存</button>
 								</div>
 							</div>
 							
@@ -753,16 +753,27 @@
 					success:function(result){
 						if(result=="000001"){
 							alert("编号不允许重复！")
+							return
 						}
+// 						var tr=document.getElementsByClassName("pintr2");
+// 						for(var i=0;i<tr.length;i++){
+// 							tr[i].style.background='none';
+// 						}
+// 						tr[0].style.background='sandybrown';
+// 						that.findmenu();
+// 						that.findmainlist(that.params,that.serviceinit);
+// 
+						
 						var tr=document.getElementsByClassName("pintr2");
 						for(var i=0;i<tr.length;i++){
 							tr[i].style.background='none';
 						}
 						tr[0].style.background='sandybrown';
-						that.findmenu();
 						that.findmainlist(that.params,that.serviceinit);
+						that.maininit=that.mainlist[0];
 						that.main={},
 						$("#addmainmodal").modal("hide");
+						
 					}
 				})
 			},
@@ -790,7 +801,7 @@
  				this.$set(this.main,"mDetaprice",this.maininit.mdetaprice);
 				this.$set(this.main,"mClaimprice",this.maininit.mclaimprice);
 				this.$set(this.main,"mSafetyprice",this.maininit.msafetyprice);
-				this.$set(this.main,"service",this.maininit.service);
+				//this.$set(this.main,"service",this.maininit.service);
 				//this.$set(this.main,"",this.maininit.);
 				$("#updatemainmodal").modal("show");
 			},
@@ -1056,6 +1067,11 @@
 	
 	$(document).on('click','.mainos',function(){
 		$(".pintr2").css("background","")
+		$(".pintr2").eq(0).css("background","sandybrown")
+	})
+	
+	$(document).on('click','.butt1',function(){
+		$(".pintr2").css("background","none")
 		$(".pintr2").eq(0).css("background","sandybrown")
 	})
 	

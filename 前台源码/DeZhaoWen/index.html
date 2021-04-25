@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -89,14 +90,36 @@
 				top: 0px;
 				right: 0px;
 			}
+			.item{
+				margin-top: -32px;
+			}
+			#addmainmodal{
+				position: absolute;
+				top: 150px;
+			}
+			.tankuang{
+				display: none !important;
+			}
 		</style>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 	</head>
 	<body>
+		
 		<div id="ctn" class="">
 			<div class="header">
 				<span class="kx">卡修智慧系统</span>
 				<span style="margin-left: 200px;"></span>
 				<span class="tobu" v-for="item in tobu"  @click="find2(item.pvgid)">{{item.pvgName}}</span>
+				<el-badge v-model="shuliang" class="item">
+				  <el-button size="small" @click="zhanwjc">站外接车</el-button>
+				</el-badge>
+				<template>
+				  <el-button class="tankuang"
+					plain
+					@click="open1">
+					订单
+				  </el-button>
+				 </template>
 			</div>
 			<div class="bod">
 				<div v-if="this.leftx" class="col-md-2" style="background-color: #18304A; height: 950px;">
@@ -128,14 +151,110 @@
 			<div class="leftguan" @click="leftout">
 				◀
 			</div>
+			
+			
+			<div class="modal fade" id="addmainmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog modal-lg" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</h4>
+			      </div>
+			      <div class="modal-body">
+			        	<div>
+							
+							
+							<template>
+								  <el-table
+									:data="listp"
+									style="width: 100%"
+									max-height="250">
+									<el-table-column
+									  fixed
+									  prop="id"
+									  label="编号"
+									  width="150">
+									</el-table-column>
+									<el-table-column
+									  prop="name"
+									  label="姓名"
+									  width="120">
+									</el-table-column>
+									<el-table-column
+									  prop="phone"
+									  label="电话"
+									  width="120">
+									</el-table-column>
+									<el-table-column
+									  prop="chepai"
+									  label="车牌"
+									  width="120">
+									</el-table-column>
+									<el-table-column
+									  prop="guzhang"
+									  label="故障"
+									  width="120">
+									</el-table-column>
+									<el-table-column
+									  prop="adname"
+									  label="地址名称"
+									  width="120">
+									</el-table-column>
+									<el-table-column
+									  prop="cost"
+									  label="金额"
+									  width="120">
+									</el-table-column>
+									<el-table-column
+									  prop="distance"
+									  label="距离"
+									  width="120">
+									</el-table-column>
+									<el-table-column
+									  prop="desc"
+									  label="详细地址"
+									  width="150">
+									</el-table-column>
+									<el-table-column
+									  fixed="right"
+									  label="操作"
+									  width="120">
+									  <template slot-scope="scope">
+										<el-button
+										  @click.native.prevent="deleteRow(scope.$index, tableData)"
+										  type="text"
+										  size="small">
+										  移除
+										</el-button>
+									  </template>
+									</el-table-column>
+								  </el-table>
+								</template>						
+						</div>
+			      </div>
+			     
+			    </div>
+			  </div>
+			</div>
+			
+			
 		</div>
 		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
 		<script type="text/javascript" src="js/vue.js" ></script>
+		
 		<script src="js/constant.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/api/menu.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/vue-perms.js" type="text/javascript" charset="utf-8"></script>
+				<!-- 引入样式 -->
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 		<script type="text/javascript">
+				var user = sessionStorage.getItem("user");
+					if(!user){
+						alert("您还没有登录，请重新登录后在进入首页.....");
+						window.location.href="adminLogin.html";
+					}
 				Vue.directive("view",{
 				bind(el,binding,vnode,oldVnode){
 				},
@@ -143,7 +262,8 @@
 				},
 				update(el,binding,vnode,oldVnode){
 				}
-			})
+			});
+			
 			Vue.component("tree",{
 				props:["list"],
 				template: `
@@ -172,10 +292,71 @@
 						x:true,
 						leftx:true,
 						user:{},
-						user2:{}
+						user2:{},
+						shuliang:null,
+						listp:[],
 					 }
 				},
 				methods:{
+					findshow(){
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/waiqin/find",
+							type:"post",
+							success:function(result){
+								that.listp=result;
+							}
+						});
+					},
+					open1() {
+						this.$notify({
+						  title: '提示',
+						  message: '你有一条新的接车订单',
+						  type: 'success'
+						});
+					 },
+					deleteRow(index, rows) {
+						rows.splice(index, 1);
+						let that=this;
+						$.ajax({
+							url:"http://127.0.0.1:8080/waiqin/findwqi",
+							type:"get",
+							success:function(result){
+								that.shuliang=result;
+							}
+						});
+					 },
+					zhanwjc(){
+						$("#addmainmodal").modal("show");
+					},
+					chatiao(){
+						if(this.shuliang==null){
+							let that=this;
+							$.ajax({
+								url:"http://127.0.0.1:8080/waiqin/findwqi",
+								type:"get",
+								success:function(result){
+									that.shuliang=result;
+								}
+							});
+						}else{
+							let that=this;
+							$.ajax({
+								url:"http://127.0.0.1:8080/waiqin/findwqi",
+								type:"get",
+								success:function(result){
+									if(result!=that.shuliang){
+										that.shuliang=result;
+										that.open1();
+										that.findshow();
+									}
+								}
+							});
+						}
+					},
+					
+					
+					
 					huan(item){
 //						this.leftx=false;
 //						$(".leftguan").css("left","0px");
@@ -270,12 +451,21 @@
 								that.list=result;
 							}
 						});
-					}
+					},
+					sumtime(){
+						let that=this;
+						var timer = setInterval(function(){
+							that.chatiao()
+						}, 1000);
+					},
 				},
 				created(){
+					this.findshow();
+					this.sumtime();
 					this.run();
 					this.find();
 					this.find2(1);
+					this.chatiao();
 					var user=JSON.parse(sessionStorage.getItem("user"));
 					console.log(user.reserved1);
 						menuApi.findPerms(parseInt(user.reserved1),function(result){
@@ -286,6 +476,7 @@
 					
 				}
 			});
+			
 		</script>
 	</body>
 </html>

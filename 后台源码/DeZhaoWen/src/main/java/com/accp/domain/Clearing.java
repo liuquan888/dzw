@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -43,6 +45,7 @@ public class Clearing extends Model<Clearing> {
     @ApiModelProperty(value = "工时费")
     private Double goshf;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "结算时间")
     private LocalDate jiesdate;
 

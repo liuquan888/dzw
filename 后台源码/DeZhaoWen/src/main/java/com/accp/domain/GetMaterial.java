@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -34,6 +36,7 @@ public class GetMaterial extends Model<GetMaterial> {
     @ApiModelProperty(value = "类别")
     private String lb;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "领料日期")
     private LocalDate lingliaodate;
 

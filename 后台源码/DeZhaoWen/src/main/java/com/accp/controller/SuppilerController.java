@@ -60,6 +60,9 @@ public class SuppilerController {
             if(sid!=0&&sid!=null){
                 suppilerQueryWrapper.eq("sid",sid);
             }
+
+            suppilerQueryWrapper.eq("reserved3","0");
+
             List<Suppiler> list=suppilerService.list(suppilerQueryWrapper);
             for (Suppiler suppiler:list){
                 suppiler.setSuppilermenu(suppilermenuService.getById(suppiler.getSid()));

@@ -64,11 +64,15 @@ public class EngineController {
     //删除发动机
     @GetMapping("/remove/{eid}")
     public String remove(@PathVariable Integer eid){
-        boolean result = engineService.removeById(eid);
-        if(result){
-            return "删除成功";
-        }else{
-            return  "删除失败";
+        try {
+            boolean result = engineService.removeById(eid);
+            if(result){
+                return "删除成功";
+            }else{
+                return  "删除失败";
+            }
+        }catch (Exception exception){
+            return "000002";
         }
     }
 

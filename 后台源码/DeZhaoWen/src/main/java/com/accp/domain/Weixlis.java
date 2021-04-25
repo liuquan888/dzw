@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -32,12 +34,14 @@ public class Weixlis extends Model<Weixlis> {
     @ApiModelProperty(value = "维修单号")
     private String wxdh;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "接车时间")
     private LocalDate jcsj;
 
     @ApiModelProperty(value = "业务类型")
     private Integer ywlx;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "完工时间")
     private LocalDate wgsj;
 
@@ -53,6 +57,7 @@ public class Weixlis extends Model<Weixlis> {
     @ApiModelProperty(value = "会员卡号")
     private String hykh;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "结算时间")
     private LocalDate jsdate;
 

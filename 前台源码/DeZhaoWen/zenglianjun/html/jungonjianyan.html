@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,13 +27,10 @@
 		<div class="zbu">			 
 			 <div class="col-md-10" style="color: darkturquoise;">
 					<span>
-						开单日期<input size="15" v-model="jg.date1"><input size="15" v-model="jg.date2">
-					</span>
-					<span>
 						维修单号<input size="15" v-model="jg.reserved3">
 					</span>
 					<span>
-						单据状态<select class="form-control" style="width: 200px;border: 1px solid #000000;margin-left: 610px;margin-top: -23px;" v-model="jg.chenshu">
+						单据状态<select class="form-control" style="width: 200px;height: 30px; border: 1px solid #000000;margin-left: 260px;margin-top: -23px;" v-model="jg.chenshu">
 										<option>待骏工车</option>
 										<option>已骏工车</option>
 									</select>
@@ -114,22 +112,6 @@
 				<div class="row2">
 					<div class="col-md-3">
 						<h4>单号:{{list2.weixdanh}}</h4>
-					</div>
-					<div class="col-md-9" style="margin-top:8px;">
-						<div class="abc">
-							<span>
-								<img src="../img/捕获7.PNG" class="jungjy">竣工检验
-							</span>
-							<span>
-								<img src="../img/捕获8.PNG">委托书
-							</span>
-							<span>
-								<img src="../img/捕获9.PNG">照片
-							</span>
-							<span @click="dingsi">
-								<img src="../img/捕获10.PNG">定损
-							</span>
-						</div>
 					</div>
 				</div>
 				
@@ -529,22 +511,6 @@
 				<div class="row2">
 					<div class="col-md-3">
 						<h4>单号:{{list2.weixdanh}}</h4>
-					</div>
-					<div class="col-md-9" style="margin-top:8px;">
-						<div class="abc">
-							<span>
-								<img src="../img/捕获7.PNG" class="jungjy">竣工检验
-							</span>
-							<span>
-								<img src="../img/捕获8.PNG">委托书
-							</span>
-							<span>
-								<img src="../img/捕获9.PNG">照片
-							</span>
-							<span @click="dingsi">
-								<img src="../img/捕获10.PNG">定损
-							</span>
-						</div>
 					</div>
 				</div>
 				

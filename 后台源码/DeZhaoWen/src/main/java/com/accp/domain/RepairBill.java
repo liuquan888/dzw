@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -66,6 +67,7 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "结算状态")
     private String bState;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty(value = "结算时间")
     private LocalDateTime jiesuanTime;
 
@@ -113,6 +115,7 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "服务顾问")
     private String coun;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "完工时间")
     private LocalDateTime completionTime;
 
@@ -141,6 +144,7 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "上次里程")
     private String shancilichen;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "进场时间")
     private LocalDateTime jctime;
 
@@ -150,9 +154,11 @@ public class RepairBill extends Model<RepairBill> {
     @ApiModelProperty(value = "接车人")
     private String jiecher;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "预计完工")
     private LocalDateTime yujitime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "上次进场时间")
     private LocalDateTime sctime;
 

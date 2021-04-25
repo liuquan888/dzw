@@ -7,8 +7,12 @@
 	</head>
 	<body>
 		<div id="div">
-			<span class="btn btn-success" @click="find(1)">导航模块</span>
-			<span class="btn btn-danger" @click="find(2)">左侧模块</span>
+			<div class="" style="margin: 20px 5px;">
+				<span class="btn btn-success" @click="find(1)">导航模块</span>
+				<span class="btn btn-danger" @click="find(2)">左侧模块</span>
+				<input  class="form-control" style="width: 200px;display: inline-block;margin-left:40px;" v-model="name">
+				<span class="btn btn-default" style="display: inline-block;" @click="query2">搜索</span>
+			</div>
 			<table class="table table-hover">
 				<tr>
 					<td>编号</td>
@@ -45,7 +49,9 @@
 									    </form>
 									    <form class="form-inline">
 									    	<label class="text col-lg-4" for="exampleInputEmail2">模块类型(1父级,2子级)</label>
-									   		<input  class="form-control" v-model="menus.pvgType">
+											头部菜单<input type="radio" name="type" id="" value="1" v-model="menus.pvgType" style="margin-left:5px;"/>
+											左侧菜单<input type="radio" name="type" id="" value="2" v-model="menus.pvgType" style="margin-left:5px;"/>
+									   		<!-- <input  class="form-control" v-model="menus.pvgType"> -->
 									    </form>
 								    </div>
 								  </div>
@@ -69,7 +75,8 @@
 			data(){
 				return {
 					list:[],
-					menus:{}
+					menus:{},
+					name:''
 				}
 			},
 			methods:{
@@ -103,6 +110,20 @@
 								$("#authModal2").modal("hide");
 								that.find(1);
 							}
+						}
+					})
+				},
+				query2(){
+					let that =this;
+					alert(that.name)
+					$.ajax({
+						url:"http://127.0.0.1:8080/dzwPrivilege/query2",
+						data:{
+							name:that.name
+						},
+						dataType:"json",
+						success:function(result){
+							that.list=result;
 						}
 					})
 				}

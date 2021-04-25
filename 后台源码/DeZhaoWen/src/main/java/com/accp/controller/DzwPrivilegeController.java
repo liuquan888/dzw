@@ -47,10 +47,11 @@ public class DzwPrivilegeController {
         return privilege.updateById(menus);
     }
 
-    @RequestMapping("add")
-    public String add(@RequestBody Waiqin data){
-        System.out.println(data);
-        return "";
+    @RequestMapping("query2")
+    public List<DzwPrivilege> query2(String name){
+        QueryWrapper<DzwPrivilege> dzwp=new QueryWrapper<>();
+        dzwp.lambda().like(DzwPrivilege::getPvgName,name);
+        return privilege.list(dzwp);
     }
 }
 

@@ -1,5 +1,6 @@
 package com.accp.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -40,6 +41,7 @@ public class Waiqin extends Model<Waiqin> {
 
     private Float distance;
 
+    @TableField(exist = false)
     private String desc;
 
 
